@@ -1,0 +1,22 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination a:link,
+.pagination a:visited {
+  text-decoration: none;
+  color: #444;
+}
+.pagination span,
+.pagination a {
+  text-align: center;
+  height: 1.8em;
+  width: 1.8em;
+  display: block;
+  vertical-align: middle;
+  font-size: 1.1em;
+}
+.pagination span {
+  color: #aaa;
+}

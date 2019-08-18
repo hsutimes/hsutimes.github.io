@@ -1,0 +1,53 @@
+.Card-article {
+  text-align: left;
+  width: 44%;
+for_breakpoint(tablet)
+for_breakpoint(mobile)
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0.5px 0.5px 3px -1px rgba(70,75,73,0.81);
+  margin: 0.5em 0;
+  height: 10em;
+  overflow-y: auto;
+  padding: 2%;
+  position: relative;
+}
+.Card-article .card-title h3 {
+  font-size: 1em;
+  margin: 0;
+}
+.Card-article .card-content {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Card-article .card-content .author-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.Card-article .card-content .author-meta .author-figure {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+.Card-article .card-content .author-meta .author-name {
+  margin-top: 0.8em;
+}
+.Card-article .card-content .author-ai {
+  margin: 0 0 0 1em;
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-y: auto;
+  max-height: 10em;
+}
+.Card-article .card-content .author-ai .author-articles {
+  width: 100%;
+  overflow-y: auto;
+}

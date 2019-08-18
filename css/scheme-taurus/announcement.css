@@ -1,0 +1,25 @@
+.announcement {
+  width: 60%;
+  margin: auto 0;
+  background-color: #fcf6db;
+  border: 2px solid #f2d249;
+  border-radius: 5px;
+for_breakpoint(tablet)
+}
+.announcement div p {
+for_breakpoint(mobile)
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+}
+.announcement div p:hover span {
+  color: #666;
+}
+.announcement div p span {
+  font-size: 0.8em;
+  color: #999;
+}
+.announcement div p a:link,
+.announcement div p a:visited {
+  color: #999;
+}
