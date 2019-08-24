@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>Java面试题（框架+JVM+多线程+算法+数据库） - Hexo</title>
+  
+
+  
+  
+  <meta name="description" content>
+  <meta name="author" content="times">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+<link rel="stylesheet" href="/.css">
+
+  <!-- load font awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+
+  <!-- include comment system code -->
+  
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/theme-icon.svg' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Hexo</a>
+			</h1>
+			<subtitle>
+				time
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础与框架"><span class="toc-number">1.</span> <span class="toc-text">基础与框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">2.</span> <span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM相关"><span class="toc-number">3.</span> <span class="toc-text">JVM相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络"><span class="toc-number">4.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法"><span class="toc-number">5.</span> <span class="toc-text">算法</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/" data-name='Java面试题（框架+JVM+多线程+算法+数据库）' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/">
+                Java面试题（框架+JVM+多线程+算法+数据库）
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+        <ul class='article-categories'>
+            
+            
+                <li><a href="/categories/文章/" data-no-instant>
+                    <img src="/images/文章.svg" alt="文章" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='文章'/>
+                </a></li>
+            
+        </ul>
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2019-08-24</li>
+            
+            <li><i class="fa fa-user"></i> times</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/JVM/">Jvm</a></label>
+		
+	
+		
+			<label class='tag-2'><a href="/tags/数据库/">数据库</a></label>
+		
+	
+		
+			<label class='tag-3'><a href="/tags/框架/">框架</a></label>
+		
+	
+		
+			<label class='tag-4'><a href="/tags/算法/">算法</a></label>
+		
+	
+		
+			<label class='tag-5'><a href="/tags/面试/">面试</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                times
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+    
+        
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础与框架"><span class="toc-number">1.</span> <span class="toc-text">基础与框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">2.</span> <span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM相关"><span class="toc-number">3.</span> <span class="toc-text">JVM相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络"><span class="toc-number">4.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法"><span class="toc-number">5.</span> <span class="toc-text">算法</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <p><img src="/images/2019/08/24/58bd4f10-c647-11e9-a58b-4d8a77bb39d6.png" alt="image.png"></p>
+<h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><p>1.String类能被继承吗，为什么<br>2.String，Stringbuffer，StringBuilder的区别？3.ArrayList和LinkedList有什么区别<br>4.类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序<br>5.用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等<br>6.HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发<br>7.抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么<br>8.什么情况下会发生栈内存溢出<br>9.什么是nio，原理<br>10.反射中，Class.forName和ClassLoader区别11.tomcat结构，类加载器流程<br>12.讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式<br>13.Spring的beanFactory和factoryBean的区别14.Spring加载流程15.Spring如何管理事务的</p>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>1.线城池的最大线程数目根据什么确定<br>2.多线程的几种实现方式，什么是线程安全，什么是重排序3.volatile的原理，作用，能代替锁么<br>4.sleep和wait的区别，以及wait的实现原理<br>5.Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁<br>6.用过哪些原子类，他们的参数以及原理是什么<br>7.用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等<br>8.有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。<br>9.spring的controller是单例还是多例，怎么保证并发的安全<br>10.用三个线程按顺序循环打印abc三个字母，比如abcabcabc<br>11.ThreadLocal用过么，原理是什么，用的时候要注意什么<br>12.如果让你实现一个并发安全的链表，你会怎么做</p>
+<h1 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h1><p>1.jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等<br>2.你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms<br>3.当出现了内存溢出，你怎么排错<br>4.JVM内存模型的相关知识了解多少<br>5.简单说说你了解的类加载器<br>6.JAVA的反射机制</p>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><p>1.http1.0和http1.1有什么区别<br>2.TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么<br>3.TIME_WAIT和CLOSE_WAIT的区别<br>4.说说你知道的几种HTTP响应码<br>5.当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤<br>6.Linux下IO模型有几种，各自的含义是什么<br>7.TCP/IP如何保证可靠性，数据包有哪些数据组成<br>8.架构设计与分布式：<br>9.tomcat如何调优，各种参数的意义<br>10.常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等<br>11.如何防止缓存雪崩12.用java自己实现一个LRU<br>13.分布式集群下如何做到唯一序列号<br>14.设计一个秒杀系统，30分钟没付款就自动关闭交易<br>15.如何做一个分布式锁<br>16.用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗<br>17.MQ系统的数据如何保证不丢失<br>18.分布式事务的原理，如何使用分布式事务<br>19.什么是一致性hash<br>20.什么是restful，讲讲你理解的restful<br>21.如何设计建立和保持100w的长连接？<br>22.解释什么是MESI协议(缓存一致性)<br>23.说说你知道的几种HASH算法，简单的也可以<br>24.什么是paxos算法<br>25.redis和memcached 的内存管理的区别<br>26.一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</p>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>1、10亿个数字里里面找最小的10个2、有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优3、2亿个随机生成的无序整数,找出中间大小的值4、遍历二叉树六、数据库1.数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点<br>2.高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义<br>3.SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？<br>4.数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁<br>5.MYsql的索引实现方式<br>6.聚集索引和非聚集索引的区别<br>7.数据库中 BTREE和B+tree区别</p>
+<p>作者：程序汪追风<br>链接：<a href="https://juejin.im/post/5d5fd40bf265da03df5f1b3a" target="_blank" rel="noopener">https://juejin.im/post/5d5fd40bf265da03df5f1b3a</a><br>来源：掘金</p>
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>评论</h1>
+
+  
+    <div id="comment-not-available">
+      Not available
+      <p><strong>For site maintainer: Please provide <code>appId</code> and <code>appKey</code> in your <code>_data/cutie.yml</code> file for <code>valine</code> comment system.</strong></p>
+    </div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> 版权所有 <a href="">times </a> @ 2019</p>
+            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础与框架"><span class="toc-number">1.</span> <span class="toc-text">基础与框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">2.</span> <span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM相关"><span class="toc-number">3.</span> <span class="toc-text">JVM相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络"><span class="toc-number">4.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法"><span class="toc-number">5.</span> <span class="toc-text">算法</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5').update('hashit_44a5da2cf3964e16d7d9f11f3f417c51de81f755e3def7b21adae3f4523eb27d', function(){});
+  });
+  
+</script>
+
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('', '');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
