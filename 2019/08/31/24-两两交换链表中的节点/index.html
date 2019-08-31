@@ -384,13 +384,12 @@
 <li>递归和栈处理问题类似,先把问题从前往后收集起来,然后再从后往前处理每一个问题;</li>
 <li>两两交换链表结点,先处理最后两个或一个节点,然后再从后往前处理每一对节点;</li>
 <li>先创建一个next临时结点保存head的下一个结点,然后让head指向下下一个节点,最后让 next节点指向head结点;</li>
-<li>此题只有处理完后面的结点才可处理前面的结点,画图更容易理解;<br><img src="/images/2019/08/31/edb550e0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 三个节点顺序:head, next, swapPairs(next.next)</span></span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        head.next = swapPairs(next.next);</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>此题只有处理完后面的结点才可处理前面的结点,画图更容易理解;</li>
 </ol>
 </li>
 </ol>
-
+<p><img src="/images/2019/08/31/edb550e0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 三个节点顺序:head, next, swapPairs(next.next)</span></span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        head.next = swapPairs(next.next);</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
     </div>
     
@@ -541,7 +540,7 @@
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b').update('hashit_fca846cae50cada5416b70b4b12bb783d5338d14658501e253122225b4d2ab18', function(){});
+    new Postv2('hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b').update('hashit_aac55820fec0c29e05985ecb68932e3e08373c7bb15e13d0f48dfc55a497b073', function(){});
   });
   
 </script>
