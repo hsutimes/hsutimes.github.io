@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>24. 两两交换链表中的节点 - Time</title>
+      <title>深入理解Node.js 中的进程与线程 - Time</title>
   
 
   
@@ -111,7 +111,7 @@
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#24-两两交换链表中的节点"><span class="toc-number">1.</span> <span class="toc-text">24. 两两交换链表中的节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.2.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面试会问"><span class="toc-number">2.</span> <span class="toc-text">面试会问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程"><span class="toc-number">3.</span> <span class="toc-text">进程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程"><span class="toc-number">4.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#单线程"><span class="toc-number">4.1.</span> <span class="toc-text">单线程</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -238,14 +238,14 @@
 
 
 
-<article class="article" id="/2019/08/31/24-两两交换链表中的节点/" data-name='24. 两两交换链表中的节点' data-version="">
+<article class="article" id="/2019/09/05/深入理解Node-js-中的进程与线程/" data-name='深入理解Node.js 中的进程与线程' data-version="">
 
     <!-- Title -->
     <div class='article-header'>
          
          <h1 class='article-title'>
-            <a href="/2019/08/31/24-两两交换链表中的节点/">
-                24. 两两交换链表中的节点
+            <a href="/2019/09/05/深入理解Node-js-中的进程与线程/">
+                深入理解Node.js 中的进程与线程
             </a>
         </h1>
         <!-- TODO: support nested categories,display them nicely -->
@@ -253,8 +253,8 @@
         <ul class='article-categories'>
             
             
-                <li><a href="/categories/算法/" data-no-instant>
-                    <img src="/images/算法.svg" alt="算法" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='算法'/>
+                <li><a href="/categories/文章/" data-no-instant>
+                    <img src="/images/文章.svg" alt="文章" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='文章'/>
                 </a></li>
             
         </ul>
@@ -264,7 +264,7 @@
     <!-- Date and Author -->
     <div class='article-meta'>
     <ul>
-            <li><i class='fa fa-calendar'></i> 2019-08-31</li>
+            <li><i class='fa fa-calendar'></i> 2019-09-05</li>
             
             <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
             <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
@@ -285,19 +285,7 @@
 <div class="tags">
 	
 		
-			<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-		
-	
-		
-			<label class='tag-2'><a href="/tags/算法/">算法</a></label>
-		
-	
-		
-			<label class='tag-3'><a href="/tags/递归/">递归</a></label>
-		
-	
-		
-			<label class='tag-4'><a href="/tags/链表/">链表</a></label>
+			<label class='tag-1'><a href="/tags/Nodejs/">Nodejs</a></label>
 		
 	
 	</div>
@@ -356,13 +344,12 @@
   <h3>Quick Read</h3>
 </div>
 <div class="card-text">
-  <p id='text-post-summary'>24. 两两交换链表中的节点题目给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
-你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
-示例:
-给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.题解
-非递归
+  <p id='text-post-summary'>前言进程与线程是一个程序员的必知概念，面试经常被问及，但是一些文章内容只是讲讲理论知识，可能一些小伙伴并没有真的理解，在实际开发中应用也比较少。本篇文章除了介绍概念，通过Node.js 的角度讲解进程与线程，并且讲解一些在项目中的实战的应用，让你不仅能迎战面试官还可以在实战中完美应用。
+面试会问
+Node.js是单线程吗？
 
-123456789101112131415161718192021222324/** * Definition for singly-linked list. * public class ListNode &#123; *     int val; *     ListNode next; *    ...</p>
+
+Node.js...</p>
 </div>
         </div> -->
     </div>
@@ -380,7 +367,7 @@
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#24-两两交换链表中的节点"><span class="toc-number">1.</span> <span class="toc-text">24. 两两交换链表中的节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.2.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面试会问"><span class="toc-number">2.</span> <span class="toc-text">面试会问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程"><span class="toc-number">3.</span> <span class="toc-text">进程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程"><span class="toc-number">4.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#单线程"><span class="toc-number">4.1.</span> <span class="toc-text">单线程</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -388,28 +375,44 @@
 
     </div>
     <div class='article-content'>
-    <p><img src="/images/2019/08/31/230aafc0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
-<h1 id="24-两两交换链表中的节点"><a href="#24-两两交换链表中的节点" class="headerlink" title="24. 两两交换链表中的节点"></a>24. <a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">两两交换链表中的节点</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
-<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
-<p>示例:</p>
-<pre><code>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
-<li>非递归</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pre = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        pre.next = head;</span><br><span class="line">        ListNode temp = pre;</span><br><span class="line">        <span class="keyword">while</span>(temp.next != <span class="keyword">null</span> &amp;&amp; temp.next.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ListNode start = temp.next;</span><br><span class="line">            ListNode end = temp.next.next;</span><br><span class="line">            temp.next = end;</span><br><span class="line">            start.next = end.next;</span><br><span class="line">            end.next = start;</span><br><span class="line">            temp = start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pre.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <p><img src="/images/2019/09/05/0d781bf0-cfe0-11e9-a152-33ef044f5d50.png" alt="image.png"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>进程与线程是一个程序员的必知概念，面试经常被问及，但是一些文章内容只是讲讲理论知识，可能一些小伙伴并没有真的理解，在实际开发中应用也比较少。本篇文章除了介绍概念，通过Node.js 的角度讲解进程与线程，并且讲解一些在项目中的实战的应用，让你不仅能迎战面试官还可以在实战中完美应用。</p>
+<h1 id="面试会问"><a href="#面试会问" class="headerlink" title="面试会问"></a>面试会问</h1><blockquote>
+<p>Node.js是单线程吗？</p>
+</blockquote>
+<blockquote>
+<p>Node.js 做耗时的计算时候，如何避免阻塞？</p>
+</blockquote>
+<blockquote>
+<p>Node.js如何实现多进程的开启和关闭？</p>
+</blockquote>
+<blockquote>
+<p>Node.js可以创建线程吗？</p>
+</blockquote>
+<blockquote>
+<p>你们开发过程中如何实现进程守护的？</p>
+</blockquote>
+<blockquote>
+<p>除了使用第三方模块，你们自己是否封装过一个多进程架构?</p>
+</blockquote>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>进程Process是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础，进程是线程的容器（来自百科）。进程是资源分配的最小单位。我们启动一个服务、运行一个实例，就是开一个服务进程，例如 Java 里的 JVM 本身就是一个进程，Node.js 里通过 node app.js 开启一个服务进程，多进程就是进程的复制（fork），fork 出来的每个进程都拥有自己的独立空间地址、数据栈，一个进程无法访问另外一个进程里定义的变量、数据结构，只有建立了 IPC 通信，进程之间才可数据共享。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer();</span><br><span class="line">server.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    process.title=<span class="string">'程序员成长指北测试进程'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'进程id'</span>,process.pid)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li><p>递归解法</p>
-<ol>
-<li>详细介绍一下递归的思路;</li>
-<li>递归和栈处理问题类似,先把问题从前往后收集起来,然后再从后往前处理每一个问题;</li>
-<li>两两交换链表结点,先处理最后两个或一个节点,然后再从后往前处理每一对节点;</li>
-<li>先创建一个next临时结点保存head的下一个结点,然后让head指向下下一个节点,最后让 next节点指向head结点;</li>
-<li>此题只有处理完后面的结点才可处理前面的结点,画图更容易理解;</li>
-</ol>
-</li>
-</ol>
-<p><img src="/images/2019/08/31/edb550e0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 三个节点顺序:head, next, swapPairs(next.next)</span></span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        head.next = swapPairs(next.next);</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行上面代码后，以下为 Mac 系统自带的监控工具 “活动监视器” 所展示的效果，可以看到我们刚开启的 Nodejs 进程 7663<br><img src="/images/2019/09/05/827bb4c0-cfe0-11e9-a152-33ef044f5d50.png" alt="image.png"></p>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>线程是操作系统能够进行运算调度的最小单位，首先我们要清楚线程是隶属于进程的，被包含于进程之中。一个线程只能隶属于一个进程，但是一个进程是可以拥有多个线程的。</p>
+<h2 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h2><p><strong>单线程就是一个进程只开一个线程</strong></p>
+<p>Javascript 就是属于单线程，程序顺序执行(这里暂且不提JS异步)，可以想象一下队列，前面一个执行完之后，后面才可以执行，当你在使用单线程语言编码时切勿有过多耗时的同步操作，否则线程会造成阻塞，导致后续响应无法处理。你如果采用 Javascript 进行编码时候，请尽可能的利用Javascript异步操作的特性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> longComputation = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">1e10</span>; i++) &#123;</span><br><span class="line">    sum += i;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> server = http.createServer();</span><br><span class="line">server.on(<span class="string">'request'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.url === <span class="string">'/compute'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.info(<span class="string">'计算开始'</span>,<span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">    <span class="keyword">const</span> sum = longComputation();</span><br><span class="line">    <span class="built_in">console</span>.info(<span class="string">'计算结束'</span>,<span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">    <span class="keyword">return</span> res.end(<span class="string">`Sum is <span class="subst">$&#123;sum&#125;</span>`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.end(<span class="string">'Ok'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">3000</span>);</span><br><span class="line"><span class="comment">//打印结果</span></span><br><span class="line"><span class="comment">//计算开始 2019-07-28T07:08:49.849Z</span></span><br><span class="line"><span class="comment">//计算结束 2019-07-28T07:09:04.522Z</span></span><br></pre></td></tr></table></figure>
+
+<p>查看打印结果，当我们调用127.0.0.1:3000/compute<br>的时候，如果想要调用其他的路由地址比如127.0.0.1/大约需要15秒时间，也可以说一个用户请求完第一个compute接口后需要等待15秒，这对于用户来说是极其不友好的。下文我会通过创建多进程的方式child_process.fork 和cluster 来解决解决这个问题。</p>
+<p>单线程的一些说明</p>
+<ul>
+<li>Node.js 虽然是单线程模型，但是其基于事件驱动、异步非阻塞模式，可以应用于高并发场景，避免了线程创建、线程之间上下文切换所产生的资源开销。</li>
+<li>当你的项目中需要有大量计算，CPU 耗时的操作时候，要注意考虑开启多进程来完成了。</li>
+<li>Node.js 开发过程中，错误会引起整个应用退出，应用的健壮性值得考验，尤其是错误的异常抛出，以及进程守护是必须要做的。</li>
+<li>单线程无法利用多核CPU，但是后来Node.js 提供的API以及一些第三方工具相应都得到了解决，文章后面都会讲到。</li>
+</ul>
+
     
     </div>
     
@@ -461,7 +464,7 @@
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#24-两两交换链表中的节点"><span class="toc-number">1.</span> <span class="toc-text">24. 两两交换链表中的节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.2.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面试会问"><span class="toc-number">2.</span> <span class="toc-text">面试会问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程"><span class="toc-number">3.</span> <span class="toc-text">进程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程"><span class="toc-number">4.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#单线程"><span class="toc-number">4.1.</span> <span class="toc-text">单线程</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -594,7 +597,7 @@
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b').update('hashit_aac55820fec0c29e05985ecb68932e3e08373c7bb15e13d0f48dfc55a497b073', function(){});
+    new Postv2('hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d').update('hashit_e537dc96d9a208612161efb2219ce89df175b3da2f83717d0aa6f4b508ab94ad', function(){});
   });
   
 </script>
@@ -611,42 +614,42 @@
     
     LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2019/08/31/24-两两交换链表中的节点/', json.ip);
+    leanCloud.fetchIsThumbUp('/2019/09/05/深入理解Node-js-中的进程与线程/', json.ip);
     document.getElementById('thumb-up-button').addEventListener('click', function(e){
-      leanCloud.isThumbUp('/2019/08/31/24-两两交换链表中的节点/', function(isThumbUp){
+      leanCloud.isThumbUp('/2019/09/05/深入理解Node-js-中的进程与线程/', function(isThumbUp){
         console.log('is thumb up:' + isThumbUp);
         if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2019/08/31/24-两两交换链表中的节点/', json.ip);
+          leanCloud.removeThumbUpRecord('/2019/09/05/深入理解Node-js-中的进程与线程/', json.ip);
           document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
           
         }else{
-          leanCloud.addThumbUpRecord('/2019/08/31/24-两两交换链表中的节点/', json.ip);
+          leanCloud.addThumbUpRecord('/2019/09/05/深入理解Node-js-中的进程与线程/', json.ip);
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
         }
-        leanCloud.getThumbUpCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
+        leanCloud.getThumbUpCount('/2019/09/05/深入理解Node-js-中的进程与线程/', function(count){
             console.log('thumb up count: ' + count)
             var el = document.getElementById('article-thumbup-count');
             if(el) el.innerHTML = count;
         });
       });
     });
-    leanCloud.addVisitRecord('/2019/08/31/24-两两交换链表中的节点/', json.ip);
-    leanCloud.fetchCommentCount('/2019/08/31/24-两两交换链表中的节点/');
-    leanCloud.fetchVisitCount('/2019/08/31/24-两两交换链表中的节点/');
-    leanCloud.fetchThumbUpCount('/2019/08/31/24-两两交换链表中的节点/');
-    leanCloud.getCommentCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
+    leanCloud.addVisitRecord('/2019/09/05/深入理解Node-js-中的进程与线程/', json.ip);
+    leanCloud.fetchCommentCount('/2019/09/05/深入理解Node-js-中的进程与线程/');
+    leanCloud.fetchVisitCount('/2019/09/05/深入理解Node-js-中的进程与线程/');
+    leanCloud.fetchThumbUpCount('/2019/09/05/深入理解Node-js-中的进程与线程/');
+    leanCloud.getCommentCount('/2019/09/05/深入理解Node-js-中的进程与线程/', function(count){
         var el = document.querySelector('#article-comment-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getVisitCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
+    leanCloud.getVisitCount('/2019/09/05/深入理解Node-js-中的进程与线程/', function(count){
         var el = document.querySelector('#article-visit-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getThumbUpCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
+    leanCloud.getThumbUpCount('/2019/09/05/深入理解Node-js-中的进程与线程/', function(count){
         var el = document.getElementById('article-thumbup-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.isThumbUp('/2019/08/31/24-两两交换链表中的节点/', function(isThumbUp){
+    leanCloud.isThumbUp('/2019/09/05/深入理解Node-js-中的进程与线程/', function(isThumbUp){
         console.log('init thumb up:' + isThumbUp);
         if(isThumbUp){
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";

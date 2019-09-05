@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>编程 - Tag - Time</title>
+      <title>Archive - Time</title>
   
 
   
@@ -107,7 +107,7 @@
 	
 	<div class='nav-item' id='nav-item-archive'>
 		
-				<div class='nav-icon'>
+				<div class='nav-icon active_dot'>
 				
 			<a href="/archives/" title='归档'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
@@ -180,11 +180,18 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div style="flex: 1;">
-      <div class='archive-container'>
-
+      
+	
+	<div class='archive-container'>
+		
+			<h1 class='archive-title'>2019</h1>
+			
+			
+			
+				
 
 	
-		<h2 class='archive-title'>#   编程</h2>
+		<h2 class='archive-title'></h2>
 	
 	<div class="archive-cards">
 	
@@ -193,14 +200,14 @@
 
 
 
-<div class='Card-archive' id='hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a' data-name='技术栈' data-version=''>
+<div class='Card-archive' id='hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a' data-name='git教程' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
 		<h3 class='Card-title'>
 			
-				<a href="/2019/08/18/技术栈/">
+				<a href="/2019/08/16/git教程/">
 			
-			技术栈</a>
+			Git教程</a>
 		</h3>
 		<div class="Card-meta">
 			<div class='Card-tags'>
@@ -208,13 +215,13 @@
 	
 		
 			
-				<label class='tag-1'><a href="/tags/文章/">文章</a></label>
+				<label class='tag-1'><a href="/tags/git/">Git</a></label>
 			
 		
 	
 		
 			
-				<label class='tag-2'><a href="/tags/编程/">编程</a></label>
+				<label class='tag-2'><a href="/tags/文章/">文章</a></label>
 			
 		
 	
@@ -223,13 +230,13 @@
 			<ul>
 					<li>
 						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-08-18
+							<i class='fa fa-calendar'></i> 2019-08-16
 						</a>
 					</li>
 					
 					
 					<li>
-						<a href="/2019/08/18/技术栈/#article-comment">
+						<a href="/2019/08/16/git教程/#article-comment">
 							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
 						</a>
 					</li>
@@ -247,26 +254,11 @@
 	</div>
 
 
+			
+		
+	</div>
+	
 
-<div class='pagination'>
-	
-	
-	
-	
-		
-		
-		<div class="pagination-item">
-			
-			
-				<span>1</span>
-			
-		</div>
-		
-		
-	
-	
-</div>
-</div>
   </div>
 
   
@@ -297,7 +289,7 @@
 	
 	<div class='nav-item' id='nav-item-archive'>
 		
-				<div class='nav-icon'>
+				<div class='nav-icon active_dot'>
 				
 			<a href="/archives/" title='归档'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
@@ -424,7 +416,7 @@
           
           
           
-            var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
+            var postBadge = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a mark.Card-badge');
             $(postBadge).fadeOut();
             
           
@@ -448,24 +440,24 @@
           
           
           // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/18/技术栈/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/18/技术栈/');
-          leanCloud.fetchVisitCount('/2019/08/18/技术栈/');
-          leanCloud.fetchThumbUpCount('/2019/08/18/技术栈/');
-          leanCloud.getCommentCount('/2019/08/18/技术栈/', function(count){
-              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-comment-count');
+          leanCloud.fetchIsThumbUp('/2019/08/16/git教程/', json.ip);
+          leanCloud.fetchCommentCount('/2019/08/16/git教程/');
+          leanCloud.fetchVisitCount('/2019/08/16/git教程/');
+          leanCloud.fetchThumbUpCount('/2019/08/16/git教程/');
+          leanCloud.getCommentCount('/2019/08/16/git教程/', function(count){
+              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-comment-count');
               if(el) el.innerHTML = count;
           });
-          leanCloud.getVisitCount('/2019/08/18/技术栈/', function(count){
-              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-visit-count');
+          leanCloud.getVisitCount('/2019/08/16/git教程/', function(count){
+              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-visit-count');
               if(el) el.innerHTML = count;
           });
-          leanCloud.getThumbUpCount('/2019/08/18/技术栈/', function(count){
-              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-thumbup-count');
+          leanCloud.getThumbUpCount('/2019/08/16/git教程/', function(count){
+              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-thumbup-count');
               if(el) el.innerHTML = count;
           });
-          leanCloud.isThumbUp('/2019/08/18/技术栈/', function(isThumbUp){
-              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-thumbup-container i');
+          leanCloud.isThumbUp('/2019/08/16/git教程/', function(isThumbUp){
+              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
