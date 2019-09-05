@@ -266,6 +266,10 @@
     <ul>
             <li><i class='fa fa-calendar'></i> 2019-09-04</li>
             
+            <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            <li class='thumb-up-button' id='thumb-up-button'><i class="far fa-thumbs-up fa-lg" id='thumb-up-icon'></i> <span id='article-thumbup-count'>0</span></li>
+            
             <li><i class="fa fa-user"></i> times</li>
             <li><i class="fas fa-copyright"></i>
             
@@ -455,10 +459,7 @@ Spring的优点？
 <h1>评论</h1>
 
   
-    <div id="comment-not-available">
-      Not available
-      <p><strong>For site maintainer: Please provide <code>appId</code> and <code>appKey</code> in your <code>_data/cutie.yml</code> file for <code>valine</code> comment system.</strong></p>
-    </div>
+    <div id='valine'></div>
   
 
 
@@ -578,6 +579,23 @@ Spring的优点？
 
 
     
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
+        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
+        placeholder: 'just go go',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'z'
+    });
+</script>
+
 
 
 
@@ -617,6 +635,68 @@ Spring的优点？
 </script>
 
 
+    
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  function getIP(json) {
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.fetchIsThumbUp('/2019/09/04/Spring框架面试总结/', json.ip);
+    document.getElementById('thumb-up-button').addEventListener('click', function(e){
+      leanCloud.isThumbUp('/2019/09/04/Spring框架面试总结/', function(isThumbUp){
+        console.log('is thumb up:' + isThumbUp);
+        if(isThumbUp){
+          leanCloud.removeThumbUpRecord('/2019/09/04/Spring框架面试总结/', json.ip);
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+          
+        }else{
+          leanCloud.addThumbUpRecord('/2019/09/04/Spring框架面试总结/', json.ip);
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }
+        leanCloud.getThumbUpCount('/2019/09/04/Spring框架面试总结/', function(count){
+            console.log('thumb up count: ' + count)
+            var el = document.getElementById('article-thumbup-count');
+            if(el) el.innerHTML = count;
+        });
+      });
+    });
+    leanCloud.addVisitRecord('/2019/09/04/Spring框架面试总结/', json.ip);
+    leanCloud.fetchCommentCount('/2019/09/04/Spring框架面试总结/');
+    leanCloud.fetchVisitCount('/2019/09/04/Spring框架面试总结/');
+    leanCloud.fetchThumbUpCount('/2019/09/04/Spring框架面试总结/');
+    leanCloud.getCommentCount('/2019/09/04/Spring框架面试总结/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2019/09/04/Spring框架面试总结/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getThumbUpCount('/2019/09/04/Spring框架面试总结/', function(count){
+        var el = document.getElementById('article-thumbup-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.isThumbUp('/2019/09/04/Spring框架面试总结/', function(isThumbUp){
+        console.log('init thumb up:' + isThumbUp);
+        if(isThumbUp){
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }else{
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+        }
+    });
+  });
+  }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
 
 <!-- <script src="/js/post.js"></script> -->
 
@@ -629,7 +709,7 @@ initHeadroom();
 changeLayoutOnTouchScreen();
 
 // 
-// var post = new Post('', '');
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
 // post.getCommentCount(window.location.pathname, function(count){
 //     $('#article-comment-count').text(count);
 // });

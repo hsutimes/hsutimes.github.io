@@ -232,6 +232,15 @@
 					</li>
 					
 					
+					<li>
+						<a href="/2019/09/05/狂野飙车9/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
 					
 			</ul>
 		</div>
@@ -361,6 +370,23 @@
 
 
     
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
+        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
+        placeholder: 'just go go',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'z'
+    });
+</script>
+
 
 
 
@@ -409,6 +435,55 @@
 </script>
 
 
+    
+<script type='text/javascript'>
+  
+    function getIP(json) {
+      loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+    loadjs.ready('post-visit-comment-count', {
+      success: function(){
+          LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+          var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/05/狂野飙车9/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/05/狂野飙车9/');
+          leanCloud.fetchVisitCount('/2019/09/05/狂野飙车9/');
+          leanCloud.fetchThumbUpCount('/2019/09/05/狂野飙车9/');
+          leanCloud.getCommentCount('/2019/09/05/狂野飙车9/', function(count){
+              var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/05/狂野飙车9/', function(count){
+              var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/05/狂野飙车9/', function(count){
+              var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/05/狂野飙车9/', function(isThumbUp){
+              var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
+        
+      }
+    })
+    }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
 
 <!-- <script src="/js/post.js"></script> -->
 
@@ -421,7 +496,7 @@ initHeadroom();
 changeLayoutOnTouchScreen();
 
 // 
-// var post = new Post('', '');
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
 // $('.Card-archive').each(function(){
 //     var post_url = $(this).attr('id');
 //     var true_url = $(this).find('.Card-title a').first().attr('href');

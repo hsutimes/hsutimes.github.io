@@ -240,6 +240,15 @@
 					</li>
 					
 					
+					<li>
+						<a href="/2019/08/31/118-杨辉三角/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
 					
 			</ul>
 		</div>
@@ -299,6 +308,15 @@
 					</li>
 					
 					
+					<li>
+						<a href="/2019/08/31/24-两两交换链表中的节点/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
 					
 			</ul>
 		</div>
@@ -351,6 +369,15 @@
 						</a>
 					</li>
 					
+					
+					<li>
+						<a href="/2019/08/31/334-反转字符串/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
 					
 					
 			</ul>
@@ -481,6 +508,23 @@
 
 
     
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
+        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
+        placeholder: 'just go go',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'z'
+    });
+</script>
+
 
 
 
@@ -545,6 +589,115 @@
 </script>
 
 
+    
+<script type='text/javascript'>
+  
+    function getIP(json) {
+      loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+    loadjs.ready('post-visit-comment-count', {
+      success: function(){
+          LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+          var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/08/31/118-杨辉三角/', json.ip);
+          leanCloud.fetchCommentCount('/2019/08/31/118-杨辉三角/');
+          leanCloud.fetchVisitCount('/2019/08/31/118-杨辉三角/');
+          leanCloud.fetchThumbUpCount('/2019/08/31/118-杨辉三角/');
+          leanCloud.getCommentCount('/2019/08/31/118-杨辉三角/', function(count){
+              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/08/31/118-杨辉三角/', function(count){
+              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/08/31/118-杨辉三角/', function(count){
+              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/08/31/118-杨辉三角/', function(isThumbUp){
+              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/08/31/24-两两交换链表中的节点/', json.ip);
+          leanCloud.fetchCommentCount('/2019/08/31/24-两两交换链表中的节点/');
+          leanCloud.fetchVisitCount('/2019/08/31/24-两两交换链表中的节点/');
+          leanCloud.fetchThumbUpCount('/2019/08/31/24-两两交换链表中的节点/');
+          leanCloud.getCommentCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
+              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
+              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
+              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/08/31/24-两两交换链表中的节点/', function(isThumbUp){
+              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/08/31/334-反转字符串/', json.ip);
+          leanCloud.fetchCommentCount('/2019/08/31/334-反转字符串/');
+          leanCloud.fetchVisitCount('/2019/08/31/334-反转字符串/');
+          leanCloud.fetchThumbUpCount('/2019/08/31/334-反转字符串/');
+          leanCloud.getCommentCount('/2019/08/31/334-反转字符串/', function(count){
+              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/08/31/334-反转字符串/', function(count){
+              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/08/31/334-反转字符串/', function(count){
+              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/08/31/334-反转字符串/', function(isThumbUp){
+              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
+        
+      }
+    })
+    }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
 
 <!-- <script src="/js/post.js"></script> -->
 
@@ -557,7 +710,7 @@ initHeadroom();
 changeLayoutOnTouchScreen();
 
 // 
-// var post = new Post('', '');
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
 // $('.Card-archive').each(function(){
 //     var post_url = $(this).attr('id');
 //     var true_url = $(this).find('.Card-title a').first().attr('href');

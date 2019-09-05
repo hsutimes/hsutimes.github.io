@@ -228,6 +228,15 @@
 					</li>
 					
 					
+					<li>
+						<a href="/2019/08/18/技术栈/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
 					
 			</ul>
 		</div>
@@ -274,6 +283,15 @@
 						</a>
 					</li>
 					
+					
+					<li>
+						<a href="/2019/08/16/git教程/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
 					
 					
 			</ul>
@@ -404,6 +422,23 @@
 
 
     
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
+        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
+        placeholder: 'just go go',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'z'
+    });
+</script>
+
 
 
 
@@ -460,6 +495,85 @@
 </script>
 
 
+    
+<script type='text/javascript'>
+  
+    function getIP(json) {
+      loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+    loadjs.ready('post-visit-comment-count', {
+      success: function(){
+          LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+          var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/08/18/技术栈/', json.ip);
+          leanCloud.fetchCommentCount('/2019/08/18/技术栈/');
+          leanCloud.fetchVisitCount('/2019/08/18/技术栈/');
+          leanCloud.fetchThumbUpCount('/2019/08/18/技术栈/');
+          leanCloud.getCommentCount('/2019/08/18/技术栈/', function(count){
+              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/08/18/技术栈/', function(count){
+              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/08/18/技术栈/', function(count){
+              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/08/18/技术栈/', function(isThumbUp){
+              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/08/16/git教程/', json.ip);
+          leanCloud.fetchCommentCount('/2019/08/16/git教程/');
+          leanCloud.fetchVisitCount('/2019/08/16/git教程/');
+          leanCloud.fetchThumbUpCount('/2019/08/16/git教程/');
+          leanCloud.getCommentCount('/2019/08/16/git教程/', function(count){
+              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/08/16/git教程/', function(count){
+              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/08/16/git教程/', function(count){
+              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/08/16/git教程/', function(isThumbUp){
+              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
+        
+      }
+    })
+    }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
 
 <!-- <script src="/js/post.js"></script> -->
 
@@ -472,7 +586,7 @@ initHeadroom();
 changeLayoutOnTouchScreen();
 
 // 
-// var post = new Post('', '');
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
 // $('.Card-archive').each(function(){
 //     var post_url = $(this).attr('id');
 //     var true_url = $(this).find('.Card-title a').first().attr('href');
