@@ -423,9 +423,27 @@
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .Card-title a, #hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .Card-excerpt a, #hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .Card-figure a');
+          new Postv2('hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db').showUnreadNotification('hashit_d3a32374f0337355b4960eb66a58387cf54d5aa5811e37c021b464fa273ccaae', function(){
+            console.log('show badge for 2019/09/05/狂野飙车9/ : hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db');
+            var postBadge = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/05/狂野飙车9/ : hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db');
             var postBadge = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db').update('hashit_d3a32374f0337355b4960eb66a58387cf54d5aa5811e37c021b464fa273ccaae', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
       }

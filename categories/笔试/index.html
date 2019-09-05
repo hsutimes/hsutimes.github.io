@@ -433,9 +433,27 @@
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace .Card-title a, #hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace .Card-excerpt a, #hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace .Card-figure a');
+          new Postv2('hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace').showUnreadNotification('hashit_3ec6a78f89d4d69563aaf517936d8ef1bdded647792360c818f5475198531aa4', function(){
+            console.log('show badge for 2019/09/05/树的高度（小米2017秋招真题）/ : hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace');
+            var postBadge = document.querySelector('#hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/05/树的高度（小米2017秋招真题）/ : hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace');
             var postBadge = document.querySelector('#hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace').update('hashit_3ec6a78f89d4d69563aaf517936d8ef1bdded647792360c818f5475198531aa4', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
       }

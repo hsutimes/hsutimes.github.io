@@ -661,41 +661,131 @@
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .Card-title a, #hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .Card-excerpt a, #hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .Card-figure a');
+          new Postv2('hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d').showUnreadNotification('hashit_e537dc96d9a208612161efb2219ce89df175b3da2f83717d0aa6f4b508ab94ad', function(){
+            console.log('show badge for 2019/09/05/深入理解Node-js-中的进程与线程/ : hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d');
+            var postBadge = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/05/深入理解Node-js-中的进程与线程/ : hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d');
             var postBadge = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d').update('hashit_e537dc96d9a208612161efb2219ce89df175b3da2f83717d0aa6f4b508ab94ad', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-title a, #hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-excerpt a, #hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-figure a');
+          new Postv2('hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb').showUnreadNotification('hashit_af45d052dc8491173976a96d9d03a9329fc4fe317844fc6f22f003c6216cc645', function(){
+            console.log('show badge for 2019/09/04/Spring框架面试总结/ : hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb');
+            var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/04/Spring框架面试总结/ : hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb');
             var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb').update('hashit_af45d052dc8491173976a96d9d03a9329fc4fe317844fc6f22f003c6216cc645', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .Card-title a, #hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .Card-excerpt a, #hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .Card-figure a');
+          new Postv2('hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5').showUnreadNotification('hashit_dff56504797efa9bddbcb675f542ec427f870dc5a574976412b7b782e09bea95', function(){
+            console.log('show badge for 2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/ : hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5');
+            var postBadge = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/ : hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5');
             var postBadge = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5').update('hashit_dff56504797efa9bddbcb675f542ec427f870dc5a574976412b7b782e09bea95', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-title a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-excerpt a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-figure a');
+          new Postv2('hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a').showUnreadNotification('hashit_b10cc25c7304fe095195048d661d7ff23cbf2e42f87b8efcd23e4bb4291425f4', function(){
+            console.log('show badge for 2019/08/18/技术栈/ : hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a');
+            var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/08/18/技术栈/ : hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a');
             var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a').update('hashit_b10cc25c7304fe095195048d661d7ff23cbf2e42f87b8efcd23e4bb4291425f4', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .Card-title a, #hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .Card-excerpt a, #hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .Card-figure a');
+          new Postv2('hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a').showUnreadNotification('hashit_ade0febe5ffb6998e1e9fad087447d98a613b05d55a1603a71c7db0d6097d515', function(){
+            console.log('show badge for 2019/08/16/git教程/ : hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a');
+            var postBadge = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/08/16/git教程/ : hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a');
             var postBadge = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a').update('hashit_ade0febe5ffb6998e1e9fad087447d98a613b05d55a1603a71c7db0d6097d515', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
       }

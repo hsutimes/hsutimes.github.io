@@ -423,9 +423,27 @@
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-title a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-excerpt a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-figure a');
+          new Postv2('hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a').showUnreadNotification('hashit_b10cc25c7304fe095195048d661d7ff23cbf2e42f87b8efcd23e4bb4291425f4', function(){
+            console.log('show badge for 2019/08/18/技术栈/ : hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a');
+            var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/08/18/技术栈/ : hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a');
             var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a').update('hashit_b10cc25c7304fe095195048d661d7ff23cbf2e42f87b8efcd23e4bb4291425f4', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
       }

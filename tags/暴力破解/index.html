@@ -429,9 +429,27 @@
           
           
           
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-title a, #hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-excerpt a, #hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-figure a');
+          new Postv2('hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c').showUnreadNotification('hashit_b4627d1d97965d9c79c189415b6ca77166750f5dc07636472a89e5539cdccfa5', function(){
+            console.log('show badge for 2019/09/02/天平砝码摆放问题/ : hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c');
+            var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/02/天平砝码摆放问题/ : hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c');
             var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
             $(postBadge).fadeOut();
-            
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c').update('hashit_b4627d1d97965d9c79c189415b6ca77166750f5dc07636472a89e5539cdccfa5', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
           
         
       }
