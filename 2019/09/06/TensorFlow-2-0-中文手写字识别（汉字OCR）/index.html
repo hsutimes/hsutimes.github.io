@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>TensorFlow 2.0 中文手写字识别（汉字OCR） - Time</title>
+  
+
+  
+  
+  <meta name="description" content>
+  <meta name="author" content="times">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+<link rel="stylesheet" href="/.css">
+
+  <!-- load font awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+
+  <!-- include comment system code -->
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/theme-icon.svg' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Time</a>
+			</h1>
+			<subtitle>
+				time
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TensorFlow-2-0-中文手写字识别（汉字OCR）"><span class="toc-number">1.</span> <span class="toc-text">TensorFlow 2.0 中文手写字识别（汉字OCR）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据准备"><span class="toc-number">2.</span> <span class="toc-text">数据准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#训练过程"><span class="toc-number">3.</span> <span class="toc-text">训练过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/" data-name='TensorFlow 2.0 中文手写字识别（汉字OCR）' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/">
+                TensorFlow 2.0 中文手写字识别（汉字OCR）
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+        <ul class='article-categories'>
+            
+            
+                <li><a href="/categories/人工智能/" data-no-instant>
+                    <img src="/images/人工智能.svg" alt="人工智能" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='人工智能'/>
+                </a></li>
+            
+        </ul>
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2019-09-06</li>
+            
+            <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            <li class='thumb-up-button' id='thumb-up-button'><i class="far fa-thumbs-up fa-lg" id='thumb-up-icon'></i> <span id='article-thumbup-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> times</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/>CC BY-NC-SA 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/AI/">Ai</a></label>
+		
+	
+		
+			<label class='tag-2'><a href="/tags/OCR/">Ocr</a></label>
+		
+	
+		
+			<label class='tag-3'><a href="/tags/TensorFlow/">Tensorflow</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                times
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>TensorFlow 2.0...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+    
+        
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TensorFlow-2-0-中文手写字识别（汉字OCR）"><span class="toc-number">1.</span> <span class="toc-text">TensorFlow 2.0 中文手写字识别（汉字OCR）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据准备"><span class="toc-number">2.</span> <span class="toc-text">数据准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#训练过程"><span class="toc-number">3.</span> <span class="toc-text">训练过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <p><img src="/images/2019/09/06/7b3ed590-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="TensorFlow-2-0-中文手写字识别（汉字OCR）"><a href="#TensorFlow-2-0-中文手写字识别（汉字OCR）" class="headerlink" title="TensorFlow 2.0 中文手写字识别（汉字OCR）"></a>TensorFlow 2.0 中文手写字识别（汉字OCR）</h1><ul>
+<li>搜索空间空前巨大，我们使用的数据集1.0版本汉字就多大3755个，如果加上1.1版本一起，总共汉字可以分为多达7599+个类别！这比10个阿拉伯字母识别难度大很多！</li>
+<li>数据集处理挑战更大，相比于mnist和fasionmnist来说，汉字手写字体识别数据集非常少，而且仅有的数据集数据预处理难度非常大，非常不直观，但是，千万别吓到，相信你看完本教程一定会收货满满!</li>
+<li>汉字识别更考验选手的建模能力，还在分类花？分类猫和狗？随便搭建的几层在搜索空间巨大的汉字手写识别里根本不work！你现在是不是想用很深的网络跃跃欲试？更深的网络在这个任务上可能根本不可行！！看完本教程我们就可以一探究竟！总之一句话，模型太简单和太复杂都不好，甚至会发散！（想亲身体验模型训练发散抓狂的可以来尝试一下！）。</li>
+</ul>
+<h1 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h1><p>在开始之前，先介绍一下本项目所采用的数据信息。我们的数据全部来自于CASIA的开源中文手写字数据集，该数据集分为两部分：</p>
+<ul>
+<li>CASIA-HWDB：离线的HWDB，我们仅仅使用1.0-1.2，这是单字的数据集，2.0-2.2是整张文本的数据集，我们暂时不用，单字里面包含了约7185个汉字以及171个英文字母、数字、标点符号等；</li>
+<li>CASIA-OLHWDB：在线的HWDB，格式一样，包含了约7185个汉字以及171个英文字母、数字、标点符号等，我们不用。</li>
+</ul>
+<p>其实你下载1.0的train和test差不多已经够了，可以直接运行 dataset/get_hwdb_1.0_1.1.sh 下载。原始数据下载链接点击这里. 由于原始数据过于复杂，我们使用一个类来封装数据读取过程，这是我们展示的效果：<br><img src="/images/2019/09/06/c3295380-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p>看到这么密密麻麻的文字相信连人类都…. 开始头疼了，这些复杂的文字能够通过一个神经网络来识别出来？？答案是肯定的…. 不有得感叹一下神经网络的强大。。上面的部分文字识别出来的结果是这样的：</p>
+<p><img src="/images/2019/09/06/ce981d50-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p>关于数据的处理部分，从服务器下载到的原始数据是 trn_gnt.zip 解压之后是 gnt.alz， 需要再次解压得到一个包含 gnt文件的文件夹。里面每一个gnt文件都包含了若干个汉字及其标注。直接处理比较麻烦，也不方便抽取出图片再进行操作，虽然转为图片存入文件夹比较直观，但是不适合批量读取和训练, 后面我们统一转为tfrecord进行训练。</p>
+<p>更新: 实际上，由于单个汉字图片其实很小，差不多也就最大80x80的大小，这个大小不适合转成图片保存到本地，因此我们将hwdb原始的二进制保存为tfrecord。同时也方便后面训练，可以直接从tfrecord读取图片进行训练。</p>
+<p><img src="/images/2019/09/06/dbb692f0-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">()</span>:</span></span><br><span class="line">    all_characters = load_characters()</span><br><span class="line">    num_classes = len(all_characters)</span><br><span class="line">    logging.info(<span class="string">'all characters: &#123;&#125;'</span>.format(num_classes))</span><br><span class="line">    train_dataset = load_ds()</span><br><span class="line">    train_dataset = train_dataset.shuffle(<span class="number">100</span>).map(preprocess).batch(<span class="number">32</span>).repeat()</span><br><span class="line"></span><br><span class="line">    val_ds = load_val_ds()</span><br><span class="line">    val_ds = val_ds.shuffle(<span class="number">100</span>).map(preprocess).batch(<span class="number">32</span>).repeat()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> train_dataset.take(<span class="number">2</span>):</span><br><span class="line">        print(data)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># init model</span></span><br><span class="line">    model = build_net_003((<span class="number">64</span>, <span class="number">64</span>, <span class="number">1</span>), num_classes)</span><br><span class="line">    model.summary()</span><br><span class="line">    logging.info(<span class="string">'model loaded.'</span>)</span><br><span class="line"></span><br><span class="line">    start_epoch = <span class="number">0</span></span><br><span class="line">    latest_ckpt = tf.train.latest_checkpoint(os.path.dirname(ckpt_path))</span><br><span class="line">    <span class="keyword">if</span> latest_ckpt:</span><br><span class="line">        start_epoch = int(latest_ckpt.split(<span class="string">'-'</span>)[<span class="number">1</span>].split(<span class="string">'.'</span>)[<span class="number">0</span>])</span><br><span class="line">        model.load_weights(latest_ckpt)</span><br><span class="line">        logging.info(<span class="string">'model resumed from: &#123;&#125;, start at epoch: &#123;&#125;'</span>.format(latest_ckpt, start_epoch))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        logging.info(<span class="string">'passing resume since weights not there. training from scratch'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> use_keras_fit:</span><br><span class="line">        model.compile(</span><br><span class="line">            optimizer=tf.keras.optimizers.Adam(),</span><br><span class="line">            loss=tf.keras.losses.SparseCategoricalCrossentropy(),</span><br><span class="line">            metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">        callbacks = [</span><br><span class="line">            tf.keras.callbacks.ModelCheckpoint(ckpt_path,</span><br><span class="line">                                               save_weights_only=<span class="literal">True</span>,</span><br><span class="line">                                               verbose=<span class="number">1</span>,</span><br><span class="line">                                               period=<span class="number">500</span>)</span><br><span class="line">        ]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            model.fit(</span><br><span class="line">                train_dataset,</span><br><span class="line">                validation_data=val_ds,</span><br><span class="line">                validation_steps=<span class="number">1000</span>,</span><br><span class="line">                epochs=<span class="number">15000</span>,</span><br><span class="line">                steps_per_epoch=<span class="number">1024</span>,</span><br><span class="line">                callbacks=callbacks)</span><br><span class="line">        <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">            model.save_weights(ckpt_path.format(epoch=<span class="number">0</span>))</span><br><span class="line">            logging.info(<span class="string">'keras model saved.'</span>)</span><br><span class="line">        model.save_weights(ckpt_path.format(epoch=<span class="number">0</span>))</span><br><span class="line">        model.save(os.path.join(os.path.dirname(ckpt_path), <span class="string">'cn_ocr.h5'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>大家在以后编写训练代码的时候其实可以保持这个好的习惯。</p>
+<p>OK，整个模型训练起来之后，可以在短时间内达到95%的准确率：</p>
+<p><img src="/images/2019/09/06/faa28750-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p><img src="/images/2019/09/06/098bf8f0-d075-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过本教程，我们完成了使用tensorflow 2.0全新的API搭建一个中文汉字手写识别系统。模型基本能够实现我们想要的功能。要知道，这个模型可是在搜索空间多大3755的类别当中准确的找到最相似的类别！！通过本实验，我们有几点心得：</p>
+<ul>
+<li>神经网络不仅仅是在学习，它具有一定的想象力！！比如它的一些看着很像的字：拜-佯， 扮-捞，笨-苯…. 这些字如果手写出来，连人都比较难以辨认！！但是大家要知道这些字在类别上并不是相领的！也就是说，模型具有一定的联想能力！</li>
+<li>不管问题多复杂，要敢于动手、善于动手。</li>
+</ul>
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>评论</h1>
+
+  
+  
+  
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjUwMy8yMzAxMw">
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> 版权所有 <a href="">times </a> @ 2019</p>
+            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TensorFlow-2-0-中文手写字识别（汉字OCR）"><span class="toc-number">1.</span> <span class="toc-text">TensorFlow 2.0 中文手写字识别（汉字OCR）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据准备"><span class="toc-number">2.</span> <span class="toc-text">数据准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#训练过程"><span class="toc-number">3.</span> <span class="toc-text">训练过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    <!-- 来必力City版安装代码 -->
+
+<script type="text/javascript">
+(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');
+</script>
+<noscript> Activate Javascript to use livere comment system. (为正常使用来必力评论功能请激活JavaScript)</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef').update('hashit_bedcd95d8b57685422d406ddd767bff887656f886c74f84726b3e5e187cd0611', function(){});
+  });
+  
+</script>
+
+
+    
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  function getIP(json) {
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.fetchIsThumbUp('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', json.ip);
+    document.getElementById('thumb-up-button').addEventListener('click', function(e){
+      leanCloud.isThumbUp('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(isThumbUp){
+        console.log('is thumb up:' + isThumbUp);
+        if(isThumbUp){
+          leanCloud.removeThumbUpRecord('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', json.ip);
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+          
+        }else{
+          leanCloud.addThumbUpRecord('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', json.ip);
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }
+        leanCloud.getThumbUpCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(count){
+            console.log('thumb up count: ' + count)
+            var el = document.getElementById('article-thumbup-count');
+            if(el) el.innerHTML = count;
+        });
+      });
+    });
+    leanCloud.addVisitRecord('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', json.ip);
+    leanCloud.fetchCommentCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/');
+    leanCloud.fetchVisitCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/');
+    leanCloud.fetchThumbUpCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/');
+    leanCloud.getCommentCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getThumbUpCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(count){
+        var el = document.getElementById('article-thumbup-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.isThumbUp('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(isThumbUp){
+        console.log('init thumb up:' + isThumbUp);
+        if(isThumbUp){
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }else{
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+        }
+    });
+  });
+  }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
