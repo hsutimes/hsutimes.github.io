@@ -1,38 +1,46 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 379.32 379.319" style="enable-background:new 0 0 379.32 379.319;" xml:space="preserve">
-<g>
-	<path d="M221.945,374.157c31.236-27.885,113.069-71.488,98.239-180.19c-3.607-38.254-11.571-58.987-19.115-85.617   C287.185,59.359,216.971-27.448,137.777,8.482C58.583,44.401,22.173,240.605,102.325,255.915   c10.749,1.564,34.827-38.383,37.519-51.45c2.691-13.066,16.179-3.059,29.24-30.267c13.055-27.214,1.279-50.445,9.996-68.188   c8.717-17.761,12.448-31.056,38.558-27.243c17.423,4.355,12.611,27.943,16.185,41.016c3.562,13.067,31.248,27.75,30.57,37.355   c-0.677,9.575-12.308,7.006-12.039,17.334c0,4.222,5.955,7.252,6.166,12.15c0.198,4.904-6.586,8.676-6.586,8.676   s6.025,3.784,4.426,9.284c-1.588,5.511-9.085,5.079-11.935,6.632c-1.331,0.736,10.72,19.396,2.476,29.531   c-10.065,11.842-60.388-0.63-70.08,3.142c-18.228,7.077-33.303,31.646-23.272,43.275c10.042,11.619,53.768,12.786,53.697,80.28   C207.244,381.583,213,382.132,221.945,374.157" fill="#D80027"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+<svg width="130" height="120" xmlns="http://www.w3.org/2000/svg" style="margin: auto;" class="el-tooltip" color-interpolation-filters="sRGB" preserveAspectRatio="xMidYMid meet" version="1.0">
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="122" width="132" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="null" id="svg_9" fill="#fff" height="123.999998" width="134.000002" y="0" x="0"/>
+  <rect stroke="null" x="0" y="0" id="svg_10" class="watermarklayer" fill="url(#watermark)" height="121.30779" width="130.53852"/>
+  <g stroke="null" id="svg_11" class="iconsvg" fill="#46bc99">
+   <g stroke="null" id="svg_12" class="iconsvg-imagesvg">
+    <rect stroke="null" id="svg_13" height="100" width="100" y="11.487181" x="14.998728" fill-opacity="0" fill="#46bc99"/>
+    <g y="12" x="17.050003" stroke="null" id="svg_4">
+     <svg stroke="null" id="svg_14" class="imagesvg-svg" height="100" width="100" y="11.487181" x="14.998728">
+      <g stroke="null" id="svg_8">
+       <svg stroke="null" id="svg_15" viewBox="0 0 72.04 72.04" xmlns="http://www.w3.org/2000/svg">
+        <defs stroke="null">
+         <linearGradient stroke="null" y2="0.494306" x2="0.177485" y1="0.514861" x1="0.947262" id="svg_7">
+          <stop stroke="null" stop-color="#ffa000" offset="0"/>
+          <stop stroke="null" stop-color="#ffc107" offset="1"/>
+         </linearGradient>
+         <linearGradient stroke="null" y2="0.268293" x2="0.557462" y1="0.499579" x1="0.500413" id="svg_6">
+          <stop stroke="null" stop-color="#455a64" offset="0"/>
+          <stop stroke="null" stop-color="#2bb656" offset="1"/>
+         </linearGradient>
+         <linearGradient stroke="null" y2="0.459895" x2="0.357143" y1="0.255269" x1="0.207885" id="svg_5">
+          <stop stroke="null" stop-color="#757575" offset="0"/>
+          <stop stroke="null" stop-color="#9e9e9e" offset="1"/>
+         </linearGradient>
+        </defs>
+        <g stroke="null" id="svg_16">
+         <g stroke="null" id="svg_17">
+          <path stroke="null" id="svg_18" fill="url(#svg_7)" d="m9.43,18l8.86,-18l-12.71,0a5.58,5.58 0 0 0 -5.58,5.58l0,60.88a5.58,5.58 0 0 0 5.58,5.54l11.92,0l-7.71,-3.75l19.79,-40.31l-20.15,-9.94z"/>
+          <path stroke="null" id="svg_19" fill="url(#svg_6)" d="m66.46,0l-42.84,0l48.38,23.78l0,-18.2a5.58,5.58 0 0 0 -5.54,-5.58z"/>
+          <path stroke="null" id="svg_20" fill="url(#svg_5)" d="m32.94,72l33.52,0a5.58,5.58 0 0 0 5.54,-5.54l0,-17.94l-22.26,-10.68l-16.8,34.16z"/>
+         </g>
+        </g>
+       </svg>
+      </g>
+     </svg>
+    </g>
+    <!---->
+   </g>
+  </g>
+ </g>
 </svg>
