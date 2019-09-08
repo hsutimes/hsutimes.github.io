@@ -211,6 +211,68 @@
 
 
 
+<div class='Card-archive' id='hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c' data-name='天平砝码摆放问题' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/02/天平砝码摆放问题/">
+			
+			天平砝码摆放问题</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/天平/">天平</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/暴力破解/">暴力破解</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-3'><a href="/tags/算法/">算法</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-02
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/02/天平砝码摆放问题/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5' data-name='118. 杨辉三角' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -758,6 +820,32 @@
           
           
           // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-title a, #hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-excerpt a, #hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-figure a');
+          new Postv2('hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c').showUnreadNotification('hashit_b4627d1d97965d9c79c189415b6ca77166750f5dc07636472a89e5539cdccfa5', function(){
+            console.log('show badge for 2019/09/02/天平砝码摆放问题/ : hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c');
+            var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/02/天平砝码摆放问题/ : hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c');
+            var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c').update('hashit_b4627d1d97965d9c79c189415b6ca77166750f5dc07636472a89e5539cdccfa5', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
+        
+          
+          
+          
+          // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-title a, #hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-excerpt a, #hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-figure a');
           new Postv2('hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5').showUnreadNotification('hashit_3fd7bee0e0869578d039840f2516b20a5ecce8949998c17ef183c7928196d39e', function(){
             console.log('show badge for 2019/08/31/118-杨辉三角/ : hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5');
@@ -925,6 +1013,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/02/天平砝码摆放问题/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/02/天平砝码摆放问题/');
+          leanCloud.fetchVisitCount('/2019/09/02/天平砝码摆放问题/');
+          leanCloud.fetchThumbUpCount('/2019/09/02/天平砝码摆放问题/');
+          leanCloud.getCommentCount('/2019/09/02/天平砝码摆放问题/', function(count){
+              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/02/天平砝码摆放问题/', function(count){
+              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/02/天平砝码摆放问题/', function(count){
+              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/02/天平砝码摆放问题/', function(isThumbUp){
+              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           

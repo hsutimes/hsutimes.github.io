@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>面试红黑树 - Time</title>
+  
+
+  
+  
+  <meta name="description" content>
+  <meta name="author" content="times">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+<link rel="stylesheet" href="/.css">
+
+  <!-- load font awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-134224598-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+
+  <!-- include comment system code -->
+  
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/theme-icon.svg' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Time</a>
+			</h1>
+			<subtitle>
+				time
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是红黑树"><span class="toc-number">1.</span> <span class="toc-text">什么是红黑树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑树的-5-个特性"><span class="toc-number">2.</span> <span class="toc-text">红黑树的 5 个特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑树的左旋右旋"><span class="toc-number">3.</span> <span class="toc-text">红黑树的左旋右旋</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2019/09/08/面试红黑树/" data-name='面试红黑树' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2019/09/08/面试红黑树/">
+                面试红黑树
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+        <ul class='article-categories'>
+            
+            
+                <li><a href="/categories/文章/" data-no-instant>
+                    <img src="/images/文章.svg" alt="文章" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='文章'/>
+                </a></li>
+            
+        </ul>
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2019-09-08</li>
+            
+            <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            <li class='thumb-up-button' id='thumb-up-button'><i class="far fa-thumbs-up fa-lg" id='thumb-up-icon'></i> <span id='article-thumbup-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> times</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/>CC BY-NC-SA 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/算法/">算法</a></label>
+		
+	
+		
+			<label class='tag-2'><a href="/tags/红黑树/">红黑树</a></label>
+		
+	
+		
+			<label class='tag-3'><a href="/tags/面试/">面试</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                times
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>什么是红黑树红黑树本质上是一种二叉查找树，但它在二叉查找树的基础上额外添加了一个标记（颜色），同时具有一定的规则。这些规则使红黑树保证了一种平衡，插入、删除、查找的最坏时间复杂度都为 O(logn)。
+它的统计性能要好于平衡二叉树（AVL树），因此，红黑树在很多地方都有应用。比如在 Java 集合框架中，很多部分(HashMap, TreeMap, TreeSet 等)都有红黑树的应用，这些集合均提供了很好的性能。
+由于 TreeMap 就是由红黑树实现的，因此本文将使用 TreeMap...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+    
+        
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是红黑树"><span class="toc-number">1.</span> <span class="toc-text">什么是红黑树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑树的-5-个特性"><span class="toc-number">2.</span> <span class="toc-text">红黑树的 5 个特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑树的左旋右旋"><span class="toc-number">3.</span> <span class="toc-text">红黑树的左旋右旋</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <h1 id="什么是红黑树"><a href="#什么是红黑树" class="headerlink" title="什么是红黑树"></a>什么是红黑树</h1><p>红黑树本质上是一种二叉查找树，但它在二叉查找树的基础上额外添加了一个标记（颜色），同时具有一定的规则。这些规则使红黑树保证了一种平衡，插入、删除、查找的最坏时间复杂度都为 O(logn)。</p>
+<p>它的统计性能要好于平衡二叉树（AVL树），因此，红黑树在很多地方都有应用。比如在 Java 集合框架中，很多部分(HashMap, TreeMap, TreeSet 等)都有红黑树的应用，这些集合均提供了很好的性能。</p>
+<p>由于 TreeMap 就是由红黑树实现的，因此本文将使用 TreeMap 的相关操作的代码进行分析、论证。</p>
+<p>黑色高度<br>从根节点到叶节点的路径上黑色节点的个数，叫做树的黑色高度。</p>
+<h1 id="红黑树的-5-个特性"><a href="#红黑树的-5-个特性" class="headerlink" title="红黑树的 5 个特性"></a>红黑树的 5 个特性</h1><p><img src="/images/2019/09/08/9f0e92d0-d1e1-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+<p>红黑树在原有的二叉查找树基础上增加了如下几个要求：</p>
+<ol>
+<li>Every node is either red or black.</li>
+<li>The root is black.</li>
+<li>Every leaf (NIL) is black.</li>
+<li>If a node is red, then both its children are black.</li>
+<li>For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.</li>
+</ol>
+<p>中文意思是：</p>
+<ol>
+<li>每个节点要么是红色，要么是黑色；</li>
+<li>根节点永远是黑色的；</li>
+<li>所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；</li>
+<li>每个红色节点的两个子节点一定都是黑色；</li>
+<li>从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；</li>
+</ol>
+<p><strong>注意：</strong><br>性质 3 中指定红黑树的每个叶子节点都是空节点，而且并叶子节点都是黑色。但 Java 实现的红黑树将使用 null 来代表空节点，因此遍历红黑树时将看不到黑色的叶子节点，反而看到每个叶子节点都是红色的。</p>
+<p>性质 4 的意思是：从每个根到节点的路径上不会有两个连续的红色节点，但黑色节点是可以连续的。<br>因此若给定黑色节点的个数 N，最短路径的情况是连续的 N 个黑色，树的高度为 N - 1;最长路径的情况为节点红黑相间，树的高度为 2(N - 1) 。</p>
+<p>性质 5 是成为红黑树最主要的条件，后序的插入、删除操作都是为了遵守这个规定。</p>
+<p>红黑树并不是标准平衡二叉树，它以性质 5 作为一种平衡方法，使自己的性能得到了提升。</p>
+<h1 id="红黑树的左旋右旋"><a href="#红黑树的左旋右旋" class="headerlink" title="红黑树的左旋右旋"></a>红黑树的左旋右旋</h1><p><img src="/images/2019/09/08/e9d7edc0-d1e1-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+<p>红黑树的左右旋是比较重要的操作，左右旋的目的是调整红黑节点结构，转移黑色节点位置，使其在进行插入、删除后仍能保持红黑树的 5 条性质。</p>
+<p>比如 X 左旋(右图转成左图)的结果，是让在 Y 左子树的黑色节点跑到 X 右子树去。</p>
+<p>我们以 Java 集合框架中的 TreeMap 中的代码来看下左右旋的具体操作方法：</p>
+<p><strong>指定节点 x 的左旋 (右图转成左图)：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//这里 p 代表 x</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rotateLeft</span><span class="params">(Entry p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p != <span class="keyword">null</span>) &#123;</span><br><span class="line">        Entry r = p.right; <span class="comment">// p 是上图中的 x，r 就是 y</span></span><br><span class="line">        p.right = r.left;       <span class="comment">// 左旋后，x 的右子树变成了 y 的左子树 β </span></span><br><span class="line">        <span class="keyword">if</span> (r.left != <span class="keyword">null</span>)         </span><br><span class="line">            r.left.parent = p;  <span class="comment">//β 确认父亲为 x</span></span><br><span class="line">        r.parent = p.parent;        <span class="comment">//y 取代 x 的第一步：认 x 的父亲为爹</span></span><br><span class="line">        <span class="keyword">if</span> (p.parent == <span class="keyword">null</span>)       <span class="comment">//要是 x 没有父亲，那 y 就是最老的根节点</span></span><br><span class="line">            root = r;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p.parent.left == p) <span class="comment">//如果 x 有父亲并且是它父亲的左孩子，x 的父亲现在认 y 为左孩子，不要 x 了</span></span><br><span class="line">            p.parent.left = r;</span><br><span class="line">        <span class="keyword">else</span>                            <span class="comment">//如果 x 是父亲的右孩子，父亲就认 y 为右孩子，抛弃 x</span></span><br><span class="line">            p.parent.right = r;</span><br><span class="line">        r.left = p;     <span class="comment">//y 逆袭成功，以前的爸爸 x 现在成了它的左孩子</span></span><br><span class="line">        p.parent = r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，x 节点的左旋就是把 x 变成 右孩子 y 的左孩子，同时把 y 的左孩子送给 x 当右子树。</p>
+<p>简单点记就是：左旋把右子树里的一个节点（上图 β）移动到了左子树。</p>
+<p><strong>指定节点 y 的右旋（左图转成右图）：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rotateRight</span><span class="params">(Entry p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p != <span class="keyword">null</span>) &#123;</span><br><span class="line">        Entry l = p.left;</span><br><span class="line">        p.left = l.right;</span><br><span class="line">        <span class="keyword">if</span> (l.right != <span class="keyword">null</span>) l.right.parent = p;</span><br><span class="line">        l.parent = p.parent;</span><br><span class="line">        <span class="keyword">if</span> (p.parent == <span class="keyword">null</span>)</span><br><span class="line">            root = l;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p.parent.right == p)</span><br><span class="line">            p.parent.right = l;</span><br><span class="line">        <span class="keyword">else</span> p.parent.left = l;</span><br><span class="line">        l.right = p;</span><br><span class="line">        p.parent = l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同理，y 节点的右旋就是把 y 变成 左孩子 x 的右孩子，同时把 x 的右孩子送给 x 当左子树。</p>
+<p>简单点记就是：右旋把左子树里的一个节点（上图 β）移动到了右子树。</p>
+<p>了解左旋、右旋的方法及意义后，就可以了解红黑树的主要操作：插入、删除。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>红黑树并不是真正的平衡二叉树，但在实际应用中，红黑树的统计性能要高于平衡二叉树，但极端性能略差。</p>
+<p>红黑树的插入、删除调整逻辑比较复杂，但最终目的是满足红黑树的 5 个特性，尤其是 4 和 5。</p>
+<p>在插入调整时为了简化操作我们直接把插入的节点涂成红色，这样只要保证插入节点的父节点不是红色就可以了。</p>
+<p>而在删除后的调整中，针对删除黑色节点，所在子树缺少一个节点，需要进行弥补或者对别人造成一个黑色节点的伤害。具体调整方法取决于兄弟节点所在子树的情况。</p>
+<p>红黑树的插入、删除在树形数据结构中算比较复杂的，理解起来比较难，但只要记住，红黑树有其特殊的平衡规则，而我们为了维持平衡，根据邻树的状况进行旋转或者涂色。</p>
+<p>红黑树这么难理解，必定有其过人之处。它的有序、快速特性在很多场景下都有用到，比如 Java 集合框架的 TreeMap, TreeSet 等。</p>
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>评论</h1>
+
+  
+    <div id='valine'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> 版权所有 <a href="">times </a> @ 2019</p>
+            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是红黑树"><span class="toc-number">1.</span> <span class="toc-text">什么是红黑树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑树的-5-个特性"><span class="toc-number">2.</span> <span class="toc-text">红黑树的 5 个特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑树的左旋右旋"><span class="toc-number">3.</span> <span class="toc-text">红黑树的左旋右旋</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+    
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        pageSize: 10,
+        comment_count: true,
+        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
+        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
+        placeholder: 'just go go',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'z'
+    });
+</script>
+
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b').update('hashit_148761bcc62ff1f54d522a77755a3b878b40ce1e77145294de6bfc10fae69524', function(){});
+  });
+  
+</script>
+
+
+    
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  function getIP(json) {
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.fetchIsThumbUp('/2019/09/08/面试红黑树/', json.ip);
+    document.getElementById('thumb-up-button').addEventListener('click', function(e){
+      leanCloud.isThumbUp('/2019/09/08/面试红黑树/', function(isThumbUp){
+        console.log('is thumb up:' + isThumbUp);
+        if(isThumbUp){
+          leanCloud.removeThumbUpRecord('/2019/09/08/面试红黑树/', json.ip);
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+          
+        }else{
+          leanCloud.addThumbUpRecord('/2019/09/08/面试红黑树/', json.ip);
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }
+        leanCloud.getThumbUpCount('/2019/09/08/面试红黑树/', function(count){
+            console.log('thumb up count: ' + count)
+            var el = document.getElementById('article-thumbup-count');
+            if(el) el.innerHTML = count;
+        });
+      });
+    });
+    leanCloud.addVisitRecord('/2019/09/08/面试红黑树/', json.ip);
+    leanCloud.fetchCommentCount('/2019/09/08/面试红黑树/');
+    leanCloud.fetchVisitCount('/2019/09/08/面试红黑树/');
+    leanCloud.fetchThumbUpCount('/2019/09/08/面试红黑树/');
+    leanCloud.getCommentCount('/2019/09/08/面试红黑树/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2019/09/08/面试红黑树/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getThumbUpCount('/2019/09/08/面试红黑树/', function(count){
+        var el = document.getElementById('article-thumbup-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.isThumbUp('/2019/09/08/面试红黑树/', function(isThumbUp){
+        console.log('init thumb up:' + isThumbUp);
+        if(isThumbUp){
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }else{
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+        }
+    });
+  });
+  }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
