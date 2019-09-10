@@ -259,6 +259,7 @@
 				
 				
 				etsetsetst
+sdkjlfkdlsjfsdklfjsdkljfsdsdkljfklsdjaf
 				</a></p>
 				
 			</div>
@@ -1438,7 +1439,7 @@ Note: 本指南假设你使用了 Babel, 并且要求你使用 babel-preset-airb
           
           // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .Card-title a, #hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .Card-excerpt a, #hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .Card-figure a');
-          new Postv2('hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125').showUnreadNotification('hashit_c3025d59306a76e0bf03b515b9e902eeb4bb102bcf74b74795ba3484864e4fd6', function(){
+          new Postv2('hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125').showUnreadNotification('hashit_01baee9b29c68a48fdd89fdbe3b8d5dc0b7d6365eb7e7922c658825f0d8723fe', function(){
             console.log('show badge for 2019/09/10/stetsetsett/ : hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125');
             var postBadge = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 mark.Card-badge');
             $(postBadge).fadeIn();
@@ -1450,7 +1451,7 @@ Note: 本指南假设你使用了 Babel, 并且要求你使用 babel-preset-airb
           // update cookie upon click the post and hide badge immediately
           for(var i = 0;i < postLinks.length; i++){
             postLinks[i].onclick = function(){
-              new Postv2('hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125').update('hashit_c3025d59306a76e0bf03b515b9e902eeb4bb102bcf74b74795ba3484864e4fd6', function(){
+              new Postv2('hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125').update('hashit_01baee9b29c68a48fdd89fdbe3b8d5dc0b7d6365eb7e7922c658825f0d8723fe', function(){
                 console.log('called');
                 var postBadge = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 mark.Card-badge');
                 $(postBadge).fadeOut();
