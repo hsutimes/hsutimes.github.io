@@ -210,56 +210,6 @@
 
 
 
-<div class='Card-archive' id='hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125' data-name='stetsetsett' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/10/stetsetsett/">
-			
-			Stetsetsett</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/文章/">文章</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-10
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/10/stetsetsett/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-		
-
-
-
-
 <div class='Card-archive' id='hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a' data-name='技术栈' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -555,32 +505,6 @@
           
           
           // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .Card-title a, #hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .Card-excerpt a, #hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .Card-figure a');
-          new Postv2('hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125').showUnreadNotification('hashit_01baee9b29c68a48fdd89fdbe3b8d5dc0b7d6365eb7e7922c658825f0d8723fe', function(){
-            console.log('show badge for 2019/09/10/stetsetsett/ : hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125');
-            var postBadge = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/10/stetsetsett/ : hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125');
-            var postBadge = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125').update('hashit_01baee9b29c68a48fdd89fdbe3b8d5dc0b7d6365eb7e7922c658825f0d8723fe', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-title a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-excerpt a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-figure a');
           new Postv2('hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a').showUnreadNotification('hashit_b10cc25c7304fe095195048d661d7ff23cbf2e42f87b8efcd23e4bb4291425f4', function(){
             console.log('show badge for 2019/08/18/技术栈/ : hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a');
@@ -644,36 +568,6 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/10/stetsetsett/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/10/stetsetsett/');
-          leanCloud.fetchVisitCount('/2019/09/10/stetsetsett/');
-          leanCloud.fetchThumbUpCount('/2019/09/10/stetsetsett/');
-          leanCloud.getCommentCount('/2019/09/10/stetsetsett/', function(count){
-              var el = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/10/stetsetsett/', function(count){
-              var el = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/10/stetsetsett/', function(count){
-              var el = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/10/stetsetsett/', function(isThumbUp){
-              var el = document.querySelector('#hashit_efdaa6052f42569181d1879f7e822201c4b894ed58551f164bf7b39a17173125 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
         
           
           
