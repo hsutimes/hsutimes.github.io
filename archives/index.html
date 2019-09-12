@@ -217,6 +217,56 @@
 
 
 
+<div class='Card-archive' id='hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272' data-name='TensorFlow 2.0 RC is available' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/12/TensorFlow-2-0-RC-is-available/">
+			
+			TensorFlow 2.0 RC Is Available</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/TensorFlow/">Tensorflow</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-12
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/12/TensorFlow-2-0-RC-is-available/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_52e8ca37e5d209a1732377a75735735b42289439f06d813d7fa44dfb778e6b6d' data-name='nohup:在linux后台运行程序' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -716,62 +766,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57' data-name='Electron-vue' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/08/Electron-vue/">
-			
-			Electron-Vue</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/electron/">Electron</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/vue/">Vue</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-08
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/08/Electron-vue/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -940,6 +934,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .Card-title a, #hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .Card-excerpt a, #hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .Card-figure a');
+          new Postv2('hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272').showUnreadNotification('hashit_fc8ecb0744d56489d7c90f792423f2e3c8f6f4f0989b7b1c1fc48b0c6b941f8c', function(){
+            console.log('show badge for 2019/09/12/TensorFlow-2-0-RC-is-available/ : hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272');
+            var postBadge = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/12/TensorFlow-2-0-RC-is-available/ : hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272');
+            var postBadge = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272').update('hashit_fc8ecb0744d56489d7c90f792423f2e3c8f6f4f0989b7b1c1fc48b0c6b941f8c', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1175,32 +1195,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 .Card-title a, #hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 .Card-excerpt a, #hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 .Card-figure a');
-          new Postv2('hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57').showUnreadNotification('hashit_1d0a0cffcb5ad8aac15c77518d86c7d0d97bf5c58d2beeb677553f3d928e7257', function(){
-            console.log('show badge for 2019/09/08/Electron-vue/ : hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57');
-            var postBadge = document.querySelector('#hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/08/Electron-vue/ : hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57');
-            var postBadge = document.querySelector('#hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57').update('hashit_1d0a0cffcb5ad8aac15c77518d86c7d0d97bf5c58d2beeb677553f3d928e7257', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1216,6 +1210,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/12/TensorFlow-2-0-RC-is-available/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/12/TensorFlow-2-0-RC-is-available/');
+          leanCloud.fetchVisitCount('/2019/09/12/TensorFlow-2-0-RC-is-available/');
+          leanCloud.fetchThumbUpCount('/2019/09/12/TensorFlow-2-0-RC-is-available/');
+          leanCloud.getCommentCount('/2019/09/12/TensorFlow-2-0-RC-is-available/', function(count){
+              var el = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/12/TensorFlow-2-0-RC-is-available/', function(count){
+              var el = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/12/TensorFlow-2-0-RC-is-available/', function(count){
+              var el = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/12/TensorFlow-2-0-RC-is-available/', function(isThumbUp){
+              var el = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1478,36 +1502,6 @@
           });
           leanCloud.isThumbUp('/2019/09/08/你也能懂相对论/', function(isThumbUp){
               var el = document.querySelector('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/08/Electron-vue/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/08/Electron-vue/');
-          leanCloud.fetchVisitCount('/2019/09/08/Electron-vue/');
-          leanCloud.fetchThumbUpCount('/2019/09/08/Electron-vue/');
-          leanCloud.getCommentCount('/2019/09/08/Electron-vue/', function(count){
-              var el = document.querySelector('#hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/08/Electron-vue/', function(count){
-              var el = document.querySelector('#hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/08/Electron-vue/', function(count){
-              var el = document.querySelector('#hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/08/Electron-vue/', function(isThumbUp){
-              var el = document.querySelector('#hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
