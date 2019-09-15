@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>文章 - Tag - Time</title>
+      <title>Archive - Time</title>
   
 
   
@@ -116,7 +116,7 @@
 	
 	<div class='nav-item' id='nav-item-archive'>
 		
-				<div class='nav-icon'>
+				<div class='nav-icon active_dot'>
 				
 			<a href="/archives/" title='归档'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
@@ -197,63 +197,20 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div style="flex: 1;">
-      <div class='archive-container'>
-
+      
+	
+	<div class='archive-container'>
+		
+			<h1 class='archive-title'>2019</h1>
+			
+			
+			
+				
 
 	
-		<h2 class='archive-title'>#   文章</h2>
+		<h2 class='archive-title'></h2>
 	
 	<div class="archive-cards">
-	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759' data-name='士大夫士大夫' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/15/士大夫士大夫/">
-			
-			士大夫士大夫</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/文章/">文章</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-15
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/15/士大夫士大夫/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
 	
 		
 
@@ -370,26 +327,11 @@
 	</div>
 
 
+			
+		
+	</div>
+	
 
-<div class='pagination'>
-	
-	
-	
-	
-		
-		
-		<div class="pagination-item">
-			
-			
-				<span>1</span>
-			
-		</div>
-		
-		
-	
-	
-</div>
-</div>
   </div>
 
   
@@ -420,7 +362,7 @@
 	
 	<div class='nav-item' id='nav-item-archive'>
 		
-				<div class='nav-icon'>
+				<div class='nav-icon active_dot'>
 				
 			<a href="/archives/" title='归档'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
@@ -555,32 +497,6 @@
           
           
           // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 .Card-title a, #hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 .Card-excerpt a, #hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 .Card-figure a');
-          new Postv2('hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759').showUnreadNotification('hashit_867d4849cb0922deb7e2e2adf5f7615b18165d72b0b989b1c532ee0f5002a475', function(){
-            console.log('show badge for 2019/09/15/士大夫士大夫/ : hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759');
-            var postBadge = document.querySelector('#hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/15/士大夫士大夫/ : hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759');
-            var postBadge = document.querySelector('#hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759').update('hashit_867d4849cb0922deb7e2e2adf5f7615b18165d72b0b989b1c532ee0f5002a475', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-title a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-excerpt a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-figure a');
           new Postv2('hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a').showUnreadNotification('hashit_b10cc25c7304fe095195048d661d7ff23cbf2e42f87b8efcd23e4bb4291425f4', function(){
             console.log('show badge for 2019/08/18/技术栈/ : hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a');
@@ -644,36 +560,6 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/15/士大夫士大夫/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/15/士大夫士大夫/');
-          leanCloud.fetchVisitCount('/2019/09/15/士大夫士大夫/');
-          leanCloud.fetchThumbUpCount('/2019/09/15/士大夫士大夫/');
-          leanCloud.getCommentCount('/2019/09/15/士大夫士大夫/', function(count){
-              var el = document.querySelector('#hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/15/士大夫士大夫/', function(count){
-              var el = document.querySelector('#hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/15/士大夫士大夫/', function(count){
-              var el = document.querySelector('#hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/15/士大夫士大夫/', function(isThumbUp){
-              var el = document.querySelector('#hashit_195f4fab3eaaf0791f181bc1c2e121552c191d4d733a7429dc0773ca77a1f759 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
         
           
           
