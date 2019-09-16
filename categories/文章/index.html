@@ -994,7 +994,7 @@
           
           // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .Card-title a, #hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .Card-excerpt a, #hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .Card-figure a');
-          new Postv2('hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a').showUnreadNotification('hashit_6333410b2b7b5cbac367bbea5da328b58acfcf676940c2cdbcc2159cdabad02a', function(){
+          new Postv2('hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a').showUnreadNotification('hashit_17abb11d227d0beabb0dd5fbd4a5f719a1f33b4d6f92a4a3cadf5df308926a5f', function(){
             console.log('show badge for 2019/09/16/Java12的新特性/ : hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a');
             var postBadge = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a mark.Card-badge');
             $(postBadge).fadeIn();
@@ -1006,7 +1006,7 @@
           // update cookie upon click the post and hide badge immediately
           for(var i = 0;i < postLinks.length; i++){
             postLinks[i].onclick = function(){
-              new Postv2('hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a').update('hashit_6333410b2b7b5cbac367bbea5da328b58acfcf676940c2cdbcc2159cdabad02a', function(){
+              new Postv2('hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a').update('hashit_17abb11d227d0beabb0dd5fbd4a5f719a1f33b4d6f92a4a3cadf5df308926a5f', function(){
                 console.log('called');
                 var postBadge = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a mark.Card-badge');
                 $(postBadge).fadeOut();
