@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>440. 字典序的第K小数字 - Time</title>
+  
+
+  
+  
+  <meta name="description" content>
+  <meta name="author" content="times">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+<link rel="stylesheet" href="/.css">
+
+  <!-- load font awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-134224598-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+
+  <!-- include comment system code -->
+  
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/theme-icon.svg' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Time</a>
+			</h1>
+			<subtitle>
+				time
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#440-字典序的第K小数字"><span class="toc-number">1.</span> <span class="toc-text">440. 字典序的第K小数字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.2.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2019/09/17/440-字典序的第K小数字/" data-name='440. 字典序的第K小数字' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2019/09/17/440-字典序的第K小数字/">
+                440. 字典序的第K小数字
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+        <ul class='article-categories'>
+            
+            
+                <li><a href="/categories/算法/" data-no-instant>
+                    <img src="/images/算法.svg" alt="算法" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='算法'/>
+                </a></li>
+            
+        </ul>
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2019-09-17</li>
+            
+            <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            <li class='thumb-up-button' id='thumb-up-button'><i class="far fa-thumbs-up fa-lg" id='thumb-up-icon'></i> <span id='article-thumbup-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> times</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/>CC BY-NC-SA 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
+		
+	
+		
+			<label class='tag-2'><a href="/tags/算法/">算法</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                times
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>440. 字典序的第K小数字题目
+给定整数 n 和 k，找到 1 到 n 中字典序第 k 小的数字。
+
+
+注意：1 ≤ k ≤ n ≤ 109。
+
+示例 :
+12345678输入:n: 13   k: 2输出:10解释:字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+    
+        
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#440-字典序的第K小数字"><span class="toc-number">1.</span> <span class="toc-text">440. 字典序的第K小数字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.2.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <h1 id="440-字典序的第K小数字"><a href="#440-字典序的第K小数字" class="headerlink" title="440. 字典序的第K小数字"></a><a href="https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order/" target="_blank" rel="noopener">440. 字典序的第K小数字</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
+<p>给定整数 n 和 k，找到 1 到 n 中字典序第 k 小的数字。</p>
+</blockquote>
+<blockquote>
+<p>注意：1 ≤ k ≤ n ≤ 109。</p>
+</blockquote>
+<p><strong>示例 :</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">n: 13   k: 2</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。</span><br></pre></td></tr></table></figure>
+
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>乍一看这一题貌似毫无头绪，什么是字典序？如何定位这个数？没错，刚接触这个题目的时候，我的脑筋里也是一团乱麻。</p>
+<p>但是我觉得作为一个拥有聪明才智的程序员来说，最重要的能力就是迅速抽象问题、拆解问题的能力。经过一段时间的思考，我的脑筋里还是没有答案。</p>
+<p>哈哈。</p>
+<p>言归正传，我们来分析一下这个问题。</p>
+<p>首先，什么是字典序？</p>
+<p>什么是字典序？<br>简而言之，就是根据数字的前缀进行排序，</p>
+<p>比如10 &lt; 9，因为10的前缀是1，比9小，</p>
+<p>再比如112 &lt; 12，因为112的前缀11小于12。</p>
+<p>这样排序下来，会跟平常的升序排序会有非常大的不同。先给你一个直观的感受，一个数乘10，或者加1，哪个大？可能你会吃惊，后者会更大。</p>
+<p>但其实掌握它的本质之后，你一点都不会吃惊。</p>
+<p>问题建模<br>画一个图你就懂了。</p>
+<p><img src="/images/2019/09/17/4e2df490-d926-11e9-8f06-17b45bf5d3ed.png" alt="image.png"></p>
+<p>每一个节点都拥有10个孩子节点，因为作为一个前缀 ，它后面可以接0~9这十个数字。而且你可以非常容易地发现，整个字典序排列也就是对十叉树进行层序遍历。1, 10, 11, 12, 13 … 100, 101, …</p>
+<p>回到题目的意思，我们需要找到排在第k位的数。找到他的排位，需要搞清楚三件事情:</p>
+<p>怎么确定一个前缀下所有子节点的个数？<br>如果第k个数在当前的前缀下，怎么继续往下面的子节点找？<br>如果第k个数不在当前的前缀，即当前的前缀比较小，如何扩大前缀，增大寻找的范围？<br>接下来 ，我们一一拆解这些问题。</p>
+<p>理顺思路</p>
+<ol>
+<li>确定指定前缀下所有子节点数<br>现在的任务就是给定一个前缀，返回下面子节点总数。</li>
+</ol>
+<p>我们现在的思路就是用下一个前缀的起点减去当前前缀的起点，那么就是当前前缀下的所有子节点数总和啦。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//prefix是前缀，n是上界</span></span><br><span class="line"><span class="keyword">var</span> getCount = <span class="function">(<span class="params">prefix, n</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> cur = prefix;</span><br><span class="line">    <span class="keyword">let</span> next = prefix + <span class="number">1</span>;<span class="comment">//下一个前缀</span></span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//当前的前缀当然不能大于上界</span></span><br><span class="line">    <span class="keyword">while</span>(cur &lt;= n) &#123;</span><br><span class="line">        count += next - cur;<span class="comment">//下一个前缀的起点减去当前前缀的起点</span></span><br><span class="line">        cur *= <span class="number">10</span>; </span><br><span class="line">        next *= <span class="number">10</span>;</span><br><span class="line">        <span class="comment">// 如果说刚刚prefix是1，next是2，那么现在分别变成10和20</span></span><br><span class="line">        <span class="comment">// 1为前缀的子节点增加10个，十叉树增加一层, 变成了两层</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 如果说现在prefix是10，next是20，那么现在分别变成100和200，</span></span><br><span class="line">        <span class="comment">// 1为前缀的子节点增加100个，十叉树又增加了一层，变成了三层</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;<span class="comment">//把当前前缀下的子节点和返回去。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然，不知道大家发现一个问题没有，当next的值大于上界的时候，那以这个前缀为根节点的十叉树就不是满十叉树了啊，应该到上界那里，后面都不再有子节点。因此，count += next - cur还是有些问题的，我们来修正这个问题:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">count += Math.max(n+1, next) - cur;</span><br></pre></td></tr></table></figure>
+
+<p>你可能会问:咦？怎么是n+1,而不是n呢？不是说好了n是上界吗？</p>
+<p>我举个例子，假若现在上界n为12，算出以1为前缀的子节点数，首先1本身是一个节点，接下来要算下面10，11，12，一共有4个子节点。</p>
+<p>那么如果用Math.max(n, next) - cur会怎么样？</p>
+<p>这时候算出来会少一个，12 - 10加上根节点，最后只有3个。因此我们务必要写n+1。</p>
+<p>现在，我们搞定了前缀的子节点数问题。</p>
+<ol start="2">
+<li>第k个数在当前前缀下<br>现在无非就是往子树里面去看。</li>
+</ol>
+<p>prefix这样处理就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefix *= 10</span><br></pre></td></tr></table></figure>
+
+<p>3.第k个数不在当前前缀下<br>说白了，当前的前缀小了嘛，我们扩大前缀。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefix ++;</span><br></pre></td></tr></table></figure>
+
+<p>框架搭建<br>整合一下刚刚的思路。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> findKthNumber = <span class="function"><span class="keyword">function</span>(<span class="params">n, k</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> p = <span class="number">1</span>;<span class="comment">//作为一个指针，指向当前所在位置，当p==k时，也就是到了排位第k的数</span></span><br><span class="line">  <span class="keyword">let</span> prefix = <span class="number">1</span>;<span class="comment">//前缀</span></span><br><span class="line">  <span class="keyword">while</span>(p &lt; k) &#123;</span><br><span class="line">    <span class="keyword">let</span> count = getNumber(prefix, n);<span class="comment">//获得当前前缀下所有子节点的和</span></span><br><span class="line">    <span class="keyword">if</span>(p + count &gt; k) &#123; <span class="comment">//第k个数在当前前缀下</span></span><br><span class="line">      prefix *= <span class="number">10</span>;</span><br><span class="line">      p++; <span class="comment">//把指针指向了第一个子节点的位置，比如11乘10后变成110，指针从11指向了110</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(p + count &lt;= k) &#123; <span class="comment">//第k个数不在当前前缀下</span></span><br><span class="line">      prefix ++;</span><br><span class="line">      p += count;<span class="comment">//注意这里的操作，把指针指向了下一前缀的起点</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> prefix;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码展示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findKthNumber = <span class="function"><span class="keyword">function</span>(<span class="params">n, k</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> getCount = <span class="function">(<span class="params">prefix, n</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> count =  <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> cur = prefix, next = prefix + <span class="number">1</span>; cur &lt;= n; cur *= <span class="number">10</span>, next *= <span class="number">10</span>) </span><br><span class="line">      count += <span class="built_in">Math</span>.min(next, n+<span class="number">1</span>) - cur;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> p = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> prefix = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(p &lt; k) &#123;</span><br><span class="line">    <span class="keyword">let</span> count = getCount(prefix, n);</span><br><span class="line">    <span class="keyword">if</span>(p + count &gt; k) &#123;</span><br><span class="line">      prefix *= <span class="number">10</span>;</span><br><span class="line">      p++;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(p + count &lt;= k) &#123;</span><br><span class="line">      prefix ++;</span><br><span class="line">      p += count;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> prefix;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n: a integer</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> k: a integer</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>: return a integer</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthNumber</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> curr = <span class="number">1</span>;</span><br><span class="line">        k = k - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (k &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> steps = calSteps(n, curr, curr + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (steps &lt;= k) &#123;   <span class="comment">//如果不在当前层，减去steps</span></span><br><span class="line">                curr += <span class="number">1</span>;      </span><br><span class="line">                k -= steps;  </span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span> &#123;              <span class="comment">//说明在当前层,curr*10缩小搜索范围继续查找</span></span><br><span class="line">                curr *= <span class="number">10</span>;</span><br><span class="line">                k -= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> curr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//use long in case of overflow</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calSteps</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">long</span> n1, <span class="keyword">long</span> n2)</span> </span>&#123; <span class="comment">//计算curr开头和curr+1开头之间的字符串数量</span></span><br><span class="line">        <span class="keyword">int</span> steps = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n1 &lt;= n) &#123;</span><br><span class="line">            steps += Math.min(n + <span class="number">1</span>, n2) - n1;  <span class="comment">//每次加上当前的字符串数量</span></span><br><span class="line">            n1 *= <span class="number">10</span>;       <span class="comment">//每次均扩大10倍</span></span><br><span class="line">            n2 *= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> steps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>评论</h1>
+
+  
+    <div id='valine'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> 版权所有 <a href="">times </a> @ 2019</p>
+            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#440-字典序的第K小数字"><span class="toc-number">1.</span> <span class="toc-text">440. 字典序的第K小数字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.2.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+    
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        pageSize: 10,
+        comment_count: true,
+        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
+        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
+        placeholder: 'just go go',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'z'
+    });
+</script>
+
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193').update('hashit_71e4c195fcfbc5f4f4be8be24e0586f07180919e3d609ae8adbda084a0da3965', function(){});
+  });
+  
+</script>
+
+
+    
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  function getIP(json) {
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.fetchIsThumbUp('/2019/09/17/440-字典序的第K小数字/', json.ip);
+    document.getElementById('thumb-up-button').addEventListener('click', function(e){
+      leanCloud.isThumbUp('/2019/09/17/440-字典序的第K小数字/', function(isThumbUp){
+        console.log('is thumb up:' + isThumbUp);
+        if(isThumbUp){
+          leanCloud.removeThumbUpRecord('/2019/09/17/440-字典序的第K小数字/', json.ip);
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+          
+        }else{
+          leanCloud.addThumbUpRecord('/2019/09/17/440-字典序的第K小数字/', json.ip);
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }
+        leanCloud.getThumbUpCount('/2019/09/17/440-字典序的第K小数字/', function(count){
+            console.log('thumb up count: ' + count)
+            var el = document.getElementById('article-thumbup-count');
+            if(el) el.innerHTML = count;
+        });
+      });
+    });
+    leanCloud.addVisitRecord('/2019/09/17/440-字典序的第K小数字/', json.ip);
+    leanCloud.fetchCommentCount('/2019/09/17/440-字典序的第K小数字/');
+    leanCloud.fetchVisitCount('/2019/09/17/440-字典序的第K小数字/');
+    leanCloud.fetchThumbUpCount('/2019/09/17/440-字典序的第K小数字/');
+    leanCloud.getCommentCount('/2019/09/17/440-字典序的第K小数字/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2019/09/17/440-字典序的第K小数字/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getThumbUpCount('/2019/09/17/440-字典序的第K小数字/', function(count){
+        var el = document.getElementById('article-thumbup-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.isThumbUp('/2019/09/17/440-字典序的第K小数字/', function(isThumbUp){
+        console.log('init thumb up:' + isThumbUp);
+        if(isThumbUp){
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }else{
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+        }
+    });
+  });
+  }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
