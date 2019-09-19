@@ -76,9 +76,6 @@
 
   <!-- include comment system code -->
   
-    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="/images/favicon.png">
@@ -564,7 +561,9 @@ dio是一个强大的Dart Http请求库，支持Restful API、FormData、拦截�
 <h1>评论</h1>
 
   
-    <div id='valine'></div>
+  
+  
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjUwMy8yMzAxMw">
   
 
 
@@ -691,29 +690,24 @@ dio是一个强大的Dart Http请求库，支持Restful API、FormData、拦截�
 
 
 
-    
-    
-    
-    
-    
-<script>
-    new Valine({
-        el: '#valine',
-        notify:false, 
-        verify:false,
-        pageSize: 10,
-        comment_count: true,
-        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
-        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
-        placeholder: 'just go go',
-        path:window.location.pathname, 
-        avatar:'retro',
-        lang: 'z'
-    });
+    <!-- 来必力City版安装代码 -->
+
+<script type="text/javascript">
+(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');
 </script>
-
-
-
+<noscript> Activate Javascript to use livere comment system. (为正常使用来必力评论功能请激活JavaScript)</noscript>
+</div>
+<!-- City版安装代码已完成 -->
 
 
 
