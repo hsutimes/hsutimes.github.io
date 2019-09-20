@@ -208,6 +208,56 @@
 
 
 
+<div class='Card-archive' id='hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f' data-name='Java知识点' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/20/Java知识点/">
+			
+			Java知识点</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/Java/">Java</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-20
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/20/Java知识点/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692' data-name='面试笔记' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -683,56 +733,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe' data-name='三阶魔方解法' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/12/三阶魔方解法/">
-			
-			三阶魔方解法</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/魔方/">魔方</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-12
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/12/三阶魔方解法/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -893,6 +893,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-title a, #hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-excerpt a, #hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-figure a');
+          new Postv2('hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f').showUnreadNotification('hashit_2d1557264030714b0e62a2f79d221be6594ba48f667d9f27026bc84f13378de8', function(){
+            console.log('show badge for 2019/09/20/Java知识点/ : hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f');
+            var postBadge = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/20/Java知识点/ : hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f');
+            var postBadge = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f').update('hashit_2d1557264030714b0e62a2f79d221be6594ba48f667d9f27026bc84f13378de8', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1128,32 +1154,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe .Card-title a, #hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe .Card-excerpt a, #hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe .Card-figure a');
-          new Postv2('hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe').showUnreadNotification('hashit_06af77a0d8eb7dbff00f95f29ab64af4644be7f3852a8c9b0d2e51ec7657d2ef', function(){
-            console.log('show badge for 2019/09/12/三阶魔方解法/ : hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe');
-            var postBadge = document.querySelector('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/12/三阶魔方解法/ : hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe');
-            var postBadge = document.querySelector('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe').update('hashit_06af77a0d8eb7dbff00f95f29ab64af4644be7f3852a8c9b0d2e51ec7657d2ef', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1169,6 +1169,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/20/Java知识点/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/20/Java知识点/');
+          leanCloud.fetchVisitCount('/2019/09/20/Java知识点/');
+          leanCloud.fetchThumbUpCount('/2019/09/20/Java知识点/');
+          leanCloud.getCommentCount('/2019/09/20/Java知识点/', function(count){
+              var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/20/Java知识点/', function(count){
+              var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/20/Java知识点/', function(count){
+              var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/20/Java知识点/', function(isThumbUp){
+              var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1431,36 +1461,6 @@
           });
           leanCloud.isThumbUp('/2019/09/12/骨传导/', function(isThumbUp){
               var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/12/三阶魔方解法/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/12/三阶魔方解法/');
-          leanCloud.fetchVisitCount('/2019/09/12/三阶魔方解法/');
-          leanCloud.fetchThumbUpCount('/2019/09/12/三阶魔方解法/');
-          leanCloud.getCommentCount('/2019/09/12/三阶魔方解法/', function(count){
-              var el = document.querySelector('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/12/三阶魔方解法/', function(count){
-              var el = document.querySelector('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/12/三阶魔方解法/', function(count){
-              var el = document.querySelector('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/12/三阶魔方解法/', function(isThumbUp){
-              var el = document.querySelector('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
