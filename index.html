@@ -255,8 +255,8 @@
 				
 				
 				
-				请问JDK和JRE的区别是什么？
-JDK ：Java 开发工具包,jdk 是整个 Java 开发的核心，它集成了 jre 和一些好用的小工具。JRE ：Java 运行时环境。它主要包含两个部分，jvm 的标准实现和 Java 的一些基本类库。
+				Java相关请问JDK和JRE的区别是什么？
+JDK ：Java 开发工具包,jdk 是整个 Java 开发的核心，它集成了 jre 和一些好用的小工具。JRE ：Java 运行时环境。它主要包含两个部分，jvm 的标准实现和 Java...
 				</a></p>
 				
 			</div>
@@ -1423,7 +1423,7 @@ CoLabColaboratory 是一个免费的 Jupyter 笔记本环境，不需要进行�
           
           // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-title a, #hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-excerpt a, #hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-figure a');
-          new Postv2('hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f').showUnreadNotification('hashit_2d1557264030714b0e62a2f79d221be6594ba48f667d9f27026bc84f13378de8', function(){
+          new Postv2('hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f').showUnreadNotification('hashit_bd9d093933b57c345da58c97c2b0dff8c4c20b3aa1811c482a7c1c1da39a95f7', function(){
             console.log('show badge for 2019/09/20/Java知识点/ : hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f');
             var postBadge = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f mark.Card-badge');
             $(postBadge).fadeIn();
@@ -1435,7 +1435,7 @@ CoLabColaboratory 是一个免费的 Jupyter 笔记本环境，不需要进行�
           // update cookie upon click the post and hide badge immediately
           for(var i = 0;i < postLinks.length; i++){
             postLinks[i].onclick = function(){
-              new Postv2('hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f').update('hashit_2d1557264030714b0e62a2f79d221be6594ba48f667d9f27026bc84f13378de8', function(){
+              new Postv2('hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f').update('hashit_bd9d093933b57c345da58c97c2b0dff8c4c20b3aa1811c482a7c1c1da39a95f7', function(){
                 console.log('called');
                 var postBadge = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f mark.Card-badge');
                 $(postBadge).fadeOut();
