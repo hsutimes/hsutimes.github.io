@@ -214,6 +214,56 @@
 
 
 
+<div class='Card-archive' id='hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff' data-name='Airbnb JavaScript 代码规范() {' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/08/Airbnb-JavaScript-代码规范/">
+			
+			Airbnb JavaScript 代码规范() {</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/javascript/">Javascript</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-08
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/08/Airbnb-JavaScript-代码规范/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b' data-name='面试红黑树' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -743,62 +793,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb' data-name='Spring框架面试总结' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/04/Spring框架面试总结/">
-			
-			Spring框架面试总结</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/Spring/">Spring</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/面试/">面试</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-04
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/04/Spring框架面试总结/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -962,6 +956,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff .Card-title a, #hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff .Card-excerpt a, #hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff .Card-figure a');
+          new Postv2('hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff').showUnreadNotification('hashit_e47c027c323a7b5113b3619736adffc32152b22b922a25041d4f084951172b9d', function(){
+            console.log('show badge for 2019/09/08/Airbnb-JavaScript-代码规范/ : hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff');
+            var postBadge = document.querySelector('#hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/08/Airbnb-JavaScript-代码规范/ : hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff');
+            var postBadge = document.querySelector('#hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff').update('hashit_e47c027c323a7b5113b3619736adffc32152b22b922a25041d4f084951172b9d', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1197,32 +1217,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-title a, #hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-excerpt a, #hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-figure a');
-          new Postv2('hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb').showUnreadNotification('hashit_af45d052dc8491173976a96d9d03a9329fc4fe317844fc6f22f003c6216cc645', function(){
-            console.log('show badge for 2019/09/04/Spring框架面试总结/ : hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb');
-            var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/04/Spring框架面试总结/ : hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb');
-            var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb').update('hashit_af45d052dc8491173976a96d9d03a9329fc4fe317844fc6f22f003c6216cc645', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1238,6 +1232,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/08/Airbnb-JavaScript-代码规范/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/08/Airbnb-JavaScript-代码规范/');
+          leanCloud.fetchVisitCount('/2019/09/08/Airbnb-JavaScript-代码规范/');
+          leanCloud.fetchThumbUpCount('/2019/09/08/Airbnb-JavaScript-代码规范/');
+          leanCloud.getCommentCount('/2019/09/08/Airbnb-JavaScript-代码规范/', function(count){
+              var el = document.querySelector('#hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/08/Airbnb-JavaScript-代码规范/', function(count){
+              var el = document.querySelector('#hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/08/Airbnb-JavaScript-代码规范/', function(count){
+              var el = document.querySelector('#hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/08/Airbnb-JavaScript-代码规范/', function(isThumbUp){
+              var el = document.querySelector('#hashit_3c1407a7c364230c1d3c5c49d259cfdc8de20ae1cc0eb1d5d6e58ff7da70d1ff .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1500,36 +1524,6 @@
           });
           leanCloud.isThumbUp('/2019/09/05/狂野飙车9/', function(isThumbUp){
               var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/04/Spring框架面试总结/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/04/Spring框架面试总结/');
-          leanCloud.fetchVisitCount('/2019/09/04/Spring框架面试总结/');
-          leanCloud.fetchThumbUpCount('/2019/09/04/Spring框架面试总结/');
-          leanCloud.getCommentCount('/2019/09/04/Spring框架面试总结/', function(count){
-              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/04/Spring框架面试总结/', function(count){
-              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/04/Spring框架面试总结/', function(count){
-              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/04/Spring框架面试总结/', function(isThumbUp){
-              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';

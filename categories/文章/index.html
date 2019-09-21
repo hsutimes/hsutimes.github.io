@@ -211,6 +211,56 @@
 
 
 
+<div class='Card-archive' id='hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60' data-name='BigInteger类' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/21/BigInteger类/">
+			
+			BigInteger类</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/Java/">Java</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-21
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/21/BigInteger类/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c' data-name='客户端面试' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -680,68 +730,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d' data-name='Flutter Http请求开源库-dio' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/09/Flutter-Http请求开源库-dio/">
-			
-			Flutter Http请求开源库-Dio</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/Flutter/">Flutter</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/Http/">Http</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/dio/">Dio</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-09
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/09/Flutter-Http请求开源库-dio/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -950,6 +938,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 .Card-title a, #hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 .Card-excerpt a, #hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 .Card-figure a');
+          new Postv2('hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60').showUnreadNotification('hashit_0cc33ef14645935bf314cbca6692193c0aadbbd53254006b64dc2f5865f637a3', function(){
+            console.log('show badge for 2019/09/21/BigInteger类/ : hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60');
+            var postBadge = document.querySelector('#hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/21/BigInteger类/ : hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60');
+            var postBadge = document.querySelector('#hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60').update('hashit_0cc33ef14645935bf314cbca6692193c0aadbbd53254006b64dc2f5865f637a3', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1185,32 +1199,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .Card-title a, #hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .Card-excerpt a, #hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .Card-figure a');
-          new Postv2('hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d').showUnreadNotification('hashit_82ab77f14399a2174cc169b6de40c8d6eb54cd62d19ed489727cf03209742858', function(){
-            console.log('show badge for 2019/09/09/Flutter-Http请求开源库-dio/ : hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d');
-            var postBadge = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/09/Flutter-Http请求开源库-dio/ : hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d');
-            var postBadge = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d').update('hashit_82ab77f14399a2174cc169b6de40c8d6eb54cd62d19ed489727cf03209742858', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1226,6 +1214,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/21/BigInteger类/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/21/BigInteger类/');
+          leanCloud.fetchVisitCount('/2019/09/21/BigInteger类/');
+          leanCloud.fetchThumbUpCount('/2019/09/21/BigInteger类/');
+          leanCloud.getCommentCount('/2019/09/21/BigInteger类/', function(count){
+              var el = document.querySelector('#hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/21/BigInteger类/', function(count){
+              var el = document.querySelector('#hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/21/BigInteger类/', function(count){
+              var el = document.querySelector('#hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/21/BigInteger类/', function(isThumbUp){
+              var el = document.querySelector('#hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1488,36 +1506,6 @@
           });
           leanCloud.isThumbUp('/2019/09/10/Git-Rebase-黄金法则问题/', function(isThumbUp){
               var el = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/09/Flutter-Http请求开源库-dio/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/09/Flutter-Http请求开源库-dio/');
-          leanCloud.fetchVisitCount('/2019/09/09/Flutter-Http请求开源库-dio/');
-          leanCloud.fetchThumbUpCount('/2019/09/09/Flutter-Http请求开源库-dio/');
-          leanCloud.getCommentCount('/2019/09/09/Flutter-Http请求开源库-dio/', function(count){
-              var el = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/09/Flutter-Http请求开源库-dio/', function(count){
-              var el = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/09/Flutter-Http请求开源库-dio/', function(count){
-              var el = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/09/Flutter-Http请求开源库-dio/', function(isThumbUp){
-              var el = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
