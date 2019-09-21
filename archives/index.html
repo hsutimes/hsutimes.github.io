@@ -214,6 +214,56 @@
 
 
 
+<div class='Card-archive' id='hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c' data-name='客户端面试' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/21/客户端面试/">
+			
+			客户端面试</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/面试/">面试</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-21
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/21/客户端面试/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f' data-name='Java知识点' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -689,56 +739,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81' data-name='骨传导' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/12/骨传导/">
-			
-			骨传导</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/百科/">百科</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-12
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/12/骨传导/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -902,6 +902,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .Card-title a, #hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .Card-excerpt a, #hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .Card-figure a');
+          new Postv2('hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c').showUnreadNotification('hashit_1ea492f64e9646a9fa0d6be5667a36b6796faf0e45d316bee86e1c15f7190b87', function(){
+            console.log('show badge for 2019/09/21/客户端面试/ : hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c');
+            var postBadge = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/21/客户端面试/ : hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c');
+            var postBadge = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c').update('hashit_1ea492f64e9646a9fa0d6be5667a36b6796faf0e45d316bee86e1c15f7190b87', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1137,32 +1163,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-title a, #hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-excerpt a, #hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-figure a');
-          new Postv2('hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81').showUnreadNotification('hashit_dc6a98871dd6902fb6453d54d6361391a96d486c77555126205ce334328eff94', function(){
-            console.log('show badge for 2019/09/12/骨传导/ : hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81');
-            var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/12/骨传导/ : hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81');
-            var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81').update('hashit_dc6a98871dd6902fb6453d54d6361391a96d486c77555126205ce334328eff94', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1178,6 +1178,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/21/客户端面试/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/21/客户端面试/');
+          leanCloud.fetchVisitCount('/2019/09/21/客户端面试/');
+          leanCloud.fetchThumbUpCount('/2019/09/21/客户端面试/');
+          leanCloud.getCommentCount('/2019/09/21/客户端面试/', function(count){
+              var el = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/21/客户端面试/', function(count){
+              var el = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/21/客户端面试/', function(count){
+              var el = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/21/客户端面试/', function(isThumbUp){
+              var el = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1440,36 +1470,6 @@
           });
           leanCloud.isThumbUp('/2019/09/12/nohup-在linux后台运行程序/', function(isThumbUp){
               var el = document.querySelector('#hashit_52e8ca37e5d209a1732377a75735735b42289439f06d813d7fa44dfb778e6b6d .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/12/骨传导/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/12/骨传导/');
-          leanCloud.fetchVisitCount('/2019/09/12/骨传导/');
-          leanCloud.fetchThumbUpCount('/2019/09/12/骨传导/');
-          leanCloud.getCommentCount('/2019/09/12/骨传导/', function(count){
-              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/12/骨传导/', function(count){
-              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/12/骨传导/', function(count){
-              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/12/骨传导/', function(isThumbUp){
-              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
