@@ -208,6 +208,62 @@
 
 
 
+<div class='Card-archive' id='hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946' data-name='HashMap类' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/23/HashMap类/">
+			
+			HashMap类</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/HashMap/">Hashmap</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/Java/">Java</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-23
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/23/HashMap类/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60' data-name='BigInteger类' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -671,62 +727,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272' data-name='TensorFlow 2.0 RC is available' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/12/TensorFlow-2-0-RC-is-available/">
-			
-			TensorFlow 2.0 RC Is Available</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/TensorFlow/">Tensorflow</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/机器学习/">机器学习</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-12
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/12/TensorFlow-2-0-RC-is-available/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -887,6 +887,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-title a, #hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-excerpt a, #hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-figure a');
+          new Postv2('hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946').showUnreadNotification('hashit_ddd197ae7a3c7c0b80ff9267277aba03447c15b074b8aedc602e2d70cd077034', function(){
+            console.log('show badge for 2019/09/23/HashMap类/ : hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946');
+            var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/23/HashMap类/ : hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946');
+            var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946').update('hashit_ddd197ae7a3c7c0b80ff9267277aba03447c15b074b8aedc602e2d70cd077034', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1122,32 +1148,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .Card-title a, #hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .Card-excerpt a, #hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .Card-figure a');
-          new Postv2('hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272').showUnreadNotification('hashit_fc8ecb0744d56489d7c90f792423f2e3c8f6f4f0989b7b1c1fc48b0c6b941f8c', function(){
-            console.log('show badge for 2019/09/12/TensorFlow-2-0-RC-is-available/ : hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272');
-            var postBadge = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/12/TensorFlow-2-0-RC-is-available/ : hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272');
-            var postBadge = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272').update('hashit_fc8ecb0744d56489d7c90f792423f2e3c8f6f4f0989b7b1c1fc48b0c6b941f8c', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1163,6 +1163,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/23/HashMap类/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/23/HashMap类/');
+          leanCloud.fetchVisitCount('/2019/09/23/HashMap类/');
+          leanCloud.fetchThumbUpCount('/2019/09/23/HashMap类/');
+          leanCloud.getCommentCount('/2019/09/23/HashMap类/', function(count){
+              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/23/HashMap类/', function(count){
+              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/23/HashMap类/', function(count){
+              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/23/HashMap类/', function(isThumbUp){
+              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1425,36 +1455,6 @@
           });
           leanCloud.isThumbUp('/2019/09/13/Java面试题/', function(isThumbUp){
               var el = document.querySelector('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/12/TensorFlow-2-0-RC-is-available/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/12/TensorFlow-2-0-RC-is-available/');
-          leanCloud.fetchVisitCount('/2019/09/12/TensorFlow-2-0-RC-is-available/');
-          leanCloud.fetchThumbUpCount('/2019/09/12/TensorFlow-2-0-RC-is-available/');
-          leanCloud.getCommentCount('/2019/09/12/TensorFlow-2-0-RC-is-available/', function(count){
-              var el = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/12/TensorFlow-2-0-RC-is-available/', function(count){
-              var el = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/12/TensorFlow-2-0-RC-is-available/', function(count){
-              var el = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/12/TensorFlow-2-0-RC-is-available/', function(isThumbUp){
-              var el = document.querySelector('#hashit_ad43715d3919c6ae13d385c7a913fcf4b8632b329ffe9bbb63daf5b25fdc5272 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
