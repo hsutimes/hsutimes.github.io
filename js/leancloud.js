@@ -7,6 +7,7 @@ var LeanCloud = (function () {
         this.forbid_request = false;
         try {
             AV.init({
+                serverURLs: 'https://avoscloud.com',
                 appId: appId | "",
                 appKey: appKey | ""
             });
