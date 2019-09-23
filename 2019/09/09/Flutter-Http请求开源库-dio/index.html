@@ -76,6 +76,9 @@
 
   <!-- include comment system code -->
   
+    <link rel="stylesheet" href="/css/gitment/default.css">
+<script src="/js/gitment.browser.js"></script>
+  
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="/images/favicon.png">
@@ -561,9 +564,7 @@ dio是一个强大的Dart Http请求库，支持Restful API、FormData、拦截�
 <h1>评论</h1>
 
   
-  
-  
-    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjUwMy8yMzAxMw">
+    <div id='gitment'></div>
   
 
 
@@ -690,24 +691,30 @@ dio是一个强大的Dart Http请求库，支持Restful API、FormData、拦截�
 
 
 
-    <!-- 来必力City版安装代码 -->
+    
 
-<script type="text/javascript">
-(function(d, s) {
-    var j, e = d.getElementsByTagName(s)[0];
 
-    if (typeof LivereTower === 'function') { return; }
 
-    j = d.createElement(s);
-    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-    j.async = true;
 
-    e.parentNode.insertBefore(j, e);
-})(document, 'script');
-</script>
-<noscript> Activate Javascript to use livere comment system. (为正常使用来必力评论功能请激活JavaScript)</noscript>
-</div>
-<!-- City版安装代码已完成 -->
+
+
+  <script>
+  var gitment = new Gitment({
+    id: window.location.pathname, // optional
+    owner: 'hsutimes',
+    repo: 'gitment_blog',
+    oauth: {
+      client_id: 'd73d768ea9e3bd69ab54',
+      client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('gitment')
+  </script>
+
+
 
 
 
