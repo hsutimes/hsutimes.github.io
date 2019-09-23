@@ -76,6 +76,9 @@
 
   <!-- include comment system code -->
   
+    <link rel="stylesheet" href="/css/gitment/default.css">
+<script src="/js/gitment.browser.js"></script>
+  
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="/images/favicon.png">
@@ -411,6 +414,10 @@ feel free to post your story on waiting.12345678910111213141516# 灭霸脚本这
 
 <h1>评论</h1>
 
+  
+    <div id='gitment'></div>
+  
+
 
         </div>
         
@@ -532,6 +539,31 @@ feel free to post your story on waiting.12345678910111213141516# 灭霸脚本这
 	</div>
 
   
+
+
+
+    
+
+
+
+
+
+
+  <script>
+  var gitment = new Gitment({
+    id: window.location.pathname, // optional
+    owner: 'hsutimes',
+    repo: 'gitment_blog',
+    oauth: {
+      client_id: 'd73d768ea9e3bd69ab54',
+      client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('gitment')
+  </script>
 
 
 
