@@ -211,6 +211,46 @@
 
 
 
+<div class='Card-archive' id='hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e' data-name='对方水电费都是' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/23/对方水电费都是/">
+			
+			对方水电费都是</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'></div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-23
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/23/对方水电费都是/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946' data-name='HashMap类' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -674,62 +714,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13' data-name='Java面试题' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/13/Java面试题/">
-			
-			Java面试题</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/Java/">Java</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/面试/">面试</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-13
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/13/Java面试题/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -896,6 +880,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e .Card-title a, #hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e .Card-excerpt a, #hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e .Card-figure a');
+          new Postv2('hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e').showUnreadNotification('hashit_067f27e4857193c59941641467f3f546429334b8bd1779c3ae75536409e56055', function(){
+            console.log('show badge for 2019/09/23/对方水电费都是/ : hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e');
+            var postBadge = document.querySelector('#hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/23/对方水电费都是/ : hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e');
+            var postBadge = document.querySelector('#hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e').update('hashit_067f27e4857193c59941641467f3f546429334b8bd1779c3ae75536409e56055', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1131,32 +1141,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 .Card-title a, #hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 .Card-excerpt a, #hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 .Card-figure a');
-          new Postv2('hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13').showUnreadNotification('hashit_968ac65da822e1889aaf1a5dbd258fc78fc0b89ad3de62abe462b1d532b26d71', function(){
-            console.log('show badge for 2019/09/13/Java面试题/ : hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13');
-            var postBadge = document.querySelector('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/13/Java面试题/ : hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13');
-            var postBadge = document.querySelector('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13').update('hashit_968ac65da822e1889aaf1a5dbd258fc78fc0b89ad3de62abe462b1d532b26d71', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1172,6 +1156,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/23/对方水电费都是/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/23/对方水电费都是/');
+          leanCloud.fetchVisitCount('/2019/09/23/对方水电费都是/');
+          leanCloud.fetchThumbUpCount('/2019/09/23/对方水电费都是/');
+          leanCloud.getCommentCount('/2019/09/23/对方水电费都是/', function(count){
+              var el = document.querySelector('#hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/23/对方水电费都是/', function(count){
+              var el = document.querySelector('#hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/23/对方水电费都是/', function(count){
+              var el = document.querySelector('#hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/23/对方水电费都是/', function(isThumbUp){
+              var el = document.querySelector('#hashit_d4f1e5298bcd36ebdcb1fb77aeb24232224d85af992df4f776ee373280a1f31e .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1434,36 +1448,6 @@
           });
           leanCloud.isThumbUp('/2019/09/14/OpenCV边缘检测/', function(isThumbUp){
               var el = document.querySelector('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/13/Java面试题/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/13/Java面试题/');
-          leanCloud.fetchVisitCount('/2019/09/13/Java面试题/');
-          leanCloud.fetchThumbUpCount('/2019/09/13/Java面试题/');
-          leanCloud.getCommentCount('/2019/09/13/Java面试题/', function(count){
-              var el = document.querySelector('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/13/Java面试题/', function(count){
-              var el = document.querySelector('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/13/Java面试题/', function(count){
-              var el = document.querySelector('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/13/Java面试题/', function(isThumbUp){
-              var el = document.querySelector('#hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
