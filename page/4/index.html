@@ -1,1965 +1,960 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
-
-
+<html>
 <head><meta name="generator" content="Hexo 3.9.0">
-
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>Time</title>
-  
 
   
+  <title>Time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Time">
+<meta property="og:url" content="https://blog.hsutimes.com/page/4/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:locale" content="zh-cn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Time">
   
-  <meta name="description" content>
-  <meta name="author" content="times">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- load loadjs.js -->
-  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
-
-<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
-  <!-- load lightgallery -->
-<link rel="stylesheet" href="/css/lightgallery.css">
-<link rel="stylesheet" href="/libs/noty/lib/noty.css">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  
-
-
-
-
-
-
-    <link rel="stylesheet" href="/css/taurus.css">
-    
-        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
-    
-
-
-<link rel="stylesheet" href="/.css">
-
-  <!-- load font awesome 5 -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-  </script>
-  <!-- load mathjax -->
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-  <!-- load js-cookie -->
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="/js/social-share.min.js"></script>
-    <script src="/js/theme.js"></script>
-
-  <!-- include cookie.js -->
+    <link rel="alternate" href="/atom.xml" title="Time" type="application/atom+xml">
   
   
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-134224598-1', 'auto');
-	ga('send', 'pageview');
-</script>
-
-
-  <!-- include comment system code -->
+    <link rel="icon" href="/favicon.png">
   
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
-
- 
-
-<header id="header" class='header'>
-	<div class="header-title">
-		
-		<div class='header-logo'>
-			<a href='/'>
-				<img src='/images/theme-icon.svg' />
-			</a>
-		</div>
-		<div class='header-text'>
-			<h1>
-				<a href="/">Time</a>
-			</h1>
-			<subtitle>
-				time
-			</subtitle>
-		</div>
-		
-	</div>
-	<div id='header-nav'>
-		
-
-
-
-<nav id="nav">
-	
-	
-	
-	<div class='nav-item' id='nav-item-archive'>
-		
-				<div class='nav-icon'>
-				
-			<a href="/archives/" title='归档'>
-			<img src="/images/icons/blue-shadow/archive.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class='nav-item' id='nav-item-search'>
-		
-		<div class='nav-icon'>
-		
-			<a href="/search/" title='搜索'>
-			<img src="/images/icons/blue-shadow/search.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class="nav-item" id='nav-item-more'>
-		<div class="nav-icon">
-				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
-				<img src="/images/icons/blue-shadow/menu.svg" alt="">
-				</a>
-		</div>
-		<div class="nav-more-menu">
-				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
-		
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/文章/">
-						<span>文章</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/算法/">
-						<span>算法</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/人工智能/">
-						<span>人工智能</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/生活/">
-						<span>生活</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/笔试/">
-						<span>笔试</span>
-					</a>
-				</div>
-		</div>
-		
-	</div>
-	</div>
-</nav>
-
-	</div>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Time</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">time</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.hsutimes.com"></form>
+      </div>
+    </div>
+  </div>
 </header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-狂野飙车9" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/05/狂野飙车9/" class="article-date">
+  <time datetime="2019-09-04T18:19:56.000Z" itemprop="datePublished">2019-09-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/生活/">生活</a>
+  </div>
 
- 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/05/狂野飙车9/">狂野飙车9</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="兰博基尼"><a href="#兰博基尼" class="headerlink" title="兰博基尼"></a>兰博基尼</h1><p><img src="/images/2019/09/05/9977b800-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="2F_1~LEKAJNFXUV8LSF.png"></p>
+<h1 id="法拉利"><a href="#法拉利" class="headerlink" title="法拉利"></a>法拉利</h1><p><img src="/images/2019/09/05/99785440-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="9XNKIXTZ2VV~T_FRX458E.png"></p>
+<h1 id="布加迪"><a href="#布加迪" class="headerlink" title="布加迪"></a>布加迪</h1><p><img src="/images/2019/09/05/9979dae0-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="1RPXGB9J4E7DDCTYG7N.png"></p>
+<h1 id="迈凯伦"><a href="#迈凯伦" class="headerlink" title="迈凯伦"></a>迈凯伦</h1><p><img src="/images/2019/09/05/9979dae1-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="H0NMCXTSL6KSCA9UK9FV6.png"></p>
+<h1 id="兰博基尼-1"><a href="#兰博基尼-1" class="headerlink" title="兰博基尼"></a>兰博基尼</h1><p><img src="/images/2019/09/05/9a2ed300-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="4K0A~9~4ZA_HHS5_DGT.png"></p>
+<h1 id="风神"><a href="#风神" class="headerlink" title="风神"></a>风神</h1><p><img src="/images/2019/09/05/9a3080b0-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="F65KIMZH_YKHPIRV``GK.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/09/05/狂野飙车9/" data-id="ck0gj8yu9001xf4gbva19usve" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/狂野飙车/">狂野飙车</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跑车/">跑车</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Spring框架面试总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/04/Spring框架面试总结/" class="article-date">
+  <time datetime="2019-09-03T16:32:24.000Z" itemprop="datePublished">2019-09-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/文章/">文章</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/04/Spring框架面试总结/">Spring框架面试总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/2019/09/12/ba1add50-d555-11e9-b519-9f31cc87a9f9.png" alt="image.png"></p>
+<h1 id="介绍spring框架"><a href="#介绍spring框架" class="headerlink" title="介绍spring框架"></a>介绍spring框架</h1><p>它是一个一站式（full-stack全栈式）框架，提供了从表现层-springMVC到业务层-spring再到持久层-springdata的一套完整的解决方案。我们在项目中可以只使用spring一个框架，它就可以提供表现层的mvc框架，持久层的Dao框架。它的两大核心IoC和AOP更是为我们程序解耦和代码简洁易维护提供了支持。</p>
+<h1 id="Spring的优点？"><a href="#Spring的优点？" class="headerlink" title="Spring的优点？"></a>Spring的优点？</h1><ol>
+<li>降低了组件之间的耦合性 ，实现了软件各层之间的解耦 </li>
+<li>可以使用容易提供的众多服务，如事务管理，消息服务等 </li>
+<li>容器提供单例模式支持 </li>
+<li>容器提供了AOP技术，利用它很容易实现如权限拦截，运行期监控等功能 </li>
+<li>容器提供了众多的辅助类，能加快应用的开发 </li>
+<li>spring对于主流的应用框架提供了集成支持，如hibernate，   JPA，Struts等 </li>
+<li>spring属于低侵入式设计，代码的污染极低 </li>
+<li>独立于各种应用服务器 </li>
+<li>spring的DI机制降低了业务对象替换的复杂性 </li>
+<li>Spring的高度开放性，并不强制应用完全依赖于Spring，开发者可以自由选择spring 的部分或全部 </li>
+</ol>
+<h1 id="spring有两种代理方式："><a href="#spring有两种代理方式：" class="headerlink" title="spring有两种代理方式："></a>spring有两种代理方式：</h1><p>答: 若目标对象实现了若干接口，spring使用JDK的java.lang.reflect.Proxy类代理。</p>
+<p>  优点：因为有接口，所以使系统更加松耦合</p>
+<p>  缺点：为每一个目标类创建接口</p>
+<p>若目标对象没有实现任何接口，spring使用CGLIB库生成目标对象的子类。</p>
+<p>  优点：因为代理类与目标类是继承关系，所以不需要有接口的存在。</p>
+<p>  缺点：因为没有使用接口，所以系统的耦合性没有使用JDK的动态代理好</p>
+<h1 id="如何给Spring-容器提供配置元数据"><a href="#如何给Spring-容器提供配置元数据" class="headerlink" title="如何给Spring 容器提供配置元数据?"></a>如何给Spring 容器提供配置元数据?</h1><p>这里有三种重要的方法给Spring 容器提供配置元数据。</p>
+<p>XML配置文件。</p>
+<p>基于注解的配置。</p>
+<p>基于java的配置。</p>
+<h1 id="构造方法注入和设值注入有什么区别？"><a href="#构造方法注入和设值注入有什么区别？" class="headerlink" title="构造方法注入和设值注入有什么区别？"></a>构造方法注入和设值注入有什么区别？</h1><p>请注意以下明显的区别：</p>
+<p>在设值注入方法支持大部分的依赖注入，如果我们仅需要注入int、string和long型的变量，我们不要用设值的方法注入。</p>
+<p>对于基本类型，如果我们没有注入的话，可以为基本类型设置默认值。</p>
+<p>在构造方法注入不支持大部分的依赖注入，因为在调用构造方法中必须传入正确的构造参数，否则的话为报错。</p>
+<p>设值注入不会重写构造方法的值。</p>
+<p>在使用设值注入时有可能还不能保证某种依赖是否已经被注入，也就是说这时对象的依赖关系有可能是不完整的。而在另一种情况下，构造器注入则不允许生成依赖关系不完整的对象。</p>
+<h1 id="请介绍一下Spring框架中Bean的生命周期"><a href="#请介绍一下Spring框架中Bean的生命周期" class="headerlink" title="请介绍一下Spring框架中Bean的生命周期"></a>请介绍一下Spring框架中Bean的生命周期</h1><p>一、Bean的定义 </p>
+<p>Spring通常通过配置文件定义Bean。如：  </p>
+<p>这个配置文件就定义了一个标识为 HelloWorld 的Bean。在一个配置文档中可以定义多个Bean。 </p>
+<p>二、Bean的初始化</p>
+<p>有两种方式初始化Bean。 </p>
+<p>1、在配置文档中通过指定init-method 属性来完成 </p>
+<p>2、实现 org.springframwork.beans.factory.InitializingBean接口  </p>
+<p>那么，当这个Bean的所有属性被Spring的BeanFactory设置完后，会自动调用afterPropertiesSet()方法对Bean进行初始化，于是，配置文件就不用指定 init-method属性了。 </p>
+<p>三、Bean的调用 </p>
+<p>有三种方式可以得到Bean并进行调用： </p>
+<p>1、使用BeanWrapper</p>
+<p>2、使用BeanFactory</p>
+<p>3、使用ApplicationConttext</p>
+<p>四、Bean的销毁 </p>
+<p>1、使用配置文件中的 destory-method 属性</p>
+<p>2、实现 org.springframwork.bean.factory.DisposebleBean接口 </p>
+<h1 id="Spring中AOP的应用场景、Aop原理、好处？"><a href="#Spring中AOP的应用场景、Aop原理、好处？" class="headerlink" title="Spring中AOP的应用场景、Aop原理、好处？"></a>Spring中AOP的应用场景、Aop原理、好处？</h1><p>答：AOP–Aspect Oriented Programming面向切面编程；用来封装横切关注点，具体可以在下面的场景中使用:</p>
+<p>Authentication 权限、Caching 缓存、Context passing 内容传递、Error handling 错误处理Lazy loading懒加载、Debugging调试、logging, tracing, profiling and monitoring 记录跟踪优化　校准、Performance optimization　性能优化、Persistence 持久化、Resource pooling　资源池、Synchronization　同步、Transactions 事务</p>
+<p>原理：AOP是面向切面编程，是通过动态代理的方式为程序添加统一功能，集中解决一些公共问题。</p>
+<p>优点：1.各个步骤之间的良好隔离性耦合性大大降低 </p>
+<pre><code>2.源代码无关性，再扩展功能的同时不对源码进行修改操作 </code></pre><h1 id="有几种不同类型的自动代理？"><a href="#有几种不同类型的自动代理？" class="headerlink" title="有几种不同类型的自动代理？"></a>有几种不同类型的自动代理？</h1><p>BeanNameAutoProxyCreator</p>
+<p>DefaultAdvisorAutoProxyCreator</p>
+<p>Metadata autoproxying</p>
+<h1 id="ApplicationContext通常的实现是什么"><a href="#ApplicationContext通常的实现是什么" class="headerlink" title="ApplicationContext通常的实现是什么?"></a>ApplicationContext通常的实现是什么?</h1><p>FileSystemXmlApplicationContext ：此容器从一个XML文件中加载beans的定义，XML Bean 配置文件的全路径名必须提供给它的构造函数。</p>
+<p>ClassPathXmlApplicationContext：此容器也从一个XML文件中加载beans的定义，这里，你需要正确设置classpath因为这个容器将在classpath里找bean配置。</p>
+<p>WebXmlApplicationContext：此容器加载一个XML文件，此文件定义了一个WEB应用的所有bean。</p>
+<h1 id="有哪些不同类型的IOC（依赖注入）方式？"><a href="#有哪些不同类型的IOC（依赖注入）方式？" class="headerlink" title="有哪些不同类型的IOC（依赖注入）方式？"></a>有哪些不同类型的IOC（依赖注入）方式？</h1><p>构造器依赖注入：构造器依赖注入通过容器触发一个类的构造器来实现的，该类有一系列参数，每个参数代表一个对其他类的依赖。</p>
+<p>Setter方法注入：Setter方法注入是容器通过调用无参构造器或无参static工厂 方法实例化bean之后，调用该bean的setter方法，即实现了基于setter的依赖注入。</p>
+<h1 id="什么是IOC，什么又是DI，他们有什么区别？"><a href="#什么是IOC，什么又是DI，他们有什么区别？" class="headerlink" title="什么是IOC，什么又是DI，他们有什么区别？"></a>什么是IOC，什么又是DI，他们有什么区别？</h1><p>一、IOC介绍</p>
+<p>IOC是控制反转。</p>
+<p>创建对象实例的控制权从代码控制剥离到IOC容器控制(之前的写法，由程序代码直接操控使用new关键字)，实际就是你在xml文件控制，控制权的转移是所谓反转，侧重于原理。 </p>
+<p>二、DI介绍</p>
+<p>DI是依赖注入</p>
+<p>创建对象实例时，为这个对象注入属性值或其它对象实例，侧重于实现。</p>
+<h1 id="spring事务定义"><a href="#spring事务定义" class="headerlink" title="spring事务定义"></a>spring事务定义</h1><p>事务的定义：事务是指多个操作单元组成的合集，多个单元操作是整体不可分割的，要么都操作不成功，要么都成功。其必须遵循四个原则（ACID）。</p>
+<p>原子性（Atomicity）：即事务是不可分割的最小工作单元，事务内的操作要么全做，要么全不做；</p>
+<p>一致性（Consistency）：在事务执行前数据库的数据处于正确的状态，而事务执行完成后数据库的数据还是应该处于正确的状态，即数据完整性约束没有被破坏；如银行转帐，A转帐给B，必须保证A的钱一定转给B，一定不会出现A的钱转了但B没收到，否则数据库的数据就处于不一致（不正确）的状态。</p>
+<p>隔离性（Isolation）：并发事务执行之间互不影响，在一个事务内部的操作对其他事务是不产生影响，这需要事务隔离级别来指定隔离性；</p>
+<p>持久性（Durability）：事务一旦执行成功，它对数据库的数据的改变必须是永久的，不会因比如遇到系统故障或断电造成数据不一致或丢失。</p>
+<h1 id="Spring框架中的单例Beans是线程安全的么？"><a href="#Spring框架中的单例Beans是线程安全的么？" class="headerlink" title="Spring框架中的单例Beans是线程安全的么？"></a>Spring框架中的单例Beans是线程安全的么？</h1><p>Spring框架并没有对单例bean进行任何多线程的封装处理。关于单例bean的线程安全和并发问题需要开发者自行去搞定。但实际上，大部分的Spring bean并没有可变的状态(比如Serview类和DAO类)，所以在某种程度上说Spring的单例bean是线程安全的。如果你的bean有多种状态的话（比如 View Model 对象），就需要自行保证线程安全。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/09/04/Spring框架面试总结/" data-id="ck0gj8ysh000mf4gblcxbloky" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-天平砝码摆放问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/02/天平砝码摆放问题/" class="article-date">
+  <time datetime="2019-09-02T04:41:41.000Z" itemprop="datePublished">2019-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/02/天平砝码摆放问题/">天平砝码摆放问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。<br>要使天平平衡，有多少种方法？（对称摆放算作一种方法） </p>
+<p><img src="/images/2019/09/02/a2a70490-cd3b-11e9-afc7-971719428f58.png" alt="image.png"></p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>暴力求解</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= t; ++j) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= t; ++k) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt;= t; ++l) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">1</span>; m &lt;= t; ++m) &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">1</span>; n &lt;= t; ++n) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (i == j ||</span><br><span class="line">                                i == k || j == k ||</span><br><span class="line">                                i == l || j == l || k == l ||</span><br><span class="line">                                i == m || j == m || k == m || l == m ||</span><br><span class="line">                                i == n || j == n || k == n || l == n || m == n)</span><br><span class="line">                                <span class="keyword">continue</span>;</span><br><span class="line">                            <span class="keyword">if</span> ((<span class="number">3</span> * i + <span class="number">2</span> * j + k) == (l + <span class="number">2</span> * m + <span class="number">3</span> * n)) &#123;</span><br><span class="line">                                <span class="built_in">string</span> s = to_string(i) + to_string(j) + to_string(k) + to_string(l) + to_string(m) +</span><br><span class="line">                                           to_string(n);</span><br><span class="line">                                <span class="keyword">int</span> te = <span class="number">0</span>;</span><br><span class="line">                                <span class="keyword">if</span> (v.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                                    <span class="built_in">string</span> tem = s;</span><br><span class="line">                                    reverse(tem.begin(), tem.end());</span><br><span class="line">                                    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;::iterator it;</span><br><span class="line">                                    <span class="keyword">for</span> (it = v.begin(); it != v.end(); it++) &#123;</span><br><span class="line">                                        <span class="keyword">if</span> (*it == tem) &#123;</span><br><span class="line">                                            <span class="comment">//cout&lt;&lt;tem&lt;&lt;endl;</span></span><br><span class="line">                                            te = <span class="number">1</span>;</span><br><span class="line">                                            <span class="keyword">break</span>;</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="keyword">if</span> (te == <span class="number">0</span>) &#123;</span><br><span class="line">                                    v.push_back(s);</span><br><span class="line">                                    count++;</span><br><span class="line">                                    <span class="built_in">printf</span>(<span class="string">" %d %d %d | %d %d %d\n"</span>, i, j, k, l, m, n);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; count &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1 4 6 | 5 3 2</span><br><span class="line">1 5 6 | 2 4 3</span><br><span class="line">1 5 6 | 3 2 4</span><br><span class="line">1 6 4 | 3 5 2</span><br><span class="line">1 6 5 | 2 3 4</span><br><span class="line">2 4 6 | 1 5 3</span><br><span class="line">2 4 6 | 3 1 5</span><br><span class="line">2 6 3 | 4 1 5</span><br><span class="line">2 6 4 | 1 3 5</span><br><span class="line">3 2 6 | 5 1 4</span><br><span class="line">3 4 5 | 2 1 6</span><br><span class="line">3 5 4 | 1 2 6</span><br><span class="line">3 6 2 | 1 5 4</span><br><span class="line">4 2 6 | 1 3 5</span><br><span class="line">4 3 5 | 1 2 6</span><br><span class="line">5 2 4 | 3 1 6</span><br><span class="line">5 4 2 | 1 3 6</span><br><span class="line">17</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/09/02/天平砝码摆放问题/" data-id="ck0gj8ytf001af4gbezdyf47g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/天平/">天平</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-118-杨辉三角" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/31/118-杨辉三角/" class="article-date">
+  <time datetime="2019-08-31T15:25:17.000Z" itemprop="datePublished">2019-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/31/118-杨辉三角/">118. 杨辉三角</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">杨辉三角</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em>行。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="杨辉三角"></p>
+<p>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
+<li>动态规划</li>
+</ol>
+<p><strong>思路</strong></p>
+<p>如果能够知道一行杨辉三角，我们就可以根据每对相邻的值轻松地计算出它的下一行。</p>
+<p><strong>算法</strong></p>
+<p>虽然这一算法非常简单，但用于构造杨辉三角的迭代方法可以归类为动态规划，因为我们需要基于前一行来构造每一行。</p>
+<p>首先，我们会生成整个 <code>triangle</code> 列表，三角形的每一行都以子列表的形式存储。然后，我们会检查行数为 0 的特殊情况，否则我们会返回 <code>[1]</code>。如果 <em>numRows</em> &gt; 0，那么我们用 <code>[1]</code> 作为第一行来初始化 <code>triangle</code> with <code>[1]</code>，并按如下方式继续填充：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; triangle = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// First base case; if user requests zero rows, they get zero rows.</span></span><br><span class="line">        <span class="keyword">if</span> (numRows == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> triangle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Second base case; first row is always [1].</span></span><br><span class="line">        triangle.add(<span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        triangle.get(<span class="number">0</span>).add(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> rowNum = <span class="number">1</span>; rowNum &lt; numRows; rowNum++) &#123;</span><br><span class="line">            List&lt;Integer&gt; row = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            List&lt;Integer&gt; prevRow = triangle.get(rowNum-<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// The first row element is always 1.</span></span><br><span class="line">            row.add(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Each triangle element (other than the first and last of each row)</span></span><br><span class="line">            <span class="comment">// is equal to the sum of the elements above-and-to-the-left and</span></span><br><span class="line">            <span class="comment">// above-and-to-the-right.</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; rowNum; j++) &#123;</span><br><span class="line">                row.add(prevRow.get(j-<span class="number">1</span>) + prevRow.get(j));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// The last row element is always 1.</span></span><br><span class="line">            row.add(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            triangle.add(row);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> triangle;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度： <em>O(numRows²)</em></li>
+</ul>
+<p>虽然更新 triangle 中的每个值都是在常量时间内发生的，<br>但它会被执行 <em>O(numRows²)</em> 次。想要了解原因，就需要考虑总共有多少次循环迭代。很明显外层循环需要运行 numRows 次，但在外层循环的每次迭代中，内层循环要运行 rowNumrowNum 次。因此，<code>triangle</code> 发生的更新总数为<br><code>1 + 2 + 3 + ... + *numRows*</code>，根据高斯公式有</p>
+<p><img src="/images/2019/08/31/06b93500-cc03-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<ul>
+<li>空间复杂度：<em>O(numRows²)</em></li>
+</ul>
+<p>因为我们需要存储我们在 <code>triangle</code> 中更新的每个数字，<br>所以空间需求与时间复杂度相同。</p>
+<ol start="2">
+<li>Python解法</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(self, num_rows)</span>:</span></span><br><span class="line">        triangle = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> row_num <span class="keyword">in</span> range(num_rows):</span><br><span class="line">            <span class="comment"># The first and last row elements are always 1.</span></span><br><span class="line">            row = [<span class="literal">None</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(row_num+<span class="number">1</span>)]</span><br><span class="line">            row[<span class="number">0</span>], row[<span class="number">-1</span>] = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># Each triangle element is equal to the sum of the elements</span></span><br><span class="line">            <span class="comment"># above-and-to-the-left and above-and-to-the-right.</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, len(row)<span class="number">-1</span>):</span><br><span class="line">                row[j] = triangle[row_num<span class="number">-1</span>][j<span class="number">-1</span>] + triangle[row_num<span class="number">-1</span>][j]</span><br><span class="line"></span><br><span class="line">            triangle.append(row)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> triangle</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>递归解法</li>
+</ol>
+<p>通过<em>numRows</em>-1，求<em>numRows</em>行，递归求解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; listw = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;Integer&gt; listn = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">if</span> (numRows == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> listw;</span><br><span class="line">        generate(numRows - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">                listn.add(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == numRows - <span class="number">1</span>) &#123;</span><br><span class="line">                listn.add(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == numRows - <span class="number">2</span>) &#123;</span><br><span class="line">                listn.add(listw.get(numRows - <span class="number">2</span>).get(i - <span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                listn.add(listw.get(numRows - <span class="number">2</span>).get(i - <span class="number">1</span>) + listw.get(numRows - <span class="number">2</span>).get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        listw.add(listn);</span><br><span class="line">        <span class="keyword">return</span> listw;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/08/31/118-杨辉三角/" data-id="ck0gj8yr70001f4gby46rjqbs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-24-两两交换链表中的节点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/31/24-两两交换链表中的节点/" class="article-date">
+  <time datetime="2019-08-31T14:57:20.000Z" itemprop="datePublished">2019-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/31/24-两两交换链表中的节点/">24. 两两交换链表中的节点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/2019/08/31/230aafc0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<h1 id="24-两两交换链表中的节点"><a href="#24-两两交换链表中的节点" class="headerlink" title="24. 两两交换链表中的节点"></a>24. <a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">两两交换链表中的节点</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
+<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
+<p>示例:</p>
+<pre><code>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
+<li>非递归</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pre = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        pre.next = head;</span><br><span class="line">        ListNode temp = pre;</span><br><span class="line">        <span class="keyword">while</span>(temp.next != <span class="keyword">null</span> &amp;&amp; temp.next.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ListNode start = temp.next;</span><br><span class="line">            ListNode end = temp.next.next;</span><br><span class="line">            temp.next = end;</span><br><span class="line">            start.next = end.next;</span><br><span class="line">            end.next = start;</span><br><span class="line">            temp = start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pre.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>递归解法</p>
+<ol>
+<li>详细介绍一下递归的思路;</li>
+<li>递归和栈处理问题类似,先把问题从前往后收集起来,然后再从后往前处理每一个问题;</li>
+<li>两两交换链表结点,先处理最后两个或一个节点,然后再从后往前处理每一对节点;</li>
+<li>先创建一个next临时结点保存head的下一个结点,然后让head指向下下一个节点,最后让 next节点指向head结点;</li>
+<li>此题只有处理完后面的结点才可处理前面的结点,画图更容易理解;</li>
+</ol>
+</li>
+</ol>
+<p><img src="/images/2019/08/31/edb550e0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 三个节点顺序:head, next, swapPairs(next.next)</span></span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        head.next = swapPairs(next.next);</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/08/31/24-两两交换链表中的节点/" data-id="ck0gj8yre0004f4gbkwng42x3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-334-反转字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/31/334-反转字符串/" class="article-date">
+  <time datetime="2019-08-31T14:49:17.000Z" itemprop="datePublished">2019-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/31/334-反转字符串/">334. 反转字符串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/2019/08/31/3b02c600-cbfe-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<h1 id="334-反转字符串"><a href="#334-反转字符串" class="headerlink" title="334. 反转字符串"></a>334. <a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">反转字符串</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 <code>char[]</code> 的形式给出。</p>
+<p>不要给另外的数组分配额外的空间，你必须<strong>原地</strong>修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+<p>你可以假设数组中的所有字符都是 <strong>ASCII</strong> 码表中的可打印字符。</p>
+<p>示例 1：</p>
+<pre><code>输入：[&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]
+输出：[&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]</code></pre><p>示例 2：</p>
+<pre><code>输入：[&quot;H&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;h&quot;]
+输出：[&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]    </code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
+<li>递归解法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        swap(<span class="number">0</span>, s.length-<span class="number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start &gt;= end)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span> temp = s[start];</span><br><span class="line">        s[start] = s[end];</span><br><span class="line">        s[end] = temp;</span><br><span class="line">        swap(start+<span class="number">1</span>, end-<span class="number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>循环解法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j=s.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length/<span class="number">2</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">char</span> tmp = s[i];</span><br><span class="line">            s[i] = s[j];</span><br><span class="line">            s[j] = tmp;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Python解法</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s: List[str])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">    s[<span class="number">0</span>::]=s[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>c++解法</li>
+</ol>
+<p>双指针，交换头尾两个指针所指的两个位置的值，指针向中间移动一个位置，重复以上操作，直到两个指针交错；</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = s.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(s[i],s[j]);</span><br><span class="line">            ++ i;</span><br><span class="line">            -- j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/08/31/334-反转字符串/" data-id="ck0gj8yrj0005f4gbnx3w5tck" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java面试题（框架-JVM-多线程-算法-数据库）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/" class="article-date">
+  <time datetime="2019-08-24T08:20:38.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/文章/">文章</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/">Java面试题（框架+JVM+多线程+算法+数据库）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/2019/08/24/58bd4f10-c647-11e9-a58b-4d8a77bb39d6.png" alt="image.png"></p>
+<h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><ol>
+<li>String类能被继承吗，为什么</li>
+<li>String，Stringbuffer，StringBuilder的区别？</li>
+<li>ArrayList和LinkedList有什么区别</li>
+<li>类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</li>
+<li>用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</li>
+<li>HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</li>
+<li>抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</li>
+<li>什么情况下会发生栈内存溢出</li>
+<li>什么是nio，原理</li>
+<li>反射中，Class.forName和ClassLoader区别</li>
+<li>tomcat结构，类加载器流程</li>
+<li>讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</li>
+<li>Spring的beanFactory和factoryBean的区别</li>
+<li>Spring加载流程</li>
+<li>Spring如何管理事务的</li>
+</ol>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><ol>
+<li>线城池的最大线程数目根据什么确定</li>
+<li>多线程的几种实现方式，什么是线程安全，什么是重排序3.volatile的原理，作用，能代替锁么</li>
+<li>sleep和wait的区别，以及wait的实现原理</li>
+<li>Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</li>
+<li>用过哪些原子类，他们的参数以及原理是什么</li>
+<li>用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</li>
+<li>有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</li>
+<li>spring的controller是单例还是多例，怎么保证并发的安全</li>
+<li>用三个线程按顺序循环打印abc三个字母，比如abcabcabc</li>
+<li>ThreadLocal用过么，原理是什么，用的时候要注意什么</li>
+<li>如果让你实现一个并发安全的链表，你会怎么做</li>
+</ol>
+<h1 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h1><ol>
+<li>jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</li>
+<li>你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</li>
+<li>当出现了内存溢出，你怎么排错</li>
+<li>JVM内存模型的相关知识了解多少</li>
+<li>简单说说你了解的类加载器</li>
+<li>JAVA的反射机制</li>
+</ol>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><ol>
+<li>http1.0和http1.1有什么区别</li>
+<li>TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</li>
+<li>TIME_WAIT和CLOSE_WAIT的区别</li>
+<li>说说你知道的几种HTTP响应码</li>
+<li>当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</li>
+<li>Linux下IO模型有几种，各自的含义是什么</li>
+<li>TCP/IP如何保证可靠性，数据包有哪些数据组成</li>
+<li>架构设计与分布式：</li>
+<li>tomcat如何调优，各种参数的意义</li>
+<li>常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</li>
+<li>如何防止缓存雪崩12.用java自己实现一个LRU</li>
+<li>分布式集群下如何做到唯一序列号</li>
+<li>设计一个秒杀系统，30分钟没付款就自动关闭交易</li>
+<li>如何做一个分布式锁</li>
+<li>用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</li>
+<li>MQ系统的数据如何保证不丢失</li>
+<li>分布式事务的原理，如何使用分布式事务</li>
+<li>什么是一致性hash</li>
+<li>什么是restful，讲讲你理解的restful</li>
+<li>如何设计建立和保持100w的长连接？</li>
+<li>解释什么是MESI协议(缓存一致性)</li>
+<li>说说你知道的几种HASH算法，简单的也可以</li>
+<li>什么是paxos算法</li>
+<li>redis和memcached 的内存管理的区别</li>
+<li>一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</li>
+</ol>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><ol>
+<li>10亿个数字里里面找最小的10个2、有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优3、2亿个随机生成的无序整数,找出中间大小的值4、遍历二叉树六、数据库1.数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</li>
+<li>高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</li>
+<li>SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</li>
+<li>数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</li>
+<li>MYsql的索引实现方式</li>
+<li>聚集索引和非聚集索引的区别</li>
+<li>数据库中 BTREE和B+tree区别</li>
+</ol>
+<p>作者：程序汪追风<br>链接：<a href="https://juejin.im/post/5d5fd40bf265da03df5f1b3a" target="_blank" rel="noopener">https://juejin.im/post/5d5fd40bf265da03df5f1b3a</a><br>来源：掘金</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/" data-id="ck0gj8yse000kf4gb1himv32v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-技术栈" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/18/技术栈/" class="article-date">
+  <time datetime="2019-08-18T15:30:34.000Z" itemprop="datePublished">2019-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/文章/">文章</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/18/技术栈/">技术栈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://hsutimes.club/usr/uploads/2019/08/1967887609.png" alt="stack.png"></p>
+<h1 id="HTML-CSS"><a href="#HTML-CSS" class="headerlink" title="HTML / CSS"></a>HTML / CSS</h1><ul>
+<li>【HTML】<br>HTML，即超文本标记语言（Hyper Text Markup Language）</li>
+<li>【HTML5】<br>HTML5 是下一代 HTML 标准</li>
+<li>【CSS】<br>层叠样式表（Cascading StyleSheet）</li>
+<li>【CSS3】<br>CSS3是CSS技术的升级版本</li>
+<li>【Bootstrap3】<br>Bootstrap，来自 Twitter，是目前最受欢迎的前端框架</li>
+<li>【Bootstrap4】<br>Bootstrap4 目前是 Bootstrap 的最新版本</li>
+<li>【Font Awesome】<br>Font Awesome 是一套绝佳的图标字体库和CSS框架。</li>
+<li>【Foundation】<br>Foundation 用于开发响应式的 HTML, CSS and JavaScript 框架<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1></li>
+<li>【JavaScript】<br>JavaScript 是 Web 的编程语言</li>
+<li>【HTML DOM】<br>HTML DOM 定义了访问和操作 HTML 文档的标准方法</li>
+<li>【jQuery】<br>jQuery 是一个 JavaScript 库</li>
+<li>【AngularJS】<br>AngularJS 通过新的属性和表达式扩展了 HTML</li>
+<li>【AngularJS2】<br>AngularJS2 是一款开源JavaScript库，由Google维护。</li>
+<li>【Vue.js】<br>Vue.js 是一套构建用户界面的渐进式框架。</li>
+<li>【React】<br>React 是一个用于构建用户界面的 JAVASCRIPT 库</li>
+<li>【TypeScript】<br>TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准</li>
+<li>【jQuery UI】<br>jQuery UI 是建立在 jQuery上的一组用户界面交互、特效、小部件及主题</li>
+<li>【jQuery EasyUI 】<br>jQuery EasyUI 是一个基于 jQuery 的框架，集成了各种用户界面插件</li>
+<li>【Node.js】<br>Node.js 是运行在服务端的 JavaScript</li>
+<li>【AJAX】<br>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）</li>
+<li>【JSON】<br>JSON 是存储和交换文本信息的语法</li>
+<li>【Highcharts】<br>Highcharts 是一个用纯JavaScript编写的一个图表库</li>
+<li>【Google 地图】<br>Google 地图接口使用说明</li>
+</ul>
+<h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><ul>
+<li>【PHP】<br>PHP 是一种通用开源脚本语言</li>
+<li>【Python】<br>Python 是一种面向对象、解释型计算机程序设计语言</li>
+<li>【Python3】<br>Python 升级版，变化较大</li>
+<li>【Django】<br>Django是一个开放源代码的Web应用框架，由Python写成</li>
+<li>【Linux】<br>Linux是一套免费使用和自由传播的类Unix操作系统</li>
+<li>【Docker】<br>Docker 是一个开源的应用容器引擎，基于 Go 语言</li>
+<li>【Ruby】<br>一种为简单快捷的面向对象编程（面向对象程序设计）而创的脚本语言</li>
+<li>【Java】<br>一种可以撰写跨平台应用软件的面向对象的程序设计语言</li>
+<li>【C】<br>一门通用计算机编程语言</li>
+<li>【C++】<br>C++是在C语言的基础上开发的一种通用编程语言</li>
+<li>【Perl】<br>Perl 是高级、通用、直译式、动态的程序语言</li>
+<li>【Servlet 】<br>运行在 Web 服务器或应用服务器上的程序</li>
+<li>【JSP】<br>JSP与PHP、ASP、ASP.NET等语言类似，运行在服务端的语言</li>
+<li>【Lua】<br>Lua 是一种轻量小巧的脚本语言，用标准C语言编写并以源代码形式开放</li>
+<li>【Scala】<br>Scala 是一门多范式（multi-paradigm）的编程语言。</li>
+<li>【Go】<br>Go语言是谷歌推出的一种全新的编程语言</li>
+<li>【设计模式】<br>设计模式代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用</li>
+<li>【正则表达式】<br>正则表达式是对字符串操作的一种逻辑公式</li>
+<li>【Maven】<br>Maven 是一个项目管理工具，可以对 Java 项目进行构建、依赖管理。</li>
+<li>【NumPy】<br>NumPy 是 Python 语言的一个扩展程序库，支持大量的维度数组与矩阵运算。</li>
+<li>【ASP】<br>ASP（Active Server Pages 动态服务器页面）是一种生成动态交互性网页的强有力工具</li>
+<li>【AppML】<br>AppML 是一个为web应用程序设计的HTML扩展框</li>
+<li>【VBScript】<br>一种微软环境下的轻量级的解释型语言</li>
+</ul>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><ul>
+<li>【SQL】<br>结构化查询语言(Structured Query Language)</li>
+<li>【Mysql】<br>MySQL是一个关系型数据库管理系统</li>
+<li>【PostgreSQL】<br>PostgreSQL 是一个免费的对象-关系数据库服务器(ORDBMS)</li>
+<li>【SQLite】<br>一款轻型的数据库</li>
+<li>【MongoDB】<br>Mongo DB 是目前在IT行业非常流行的一种非关系型数据库(NoSql)</li>
+<li>【Redis】<br>一个高性能的key-value数据库</li>
+<li>【Memcached】<br>Memcached是一个自由开源的，高性能，分布式内存对象缓存系统。</li>
+</ul>
+<h1 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h1><ul>
+<li>【Android】<br><code>Android</code> 是一种基于Linux的自由及开放源代码的操作系统，主要使用于移动设备</li>
+<li>【Swift】<br>Swift 是一种支持多编程范式和编译式的编程语言,用于开发 iOS，OS X 和 watchOS应用程序。</li>
+<li>【jQuery Mobile】<br>jQuery Mobile是jQuery 在手机上和平板设备上的版本</li>
+<li>【ionic】<br><code>ionic</code> 是一个强大的 HTML5 应用程序开发框架(HTML5 Hybrid Mobile App Framework )</li>
+<li>【Kotlin】<br>在 Java 虚拟机上运行的静态类型编程语言，Android 官方开发语言</li>
+</ul>
+<h1 id="XML-教程"><a href="#XML-教程" class="headerlink" title="XML 教程"></a>XML 教程</h1><ul>
+<li>【XML】<br>XML 被设计用来传输和存储数据</li>
+<li>【DTD】<br>DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块</li>
+<li>【XML DOM】<br>XML DOM 定义访问和操作XML文档的标准方法</li>
+<li>【XSLT】<br>XSL 是一个 XML 文档的样式表语言，XSLT 指 XSL 转换</li>
+<li>【XPath】<br>XPath 是一门在 XML 文档中查找信息的语言</li>
+<li>【XQuery】<br>XQuery 被设计用来查询 XML 数据</li>
+<li>【XLink】<br>XLink 定义在 XML 文档中创建超级链接的标准方法</li>
+<li>【XPointer】<br>XPointer是在可扩展标志语言（XML）文件中定位数据的一种语言</li>
+<li>【XML Schema】<br>XML Schema 描述了 XML文档的结构</li>
+<li>【XSL-FO】<br>XSL-FO 指可扩展样式表语言格式化对象</li>
+<li>【SVG】<br>SVG 使用 XML 格式定义图像</li>
+</ul>
+<h1 id="ASP-NET"><a href="#ASP-NET" class="headerlink" title="ASP.NET"></a>ASP.NET</h1><ul>
+<li>【ASP.NET】<br>ASP.NET 是一个使用 HTML、CSS、JavaScript 和服务器脚本创建网页和网站的开发框架</li>
+<li>【C#】<br>C# 是一个简单的、现代的、通用的、面向对象的编程语言</li>
+<li>【Web Pages】<br>Web Pages 是三种网页编程模型中的一种，用于创建网站和web 应用程序</li>
+<li>【Razor】<br>Razor 是一种标记语法，可以让您将基于服务器的代码（Visual Basic 和 C#）嵌入到网页中</li>
+<li>【MVC】<br>MVC（Model View Controller 模型-视图-控制器）</li>
+<li>【Web Forms】<br>Web Forms 是三种创建 ASP.NET 网站和 Web 应用程序的编程模式中的一种</li>
+</ul>
+<h1 id="Web-Service"><a href="#Web-Service" class="headerlink" title="Web Service"></a>Web Service</h1><ul>
+<li>【Web Service】<br>Web Service 脚本平台需支持 XML + HTTP</li>
+<li>【WSDL】<br>WSDL是一门基于 XML 的语言，用于描述 Web Service 以及如何对它们进行访问</li>
+<li>【SOAP】<br>SOAP 是一种简单的基于 XML 的协议，它使应用程序通过 HTTP 来交换信息</li>
+<li>【RSS】<br>RSS基于XML标准，在互联网上被广泛采用的内容包装和投递协议</li>
+<li>【RDF】<br>DF(资源描述框架)是描述网络资源的 W3C 标准</li>
+</ul>
+<h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><ul>
+<li>【Eclipse】<br>Eclipse 是一个开放源代码的、基于 Java 的可扩展开发平台</li>
+<li>【Git】<br>Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目</li>
+<li>【Svn】<br>SVN 是一个开放源代码的版本控制系统</li>
+<li>【Markdown】<br>Markdown 是一种轻量级标记语</li>
+</ul>
+<h1 id="网站建设"><a href="#网站建设" class="headerlink" title="网站建设"></a>网站建设</h1><ul>
+<li>【HTTP】<br>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议</li>
+<li>【网站建设指南】<br>网站建设指导课程</li>
+<li>【浏览器信息】<br>对于网站开发人员来说，浏览器信息和统计数据都是非常重要的</li>
+<li>【网站主机教程】<br>如果您希望向全世界发布自己的网站，那么您的网站就需要被放置于一个 WEB 服务器</li>
+<li>【TCP/IP】<br>TCP/IP 是因特网的通信协议</li>
+<li>【W3C】<br>W3C 让每个人都能在互联网上分享资源</li>
+<li>【网站品质】<br>何创建高质量的web网站</li>
+</ul>
+<p><a href="https://www.runoob.com/" target="_blank" rel="noopener">菜鸟教程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/08/18/技术栈/" data-id="ck0gj8ytn001gf4gb2a1wlbzd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文章/">文章</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git教程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/16/git教程/" class="article-date">
+  <time datetime="2019-08-16T07:47:37.000Z" itemprop="datePublished">2019-08-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/文章/">文章</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/16/git教程/">git教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h1><p>git - 愚蠢的内容跟踪器</p>
+<h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><pre><code>git [--version] [ -  help] [-C &lt;path&gt;] [-c &lt;name&gt; = &lt;value&gt;]
+    [--exec-path [= &lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+    [-p | --paginate | -P | --no-pager] [ -  no-replace-objects] [--bare]
+    [--git-dir = &lt;path&gt;] [ -  work-tree = &lt;path&gt;] [--namespace = &lt;name&gt;]
+    [--super前缀= &lt;路径&gt;]
+    &lt;command&gt; [&lt;args&gt;]</code></pre><h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><p>Git是一个快速，可扩展的分布式版本控制系统，具有异常丰富的命令集，可提供高级操作和对内部的完全访问。</p>
+<p>请参阅gittutorial [7]以开始使用，然后查看 giteveryday [7]以获取有用的最小命令集。在Git的用户手册有一个更深入的介绍。</p>
+<p>掌握了基本概念后，您可以回到此页面了解Git提供的命令。您可以使用“git help command”了解有关各个Git命令的更多信息。 gitcli [7] 手册页概述了命令行命令语法。</p>
+<p>可以在以下位置查看最新Git文档的格式化和超链接副本<a href="https://git.github.io/htmldocs/git.html。" target="_blank" rel="noopener">https://git.github.io/htmldocs/git.html。</a></p>
+<h1 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h1><ul>
+<li><p>版<br>打印git程序来自的Git套件版本。</p>
+</li>
+<li><p>救命<br>打印概要和最常用命令的列表。如果选择–all或-a已给出，则打印所有可用命令。如果命名了Git命令，则此选项将显示该命令的手册页。</p>
+</li>
+</ul>
+<p>其他选项可用于控制手册页的显示方式。有关更多信息，请参阅git-help [1]，因为git –help …内部转换为git help …。</p>
+<p>-C &lt;路径&gt;<br>运行就好像git是在<path>而不是当前工作目录中启动的。当-C给出多个选项时，-C <path>相对于前面的每个后续非绝对值被解释-C <path>。如果<path>存在但是为空，例如-C “”，则保持当前工作目录不变。</path></path></path></path></p>
+<p>此选项会影响预期的路径名的选项一样–git-dir，并 –work-tree在他们的路径名的解释，将相对于所造成的工作目录进行-C选择。例如，以下调用是等效的：</p>
+<pre><code>git --git-dir = a.git --work-tree = b -C c status
+git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = <value><br>将配置参数传递给命令。给定的值将覆盖配置文件中的值。<name>的格式与git config列出的格式相同 （以点分隔的子键）。</name></value></name></p>
+<p>请注意，允许省略=in git -c foo.bar …并设置 foo.bar为布尔值true（就像[foo]bar在配置文件中一样）。包括equals但空值（如git -c foo.bar= …）设置foo.bar为git config –type=bool将转换为的空字符串false。</p>
+<p>–exec路径[= &lt;路径&gt;]<br>安装核心Git程序的路径。这也可以通过设置GIT_EXEC_PATH环境变量来控制。如果没有给出路径，git将打印当前设置然后退出。</p>
+<p>–html路径<br>打印路径，不带斜杠，安装Git的HTML文档并退出。</p>
+<p>–man路径<br>打印manpath（请参阅参考资料man(1)）获取此版本Git的手册页并退出。</p>
+<p>–info路径<br>打印安装记录此版本Git的Info文件的路径并退出。</p>
+<p>-p<br>–paginate<br>如果标准输出是终端，则将所有输出传输到较少（或如果设置为$ PAGER）。这将覆盖pager.<cmd> 配置选项（请参阅下面的“配置机制”部分）。</cmd></p>
+<p>-P<br>–no寻呼机<br>不要将Git输出传输到寻呼机。</p>
+<p>–git-DIR = &lt;路径&gt;<br>设置存储库的路径。这也可以通过设置GIT_DIR环境变量来控制。它可以是当前工作目录的绝对路径或相对路径。</p>
+<ul>
+<li>共同努力树= &lt;路径&gt;<br>设置工作树的路径。它可以是绝对路径或相对于当前工作目录的路径。这也可以通过设置GIT_WORK_TREE环境变量和core.worktree配置变量来控制（有关更详细的讨论，请参阅git-config [1]中的core.worktree ）。</li>
+</ul>
+<p>–namespace = &lt;路径&gt;<br>设置Git名称空间。有关更多详细信息，请参阅gitnamespaces [7]。相当于设置GIT_NAMESPACE环境变量。</p>
+<p>–super前缀= &lt;路径&gt;<br>目前仅供内部使用。设置一个前缀，该前缀提供从存储库上方到其根目录的路径。一个用途是给出调用它的超级项目的子模块上下文。</p>
+<ul>
+<li>裸<br>将存储库视为裸存储库。如果未设置GIT_DIR环境，则将其设置为当前工作目录。</li>
+</ul>
+<p>–no替换对象<br>不要使用替换引用来替换Git对象。有关更多信息，请参阅 git-replace [1]。</p>
+<p>–literal按本义，pathspecs<br>按字面意思处理pathspecs（即没有globbing，没有pathspec魔法）。这相当于将GIT_LITERAL_PATHSPECS环境变量设置为1。</p>
+<p>–glob-pathspecs<br>为所有pathspec添加“glob”魔法。这相当于将GIT_GLOB_PATHSPECS环境变量设置为1。可以使用pathspec magic“:( literal）”在各个pathspec上禁用通配符</p>
+<p>–noglob-pathspecs<br>为所有pathspec添加“literal”魔法。这相当于将GIT_NOGLOB_PATHSPECS环境变量设置为1。可以使用pathspec magic“:( glob）”在各个pathspec上启用globbing</p>
+<p>–icase-pathspecs<br>为所有pathspec添加“icase”魔法。这相当于将GIT_ICASE_PATHSPECS环境变量设置为1。</p>
+<p>–no-可选锁<br>不要执行需要锁定的可选操作。这相当于设置GIT_OPTIONAL_LOCKS为0。</p>
+<p>–list-CMDS =基团[，组…]<br>按组列出命令。这是一个内部/实验选项，可能会在将来更改或删除。支持的组包括：builtins，parseopt（使用parse-options的内置命令），main（libexec目录中的所有命令），其他（所有其他命令$PATH都有git-前缀），list- <category>（请参阅命令中的类别 - list.txt），nohelpers（排除帮助程序命令），别名和配置（从配置变量completion.commands检索命令列表）</category></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.hsutimes.com/2019/08/16/git教程/" data-id="ck0gj8yt60012f4gbe0zwjdmg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文章/">文章</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
 
   
 
 
-
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div style="flex: 1;">
-      
-
-
-<div class="index-container" id='/page/4/index.html' data-name='index' data-version='2.1.3'>
-	<div class='index-intro'>
-		
-	</div>
-	
-		<div class="grid-2_md-1 grid-equalHeight index-cards">
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-1' id='hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db' data-name='狂野飙车9' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/09/05/狂野飙车9/">
-		
-
-		 
-			<img class='grow' src="生活" alt="" onerror='this.src = "/images/jdenticon/5fa41715f2aee58751b905bcc46c34b229dca96a3aa6ec85408dcabc1df8fffb.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/09/05/狂野飙车9/">
-				
-				狂野飙车9</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/09/05/狂野飙车9/">
-				
-				
-				
-				兰博基尼
-法拉利
-布加迪
-迈凯伦
-兰博基尼
-风神
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/狂野飙车/">狂野飙车</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/跑车/">跑车</a></label>
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-09-05
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/09/05/狂野飙车9/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-2' id='hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb' data-name='Spring框架面试总结' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/09/04/Spring框架面试总结/">
-		
-
-		 
-			<img class='grow' src="文章" alt="" onerror='this.src = "/images/jdenticon/ffc805ec17daa0ff4d7266a1f3339a97cac4ecfc622a91b8bcc60c84406ac33b.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/09/04/Spring框架面试总结/">
-				
-				Spring框架面试总结</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/09/04/Spring框架面试总结/">
-				
-				
-				
-				...
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/Spring/">Spring</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/面试/">面试</a></label>
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-09-04
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/09/04/Spring框架面试总结/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-3' id='hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c' data-name='天平砝码摆放问题' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/09/02/天平砝码摆放问题/">
-		
-
-		 
-			<img class='grow' src="算法" alt="" onerror='this.src = "/images/jdenticon/98c08fbeb5fb259116df15260a6bc3624320a9c888bc9e7b4243f3f0a400ef89.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/09/02/天平砝码摆放问题/">
-				
-				天平砝码摆放问题</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/09/02/天平砝码摆放问题/">
-				
-				
-				
-				题目一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。要使天平平衡，有多少种方法？（对称摆放算作一种方法）...
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/天平/">天平</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/暴力破解/">暴力破解</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-09-02
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/09/02/天平砝码摆放问题/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-4' id='hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5' data-name='118. 杨辉三角' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/08/31/118-杨辉三角/">
-		
-
-		 
-			<img class='grow' src="算法" alt="" onerror='this.src = "/images/jdenticon/6e326b6c9966aa87baed136a77352e6ead964bb1126ee9a1a17977cb498815e8.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/08/31/118-杨辉三角/">
-				
-				118. 杨辉三角</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/08/31/118-杨辉三角/">
-				
-				
-				
-				杨辉三角题目给定一个非负整数 numRows，生成杨辉三角的前 numRows行。
-
-在杨辉三角中，每个数是它左上方和右上方的数的和。
-示例:
-123456789输入: 5输出:[     [1],    [1,1],   [1,2,1],  [1,3,3,1],...
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/递归/">递归</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-4'><a href="/tags/链表/">链表</a></label>
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-08-31
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/08/31/118-杨辉三角/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-5' id='hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b' data-name='24. 两两交换链表中的节点' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/08/31/24-两两交换链表中的节点/">
-		
-
-		 
-			<img class='grow' src="算法" alt="" onerror='this.src = "/images/jdenticon/609d866033ce2414f06764991fc551b944caabb607ce493eccdd7e3c47ca0e91.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/08/31/24-两两交换链表中的节点/">
-				
-				24. 两两交换链表中的节点</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/08/31/24-两两交换链表中的节点/">
-				
-				
-				
-				24. 两两交换链表中的节点题目给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
-你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
-示例:
-给定 1-&gt;2-&gt;3-&gt;4, 你应该返回...
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/递归/">递归</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-4'><a href="/tags/链表/">链表</a></label>
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-08-31
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/08/31/24-两两交换链表中的节点/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-6' id='hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219' data-name='334. 反转字符串' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/08/31/334-反转字符串/">
-		
-
-		 
-			<img class='grow' src="算法" alt="" onerror='this.src = "/images/jdenticon/74c8cff3215e3e09a690a4dd7942716eadc249a6ccae776320b23c53b0efdda7.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/08/31/334-反转字符串/">
-				
-				334. 反转字符串</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/08/31/334-反转字符串/">
-				
-				
-				
-				334. 反转字符串题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。
-不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。
-你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。
-示例...
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/递归/">递归</a></label>
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-08-31
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/08/31/334-反转字符串/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-7' id='hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5' data-name='Java面试题（框架+JVM+多线程+算法+数据库）' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/">
-		
-
-		 
-			<img class='grow' src="文章" alt="" onerror='this.src = "/images/jdenticon/a757ba7f5d976a8320a3c9b961b74384d11d927392dae2a24aa4eda3ebc63ffd.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/">
-				
-				Java面试题（框架+JVM+多线程+算法+数据库）</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/">
-				
-				
-				
-				...
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/JVM/">Jvm</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/数据库/">数据库</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/框架/">框架</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-4'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-		
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-08-24
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-8' id='hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a' data-name='技术栈' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/08/18/技术栈/">
-		
-
-		 
-			<img class='grow' src="文章" alt="" onerror='this.src = "/images/jdenticon/265b45019e65135d6fe3bd2380125e14e684b596ffca442ea44f35f74e128d78.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/08/18/技术栈/">
-				
-				技术栈</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/08/18/技术栈/">
-				
-				
-				
-				HTML / CSS
-【HTML】HTML，即超文本标记语言（Hyper Text Markup Language）
-【HTML5】HTML5 是下一代 HTML 标准
-【CSS】层叠样式表（Cascading...
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/文章/">文章</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/编程/">编程</a></label>
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-08-18
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/08/18/技术栈/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-<div class='Card Card-hover Card-index-9' id='hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a' data-name='git教程' data-version=''>
-	
-		
-			
-				
-				
-			
-		
-	
-	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
-	<div class='Card-figure'>
-		
-			<a href="/2019/08/16/git教程/">
-		
-
-		 
-			<img class='grow' src="文章" alt="" onerror='this.src = "/images/jdenticon/26a0a41419a643e27bc234cb60d465c02a2370c08a6b170d4f701415f7b5f27a.png"'> 
-		
-		</a>
-	</div>
-	<div class="Card-body">
-
-			<div class='Card-title'>
-				<h2>
-				
-					<a href="/2019/08/16/git教程/">
-				
-				Git教程</a></h2>
-			</div>
-			<div class='Card-excerpt'>
-				<p>
-				
-					<a href="/2019/08/16/git教程/">
-				
-				
-				
-				名称git - 愚蠢的内容跟踪器
-概要git [--version] [ -  help] [-C &lt;path&gt;] [-c &lt;name&gt; = &lt;value&gt;]
-    [--exec-path [= &lt;path&gt;]] [--html-path]...
-				</a></p>
-				
-			</div>
-
-			
-			
-			<div class="Card-meta">
-				
-				<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/git/">Git</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/文章/">文章</a></label>
-			
-		
-	
-	</div>
-</div>
-				
-				<ul>
-						<li class='card-calendar'>
-							<a href="/archives/">
-								<i class='fa fa-calendar'></i> 2019-08-16
-							</a>
-						</li>
-						
-						
-						<li class='card-comment'>
-							<a href="/2019/08/16/git教程/#article-comment">
-								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-							</a>
-						</li>
-						<li class='card-visitor'><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
-						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
-						
-						
-				</ul>
-			</div>
-		</a>
-	</div>
-</div>
-		
-		</div>
-	
-	<br>
-	
-	<div class='pagination'>
-	
-		<div class="pagination-item">
-			<a href="/page/3/" class="prev grow"><b><i class='fas fa-arrow-circle-left'></i></b></a>
-		</div>
-	
-	
-	
-	
-		
-		
-		<div class="pagination-item">
-			
-			
-				
-					<a class='grow' href="/">1</a>
-				
-			
-		</div>
-		
-		
-	
-		
-		
-		<div class="pagination-item">
-			
-			
-				
-					<a class='grow' href="/page/2/">2</a>
-				
-			
-		</div>
-		
-		
-	
-		
-		
-		<div class="pagination-item">
-			
-			
-				
-					<a class='grow' href="/page/3/">3</a>
-				
-			
-		</div>
-		
-		
-	
-		
-		
-		<div class="pagination-item">
-			
-			
-				<span>4</span>
-			
-		</div>
-		
-		
-	
-	
-</div>
-</div>
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/人工智能/">人工智能</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/">笔试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashMap/">HashMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Http/">Http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OCR/">OCR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dio/">dio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/electron/">electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jad/">jad</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webhooks/">webhooks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反编译/">反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备份/">备份</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/天平/">天平</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文章/">文章</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爱因斯坦/">爱因斯坦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/狂野飙车/">狂野飙车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百科/">百科</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/相对论/">相对论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/矩阵/">矩阵</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/素数/">素数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/红黑树/">红黑树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化部署/">自动化部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跑车/">跑车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/边缘检测/">边缘检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/魔方/">魔方</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/TensorFlow/" style="font-size: 11.67px;">TensorFlow</a> <a href="/tags/dio/" style="font-size: 10px;">dio</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/jad/" style="font-size: 10px;">jad</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/leetcode/" style="font-size: 16.67px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/webhooks/" style="font-size: 10px;">webhooks</a> <a href="/tags/二叉树/" style="font-size: 10px;">二叉树</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/天平/" style="font-size: 10px;">天平</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/文章/" style="font-size: 11.67px;">文章</a> <a href="/tags/暴力破解/" style="font-size: 10px;">暴力破解</a> <a href="/tags/机器学习/" style="font-size: 11.67px;">机器学习</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/爱因斯坦/" style="font-size: 10px;">爱因斯坦</a> <a href="/tags/狂野飙车/" style="font-size: 10px;">狂野飙车</a> <a href="/tags/百科/" style="font-size: 10px;">百科</a> <a href="/tags/相对论/" style="font-size: 10px;">相对论</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/素数/" style="font-size: 10px;">素数</a> <a href="/tags/红黑树/" style="font-size: 10px;">红黑树</a> <a href="/tags/编程/" style="font-size: 15px;">编程</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/自动化部署/" style="font-size: 10px;">自动化部署</a> <a href="/tags/跑车/" style="font-size: 10px;">跑车</a> <a href="/tags/边缘检测/" style="font-size: 10px;">边缘检测</a> <a href="/tags/递归/" style="font-size: 13.33px;">递归</a> <a href="/tags/链表/" style="font-size: 11.67px;">链表</a> <a href="/tags/面试/" style="font-size: 18.33px;">面试</a> <a href="/tags/魔方/" style="font-size: 10px;">魔方</a>
+    </div>
   </div>
 
   
-
-<footer id='footer'>
-    <div class='footer-copyright'>
-        <div>
-            <p> 版权所有 <a href="">times </a> @ 2019</p>
-            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
-        </div>
-    </div>
     
-    <div class='footer-social'>
-        
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/23/HashMap类/">HashMap类</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/21/BigInteger类/">BigInteger类</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/21/客户端面试/">客户端面试</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/Java知识点/">Java知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/18/面试笔记/">面试笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 times<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
-
-  <br>
-
-  <div id="footer-nav" class='footer-nav'>
-		
-
-
-
-<nav id="nav">
-	
-	
-	
-	<div class='nav-item' id='nav-item-archive'>
-		
-				<div class='nav-icon'>
-				
-			<a href="/archives/" title='归档'>
-			<img src="/images/icons/blue-shadow/archive.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class='nav-item' id='nav-item-search'>
-		
-		<div class='nav-icon'>
-		
-			<a href="/search/" title='搜索'>
-			<img src="/images/icons/blue-shadow/search.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class="nav-item" id='nav-item-more'>
-		<div class="nav-icon">
-				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
-				<img src="/images/icons/blue-shadow/menu.svg" alt="">
-				</a>
-		</div>
-		<div class="nav-more-menu">
-				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
-		
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/文章/">
-						<span>文章</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/算法/">
-						<span>算法</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/人工智能/">
-						<span>人工智能</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/生活/">
-						<span>生活</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/笔试/">
-						<span>笔试</span>
-					</a>
-				</div>
-		</div>
-		
-	</div>
-	</div>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
 </nav>
-
-	</div>
-
-  
-
-
-
     
-    
-    
-    
-    
-<script>
-    new Valine({
-        el: '#valine',
-        notify:false, 
-        verify:false,
-        pageSize: 10,
-        comment_count: true,
-        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
-        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
-        placeholder: 'just go go',
-        path:window.location.pathname, 
-        avatar:'retro',
-        lang: 'z'
-    });
-</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
 
 
 
-
-
-
-
-
-    <script src="/js/lightgallery.min.js"></script>
-<script src="/js/lg-zoom.min.js"></script>
-<script type='text/javascript'>
-    $(document).ready(function() {
-        $("#lightgallery").lightGallery(); 
-        $(".article-content img").each(function(){
-            console.log($(this).attr('src'))
-            $(this).attr('data-src', $(this).attr('src')).lightGallery({
-                selector: 'this'
-            })
-        });
-    });
-</script>
-
-
-
-
-
-
-<script type='text/javascript'>
-
-  
-    loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
-    loadjs.ready('post-version', {
-      success: function(){
-        console.log('ready to run badge script')
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .Card-title a, #hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .Card-excerpt a, #hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .Card-figure a');
-          new Postv2('hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db').showUnreadNotification('hashit_d3a32374f0337355b4960eb66a58387cf54d5aa5811e37c021b464fa273ccaae', function(){
-            console.log('show badge for 2019/09/05/狂野飙车9/ : hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db');
-            var postBadge = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/05/狂野飙车9/ : hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db');
-            var postBadge = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db').update('hashit_d3a32374f0337355b4960eb66a58387cf54d5aa5811e37c021b464fa273ccaae', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-title a, #hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-excerpt a, #hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-figure a');
-          new Postv2('hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb').showUnreadNotification('hashit_af45d052dc8491173976a96d9d03a9329fc4fe317844fc6f22f003c6216cc645', function(){
-            console.log('show badge for 2019/09/04/Spring框架面试总结/ : hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb');
-            var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/04/Spring框架面试总结/ : hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb');
-            var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb').update('hashit_af45d052dc8491173976a96d9d03a9329fc4fe317844fc6f22f003c6216cc645', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-title a, #hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-excerpt a, #hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-figure a');
-          new Postv2('hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c').showUnreadNotification('hashit_b4627d1d97965d9c79c189415b6ca77166750f5dc07636472a89e5539cdccfa5', function(){
-            console.log('show badge for 2019/09/02/天平砝码摆放问题/ : hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c');
-            var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/02/天平砝码摆放问题/ : hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c');
-            var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c').update('hashit_b4627d1d97965d9c79c189415b6ca77166750f5dc07636472a89e5539cdccfa5', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-title a, #hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-excerpt a, #hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-figure a');
-          new Postv2('hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5').showUnreadNotification('hashit_3fd7bee0e0869578d039840f2516b20a5ecce8949998c17ef183c7928196d39e', function(){
-            console.log('show badge for 2019/08/31/118-杨辉三角/ : hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5');
-            var postBadge = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/31/118-杨辉三角/ : hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5');
-            var postBadge = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5').update('hashit_3fd7bee0e0869578d039840f2516b20a5ecce8949998c17ef183c7928196d39e', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .Card-title a, #hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .Card-excerpt a, #hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .Card-figure a');
-          new Postv2('hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b').showUnreadNotification('hashit_aac55820fec0c29e05985ecb68932e3e08373c7bb15e13d0f48dfc55a497b073', function(){
-            console.log('show badge for 2019/08/31/24-两两交换链表中的节点/ : hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b');
-            var postBadge = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/31/24-两两交换链表中的节点/ : hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b');
-            var postBadge = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b').update('hashit_aac55820fec0c29e05985ecb68932e3e08373c7bb15e13d0f48dfc55a497b073', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .Card-title a, #hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .Card-excerpt a, #hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .Card-figure a');
-          new Postv2('hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219').showUnreadNotification('hashit_f9e171e44e73730532a44b363b40adb05dd707d3010cbc745c8d183a10d5b306', function(){
-            console.log('show badge for 2019/08/31/334-反转字符串/ : hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219');
-            var postBadge = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/31/334-反转字符串/ : hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219');
-            var postBadge = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219').update('hashit_f9e171e44e73730532a44b363b40adb05dd707d3010cbc745c8d183a10d5b306', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .Card-title a, #hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .Card-excerpt a, #hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .Card-figure a');
-          new Postv2('hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5').showUnreadNotification('hashit_dff56504797efa9bddbcb675f542ec427f870dc5a574976412b7b782e09bea95', function(){
-            console.log('show badge for 2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/ : hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5');
-            var postBadge = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/ : hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5');
-            var postBadge = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5').update('hashit_dff56504797efa9bddbcb675f542ec427f870dc5a574976412b7b782e09bea95', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-title a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-excerpt a, #hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .Card-figure a');
-          new Postv2('hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a').showUnreadNotification('hashit_b10cc25c7304fe095195048d661d7ff23cbf2e42f87b8efcd23e4bb4291425f4', function(){
-            console.log('show badge for 2019/08/18/技术栈/ : hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a');
-            var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/18/技术栈/ : hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a');
-            var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a').update('hashit_b10cc25c7304fe095195048d661d7ff23cbf2e42f87b8efcd23e4bb4291425f4', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .Card-title a, #hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .Card-excerpt a, #hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .Card-figure a');
-          new Postv2('hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a').showUnreadNotification('hashit_ade0febe5ffb6998e1e9fad087447d98a613b05d55a1603a71c7db0d6097d515', function(){
-            console.log('show badge for 2019/08/16/git教程/ : hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a');
-            var postBadge = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/16/git教程/ : hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a');
-            var postBadge = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a').update('hashit_ade0febe5ffb6998e1e9fad087447d98a613b05d55a1603a71c7db0d6097d515', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-      }
-    })
-  
-</script>
-
-
-    
-<script type='text/javascript'>
-  
-    function getIP(json) {
-      loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
-    loadjs.ready('post-visit-comment-count', {
-      success: function(){
-          LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
-          var leanCloud = LeanCloud.getInstance();
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/05/狂野飙车9/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/05/狂野飙车9/');
-          leanCloud.fetchVisitCount('/2019/09/05/狂野飙车9/');
-          leanCloud.fetchThumbUpCount('/2019/09/05/狂野飙车9/');
-          leanCloud.getCommentCount('/2019/09/05/狂野飙车9/', function(count){
-              var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/05/狂野飙车9/', function(count){
-              var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/05/狂野飙车9/', function(count){
-              var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/05/狂野飙车9/', function(isThumbUp){
-              var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/04/Spring框架面试总结/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/04/Spring框架面试总结/');
-          leanCloud.fetchVisitCount('/2019/09/04/Spring框架面试总结/');
-          leanCloud.fetchThumbUpCount('/2019/09/04/Spring框架面试总结/');
-          leanCloud.getCommentCount('/2019/09/04/Spring框架面试总结/', function(count){
-              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/04/Spring框架面试总结/', function(count){
-              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/04/Spring框架面试总结/', function(count){
-              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/04/Spring框架面试总结/', function(isThumbUp){
-              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/02/天平砝码摆放问题/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/02/天平砝码摆放问题/');
-          leanCloud.fetchVisitCount('/2019/09/02/天平砝码摆放问题/');
-          leanCloud.fetchThumbUpCount('/2019/09/02/天平砝码摆放问题/');
-          leanCloud.getCommentCount('/2019/09/02/天平砝码摆放问题/', function(count){
-              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/02/天平砝码摆放问题/', function(count){
-              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/02/天平砝码摆放问题/', function(count){
-              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/02/天平砝码摆放问题/', function(isThumbUp){
-              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/31/118-杨辉三角/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/31/118-杨辉三角/');
-          leanCloud.fetchVisitCount('/2019/08/31/118-杨辉三角/');
-          leanCloud.fetchThumbUpCount('/2019/08/31/118-杨辉三角/');
-          leanCloud.getCommentCount('/2019/08/31/118-杨辉三角/', function(count){
-              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/31/118-杨辉三角/', function(count){
-              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/31/118-杨辉三角/', function(count){
-              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/31/118-杨辉三角/', function(isThumbUp){
-              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/31/24-两两交换链表中的节点/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/31/24-两两交换链表中的节点/');
-          leanCloud.fetchVisitCount('/2019/08/31/24-两两交换链表中的节点/');
-          leanCloud.fetchThumbUpCount('/2019/08/31/24-两两交换链表中的节点/');
-          leanCloud.getCommentCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
-              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
-              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
-              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/31/24-两两交换链表中的节点/', function(isThumbUp){
-              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/31/334-反转字符串/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/31/334-反转字符串/');
-          leanCloud.fetchVisitCount('/2019/08/31/334-反转字符串/');
-          leanCloud.fetchThumbUpCount('/2019/08/31/334-反转字符串/');
-          leanCloud.getCommentCount('/2019/08/31/334-反转字符串/', function(count){
-              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/31/334-反转字符串/', function(count){
-              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/31/334-反转字符串/', function(count){
-              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/31/334-反转字符串/', function(isThumbUp){
-              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/');
-          leanCloud.fetchVisitCount('/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/');
-          leanCloud.fetchThumbUpCount('/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/');
-          leanCloud.getCommentCount('/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/', function(count){
-              var el = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/', function(count){
-              var el = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/', function(count){
-              var el = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/', function(isThumbUp){
-              var el = document.querySelector('#hashit_26ddb4a72867d6227229fce1c294d0ac1264d95aee78c54cca32975f5d1bafd5 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/18/技术栈/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/18/技术栈/');
-          leanCloud.fetchVisitCount('/2019/08/18/技术栈/');
-          leanCloud.fetchThumbUpCount('/2019/08/18/技术栈/');
-          leanCloud.getCommentCount('/2019/08/18/技术栈/', function(count){
-              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/18/技术栈/', function(count){
-              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/18/技术栈/', function(count){
-              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/18/技术栈/', function(isThumbUp){
-              var el = document.querySelector('#hashit_a42c8cf5e30fa06f4b27c3b0b6b371c34ca27a5da66e109aff60f9938e7e932a .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/16/git教程/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/16/git教程/');
-          leanCloud.fetchVisitCount('/2019/08/16/git教程/');
-          leanCloud.fetchThumbUpCount('/2019/08/16/git教程/');
-          leanCloud.getCommentCount('/2019/08/16/git教程/', function(count){
-              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/16/git教程/', function(count){
-              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/16/git教程/', function(count){
-              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/16/git教程/', function(isThumbUp){
-              var el = document.querySelector('#hashit_4e7102cd041f35c1a2653f343c278cf0d2dc3b379b68e6ee1cd4f4d33eaee62a .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-      }
-    })
-    }
-  
-</script>
-
-<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-
-
-
-<!-- <script src="/js/post.js"></script> -->
-
-<script src="/js/headroom.min.js"></script>
-
-<script data-no-instant type='text/javascript'>
-
-initHeadroom();
-
-changeLayoutOnTouchScreen();
-
-// 
-// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
-// console.log(post);
-// $('.Card').each(function(){
-//     var post_url = $(this).attr('id');
-//     var true_url = $(this).find('.Card-title a').first().attr('href');
-//     var card = this;
-//     post.getCommentCount(post_url, function(count){
-//         $(card).find('.card-comment-count').first().text(count);
-//     });
-//     post.getVisitCount(post_url, function(count){
-//         $(card).find('.card-visit-count').first().text(count);
-//     });
-    
-// });
-
-// 
-</script>
-
-
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  </div>
 </body>
 </html>
