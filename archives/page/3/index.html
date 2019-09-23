@@ -76,8 +76,8 @@
 
   <!-- include comment system code -->
   
-    <link rel="stylesheet" href="/css/gitment/default.css">
-<script src="/js/gitment.browser.js"></script>
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -1053,27 +1053,26 @@
 
 
     
+    
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        pageSize: 10,
+        comment_count: true,
+        appId: 'x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz',
+        appKey: 'Dt5xQxK8HtOYoNAmGQoWVMa6',
+        placeholder: 'just go go',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'z'
+    });
+</script>
 
-
-
-
-
-
-  <script>
-  var gitment = new Gitment({
-    id: window.location.pathname, // optional
-    owner: 'hsutimes',
-    repo: 'gitment_blog',
-    oauth: {
-      client_id: 'd73d768ea9e3bd69ab54',
-      client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
-    },
-    // ...
-    // For more available options, check out the documentation below
-  })
-
-  gitment.render('gitment')
-  </script>
 
 
 
