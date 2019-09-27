@@ -217,62 +217,6 @@
 
 
 
-<div class='Card-archive' id='hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9' data-name='你也能懂相对论' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/08/你也能懂相对论/">
-			
-			你也能懂相对论</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/爱因斯坦/">爱因斯坦</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/相对论/">相对论</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-08
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/08/你也能懂相对论/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-		
-
-
-
-
 <div class='Card-archive' id='hashit_3c5c1e54d23c89f66aede577cac51bde3839d86a4026c98c2eac54cdf9efad57' data-name='Electron-vue' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -908,6 +852,62 @@
 </div>
 
 	
+		
+
+
+
+
+<div class='Card-archive' id='hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb' data-name='Spring框架面试总结' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/04/Spring框架面试总结/">
+			
+			Spring框架面试总结</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/Spring/">Spring</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/面试/">面试</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-04
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/04/Spring框架面试总结/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
 	</div>
 
 
@@ -1077,32 +1077,6 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 .Card-title a, #hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 .Card-excerpt a, #hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 .Card-figure a');
-          new Postv2('hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9').showUnreadNotification('hashit_a6eb70a0dade4079b8108309f953eed9cd70ce347b67012e2375867577bd2d63', function(){
-            console.log('show badge for 2019/09/08/你也能懂相对论/ : hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9');
-            var postBadge = document.querySelector('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/08/你也能懂相对论/ : hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9');
-            var postBadge = document.querySelector('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9').update('hashit_a6eb70a0dade4079b8108309f953eed9cd70ce347b67012e2375867577bd2d63', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
         
           
           
@@ -1390,6 +1364,32 @@
           }
           
         
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-title a, #hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-excerpt a, #hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .Card-figure a');
+          new Postv2('hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb').showUnreadNotification('hashit_af45d052dc8491173976a96d9d03a9329fc4fe317844fc6f22f003c6216cc645', function(){
+            console.log('show badge for 2019/09/04/Spring框架面试总结/ : hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb');
+            var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/04/Spring框架面试总结/ : hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb');
+            var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb').update('hashit_af45d052dc8491173976a96d9d03a9329fc4fe317844fc6f22f003c6216cc645', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
+        
       }
     })
   
@@ -1405,36 +1405,6 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/08/你也能懂相对论/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/08/你也能懂相对论/');
-          leanCloud.fetchVisitCount('/2019/09/08/你也能懂相对论/');
-          leanCloud.fetchThumbUpCount('/2019/09/08/你也能懂相对论/');
-          leanCloud.getCommentCount('/2019/09/08/你也能懂相对论/', function(count){
-              var el = document.querySelector('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/08/你也能懂相对论/', function(count){
-              var el = document.querySelector('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/08/你也能懂相对论/', function(count){
-              var el = document.querySelector('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/08/你也能懂相对论/', function(isThumbUp){
-              var el = document.querySelector('#hashit_3f82f818179fbe9f5833e996329be269a980db257e9e7f68b2e3b0e3ae8e05d9 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
         
           
           
@@ -1757,6 +1727,36 @@
           });
           leanCloud.isThumbUp('/2019/09/05/狂野飙车9/', function(isThumbUp){
               var el = document.querySelector('#hashit_9b6e0893f4fe3e054a46c6953bc31654c50b85bcdf26fd304ec1b955483312db .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/04/Spring框架面试总结/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/04/Spring框架面试总结/');
+          leanCloud.fetchVisitCount('/2019/09/04/Spring框架面试总结/');
+          leanCloud.fetchThumbUpCount('/2019/09/04/Spring框架面试总结/');
+          leanCloud.getCommentCount('/2019/09/04/Spring框架面试总结/', function(count){
+              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/04/Spring框架面试总结/', function(count){
+              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/04/Spring框架面试总结/', function(count){
+              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/04/Spring框架面试总结/', function(isThumbUp){
+              var el = document.querySelector('#hashit_ab09f80797c81b85b34d0274952ac27cdda25cdbcf9ad4b8acd76bb2d0cc4ffb .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
