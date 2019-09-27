@@ -211,6 +211,68 @@
 
 
 
+<div class='Card-archive' id='hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b' data-name='面试红黑树' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/08/面试红黑树/">
+			
+			面试红黑树</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/算法/">算法</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/红黑树/">红黑树</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-3'><a href="/tags/面试/">面试</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-08
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/08/面试红黑树/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d' data-name='54. 螺旋矩阵' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -967,6 +1029,32 @@
           
           
           // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b .Card-title a, #hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b .Card-excerpt a, #hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b .Card-figure a');
+          new Postv2('hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b').showUnreadNotification('hashit_148761bcc62ff1f54d522a77755a3b878b40ce1e77145294de6bfc10fae69524', function(){
+            console.log('show badge for 2019/09/08/面试红黑树/ : hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b');
+            var postBadge = document.querySelector('#hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/08/面试红黑树/ : hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b');
+            var postBadge = document.querySelector('#hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b').update('hashit_148761bcc62ff1f54d522a77755a3b878b40ce1e77145294de6bfc10fae69524', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
+        
+          
+          
+          
+          // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .Card-title a, #hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .Card-excerpt a, #hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .Card-figure a');
           new Postv2('hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d').showUnreadNotification('hashit_e0bec41e106abd2a576bcb4207cece4b7f6b7cb316a9add27300c6f4dd963339', function(){
             console.log('show badge for 2019/09/07/54-螺旋矩阵/ : hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d');
@@ -1238,6 +1326,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/08/面试红黑树/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/08/面试红黑树/');
+          leanCloud.fetchVisitCount('/2019/09/08/面试红黑树/');
+          leanCloud.fetchThumbUpCount('/2019/09/08/面试红黑树/');
+          leanCloud.getCommentCount('/2019/09/08/面试红黑树/', function(count){
+              var el = document.querySelector('#hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/08/面试红黑树/', function(count){
+              var el = document.querySelector('#hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/08/面试红黑树/', function(count){
+              var el = document.querySelector('#hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/08/面试红黑树/', function(isThumbUp){
+              var el = document.querySelector('#hashit_ac8195cec3ee86b146c637abeaa29ca01e734137425b99bc7b8a415a6f65951b .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
