@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>444 - Time</title>
+      <title>vue_route - Time</title>
   
 
   
@@ -120,7 +120,7 @@
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue自动化路由"><span class="toc-number">1.</span> <span class="toc-text">vue自动化路由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-number">1.1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现效果"><span class="toc-number">1.2.</span> <span class="toc-text">实现效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简要用法"><span class="toc-number">1.3.</span> <span class="toc-text">简要用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-number">1.4.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-number">1.5.</span> <span class="toc-text">项目结构</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -227,6 +227,10 @@
 
 
     
+        
+            
+            
+        
     
 
 
@@ -251,17 +255,26 @@
 
 
 
-<article class="article" id="/2019/09/29/444/" data-name='444' data-version="">
+<article class="article" id="/2019/09/29/vue-route/" data-name='vue_route' data-version="">
 
     <!-- Title -->
     <div class='article-header'>
          
          <h1 class='article-title'>
-            <a href="/2019/09/29/444/">
-                444
+            <a href="/2019/09/29/vue-route/">
+                Vue_route
             </a>
         </h1>
         <!-- TODO: support nested categories,display them nicely -->
+        
+        <ul class='article-categories'>
+            
+            
+                <li><a href="/categories/文章/" data-no-instant>
+                    <img src="/images/文章.svg" alt="文章" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='文章'/>
+                </a></li>
+            
+        </ul>
         
     </div>
     
@@ -286,6 +299,14 @@
             </li>
     </ul>
     
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/vue/">Vue</a></label>
+		
+	
+	</div>
+
     </div>
     <div class='article-cards'>
         <!-- Author Card -->
@@ -340,7 +361,14 @@
   <h3>Quick Read</h3>
 </div>
 <div class="card-text">
-  <p id='text-post-summary'>4444</p>
+  <p id='text-post-summary'>vue自动化路由目的解放双手，从此不用配置路由。当你看到项目中大批量的路由思考是拆分维护业务路由还是统一入口维护时，无需多虑，router-auto是你的最优选择，它帮你解决路由的维护成本，你只需要创建相应的文件夹，路由就能动态生成，路由拦截你可以在main.js中去拦截他，总之比你想象的开发还要简单。
+
+router-auto github地址有帮助的可以star一下
+router-auto npm地址欢迎提issue
+
+实现效果
+简要用法具体用法请实时查看github或者npm，下面做一些简要用法介绍
+引用12345678910const RouterAuto =...</p>
 </div>
         </div> -->
     </div>
@@ -358,7 +386,7 @@
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue自动化路由"><span class="toc-number">1.</span> <span class="toc-text">vue自动化路由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-number">1.1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现效果"><span class="toc-number">1.2.</span> <span class="toc-text">实现效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简要用法"><span class="toc-number">1.3.</span> <span class="toc-text">简要用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-number">1.4.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-number">1.5.</span> <span class="toc-text">项目结构</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -366,7 +394,49 @@
 
     </div>
     <div class='article-content'>
-    <p>4444</p>
+    <h1 id="vue自动化路由"><a href="#vue自动化路由" class="headerlink" title="vue自动化路由"></a>vue自动化路由</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>解放双手，从此不用配置路由。当你看到项目中大批量的路由思考是拆分维护业务路由还是统一入口维护时，无需多虑，<code>router-auto</code>是你的最优选择，它帮你解决路由的维护成本，你只需要创建相应的文件夹，路由就能动态生成，路由拦截你可以在main.js中去拦截他，总之比你想象的开发还要简单。</p>
+<ul>
+<li>router-auto github地址有帮助的可以star一下</li>
+<li>router-auto npm地址欢迎提issue</li>
+</ul>
+<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://user-gold-cdn.xitu.io/2019/9/29/16d7c6065291abeb?imageslim" alt="1"></p>
+<h2 id="简要用法"><a href="#简要用法" class="headerlink" title="简要用法"></a>简要用法</h2><p>具体用法请实时查看github或者npm，下面做一些简要用法介绍</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const RouterAuto = require(<span class="string">'router-auto'</span>)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: <span class="string">'...'</span>,</span><br><span class="line">    output: &#123;&#125;,</span><br><span class="line">    module: &#123;&#125;,</span><br><span class="line">    plugin:[</span><br><span class="line">        new RouterAuto()</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><ul>
+<li>package.json 等等文件与目录</li>
+<li>src 项目目录<ul>
+<li>page 页面目录<ul>
+<li>helloworld<ul>
+<li>Index.vue 页面入口</li>
+<li>hello.vue 业务组件</li>
+<li>router.js 额外配置</li>
+</ul>
+</li>
+<li>demo<ul>
+<li>test<ul>
+<li>Index.vue 页面入口</li>
+<li>test.vue 业务组件</li>
+</ul>
+</li>
+<li>Index.vue 页面入口</li>
+</ul>
+</li>
+<li>home<ul>
+<li>Index.vue 页面入口</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>上面的目录结构生成的路由结构为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> helloworld <span class="keyword">from</span> <span class="string">'@/page/helloworld/Index.vue'</span></span><br><span class="line"><span class="keyword">import</span> demo <span class="keyword">from</span> <span class="string">'@/page/demo/Index.vue'</span></span><br><span class="line"><span class="keyword">import</span> demo_test <span class="keyword">from</span> <span class="string">'@/page/demo/test/Index.vue'</span></span><br><span class="line"><span class="keyword">import</span> home <span class="keyword">from</span> <span class="string">'@/page/home/Index.vue'</span></span><br><span class="line">  </span><br><span class="line">Vue.use(Router)</span><br><span class="line">  </span><br><span class="line">export default new Router(&#123;</span><br><span class="line">    mode:<span class="string">'history'</span>,</span><br><span class="line">    base:<span class="string">'/auto/'</span>,</span><br><span class="line">    routes:[&#123;</span><br><span class="line">      path: <span class="string">'/helloworld/index'</span>,</span><br><span class="line">      name: <span class="string">'helloworld'</span>,</span><br><span class="line">      component: helloworld</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      path: <span class="string">'/demo/index'</span>,</span><br><span class="line">      name: <span class="string">'demo'</span>,</span><br><span class="line">      component: demo</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      path: <span class="string">'/demo/test/index'</span>,</span><br><span class="line">      name: <span class="string">'demo_test'</span>,</span><br><span class="line">      component: demo_test</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      path: <span class="string">'/home/index'</span>,</span><br><span class="line">      name: <span class="string">'home'</span>,</span><br><span class="line">      component: home</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>作者：ngaiwe<br>链接：<a href="https://juejin.im/post/5d90798151882576e44088e8" target="_blank" rel="noopener">https://juejin.im/post/5d90798151882576e44088e8</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
 
     
     </div>
@@ -419,7 +489,7 @@
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue自动化路由"><span class="toc-number">1.</span> <span class="toc-text">vue自动化路由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-number">1.1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现效果"><span class="toc-number">1.2.</span> <span class="toc-text">实现效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简要用法"><span class="toc-number">1.3.</span> <span class="toc-text">简要用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-number">1.4.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-number">1.5.</span> <span class="toc-text">项目结构</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -560,7 +630,7 @@
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4').update('hashit_79f06f8fde333461739f220090a23cb2a79f6d714bee100d0e4b4af249294619', function(){});
+    new Postv2('hashit_24f4e4c3d0a3658eac22817e19d30e7a9d5fc91fdb14747ced27a673e8663cb0').update('hashit_1a02f29dfdad437b73af664b8877c4369e63f39c8b35689f0b0b88bf6c860277', function(){});
   });
   
 </script>
@@ -577,42 +647,42 @@
     
     LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2019/09/29/444/', json.ip);
+    leanCloud.fetchIsThumbUp('/2019/09/29/vue-route/', json.ip);
     document.getElementById('thumb-up-button').addEventListener('click', function(e){
-      leanCloud.isThumbUp('/2019/09/29/444/', function(isThumbUp){
+      leanCloud.isThumbUp('/2019/09/29/vue-route/', function(isThumbUp){
         console.log('is thumb up:' + isThumbUp);
         if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2019/09/29/444/', json.ip);
+          leanCloud.removeThumbUpRecord('/2019/09/29/vue-route/', json.ip);
           document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
           
         }else{
-          leanCloud.addThumbUpRecord('/2019/09/29/444/', json.ip);
+          leanCloud.addThumbUpRecord('/2019/09/29/vue-route/', json.ip);
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
         }
-        leanCloud.getThumbUpCount('/2019/09/29/444/', function(count){
+        leanCloud.getThumbUpCount('/2019/09/29/vue-route/', function(count){
             console.log('thumb up count: ' + count)
             var el = document.getElementById('article-thumbup-count');
             if(el) el.innerHTML = count;
         });
       });
     });
-    leanCloud.addVisitRecord('/2019/09/29/444/', json.ip);
-    leanCloud.fetchCommentCount('/2019/09/29/444/');
-    leanCloud.fetchVisitCount('/2019/09/29/444/');
-    leanCloud.fetchThumbUpCount('/2019/09/29/444/');
-    leanCloud.getCommentCount('/2019/09/29/444/', function(count){
+    leanCloud.addVisitRecord('/2019/09/29/vue-route/', json.ip);
+    leanCloud.fetchCommentCount('/2019/09/29/vue-route/');
+    leanCloud.fetchVisitCount('/2019/09/29/vue-route/');
+    leanCloud.fetchThumbUpCount('/2019/09/29/vue-route/');
+    leanCloud.getCommentCount('/2019/09/29/vue-route/', function(count){
         var el = document.querySelector('#article-comment-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getVisitCount('/2019/09/29/444/', function(count){
+    leanCloud.getVisitCount('/2019/09/29/vue-route/', function(count){
         var el = document.querySelector('#article-visit-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getThumbUpCount('/2019/09/29/444/', function(count){
+    leanCloud.getThumbUpCount('/2019/09/29/vue-route/', function(count){
         var el = document.getElementById('article-thumbup-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.isThumbUp('/2019/09/29/444/', function(isThumbUp){
+    leanCloud.isThumbUp('/2019/09/29/vue-route/', function(isThumbUp){
         console.log('init thumb up:' + isThumbUp);
         if(isThumbUp){
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
