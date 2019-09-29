@@ -217,6 +217,46 @@
 
 
 
+<div class='Card-archive' id='hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4' data-name='444' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/29/444/">
+			
+			444</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'></div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-29
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/29/444/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef' data-name='python style rules' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -780,56 +820,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a' data-name='Java12的新特性' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/16/Java12的新特性/">
-			
-			Java12的新特性</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/Java/">Java</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-16
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/16/Java12的新特性/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -999,6 +989,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 .Card-title a, #hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 .Card-excerpt a, #hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 .Card-figure a');
+          new Postv2('hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4').showUnreadNotification('hashit_79f06f8fde333461739f220090a23cb2a79f6d714bee100d0e4b4af249294619', function(){
+            console.log('show badge for 2019/09/29/444/ : hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4');
+            var postBadge = document.querySelector('#hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/29/444/ : hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4');
+            var postBadge = document.querySelector('#hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4').update('hashit_79f06f8fde333461739f220090a23cb2a79f6d714bee100d0e4b4af249294619', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1286,32 +1302,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .Card-title a, #hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .Card-excerpt a, #hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .Card-figure a');
-          new Postv2('hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a').showUnreadNotification('hashit_6f414761c8fa5d523367ae1d213586b4ad47f3777bb77aff05b2bfb5e9e569e3', function(){
-            console.log('show badge for 2019/09/16/Java12的新特性/ : hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a');
-            var postBadge = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/16/Java12的新特性/ : hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a');
-            var postBadge = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a').update('hashit_6f414761c8fa5d523367ae1d213586b4ad47f3777bb77aff05b2bfb5e9e569e3', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1327,6 +1317,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/29/444/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/29/444/');
+          leanCloud.fetchVisitCount('/2019/09/29/444/');
+          leanCloud.fetchThumbUpCount('/2019/09/29/444/');
+          leanCloud.getCommentCount('/2019/09/29/444/', function(count){
+              var el = document.querySelector('#hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/29/444/', function(count){
+              var el = document.querySelector('#hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/29/444/', function(count){
+              var el = document.querySelector('#hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/29/444/', function(isThumbUp){
+              var el = document.querySelector('#hashit_4e815d241a3d91781e92eb1ca07445ff36d56d7e383f3afcc3a35e14b46d09b4 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1649,36 +1669,6 @@
           });
           leanCloud.isThumbUp('/2019/09/17/440-字典序的第K小数字/', function(isThumbUp){
               var el = document.querySelector('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/16/Java12的新特性/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/16/Java12的新特性/');
-          leanCloud.fetchVisitCount('/2019/09/16/Java12的新特性/');
-          leanCloud.fetchThumbUpCount('/2019/09/16/Java12的新特性/');
-          leanCloud.getCommentCount('/2019/09/16/Java12的新特性/', function(count){
-              var el = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/16/Java12的新特性/', function(count){
-              var el = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/16/Java12的新特性/', function(count){
-              var el = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/16/Java12的新特性/', function(isThumbUp){
-              var el = document.querySelector('#hashit_b99efb6bf93e58564831d561af1fdcdcaeb8ab5756dab5e01e73b16e5c3e1b9a .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
