@@ -211,6 +211,56 @@
 
 
 
+<div class='Card-archive' id='hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5' data-name='26 remove-duplicates-from-sorted-array' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/10/04/26-remove-duplicates-from-sorted-array/">
+			
+			26 Remove-Duplicates-From-Sorted-Array</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-10-04
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/10/04/26-remove-duplicates-from-sorted-array/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_a2c0e7fd5052830dcccf6a8293d1b5741a7c36472156bd861c3ba7bc704d77bb' data-name='BPlusTree' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -768,56 +818,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692' data-name='面试笔记' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/18/面试笔记/">
-			
-			面试笔记</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/面试/">面试</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-18
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/18/面试笔记/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -984,6 +984,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-title a, #hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-excerpt a, #hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-figure a');
+          new Postv2('hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5').showUnreadNotification('hashit_a910a04b0502881155d58043c861b046b3f43dcc66427fdce33ea2090cf62fc4', function(){
+            console.log('show badge for 2019/10/04/26-remove-duplicates-from-sorted-array/ : hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5');
+            var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/10/04/26-remove-duplicates-from-sorted-array/ : hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5');
+            var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5').update('hashit_a910a04b0502881155d58043c861b046b3f43dcc66427fdce33ea2090cf62fc4', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1271,32 +1297,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 .Card-title a, #hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 .Card-excerpt a, #hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 .Card-figure a');
-          new Postv2('hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692').showUnreadNotification('hashit_983622c1834388590207ec40361ec89e57049e6d7450d264609898abfb00780d', function(){
-            console.log('show badge for 2019/09/18/面试笔记/ : hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692');
-            var postBadge = document.querySelector('#hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/18/面试笔记/ : hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692');
-            var postBadge = document.querySelector('#hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692').update('hashit_983622c1834388590207ec40361ec89e57049e6d7450d264609898abfb00780d', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1312,6 +1312,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/10/04/26-remove-duplicates-from-sorted-array/', json.ip);
+          leanCloud.fetchCommentCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
+          leanCloud.fetchVisitCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
+          leanCloud.fetchThumbUpCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
+          leanCloud.getCommentCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
+              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
+              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
+              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(isThumbUp){
+              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1634,36 +1664,6 @@
           });
           leanCloud.isThumbUp('/2019/09/20/Java知识点/', function(isThumbUp){
               var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/18/面试笔记/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/18/面试笔记/');
-          leanCloud.fetchVisitCount('/2019/09/18/面试笔记/');
-          leanCloud.fetchThumbUpCount('/2019/09/18/面试笔记/');
-          leanCloud.getCommentCount('/2019/09/18/面试笔记/', function(count){
-              var el = document.querySelector('#hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/18/面试笔记/', function(count){
-              var el = document.querySelector('#hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/18/面试笔记/', function(count){
-              var el = document.querySelector('#hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/18/面试笔记/', function(isThumbUp){
-              var el = document.querySelector('#hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';

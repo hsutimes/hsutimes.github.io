@@ -217,6 +217,56 @@
 
 
 
+<div class='Card-archive' id='hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d' data-name='深入理解Node.js 中的进程与线程' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/05/深入理解Node-js-中的进程与线程/">
+			
+			深入理解Node.js 中的进程与线程</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/Nodejs/">Nodejs</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-05
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/05/深入理解Node-js-中的进程与线程/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace' data-name='树的高度（小米2017秋招真题）' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -1004,6 +1054,32 @@
           
           
           // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .Card-title a, #hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .Card-excerpt a, #hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .Card-figure a');
+          new Postv2('hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d').showUnreadNotification('hashit_e537dc96d9a208612161efb2219ce89df175b3da2f83717d0aa6f4b508ab94ad', function(){
+            console.log('show badge for 2019/09/05/深入理解Node-js-中的进程与线程/ : hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d');
+            var postBadge = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/05/深入理解Node-js-中的进程与线程/ : hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d');
+            var postBadge = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d').update('hashit_e537dc96d9a208612161efb2219ce89df175b3da2f83717d0aa6f4b508ab94ad', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
+        
+          
+          
+          
+          // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace .Card-title a, #hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace .Card-excerpt a, #hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace .Card-figure a');
           new Postv2('hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace').showUnreadNotification('hashit_3ec6a78f89d4d69563aaf517936d8ef1bdded647792360c818f5475198531aa4', function(){
             console.log('show badge for 2019/09/05/树的高度（小米2017秋招真题）/ : hashit_f2dae260402f985450112b63ffab58e495e57c3283c67af5aa21fbc9f2ad4ace');
@@ -1275,6 +1351,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/05/深入理解Node-js-中的进程与线程/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/05/深入理解Node-js-中的进程与线程/');
+          leanCloud.fetchVisitCount('/2019/09/05/深入理解Node-js-中的进程与线程/');
+          leanCloud.fetchThumbUpCount('/2019/09/05/深入理解Node-js-中的进程与线程/');
+          leanCloud.getCommentCount('/2019/09/05/深入理解Node-js-中的进程与线程/', function(count){
+              var el = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/05/深入理解Node-js-中的进程与线程/', function(count){
+              var el = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/05/深入理解Node-js-中的进程与线程/', function(count){
+              var el = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/05/深入理解Node-js-中的进程与线程/', function(isThumbUp){
+              var el = document.querySelector('#hashit_6e626419f24f2148b8ce3ea0944513c8ceba44ef79e2f6d0bb3dbabf90aa1f5d .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
