@@ -211,6 +211,56 @@
 
 
 
+<div class='Card-archive' id='hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f' data-name='Java知识点' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/20/Java知识点/">
+			
+			Java知识点</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/Java/">Java</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-20
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/20/Java知识点/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_9ea48e5381e37b296f5c3e65e98ba70450fea3a613ec2828fdcdadc2b1e01692' data-name='面试笔记' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -786,68 +836,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d' data-name='Flutter Http请求开源库-dio' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/09/Flutter-Http请求开源库-dio/">
-			
-			Flutter Http请求开源库-Dio</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/Flutter/">Flutter</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/Http/">Http</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/dio/">Dio</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-09
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/09/Flutter-Http请求开源库-dio/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -1014,6 +1002,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-title a, #hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-excerpt a, #hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .Card-figure a');
+          new Postv2('hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f').showUnreadNotification('hashit_815b4e26a53cafbad5d314bc89a749c6d19fc792a5198eb1eb0b707651a94dd0', function(){
+            console.log('show badge for 2019/09/20/Java知识点/ : hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f');
+            var postBadge = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/20/Java知识点/ : hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f');
+            var postBadge = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f').update('hashit_815b4e26a53cafbad5d314bc89a749c6d19fc792a5198eb1eb0b707651a94dd0', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1301,32 +1315,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .Card-title a, #hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .Card-excerpt a, #hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .Card-figure a');
-          new Postv2('hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d').showUnreadNotification('hashit_82ab77f14399a2174cc169b6de40c8d6eb54cd62d19ed489727cf03209742858', function(){
-            console.log('show badge for 2019/09/09/Flutter-Http请求开源库-dio/ : hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d');
-            var postBadge = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/09/Flutter-Http请求开源库-dio/ : hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d');
-            var postBadge = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d').update('hashit_82ab77f14399a2174cc169b6de40c8d6eb54cd62d19ed489727cf03209742858', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1342,6 +1330,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/20/Java知识点/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/20/Java知识点/');
+          leanCloud.fetchVisitCount('/2019/09/20/Java知识点/');
+          leanCloud.fetchThumbUpCount('/2019/09/20/Java知识点/');
+          leanCloud.getCommentCount('/2019/09/20/Java知识点/', function(count){
+              var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/20/Java知识点/', function(count){
+              var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/20/Java知识点/', function(count){
+              var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/20/Java知识点/', function(isThumbUp){
+              var el = document.querySelector('#hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1664,36 +1682,6 @@
           });
           leanCloud.isThumbUp('/2019/09/10/Git-Rebase-黄金法则问题/', function(isThumbUp){
               var el = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/09/Flutter-Http请求开源库-dio/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/09/Flutter-Http请求开源库-dio/');
-          leanCloud.fetchVisitCount('/2019/09/09/Flutter-Http请求开源库-dio/');
-          leanCloud.fetchThumbUpCount('/2019/09/09/Flutter-Http请求开源库-dio/');
-          leanCloud.getCommentCount('/2019/09/09/Flutter-Http请求开源库-dio/', function(count){
-              var el = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/09/Flutter-Http请求开源库-dio/', function(count){
-              var el = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/09/Flutter-Http请求开源库-dio/', function(count){
-              var el = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/09/Flutter-Http请求开源库-dio/', function(isThumbUp){
-              var el = document.querySelector('#hashit_a473d634a6ee1cfb7e583c6a62027f7f930bdeb2d14ff47f105346b523cdfe7d .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';

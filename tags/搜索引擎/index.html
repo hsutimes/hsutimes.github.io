@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>2019 - Archive - Time</title>
+      <title>搜索引擎 - Tag - Time</title>
   
 
   
@@ -116,7 +116,7 @@
 	
 	<div class='nav-item' id='nav-item-archive'>
 		
-				<div class='nav-icon active_dot'>
+				<div class='nav-icon'>
 				
 			<a href="/archives/" title='归档'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
@@ -197,12 +197,11 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div style="flex: 1;">
-      
-	
-	
+      <div class='archive-container'>
+
 
 	
-		<h2 class='archive-title'>2019</h2>
+		<h2 class='archive-title'>#   搜索引擎</h2>
 	
 	<div class="archive-cards">
 	
@@ -256,61 +255,29 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5' data-name='26 remove-duplicates-from-sorted-array' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/10/04/26-remove-duplicates-from-sorted-array/">
-			
-			26 Remove-Duplicates-From-Sorted-Array</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
 	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-10-04
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/10/04/26-remove-duplicates-from-sorted-array/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
+
+
+
+<div class='pagination'>
+	
+	
+	
+	
+		
+		
+		<div class="pagination-item">
+			
+			
+				<span>1</span>
+			
 		</div>
-	</div>
+		
+		
+	
+	
 </div>
-
-	
-	</div>
-
-
-	
-
+</div>
   </div>
 
   
@@ -341,7 +308,7 @@
 	
 	<div class='nav-item' id='nav-item-archive'>
 		
-				<div class='nav-icon active_dot'>
+				<div class='nav-icon'>
 				
 			<a href="/archives/" title='归档'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
@@ -499,32 +466,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-title a, #hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-excerpt a, #hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-figure a');
-          new Postv2('hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5').showUnreadNotification('hashit_a910a04b0502881155d58043c861b046b3f43dcc66427fdce33ea2090cf62fc4', function(){
-            console.log('show badge for 2019/10/04/26-remove-duplicates-from-sorted-array/ : hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5');
-            var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/10/04/26-remove-duplicates-from-sorted-array/ : hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5');
-            var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5').update('hashit_a910a04b0502881155d58043c861b046b3f43dcc66427fdce33ea2090cf62fc4', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -562,36 +503,6 @@
           });
           leanCloud.isThumbUp('/2019/10/05/search-engine/', function(isThumbUp){
               var el = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/10/04/26-remove-duplicates-from-sorted-array/', json.ip);
-          leanCloud.fetchCommentCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.fetchVisitCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.fetchThumbUpCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.getCommentCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(isThumbUp){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
