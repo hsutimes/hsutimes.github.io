@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>x64dbg - Time</title>
+  
+
+  
+  
+  <meta name="description" content>
+  <meta name="author" content="times">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+<link rel="stylesheet" href="/.css">
+
+  <!-- load font awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-134224598-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+
+  <!-- include comment system code -->
+  
+    <link rel="stylesheet" href="/css/gitment/default.css">
+<script src="/js/gitment.browser.js"></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/theme-icon.svg' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Time</a>
+			</h1>
+			<subtitle>
+				time
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg"><span class="toc-number">1.</span> <span class="toc-text">x64dbg</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Screenshots"><span class="toc-number">1.1.</span> <span class="toc-text">Screenshots</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation-amp-Usage"><span class="toc-number">1.2.</span> <span class="toc-text">Installation &amp; Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contributing"><span class="toc-number">1.3.</span> <span class="toc-text">Contributing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Credits"><span class="toc-number">1.4.</span> <span class="toc-text">Credits</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Developers"><span class="toc-number">1.5.</span> <span class="toc-text">Developers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-contributions"><span class="toc-number">1.6.</span> <span class="toc-text">Code contributions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Special-Thanks"><span class="toc-number">1.7.</span> <span class="toc-text">Special Thanks</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2019/10/05/x64dbg/" data-name='x64dbg' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2019/10/05/x64dbg/">
+                X64dbg
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+        <ul class='article-categories'>
+            
+            
+                <li><a href="/categories/文章/" data-no-instant>
+                    <img src="/images/文章.svg" alt="文章" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='文章'/>
+                </a></li>
+            
+        </ul>
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2019-10-05</li>
+            
+            <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            <li class='thumb-up-button' id='thumb-up-button'><i class="far fa-thumbs-up fa-lg" id='thumb-up-icon'></i> <span id='article-thumbup-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> times</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/>CC BY-NC-SA 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/x64dbg/">X64dbg</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                times
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>x64dbg
+    
+      
+An open-source binary debugger for Windows, aimed at malware analysis and reverse engineering of executables you do not have the source code for. There are many features available and a comprehensive plugin system to add your own. You can find more information on the...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+    
+        
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg"><span class="toc-number">1.</span> <span class="toc-text">x64dbg</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Screenshots"><span class="toc-number">1.1.</span> <span class="toc-text">Screenshots</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation-amp-Usage"><span class="toc-number">1.2.</span> <span class="toc-text">Installation &amp; Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contributing"><span class="toc-number">1.3.</span> <span class="toc-text">Contributing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Credits"><span class="toc-number">1.4.</span> <span class="toc-text">Credits</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Developers"><span class="toc-number">1.5.</span> <span class="toc-text">Developers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-contributions"><span class="toc-number">1.6.</span> <span class="toc-text">Code contributions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Special-Thanks"><span class="toc-number">1.7.</span> <span class="toc-text">Special Thanks</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <h1 id="x64dbg"><a href="#x64dbg" class="headerlink" title="x64dbg"></a>x64dbg</h1><p><img src="https://github.com/x64dbg/x64dbg/raw/development/src/bug_black.png" alt="x64dbg"></p>
+<p><a href="https://www.bountysource.com/teams/x64dbg?utm_source=x64dbg&utm_medium=shield&utm_campaign=raised" target="_blank" rel="noopener"><img src="https://www.bountysource.com/badge/team?team_id=18188&style=raised" alt="BountySource"></a> <a href="https://ci.appveyor.com/project/mrexodia/x64dbg" target="_blank" rel="noopener"><img src="https://ci.appveyor.com/api/projects/status/h1j489qa1mx67e0h?svg=true" alt="Build status"></a> <a href="https://www.codetriage.com/x64dbg/x64dbg" target="_blank" rel="noopener"><img src="https://www.codetriage.com/x64dbg/x64dbg/badges/users.svg" alt="Open Source Helpers"></a> <a href="http://translate.x64dbg.com" target="_blank" rel="noopener"><img src="https://d322cqt584bo4o.cloudfront.net/x64dbg/localized.svg" alt="Crowdin"></a> <a href="https://sourceforge.net/projects/x64dbg/files/latest/download" target="_blank" rel="noopener"><img src="https://img.shields.io/sourceforge/dm/x64dbg.svg" alt="Download x64dbg"></a></p>
+<p><a href="https://telegram.me/x64dbg" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-%20on%20Telegram-blue.svg" alt="Telegram"></a> <a href="https://invite.gg/x64dbg" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-on%20Discord-green.svg" alt="Discord"></a> <a href="https://x64dbg-slack.herokuapp.com" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-on%20Slack-red.svg" alt="Slack"></a> <a href="https://gitter.im/x64dbg/x64dbg" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-on%20Gitter-lightseagreen.svg" alt="Gitter"></a> <a href="https://webchat.freenode.net/?channels=x64dbg" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-%20on%20freenode-brightgreen.svg" alt="Freenode"></a> <a href="https://riot.im/app/#/room/#x64dbg:matrix.org" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-on%20Matrix-yellowgreen.svg" alt="Matrix"></a> <a href="https://inverse.chat/#converse/room?jid=x64dbg@conference.jwchat.org" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-%20on%20XMPP-orange.svg" alt="XMPP"></a></p>
+<p>An open-source binary debugger for Windows, aimed at malware analysis and reverse engineering of executables you do not have the source code for. There are many features available and a comprehensive <a href="http://plugins.x64dbg.com" target="_blank" rel="noopener">plugin system</a> to add your own. You can find more information on the <a href="https://x64dbg.com/blog" target="_blank" rel="noopener">blog</a>!</p>
+<h2 id="Screenshots"><a href="#Screenshots" class="headerlink" title="Screenshots"></a>Screenshots</h2><p><img src="/images/2019/10/05/34643860-e71a-11e9-890b-79bf1bc40a48.png" alt="image.png"><br><img src="/images/2019/10/05/38fa3b40-e71a-11e9-890b-79bf1bc40a48.png" alt="image.png"><br><img src="/images/2019/10/05/3b7e4e10-e71a-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
+<h2 id="Installation-amp-Usage"><a href="#Installation-amp-Usage" class="headerlink" title="Installation &amp; Usage"></a>Installation &amp; Usage</h2><ol>
+<li>Download a snapshot from <a href="https://github.com/x64dbg/x64dbg/releases" target="_blank" rel="noopener">GitHub</a>, <a href="https://sourceforge.net/projects/x64dbg/files/snapshots" target="_blank" rel="noopener">SourceForge</a> or <a href="https://osdn.net/projects/x64dbg" target="_blank" rel="noopener">OSDN</a> and extract it in a location your user has write access to.</li>
+<li><em>Optionally</em> use <code>x96dbg.exe</code> to register a shell extension and add shortcuts to your desktop.</li>
+<li>You can now run <code>x32\x32dbg.exe</code> if you want to debug a 32-bit executable or <code>x64\x64dbg.exe</code> to debug a 64-bit executable! If you are unsure you can always run <code>x96dbg.exe</code> and chose your architecture there.</li>
+</ol>
+<p>You can also <a href="https://github.com/x64dbg/x64dbg/wiki/Compiling-the-whole-project" target="_blank" rel="noopener">compile</a> x64dbg yourself with a few easy steps!</p>
+<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>This is a community effort and we accept pull requests! See the <a href="https://github.com/x64dbg/x64dbg/blob/development/CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING</a> document for more information. If you have any questions you can always <a href="https://x64dbg.com/#contact" target="_blank" rel="noopener">contact us</a> or open an <a href="https://github.com/x64dbg/x64dbg/issues" target="_blank" rel="noopener">issue</a>. You can take a look at the <a href="https://github.com/x64dbg/x64dbg/issues?q=is%3Aissue+is%3Aopen+label%3Aeasy" target="_blank" rel="noopener">easy issues</a> to get started.</p>
+<h2 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h2><ul>
+<li>Debugger core by <a href="https://bitbucket.org/titanengineupdate/titanengine-update" target="_blank" rel="noopener">TitanEngine Community Edition</a></li>
+<li>Disassembly powered by <a href="https://zydis.re" target="_blank" rel="noopener">Zydis</a></li>
+<li>Assembly powered by <a href="https://github.com/x64dbg/XEDParse" target="_blank" rel="noopener">XEDParse</a> and <a href="https://github.com/asmjit" target="_blank" rel="noopener">asmjit</a></li>
+<li>Import reconstruction powered by <a href="https://github.com/NtQuery/Scylla" target="_blank" rel="noopener">Scylla</a></li>
+<li>JSON powered by <a href="http://www.digip.org/jansson" target="_blank" rel="noopener">Jansson</a></li>
+<li>Database compression powered by <a href="https://bitbucket.org/mrexodia/lz4" target="_blank" rel="noopener">lz4</a></li>
+<li>Bug icon by <a href="http://www.visualpharm.com" target="_blank" rel="noopener">VisualPharm</a></li>
+<li>Interface icons by <a href="http://p.yusukekamiyamane.com" target="_blank" rel="noopener">Fugue</a></li>
+<li>Website by <a href="http://tr4ceflow.com" target="_blank" rel="noopener">tr4ceflow</a></li>
+</ul>
+<h2 id="Developers"><a href="#Developers" class="headerlink" title="Developers"></a>Developers</h2><ul>
+<li><a href="http://mrexodia.github.io" target="_blank" rel="noopener">mrexodia</a></li>
+<li>Sigma</li>
+<li><a href="http://blog.tr4ceflow.com" target="_blank" rel="noopener">tr4ceflow</a></li>
+<li><a href="http://www.fr33project.org" target="_blank" rel="noopener">Dreg</a></li>
+<li><a href="https://github.com/Nukem9" target="_blank" rel="noopener">Nukem</a></li>
+<li><a href="https://github.com/Herz3h" target="_blank" rel="noopener">Herz3h</a></li>
+<li><a href="https://github.com/torusrxxx" target="_blank" rel="noopener">torusrxxx</a></li>
+</ul>
+<h2 id="Code-contributions"><a href="#Code-contributions" class="headerlink" title="Code contributions"></a>Code contributions</h2><p>You can find an exhaustive list of GitHub contributers <a href="https://github.com/x64dbg/x64dbg/graphs/contributors" target="_blank" rel="noopener">here</a>.</p>
+<h2 id="Special-Thanks"><a href="#Special-Thanks" class="headerlink" title="Special Thanks"></a>Special Thanks</h2><ul>
+<li>Sigma for developing the initial GUI</li>
+<li>All the <a href="https://www.bountysource.com/teams/x64dbg/backers" target="_blank" rel="noopener">donators</a>!</li>
+<li>Everybody adding issues!</li>
+<li>People I forgot to add to this list</li>
+<li><a href="https://x64dbg.com/blog/2016/07/09/Looking-for-writers.html" target="_blank" rel="noopener">Writers of the blog</a>!</li>
+<li><a href="http://forum.exetools.com" target="_blank" rel="noopener">EXETools community</a></li>
+<li><a href="http://forum.tuts4you.com" target="_blank" rel="noopener">Tuts4You community</a></li>
+<li><a href="https://www.jetbrains.com/resharper" target="_blank" rel="noopener">ReSharper</a></li>
+<li><a href="http://www.coverity.com" target="_blank" rel="noopener">Coverity</a></li>
+<li>acidflash</li>
+<li>cyberbob</li>
+<li>cypher</li>
+<li>Teddy Rogers</li>
+<li>TEAM DVT</li>
+<li>DMichael</li>
+<li>Artic</li>
+<li>ahmadmansoor</li>
+<li>_pusher_</li>
+<li>firelegend</li>
+<li><a href="http://lifeinhex.com" target="_blank" rel="noopener">kao</a></li>
+<li>sstrato</li>
+<li><a href="https://github.com/kobalicek" target="_blank" rel="noopener">kobalicek</a></li>
+<li><a href="https://github.com/athre0z" target="_blank" rel="noopener">athre0z</a></li>
+<li><a href="https://github.com/ZehMatt" target="_blank" rel="noopener">ZehMatt</a></li>
+</ul>
+<p>Without the help of many people and other open source projects it would not have been possible to make x64dbg what is it today, thank you!</p>
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>评论</h1>
+
+  
+    <div id='gitment'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> 版权所有 <a href="">times </a> @ 2019</p>
+            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg"><span class="toc-number">1.</span> <span class="toc-text">x64dbg</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Screenshots"><span class="toc-number">1.1.</span> <span class="toc-text">Screenshots</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation-amp-Usage"><span class="toc-number">1.2.</span> <span class="toc-text">Installation &amp; Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contributing"><span class="toc-number">1.3.</span> <span class="toc-text">Contributing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Credits"><span class="toc-number">1.4.</span> <span class="toc-text">Credits</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Developers"><span class="toc-number">1.5.</span> <span class="toc-text">Developers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-contributions"><span class="toc-number">1.6.</span> <span class="toc-text">Code contributions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Special-Thanks"><span class="toc-number">1.7.</span> <span class="toc-text">Special Thanks</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+
+
+
+
+
+
+  <script>
+  var gitment = new Gitment({
+    id: window.location.pathname, // optional
+    owner: 'hsutimes',
+    repo: 'gitment_blog',
+    oauth: {
+      client_id: 'd73d768ea9e3bd69ab54',
+      client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('gitment')
+  </script>
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_ae44d07a82c26e972882e67292834429e55597b8fd58ccb12b449b83e3ec3669').update('hashit_7e9b56e82470b2e9a7d07c2c9d40079f0d924d2ab375f993fbf6c6f6c6fef2a0', function(){});
+  });
+  
+</script>
+
+
+    
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  function getIP(json) {
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.fetchIsThumbUp('/2019/10/05/x64dbg/', json.ip);
+    document.getElementById('thumb-up-button').addEventListener('click', function(e){
+      leanCloud.isThumbUp('/2019/10/05/x64dbg/', function(isThumbUp){
+        console.log('is thumb up:' + isThumbUp);
+        if(isThumbUp){
+          leanCloud.removeThumbUpRecord('/2019/10/05/x64dbg/', json.ip);
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+          
+        }else{
+          leanCloud.addThumbUpRecord('/2019/10/05/x64dbg/', json.ip);
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }
+        leanCloud.getThumbUpCount('/2019/10/05/x64dbg/', function(count){
+            console.log('thumb up count: ' + count)
+            var el = document.getElementById('article-thumbup-count');
+            if(el) el.innerHTML = count;
+        });
+      });
+    });
+    leanCloud.addVisitRecord('/2019/10/05/x64dbg/', json.ip);
+    leanCloud.fetchCommentCount('/2019/10/05/x64dbg/');
+    leanCloud.fetchVisitCount('/2019/10/05/x64dbg/');
+    leanCloud.fetchThumbUpCount('/2019/10/05/x64dbg/');
+    leanCloud.getCommentCount('/2019/10/05/x64dbg/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2019/10/05/x64dbg/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getThumbUpCount('/2019/10/05/x64dbg/', function(count){
+        var el = document.getElementById('article-thumbup-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.isThumbUp('/2019/10/05/x64dbg/', function(isThumbUp){
+        console.log('init thumb up:' + isThumbUp);
+        if(isThumbUp){
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }else{
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+        }
+    });
+  });
+  }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
