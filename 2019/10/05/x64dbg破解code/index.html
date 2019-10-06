@@ -120,7 +120,7 @@
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg破解code"><span class="toc-number">1.</span> <span class="toc-text">x64dbg破解code</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#x64dbg加载ppcheck-A-exe"><span class="toc-number">1.1.</span> <span class="toc-text">x64dbg加载ppcheck_A.exe</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg破解code"><span class="toc-number">1.</span> <span class="toc-text">x64dbg破解code</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#x64dbg加载ppcheck-A-exe"><span class="toc-number">1.1.</span> <span class="toc-text">x64dbg加载ppcheck_A.exe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模拟程序执行过程"><span class="toc-number">1.2.</span> <span class="toc-text">模拟程序执行过程</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -388,7 +388,7 @@ CALL 过程调用相同
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg破解code"><span class="toc-number">1.</span> <span class="toc-text">x64dbg破解code</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#x64dbg加载ppcheck-A-exe"><span class="toc-number">1.1.</span> <span class="toc-text">x64dbg加载ppcheck_A.exe</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg破解code"><span class="toc-number">1.</span> <span class="toc-text">x64dbg破解code</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#x64dbg加载ppcheck-A-exe"><span class="toc-number">1.1.</span> <span class="toc-text">x64dbg加载ppcheck_A.exe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模拟程序执行过程"><span class="toc-number">1.2.</span> <span class="toc-text">模拟程序执行过程</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -409,8 +409,7 @@ CALL 过程调用相同
 
 <p><img src="/images/2019/10/05/34fb0810-e744-11e9-8a93-9b78d2af1e3b.png" alt="image.png"></p>
 <p>分析核心代码。。。</p>
-<p>模拟程序执行过程</p>
-<ol>
+<h2 id="模拟程序执行过程"><a href="#模拟程序执行过程" class="headerlink" title="模拟程序执行过程"></a>模拟程序执行过程</h2><ol>
 <li>Please enter a serial number:</li>
 </ol>
 <p>输入 num </p>
@@ -432,6 +431,13 @@ CALL 过程调用相同
 <p><img src="/images/2019/10/06/3d9ba030-e814-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
 <p>16进制表示： <code>000002E6</code></p>
 <p><img src="/images/2019/10/06/4d72a620-e814-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
+<p>总结执行步骤</p>
+<ul>
+<li>输入num</li>
+<li>选择型号（三次选择）</li>
+<li>打印对应参数的code</li>
+</ul>
+<p>在汇编程序中的输入num的内存地址与code的值得内存地址都可以找到，而且程序执行中均已常数形式存在，推测在（三次选择）结束后，所有参数对应的code值均计算后，以常数形式保存在，之后的程序判断将部分的参数对应的code值打印出。</p>
 
     
     </div>
@@ -484,7 +490,7 @@ CALL 过程调用相同
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg破解code"><span class="toc-number">1.</span> <span class="toc-text">x64dbg破解code</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#x64dbg加载ppcheck-A-exe"><span class="toc-number">1.1.</span> <span class="toc-text">x64dbg加载ppcheck_A.exe</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#x64dbg破解code"><span class="toc-number">1.</span> <span class="toc-text">x64dbg破解code</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#x64dbg加载ppcheck-A-exe"><span class="toc-number">1.1.</span> <span class="toc-text">x64dbg加载ppcheck_A.exe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模拟程序执行过程"><span class="toc-number">1.2.</span> <span class="toc-text">模拟程序执行过程</span></a></li></ol></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -625,7 +631,7 @@ CALL 过程调用相同
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479').update('hashit_62542b602b1dda804d56e596bca9663aa0569bf35a0fe1f1d6b04bd5ed7290ea', function(){});
+    new Postv2('hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479').update('hashit_9a1a653ce883bef855de2b78e5ebac657989a54b59ab10c914de53955392dc2b', function(){});
   });
   
 </script>
