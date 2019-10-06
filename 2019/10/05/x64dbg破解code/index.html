@@ -409,6 +409,29 @@ CALL 过程调用相同
 
 <p><img src="/images/2019/10/05/34fb0810-e744-11e9-8a93-9b78d2af1e3b.png" alt="image.png"></p>
 <p>分析核心代码。。。</p>
+<p>模拟程序执行过程</p>
+<ol>
+<li>Please enter a serial number:</li>
+</ol>
+<p>输入 num </p>
+<p><img src="/images/2019/10/06/e17c47d0-e810-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
+<p>输入的数据存入内存 <code>0x42A708</code> </p>
+<p><img src="/images/2019/10/06/8870daa0-e817-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
+<p><img src="/images/2019/10/06/9c557990-e817-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
+<p><code>0x00429374</code></p>
+<ol start="2">
+<li>选择后Enter</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Code to turn on TSC：   742</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2019/10/06/777a09a0-e813-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
+<p>汇编代码执行到</p>
+<p><img src="/images/2019/10/06/d67d2860-e813-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
+<p>推测，计算code的程序在打印头部信息 HAAS 与 打印 Code 之间</p>
+<p>存储 TSC code 的地址为 <code>0x0042F26C</code></p>
+<p><img src="/images/2019/10/06/3d9ba030-e814-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
+<p>16进制表示： <code>000002E6</code></p>
+<p><img src="/images/2019/10/06/4d72a620-e814-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
 
     
     </div>
@@ -602,7 +625,7 @@ CALL 过程调用相同
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479').update('hashit_cef7338f98dc286f05f8ac0906334e16ce576581d2efff23031c6d97e88b185c', function(){});
+    new Postv2('hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479').update('hashit_62542b602b1dda804d56e596bca9663aa0569bf35a0fe1f1d6b04bd5ed7290ea', function(){});
   });
   
 </script>

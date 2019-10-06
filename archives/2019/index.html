@@ -990,7 +990,7 @@
           
           // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479 .Card-title a, #hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479 .Card-excerpt a, #hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479 .Card-figure a');
-          new Postv2('hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479').showUnreadNotification('hashit_cef7338f98dc286f05f8ac0906334e16ce576581d2efff23031c6d97e88b185c', function(){
+          new Postv2('hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479').showUnreadNotification('hashit_62542b602b1dda804d56e596bca9663aa0569bf35a0fe1f1d6b04bd5ed7290ea', function(){
             console.log('show badge for 2019/10/05/x64dbg破解code/ : hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479');
             var postBadge = document.querySelector('#hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479 mark.Card-badge');
             $(postBadge).fadeIn();
@@ -1002,7 +1002,7 @@
           // update cookie upon click the post and hide badge immediately
           for(var i = 0;i < postLinks.length; i++){
             postLinks[i].onclick = function(){
-              new Postv2('hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479').update('hashit_cef7338f98dc286f05f8ac0906334e16ce576581d2efff23031c6d97e88b185c', function(){
+              new Postv2('hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479').update('hashit_62542b602b1dda804d56e596bca9663aa0569bf35a0fe1f1d6b04bd5ed7290ea', function(){
                 console.log('called');
                 var postBadge = document.querySelector('#hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479 mark.Card-badge');
                 $(postBadge).fadeOut();
