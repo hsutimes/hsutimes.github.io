@@ -211,6 +211,56 @@
 
 
 
+<div class='Card-archive' id='hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf' data-name='decompilation' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/10/06/decompilation/">
+			
+			Decompilation</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/反编译/">反编译</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-10-06
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/10/06/decompilation/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88' data-name='assembly language' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -627,6 +677,32 @@
           
           
           // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf .Card-title a, #hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf .Card-excerpt a, #hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf .Card-figure a');
+          new Postv2('hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf').showUnreadNotification('hashit_938954d1fa5904ae7c19f0a386830ab994987857572f692dd801b526ab015751', function(){
+            console.log('show badge for 2019/10/06/decompilation/ : hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf');
+            var postBadge = document.querySelector('#hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/10/06/decompilation/ : hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf');
+            var postBadge = document.querySelector('#hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf').update('hashit_938954d1fa5904ae7c19f0a386830ab994987857572f692dd801b526ab015751', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
+        
+          
+          
+          
+          // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .Card-title a, #hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .Card-excerpt a, #hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .Card-figure a');
           new Postv2('hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88').showUnreadNotification('hashit_44a908725b29ac88023a27d1a8dd756b994a8cb196069257cec2074f7b38473f', function(){
             console.log('show badge for 2019/10/06/assembly-language/ : hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88');
@@ -768,6 +844,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/10/06/decompilation/', json.ip);
+          leanCloud.fetchCommentCount('/2019/10/06/decompilation/');
+          leanCloud.fetchVisitCount('/2019/10/06/decompilation/');
+          leanCloud.fetchThumbUpCount('/2019/10/06/decompilation/');
+          leanCloud.getCommentCount('/2019/10/06/decompilation/', function(count){
+              var el = document.querySelector('#hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/10/06/decompilation/', function(count){
+              var el = document.querySelector('#hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/10/06/decompilation/', function(count){
+              var el = document.querySelector('#hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/10/06/decompilation/', function(isThumbUp){
+              var el = document.querySelector('#hashit_7f74cfe798d58c74a0eb43ea9c21abf31407c4131d7d738c2a3931847450d8bf .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
