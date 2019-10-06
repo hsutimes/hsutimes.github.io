@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>assembly language - Time</title>
+  
+
+  
+  
+  <meta name="description" content>
+  <meta name="author" content="times">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+<link rel="stylesheet" href="/.css">
+
+  <!-- load font awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-134224598-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+
+  <!-- include comment system code -->
+  
+    <link rel="stylesheet" href="/css/gitment/default.css">
+<script src="/js/gitment.browser.js"></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/theme-icon.svg' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Time</a>
+			</h1>
+			<subtitle>
+				time
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2019/10/06/assembly-language/" data-name='assembly language' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2019/10/06/assembly-language/">
+                Assembly Language
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+        <ul class='article-categories'>
+            
+            
+                <li><a href="/categories/文章/" data-no-instant>
+                    <img src="/images/文章.svg" alt="文章" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='文章'/>
+                </a></li>
+            
+        </ul>
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2019-10-06</li>
+            
+            <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            <li class='thumb-up-button' id='thumb-up-button'><i class="far fa-thumbs-up fa-lg" id='thumb-up-icon'></i> <span id='article-thumbup-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> times</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/>CC BY-NC-SA 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/汇编语言/">汇编语言</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                times
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+    
+        
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br></pre></td><td class="code"><pre><span class="line">================================================================</span><br><span class="line">MOV - Move:</span><br><span class="line">| Opcode                   | Instruction                   | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                               </span><br><span class="line">| 88 /r REX + 88 /r        | MOV r/m8,r8 MOV r/m8***,r8*** | MR MR| Valid Valid| Valid N.E.     | Move r8 to r/m8.Move r8 to r/m8.         </span><br><span class="line">| 89 /r                    | MOV r/m16,r16                 | MR   | Valid      | Valid          | Move r16 to r/m16.                        </span><br><span class="line">| 89 /r                    | MOV r/m32,r32                 | MR   | Valid      | Valid          | Move r32 to r/m32.                        </span><br><span class="line">| REX.W + 89 /r            | MOV r/m64,r64                 | MR   | Valid      | N.E.           | Move r64 to r/m64.                        </span><br><span class="line">| 8A /r                    | MOV r8,r/m8                   | RM   | Valid      | Valid          | Move r/m8 to r8.                          </span><br><span class="line">| REX + 8A /r              | MOV r8***,r/m8***             | RM   | Valid      | N.E.           | Move r/m8 to r8.                          </span><br><span class="line">| 8B /r                    | MOV r16,r/m16                 | RM   | Valid      | Valid          | Move r/m16 to r16.                        </span><br><span class="line">| 8B /r                    | MOV r32,r/m32                 | RM   | Valid      | Valid          | Move r/m32 to r32.                        </span><br><span class="line">| REX.W + 8B /r            | MOV r64,r/m64                 | RM   | Valid      | N.E.           | Move r/m64 to r64.                        </span><br><span class="line">| 8C /r                    | MOV r/m16,Sreg**              | MR   | Valid      | Valid          | Move segment register to r/m16.           </span><br><span class="line">| REX.W + 8C /r            | MOV r/m64,Sreg**              | MR   | Valid      | Valid          | Move zero extended 16-bit segment register</span><br><span class="line">|                          |                               |      |            |                | to r/m64.                                 </span><br><span class="line">| 8E /r                    | MOV Sreg,r/m16**              | RM   | Valid      | Valid          | Move r/m16 to segment register.           </span><br><span class="line">| REX.W + 8E /r            | MOV Sreg,r/m64**              | RM   | Valid      | Valid          | Move lower 16 bits of r/m64 to segment    </span><br><span class="line">|                          |                               |      |            |                | register.                                 </span><br><span class="line">| A0                       | MOV AL,moffs8*                | FD   | Valid      | Valid          | Move byte at (seg:offset) to AL.          </span><br><span class="line">| REX.W + A0               | MOV AL,moffs8*                | FD   | Valid      | N.E.           | Move byte at (offset) to AL.              </span><br><span class="line">| A1                       | MOV AX,moffs16*               | FD   | Valid      | Valid          | Move word at (seg:offset) to AX.          </span><br><span class="line">| A1                       | MOV EAX,moffs32*              | FD   | Valid      | Valid          | Move doubleword at (seg:offset) to EAX.   </span><br><span class="line">| REX.W + A1               | MOV RAX,moffs64*              | FD   | Valid      | N.E.           | Move quadword at (offset) to RAX.         </span><br><span class="line">| A2 REX.W + A2            | MOV moffs8,AL MOV moffs8***,AL| TD TD| Valid Valid| Valid N.E.     | Move AL to (seg:offset).Move AL to       </span><br><span class="line">|                          |                               |      |            |                | (offset).                                 </span><br><span class="line">| A3                       | MOV moffs16*,AX               | TD   | Valid      | Valid          | Move AX to (seg:offset).                  </span><br><span class="line">| A3                       | MOV moffs32*,EAX              | TD   | Valid      | Valid          | Move EAX to (seg:offset).                 </span><br><span class="line">| REX.W + A3               | MOV moffs64*,RAX              | TD   | Valid      | N.E.           | Move RAX to (offset).                     </span><br><span class="line">| B0+ rb ib REX + B0+ rb ib| MOV r8, imm8 MOV r8***, imm8  | OI OI| Valid Valid| Valid N.E.     | Move imm8 to r8.Move imm8 to r8.         </span><br><span class="line">| B8+ rw iw                | MOV r16, imm16                | OI   | Valid      | Valid          | Move imm16 to r16.                        </span><br><span class="line">| B8+ rd id                | MOV r32, imm32                | OI   | Valid      | Valid          | Move imm32 to r32.                        </span><br><span class="line">| REX.W + B8+ rd io        | MOV r64, imm64                | OI   | Valid      | N.E.           | Move imm64 to r64.                        </span><br><span class="line">| C6 /0 ib                 | MOV r/m8, imm8                | MI   | Valid      | Valid          | Move imm8 to r/m8.                        </span><br><span class="line">| REX + C6 /0 ib           | MOV r/m8***, imm8             | MI   | Valid      | N.E.           | Move imm8 to r/m8.                        </span><br><span class="line">| C7 /0 iw                 | MOV r/m16, imm16              | MI   | Valid      | Valid          | Move imm16 to r/m16.                      </span><br><span class="line">| C7 /0 id                 | MOV r/m32, imm32              | MI   | Valid      | Valid          | Move imm32 to r/m32.                      </span><br><span class="line">| REX.W + C7 /0 io         | MOV r/m64, imm32              | MI   | Valid      | N.E.           | Move imm32 sign extended to 64-bits       </span><br><span class="line">|                          |                               |      |            |                | to r/m64.                                 </span><br><span class="line">Notes:* The moffs8, moffs16, moffs32 and moffs64 operands specify a simple</span><br><span class="line">offset relative to the segment base, where 8, 16, 32 and 64 refer to the size</span><br><span class="line">of the data.The address-size attribute of the instruction determines the size</span><br><span class="line">of the offset, either 16, 32 or 64 bits.** In 32-bit mode, the assembler may</span><br><span class="line">insert the 16-bit operand-size prefix with this instruction (see the following</span><br><span class="line">“Description” section for further information).***In 64-bit mode, r/m8 can</span><br><span class="line">not be encoded to access the following byte registers if a REX prefix is used:</span><br><span class="line">AH, BH, CH, DH.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">指令操作数编码：</span><br><span class="line">| Op/En| Operand 1      | Operand 2    | Operand 3| Operand 4</span><br><span class="line">| MR   | ModRM:r/m (w)  | ModRM:reg (r)| NA       | NA       </span><br><span class="line">| RM   | ModRM:reg (w)  | ModRM:r/m (r)| NA       | NA       </span><br><span class="line">| FD   | AL/AX/EAX/RAX  | Moffs        | NA       | NA       </span><br><span class="line">| TD   | Moffs (w)      | AL/AX/EAX/RAX| NA       | NA       </span><br><span class="line">| OI   | opcode + rd (w)| imm8/16/32/64| NA       | NA       </span><br><span class="line">| MI   | ModRM:r/m (w)  | imm8/16/32/64| NA       | NA       </span><br><span class="line"></span><br><span class="line">Description:</span><br><span class="line">Copies the second operand (source operand) to the first operand (destination</span><br><span class="line">operand).The source operand can be an immediate value, general-purpose register,</span><br><span class="line">segment register, or memory location; the destination register can be a general-purpose</span><br><span class="line">register, segment register, or memory location.Both operands must be the same</span><br><span class="line">size, which can be a byte, a word, a doubleword, or a quadword.</span><br><span class="line"></span><br><span class="line">The MOV instruction cannot be used to load the CS register.Attempting to do</span><br><span class="line">so results in an invalid opcode exception (#UD).To load the CS register, use</span><br><span class="line">the far JMP, CALL, or RET instruction.</span><br><span class="line"></span><br><span class="line">If the destination operand is a segment register (DS, ES, FS, GS, or SS), the</span><br><span class="line">source operand must be a valid segment selector.In protected mode, moving a</span><br><span class="line">segment selector into a segment register automatically causes the segment descriptor</span><br><span class="line">information associated with that segment selector to be loaded into the hidden</span><br><span class="line">(shadow) part of the segment register.While loading this information, the segment</span><br><span class="line">selector and segment descriptor information is validated (see the “Operation”</span><br><span class="line">algorithm below).The segment descriptor data is obtained from the GDT or LDT</span><br><span class="line">entry for the specified segment selector.</span><br><span class="line"></span><br><span class="line">A NULL segment selector (values 0000-0003) can be loaded into the DS, ES, FS,</span><br><span class="line">and GS registers without causing a protection exception.However, any subsequent</span><br><span class="line">attempt to reference a segment whose corresponding segment register is loaded</span><br><span class="line">with a NULL value causes a general protection exception (#GP) and no memory</span><br><span class="line">reference occurs.</span><br><span class="line"></span><br><span class="line">Loading the SS register with a MOV instruction inhibits all interrupts until</span><br><span class="line">after the execution of the next instruction.This operation allows a stack pointer</span><br><span class="line">to be loaded into the ESP register with the next instruction (MOV ESP, stack-pointer</span><br><span class="line">value) before an interrupt occurs1.Be aware that the LSS instruction offers</span><br><span class="line">a more efficient method of loading the SS and ESP registers.</span><br><span class="line"></span><br><span class="line">When operating in 32-bit mode and moving data between a segment register and</span><br><span class="line">a general-purpose register, the 32-bit IA-32 processors do not require the use</span><br><span class="line">of the 16-bit operand-size prefix (a byte with the value 66H) with</span><br><span class="line"></span><br><span class="line">| 1.| If a code instruction breakpoint (for      </span><br><span class="line">|   | debug) is placed on an instruction located </span><br><span class="line">|   | immediately after a MOV SS instruction,    </span><br><span class="line">|   | the breakpoint may not be triggered.       </span><br><span class="line">|   | However, in a sequence of instructions     </span><br><span class="line">|   | that load the SS register, only the        </span><br><span class="line">|   | first instruction in the sequence is       </span><br><span class="line">|   | guaranteed to delay an interrupt.In       </span><br><span class="line">|   | the following sequence, interrupts may     </span><br><span class="line">|   | be recognized before MOV ESP, EBP executes:</span><br><span class="line">|   | MOV SS, EDX MOV SS, EAX MOV ESP, EBP       </span><br><span class="line">this instruction, but most assemblers will insert it if the standard form of</span><br><span class="line">the instruction is used (for example, MOV DS, AX).The processor will execute</span><br><span class="line">this instruction correctly, but it will usually require an extra clock.With</span><br><span class="line">most assemblers, using the instruction form MOV DS, EAX will avoid this unneeded</span><br><span class="line">66H prefix.When the processor executes the instruction with a 32-bit general-purpose</span><br><span class="line">register, it assumes that the 16 least-significant bits of the general-purpose</span><br><span class="line">register are the destination or source operand.If the register is a destination</span><br><span class="line">operand, the resulting value in the two high-order bytes of the register is</span><br><span class="line">implementation dependent.For the Pentium 4, Intel Xeon, and P6 family processors,</span><br><span class="line">the two high-order bytes are filled with zeros; for earlier 32-bit IA-32 processors,</span><br><span class="line">the two high order bytes are undefined.</span><br><span class="line"></span><br><span class="line">In 64-bit mode, the instruction's default operation size is 32 bits.Use of</span><br><span class="line">the REX.R prefix permits access to additional registers (R8-R15).Use of the</span><br><span class="line">REX.W prefix promotes operation to 64 bits.See the summary chart at the beginning</span><br><span class="line">of this section for encoding data and limits.</span><br><span class="line"></span><br><span class="line">操作: </span><br><span class="line"></span><br><span class="line">DEST &lt;- SRC;</span><br><span class="line">Loading a segment register while in protected mode results in special checks and actions, as described in the</span><br><span class="line">following listing.These checks are performed on the segment selector and the segment descriptor to which it</span><br><span class="line">points.</span><br><span class="line">IF SS is loaded</span><br><span class="line">  THEN</span><br><span class="line">     IF segment selector is NULL</span><br><span class="line">       THEN #GP(0); FI;</span><br><span class="line">     IF segment selector index is outside descriptor table limits</span><br><span class="line">     or segment selector's RPL != CPL</span><br><span class="line">     or segment is not a writable data segment</span><br><span class="line">     or DPL != CPL</span><br><span class="line">       THEN #GP(selector); FI;</span><br><span class="line">     IF segment not marked present</span><br><span class="line">       THEN #SS(selector);</span><br><span class="line">       ELSE</span><br><span class="line">          SS &lt;- segment selector;</span><br><span class="line">          SS &lt;- segment descriptor; FI;</span><br><span class="line">FI;</span><br><span class="line">IF DS, ES, FS, or GS is loaded with non-NULL selector</span><br><span class="line">THEN</span><br><span class="line">  IF segment selector index is outside descriptor table limits</span><br><span class="line">  or segment is not a data or readable code segment</span><br><span class="line">  or ((segment is a data or nonconforming code segment)</span><br><span class="line">  or ((RPL &gt; DPL) and (CPL &gt; DPL))</span><br><span class="line">     THEN #GP(selector); FI;</span><br><span class="line">  IF segment not marked present</span><br><span class="line">     THEN #NP(selector);</span><br><span class="line">     ELSE</span><br><span class="line">       SegmentRegister &lt;- segment selector;</span><br><span class="line">       SegmentRegister &lt;- segment descriptor; FI;</span><br><span class="line">FI;</span><br><span class="line">IF DS, ES, FS, or GS is loaded with NULL selector</span><br><span class="line">  THEN</span><br><span class="line">     SegmentRegister &lt;- segment selector;</span><br><span class="line">     SegmentRegister &lt;- segment descriptor;</span><br><span class="line">FI;</span><br><span class="line"></span><br><span class="line">Flags Affected:</span><br><span class="line">None.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">保护模式：</span><br><span class="line">| #GP(0)         | If attempt is made to load SS register        </span><br><span class="line">|                | with NULL segment selector.If the destination</span><br><span class="line">|                | operand is in a non-writable segment.         </span><br><span class="line">|                | If a memory operand effective address         </span><br><span class="line">|                | is outside the CS, DS, ES, FS, or GS          </span><br><span class="line">|                | segment limit.If the DS, ES, FS, or          </span><br><span class="line">|                | GS register contains a NULL segment           </span><br><span class="line">|                | selector.                                     </span><br><span class="line">| #GP(selector)  | If segment selector index is outside          </span><br><span class="line">|                | descriptor table limits.If the SS register   </span><br><span class="line">|                | is being loaded and the segment selector's    </span><br><span class="line">|                | RPL and the segment descriptor's DPL          </span><br><span class="line">|                | are not equal to the CPL.If the SS           </span><br><span class="line">|                | register is being loaded and the segment      </span><br><span class="line">|                | pointed to is a non-writable data segment.    </span><br><span class="line">|                | If the DS, ES, FS, or GS register is          </span><br><span class="line">|                | being loaded and the segment pointed          </span><br><span class="line">|                | to is not a data or readable code segment.    </span><br><span class="line">|                | If the DS, ES, FS, or GS register is          </span><br><span class="line">|                | being loaded and the segment pointed          </span><br><span class="line">|                | to is a data or nonconforming code segment,   </span><br><span class="line">|                | but both the RPL and the CPL are greater      </span><br><span class="line">|                | than the DPL.                                 </span><br><span class="line">| #SS(0)         | If a memory operand effective address         </span><br><span class="line">|                | is outside the SS segment limit.              </span><br><span class="line">| #SS(selector)  | If the SS register is being loaded and        </span><br><span class="line">|                | the segment pointed to is marked not          </span><br><span class="line">|                | present.                                      </span><br><span class="line">| #NP            | If the DS, ES, FS, or GS register is          </span><br><span class="line">|                | being loaded and the segment pointed          </span><br><span class="line">|                | to is marked not present.                     </span><br><span class="line">| #PF(fault-code)| If a page fault occurs.                       </span><br><span class="line">| #AC(0)         | If alignment checking is enabled and          </span><br><span class="line">|                | an unaligned memory reference is made         </span><br><span class="line">|                | while the current privilege level is          </span><br><span class="line">|                | 3.                                            </span><br><span class="line">| #UD            | If attempt is made to load the CS register.   </span><br><span class="line">|                | If the LOCK prefix is used.                   </span><br><span class="line"></span><br><span class="line">Real-地址模式异常: </span><br><span class="line">| #GP| If a memory operand effective address      </span><br><span class="line">|    | is outside the CS, DS, ES, FS, or GS       </span><br><span class="line">|    | segment limit.                             </span><br><span class="line">| #SS| If a memory operand effective address      </span><br><span class="line">|    | is outside the SS segment limit.           </span><br><span class="line">| #UD| If attempt is made to load the CS register.</span><br><span class="line">|    | If the LOCK prefix is used.                </span><br><span class="line"></span><br><span class="line">Virtual-8086 模式异常: </span><br><span class="line">| #GP(0)         | If a memory operand effective address      </span><br><span class="line">|                | is outside the CS, DS, ES, FS, or GS       </span><br><span class="line">|                | segment limit.                             </span><br><span class="line">| #SS(0)         | If a memory operand effective address      </span><br><span class="line">|                | is outside the SS segment limit.           </span><br><span class="line">| #PF(fault-code)| If a page fault occurs.                    </span><br><span class="line">| #AC(0)         | If alignment checking is enabled and       </span><br><span class="line">|                | an unaligned memory reference is made.     </span><br><span class="line">| #UD            | If attempt is made to load the CS register.</span><br><span class="line">|                | If the LOCK prefix is used.                </span><br><span class="line"></span><br><span class="line">兼容模式：</span><br><span class="line">Same exceptions as in protected mode.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">64-Bit 模式异常: </span><br><span class="line">| #GP(0)         | If the memory address is in a non-canonical     </span><br><span class="line">|                | form.If an attempt is made to load             </span><br><span class="line">|                | SS register with NULL segment selector          </span><br><span class="line">|                | when CPL = 3.If an attempt is made             </span><br><span class="line">|                | to load SS register with NULL segment           </span><br><span class="line">|                | selector when CPL &lt; 3 and CPL != RPL.            </span><br><span class="line">| #GP(selector)  | If segment selector index is outside            </span><br><span class="line">|                | descriptor table limits.If the memory          </span><br><span class="line">|                | access to the descriptor table is non-canonical.</span><br><span class="line">|                | If the SS register is being loaded and          </span><br><span class="line">|                | the segment selector's RPL and the segment      </span><br><span class="line">|                | descriptor's DPL are not equal to the           </span><br><span class="line">|                | CPL.If the SS register is being loaded         </span><br><span class="line">|                | and the segment pointed to is a nonwritable     </span><br><span class="line">|                | data segment.If the DS, ES, FS, or             </span><br><span class="line">|                | GS register is being loaded and the             </span><br><span class="line">|                | segment pointed to is not a data or             </span><br><span class="line">|                | readable code segment.If the DS, ES,           </span><br><span class="line">|                | FS, or GS register is being loaded and          </span><br><span class="line">|                | the segment pointed to is a data or             </span><br><span class="line">|                | nonconforming code segment, but both            </span><br><span class="line">|                | the RPL and the CPL are greater than            </span><br><span class="line">|                | the DPL.                                        </span><br><span class="line">| #SS(0)         | If the stack address is in a non-canonical      </span><br><span class="line">|                | form.                                           </span><br><span class="line">| #SS(selector)  | If the SS register is being loaded and          </span><br><span class="line">|                | the segment pointed to is marked not            </span><br><span class="line">|                | present.                                        </span><br><span class="line">| #PF(fault-code)| If a page fault occurs.                         </span><br><span class="line">| #AC(0)         | If alignment checking is enabled and            </span><br><span class="line">|                | an unaligned memory reference is made           </span><br><span class="line">|                | while the current privilege level is            </span><br><span class="line">|                | 3.                                              </span><br><span class="line">| #UD            | If attempt is made to load the CS register.     </span><br><span class="line">|                | If the LOCK prefix is used.                     </span><br><span class="line"></span><br><span class="line">MOV - Move to/from Control Registers:</span><br><span class="line">| Opcode/Instruction                 | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                           </span><br><span class="line">| 0F 20/r MOV r32, CR0-CR7           | MR   | N.E.       | Valid          | Move control register to r32.         </span><br><span class="line">| 0F 20/r MOV r64, CR0-CR7 REX.R + 0F| MR MR| Valid Valid| N.E.N.E.      | Move extended control register to r64.</span><br><span class="line">| 20 /0 MOV r64, CR8                 |      |            |                | Move extended CR8 to r64.1            </span><br><span class="line">| 0F 22 /r MOV CR0-CR7, r32          | RM   | N.E.       | Valid          | Move r32 to control register.         </span><br><span class="line">| 0F 22 /r MOV CR0-CR7, r64          | RM   | Valid      | N.E.           | Move r64 to extended control register.</span><br><span class="line">| REX.R + 0F 22 /0 MOV CR8, r64      | RM   | Valid      | N.E.           | Move r64 to extended CR8.1            </span><br><span class="line"></span><br><span class="line">NOTE::</span><br><span class="line">| 1.| MOV CR* instructions, except for MOV  </span><br><span class="line">|   | CR8, are serializing instructions.MOV</span><br><span class="line">|   | CR8 is not architecturally defined as </span><br><span class="line">|   | a serializing instruction.For more   </span><br><span class="line">|   | information, see Chapter 8 in Intel®  </span><br><span class="line">|   | 64 and IA-32 Architectures Software   </span><br><span class="line">|   | Developer's Manual, Volume 3A.        </span><br><span class="line"></span><br><span class="line">指令操作数编码：</span><br><span class="line">| Op/En| Operand 1    | Operand 2    | Operand 3| Operand 4</span><br><span class="line">| MR   | ModRM:r/m (w)| ModRM:reg (r)| NA       | NA       </span><br><span class="line">| RM   | ModRM:reg (w)| ModRM:r/m (r)| NA       | NA       </span><br><span class="line"></span><br><span class="line">Description:</span><br><span class="line">Moves the contents of a control register (CR0, CR2, CR3, CR4, or CR8) to a general-purpose</span><br><span class="line">register or the contents of a general purpose register to a control register.</span><br><span class="line">The operand size for these instructions is always 32 bits in non-64-bit modes,</span><br><span class="line">regardless of the operand-size attribute.(See “Control Registers” in Chapter</span><br><span class="line">2 of the Intel®64 and IA-32 Architectures Software Developer's Manual, Volume</span><br><span class="line">3A, for a detailed description of the flags and fields in the control registers.)</span><br><span class="line">This instruction can be executed only when the current privilege level is 0.</span><br><span class="line"></span><br><span class="line">At the opcode level, the reg field within the ModR/M byte specifies which of</span><br><span class="line">the control registers is loaded or read.The 2 bits in the mod field are ignored.</span><br><span class="line">The r/m field specifies the general-purpose register loaded or read.Attempts</span><br><span class="line">to reference CR1, CR5, CR6, CR7, and CR9-CR15 result in undefined opcode (#UD)</span><br><span class="line">exceptions.</span><br><span class="line"></span><br><span class="line">When loading control registers, programs should not attempt to change the reserved</span><br><span class="line">bits; that is, always set reserved bits to the value previously read.An attempt</span><br><span class="line">to change CR4's reserved bits will cause a general protection fault.Reserved</span><br><span class="line">bits in CR0 and CR3 remain clear after any load of those registers; attempts</span><br><span class="line">to set them have no impact.On Pentium 4, Intel Xeon and P6 family processors,</span><br><span class="line">CR0.ET remains set after any load of CR0; attempts to clear this bit have no</span><br><span class="line">impact.</span><br><span class="line"></span><br><span class="line">In certain cases, these instructions have the side effect of invalidating entries</span><br><span class="line">in the TLBs and the paging-structure caches.See Section 4.10.4.1, “Operations</span><br><span class="line">that Invalidate TLBs and Paging-Structure Caches,” in the Intel® 64 and IA-32</span><br><span class="line">Architectures Software Developer's Manual, Volume 3A for details.</span><br><span class="line"></span><br><span class="line">The following side effects are implementation-specific for the Pentium 4, Intel</span><br><span class="line">Xeon, and P6 processor family: when modifying PE or PG in register CR0, or PSE</span><br><span class="line">or PAE in register CR4, all TLB entries are flushed, including global entries.</span><br><span class="line">Software should not depend on this functionality in all Intel 64 or IA-32 processors.</span><br><span class="line"></span><br><span class="line">In 64-bit mode, the instruction's default operation size is 64 bits.The REX.R</span><br><span class="line">prefix must be used to access CR8.Use of REX.B permits access to additional</span><br><span class="line">registers (R8-R15).Use of the REX.W prefix or 66H prefix is ignored.Use of</span><br><span class="line"></span><br><span class="line">the REX.R prefix to specify a register other than CR8 causes an invalid-opcode</span><br><span class="line">exception.See the summary chart at the beginning of this section for encoding</span><br><span class="line">data and limits.</span><br><span class="line"></span><br><span class="line">If CR4.PCIDE = 1, bit 63 of the source operand to MOV to CR3 determines whether</span><br><span class="line">the instruction invalidates entries in the TLBs and the paging-structure caches</span><br><span class="line">(see Section 4.10.4.1, “Operations that Invalidate TLBs and Paging-Structure</span><br><span class="line">Caches,” in the Intel® 64 and IA-32 Architectures Software Developer's Manual,</span><br><span class="line">Volume 3A).The instruction does not modify bit 63 of CR3, which is reserved</span><br><span class="line">and always 0.</span><br><span class="line"></span><br><span class="line">See “Changes to Instruction Behavior in VMX Non-Root Operation” in Chapter 25</span><br><span class="line">of the Intel® 64 and IA-32 Architectures Software Developer's Manual, Volume</span><br><span class="line">3C, for more information about the behavior of this instruction in VMX non-root</span><br><span class="line">operation.</span><br><span class="line"></span><br><span class="line">操作: </span><br><span class="line"></span><br><span class="line">DEST &lt;- SRC;</span><br><span class="line"></span><br><span class="line">Flags Affected:</span><br><span class="line">The OF, SF, ZF, AF, PF, and CF flags are undefined.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">保护模式：</span><br><span class="line">| #GP(0)| If the current privilege level is not    </span><br><span class="line">|       | 0.If an attempt is made to write invalid</span><br><span class="line">|       | bit combinations in CR0 (such as setting </span><br><span class="line">|       | the PG flag to 1 when the PE flag is     </span><br><span class="line">|       | set to 0, or setting the CD flag to      </span><br><span class="line">|       | 0 when the NW flag is set to 1).If      </span><br><span class="line">|       | an attempt is made to write a 1 to any   </span><br><span class="line">|       | reserved bit in CR4.If an attempt is    </span><br><span class="line">|       | made to write 1 to CR4.PCIDE.If any     </span><br><span class="line">|       | of the reserved bits are set in the      </span><br><span class="line">|       | page-directory pointers table (PDPT)     </span><br><span class="line">|       | and the loading of a control register    </span><br><span class="line">|       | causes the PDPT to be loaded into the    </span><br><span class="line">|       | processor.                               </span><br><span class="line">| #UD   | If the LOCK prefix is used.If an attempt</span><br><span class="line">|       | is made to access CR1, CR5, CR6, or      </span><br><span class="line">|       | CR7.                                     </span><br><span class="line"></span><br><span class="line">Real-地址模式异常: </span><br><span class="line">| #GP| If an attempt is made to write a 1 to    </span><br><span class="line">|    | any reserved bit in CR4.If an attempt   </span><br><span class="line">|    | is made to write 1 to CR4.PCIDE.If      </span><br><span class="line">|    | an attempt is made to write invalid      </span><br><span class="line">|    | bit combinations in CR0 (such as setting </span><br><span class="line">|    | the PG flag to 1 when the PE flag is     </span><br><span class="line">|    | set to 0).                               </span><br><span class="line">| #UD| 如果使用LOCK前缀.If an attempt</span><br><span class="line">|    | is made to access CR1, CR5, CR6, or      </span><br><span class="line">|    | CR7.                                     </span><br><span class="line"></span><br><span class="line">Virtual-8086 模式异常: </span><br><span class="line">| #GP(0)| These instructions cannot be executed</span><br><span class="line">|       | in virtual-8086 mode.                </span><br><span class="line"></span><br><span class="line">兼容模式：</span><br><span class="line">| #GP(0)| If the current privilege level is not    </span><br><span class="line">|       | 0.If an attempt is made to write invalid</span><br><span class="line">|       | bit combinations in CR0 (such as setting </span><br><span class="line">|       | the PG flag to 1 when the PE flag is     </span><br><span class="line">|       | set to 0, or setting the CD flag to      </span><br><span class="line">|       | 0 when the NW flag is set to 1).If      </span><br><span class="line">|       | an attempt is made to change CR4.PCIDE   </span><br><span class="line">|       | from 0 to 1 while CR3[11:0] != 000H.      </span><br><span class="line">|       | If an attempt is made to clear CR0.PG[bit</span><br><span class="line">|       | 31] while CR4.PCIDE = 1.If an attempt   </span><br><span class="line">|       | is made to write a 1 to any reserved     </span><br><span class="line">|       | bit in CR3.If an attempt is made to     </span><br><span class="line">|       | leave IA-32e mode by clearing CR4.PAE[bit</span><br><span class="line">|       | 5].                                      </span><br><span class="line">| #UD   | If the LOCK prefix is used.If an attempt</span><br><span class="line">|       | is made to access CR1, CR5, CR6, or      </span><br><span class="line">|       | CR7.                                     </span><br><span class="line"></span><br><span class="line">64-Bit 模式异常: </span><br><span class="line">| #GP(0)| If the current privilege level is not    </span><br><span class="line">|       | 0.If an attempt is made to write invalid</span><br><span class="line">|       | bit combinations in CR0 (such as setting </span><br><span class="line">|       | the PG flag to 1 when the PE flag is     </span><br><span class="line">|       | set to 0, or setting the CD flag to      </span><br><span class="line">|       | 0 when the NW flag is set to 1).If      </span><br><span class="line">|       | an attempt is made to change CR4.PCIDE   </span><br><span class="line">|       | from 0 to 1 while CR3[11:0] != 000H.      </span><br><span class="line">|       | If an attempt is made to clear CR0.PG[bit</span><br><span class="line">|       | 31].If an attempt is made to write      </span><br><span class="line">|       | a 1 to any reserved bit in CR4.If an    </span><br><span class="line">|       | attempt is made to write a 1 to any      </span><br><span class="line">|       | reserved bit in CR8.If an attempt is    </span><br><span class="line">|       | made to write a 1 to any reserved bit    </span><br><span class="line">|       | in CR3.If an attempt is made to leave   </span><br><span class="line">|       | IA-32e mode by clearing CR4.PAE[bit      </span><br><span class="line">|       | 5].                                      </span><br><span class="line">| #UD   | If the LOCK prefix is used.If an attempt</span><br><span class="line">|       | is made to access CR1, CR5, CR6, or      </span><br><span class="line">|       | CR7.If the REX.R prefix is used to      </span><br><span class="line">|       | specify a register other than CR8.       </span><br><span class="line"></span><br><span class="line">MOV - Move to/from Debug Registers:</span><br><span class="line">| Opcode/Instruction       | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                         </span><br><span class="line">| 0F 21/r MOV r32, DR0-DR7 | MR   | N.E.       | Valid          | Move debug register to r32.         </span><br><span class="line">| 0F 21/r MOV r64, DR0-DR7 | MR   | Valid      | N.E.           | Move extended debug register to r64.</span><br><span class="line">| 0F 23 /r MOV DR0-DR7, r32| RM   | N.E.       | Valid          | Move r32 to debug register.         </span><br><span class="line">| 0F 23 /r MOV DR0-DR7, r64| RM   | Valid      | N.E.           | Move r64 to extended debug register.</span><br><span class="line"></span><br><span class="line">指令操作数编码：</span><br><span class="line">| Op/En| Operand 1    | Operand 2    | Operand 3| Operand 4</span><br><span class="line">| MR   | ModRM:r/m (w)| ModRM:reg (r)| NA       | NA       </span><br><span class="line">| RM   | ModRM:reg (w)| ModRM:r/m (r)| NA       | NA       </span><br><span class="line"></span><br><span class="line">Description:</span><br><span class="line">Moves the contents of a debug register (DR0, DR1, DR2, DR3, DR4, DR5, DR6, or</span><br><span class="line">DR7) to a general-purpose register or vice versa.The operand size for these</span><br><span class="line">instructions is always 32 bits in non-64-bit modes, regardless of the operand-size</span><br><span class="line">attribute.(See Section 17.2, “Debug Registers”, of the Intel® 64 and IA-32</span><br><span class="line">Architectures Software Developer's Manual, Volume 3A, for a detailed description</span><br><span class="line">of the flags and fields in the debug registers.)</span><br><span class="line"></span><br><span class="line">The instructions must be executed at privilege level 0 or in real-address mode.</span><br><span class="line"></span><br><span class="line">When the debug extension (DE) flag in register CR4 is clear, these instructions</span><br><span class="line">operate on debug registers in a manner that is compatible with Intel386 and</span><br><span class="line">Intel486 processors.In this mode, references to DR4 and DR5 refer to DR6 and</span><br><span class="line">DR7, respectively.When the DE flag in CR4 is set, attempts to reference DR4</span><br><span class="line">and DR5 result in an undefined opcode (#UD) exception.(The CR4 register was</span><br><span class="line">added to the IA-32 Architecture beginning with the Pentium processor.)</span><br><span class="line"></span><br><span class="line">At the opcode level, the reg field within the ModR/M byte specifies which of</span><br><span class="line">the debug registers is loaded or read.The two bits in the mod field are ignored.</span><br><span class="line">The r/m field specifies the general-purpose register loaded or read.</span><br><span class="line"></span><br><span class="line">In 64-bit mode, the instruction's default operation size is 64 bits.Use of</span><br><span class="line">the REX.B prefix permits access to additional registers (R8-R15).Use of the</span><br><span class="line">REX.W or 66H prefix is ignored.Use of the REX.R prefix causes an invalidopcode</span><br><span class="line">exception.See the summary chart at the beginning of this section for encoding</span><br><span class="line">data and limits.</span><br><span class="line"></span><br><span class="line">操作: </span><br><span class="line"></span><br><span class="line">IF ((DE = 1) and (SRC or DEST = DR4 or DR5))</span><br><span class="line">  THEN</span><br><span class="line">     #UD;</span><br><span class="line">  ELSE</span><br><span class="line">     DEST &lt;- SRC;</span><br><span class="line">FI;</span><br><span class="line"></span><br><span class="line">Flags Affected:</span><br><span class="line">The OF, SF, ZF, AF, PF, and CF flags are undefined.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">保护模式：</span><br><span class="line">| #GP(0)| If the current privilege level is not      </span><br><span class="line">|       | 0.                                         </span><br><span class="line">| #UD   | If CR4.DE[bit 3] = 1 (debug extensions)    </span><br><span class="line">|       | and a MOV instruction is executed involving</span><br><span class="line">|       | DR4 or DR5.If the LOCK prefix is used.    </span><br><span class="line">| #DB   | If any debug register is accessed while    </span><br><span class="line">|       | the DR7.GD[bit 13] = 1.                    </span><br><span class="line"></span><br><span class="line">Real-地址模式异常: </span><br><span class="line">| #UD| If CR4.DE[bit 3] = 1 (debug extensions)    </span><br><span class="line">|    | and a MOV instruction is executed involving</span><br><span class="line">|    | DR4 or DR5.If the LOCK prefix is used.    </span><br><span class="line">| #DB| If any debug register is accessed while    </span><br><span class="line">|    | the DR7.GD[bit 13] = 1.                    </span><br><span class="line"></span><br><span class="line">Virtual-8086 模式异常: </span><br><span class="line">| #GP(0)| The debug registers cannot be loaded</span><br><span class="line">|       | or read when in virtual-8086 mode.  </span><br><span class="line"></span><br><span class="line">兼容模式：</span><br><span class="line">Same exceptions as in protected mode.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">64-Bit 模式异常: </span><br><span class="line">| #GP(0)| If the current privilege level is not      </span><br><span class="line">|       | 0.If an attempt is made to write a        </span><br><span class="line">|       | 1 to any of bits 63:32 in DR6.If an       </span><br><span class="line">|       | attempt is made to write a 1 to any        </span><br><span class="line">|       | of bits 63:32 in DR7.                      </span><br><span class="line">| #UD   | If CR4.DE[bit 3] = 1 (debug extensions)    </span><br><span class="line">|       | and a MOV instruction is executed involving</span><br><span class="line">|       | DR4 or DR5.If the LOCK prefix is used.    </span><br><span class="line">|       | If the REX.R prefix is used.               </span><br><span class="line">| #DB   | If any debug register is accessed while    </span><br><span class="line">|       | the DR7.GD[bit 13] = 1.                    </span><br><span class="line">================================================================</span><br></pre></td></tr></table></figure>
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>评论</h1>
+
+  
+    <div id='gitment'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> 版权所有 <a href="">times </a> @ 2019</p>
+            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+
+
+
+
+
+
+  <script>
+  var gitment = new Gitment({
+    id: window.location.pathname, // optional
+    owner: 'hsutimes',
+    repo: 'gitment_blog',
+    oauth: {
+      client_id: 'd73d768ea9e3bd69ab54',
+      client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('gitment')
+  </script>
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88').update('hashit_44a908725b29ac88023a27d1a8dd756b994a8cb196069257cec2074f7b38473f', function(){});
+  });
+  
+</script>
+
+
+    
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  function getIP(json) {
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.fetchIsThumbUp('/2019/10/06/assembly-language/', json.ip);
+    document.getElementById('thumb-up-button').addEventListener('click', function(e){
+      leanCloud.isThumbUp('/2019/10/06/assembly-language/', function(isThumbUp){
+        console.log('is thumb up:' + isThumbUp);
+        if(isThumbUp){
+          leanCloud.removeThumbUpRecord('/2019/10/06/assembly-language/', json.ip);
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+          
+        }else{
+          leanCloud.addThumbUpRecord('/2019/10/06/assembly-language/', json.ip);
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }
+        leanCloud.getThumbUpCount('/2019/10/06/assembly-language/', function(count){
+            console.log('thumb up count: ' + count)
+            var el = document.getElementById('article-thumbup-count');
+            if(el) el.innerHTML = count;
+        });
+      });
+    });
+    leanCloud.addVisitRecord('/2019/10/06/assembly-language/', json.ip);
+    leanCloud.fetchCommentCount('/2019/10/06/assembly-language/');
+    leanCloud.fetchVisitCount('/2019/10/06/assembly-language/');
+    leanCloud.fetchThumbUpCount('/2019/10/06/assembly-language/');
+    leanCloud.getCommentCount('/2019/10/06/assembly-language/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2019/10/06/assembly-language/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getThumbUpCount('/2019/10/06/assembly-language/', function(count){
+        var el = document.getElementById('article-thumbup-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.isThumbUp('/2019/10/06/assembly-language/', function(isThumbUp){
+        console.log('init thumb up:' + isThumbUp);
+        if(isThumbUp){
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }else{
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+        }
+    });
+  });
+  }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

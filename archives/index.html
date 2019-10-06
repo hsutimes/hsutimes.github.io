@@ -217,6 +217,56 @@
 
 
 
+<div class='Card-archive' id='hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88' data-name='assembly language' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/10/06/assembly-language/">
+			
+			Assembly Language</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/汇编语言/">汇编语言</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-10-06
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/10/06/assembly-language/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_aad992c3c8546291bc8d7a06da9754630c959752f425639f1b1e1e652ee94479' data-name='x64dbg破解code' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -768,62 +818,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946' data-name='HashMap类' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/23/HashMap类/">
-			
-			HashMap类</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/HashMap/">Hashmap</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/Java/">Java</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-23
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/23/HashMap类/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -993,6 +987,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .Card-title a, #hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .Card-excerpt a, #hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .Card-figure a');
+          new Postv2('hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88').showUnreadNotification('hashit_44a908725b29ac88023a27d1a8dd756b994a8cb196069257cec2074f7b38473f', function(){
+            console.log('show badge for 2019/10/06/assembly-language/ : hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88');
+            var postBadge = document.querySelector('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/10/06/assembly-language/ : hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88');
+            var postBadge = document.querySelector('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88').update('hashit_44a908725b29ac88023a27d1a8dd756b994a8cb196069257cec2074f7b38473f', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1280,32 +1300,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-title a, #hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-excerpt a, #hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-figure a');
-          new Postv2('hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946').showUnreadNotification('hashit_ddd197ae7a3c7c0b80ff9267277aba03447c15b074b8aedc602e2d70cd077034', function(){
-            console.log('show badge for 2019/09/23/HashMap类/ : hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946');
-            var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/23/HashMap类/ : hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946');
-            var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946').update('hashit_ddd197ae7a3c7c0b80ff9267277aba03447c15b074b8aedc602e2d70cd077034', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1321,6 +1315,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/10/06/assembly-language/', json.ip);
+          leanCloud.fetchCommentCount('/2019/10/06/assembly-language/');
+          leanCloud.fetchVisitCount('/2019/10/06/assembly-language/');
+          leanCloud.fetchThumbUpCount('/2019/10/06/assembly-language/');
+          leanCloud.getCommentCount('/2019/10/06/assembly-language/', function(count){
+              var el = document.querySelector('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/10/06/assembly-language/', function(count){
+              var el = document.querySelector('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/10/06/assembly-language/', function(count){
+              var el = document.querySelector('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/10/06/assembly-language/', function(isThumbUp){
+              var el = document.querySelector('#hashit_557f0eaa014eb97e271cd4c20124cd6613223622c8d52f00482c39cc3e44cf88 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1643,36 +1667,6 @@
           });
           leanCloud.isThumbUp('/2019/09/25/LinkedList类/', function(isThumbUp){
               var el = document.querySelector('#hashit_8e7418501d8b7b63d36b46ad185d5fdcd533d60d27231e39a70ed214ecafa74f .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/23/HashMap类/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/23/HashMap类/');
-          leanCloud.fetchVisitCount('/2019/09/23/HashMap类/');
-          leanCloud.fetchThumbUpCount('/2019/09/23/HashMap类/');
-          leanCloud.getCommentCount('/2019/09/23/HashMap类/', function(count){
-              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/23/HashMap类/', function(count){
-              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/23/HashMap类/', function(count){
-              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/23/HashMap类/', function(isThumbUp){
-              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';

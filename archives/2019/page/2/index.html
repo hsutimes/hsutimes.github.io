@@ -211,6 +211,62 @@
 
 
 
+<div class='Card-archive' id='hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946' data-name='HashMap类' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/23/HashMap类/">
+			
+			HashMap类</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/HashMap/">Hashmap</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/Java/">Java</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-23
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/23/HashMap类/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_ae79ae2687b159b531045dbd955567f87b924ff17756dce0260975cfd2444c60' data-name='BigInteger类' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -786,56 +842,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81' data-name='骨传导' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/12/骨传导/">
-			
-			骨传导</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/百科/">百科</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-12
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/12/骨传导/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -1002,6 +1008,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-title a, #hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-excerpt a, #hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .Card-figure a');
+          new Postv2('hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946').showUnreadNotification('hashit_ddd197ae7a3c7c0b80ff9267277aba03447c15b074b8aedc602e2d70cd077034', function(){
+            console.log('show badge for 2019/09/23/HashMap类/ : hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946');
+            var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/23/HashMap类/ : hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946');
+            var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946').update('hashit_ddd197ae7a3c7c0b80ff9267277aba03447c15b074b8aedc602e2d70cd077034', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1289,32 +1321,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-title a, #hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-excerpt a, #hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-figure a');
-          new Postv2('hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81').showUnreadNotification('hashit_dc6a98871dd6902fb6453d54d6361391a96d486c77555126205ce334328eff94', function(){
-            console.log('show badge for 2019/09/12/骨传导/ : hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81');
-            var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/12/骨传导/ : hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81');
-            var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81').update('hashit_dc6a98871dd6902fb6453d54d6361391a96d486c77555126205ce334328eff94', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1330,6 +1336,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/23/HashMap类/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/23/HashMap类/');
+          leanCloud.fetchVisitCount('/2019/09/23/HashMap类/');
+          leanCloud.fetchThumbUpCount('/2019/09/23/HashMap类/');
+          leanCloud.getCommentCount('/2019/09/23/HashMap类/', function(count){
+              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/23/HashMap类/', function(count){
+              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/23/HashMap类/', function(count){
+              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/23/HashMap类/', function(isThumbUp){
+              var el = document.querySelector('#hashit_3b4ce7a4c80440304a504f7a8e6941088182af7b08cc4d4aac73edb585473946 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1652,36 +1688,6 @@
           });
           leanCloud.isThumbUp('/2019/09/12/nohup-在linux后台运行程序/', function(isThumbUp){
               var el = document.querySelector('#hashit_52e8ca37e5d209a1732377a75735735b42289439f06d813d7fa44dfb778e6b6d .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/12/骨传导/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/12/骨传导/');
-          leanCloud.fetchVisitCount('/2019/09/12/骨传导/');
-          leanCloud.fetchThumbUpCount('/2019/09/12/骨传导/');
-          leanCloud.getCommentCount('/2019/09/12/骨传导/', function(count){
-              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/12/骨传导/', function(count){
-              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/12/骨传导/', function(count){
-              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/12/骨传导/', function(isThumbUp){
-              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';

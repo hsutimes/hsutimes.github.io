@@ -211,6 +211,56 @@
 
 
 
+<div class='Card-archive' id='hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81' data-name='骨传导' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/12/骨传导/">
+			
+			骨传导</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/百科/">百科</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-12
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/12/骨传导/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe' data-name='三阶魔方解法' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -834,68 +884,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef' data-name='TensorFlow 2.0 中文手写字识别（汉字OCR）' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/">
-			
-			TensorFlow 2.0 中文手写字识别（汉字OCR）</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/AI/">Ai</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/OCR/">Ocr</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/TensorFlow/">Tensorflow</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-06
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -1062,6 +1050,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-title a, #hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-excerpt a, #hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .Card-figure a');
+          new Postv2('hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81').showUnreadNotification('hashit_dc6a98871dd6902fb6453d54d6361391a96d486c77555126205ce334328eff94', function(){
+            console.log('show badge for 2019/09/12/骨传导/ : hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81');
+            var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/12/骨传导/ : hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81');
+            var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81').update('hashit_dc6a98871dd6902fb6453d54d6361391a96d486c77555126205ce334328eff94', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1349,32 +1363,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef .Card-title a, #hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef .Card-excerpt a, #hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef .Card-figure a');
-          new Postv2('hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef').showUnreadNotification('hashit_bedcd95d8b57685422d406ddd767bff887656f886c74f84726b3e5e187cd0611', function(){
-            console.log('show badge for 2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/ : hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef');
-            var postBadge = document.querySelector('#hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/ : hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef');
-            var postBadge = document.querySelector('#hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef').update('hashit_bedcd95d8b57685422d406ddd767bff887656f886c74f84726b3e5e187cd0611', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1390,6 +1378,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/12/骨传导/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/12/骨传导/');
+          leanCloud.fetchVisitCount('/2019/09/12/骨传导/');
+          leanCloud.fetchThumbUpCount('/2019/09/12/骨传导/');
+          leanCloud.getCommentCount('/2019/09/12/骨传导/', function(count){
+              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/12/骨传导/', function(count){
+              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/12/骨传导/', function(count){
+              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/12/骨传导/', function(isThumbUp){
+              var el = document.querySelector('#hashit_eaf7714d9210f3c76eda7c505673de2def2b7a2bd441738cc9f921bb84822d81 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1712,36 +1730,6 @@
           });
           leanCloud.isThumbUp('/2019/09/07/54-螺旋矩阵/', function(isThumbUp){
               var el = document.querySelector('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/');
-          leanCloud.fetchVisitCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/');
-          leanCloud.fetchThumbUpCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/');
-          leanCloud.getCommentCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(count){
-              var el = document.querySelector('#hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(count){
-              var el = document.querySelector('#hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(count){
-              var el = document.querySelector('#hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/', function(isThumbUp){
-              var el = document.querySelector('#hashit_7899c49ca5c1ba7529ddf8e525544a7dc8b197c11ebb5f7aeb16c880b526feef .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
