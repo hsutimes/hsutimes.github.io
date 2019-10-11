@@ -211,6 +211,56 @@
 
 
 
+<div class='Card-archive' id='hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c' data-name='Recommendation System' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/27/Recommendation-System/">
+			
+			Recommendation System</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/推荐系统/">推荐系统</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-27
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/27/Recommendation-System/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_bb9c8b0c92af436fef786fb8bc2098bde93992db5c88a2a55f57e03acfe17593' data-name='Desition Tree' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -774,62 +824,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918' data-name='OpenCV边缘检测' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/14/OpenCV边缘检测/">
-			
-			OpenCV边缘检测</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/OpenCV/">Opencv</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/边缘检测/">边缘检测</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-14
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/14/OpenCV边缘检测/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -996,6 +990,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c .Card-title a, #hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c .Card-excerpt a, #hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c .Card-figure a');
+          new Postv2('hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c').showUnreadNotification('hashit_fabad2906d3522797a51b9a5e6aaca9bfb8c3f0c1cf82df09ad8e05945c844fe', function(){
+            console.log('show badge for 2019/09/27/Recommendation-System/ : hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c');
+            var postBadge = document.querySelector('#hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/27/Recommendation-System/ : hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c');
+            var postBadge = document.querySelector('#hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c').update('hashit_fabad2906d3522797a51b9a5e6aaca9bfb8c3f0c1cf82df09ad8e05945c844fe', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1283,32 +1303,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 .Card-title a, #hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 .Card-excerpt a, #hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 .Card-figure a');
-          new Postv2('hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918').showUnreadNotification('hashit_ff3c7890ce6f1777f8ae4a249a11713e4f50c2a20e2faa81fb9758381d209360', function(){
-            console.log('show badge for 2019/09/14/OpenCV边缘检测/ : hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918');
-            var postBadge = document.querySelector('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/14/OpenCV边缘检测/ : hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918');
-            var postBadge = document.querySelector('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918').update('hashit_ff3c7890ce6f1777f8ae4a249a11713e4f50c2a20e2faa81fb9758381d209360', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1324,6 +1318,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/27/Recommendation-System/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/27/Recommendation-System/');
+          leanCloud.fetchVisitCount('/2019/09/27/Recommendation-System/');
+          leanCloud.fetchThumbUpCount('/2019/09/27/Recommendation-System/');
+          leanCloud.getCommentCount('/2019/09/27/Recommendation-System/', function(count){
+              var el = document.querySelector('#hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/27/Recommendation-System/', function(count){
+              var el = document.querySelector('#hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/27/Recommendation-System/', function(count){
+              var el = document.querySelector('#hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/27/Recommendation-System/', function(isThumbUp){
+              var el = document.querySelector('#hashit_13d05246852f17f1169b3eb6ff8e8fce3acce9b01971da784f825b1416f5297c .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1646,36 +1670,6 @@
           });
           leanCloud.isThumbUp('/2019/09/16/2019年度机器学习49个顶级工程汇总/', function(isThumbUp){
               var el = document.querySelector('#hashit_ee80b3ecc310dcd5fa73d269acd3f35b5f37d2e532e9077b788ed309aeca2824 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/14/OpenCV边缘检测/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/14/OpenCV边缘检测/');
-          leanCloud.fetchVisitCount('/2019/09/14/OpenCV边缘检测/');
-          leanCloud.fetchThumbUpCount('/2019/09/14/OpenCV边缘检测/');
-          leanCloud.getCommentCount('/2019/09/14/OpenCV边缘检测/', function(count){
-              var el = document.querySelector('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/14/OpenCV边缘检测/', function(count){
-              var el = document.querySelector('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/14/OpenCV边缘检测/', function(count){
-              var el = document.querySelector('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/14/OpenCV边缘检测/', function(isThumbUp){
-              var el = document.querySelector('#hashit_f1ea18880b8941dba8f61169f08b701d3ed16fa906192661b35db7f30123f918 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
