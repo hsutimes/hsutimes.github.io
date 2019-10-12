@@ -211,6 +211,46 @@
 
 
 
+<div class='Card-archive' id='hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c' data-name='C/C++ for VSC' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/10/12/C-C-for-VSC/">
+			
+			C/C++ for VSC</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'></div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-10-12
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/10/12/C-C-for-VSC/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_fde02de9912414ba5e0b044255b4ca927aac057c0362c5d526892e82842acb72' data-name='Nobel Prize' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -827,6 +867,32 @@
           
           
           // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c .Card-title a, #hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c .Card-excerpt a, #hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c .Card-figure a');
+          new Postv2('hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c').showUnreadNotification('hashit_36a1c62fc0a6702e95ec6d242d40b32fb05253f1ffad468328383806ed56997c', function(){
+            console.log('show badge for 2019/10/12/C-C-for-VSC/ : hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c');
+            var postBadge = document.querySelector('#hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/10/12/C-C-for-VSC/ : hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c');
+            var postBadge = document.querySelector('#hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c').update('hashit_36a1c62fc0a6702e95ec6d242d40b32fb05253f1ffad468328383806ed56997c', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
+        
+          
+          
+          
+          // show/hide post unread badage
           var postLinks = document.querySelectorAll('#hashit_fde02de9912414ba5e0b044255b4ca927aac057c0362c5d526892e82842acb72 .Card-title a, #hashit_fde02de9912414ba5e0b044255b4ca927aac057c0362c5d526892e82842acb72 .Card-excerpt a, #hashit_fde02de9912414ba5e0b044255b4ca927aac057c0362c5d526892e82842acb72 .Card-figure a');
           new Postv2('hashit_fde02de9912414ba5e0b044255b4ca927aac057c0362c5d526892e82842acb72').showUnreadNotification('hashit_af9b549dff772aca65966bf2b6de760a9913bc11927b910444cc406ba7df65b6', function(){
             console.log('show badge for 2019/10/11/Nobel-Prize/ : hashit_fde02de9912414ba5e0b044255b4ca927aac057c0362c5d526892e82842acb72');
@@ -1072,6 +1138,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/10/12/C-C-for-VSC/', json.ip);
+          leanCloud.fetchCommentCount('/2019/10/12/C-C-for-VSC/');
+          leanCloud.fetchVisitCount('/2019/10/12/C-C-for-VSC/');
+          leanCloud.fetchThumbUpCount('/2019/10/12/C-C-for-VSC/');
+          leanCloud.getCommentCount('/2019/10/12/C-C-for-VSC/', function(count){
+              var el = document.querySelector('#hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/10/12/C-C-for-VSC/', function(count){
+              var el = document.querySelector('#hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/10/12/C-C-for-VSC/', function(count){
+              var el = document.querySelector('#hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/10/12/C-C-for-VSC/', function(isThumbUp){
+              var el = document.querySelector('#hashit_abcd697c878374bb0ed2dfc24f7578a9da20d0d8f5be61856b2266c0b31fd05c .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
