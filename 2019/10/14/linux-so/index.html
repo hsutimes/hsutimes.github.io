@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>linux_so - Time</title>
+  
+
+  
+  
+  <meta name="description" content>
+  <meta name="author" content="times">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+<link rel="stylesheet" href="/.css">
+
+  <!-- load font awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-134224598-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+
+  <!-- include comment system code -->
+  
+    <link rel="stylesheet" href="/css/gitment/default.css">
+<script src="/js/gitment.browser.js"></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/theme-icon.svg' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Time</a>
+			</h1>
+			<subtitle>
+				time
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux下的静态库、动态库和动态加载库"><span class="toc-number">1.</span> <span class="toc-text">Linux下的静态库、动态库和动态加载库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux库类型"><span class="toc-number">1.1.</span> <span class="toc-text">Linux库类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名约定"><span class="toc-number">1.2.</span> <span class="toc-text">命名约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态库-a"><span class="toc-number">1.3.</span> <span class="toc-text">静态库(.a)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态库-so"><span class="toc-number">1.4.</span> <span class="toc-text">动态库(.so)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态加载和卸载的库"><span class="toc-number">1.5.</span> <span class="toc-text">动态加载和卸载的库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNU-Libtool"><span class="toc-number">1.6.</span> <span class="toc-text">GNU Libtool</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2019/10/14/linux-so/" data-name='linux_so' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2019/10/14/linux-so/">
+                Linux_so
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+        <ul class='article-categories'>
+            
+            
+                <li><a href="/categories/文章/" data-no-instant>
+                    <img src="/images/文章.svg" alt="文章" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='文章'/>
+                </a></li>
+            
+        </ul>
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2019-10-14</li>
+            
+            <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            <li class='thumb-up-button' id='thumb-up-button'><i class="far fa-thumbs-up fa-lg" id='thumb-up-icon'></i> <span id='article-thumbup-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> times</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/>CC BY-NC-SA 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/c/">C</a></label>
+		
+	
+		
+			<label class='tag-2'><a href="/tags/c/">C++</a></label>
+		
+	
+		
+			<label class='tag-3'><a href="/tags/linux/">Linux</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                times
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>Linux下的静态库、动态库和动态加载库Linux库类型Linux下可以创建两种类型的库:
+
+静态库(.a): 在链接期间被应用程序直接链接进可执行文件
+
+动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明动态库的存在，也就是说这种动态库必须在编译时对编译器可见，但编译器却不将此种库编译进可执行文件; b)...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+    
+        
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux下的静态库、动态库和动态加载库"><span class="toc-number">1.</span> <span class="toc-text">Linux下的静态库、动态库和动态加载库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux库类型"><span class="toc-number">1.1.</span> <span class="toc-text">Linux库类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名约定"><span class="toc-number">1.2.</span> <span class="toc-text">命名约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态库-a"><span class="toc-number">1.3.</span> <span class="toc-text">静态库(.a)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态库-so"><span class="toc-number">1.4.</span> <span class="toc-text">动态库(.so)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态加载和卸载的库"><span class="toc-number">1.5.</span> <span class="toc-text">动态加载和卸载的库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNU-Libtool"><span class="toc-number">1.6.</span> <span class="toc-text">GNU Libtool</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <h1 id="Linux下的静态库、动态库和动态加载库"><a href="#Linux下的静态库、动态库和动态加载库" class="headerlink" title="Linux下的静态库、动态库和动态加载库"></a>Linux下的静态库、动态库和动态加载库</h1><h2 id="Linux库类型"><a href="#Linux库类型" class="headerlink" title="Linux库类型"></a>Linux库类型</h2><p>Linux下可以创建两种类型的库:</p>
+<ol>
+<li><p>静态库(.a): 在链接期间被应用程序直接链接进可执行文件</p>
+</li>
+<li><p>动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明动态库的存在，也就是说这种动态库必须在编译时对编译器可见，但编译器却不将此种库编译进可执行文件; b) 在运行期间，动态加载和卸载的库，使用动态加载方法加载。这种库的形式跟动态链接没有本质区别，区别是在调用时，是由用户程序决定何时链接的，而不是由系统链接器自动链接</p>
+</li>
+</ol>
+<h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><p>库需要以<code>lib</code>作为开头，而在指定链接命令行参数时，却无需包含开头和扩展名，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc src-file.c -lm -lpthread</span><br></pre></td></tr></table></figure>
+
+<p>这个例子中，链接了<code>libmath.a</code>和<code>libpthread.a</code></p>
+<h2 id="静态库-a"><a href="#静态库-a" class="headerlink" title="静态库(.a)"></a>静态库(.a)</h2><p>生成静态库的方法如下：</p>
+<ul>
+<li><p>编译object文件。例如：cc -Wall -c ctest1.c ctest2.c，该命令会生成ctest1.o和ctest2.o(其中-Wall表示编译时输出警告)。</p>
+</li>
+<li><p>创建库文件。例如：ar -cvq libctest.a ctest1.o ctest2.o。该命令会得到一个libctest.a文件</p>
+</li>
+<li><p>可以通过ar -t查看.a文件中包含哪些.o。所以，实际上ar就是一个打包命令，类似tar</p>
+</li>
+<li><p>构建符号表。ranlib libctest.a用于为.a创建符号表。有些ar命令实际上已经集成了ranlib的功能</p>
+</li>
+</ul>
+<p><code>.a</code>文件与windows下的<code>.lib</code>是相同的概念。</p>
+<h2 id="动态库-so"><a href="#动态库-so" class="headerlink" title="动态库(.so)"></a>动态库(.so)</h2><p>生成动态库的方法如下：</p>
+<ul>
+<li>编译object文件时使用-fPIC选项：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -fPIC -c *.c</span><br></pre></td></tr></table></figure>
+
+<p>这个选项的目的是让编译器生成地址无关(position independent)的代码，这是因为，动态库是在运行期间链接的，变量和函数的偏移量是事先不知道的，需要链接以后根据offset进行地址重定向。</p>
+<ul>
+<li>使用-shared链接<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 *.o</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><code>-shared</code>选项是让动态库得以在运行期间被动态链接;<code>-Wl,options</code>是设置传递给<code>ld(链接器)</code>的参数，在上面的例子中，当链接器在链接<code>.o</code>时会执行<code>ld -soname ibctest.so.1</code></p>
+<ul>
+<li>创建软链</li>
+</ul>
+<p>上面的命令将最终输出一个动态库libctest.so.1.0，而出于习惯，会创建两个软链:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv libctest.so.1.0 /opt/lib</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so</span><br></pre></td></tr></table></figure>
+
+<p><code>libctest.so</code>用于在编译期间使用<code>-lctest</code>让编译器找到动态库，而<code>libctest.so.1</code>用于在运行期间链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -I/path/to/include-files -L/path/to/libraries prog.c -lctest -o prog</span><br><span class="line">```shell</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>## 查看依赖</span><br><span class="line">使用ldd命令来查看程序对动态库的依赖。例如：</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">ldd prog</span><br><span class="line"></span><br><span class="line">libctest.so.1 =&gt; /opt/lib/libctest.so.1 (0x00002aaaaaaac000)</span><br><span class="line">libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)</span><br><span class="line">/lib64/ld-linux-x86-64.so.2 (0x0000003aa4c00000)</span><br></pre></td></tr></table></figure>
+
+<h3 id="obj文件"><a href="#obj文件" class="headerlink" title="obj文件"></a>obj文件</h3><p>obj文件的格式和组成可能是系统差异性的一大体现，比如windows下的PE、linux和一些unix下的elf、macos的mach-o、aix下的xcoff。</p>
+<p>查看obj文件的符号表信息，可以通过nm objdump readelf等方法。</p>
+<h3 id="运行期间查找动态库"><a href="#运行期间查找动态库" class="headerlink" title="运行期间查找动态库"></a>运行期间查找动态库</h3><p>运行期间，系统需要知道到哪里去查找动态库，这是通过/etc/ld.so.conf配置的。ldconfig用于配置运行时动态库查找路径，实际是更新/etc/ld.so.cache。另外一些环境变量也可以影响查找：(Linux/Solaris: LD_LIBRARY_PATH, SGI: LD_LIBRARYN32_PATH, AIX: LIBPATH, Mac OS X: DYLD_LIBRARY_PATH, HP-UX: SHLIB_PATH)</p>
+<h2 id="动态加载和卸载的库"><a href="#动态加载和卸载的库" class="headerlink" title="动态加载和卸载的库"></a>动态加载和卸载的库</h2><p>需要应用程序希望设计成插件化的架构，这就需要可以动态加载和卸载库的机制。与动态链接不同的是，动态加载的意思是，编译期间可以对动态库的存在一无所知，而是在运行期间通过用户程序尝试加载进来的。</p>
+<p>通过<code>dlfcn.h</code>中的<code>dlopen</code>、<code>dlsym</code>和<code>dlclose</code>等函数实现此种功能。</p>
+<p>另外，使用到dlfcn机制的可执行文件需要使用-rdynamic选项，它将指示连接器把所有符号（而不仅仅只是程序已使用到的外部符号，但不包括静态符号，比如被static修饰的函数）都添加到动态符号表（即.dynsym表）里。</p>
+<h2 id="GNU-Libtool"><a href="#GNU-Libtool" class="headerlink" title="GNU Libtool"></a>GNU Libtool</h2><p>如今许多软件的编译都采用libtool工具，libtool是一个编译链接包装工具，实际只是一个脚本，用libtool编译和链接会产生类似.la的文件，.la这种文件其实是个文本文件，指向.a文件，并声明一些版本信息。</p>
+<p><a href="https://segmentfault.com/a/1190000005988462" target="_blank" rel="noopener">传送门</a></p>
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>评论</h1>
+
+  
+    <div id='gitment'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> 版权所有 <a href="">times </a> @ 2019</p>
+            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux下的静态库、动态库和动态加载库"><span class="toc-number">1.</span> <span class="toc-text">Linux下的静态库、动态库和动态加载库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux库类型"><span class="toc-number">1.1.</span> <span class="toc-text">Linux库类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名约定"><span class="toc-number">1.2.</span> <span class="toc-text">命名约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态库-a"><span class="toc-number">1.3.</span> <span class="toc-text">静态库(.a)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态库-so"><span class="toc-number">1.4.</span> <span class="toc-text">动态库(.so)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态加载和卸载的库"><span class="toc-number">1.5.</span> <span class="toc-text">动态加载和卸载的库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNU-Libtool"><span class="toc-number">1.6.</span> <span class="toc-text">GNU Libtool</span></a></li></ol></li></ol>
+</div>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='归档'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='搜索'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
+		
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/文章/">
+						<span>文章</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/算法/">
+						<span>算法</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/人工智能/">
+						<span>人工智能</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/生活/">
+						<span>生活</span>
+					</a>
+				</div>
+		</div>
+		
+		<div class='nav-more-item'>
+				<div class="nav-name">
+					<a class='nav-link' href="/categories/笔试/">
+						<span>笔试</span>
+					</a>
+				</div>
+		</div>
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+
+
+
+
+
+
+  <script>
+  var gitment = new Gitment({
+    id: window.location.pathname, // optional
+    owner: 'hsutimes',
+    repo: 'gitment_blog',
+    oauth: {
+      client_id: 'd73d768ea9e3bd69ab54',
+      client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('gitment')
+  </script>
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d').update('hashit_6e58ed99ccaa8d7ed5d4f89915ffb073c073ef95a22f8cb19aec13c197e2a0ca', function(){});
+  });
+  
+</script>
+
+
+    
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  function getIP(json) {
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.fetchIsThumbUp('/2019/10/14/linux-so/', json.ip);
+    document.getElementById('thumb-up-button').addEventListener('click', function(e){
+      leanCloud.isThumbUp('/2019/10/14/linux-so/', function(isThumbUp){
+        console.log('is thumb up:' + isThumbUp);
+        if(isThumbUp){
+          leanCloud.removeThumbUpRecord('/2019/10/14/linux-so/', json.ip);
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+          
+        }else{
+          leanCloud.addThumbUpRecord('/2019/10/14/linux-so/', json.ip);
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }
+        leanCloud.getThumbUpCount('/2019/10/14/linux-so/', function(count){
+            console.log('thumb up count: ' + count)
+            var el = document.getElementById('article-thumbup-count');
+            if(el) el.innerHTML = count;
+        });
+      });
+    });
+    leanCloud.addVisitRecord('/2019/10/14/linux-so/', json.ip);
+    leanCloud.fetchCommentCount('/2019/10/14/linux-so/');
+    leanCloud.fetchVisitCount('/2019/10/14/linux-so/');
+    leanCloud.fetchThumbUpCount('/2019/10/14/linux-so/');
+    leanCloud.getCommentCount('/2019/10/14/linux-so/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2019/10/14/linux-so/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getThumbUpCount('/2019/10/14/linux-so/', function(count){
+        var el = document.getElementById('article-thumbup-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.isThumbUp('/2019/10/14/linux-so/', function(isThumbUp){
+        console.log('init thumb up:' + isThumbUp);
+        if(isThumbUp){
+          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
+        }else{
+          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+        }
+    });
+  });
+  }
+  
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

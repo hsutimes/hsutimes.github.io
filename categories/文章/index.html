@@ -214,6 +214,68 @@
 
 
 
+<div class='Card-archive' id='hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d' data-name='linux_so' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/10/14/linux-so/">
+			
+			Linux_so</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/c/">C</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/c/">C++</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-3'><a href="/tags/linux/">Linux</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-10-14
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/10/14/linux-so/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_6705e00d7e497f94437e6aa2152636893a76376fb46dfb6a4ef65ae52e2b39bd' data-name='jna' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -765,56 +827,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef' data-name='python style rules' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/28/python-style-rules/">
-			
-			Python Style Rules</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/python/">Python</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-28
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/28/python-style-rules/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -1042,6 +1054,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d .Card-title a, #hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d .Card-excerpt a, #hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d .Card-figure a');
+          new Postv2('hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d').showUnreadNotification('hashit_6e58ed99ccaa8d7ed5d4f89915ffb073c073ef95a22f8cb19aec13c197e2a0ca', function(){
+            console.log('show badge for 2019/10/14/linux-so/ : hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d');
+            var postBadge = document.querySelector('#hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/10/14/linux-so/ : hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d');
+            var postBadge = document.querySelector('#hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d').update('hashit_6e58ed99ccaa8d7ed5d4f89915ffb073c073ef95a22f8cb19aec13c197e2a0ca', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1329,32 +1367,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef .Card-title a, #hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef .Card-excerpt a, #hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef .Card-figure a');
-          new Postv2('hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef').showUnreadNotification('hashit_c2af12e46b8105f898e52f24e30da5d9c8c20cbef8e3104a0bcfacb3d69acfd8', function(){
-            console.log('show badge for 2019/09/28/python-style-rules/ : hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef');
-            var postBadge = document.querySelector('#hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/28/python-style-rules/ : hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef');
-            var postBadge = document.querySelector('#hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef').update('hashit_c2af12e46b8105f898e52f24e30da5d9c8c20cbef8e3104a0bcfacb3d69acfd8', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1370,6 +1382,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/10/14/linux-so/', json.ip);
+          leanCloud.fetchCommentCount('/2019/10/14/linux-so/');
+          leanCloud.fetchVisitCount('/2019/10/14/linux-so/');
+          leanCloud.fetchThumbUpCount('/2019/10/14/linux-so/');
+          leanCloud.getCommentCount('/2019/10/14/linux-so/', function(count){
+              var el = document.querySelector('#hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/10/14/linux-so/', function(count){
+              var el = document.querySelector('#hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/10/14/linux-so/', function(count){
+              var el = document.querySelector('#hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/10/14/linux-so/', function(isThumbUp){
+              var el = document.querySelector('#hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1692,36 +1734,6 @@
           });
           leanCloud.isThumbUp('/2019/09/29/vue-route/', function(isThumbUp){
               var el = document.querySelector('#hashit_24f4e4c3d0a3658eac22817e19d30e7a9d5fc91fdb14747ced27a673e8663cb0 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/28/python-style-rules/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/28/python-style-rules/');
-          leanCloud.fetchVisitCount('/2019/09/28/python-style-rules/');
-          leanCloud.fetchThumbUpCount('/2019/09/28/python-style-rules/');
-          leanCloud.getCommentCount('/2019/09/28/python-style-rules/', function(count){
-              var el = document.querySelector('#hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/28/python-style-rules/', function(count){
-              var el = document.querySelector('#hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/28/python-style-rules/', function(count){
-              var el = document.querySelector('#hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/28/python-style-rules/', function(isThumbUp){
-              var el = document.querySelector('#hashit_94662755790f24a5d8dace4dced90f5b5135460f22814dc1655f010062090cef .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
