@@ -211,6 +211,94 @@
 
 
 
+<div class='Card-archive' id='hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b' data-name='Computer-network-books' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/10/15/Computer-network-books/">
+			
+			Computer-Network-Books</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/ASM/">Asm</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/C/">C</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-3'><a href="/tags/Java/">Java</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-4'><a href="/tags/c/">C++</a></label>
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-10-15
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/10/15/Computer-network-books/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_c66bf577eb657b2dd3d3d232f689eaa8fbc59cba76c461fd22995efc81074c0d' data-name='linux_so' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -764,56 +852,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5' data-name='26 remove-duplicates-from-sorted-array' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/10/04/26-remove-duplicates-from-sorted-array/">
-			
-			26 Remove-Duplicates-From-Sorted-Array</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-10-04
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/10/04/26-remove-duplicates-from-sorted-array/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -980,6 +1018,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b .Card-title a, #hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b .Card-excerpt a, #hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b .Card-figure a');
+          new Postv2('hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b').showUnreadNotification('hashit_1f695726c6fc80a41dfa159705374e577cf6b315312b14a56159ffd83864e1b8', function(){
+            console.log('show badge for 2019/10/15/Computer-network-books/ : hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b');
+            var postBadge = document.querySelector('#hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/10/15/Computer-network-books/ : hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b');
+            var postBadge = document.querySelector('#hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b').update('hashit_1f695726c6fc80a41dfa159705374e577cf6b315312b14a56159ffd83864e1b8', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1267,32 +1331,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-title a, #hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-excerpt a, #hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-figure a');
-          new Postv2('hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5').showUnreadNotification('hashit_a910a04b0502881155d58043c861b046b3f43dcc66427fdce33ea2090cf62fc4', function(){
-            console.log('show badge for 2019/10/04/26-remove-duplicates-from-sorted-array/ : hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5');
-            var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/10/04/26-remove-duplicates-from-sorted-array/ : hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5');
-            var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5').update('hashit_a910a04b0502881155d58043c861b046b3f43dcc66427fdce33ea2090cf62fc4', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1308,6 +1346,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/10/15/Computer-network-books/', json.ip);
+          leanCloud.fetchCommentCount('/2019/10/15/Computer-network-books/');
+          leanCloud.fetchVisitCount('/2019/10/15/Computer-network-books/');
+          leanCloud.fetchThumbUpCount('/2019/10/15/Computer-network-books/');
+          leanCloud.getCommentCount('/2019/10/15/Computer-network-books/', function(count){
+              var el = document.querySelector('#hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/10/15/Computer-network-books/', function(count){
+              var el = document.querySelector('#hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/10/15/Computer-network-books/', function(count){
+              var el = document.querySelector('#hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/10/15/Computer-network-books/', function(isThumbUp){
+              var el = document.querySelector('#hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1630,36 +1698,6 @@
           });
           leanCloud.isThumbUp('/2019/10/05/search-engine/', function(isThumbUp){
               var el = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/10/04/26-remove-duplicates-from-sorted-array/', json.ip);
-          leanCloud.fetchCommentCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.fetchVisitCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.fetchThumbUpCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.getCommentCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(isThumbUp){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
