@@ -217,6 +217,46 @@
 
 
 
+<div class='Card-archive' id='hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be' data-name='111' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/10/16/111/">
+			
+			111</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'></div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-10-16
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/10/16/111/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_5fa9f7e1e986ef8a7ca3481a7bf4dbad294dc15a9661bae2f391af06b130d85b' data-name='Computer-network-books' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -808,56 +848,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d' data-name='search_engine' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/10/05/search-engine/">
-			
-			Search_engine</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/搜索引擎/">搜索引擎</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-10-05
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/10/05/search-engine/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -1027,6 +1017,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be .Card-title a, #hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be .Card-excerpt a, #hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be .Card-figure a');
+          new Postv2('hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be').showUnreadNotification('hashit_f6e0a1e2ac41945a9aa7ff8a8aaa0cebc12a3bcc981a929ad5cf810a090e11ae', function(){
+            console.log('show badge for 2019/10/16/111/ : hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be');
+            var postBadge = document.querySelector('#hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/10/16/111/ : hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be');
+            var postBadge = document.querySelector('#hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be').update('hashit_f6e0a1e2ac41945a9aa7ff8a8aaa0cebc12a3bcc981a929ad5cf810a090e11ae', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1314,32 +1330,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .Card-title a, #hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .Card-excerpt a, #hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .Card-figure a');
-          new Postv2('hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d').showUnreadNotification('hashit_853be43f036ae696579a7af080fc1325bb167cb8b96faf529f92698348640513', function(){
-            console.log('show badge for 2019/10/05/search-engine/ : hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d');
-            var postBadge = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/10/05/search-engine/ : hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d');
-            var postBadge = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d').update('hashit_853be43f036ae696579a7af080fc1325bb167cb8b96faf529f92698348640513', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1355,6 +1345,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/10/16/111/', json.ip);
+          leanCloud.fetchCommentCount('/2019/10/16/111/');
+          leanCloud.fetchVisitCount('/2019/10/16/111/');
+          leanCloud.fetchThumbUpCount('/2019/10/16/111/');
+          leanCloud.getCommentCount('/2019/10/16/111/', function(count){
+              var el = document.querySelector('#hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/10/16/111/', function(count){
+              var el = document.querySelector('#hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/10/16/111/', function(count){
+              var el = document.querySelector('#hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/10/16/111/', function(isThumbUp){
+              var el = document.querySelector('#hashit_7404a285817edce7ec6c59c7f3593686c8f5dda078c27278910c54bbb2b208be .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1677,36 +1697,6 @@
           });
           leanCloud.isThumbUp('/2019/10/05/x64dbg/', function(isThumbUp){
               var el = document.querySelector('#hashit_ae44d07a82c26e972882e67292834429e55597b8fd58ccb12b449b83e3ec3669 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/10/05/search-engine/', json.ip);
-          leanCloud.fetchCommentCount('/2019/10/05/search-engine/');
-          leanCloud.fetchVisitCount('/2019/10/05/search-engine/');
-          leanCloud.fetchThumbUpCount('/2019/10/05/search-engine/');
-          leanCloud.getCommentCount('/2019/10/05/search-engine/', function(count){
-              var el = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/10/05/search-engine/', function(count){
-              var el = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/10/05/search-engine/', function(count){
-              var el = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/10/05/search-engine/', function(isThumbUp){
-              var el = document.querySelector('#hashit_814996fdea258d5653b8cdc24a4d77c0b410253d46d64d2310c4c7dc72ddc33d .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
