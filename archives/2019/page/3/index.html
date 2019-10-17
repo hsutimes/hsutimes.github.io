@@ -211,6 +211,56 @@
 
 
 
+<div class='Card-archive' id='hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c' data-name='客户端面试' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/09/21/客户端面试/">
+			
+			客户端面试</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/面试/">面试</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-09-21
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/09/21/客户端面试/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_b351f648877101a5a021cff274800b908fa4aa6c961890213de83930ff832e5f' data-name='Java知识点' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -786,56 +836,6 @@
 </div>
 
 	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b' data-name='Git Rebase 黄金法则问题' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/10/Git-Rebase-黄金法则问题/">
-			
-			Git Rebase 黄金法则问题</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/git/">Git</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-10
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/10/Git-Rebase-黄金法则问题/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
 	</div>
 
 
@@ -1002,6 +1002,32 @@
     loadjs.ready('post-version', {
       success: function(){
         console.log('ready to run badge script')
+        
+          
+          
+          
+          // show/hide post unread badage
+          var postLinks = document.querySelectorAll('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .Card-title a, #hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .Card-excerpt a, #hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .Card-figure a');
+          new Postv2('hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c').showUnreadNotification('hashit_1ea492f64e9646a9fa0d6be5667a36b6796faf0e45d316bee86e1c15f7190b87', function(){
+            console.log('show badge for 2019/09/21/客户端面试/ : hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c');
+            var postBadge = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c mark.Card-badge');
+            $(postBadge).fadeIn();
+          }, function(){
+            console.log('hide badge for 2019/09/21/客户端面试/ : hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c');
+            var postBadge = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c mark.Card-badge');
+            $(postBadge).fadeOut();
+          }); 
+          // update cookie upon click the post and hide badge immediately
+          for(var i = 0;i < postLinks.length; i++){
+            postLinks[i].onclick = function(){
+              new Postv2('hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c').update('hashit_1ea492f64e9646a9fa0d6be5667a36b6796faf0e45d316bee86e1c15f7190b87', function(){
+                console.log('called');
+                var postBadge = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c mark.Card-badge');
+                $(postBadge).fadeOut();
+              });
+            }
+          }
+          
         
           
           
@@ -1289,32 +1315,6 @@
           }
           
         
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .Card-title a, #hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .Card-excerpt a, #hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .Card-figure a');
-          new Postv2('hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b').showUnreadNotification('hashit_1bb5126f81a2eca08dd938f7049d35dff4c710eac75cfc99d9ad9e2b0ce8bd72', function(){
-            console.log('show badge for 2019/09/10/Git-Rebase-黄金法则问题/ : hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b');
-            var postBadge = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/10/Git-Rebase-黄金法则问题/ : hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b');
-            var postBadge = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b').update('hashit_1bb5126f81a2eca08dd938f7049d35dff4c710eac75cfc99d9ad9e2b0ce8bd72', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
       }
     })
   
@@ -1330,6 +1330,36 @@
       success: function(){
           LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/09/21/客户端面试/', json.ip);
+          leanCloud.fetchCommentCount('/2019/09/21/客户端面试/');
+          leanCloud.fetchVisitCount('/2019/09/21/客户端面试/');
+          leanCloud.fetchThumbUpCount('/2019/09/21/客户端面试/');
+          leanCloud.getCommentCount('/2019/09/21/客户端面试/', function(count){
+              var el = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/09/21/客户端面试/', function(count){
+              var el = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/09/21/客户端面试/', function(count){
+              var el = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/09/21/客户端面试/', function(isThumbUp){
+              var el = document.querySelector('#hashit_5426254abb05912b1a12f3586938edace90cbd7a4b28906613dd45fafed6c87c .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
@@ -1652,36 +1682,6 @@
           });
           leanCloud.isThumbUp('/2019/09/12/三阶魔方解法/', function(isThumbUp){
               var el = document.querySelector('#hashit_31f639cfd4bbd1cee0a5b9bc84f92968d2b8e230ed7742631b6cfd9f983e5dbe .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/10/Git-Rebase-黄金法则问题/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/10/Git-Rebase-黄金法则问题/');
-          leanCloud.fetchVisitCount('/2019/09/10/Git-Rebase-黄金法则问题/');
-          leanCloud.fetchThumbUpCount('/2019/09/10/Git-Rebase-黄金法则问题/');
-          leanCloud.getCommentCount('/2019/09/10/Git-Rebase-黄金法则问题/', function(count){
-              var el = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/10/Git-Rebase-黄金法则问题/', function(count){
-              var el = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/10/Git-Rebase-黄金法则问题/', function(count){
-              var el = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/10/Git-Rebase-黄金法则问题/', function(isThumbUp){
-              var el = document.querySelector('#hashit_86d63d8db1a01c36092b4d341530772883b8df145de9bf6c29d864c9b7f2107b .card-thumbup-container i');
               if(el){
                 if(isThumbUp){
                   el.className = 'fas fa-thumbs-up';
