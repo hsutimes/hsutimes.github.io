@@ -1,400 +1,116 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
-
-
-
+<html lang="zh-cn" class="loading">
 <head><meta name="generator" content="Hexo 3.9.0">
-
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  
-      <title>Java面试题 - Time</title>
-  
-
-  
-  
-  <meta name="description" content>
-  <meta name="author" content="times">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- load loadjs.js -->
-  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
-
-<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
-  <!-- load lightgallery -->
-<link rel="stylesheet" href="/css/lightgallery.css">
-<link rel="stylesheet" href="/libs/noty/lib/noty.css">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  
-
-
-
-
-
-
-    <link rel="stylesheet" href="/css/taurus.css">
-    
-        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
-    
-
-
-<link rel="stylesheet" href="/.css">
-
-  <!-- load font awesome 5 -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-  </script>
-  <!-- load mathjax -->
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-  <!-- load js-cookie -->
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="/js/social-share.min.js"></script>
-    <script src="/js/theme.js"></script>
-
-  <!-- include cookie.js -->
-  
-  
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-134224598-1', 'auto');
-	ga('send', 'pageview');
-</script>
-
-
-  <!-- include comment system code -->
-  
-    <link rel="stylesheet" href="/css/gitment/default.css">
-<script src="/js/gitment.browser.js"></script>
-  
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="/images/favicon.png">
-</head>
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
-
- 
-
-<header id="header" class='header'>
-	<div class="header-title">
-		
-		<div class='header-logo'>
-			<a href='/'>
-				<img src='/images/theme-icon.svg' />
-			</a>
-		</div>
-		<div class='header-text'>
-			<h1>
-				<a href="/">Time</a>
-			</h1>
-			<subtitle>
-				time
-			</subtitle>
-		</div>
-		
-	</div>
-	<div id='header-nav'>
-		
-
-
-
-<nav id="nav">
-	
-	
-	
-	<div class='nav-item' id='nav-item-toc'>
-		
-
-
-<div class='toc-container'>
-<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础与框架"><span class="toc-number">1.</span> <span class="toc-text">基础与框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#String类能被继承吗，为什么"><span class="toc-number">1.1.</span> <span class="toc-text">String类能被继承吗，为什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String，Stringbuffer，StringBuilder的区别？"><span class="toc-number">1.2.</span> <span class="toc-text">String，Stringbuffer，StringBuilder的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList和LinkedList有什么区别"><span class="toc-number">1.3.</span> <span class="toc-text">ArrayList和LinkedList有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序"><span class="toc-number">1.4.</span> <span class="toc-text">类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些Map，都有什么区别，HashMap是线程安全的吗-并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等"><span class="toc-number">1.5.</span> <span class="toc-text">用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"><span class="toc-number">1.6.</span> <span class="toc-text">HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么"><span class="toc-number">1.7.</span> <span class="toc-text">抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么情况下会发生栈内存溢出"><span class="toc-number">1.8.</span> <span class="toc-text">什么情况下会发生栈内存溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是nio，原理"><span class="toc-number">1.9.</span> <span class="toc-text">什么是nio，原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射中，Class-forName和ClassLoader区别"><span class="toc-number">1.10.</span> <span class="toc-text">反射中，Class.forName和ClassLoader区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat结构，类加载器流程"><span class="toc-number">1.11.</span> <span class="toc-text">tomcat结构，类加载器流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"><span class="toc-number">1.12.</span> <span class="toc-text">讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring的beanFactory和factoryBean的区别"><span class="toc-number">1.13.</span> <span class="toc-text">Spring的beanFactory和factoryBean的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring加载流程"><span class="toc-number">1.14.</span> <span class="toc-text">Spring加载流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring如何管理事务的"><span class="toc-number">1.15.</span> <span class="toc-text">Spring如何管理事务的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">2.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线城池的最大线程数目根据什么确定"><span class="toc-number">2.1.</span> <span class="toc-text">线城池的最大线程数目根据什么确定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程的几种实现方式，什么是线程安全，什么是重排序"><span class="toc-number">2.2.</span> <span class="toc-text">多线程的几种实现方式，什么是线程安全，什么是重排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile的原理，作用，能代替锁么"><span class="toc-number">2.3.</span> <span class="toc-text">volatile的原理，作用，能代替锁么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep和wait的区别，以及wait的实现原理"><span class="toc-number">2.4.</span> <span class="toc-text">sleep和wait的区别，以及wait的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"><span class="toc-number">2.5.</span> <span class="toc-text">Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些原子类，他们的参数以及原理是什么"><span class="toc-number">2.6.</span> <span class="toc-text">用过哪些原子类，他们的参数以及原理是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"><span class="toc-number">2.7.</span> <span class="toc-text">用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"><span class="toc-number">2.8.</span> <span class="toc-text">有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring的controller是单例还是多例，怎么保证并发的安全"><span class="toc-number">2.9.</span> <span class="toc-text">spring的controller是单例还是多例，怎么保证并发的安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用三个线程按顺序循环打印abc三个字母，比如abcabcabc"><span class="toc-number">2.10.</span> <span class="toc-text">用三个线程按顺序循环打印abc三个字母，比如abcabcabc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal用过么，原理是什么，用的时候要注意什么"><span class="toc-number">2.11.</span> <span class="toc-text">ThreadLocal用过么，原理是什么，用的时候要注意什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果让你实现一个并发安全的链表，你会怎么做"><span class="toc-number">2.12.</span> <span class="toc-text">如果让你实现一个并发安全的链表，你会怎么做</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM相关"><span class="toc-number">3.</span> <span class="toc-text">JVM相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"><span class="toc-number">3.1.</span> <span class="toc-text">jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"><span class="toc-number">3.2.</span> <span class="toc-text">你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当出现了内存溢出，你怎么排错"><span class="toc-number">3.3.</span> <span class="toc-text">当出现了内存溢出，你怎么排错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存模型的相关知识了解多少"><span class="toc-number">3.4.</span> <span class="toc-text">JVM内存模型的相关知识了解多少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单说说你了解的类加载器"><span class="toc-number">3.5.</span> <span class="toc-text">简单说说你了解的类加载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA的反射机制"><span class="toc-number">3.6.</span> <span class="toc-text">JAVA的反射机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络"><span class="toc-number">4.</span> <span class="toc-text">网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http1-0和http1-1有什么区别"><span class="toc-number">4.1.</span> <span class="toc-text">http1.0和http1.1有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么"><span class="toc-number">4.2.</span> <span class="toc-text">TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TIME-WAIT和CLOSE-WAIT的区别"><span class="toc-number">4.3.</span> <span class="toc-text">TIME_WAIT和CLOSE_WAIT的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说说你知道的几种HTTP响应码"><span class="toc-number">4.4.</span> <span class="toc-text">说说你知道的几种HTTP响应码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"><span class="toc-number">4.5.</span> <span class="toc-text">当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux下IO模型有几种，各自的含义是什么"><span class="toc-number">4.6.</span> <span class="toc-text">Linux下IO模型有几种，各自的含义是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP如何保证可靠性，数据包有哪些数据组成"><span class="toc-number">4.7.</span> <span class="toc-text">TCP/IP如何保证可靠性，数据包有哪些数据组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构设计与分布式："><span class="toc-number">4.8.</span> <span class="toc-text">架构设计与分布式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat如何调优，各种参数的意义"><span class="toc-number">4.9.</span> <span class="toc-text">tomcat如何调优，各种参数的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"><span class="toc-number">4.10.</span> <span class="toc-text">常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何防止缓存雪崩12-用java自己实现一个LRU"><span class="toc-number">4.11.</span> <span class="toc-text">如何防止缓存雪崩12.用java自己实现一个LRU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式集群下如何做到唯一序列号"><span class="toc-number">4.12.</span> <span class="toc-text">分布式集群下如何做到唯一序列号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计一个秒杀系统，30分钟没付款就自动关闭交易"><span class="toc-number">4.13.</span> <span class="toc-text">设计一个秒杀系统，30分钟没付款就自动关闭交易</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何做一个分布式锁"><span class="toc-number">4.14.</span> <span class="toc-text">如何做一个分布式锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"><span class="toc-number">4.15.</span> <span class="toc-text">用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MQ系统的数据如何保证不丢失"><span class="toc-number">4.16.</span> <span class="toc-text">MQ系统的数据如何保证不丢失</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式事务的原理，如何使用分布式事务"><span class="toc-number">4.17.</span> <span class="toc-text">分布式事务的原理，如何使用分布式事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是一致性hash"><span class="toc-number">4.18.</span> <span class="toc-text">什么是一致性hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是restful，讲讲你理解的restful"><span class="toc-number">4.19.</span> <span class="toc-text">什么是restful，讲讲你理解的restful</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何设计建立和保持100w的长连接？"><span class="toc-number">4.20.</span> <span class="toc-text">如何设计建立和保持100w的长连接？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释什么是MESI协议-缓存一致性"><span class="toc-number">4.21.</span> <span class="toc-text">解释什么是MESI协议(缓存一致性)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说说你知道的几种HASH算法，简单的也可以"><span class="toc-number">4.22.</span> <span class="toc-text">说说你知道的几种HASH算法，简单的也可以</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是paxos算法"><span class="toc-number">4.23.</span> <span class="toc-text">什么是paxos算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis和memcached-的内存管理的区别"><span class="toc-number">4.24.</span> <span class="toc-text">redis和memcached 的内存管理的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"><span class="toc-number">4.25.</span> <span class="toc-text">一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法"><span class="toc-number">5.</span> <span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10亿个数字里里面找最小的10个"><span class="toc-number">5.1.</span> <span class="toc-text">10亿个数字里里面找最小的10个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"><span class="toc-number">5.2.</span> <span class="toc-text">有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2亿个随机生成的无序整数-找出中间大小的值"><span class="toc-number">5.3.</span> <span class="toc-text">2亿个随机生成的无序整数,找出中间大小的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历二叉树"><span class="toc-number">5.4.</span> <span class="toc-text">遍历二叉树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库"><span class="toc-number">6.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"><span class="toc-number">6.1.</span> <span class="toc-text">数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"><span class="toc-number">6.2.</span> <span class="toc-text">高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"><span class="toc-number">6.3.</span> <span class="toc-text">SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"><span class="toc-number">6.4.</span> <span class="toc-text">数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MYsql的索引实现方式"><span class="toc-number">6.5.</span> <span class="toc-text">MYsql的索引实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚集索引和非聚集索引的区别"><span class="toc-number">6.6.</span> <span class="toc-text">聚集索引和非聚集索引的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库中-BTREE和B-tree区别"><span class="toc-number">6.7.</span> <span class="toc-text">数据库中 BTREE和B+tree区别</span></a></li></ol></li></ol>
-</div>
-<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
-    <img src="/images/icons/blue-shadow/toc.svg" alt="">
-</div>
-
-	</div>
-	
-	<div class='nav-item' id='nav-item-archive'>
-		
-				<div class='nav-icon'>
-				
-			<a href="/archives/" title='归档'>
-			<img src="/images/icons/blue-shadow/archive.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class='nav-item' id='nav-item-search'>
-		
-		<div class='nav-icon'>
-		
-			<a href="/search/" title='搜索'>
-			<img src="/images/icons/blue-shadow/search.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class="nav-item" id='nav-item-more'>
-		<div class="nav-icon">
-				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
-				<img src="/images/icons/blue-shadow/menu.svg" alt="">
-				</a>
-		</div>
-		<div class="nav-more-menu">
-				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
-		
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/文章/">
-						<span>文章</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/算法/">
-						<span>算法</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/人工智能/">
-						<span>人工智能</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/生活/">
-						<span>生活</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/笔试/">
-						<span>笔试</span>
-					</a>
-				</div>
-		</div>
-		
-	</div>
-	</div>
-</nav>
-
-	</div>
-</header>
-
- 
-
-  
-
-
-
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div style="flex: 1;">
-      <style>
-    body {
-        background-color: white;
-    }
-</style>
-
-
-
-
-
-
-
-
-    
-        
-            
-            
-        
-    
-
-
-
-
-
-
-    
-    
-        
-    
-
-    
-        
-    
-
-
-
-
-
-
-
-
-
-<article class="article" id="/2019/09/13/Java面试题/" data-name='Java面试题' data-version="">
-
-    <!-- Title -->
-    <div class='article-header'>
-         
-         <h1 class='article-title'>
-            <a href="/2019/09/13/Java面试题/">
-                Java面试题
-            </a>
-        </h1>
-        <!-- TODO: support nested categories,display them nicely -->
-        
-        <ul class='article-categories'>
-            
-            
-                <li><a href="/categories/文章/" data-no-instant>
-                    <img src="/images/文章.svg" alt="文章" onerror='if(this.src != "/images/uncategorized.svg") this.src="/images/uncategorized.svg"' title='文章'/>
-                </a></li>
-            
-        </ul>
-        
-    </div>
-    
-    <!-- Date and Author -->
-    <div class='article-meta'>
-    <ul>
-            <li><i class='fa fa-calendar'></i> 2019-09-13</li>
-            
-            <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
-            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
-            <li class='thumb-up-button' id='thumb-up-button'><i class="far fa-thumbs-up fa-lg" id='thumb-up-icon'></i> <span id='article-thumbup-count'>0</span></li>
-            
-            <li><i class="fa fa-user"></i> times</li>
-            <li><i class="fas fa-copyright"></i>
-            
-                
-                
-            
-            
-                <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/>CC BY-NC-SA 4.0</a>
-            
-            </li>
-    </ul>
-    
-<div class="tags">
-	
-		
-			<label class='tag-1'><a href="/tags/Java/">Java</a></label>
-		
-	
-		
-			<label class='tag-2'><a href="/tags/面试/">面试</a></label>
-		
-	
-	</div>
-
-    </div>
-    <div class='article-cards'>
-        <!-- Author Card -->
-        <!---
-        <div class='Card-article Card-author'>
-            <div class='card-title'>
-                <h3></h3>
-            </div>
-            <div class='card-content'>
-                    <div class="author-meta">
-                            <div class='author-figure'>
-                                <img src="" alt="">
-                            </div>
-                            <div class='author-name'>
-                                times
-                            </div>
-                        </div>
-                        <div class="author-ai">
-                            <div class='author-intro'>
-                                <!-- TODO: auto generating author description -->
-                                <!-- 
-                            </div>
-                            <div class="author-articles">
-                                <!-- TODO: auto generating author articles -->
-                                <!-- <ul>
-                                    <li>Article 1</li>
-                                    <li>Article 2</li>
-                                    <li>Article 3</li>
-                                    <li>Article 4</li>
-                                    <li>Article 5</li>
-                                    <li>Article 6</li>
-                                </ul>
-                            </div>
-                        </div>
-            </div>
-            
-        </div> -->
-
-        <!-- Visit Card -->
-        <!-- <div class="Card-article Card-visit"> -->
-            <!-- <div class="card-title">
-  <h3>Post Visit</h3>
-</div>
-<div class="card-chart">
-  <div id='chart-post-visit'></div>
-</div> -->
-        <!-- </div> -->
-        
-        <!-- Auto Excerpt Card -->
-        <!-- <div class="Card-article Card-excerpt">
-            <div class="card-title">
-  <h3>Quick Read</h3>
-</div>
-<div class="card-text">
-  <p id='text-post-summary'>基础与框架String类能被继承吗，为什么?
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Java面试题 - Time</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hsutimes Obsidian,"> 
+    <meta name="description" content="基础与框架String类能被继承吗，为什么?
 不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。
 
-1public final class String implements java.io.Serializable, Comparable&lt;String&gt;,...</p>
-</div>
-        </div> -->
+1public final class Str,"> 
+    <meta name="author" content="times"> 
+    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="/font/Rubik-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="/font/Rubik-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_7jr8c7mf4wi.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Time</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a id="home-icon" class="image-icon icon-home iconfont" href="javascript:;" data-url="https://blog.hsutimes.com"></a>
+    <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Java面试题</h3>
+    <div class="social">
+<!--        <div class="like-icon">-->
+<!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <div class="share">-->
+<!--                <a title="Get qrcode" id="qr-icon" href="javascript:;" class="iconfont icon-QRcode-o"></a>-->
+<!--            </div>-->
+<!--            <div id="qr"></div>-->
+<!--        </div>-->
     </div>
-    
-    <!-- Gallery -->
-    <!-- TODO: add a slider to gallery -->
-    
-
-    <!-- Content -->
-    <!-- TODO: support table of content -->
-    <div class="article-toc" id='article-toc'>
-    
-        
-
-
-<div class='toc-container'>
-<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础与框架"><span class="toc-number">1.</span> <span class="toc-text">基础与框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#String类能被继承吗，为什么"><span class="toc-number">1.1.</span> <span class="toc-text">String类能被继承吗，为什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String，Stringbuffer，StringBuilder的区别？"><span class="toc-number">1.2.</span> <span class="toc-text">String，Stringbuffer，StringBuilder的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList和LinkedList有什么区别"><span class="toc-number">1.3.</span> <span class="toc-text">ArrayList和LinkedList有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序"><span class="toc-number">1.4.</span> <span class="toc-text">类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些Map，都有什么区别，HashMap是线程安全的吗-并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等"><span class="toc-number">1.5.</span> <span class="toc-text">用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"><span class="toc-number">1.6.</span> <span class="toc-text">HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么"><span class="toc-number">1.7.</span> <span class="toc-text">抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么情况下会发生栈内存溢出"><span class="toc-number">1.8.</span> <span class="toc-text">什么情况下会发生栈内存溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是nio，原理"><span class="toc-number">1.9.</span> <span class="toc-text">什么是nio，原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射中，Class-forName和ClassLoader区别"><span class="toc-number">1.10.</span> <span class="toc-text">反射中，Class.forName和ClassLoader区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat结构，类加载器流程"><span class="toc-number">1.11.</span> <span class="toc-text">tomcat结构，类加载器流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"><span class="toc-number">1.12.</span> <span class="toc-text">讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring的beanFactory和factoryBean的区别"><span class="toc-number">1.13.</span> <span class="toc-text">Spring的beanFactory和factoryBean的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring加载流程"><span class="toc-number">1.14.</span> <span class="toc-text">Spring加载流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring如何管理事务的"><span class="toc-number">1.15.</span> <span class="toc-text">Spring如何管理事务的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">2.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线城池的最大线程数目根据什么确定"><span class="toc-number">2.1.</span> <span class="toc-text">线城池的最大线程数目根据什么确定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程的几种实现方式，什么是线程安全，什么是重排序"><span class="toc-number">2.2.</span> <span class="toc-text">多线程的几种实现方式，什么是线程安全，什么是重排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile的原理，作用，能代替锁么"><span class="toc-number">2.3.</span> <span class="toc-text">volatile的原理，作用，能代替锁么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep和wait的区别，以及wait的实现原理"><span class="toc-number">2.4.</span> <span class="toc-text">sleep和wait的区别，以及wait的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"><span class="toc-number">2.5.</span> <span class="toc-text">Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些原子类，他们的参数以及原理是什么"><span class="toc-number">2.6.</span> <span class="toc-text">用过哪些原子类，他们的参数以及原理是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"><span class="toc-number">2.7.</span> <span class="toc-text">用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"><span class="toc-number">2.8.</span> <span class="toc-text">有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring的controller是单例还是多例，怎么保证并发的安全"><span class="toc-number">2.9.</span> <span class="toc-text">spring的controller是单例还是多例，怎么保证并发的安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用三个线程按顺序循环打印abc三个字母，比如abcabcabc"><span class="toc-number">2.10.</span> <span class="toc-text">用三个线程按顺序循环打印abc三个字母，比如abcabcabc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal用过么，原理是什么，用的时候要注意什么"><span class="toc-number">2.11.</span> <span class="toc-text">ThreadLocal用过么，原理是什么，用的时候要注意什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果让你实现一个并发安全的链表，你会怎么做"><span class="toc-number">2.12.</span> <span class="toc-text">如果让你实现一个并发安全的链表，你会怎么做</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM相关"><span class="toc-number">3.</span> <span class="toc-text">JVM相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"><span class="toc-number">3.1.</span> <span class="toc-text">jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"><span class="toc-number">3.2.</span> <span class="toc-text">你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当出现了内存溢出，你怎么排错"><span class="toc-number">3.3.</span> <span class="toc-text">当出现了内存溢出，你怎么排错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存模型的相关知识了解多少"><span class="toc-number">3.4.</span> <span class="toc-text">JVM内存模型的相关知识了解多少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单说说你了解的类加载器"><span class="toc-number">3.5.</span> <span class="toc-text">简单说说你了解的类加载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA的反射机制"><span class="toc-number">3.6.</span> <span class="toc-text">JAVA的反射机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络"><span class="toc-number">4.</span> <span class="toc-text">网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http1-0和http1-1有什么区别"><span class="toc-number">4.1.</span> <span class="toc-text">http1.0和http1.1有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么"><span class="toc-number">4.2.</span> <span class="toc-text">TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TIME-WAIT和CLOSE-WAIT的区别"><span class="toc-number">4.3.</span> <span class="toc-text">TIME_WAIT和CLOSE_WAIT的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说说你知道的几种HTTP响应码"><span class="toc-number">4.4.</span> <span class="toc-text">说说你知道的几种HTTP响应码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"><span class="toc-number">4.5.</span> <span class="toc-text">当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux下IO模型有几种，各自的含义是什么"><span class="toc-number">4.6.</span> <span class="toc-text">Linux下IO模型有几种，各自的含义是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP如何保证可靠性，数据包有哪些数据组成"><span class="toc-number">4.7.</span> <span class="toc-text">TCP/IP如何保证可靠性，数据包有哪些数据组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构设计与分布式："><span class="toc-number">4.8.</span> <span class="toc-text">架构设计与分布式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat如何调优，各种参数的意义"><span class="toc-number">4.9.</span> <span class="toc-text">tomcat如何调优，各种参数的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"><span class="toc-number">4.10.</span> <span class="toc-text">常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何防止缓存雪崩12-用java自己实现一个LRU"><span class="toc-number">4.11.</span> <span class="toc-text">如何防止缓存雪崩12.用java自己实现一个LRU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式集群下如何做到唯一序列号"><span class="toc-number">4.12.</span> <span class="toc-text">分布式集群下如何做到唯一序列号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计一个秒杀系统，30分钟没付款就自动关闭交易"><span class="toc-number">4.13.</span> <span class="toc-text">设计一个秒杀系统，30分钟没付款就自动关闭交易</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何做一个分布式锁"><span class="toc-number">4.14.</span> <span class="toc-text">如何做一个分布式锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"><span class="toc-number">4.15.</span> <span class="toc-text">用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MQ系统的数据如何保证不丢失"><span class="toc-number">4.16.</span> <span class="toc-text">MQ系统的数据如何保证不丢失</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式事务的原理，如何使用分布式事务"><span class="toc-number">4.17.</span> <span class="toc-text">分布式事务的原理，如何使用分布式事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是一致性hash"><span class="toc-number">4.18.</span> <span class="toc-text">什么是一致性hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是restful，讲讲你理解的restful"><span class="toc-number">4.19.</span> <span class="toc-text">什么是restful，讲讲你理解的restful</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何设计建立和保持100w的长连接？"><span class="toc-number">4.20.</span> <span class="toc-text">如何设计建立和保持100w的长连接？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释什么是MESI协议-缓存一致性"><span class="toc-number">4.21.</span> <span class="toc-text">解释什么是MESI协议(缓存一致性)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说说你知道的几种HASH算法，简单的也可以"><span class="toc-number">4.22.</span> <span class="toc-text">说说你知道的几种HASH算法，简单的也可以</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是paxos算法"><span class="toc-number">4.23.</span> <span class="toc-text">什么是paxos算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis和memcached-的内存管理的区别"><span class="toc-number">4.24.</span> <span class="toc-text">redis和memcached 的内存管理的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"><span class="toc-number">4.25.</span> <span class="toc-text">一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法"><span class="toc-number">5.</span> <span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10亿个数字里里面找最小的10个"><span class="toc-number">5.1.</span> <span class="toc-text">10亿个数字里里面找最小的10个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"><span class="toc-number">5.2.</span> <span class="toc-text">有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2亿个随机生成的无序整数-找出中间大小的值"><span class="toc-number">5.3.</span> <span class="toc-text">2亿个随机生成的无序整数,找出中间大小的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历二叉树"><span class="toc-number">5.4.</span> <span class="toc-text">遍历二叉树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库"><span class="toc-number">6.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"><span class="toc-number">6.1.</span> <span class="toc-text">数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"><span class="toc-number">6.2.</span> <span class="toc-text">高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"><span class="toc-number">6.3.</span> <span class="toc-text">SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"><span class="toc-number">6.4.</span> <span class="toc-text">数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MYsql的索引实现方式"><span class="toc-number">6.5.</span> <span class="toc-text">MYsql的索引实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚集索引和非聚集索引的区别"><span class="toc-number">6.6.</span> <span class="toc-text">聚集索引和非聚集索引的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库中-BTREE和B-tree区别"><span class="toc-number">6.7.</span> <span class="toc-text">数据库中 BTREE和B+tree区别</span></a></li></ol></li></ol>
-</div>
-<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
-    <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
 
+    <div class="section">
+        <div class= article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
+                
+                九月 13, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/09/13/Java面试题/" title="Java面试题">Java面试题</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        24k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        22 mins.
+                    </span>
+                    
+                    
+                    
+                        <span id="busuanzi_container_page_pv">
+                            <b class="iconfont icon-read"></b> <i>Read count</i>
+                            <span id="busuanzi_value_page_pv">0</span>
+                        </span>
+                    
+                </p>
+            
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/面试/">面试</a></li></ul>
+            
+        </div>
     </div>
-    <div class='article-content'>
-    <h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><h2 id="String类能被继承吗，为什么"><a href="#String类能被继承吗，为什么" class="headerlink" title="String类能被继承吗，为什么?"></a>String类能被继承吗，为什么?</h2><blockquote>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span></span>  
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn slower">
+            <h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><h2 id="String类能被继承吗，为什么"><a href="#String类能被继承吗，为什么" class="headerlink" title="String类能被继承吗，为什么?"></a>String类能被继承吗，为什么?</h2><blockquote>
 <p>不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
@@ -497,292 +213,188 @@
 <p><strong>什么是类加载器？</strong><br>虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。</p>
 <p><a href="https://www.jianshu.com/p/69c4526b843d" target="_blank" rel="noopener">传送门</a></p>
 <h2 id="讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"><a href="#讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式" class="headerlink" title="讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"></a>讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</h2><h2 id="Spring的beanFactory和factoryBean的区别"><a href="#Spring的beanFactory和factoryBean的区别" class="headerlink" title="Spring的beanFactory和factoryBean的区别"></a>Spring的beanFactory和factoryBean的区别</h2><h2 id="Spring加载流程"><a href="#Spring加载流程" class="headerlink" title="Spring加载流程"></a>Spring加载流程</h2><h2 id="Spring如何管理事务的"><a href="#Spring如何管理事务的" class="headerlink" title="Spring如何管理事务的"></a>Spring如何管理事务的</h2><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="线城池的最大线程数目根据什么确定"><a href="#线城池的最大线程数目根据什么确定" class="headerlink" title="线城池的最大线程数目根据什么确定"></a>线城池的最大线程数目根据什么确定</h2><h2 id="多线程的几种实现方式，什么是线程安全，什么是重排序"><a href="#多线程的几种实现方式，什么是线程安全，什么是重排序" class="headerlink" title="多线程的几种实现方式，什么是线程安全，什么是重排序"></a>多线程的几种实现方式，什么是线程安全，什么是重排序</h2><h2 id="volatile的原理，作用，能代替锁么"><a href="#volatile的原理，作用，能代替锁么" class="headerlink" title="volatile的原理，作用，能代替锁么"></a>volatile的原理，作用，能代替锁么</h2><h2 id="sleep和wait的区别，以及wait的实现原理"><a href="#sleep和wait的区别，以及wait的实现原理" class="headerlink" title="sleep和wait的区别，以及wait的实现原理"></a>sleep和wait的区别，以及wait的实现原理</h2><h2 id="Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"><a href="#Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁" class="headerlink" title="Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"></a>Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</h2><h2 id="用过哪些原子类，他们的参数以及原理是什么"><a href="#用过哪些原子类，他们的参数以及原理是什么" class="headerlink" title="用过哪些原子类，他们的参数以及原理是什么"></a>用过哪些原子类，他们的参数以及原理是什么</h2><h2 id="用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"><a href="#用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等" class="headerlink" title="用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"></a>用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</h2><h2 id="有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"><a href="#有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。" class="headerlink" title="有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"></a>有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</h2><h2 id="spring的controller是单例还是多例，怎么保证并发的安全"><a href="#spring的controller是单例还是多例，怎么保证并发的安全" class="headerlink" title="spring的controller是单例还是多例，怎么保证并发的安全"></a>spring的controller是单例还是多例，怎么保证并发的安全</h2><h2 id="用三个线程按顺序循环打印abc三个字母，比如abcabcabc"><a href="#用三个线程按顺序循环打印abc三个字母，比如abcabcabc" class="headerlink" title="用三个线程按顺序循环打印abc三个字母，比如abcabcabc"></a>用三个线程按顺序循环打印abc三个字母，比如abcabcabc</h2><h2 id="ThreadLocal用过么，原理是什么，用的时候要注意什么"><a href="#ThreadLocal用过么，原理是什么，用的时候要注意什么" class="headerlink" title="ThreadLocal用过么，原理是什么，用的时候要注意什么"></a>ThreadLocal用过么，原理是什么，用的时候要注意什么</h2><h2 id="如果让你实现一个并发安全的链表，你会怎么做"><a href="#如果让你实现一个并发安全的链表，你会怎么做" class="headerlink" title="如果让你实现一个并发安全的链表，你会怎么做"></a>如果让你实现一个并发安全的链表，你会怎么做</h2><h1 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h1><h2 id="jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"><a href="#jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等" class="headerlink" title="jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"></a>jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</h2><h2 id="你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"><a href="#你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms" class="headerlink" title="你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"></a>你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</h2><h2 id="当出现了内存溢出，你怎么排错"><a href="#当出现了内存溢出，你怎么排错" class="headerlink" title="当出现了内存溢出，你怎么排错"></a>当出现了内存溢出，你怎么排错</h2><h2 id="JVM内存模型的相关知识了解多少"><a href="#JVM内存模型的相关知识了解多少" class="headerlink" title="JVM内存模型的相关知识了解多少"></a>JVM内存模型的相关知识了解多少</h2><h2 id="简单说说你了解的类加载器"><a href="#简单说说你了解的类加载器" class="headerlink" title="简单说说你了解的类加载器"></a>简单说说你了解的类加载器</h2><h2 id="JAVA的反射机制"><a href="#JAVA的反射机制" class="headerlink" title="JAVA的反射机制"></a>JAVA的反射机制</h2><h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="http1-0和http1-1有什么区别"><a href="#http1-0和http1-1有什么区别" class="headerlink" title="http1.0和http1.1有什么区别"></a>http1.0和http1.1有什么区别</h2><h2 id="TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么"><a href="#TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么" class="headerlink" title="TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么"></a>TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</h2><h2 id="TIME-WAIT和CLOSE-WAIT的区别"><a href="#TIME-WAIT和CLOSE-WAIT的区别" class="headerlink" title="TIME_WAIT和CLOSE_WAIT的区别"></a>TIME_WAIT和CLOSE_WAIT的区别</h2><h2 id="说说你知道的几种HTTP响应码"><a href="#说说你知道的几种HTTP响应码" class="headerlink" title="说说你知道的几种HTTP响应码"></a>说说你知道的几种HTTP响应码</h2><h2 id="当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"><a href="#当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤" class="headerlink" title="当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"></a>当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</h2><h2 id="Linux下IO模型有几种，各自的含义是什么"><a href="#Linux下IO模型有几种，各自的含义是什么" class="headerlink" title="Linux下IO模型有几种，各自的含义是什么"></a>Linux下IO模型有几种，各自的含义是什么</h2><h2 id="TCP-IP如何保证可靠性，数据包有哪些数据组成"><a href="#TCP-IP如何保证可靠性，数据包有哪些数据组成" class="headerlink" title="TCP/IP如何保证可靠性，数据包有哪些数据组成"></a>TCP/IP如何保证可靠性，数据包有哪些数据组成</h2><h2 id="架构设计与分布式："><a href="#架构设计与分布式：" class="headerlink" title="架构设计与分布式："></a>架构设计与分布式：</h2><h2 id="tomcat如何调优，各种参数的意义"><a href="#tomcat如何调优，各种参数的意义" class="headerlink" title="tomcat如何调优，各种参数的意义"></a>tomcat如何调优，各种参数的意义</h2><h2 id="常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"><a href="#常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等" class="headerlink" title="常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"></a>常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</h2><h2 id="如何防止缓存雪崩12-用java自己实现一个LRU"><a href="#如何防止缓存雪崩12-用java自己实现一个LRU" class="headerlink" title="如何防止缓存雪崩12.用java自己实现一个LRU"></a>如何防止缓存雪崩12.用java自己实现一个LRU</h2><h2 id="分布式集群下如何做到唯一序列号"><a href="#分布式集群下如何做到唯一序列号" class="headerlink" title="分布式集群下如何做到唯一序列号"></a>分布式集群下如何做到唯一序列号</h2><h2 id="设计一个秒杀系统，30分钟没付款就自动关闭交易"><a href="#设计一个秒杀系统，30分钟没付款就自动关闭交易" class="headerlink" title="设计一个秒杀系统，30分钟没付款就自动关闭交易"></a>设计一个秒杀系统，30分钟没付款就自动关闭交易</h2><h2 id="如何做一个分布式锁"><a href="#如何做一个分布式锁" class="headerlink" title="如何做一个分布式锁"></a>如何做一个分布式锁</h2><h2 id="用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"><a href="#用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗" class="headerlink" title="用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"></a>用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</h2><h2 id="MQ系统的数据如何保证不丢失"><a href="#MQ系统的数据如何保证不丢失" class="headerlink" title="MQ系统的数据如何保证不丢失"></a>MQ系统的数据如何保证不丢失</h2><h2 id="分布式事务的原理，如何使用分布式事务"><a href="#分布式事务的原理，如何使用分布式事务" class="headerlink" title="分布式事务的原理，如何使用分布式事务"></a>分布式事务的原理，如何使用分布式事务</h2><h2 id="什么是一致性hash"><a href="#什么是一致性hash" class="headerlink" title="什么是一致性hash"></a>什么是一致性hash</h2><h2 id="什么是restful，讲讲你理解的restful"><a href="#什么是restful，讲讲你理解的restful" class="headerlink" title="什么是restful，讲讲你理解的restful"></a>什么是restful，讲讲你理解的restful</h2><h2 id="如何设计建立和保持100w的长连接？"><a href="#如何设计建立和保持100w的长连接？" class="headerlink" title="如何设计建立和保持100w的长连接？"></a>如何设计建立和保持100w的长连接？</h2><h2 id="解释什么是MESI协议-缓存一致性"><a href="#解释什么是MESI协议-缓存一致性" class="headerlink" title="解释什么是MESI协议(缓存一致性)"></a>解释什么是MESI协议(缓存一致性)</h2><h2 id="说说你知道的几种HASH算法，简单的也可以"><a href="#说说你知道的几种HASH算法，简单的也可以" class="headerlink" title="说说你知道的几种HASH算法，简单的也可以"></a>说说你知道的几种HASH算法，简单的也可以</h2><h2 id="什么是paxos算法"><a href="#什么是paxos算法" class="headerlink" title="什么是paxos算法"></a>什么是paxos算法</h2><h2 id="redis和memcached-的内存管理的区别"><a href="#redis和memcached-的内存管理的区别" class="headerlink" title="redis和memcached 的内存管理的区别"></a>redis和memcached 的内存管理的区别</h2><h2 id="一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"><a href="#一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新" class="headerlink" title="一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"></a>一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</h2><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="10亿个数字里里面找最小的10个"><a href="#10亿个数字里里面找最小的10个" class="headerlink" title="10亿个数字里里面找最小的10个"></a>10亿个数字里里面找最小的10个</h2><h2 id="有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"><a href="#有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优" class="headerlink" title="有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"></a>有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优</h2><h2 id="2亿个随机生成的无序整数-找出中间大小的值"><a href="#2亿个随机生成的无序整数-找出中间大小的值" class="headerlink" title="2亿个随机生成的无序整数,找出中间大小的值"></a>2亿个随机生成的无序整数,找出中间大小的值</h2><h2 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a>遍历二叉树</h2><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"><a href="#数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点" class="headerlink" title="数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"></a>数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</h2><h2 id="高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"><a href="#高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义" class="headerlink" title="高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"></a>高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</h2><h2 id="SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"><a href="#SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？" class="headerlink" title="SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"></a>SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</h2><h2 id="数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"><a href="#数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁" class="headerlink" title="数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"></a>数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</h2><h2 id="MYsql的索引实现方式"><a href="#MYsql的索引实现方式" class="headerlink" title="MYsql的索引实现方式"></a>MYsql的索引实现方式</h2><h2 id="聚集索引和非聚集索引的区别"><a href="#聚集索引和非聚集索引的区别" class="headerlink" title="聚集索引和非聚集索引的区别"></a>聚集索引和非聚集索引的区别</h2><h2 id="数据库中-BTREE和B-tree区别"><a href="#数据库中-BTREE和B-tree区别" class="headerlink" title="数据库中 BTREE和B+tree区别"></a>数据库中 BTREE和B+tree区别</h2>
-    
-    </div>
-    
-    
-        <div class="article-comment" id='article-comment'>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
             
-
-<h1>评论</h1>
-
-  
-    <div id='gitment'></div>
-  
-
-
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='/statics/chengdu.mp3'></li>
+                        
+                    
+                </ul>
+            
+            
+            
         </div>
-        
-</article>
-  </div>
-
-  
-
-<footer id='footer'>
-    <div class='footer-copyright'>
-        <div>
-            <p> 版权所有 <a href="">times </a> @ 2019</p>
-            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1571154379/TriDiamondLogoCircleLighting_llbad2.png" height=300 width=300></img>
+                    <p>times</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        <dd><a href="https://github.com/hsutimes" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/hsutimes" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/7602324/tridiamond?tab=profile" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">64 <p>Articles</p></a></li>
+                    <li><a href="/categories">5 <p>Categories</p></a></li>
+                    <li><a href="/tags">75 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+                
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>Contents</h4>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础与框架"><span class="toc-number">1.</span> <span class="toc-text">基础与框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#String类能被继承吗，为什么"><span class="toc-number">1.1.</span> <span class="toc-text">String类能被继承吗，为什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String，Stringbuffer，StringBuilder的区别？"><span class="toc-number">1.2.</span> <span class="toc-text">String，Stringbuffer，StringBuilder的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList和LinkedList有什么区别"><span class="toc-number">1.3.</span> <span class="toc-text">ArrayList和LinkedList有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序"><span class="toc-number">1.4.</span> <span class="toc-text">类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些Map，都有什么区别，HashMap是线程安全的吗-并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等"><span class="toc-number">1.5.</span> <span class="toc-text">用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"><span class="toc-number">1.6.</span> <span class="toc-text">HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么"><span class="toc-number">1.7.</span> <span class="toc-text">抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么情况下会发生栈内存溢出"><span class="toc-number">1.8.</span> <span class="toc-text">什么情况下会发生栈内存溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是nio，原理"><span class="toc-number">1.9.</span> <span class="toc-text">什么是nio，原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射中，Class-forName和ClassLoader区别"><span class="toc-number">1.10.</span> <span class="toc-text">反射中，Class.forName和ClassLoader区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat结构，类加载器流程"><span class="toc-number">1.11.</span> <span class="toc-text">tomcat结构，类加载器流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"><span class="toc-number">1.12.</span> <span class="toc-text">讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring的beanFactory和factoryBean的区别"><span class="toc-number">1.13.</span> <span class="toc-text">Spring的beanFactory和factoryBean的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring加载流程"><span class="toc-number">1.14.</span> <span class="toc-text">Spring加载流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring如何管理事务的"><span class="toc-number">1.15.</span> <span class="toc-text">Spring如何管理事务的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">2.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线城池的最大线程数目根据什么确定"><span class="toc-number">2.1.</span> <span class="toc-text">线城池的最大线程数目根据什么确定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程的几种实现方式，什么是线程安全，什么是重排序"><span class="toc-number">2.2.</span> <span class="toc-text">多线程的几种实现方式，什么是线程安全，什么是重排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile的原理，作用，能代替锁么"><span class="toc-number">2.3.</span> <span class="toc-text">volatile的原理，作用，能代替锁么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep和wait的区别，以及wait的实现原理"><span class="toc-number">2.4.</span> <span class="toc-text">sleep和wait的区别，以及wait的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"><span class="toc-number">2.5.</span> <span class="toc-text">Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些原子类，他们的参数以及原理是什么"><span class="toc-number">2.6.</span> <span class="toc-text">用过哪些原子类，他们的参数以及原理是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"><span class="toc-number">2.7.</span> <span class="toc-text">用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"><span class="toc-number">2.8.</span> <span class="toc-text">有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring的controller是单例还是多例，怎么保证并发的安全"><span class="toc-number">2.9.</span> <span class="toc-text">spring的controller是单例还是多例，怎么保证并发的安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用三个线程按顺序循环打印abc三个字母，比如abcabcabc"><span class="toc-number">2.10.</span> <span class="toc-text">用三个线程按顺序循环打印abc三个字母，比如abcabcabc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal用过么，原理是什么，用的时候要注意什么"><span class="toc-number">2.11.</span> <span class="toc-text">ThreadLocal用过么，原理是什么，用的时候要注意什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果让你实现一个并发安全的链表，你会怎么做"><span class="toc-number">2.12.</span> <span class="toc-text">如果让你实现一个并发安全的链表，你会怎么做</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM相关"><span class="toc-number">3.</span> <span class="toc-text">JVM相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"><span class="toc-number">3.1.</span> <span class="toc-text">jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"><span class="toc-number">3.2.</span> <span class="toc-text">你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当出现了内存溢出，你怎么排错"><span class="toc-number">3.3.</span> <span class="toc-text">当出现了内存溢出，你怎么排错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存模型的相关知识了解多少"><span class="toc-number">3.4.</span> <span class="toc-text">JVM内存模型的相关知识了解多少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单说说你了解的类加载器"><span class="toc-number">3.5.</span> <span class="toc-text">简单说说你了解的类加载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA的反射机制"><span class="toc-number">3.6.</span> <span class="toc-text">JAVA的反射机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络"><span class="toc-number">4.</span> <span class="toc-text">网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http1-0和http1-1有什么区别"><span class="toc-number">4.1.</span> <span class="toc-text">http1.0和http1.1有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么"><span class="toc-number">4.2.</span> <span class="toc-text">TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TIME-WAIT和CLOSE-WAIT的区别"><span class="toc-number">4.3.</span> <span class="toc-text">TIME_WAIT和CLOSE_WAIT的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说说你知道的几种HTTP响应码"><span class="toc-number">4.4.</span> <span class="toc-text">说说你知道的几种HTTP响应码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"><span class="toc-number">4.5.</span> <span class="toc-text">当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux下IO模型有几种，各自的含义是什么"><span class="toc-number">4.6.</span> <span class="toc-text">Linux下IO模型有几种，各自的含义是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP如何保证可靠性，数据包有哪些数据组成"><span class="toc-number">4.7.</span> <span class="toc-text">TCP/IP如何保证可靠性，数据包有哪些数据组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构设计与分布式："><span class="toc-number">4.8.</span> <span class="toc-text">架构设计与分布式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat如何调优，各种参数的意义"><span class="toc-number">4.9.</span> <span class="toc-text">tomcat如何调优，各种参数的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"><span class="toc-number">4.10.</span> <span class="toc-text">常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何防止缓存雪崩12-用java自己实现一个LRU"><span class="toc-number">4.11.</span> <span class="toc-text">如何防止缓存雪崩12.用java自己实现一个LRU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式集群下如何做到唯一序列号"><span class="toc-number">4.12.</span> <span class="toc-text">分布式集群下如何做到唯一序列号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计一个秒杀系统，30分钟没付款就自动关闭交易"><span class="toc-number">4.13.</span> <span class="toc-text">设计一个秒杀系统，30分钟没付款就自动关闭交易</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何做一个分布式锁"><span class="toc-number">4.14.</span> <span class="toc-text">如何做一个分布式锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"><span class="toc-number">4.15.</span> <span class="toc-text">用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MQ系统的数据如何保证不丢失"><span class="toc-number">4.16.</span> <span class="toc-text">MQ系统的数据如何保证不丢失</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式事务的原理，如何使用分布式事务"><span class="toc-number">4.17.</span> <span class="toc-text">分布式事务的原理，如何使用分布式事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是一致性hash"><span class="toc-number">4.18.</span> <span class="toc-text">什么是一致性hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是restful，讲讲你理解的restful"><span class="toc-number">4.19.</span> <span class="toc-text">什么是restful，讲讲你理解的restful</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何设计建立和保持100w的长连接？"><span class="toc-number">4.20.</span> <span class="toc-text">如何设计建立和保持100w的长连接？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释什么是MESI协议-缓存一致性"><span class="toc-number">4.21.</span> <span class="toc-text">解释什么是MESI协议(缓存一致性)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说说你知道的几种HASH算法，简单的也可以"><span class="toc-number">4.22.</span> <span class="toc-text">说说你知道的几种HASH算法，简单的也可以</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是paxos算法"><span class="toc-number">4.23.</span> <span class="toc-text">什么是paxos算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis和memcached-的内存管理的区别"><span class="toc-number">4.24.</span> <span class="toc-text">redis和memcached 的内存管理的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"><span class="toc-number">4.25.</span> <span class="toc-text">一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法"><span class="toc-number">5.</span> <span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10亿个数字里里面找最小的10个"><span class="toc-number">5.1.</span> <span class="toc-text">10亿个数字里里面找最小的10个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"><span class="toc-number">5.2.</span> <span class="toc-text">有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2亿个随机生成的无序整数-找出中间大小的值"><span class="toc-number">5.3.</span> <span class="toc-text">2亿个随机生成的无序整数,找出中间大小的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历二叉树"><span class="toc-number">5.4.</span> <span class="toc-text">遍历二叉树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库"><span class="toc-number">6.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"><span class="toc-number">6.1.</span> <span class="toc-text">数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"><span class="toc-number">6.2.</span> <span class="toc-text">高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"><span class="toc-number">6.3.</span> <span class="toc-text">SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"><span class="toc-number">6.4.</span> <span class="toc-text">数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MYsql的索引实现方式"><span class="toc-number">6.5.</span> <span class="toc-text">MYsql的索引实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚集索引和非聚集索引的区别"><span class="toc-number">6.6.</span> <span class="toc-text">聚集索引和非聚集索引的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库中-BTREE和B-tree区别"><span class="toc-number">6.7.</span> <span class="toc-text">数据库中 BTREE和B+tree区别</span></a></li></ol></li></ol>
+                        </div>
+                    </div>
+                
+            
         </div>
     </div>
-    
-    <div class='footer-social'>
-        
+</div>
+
+
     </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            times
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+            <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="1.3.1" target="_blank" rel="noopener">1.3.1</a></small>
+        </span>
+    </p>
 </footer>
 
-  <br>
-
-  <div id="footer-nav" class='footer-nav'>
-		
-
-
-
-<nav id="nav">
-	
-	
-	
-	<div class='nav-item' id='nav-item-toc'>
-		
+<script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 
 
-<div class='toc-container'>
-<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础与框架"><span class="toc-number">1.</span> <span class="toc-text">基础与框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#String类能被继承吗，为什么"><span class="toc-number">1.1.</span> <span class="toc-text">String类能被继承吗，为什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String，Stringbuffer，StringBuilder的区别？"><span class="toc-number">1.2.</span> <span class="toc-text">String，Stringbuffer，StringBuilder的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList和LinkedList有什么区别"><span class="toc-number">1.3.</span> <span class="toc-text">ArrayList和LinkedList有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序"><span class="toc-number">1.4.</span> <span class="toc-text">类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些Map，都有什么区别，HashMap是线程安全的吗-并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等"><span class="toc-number">1.5.</span> <span class="toc-text">用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"><span class="toc-number">1.6.</span> <span class="toc-text">HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么"><span class="toc-number">1.7.</span> <span class="toc-text">抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么情况下会发生栈内存溢出"><span class="toc-number">1.8.</span> <span class="toc-text">什么情况下会发生栈内存溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是nio，原理"><span class="toc-number">1.9.</span> <span class="toc-text">什么是nio，原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射中，Class-forName和ClassLoader区别"><span class="toc-number">1.10.</span> <span class="toc-text">反射中，Class.forName和ClassLoader区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat结构，类加载器流程"><span class="toc-number">1.11.</span> <span class="toc-text">tomcat结构，类加载器流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"><span class="toc-number">1.12.</span> <span class="toc-text">讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring的beanFactory和factoryBean的区别"><span class="toc-number">1.13.</span> <span class="toc-text">Spring的beanFactory和factoryBean的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring加载流程"><span class="toc-number">1.14.</span> <span class="toc-text">Spring加载流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring如何管理事务的"><span class="toc-number">1.15.</span> <span class="toc-text">Spring如何管理事务的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">2.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线城池的最大线程数目根据什么确定"><span class="toc-number">2.1.</span> <span class="toc-text">线城池的最大线程数目根据什么确定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程的几种实现方式，什么是线程安全，什么是重排序"><span class="toc-number">2.2.</span> <span class="toc-text">多线程的几种实现方式，什么是线程安全，什么是重排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile的原理，作用，能代替锁么"><span class="toc-number">2.3.</span> <span class="toc-text">volatile的原理，作用，能代替锁么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep和wait的区别，以及wait的实现原理"><span class="toc-number">2.4.</span> <span class="toc-text">sleep和wait的区别，以及wait的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"><span class="toc-number">2.5.</span> <span class="toc-text">Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些原子类，他们的参数以及原理是什么"><span class="toc-number">2.6.</span> <span class="toc-text">用过哪些原子类，他们的参数以及原理是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"><span class="toc-number">2.7.</span> <span class="toc-text">用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"><span class="toc-number">2.8.</span> <span class="toc-text">有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring的controller是单例还是多例，怎么保证并发的安全"><span class="toc-number">2.9.</span> <span class="toc-text">spring的controller是单例还是多例，怎么保证并发的安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用三个线程按顺序循环打印abc三个字母，比如abcabcabc"><span class="toc-number">2.10.</span> <span class="toc-text">用三个线程按顺序循环打印abc三个字母，比如abcabcabc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal用过么，原理是什么，用的时候要注意什么"><span class="toc-number">2.11.</span> <span class="toc-text">ThreadLocal用过么，原理是什么，用的时候要注意什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果让你实现一个并发安全的链表，你会怎么做"><span class="toc-number">2.12.</span> <span class="toc-text">如果让你实现一个并发安全的链表，你会怎么做</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM相关"><span class="toc-number">3.</span> <span class="toc-text">JVM相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"><span class="toc-number">3.1.</span> <span class="toc-text">jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"><span class="toc-number">3.2.</span> <span class="toc-text">你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当出现了内存溢出，你怎么排错"><span class="toc-number">3.3.</span> <span class="toc-text">当出现了内存溢出，你怎么排错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存模型的相关知识了解多少"><span class="toc-number">3.4.</span> <span class="toc-text">JVM内存模型的相关知识了解多少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单说说你了解的类加载器"><span class="toc-number">3.5.</span> <span class="toc-text">简单说说你了解的类加载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA的反射机制"><span class="toc-number">3.6.</span> <span class="toc-text">JAVA的反射机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络"><span class="toc-number">4.</span> <span class="toc-text">网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http1-0和http1-1有什么区别"><span class="toc-number">4.1.</span> <span class="toc-text">http1.0和http1.1有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么"><span class="toc-number">4.2.</span> <span class="toc-text">TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TIME-WAIT和CLOSE-WAIT的区别"><span class="toc-number">4.3.</span> <span class="toc-text">TIME_WAIT和CLOSE_WAIT的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说说你知道的几种HTTP响应码"><span class="toc-number">4.4.</span> <span class="toc-text">说说你知道的几种HTTP响应码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"><span class="toc-number">4.5.</span> <span class="toc-text">当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux下IO模型有几种，各自的含义是什么"><span class="toc-number">4.6.</span> <span class="toc-text">Linux下IO模型有几种，各自的含义是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP如何保证可靠性，数据包有哪些数据组成"><span class="toc-number">4.7.</span> <span class="toc-text">TCP/IP如何保证可靠性，数据包有哪些数据组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构设计与分布式："><span class="toc-number">4.8.</span> <span class="toc-text">架构设计与分布式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat如何调优，各种参数的意义"><span class="toc-number">4.9.</span> <span class="toc-text">tomcat如何调优，各种参数的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"><span class="toc-number">4.10.</span> <span class="toc-text">常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何防止缓存雪崩12-用java自己实现一个LRU"><span class="toc-number">4.11.</span> <span class="toc-text">如何防止缓存雪崩12.用java自己实现一个LRU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式集群下如何做到唯一序列号"><span class="toc-number">4.12.</span> <span class="toc-text">分布式集群下如何做到唯一序列号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计一个秒杀系统，30分钟没付款就自动关闭交易"><span class="toc-number">4.13.</span> <span class="toc-text">设计一个秒杀系统，30分钟没付款就自动关闭交易</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何做一个分布式锁"><span class="toc-number">4.14.</span> <span class="toc-text">如何做一个分布式锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"><span class="toc-number">4.15.</span> <span class="toc-text">用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MQ系统的数据如何保证不丢失"><span class="toc-number">4.16.</span> <span class="toc-text">MQ系统的数据如何保证不丢失</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式事务的原理，如何使用分布式事务"><span class="toc-number">4.17.</span> <span class="toc-text">分布式事务的原理，如何使用分布式事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是一致性hash"><span class="toc-number">4.18.</span> <span class="toc-text">什么是一致性hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是restful，讲讲你理解的restful"><span class="toc-number">4.19.</span> <span class="toc-text">什么是restful，讲讲你理解的restful</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何设计建立和保持100w的长连接？"><span class="toc-number">4.20.</span> <span class="toc-text">如何设计建立和保持100w的长连接？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释什么是MESI协议-缓存一致性"><span class="toc-number">4.21.</span> <span class="toc-text">解释什么是MESI协议(缓存一致性)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说说你知道的几种HASH算法，简单的也可以"><span class="toc-number">4.22.</span> <span class="toc-text">说说你知道的几种HASH算法，简单的也可以</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是paxos算法"><span class="toc-number">4.23.</span> <span class="toc-text">什么是paxos算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis和memcached-的内存管理的区别"><span class="toc-number">4.24.</span> <span class="toc-text">redis和memcached 的内存管理的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"><span class="toc-number">4.25.</span> <span class="toc-text">一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法"><span class="toc-number">5.</span> <span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10亿个数字里里面找最小的10个"><span class="toc-number">5.1.</span> <span class="toc-text">10亿个数字里里面找最小的10个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"><span class="toc-number">5.2.</span> <span class="toc-text">有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2亿个随机生成的无序整数-找出中间大小的值"><span class="toc-number">5.3.</span> <span class="toc-text">2亿个随机生成的无序整数,找出中间大小的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历二叉树"><span class="toc-number">5.4.</span> <span class="toc-text">遍历二叉树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库"><span class="toc-number">6.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"><span class="toc-number">6.1.</span> <span class="toc-text">数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"><span class="toc-number">6.2.</span> <span class="toc-text">高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"><span class="toc-number">6.3.</span> <span class="toc-text">SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"><span class="toc-number">6.4.</span> <span class="toc-text">数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MYsql的索引实现方式"><span class="toc-number">6.5.</span> <span class="toc-text">MYsql的索引实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚集索引和非聚集索引的区别"><span class="toc-number">6.6.</span> <span class="toc-text">聚集索引和非聚集索引的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库中-BTREE和B-tree区别"><span class="toc-number">6.7.</span> <span class="toc-text">数据库中 BTREE和B+tree区别</span></a></li></ol></li></ol>
-</div>
-<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
-    <img src="/images/icons/blue-shadow/toc.svg" alt="">
-</div>
-
-	</div>
-	
-	<div class='nav-item' id='nav-item-archive'>
-		
-				<div class='nav-icon'>
-				
-			<a href="/archives/" title='归档'>
-			<img src="/images/icons/blue-shadow/archive.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class='nav-item' id='nav-item-search'>
-		
-		<div class='nav-icon'>
-		
-			<a href="/search/" title='搜索'>
-			<img src="/images/icons/blue-shadow/search.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class="nav-item" id='nav-item-more'>
-		<div class="nav-icon">
-				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
-				<img src="/images/icons/blue-shadow/menu.svg" alt="">
-				</a>
-		</div>
-		<div class="nav-more-menu">
-				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
-		
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/文章/">
-						<span>文章</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/算法/">
-						<span>算法</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/人工智能/">
-						<span>人工智能</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/生活/">
-						<span>生活</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/笔试/">
-						<span>笔试</span>
-					</a>
-				</div>
-		</div>
-		
-	</div>
-	</div>
-</nav>
-
-	</div>
-
-  
-
-
-
-    
-
-
-
-
-
-
-  <script>
-  var gitment = new Gitment({
-    id: window.location.pathname, // optional
-    owner: 'hsutimes',
-    repo: 'gitment_blog',
-    oauth: {
-      client_id: 'd73d768ea9e3bd69ab54',
-      client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
-    },
-    // ...
-    // For more available options, check out the documentation below
-  })
-
-  gitment.render('gitment')
-  </script>
-
-
-
-
-
-
-
-    <script src="/js/lightgallery.min.js"></script>
-<script src="/js/lg-zoom.min.js"></script>
-<script type='text/javascript'>
-    $(document).ready(function() {
-        $("#lightgallery").lightGallery(); 
-        $(".article-content img").each(function(){
-            console.log($(this).attr('src'))
-            $(this).attr('data-src', $(this).attr('src')).lightGallery({
-                selector: 'this'
-            })
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
         });
-    });
-</script>
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
 
 
-<script type='text/javascript'>
-
-  
-  // update cookie if this page is opened (directly)
-  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
-  loadjs.ready('post-version', function(){
-    
-    new Postv2('hashit_f19c01efeab04a9cae54a1470cd482e68ecb1ae9db710f59de6da4667fe5da13').update('hashit_968ac65da822e1889aaf1a5dbd258fc78fc0b89ad3de62abe462b1d532b26d71', function(){});
-  });
-  
-</script>
-
-
-    
-<script type='text/javascript'>
-  
-  // update cookie if this page is opened (directly)
-  function getIP(json) {
-  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
-  loadjs.ready('post-visit-comment-count', function(){
-    
-    
-    LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
-    var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2019/09/13/Java面试题/', json.ip);
-    document.getElementById('thumb-up-button').addEventListener('click', function(e){
-      leanCloud.isThumbUp('/2019/09/13/Java面试题/', function(isThumbUp){
-        console.log('is thumb up:' + isThumbUp);
-        if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2019/09/13/Java面试题/', json.ip);
-          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
-          
-        }else{
-          leanCloud.addThumbUpRecord('/2019/09/13/Java面试题/', json.ip);
-          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
-        }
-        leanCloud.getThumbUpCount('/2019/09/13/Java面试题/', function(count){
-            console.log('thumb up count: ' + count)
-            var el = document.getElementById('article-thumbup-count');
-            if(el) el.innerHTML = count;
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="/css/dracula.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
         });
-      });
-    });
-    leanCloud.addVisitRecord('/2019/09/13/Java面试题/', json.ip);
-    leanCloud.fetchCommentCount('/2019/09/13/Java面试题/');
-    leanCloud.fetchVisitCount('/2019/09/13/Java面试题/');
-    leanCloud.fetchThumbUpCount('/2019/09/13/Java面试题/');
-    leanCloud.getCommentCount('/2019/09/13/Java面试题/', function(count){
-        var el = document.querySelector('#article-comment-count');
-        if(el) el.innerHTML = count;
-    });
-    leanCloud.getVisitCount('/2019/09/13/Java面试题/', function(count){
-        var el = document.querySelector('#article-visit-count');
-        if(el) el.innerHTML = count;
-    });
-    leanCloud.getThumbUpCount('/2019/09/13/Java面试题/', function(count){
-        var el = document.getElementById('article-thumbup-count');
-        if(el) el.innerHTML = count;
-    });
-    leanCloud.isThumbUp('/2019/09/13/Java面试题/', function(isThumbUp){
-        console.log('init thumb up:' + isThumbUp);
-        if(isThumbUp){
-          document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
-        }else{
-          document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
+    </script>
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
         }
-    });
-  });
-  }
-  
-</script>
+    }
 
-<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-
-
-
-<!-- <script src="/js/post.js"></script> -->
-
-<script src="/js/headroom.min.js"></script>
-
-<script data-no-instant type='text/javascript'>
-
-initHeadroom();
-
-changeLayoutOnTouchScreen();
-
-// 
-// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
-// post.getCommentCount(window.location.pathname, function(count){
-//     $('#article-comment-count').text(count);
-// });
-// post.addVisitRecord(window.location.pathname, userip);
-// post.getVisitCount(window.location.pathname, function(count){
-//     $('#article-visit-count').text(count);
-// });
-
-// 
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
 </script>
 
 
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-</body>
 </html>

@@ -1,1274 +1,593 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
-
-
-
+<html lang="zh-cn" class="loading">
 <head><meta name="generator" content="Hexo 3.9.0">
-
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  
-      <title>算法 - Category - Time</title>
-  
-
-  
-  
-  <meta name="description" content>
-  <meta name="author" content="times">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- load loadjs.js -->
-  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
-
-<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
-  <!-- load lightgallery -->
-<link rel="stylesheet" href="/css/lightgallery.css">
-<link rel="stylesheet" href="/libs/noty/lib/noty.css">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  
-
-
-
-
-
-
-    <link rel="stylesheet" href="/css/taurus.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Category: 算法 - Time</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hsutimes Obsidian,"> 
     
-        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
-    
-
-
-<link rel="stylesheet" href="/.css">
-
-  <!-- load font awesome 5 -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-  </script>
-  <!-- load mathjax -->
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-  <!-- load js-cookie -->
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="/js/social-share.min.js"></script>
-    <script src="/js/theme.js"></script>
-
-  <!-- include cookie.js -->
-  
-  
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-134224598-1', 'auto');
-	ga('send', 'pageview');
-</script>
-
-
-  <!-- include comment system code -->
-  
-    <link rel="stylesheet" href="/css/gitment/default.css">
-<script src="/js/gitment.browser.js"></script>
-  
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="/images/favicon.png">
+    <meta name="author" content="times"> 
+    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="/font/Rubik-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="/font/Rubik-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_7jr8c7mf4wi.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
-
- 
-
-<header id="header" class='header'>
-	<div class="header-title">
-		
-		<div class='header-logo'>
-			<a href='/'>
-				<img src='/images/theme-icon.svg' />
-			</a>
-		</div>
-		<div class='header-text'>
-			<h1>
-				<a href="/">Time</a>
-			</h1>
-			<subtitle>
-				time
-			</subtitle>
-		</div>
-		
-	</div>
-	<div id='header-nav'>
-		
-
-
-
-<nav id="nav">
-	
-	
-	
-	<div class='nav-item' id='nav-item-archive'>
-		
-				<div class='nav-icon'>
-				
-			<a href="/archives/" title='归档'>
-			<img src="/images/icons/blue-shadow/archive.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class='nav-item' id='nav-item-search'>
-		
-		<div class='nav-icon'>
-		
-			<a href="/search/" title='搜索'>
-			<img src="/images/icons/blue-shadow/search.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class="nav-item" id='nav-item-more'>
-		<div class="nav-icon">
-				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
-				<img src="/images/icons/blue-shadow/menu.svg" alt="">
-				</a>
-		</div>
-		<div class="nav-more-menu">
-				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
-		
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/文章/">
-						<span>文章</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/算法/">
-						<span>算法</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/人工智能/">
-						<span>人工智能</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/生活/">
-						<span>生活</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/笔试/">
-						<span>笔试</span>
-					</a>
-				</div>
-		</div>
-		
-	</div>
-	</div>
-</nav>
-
-	</div>
-</header>
-
- 
-
-
-
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div style="flex: 1;">
-      <div class='archive-container'>
-
-
-	
-		<div class='archive-header'>
-		<div class='archive-logo'>
-							<img src="/images/算法.svg" alt="">
-				</div><h2 class='archive-title'>算法</h2>
-	</div>
-	
-	<div class="archive-cards">
-	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5' data-name='26 remove-duplicates-from-sorted-array' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/10/04/26-remove-duplicates-from-sorted-array/">
-			
-			26 Remove-Duplicates-From-Sorted-Array</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-10-04
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/10/04/26-remove-duplicates-from-sorted-array/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Time</span>
+    <div id="loader"></div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="Categories">Categories</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="Archives">Archives</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="Tags">Tags</a>
+        </li>
+        
+    </ul>
+    <p class="copyright" id="copyright">
+        &copy; 2019 times.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+    </p>
 </div>
 
-	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193' data-name='440. 字典序的第K小数字' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/17/440-字典序的第K小数字/">
-			
-			440. 字典序的第K小数字</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-	</div>
+<div id="container">
+    
+<div id="header">
+    <div>
+        <a class="image-logo animated fadeInDown" href="/"></a>
+        <ul id="menu-menu" class="menu text-menu">
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/categories/" title="Categories" class="menu-link">Categories</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/archives/" title="Archives" class="menu-link">Archives</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/tags/" title="Tags" class="menu-link">Tags</a>
+            </li>
+            
+        </ul>
+        <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
+    </div>
 </div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-17
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/17/440-字典序的第K小数字/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d' data-name='54. 螺旋矩阵' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/07/54-螺旋矩阵/">
-			
-			54. 螺旋矩阵</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/矩阵/">矩阵</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/编程/">编程</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-07
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/07/54-螺旋矩阵/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c' data-name='天平砝码摆放问题' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/09/02/天平砝码摆放问题/">
-			
-			天平砝码摆放问题</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/天平/">天平</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/暴力破解/">暴力破解</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-09-02
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/09/02/天平砝码摆放问题/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5' data-name='118. 杨辉三角' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/08/31/118-杨辉三角/">
-			
-			118. 杨辉三角</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/递归/">递归</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-4'><a href="/tags/链表/">链表</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-08-31
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/08/31/118-杨辉三角/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b' data-name='24. 两两交换链表中的节点' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/08/31/24-两两交换链表中的节点/">
-			
-			24. 两两交换链表中的节点</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/递归/">递归</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-4'><a href="/tags/链表/">链表</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-08-31
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/08/31/24-两两交换链表中的节点/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-		
-
-
-
-
-<div class='Card-archive' id='hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219' data-name='334. 反转字符串' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2019/08/31/334-反转字符串/">
-			
-			334. 反转字符串</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'>
-<div class="tags">
-	
-		
-			
-				<label class='tag-1'><a href="/tags/leetcode/">Leetcode</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-2'><a href="/tags/算法/">算法</a></label>
-			
-		
-	
-		
-			
-				<label class='tag-3'><a href="/tags/递归/">递归</a></label>
-			
-		
-	
-	</div>
-</div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2019-08-31
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2019/08/31/334-反转字符串/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-	</div>
-
-
-
-<div class='pagination'>
-	
-	
-	
-	
-		
-		
-		<div class="pagination-item">
-			
-			
-				<span>1</span>
-			
-		</div>
-		
-		
-	
-	
-</div>
-</div>
-  </div>
-
-  
-
-<footer id='footer'>
-    <div class='footer-copyright'>
-        <div>
-            <p> 版权所有 <a href="">times </a> @ 2019</p>
-            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.1.3-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+<div id="screen">
+    <div id="mark">
+        <div class="cover animated fadeIn" style="
+            animation-delay: 900ms;
+            animation-duration: 2.8s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
+                url(/img/cover.jpg);">
         </div>
     </div>
     
-    <div class='footer-social'>
+    <div id="post0" class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/算法"><b>「 </b>算法<b> 」</b></a>
+            
+            十月 04, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/10/04/26-remove-duplicates-from-sorted-array/" title="26 remove-duplicates-from-sorted-array" class="posttitle">26 remove-duplicates-from-sorted-array</a></h3>
         
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        4.4k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        4 mins.
+                    </span>
+                
+                
+            </p>
+        
+        
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例 1...</p>
+            
+            <span class="read-more gradient-text"><a href="/2019/10/04/26-remove-duplicates-from-sorted-array/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
     </div>
+    
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                  <span class="typed-text"></span>
+                </p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="primary">
+        
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/算法"><b>「 </b>算法<b> 」</b></a>
+            
+            九月 17, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/17/440-字典序的第K小数字/" title="440. 字典序的第K小数字" class="posttitle">440. 字典序的第K小数字</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        16k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        14 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/leetcode/">leetcode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <blockquote>
+<p>给定整数 n 和 k，找到 1 到 n 中字典序第 k 小的数字。</p>
+</blockquote>
+<blockquote>
+<p>注意：1 ≤ k ≤ n ≤ 109。</p>
+</blockquote>
+<p><strong>示例 :</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">n: 13   k: 2</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。</span><br></pre></td></tr></table></figure>
+
+<p>乍一看这一题貌似毫无头绪，什么是字典序？如何定位这个数？没错，刚接触这个题目的时候，我的脑筋里也是一团乱麻。</p>
+<p>但是我觉得作为一个拥有聪明才智的程序员来说，最重要的能力就是迅速抽象问题、...</p>
+            
+            <span class="read-more gradient-text"><a href="/2019/09/17/440-字典序的第K小数字/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/算法"><b>「 </b>算法<b> 」</b></a>
+            
+            九月 07, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/07/54-螺旋矩阵/" title="54. 螺旋矩阵" class="posttitle">54. 螺旋矩阵</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        23k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        21 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/leetcode/">leetcode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/矩阵/">矩阵</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编程/">编程</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p></p>
+<p>给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [1, 2, 3, 4],</span><br><span class="line">  [5, 6, 7, 8],</span><br><span class="line">  [9,10,11,12]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
+
+<p>直觉</p>
+<p>绘制螺旋轨迹路径，我们发现当路径超出界限或...</p>
+            
+            <span class="read-more gradient-text"><a href="/2019/09/07/54-螺旋矩阵/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/算法"><b>「 </b>算法<b> 」</b></a>
+            
+            九月 02, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/02/天平砝码摆放问题/" title="天平砝码摆放问题" class="posttitle">天平砝码摆放问题</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        9.4k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        9 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/天平/">天平</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。<br>要使天平平衡，有多少种方法？（对称摆放算作一种方法） </p>
+<p></p>
+<p>暴力求解</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace...</span></span></pre></td></tr></table></figure>
+            
+            <span class="read-more gradient-text"><a href="/2019/09/02/天平砝码摆放问题/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/算法"><b>「 </b>算法<b> 」</b></a>
+            
+            八月 31, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/08/31/118-杨辉三角/" title="118. 杨辉三角" class="posttitle">118. 杨辉三角</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        13k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        12 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/leetcode/">leetcode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/递归/">递归</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/链表/">链表</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em>行。</p>
+<p></p>
+<p>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>动态规划</li>
+</ol>
+<p><strong>思路</strong></p>
+<p>如果能够知道一行杨辉三角，我们就可以根据每对相邻的值轻松地计算出它的下一行。</p>
+<p><strong>算法</strong></p>
+<p>虽然这一算法非常简单，但用于构造杨辉三角的迭代方法可以归类为动态规划，因为我们需要基于前一行来构造每一行。</p>
+<p>首先，我们会生成整个 <code>triangle...</code></p>
+            
+            <span class="read-more gradient-text"><a href="/2019/08/31/118-杨辉三角/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/算法"><b>「 </b>算法<b> 」</b></a>
+            
+            八月 31, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/08/31/24-两两交换链表中的节点/" title="24. 两两交换链表中的节点" class="posttitle">24. 两两交换链表中的节点</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        5.4k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        5 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/leetcode/">leetcode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/递归/">递归</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/链表/">链表</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p></p>
+<p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
+<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
+<p>示例:</p>
+<pre><code>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><ol>
+<li>非递归</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode...</span></span></pre></td></tr></table></figure>
+            
+            <span class="read-more gradient-text"><a href="/2019/08/31/24-两两交换链表中的节点/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/算法"><b>「 </b>算法<b> 」</b></a>
+            
+            八月 31, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/08/31/334-反转字符串/" title="334. 反转字符串" class="posttitle">334. 反转字符串</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        7k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        6 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/leetcode/">leetcode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/递归/">递归</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p></p>
+<p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 <code>char[]</code> 的形式给出。</p>
+<p>不要给另外的数组分配额外的空间，你必须<strong>原地</strong>修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+<p>你可以假设数组中的所有字符都是 <strong>ASCII</strong> 码表中的可打印字符。</p>
+<p>示例 1：</p>
+<pre><code>输入：[&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]
+输出：[&quot;o&quot;,&quot;l&quot;,&quot;...</code></pre>
+            
+            <span class="read-more gradient-text"><a href="/2019/08/31/334-反转字符串/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+    
+</div>
+<div id="preview"></div>
+
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            times
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+            <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="1.3.1" target="_blank" rel="noopener">1.3.1</a></small>
+        </span>
+    </p>
 </footer>
 
-  <br>
-
-  <div id="footer-nav" class='footer-nav'>
-		
-
-
-
-<nav id="nav">
-	
-	
-	
-	<div class='nav-item' id='nav-item-archive'>
-		
-				<div class='nav-icon'>
-				
-			<a href="/archives/" title='归档'>
-			<img src="/images/icons/blue-shadow/archive.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class='nav-item' id='nav-item-search'>
-		
-		<div class='nav-icon'>
-		
-			<a href="/search/" title='搜索'>
-			<img src="/images/icons/blue-shadow/search.svg" alt="">
-			</a>
-		</div>
-	</div>
-	<div class="nav-item" id='nav-item-more'>
-		<div class="nav-icon">
-				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
-				<img src="/images/icons/blue-shadow/menu.svg" alt="">
-				</a>
-		</div>
-		<div class="nav-more-menu">
-				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
-		
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/文章/">
-						<span>文章</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/算法/">
-						<span>算法</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/人工智能/">
-						<span>人工智能</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/生活/">
-						<span>生活</span>
-					</a>
-				</div>
-		</div>
-		
-		<div class='nav-more-item'>
-				<div class="nav-name">
-					<a class='nav-link' href="/categories/笔试/">
-						<span>笔试</span>
-					</a>
-				</div>
-		</div>
-		
-	</div>
-	</div>
-</nav>
-
-	</div>
-
-  
+<script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 
 
-
-    
-
-
-
-
-
-
-  <script>
-  var gitment = new Gitment({
-    id: window.location.pathname, // optional
-    owner: 'hsutimes',
-    repo: 'gitment_blog',
-    oauth: {
-      client_id: 'd73d768ea9e3bd69ab54',
-      client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
-    },
-    // ...
-    // For more available options, check out the documentation below
-  })
-
-  gitment.render('gitment')
-  </script>
-
-
-
-
-
-
-
-    <script src="/js/lightgallery.min.js"></script>
-<script src="/js/lg-zoom.min.js"></script>
-<script type='text/javascript'>
-    $(document).ready(function() {
-        $("#lightgallery").lightGallery(); 
-        $(".article-content img").each(function(){
-            console.log($(this).attr('src'))
-            $(this).attr('data-src', $(this).attr('src')).lightGallery({
-                selector: 'this'
-            })
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
         });
-    });
-</script>
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
 
 
-<script type='text/javascript'>
-
-  
-    loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
-    loadjs.ready('post-version', {
-      success: function(){
-        console.log('ready to run badge script')
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-title a, #hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-excerpt a, #hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .Card-figure a');
-          new Postv2('hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5').showUnreadNotification('hashit_a910a04b0502881155d58043c861b046b3f43dcc66427fdce33ea2090cf62fc4', function(){
-            console.log('show badge for 2019/10/04/26-remove-duplicates-from-sorted-array/ : hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5');
-            var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/10/04/26-remove-duplicates-from-sorted-array/ : hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5');
-            var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5').update('hashit_a910a04b0502881155d58043c861b046b3f43dcc66427fdce33ea2090cf62fc4', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 .Card-title a, #hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 .Card-excerpt a, #hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 .Card-figure a');
-          new Postv2('hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193').showUnreadNotification('hashit_71e4c195fcfbc5f4f4be8be24e0586f07180919e3d609ae8adbda084a0da3965', function(){
-            console.log('show badge for 2019/09/17/440-字典序的第K小数字/ : hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193');
-            var postBadge = document.querySelector('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/17/440-字典序的第K小数字/ : hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193');
-            var postBadge = document.querySelector('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193').update('hashit_71e4c195fcfbc5f4f4be8be24e0586f07180919e3d609ae8adbda084a0da3965', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .Card-title a, #hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .Card-excerpt a, #hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .Card-figure a');
-          new Postv2('hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d').showUnreadNotification('hashit_e0bec41e106abd2a576bcb4207cece4b7f6b7cb316a9add27300c6f4dd963339', function(){
-            console.log('show badge for 2019/09/07/54-螺旋矩阵/ : hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d');
-            var postBadge = document.querySelector('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/07/54-螺旋矩阵/ : hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d');
-            var postBadge = document.querySelector('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d').update('hashit_e0bec41e106abd2a576bcb4207cece4b7f6b7cb316a9add27300c6f4dd963339', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-title a, #hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-excerpt a, #hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .Card-figure a');
-          new Postv2('hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c').showUnreadNotification('hashit_b4627d1d97965d9c79c189415b6ca77166750f5dc07636472a89e5539cdccfa5', function(){
-            console.log('show badge for 2019/09/02/天平砝码摆放问题/ : hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c');
-            var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/09/02/天平砝码摆放问题/ : hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c');
-            var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c').update('hashit_b4627d1d97965d9c79c189415b6ca77166750f5dc07636472a89e5539cdccfa5', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-title a, #hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-excerpt a, #hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .Card-figure a');
-          new Postv2('hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5').showUnreadNotification('hashit_3fd7bee0e0869578d039840f2516b20a5ecce8949998c17ef183c7928196d39e', function(){
-            console.log('show badge for 2019/08/31/118-杨辉三角/ : hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5');
-            var postBadge = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/31/118-杨辉三角/ : hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5');
-            var postBadge = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5').update('hashit_3fd7bee0e0869578d039840f2516b20a5ecce8949998c17ef183c7928196d39e', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .Card-title a, #hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .Card-excerpt a, #hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .Card-figure a');
-          new Postv2('hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b').showUnreadNotification('hashit_aac55820fec0c29e05985ecb68932e3e08373c7bb15e13d0f48dfc55a497b073', function(){
-            console.log('show badge for 2019/08/31/24-两两交换链表中的节点/ : hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b');
-            var postBadge = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/31/24-两两交换链表中的节点/ : hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b');
-            var postBadge = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b').update('hashit_aac55820fec0c29e05985ecb68932e3e08373c7bb15e13d0f48dfc55a497b073', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-          
-          
-          
-          // show/hide post unread badage
-          var postLinks = document.querySelectorAll('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .Card-title a, #hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .Card-excerpt a, #hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .Card-figure a');
-          new Postv2('hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219').showUnreadNotification('hashit_f9e171e44e73730532a44b363b40adb05dd707d3010cbc745c8d183a10d5b306', function(){
-            console.log('show badge for 2019/08/31/334-反转字符串/ : hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219');
-            var postBadge = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 mark.Card-badge');
-            $(postBadge).fadeIn();
-          }, function(){
-            console.log('hide badge for 2019/08/31/334-反转字符串/ : hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219');
-            var postBadge = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 mark.Card-badge');
-            $(postBadge).fadeOut();
-          }); 
-          // update cookie upon click the post and hide badge immediately
-          for(var i = 0;i < postLinks.length; i++){
-            postLinks[i].onclick = function(){
-              new Postv2('hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219').update('hashit_f9e171e44e73730532a44b363b40adb05dd707d3010cbc745c8d183a10d5b306', function(){
-                console.log('called');
-                var postBadge = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 mark.Card-badge');
-                $(postBadge).fadeOut();
-              });
-            }
-          }
-          
-        
-      }
-    })
-  
-</script>
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="/css/dracula.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
 
 
-    
-<script type='text/javascript'>
-  
-    function getIP(json) {
-      loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
-    loadjs.ready('post-visit-comment-count', {
-      success: function(){
-          LeanCloud.init('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
-          var leanCloud = LeanCloud.getInstance();
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/10/04/26-remove-duplicates-from-sorted-array/', json.ip);
-          leanCloud.fetchCommentCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.fetchVisitCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.fetchThumbUpCount('/2019/10/04/26-remove-duplicates-from-sorted-array/');
-          leanCloud.getCommentCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(count){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/10/04/26-remove-duplicates-from-sorted-array/', function(isThumbUp){
-              var el = document.querySelector('#hashit_ec9163a85a7017aa88b0bdcafaa26afa816817c21a38f27bbdd416c0e5c8e8e5 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/17/440-字典序的第K小数字/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/17/440-字典序的第K小数字/');
-          leanCloud.fetchVisitCount('/2019/09/17/440-字典序的第K小数字/');
-          leanCloud.fetchThumbUpCount('/2019/09/17/440-字典序的第K小数字/');
-          leanCloud.getCommentCount('/2019/09/17/440-字典序的第K小数字/', function(count){
-              var el = document.querySelector('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/17/440-字典序的第K小数字/', function(count){
-              var el = document.querySelector('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/17/440-字典序的第K小数字/', function(count){
-              var el = document.querySelector('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/17/440-字典序的第K小数字/', function(isThumbUp){
-              var el = document.querySelector('#hashit_d2b98f3d410dd276eb260d548254c9fb7e3c9283225dbd1dd030e7c97971d193 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/07/54-螺旋矩阵/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/07/54-螺旋矩阵/');
-          leanCloud.fetchVisitCount('/2019/09/07/54-螺旋矩阵/');
-          leanCloud.fetchThumbUpCount('/2019/09/07/54-螺旋矩阵/');
-          leanCloud.getCommentCount('/2019/09/07/54-螺旋矩阵/', function(count){
-              var el = document.querySelector('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/07/54-螺旋矩阵/', function(count){
-              var el = document.querySelector('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/07/54-螺旋矩阵/', function(count){
-              var el = document.querySelector('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/07/54-螺旋矩阵/', function(isThumbUp){
-              var el = document.querySelector('#hashit_d6225a70dd64b7adf30281b51024f4729e9715506cf5cc142acbd4cce520393d .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/09/02/天平砝码摆放问题/', json.ip);
-          leanCloud.fetchCommentCount('/2019/09/02/天平砝码摆放问题/');
-          leanCloud.fetchVisitCount('/2019/09/02/天平砝码摆放问题/');
-          leanCloud.fetchThumbUpCount('/2019/09/02/天平砝码摆放问题/');
-          leanCloud.getCommentCount('/2019/09/02/天平砝码摆放问题/', function(count){
-              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/09/02/天平砝码摆放问题/', function(count){
-              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/09/02/天平砝码摆放问题/', function(count){
-              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/09/02/天平砝码摆放问题/', function(isThumbUp){
-              var el = document.querySelector('#hashit_65257771291f9bf9ca9beabd5c3c864c47addd487306ecf803ce65d4ba58b08c .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/31/118-杨辉三角/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/31/118-杨辉三角/');
-          leanCloud.fetchVisitCount('/2019/08/31/118-杨辉三角/');
-          leanCloud.fetchThumbUpCount('/2019/08/31/118-杨辉三角/');
-          leanCloud.getCommentCount('/2019/08/31/118-杨辉三角/', function(count){
-              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/31/118-杨辉三角/', function(count){
-              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/31/118-杨辉三角/', function(count){
-              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/31/118-杨辉三角/', function(isThumbUp){
-              var el = document.querySelector('#hashit_38fb3ca44bd521d37a8598ac893575ab9c5c7e866566310e0b899305772ed9a5 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/31/24-两两交换链表中的节点/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/31/24-两两交换链表中的节点/');
-          leanCloud.fetchVisitCount('/2019/08/31/24-两两交换链表中的节点/');
-          leanCloud.fetchThumbUpCount('/2019/08/31/24-两两交换链表中的节点/');
-          leanCloud.getCommentCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
-              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
-              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/31/24-两两交换链表中的节点/', function(count){
-              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/31/24-两两交换链表中的节点/', function(isThumbUp){
-              var el = document.querySelector('#hashit_1b2f24c68a592c9b22b510d3a5c4ca90270768ef1a3b12450b5293e83df33a0b .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchIsThumbUp('/2019/08/31/334-反转字符串/', json.ip);
-          leanCloud.fetchCommentCount('/2019/08/31/334-反转字符串/');
-          leanCloud.fetchVisitCount('/2019/08/31/334-反转字符串/');
-          leanCloud.fetchThumbUpCount('/2019/08/31/334-反转字符串/');
-          leanCloud.getCommentCount('/2019/08/31/334-反转字符串/', function(count){
-              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2019/08/31/334-反转字符串/', function(count){
-              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getThumbUpCount('/2019/08/31/334-反转字符串/', function(count){
-              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-thumbup-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.isThumbUp('/2019/08/31/334-反转字符串/', function(isThumbUp){
-              var el = document.querySelector('#hashit_9b9c034941bae56888fa19c705483e0b4ed0754ea94862f02a7c0163ec36a219 .card-thumbup-container i');
-              if(el){
-                if(isThumbUp){
-                  el.className = 'fas fa-thumbs-up';
-                }else{
-                  el.className = 'far fa-thumbs-up';
-                }
-              }
-          });
-        
-      }
-    })
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
     }
-  
-</script>
 
-<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-
-
-
-<!-- <script src="/js/post.js"></script> -->
-
-<script src="/js/headroom.min.js"></script>
-
-<script data-no-instant type='text/javascript'>
-
-initHeadroom();
-
-changeLayoutOnTouchScreen();
-
-// 
-// var post = new Post('x8sFMx0q5JkG3Y3x6Q3wiVoe-gzGzoHsz', 'Dt5xQxK8HtOYoNAmGQoWVMa6');
-// $('.Card-archive').each(function(){
-//     var post_url = $(this).attr('id');
-//     var true_url = $(this).find('.Card-title a').first().attr('href');
-//     var card = this;
-//     post.getCommentCount(post_url, function(count){
-//         $(card).find('.card-comment-count').first().text(count);
-//     });
-//     post.getVisitCount(post_url, function(count){
-//         $(card).find('.card-visit-count').first().text(count);
-//     });
-    
-// });
-// 
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
 </script>
 
 
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-</body>
 </html>
