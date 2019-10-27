@@ -70,34 +70,35 @@
             
                 <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
             
-            九月 10, 2019
+            九月 12, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/10/Git-Rebase-黄金法则问题/" title="Git Rebase 黄金法则问题" class="posttitle">Git Rebase 黄金法则问题</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/12/nohup-在linux后台运行程序/" title="nohup:在linux后台运行程序" class="posttitle">nohup:在linux后台运行程序</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        4.9k
+                        2.8k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        4 mins.
+                        3 mins.
                     </span>
                 
                 
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/git/">git</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/linux/">linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/nohup/">nohup</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <p>git 整合来自不同分支的修改主要有两种方法：merge 操作和rebase操作，<br>merge初学者可能很熟悉。我们今天来主要说一下 rebase 操作，文章结尾会简单说一下 merge 操作的 –no...</p>
+                <p></p>
+<p>今天在工作中，lz要在Linux系统上运行一个java程序，这个程序要在系统中持续运行。随后lz无意将ssh窗口关掉了，发现java程序停止了。原来，当使用ssh连接到系统运行程序的时候，该程序已经...</p>
             
-            <span class="read-more gradient-text"><a href="/2019/09/10/Git-Rebase-黄金法则问题/" title="Read article" class="posttitle">Read article</a></span>
+            <span class="read-more gradient-text"><a href="/2019/09/12/nohup-在linux后台运行程序/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
     
@@ -117,6 +118,53 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
+            
+            九月 12, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/12/nohup-在linux后台运行程序/" title="nohup:在linux后台运行程序" class="posttitle">nohup:在linux后台运行程序</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        2.8k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        3 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/linux/">linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/nohup/">nohup</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p></p>
+<p>今天在工作中，lz要在Linux系统上运行一个java程序，这个程序要在系统中持续运行。随后lz无意将ssh窗口关掉了，发现java程序停止了。原来，当使用ssh连接到系统运行程序的时候，该程序已经和你的ssh连接绑定了。如果你关闭连接，该程序就会停止。还有一个情景：如果要在后台运行多个java程序的时候，就需要启动多个ssh窗口，这样很麻烦。有没有方法来解决这个问题呢？答案是肯定的。</p>
+<p>1.使用nohup来执行命令，它会把命令自动调到linux后台运行，不锁定当前ssh窗口，也不会被ctrl ...</p>
+            
+            <span class="read-more gradient-text"><a href="/2019/09/12/nohup-在linux后台运行程序/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="post" id="post">
     <div class="post-cover" style="
             background-image:
@@ -676,69 +724,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">3...</span></span></pre></td></tr></table></figure>
             
             <span class="read-more gradient-text"><a href="/2019/09/06/判断素数/" title="Read article" class="posttitle">Read article</a></span>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="post" id="post">
-    <div class="post-cover" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
-            
-            九月 05, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/05/深入理解Node-js-中的进程与线程/" title="深入理解Node.js 中的进程与线程" class="posttitle">深入理解Node.js 中的进程与线程</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        6.3k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        6 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Nodejs/">Nodejs</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p></p>
-<p>进程与线程是一个程序员的必知概念，面试经常被问及，但是一些文章内容只是讲讲理论知识，可能一些小伙伴并没有真的理解，在实际开发中应用也比较少。本篇文章除了介绍概念，通过Node.js 的角度讲解进程与线程，并且讲解一些在项目中的实战的应用，让你不仅能迎战面试官还可以在实战中完美应用。</p>
-<blockquote>
-<p>Node.js是单线程吗？</p>
-</blockquote>
-<blockquote>
-<p>Node.js 做耗时的计算时候，如何避免阻塞？</p>
-</blockquote>
-<blockquote>
-<p>Node.js如何实现多进程的开启和关闭？</p>
-</blockquote>
-<blockquote>
-<p>Node.js可以创建线程吗？</p>
-</blockquote>
-<blockquote>
-<p>你们开发过程中如何实现进程守护的？</p>
-</blockquote>
-<blockquote>
-<p>除...</p></blockquote>
-            
-            <span class="read-more gradient-text"><a href="/2019/09/05/深入理解Node-js-中的进程与线程/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
 </div>
