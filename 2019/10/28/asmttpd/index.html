@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>weilibipei - Time</title>
+    <title>asmttpd - Time</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hsutimes Obsidian,"> 
-    <meta name="description" content="违例匹配“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。
-在违例和它的控制器之间，并不需要非常精确的匹配,"> 
+    <meta name="description" content="asmttpdWeb server for Linux written in amd64 assembly.
+Features:
+
+Multi-threaded.
+No libraries requ,"> 
     <meta name="author" content="times"> 
     <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -31,7 +34,7 @@
     <div class="bar" style="width: 0;"></div>
     <a id="home-icon" class="image-icon icon-home iconfont" href="javascript:;" data-url="https://blog.hsutimes.com"></a>
     <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-    <h3 class="subtitle">weilibipei</h3>
+    <h3 class="subtitle">asmttpd</h3>
     <div class="social">
 <!--        <div class="like-icon">-->
 <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -60,21 +63,21 @@
                 
                     <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
                 
-                十月 22, 2019
+                十月 28, 2019
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/10/22/weilibipei/" title="weilibipei">weilibipei</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/asmttpd/" title="asmttpd">asmttpd</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        3.9k
+                        3.6k
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        4 mins.
+                        3 mins.
                     </span>
                     
                     
@@ -87,7 +90,7 @@
                 </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编程思想/">编程思想</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Web/">Web</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/汇编/">汇编</a></li></ul>
             
         </div>
     </div>
@@ -108,28 +111,110 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn slower">
-            <h1 id="违例匹配"><a href="#违例匹配" class="headerlink" title="违例匹配"></a>违例匹配</h1><p>“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。</p>
-<p>在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//: Human.java</span><br><span class="line">// Catching Exception Hierarchies</span><br><span class="line"></span><br><span class="line">class Annoyance extends Exception &#123;&#125;</span><br><span class="line">class Sneeze extends Annoyance &#123;&#125;</span><br><span class="line"></span><br><span class="line">public class Human &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      throw new Sneeze();</span><br><span class="line">    &#125; catch(Sneeze s) &#123;</span><br><span class="line">      System.out.println(&quot;Caught Sneeze&quot;);</span><br><span class="line">    &#125; catch(Annoyance a) &#123;</span><br><span class="line">      System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; ///:~</span><br></pre></td></tr></table></figure>
-
-<p>Sneeze违例会被相符的第一个catch从句捕获。当然，这只是第一个。然而，假如我们删除第一个catch从句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw new Sneeze();</span><br><span class="line">&#125; catch(Annoyance a) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>那么剩下的catch从句依然能够工作，因为它捕获的是Sneeze的基础类。换言之，catch(Annoyance e)能捕获一个Annoyance以及从它衍生的任何类。这一点非常重要，因为一旦我们决定为一个方法添加更多的违例，而且它们都是从相同的基础类继承的，那么客户程序员的代码就不需要更改。至少能够假定它们捕获的是基础类。</p>
-<p>若将基础类捕获从句置于第一位，试图“屏蔽”衍生类违例，就象下面这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw new Sneeze();</span><br><span class="line">&#125; catch(Annoyance a) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">&#125; catch(Sneeze s) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Sneeze&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>则编译器会产生一条出错消息，因为它发现永远不可能抵达Sneeze捕获从句。</p>
-<p>9.8.1 违例准则</p>
-<p>用违例做下面这些事情：</p>
-<p>(1) 解决问题并再次调用造成违例的方法。</p>
-<p>(2) 平息事态的发展，并在不重新尝试方法的前提下继续。</p>
-<p>(3) 计算另一些结果，而不是希望方法产生的结果。</p>
-<p>(4) 在当前环境中尽可能解决问题，以及将相同的违例重新“掷”出一个更高级的环境。</p>
-<p>(5) 在当前环境中尽可能解决问题，以及将不同的违例重新“掷”出一个更高级的环境。</p>
-<p>(6) 中止程序执行。</p>
-<p>(7) 简化编码。若违例方案使事情变得更加复杂，那就会令人非常烦恼，不如不用。</p>
-<p>(8) 使自己的库和程序变得更加安全。这既是一种“短期投资”（便于调试），也是一种“长期投资”（改善应用程序的健壮性）</p>
+            <h1 id="asmttpd"><a href="#asmttpd" class="headerlink" title="asmttpd"></a>asmttpd</h1><p>Web server for Linux written in amd64 assembly.</p>
+<p>Features:</p>
+<ul>
+<li>Multi-threaded.</li>
+<li>No libraries required ( only 64-bit Linux ).</li>
+<li>Very small binary, roughly 6 KB.</li>
+<li>Quite fast.</li>
+</ul>
+<p>What works:</p>
+<ul>
+<li>Serving files from specified document root.</li>
+<li>HEAD requests.</li>
+<li>200, 206, 404, 400, 413, 416</li>
+<li>Content-types: xml, html, xhtml, gif, png, jpeg, css, js, svg, and octet-stream.</li>
+</ul>
+<p>Planned Features:</p>
+<ul>
+<li>Directory listing.</li>
+</ul>
+<h1 id="Current-Limitations-Known-Issues"><a href="#Current-Limitations-Known-Issues" class="headerlink" title="Current Limitations / Known Issues"></a>Current Limitations / Known Issues</h1><ul>
+<li>Sendfile can hang if GET is cancelled.</li>
+</ul>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>Run <code>make</code> or <code>make release</code> for non-debug version.</p>
+<p>You will need <code>yasm</code> installed.</p>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p><code>./asmttpd /path/to/web_root port_number</code></p>
+<p>Example: <code>./asmttpd ./web_root 8080</code></p>
+<h1 id="Changes"><a href="#Changes" class="headerlink" title="Changes"></a>Changes</h1><p>2019-04-22 : asmttpd - 0.4.4</p>
+<ul>
+<li>Added SVG support.</li>
+</ul>
+<p>2019-01-24 : asmttpd - 0.4.3</p>
+<ul>
+<li>Added port number as parameter.</li>
+</ul>
+<p>2017-10-18 : asmttpd - 0.4.2</p>
+<ul>
+<li>Set REUSEADDR.</li>
+</ul>
+<p>2017-10-17 : asmttpd - 0.4.1</p>
+<ul>
+<li>Stack address bug fix.</li>
+</ul>
+<p>2016-10-31 : asmttpd - 0.4</p>
+<ul>
+<li>HEAD support.</li>
+</ul>
+<p>2014-07-14 : asmttpd - 0.3</p>
+<ul>
+<li>Added default document support.</li>
+</ul>
+<p>2014-02-10 : asmttpd - 0.2</p>
+<ul>
+<li>Added 400, 413, 416 responses.</li>
+<li>Fixed header processing bug.</li>
+</ul>
+<p>2014-02-07 : asmttpd - 0.1.1</p>
+<ul>
+<li>Fixed 206 max length bug.</li>
+<li>Commented out simple request logging, uncomment in main.asm to enable.</li>
+</ul>
+<p>2014-02-06 : asmttpd - 0.1</p>
+<ul>
+<li>Fixed SIGPIPE when transfer is cancelled.</li>
+<li>Added a more useful error on bind failure.</li>
+<li>Fixed 206 size calculation.</li>
+<li>Combined seek &amp; get file size system calls.</li>
+</ul>
+<p>2014-02-05 : asmttpd - 0.09</p>
+<ul>
+<li>Issue #8 fix. Crashes on long request paths.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.08</p>
+<ul>
+<li>Added TCP corking.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.07</p>
+<ul>
+<li>Removed thread pool after benchmarking, changed to an accept-per-thread model.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.06</p>
+<ul>
+<li>Worker thread stack corruption bug fix.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.05</p>
+<ul>
+<li>Changed 200 and 206 implementation to use sendfile system call.</li>
+<li>Got rid of read/write buffer, changed request read buffer to standard 8KB.</li>
+</ul>
+<p>2014-02-03 : asmttpd - 0.04</p>
+<ul>
+<li>200 now streams full amount</li>
+</ul>
+<p>2014-02-01 : asmttpd - 0.03</p>
+<ul>
+<li>Files are split if too large to fit into buffer. </li>
+<li>Added 206 responses with Content-Range handling</li>
+</ul>
+<p>2014-01-30 : asmttpd - 0.02</p>
+<ul>
+<li>Added xml, xhtml, gif, png, jpeg, css, and javascript content types.</li>
+<li>Changed thread memory size to something reasonable. You can tweak it according to available memory. See comments in main.asm</li>
+<li>Added simple request logging.</li>
+<li>Added removal of ‘../‘ in URL.</li>
+</ul>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
@@ -171,7 +256,7 @@
                     <div class="box sticky animated fadeInRight faster">
                         <div id="toc" class="subbox">
                             <h4>Contents</h4>
-                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#违例匹配"><span class="toc-number">1.</span> <span class="toc-text">违例匹配</span></a></li></ol>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#asmttpd"><span class="toc-number">1.</span> <span class="toc-text">asmttpd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Current-Limitations-Known-Issues"><span class="toc-number">2.</span> <span class="toc-text">Current Limitations / Known Issues</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Installation"><span class="toc-number">3.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Usage"><span class="toc-number">4.</span> <span class="toc-text">Usage</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Changes"><span class="toc-number">5.</span> <span class="toc-text">Changes</span></a></li></ol>
                         </div>
                     </div>
                 
