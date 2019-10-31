@@ -347,11 +347,11 @@ audio {
   background-size: 75px 32px;
   background-repeat: no-repeat;
   background-position: center center;
-  -webkit-mask-box-image: url("/img/logo.svg");
+  -webkit-mask-box-image: url("/img/logo.png");
   background-color: #fff;
   width: 75px;
   height: 32px;
-  mask-image: url("/img/logo.svg");
+  mask-image: url("/img/logo.png");
   mask-size: contain;
   transition: background-color 0.5s ease-in-out;
 }
