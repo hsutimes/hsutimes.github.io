@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>三阶魔方解法 - Time</title>
+    <title>rsa-info - Time</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hsutimes Obsidian,"> 
-    <meta name="description" content="三阶魔方解法预备篇：三阶魔方相关知识在本教程中，统一使用官方配色（上黄、下白、左橙、右红、前蓝、后绿），并在还原的过程中，白色作为底色。
-下图中，A、B、C分别表示顶层、中层、底层；D为中心块，在还,"> 
+    <meta name="description" content="RSA算法详解前言总括： 本文详细讲述了RSA算法详解，包括内部使用数学原理以及产生的过程。
+原文博客地址：RSA算法详解
+知乎专栏&amp;amp;&amp;amp;简书专题：前端进击者（知乎）&amp;amp;&amp;amp,"> 
     <meta name="author" content="times"> 
     <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -31,7 +32,7 @@
     <div class="bar" style="width: 0;"></div>
     <a id="home-icon" class="image-icon icon-home iconfont" href="javascript:;" data-url="https://blog.hsutimes.com"></a>
     <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-    <h3 class="subtitle">三阶魔方解法</h3>
+    <h3 class="subtitle">rsa-info</h3>
     <div class="social">
 <!--        <div class="like-icon">-->
 <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -58,17 +59,17 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/生活"><b>「 </b>生活<b> 」</b></a>
+                    <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
                 
-                九月 12, 2019
+                十一月 03, 2019
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/09/12/三阶魔方解法/" title="三阶魔方解法">三阶魔方解法</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/11/03/rsa-info/" title="rsa-info">rsa-info</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        3.4k
+                        3.5k
                     </span>
                     
                     
@@ -87,7 +88,7 @@
                 </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/魔方/">魔方</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/RSA/">RSA</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/网络安全/">网络安全</a></li></ul>
             
         </div>
     </div>
@@ -108,39 +109,63 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn slower">
-            <h1 id="三阶魔方解法"><a href="#三阶魔方解法" class="headerlink" title="三阶魔方解法"></a>三阶魔方解法</h1><p>预备篇：三阶魔方相关知识<br>在本教程中，统一使用官方配色（上黄、下白、左橙、右红、前蓝、后绿），并在还原的过程中，白色作为底色。</p>
-<p>下图中，A、B、C分别表示顶层、中层、底层；D为中心块，在还原的过程中以此作为参照色（即该面所最终还原的颜色）；E为棱块，每块有两个颜色；F为角块，每块有三个颜色。</p>
-<p>在本教程中，分别用Front、Back、Left、Right、Up、Down的首字母表示前面、后面、左面、右面、上面、下面的顺时针90度旋转，带撇号的为逆时针90度逆转，带数字2的为180度旋转。</p>
-<p><img src="/images/2019/09/12/15512550-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p><img src="/images/2019/09/12/196bddb0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第一步：完成底层四棱<br>子步骤一：拼成黄心白瓣小花<br>如下图①所示，我们只要在黄色中心块的四周的棱块都挨着白色即可。</p>
-<p>对于在中层的白色棱，如②所示，只需转一个90度即可将白色朝上；对于在顶层、底层朝外的白色棱，如③所示，先在白色所在面转动90度后变成②的情况再处理；而在底层朝下的白色棱，如④所示，则通过180度旋转即可将白色朝上。</p>
-<p>值得留意的是⑤之类的情况，如果直接转90度将中层白色块朝上，那么会破坏掉上方原先已有的白色块。此时要先转动顶层（此例为U’），将空位转到对应位置，方可使该白色块转上去。</p>
-<p><img src="/images/2019/09/12/2458a640-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>子步骤二：找到相应颜色并掉落花瓣<br>先随意选定一个白色棱（下图以白红棱为例），转动顶层（或扭转中底层），直到该棱侧面的颜色与中心块吻合时，以该中心块为轴转动180度，使其落到白色中心旁边。用同样的方法处理其他三个棱之后，在底层会形成白色的十字，棱的侧面也与中心块相连。</p>
-<p><img src="/images/2019/09/12/29f0fdf0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第二步：完成底层四角<br>这一步我们不仅要让白色的四角全都聚集在下面，还要留意其角块侧面的颜色也要吻合。</p>
-<p>如下图的上半部分所示，我们先在顶层寻找含白色的角块，同时观察该角块另外两种颜色，转动顶层（或扭转中底层），使之处在相应颜色的两个中心块之间。</p>
-<p>当角块转到相应位置后，观察白色的朝向，做相应的公式：</p>
-<p>①为白色朝右，做U’ F’ U F；<br>②为白色朝前，做U R U’ R’；<br>③为白色朝上，做三遍的公式①。<br>当顶层无任何白色角块时，此时再观察底层有无错误朝向或位置的白色角块：</p>
-<p>④在底层，白色朝右，做两遍的公式①；<br>⑤在底层，白色朝前，做两遍的公式②；<br>⑥在底层，错误位置角块，先做公式①将其赶回顶层，然后找到相应正确位置还原。<br>用同样的方法处理其他三个角之后，底面为全白色，侧面会形成倒T字。</p>
-<p><img src="/images/2019/09/12/32aa1da0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第三步：完成中层四棱<br>如下图的上半部分所示，我们先在顶层寻找不含黄色的棱块，同时观察该棱块另外两种颜色，转动顶层（或扭转中底层），使之朝外的颜色与中心块相吻合。</p>
-<p>当棱块转到相应位置后，观察最终所归的空位，并将空位置于右前方，做相应的公式（前面的公式①与②，在这里称为甲与乙）：</p>
-<p>①情况做U’ F’ U F U R U’ R’（先甲后乙）；<br>②情况做U R U’ R’ U’ F’ U F（先乙后甲）；<br>当顶层全为有黄色的棱块时，此时再观察中层有无错误朝向或位置的棱块：</p>
-<p>③与④情况，先做甲+乙将其赶回顶层，然后找到相应正确位置还原。<br>用同样的方法处理其他三个棱之后，第二层即完成。</p>
-<p><img src="/images/2019/09/12/3a6a1040-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第四步：完成顶面十字<br>现在观察顶面的棱与中心块所构成的图形（忽视角块黄色是否朝上与否）分为“点、线、拐、十字”四种情况。找到相应的情况并按图示朝向摆放后，按照下流程图每次做R’ U’ F’ U F R（R’+甲+R）直到变成十字为止。其中“线”的情况还有一条捷径，即F R U R’ U’ F’。</p>
-<p><img src="/images/2019/09/12/3e428f80-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 7a.png</p>
-<p>第五步：调整顶棱顺序<br>先转动顶层（或扭转中底层），直到至少有两个棱侧面的颜色与中心块吻合。</p>
-<p>现在观察另外两个错误的棱处于相邻还是相对位置，如果没有，则此步跳过；如果是相邻的，则将两个错误的置一前一右，做丙公式U’ F’ U’ F U’ F’ U2 F；如果是相对的，则将两个错误的置一左一后，先做丙公式，然后转下顶层变为相邻的，再置一前一右做丙公式完成。</p>
-<p><img src="/images/2019/09/12/42486050-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 8.png</p>
-<p>第六步：调整顶角顺序<br>观察顶角，找到在正确位置的一个角（朝向是否正确暂时不考虑）。如果四角都在正确位置，则此步跳过；如果只有一个，则将正确的角置于左前方，做丁公式U’ L’ U R U’ L U R’（做一遍仍未成功则再做第二遍）；如果没有一个角在正确位置，则先做丁公式然后变成有一个角在正确位置再相应处理。</p>
-<p><img src="/images/2019/09/12/48ad7de0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 9.png</p>
-<p>第七步：调整顶角朝向<br>此时我们统一将蓝色中心块保持前面放置，需要注意的是在操作的过程中魔方的底层会被暂时性打乱，不过不要紧，只要正确操作完后魔方会正常还原。</p>
-<p>观察顶层前右方的角块的黄色朝向，做戊公式F’ R F R’二或四遍使黄色朝上。完成一个角块的朝向处理之后，要转动顶层（U、U’、U2），并保持蓝色中心块在前面不动，再处理其他角块朝向。(在每一角落都要扭)</p>
-<p><img src="/images/2019/09/12/4cc8d280-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 10.png</p>
-<p><a href="https://zh.wikibooks.org/zh-hans/%E4%B8%89%E9%98%B6%E9%AD%94%E6%96%B9%E8%A7%A3%E6%B3%95" target="_blank" rel="noopener">维基百科</a></p>
+            <h1 id="RSA算法详解"><a href="#RSA算法详解" class="headerlink" title="RSA算法详解"></a>RSA算法详解</h1><p>前言<br>总括： 本文详细讲述了RSA算法详解，包括内部使用数学原理以及产生的过程。</p>
+<p>原文博客地址：RSA算法详解</p>
+<p>知乎专栏&amp;&amp;简书专题：前端进击者（知乎）&amp;&amp;前端进击者（简书）</p>
+<p>博主博客地址：Damonare的个人博客</p>
+<p>相濡以沫。到底需要爱淡如水。</p>
+<p>正文<br>之前写过一篇文章SSL协议之数据加密过程，里面详细讲述了数据加密的过程以及需要的算法。SSL协议很巧妙的利用对称加密和非对称加密两种算法来对数据进行加密。这篇文章主要是针对一种最常见的非对称加密算法——RSA算法进行讲解。其实也就是对私钥和公钥产生的一种方式进行描述。首先先来了解下这个算法的历史：</p>
+<h2 id="RSA算法的历史"><a href="#RSA算法的历史" class="headerlink" title="RSA算法的历史"></a>RSA算法的历史</h2><p>RSA是1977年由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的。当时他们三人都在麻省理工学院工作。RSA就是他们三人姓氏开头字母拼在一起组成的。</p>
+<p>但实际上，在1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯（Clifford Cocks）在一个内部文件中提出了一个相同的算法，但他的发现被列入机密，一直到1997年才被发表。</p>
+<p>所以谁是RSA算法的发明人呢？不好说，就好像贝尔并不是第一个发明电话的人但大家都记住的是贝尔一样，这个地方我们作为旁观者倒不用较真，重要的是这个算法的内容：</p>
+<h2 id="RSA算法的过程"><a href="#RSA算法的过程" class="headerlink" title="RSA算法的过程"></a>RSA算法的过程</h2><p>RSA算法用到的数学知识特别多，所以在中间介绍这个算法生成私钥和公钥的过程中会穿插一些数学知识。生成步骤如下：</p>
+<ol>
+<li>寻找两个不相同的质数<br>随意选择两个大的质数p和q，p不等于q，计算N=p*q;</li>
+</ol>
+<p>什么是质数?我想可能会有一部分人已经忘记了，定义如下：</p>
+<p>除了1和该数自身外，无法被其他自然数整除的数（也可定义为只有1该数本身两个正因数]的数）。</p>
+<p>比如2，3，5，7这些都是质数，9就不是了，因为3*3=9了</p>
+<ol start="2">
+<li>根据欧拉函数获取r<br>r = φ(N) = φ(p)φ(q) = (p-1)(q-1)。</li>
+</ol>
+<p>这里的数学概念就是什么是欧拉函数了，什么是欧拉函数呢？</p>
+<p>欧拉函数的定义：</p>
+<p>欧拉函数 φ(n)是小于或等于n的正整数中与n互质的数的数目。</p>
+<p>互质的定义：</p>
+<p>如果两个或两个以上的整数的最大公约数是 1，则称它们为互质</p>
+<p>例如：φ(8) = 4，因为1,3,5,7均和8互质。</p>
+<p>推导欧拉函数:</p>
+<p>（1）如果n = 1, φ(1) = 1；(小于等于1的正整数中唯一和1互质的数就是1本身)；</p>
+<p>（2）如果n为质数，φ(n) = n - 1；因为质数和每一个比它小的数字都互质。比如5，比它小的正整数1,2,3,4都和他互质；</p>
+<p>(3) 如果n是a的k次幂，则 φ(n) = φ(a^k) = a^k - a^(k-1) = (a-1)a^(k-1)；</p>
+<p>(4) 若m,n互质，则φ(mn) = φ(m)φ(n)</p>
+<p><strong>证明：</strong>设A, B, C是跟m, n, mn互质的数的集，据中国剩余定理(经常看数学典故的童鞋应该了解，剩余定理又叫韩信点兵，也叫孙子定理)，A*B和C可建立双射一一对应)的关系。（或者也可以从初等代数角度给出欧拉函数积性的简单证明） 因此的φ(n)值使用算术基本定理便知。（来自维基百科）</p>
+<ol start="3">
+<li>选择一个小于r并与r互质的整数e<br>选择一个小于r并与r互质的整数e，求得e关于r的模反元素，命名为d（<em>ed = 1(mod r)</em>模反元素存在，当且仅当e与r互质），e我们通常取65537。</li>
+</ol>
+<p>模反元素：</p>
+<p>如果两个正整数a和n互质，那么一定可以找到整数b，使得 ab-1 被n整除，或者说ab被n除的余数是1。</p>
+<p>比如3和5互质，3关于5的模反元素就可能是2，因为3<em>2-1=5可以被5整除。所以很明显模反元素不止一个，2加减5的整数倍都是3关于5的模反元素</em>{…-3, 2,7,12…}* 放在公式里就是3*2 = 1 (mod 5)</p>
+<p>上面所提到的欧拉函数用处实际上在于欧拉定理：</p>
+<p>欧拉定理：</p>
+<p>如果两个正整数a和n互质，则n的欧拉函数 φ(n) 可以让下面的等式成立：</p>
+<p>a^φ(n) = 1(mod n)</p>
+<p>由此可得：a的φ(n - 1)次方肯定是a关于n的模反元素。</p>
+<p>欧拉定理就可以用来证明模反元素必然存在。</p>
+<p>由模反元素的定义和欧拉定理我们知道，a的φ(n)次方减去1，可以被n整除。比如，3和5互质，而5的欧拉函数φ(5)等于4，所以3的4次方<em>(81)减去1，可以被5</em>整除（80/5=16）。</p>
+<p>小费马定理：</p>
+<p>假设正整数a与质数p互质，因为质数p的φ(p)等于p-1，则欧拉定理可以写成</p>
+<p>a^(p-1) = 1 (mod p)</p>
+<p>这其实是欧拉定理的一个特例。</p>
+<ol start="4">
+<li>销毁p和q<br>此时我们的<em>(N , e)是公钥，(N, d)为私钥，爱丽丝会把公钥(N, e)传给鲍勃，然后将(N, d)</em>自己藏起来。一对公钥和私钥就产生了，然后具体的使用方法呢？请看：SSL协议之数据加密过程详解</li>
+</ol>
+<h2 id="RSA算法的安全性"><a href="#RSA算法的安全性" class="headerlink" title="RSA算法的安全性"></a>RSA算法的安全性</h2><p>我们知道像RSA这种非对称加密算法很安全，那么到底为啥子安全呢？ 我们来看看上面这几个过程产生的几个数字：</p>
+<p>p,q：我们随机挑选的两个大质数；<br>N：是由两个大质数p和q相乘得到的。N = p * q；<br>r：由欧拉函数得到的N的值，r = φ(N) = φ(p)φ(q) = (p-1)(q-1)。<br>e：随机选择和和r互质的数字，实际中通常选择65537；<br>d： d是以欧拉定理为基础求得的e关于r的模反元素，ed = 1 (mod r)；<br>N和e我们都会公开使用，最为重要的就是私钥中的d，d一旦泄露，加密也就失去了意义。那么得到d的过程是如何的呢？如下:</p>
+<p>比如知道e和r，因为d是e关于r的模反元素；r是φ(N) 的值<br>而φ(N)=(p-1)(q-1)，所以知道p和q我们就能得到d;<br>N = pq，从公开的数据中我们只知道N和e，所以问题的关键就是对N做因式分解能不能得出p和q<br>所以得出了在上篇博客说到的结论，非对称加密的原理：</p>
+<p>将a和b相乘得出乘积c很容易，但要是想要通过乘积c推导出a和b极难。即对一个大数进行因式分解极难</p>
+<p>目前公开破译的位数是768位，实际使用一般是1024位或是2048位，所以理论上特别的安全。</p>
+<p>后记<br>RSA算法的核心就是欧拉定理，根据它我们才能得到私钥，从而保证整个通信的安全。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
@@ -182,7 +207,7 @@
                     <div class="box sticky animated fadeInRight faster">
                         <div id="toc" class="subbox">
                             <h4>Contents</h4>
-                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#三阶魔方解法"><span class="toc-number">1.</span> <span class="toc-text">三阶魔方解法</span></a></li></ol>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RSA算法详解"><span class="toc-number">1.</span> <span class="toc-text">RSA算法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA算法的历史"><span class="toc-number">1.1.</span> <span class="toc-text">RSA算法的历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA算法的过程"><span class="toc-number">1.2.</span> <span class="toc-text">RSA算法的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA算法的安全性"><span class="toc-number">1.3.</span> <span class="toc-text">RSA算法的安全性</span></a></li></ol></li></ol>
                         </div>
                     </div>
                 
