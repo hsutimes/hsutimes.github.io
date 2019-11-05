@@ -72,34 +72,35 @@
             
             九月 09, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/09/Github的webhooks网站自动化部署/" title="Github的webhooks网站自动化部署" class="posttitle">Github的webhooks网站自动化部署</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/09/Flutter-Http请求开源库-dio/" title="Flutter Http请求开源库-dio" class="posttitle">Flutter Http请求开源库-dio</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        8.8k
+                        51k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        8 mins.
+                        46 mins.
                     </span>
                 
                 
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/git/">git</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/github/">github</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/webhooks/">webhooks</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/自动化部署/">自动化部署</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flutter/">Flutter</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Http/">Http</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/dio/">dio</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <p></p>
-<p>相信很多码农都玩过了Git，如果对Git只是一知半解，可以移步LV写的 GIT常用操作总结，下面介绍到的一些关于 Git 的概念就不再赘述。</p>
-<p>为啥想写这篇文章？主要是因为部门服务器因为安全性原因不允...</p>
+                <p>文档语言: <a href="README.md">English</a> | <a href="README-ZH.md">中文简体</a></p>
+<p></p>
+<p>dio是一个强大的Dart Http请求库，支持Restful API、FormData、拦截器、请求取消、Cookie管理、文件上传/下载、超时等…</p>
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加...</h3>
             
-            <span class="read-more gradient-text"><a href="/2019/09/09/Github的webhooks网站自动化部署/" title="Read article" class="posttitle">Read article</a></span>
+            <span class="read-more gradient-text"><a href="/2019/09/09/Flutter-Http请求开源库-dio/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
     
@@ -119,6 +120,56 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
+            
+            九月 09, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/09/Flutter-Http请求开源库-dio/" title="Flutter Http请求开源库-dio" class="posttitle">Flutter Http请求开源库-dio</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        51k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        46 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flutter/">Flutter</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Http/">Http</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/dio/">dio</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>文档语言: <a href="README.md">English</a> | <a href="README-ZH.md">中文简体</a></p>
+<p></p>
+<p>dio是一个强大的Dart Http请求库，支持Restful API、FormData、拦截器、请求取消、Cookie管理、文件上传/下载、超时等…</p>
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dependencies:</span></span><br><span class="line"><span class="attr">  dio:</span> <span class="string">^x.x.x</span>  <span class="string">//</span> <span class="string">请使用pub上的最新版本</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:dio/dio.dart'</span>;</span><br><span class="line"><span class="keyword">void</span> getHttp() <span class="keyword">async</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Response response;</span><br><span class="line">    response...</span></pre></td></tr></table></figure>
+            
+            <span class="read-more gradient-text"><a href="/2019/09/09/Flutter-Http请求开源库-dio/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="post" id="post">
     <div class="post-cover" style="
             background-image:
@@ -699,62 +750,9 @@
 
 
 
-<div class="post" id="post">
-    <div class="post-cover" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
-            
-            八月 24, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/" title="Java面试题（框架+JVM+多线程+算法+数据库）" class="posttitle">Java面试题（框架+JVM+多线程+算法+数据库）</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        3.2k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        3 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JVM/">JVM</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/框架/">框架</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/面试/">面试</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p></p>
-<ol>
-<li>String类能被继承吗，为什么</li>
-<li>String，Stringbuffer，StringBuilder的区别？</li>
-<li>ArrayList和LinkedList有什么区别</li>
-<li>类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</li>
-<li>用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</li>
-<li>HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</li>
-<li>抽象...</li></ol>
-            
-            <span class="read-more gradient-text"><a href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/" title="Read article" class="posttitle">Read article</a></span>
-        </div>
-    </div>
-</div>
-
-
-
     </div>
     
-    <div id="pager"><a href="/categories/文章/page/6/" class="more" data-loading="Loading..." data-load-more="Load more">Load more</a></div>
+    <div id="pager"><a href="/categories/文章/page/6/" class="more" data-loading="加载中..." data-load-more="Load more">Load more</a></div>
     
 </div>
 <div id="preview"></div>
