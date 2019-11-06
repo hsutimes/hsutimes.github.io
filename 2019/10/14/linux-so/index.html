@@ -85,7 +85,7 @@
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        5.5k
+                        5.3k
                     </span>
                     
                     
@@ -168,7 +168,10 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv libctest.so.1.0 /opt/lib</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so</span><br></pre></td></tr></table></figure>
 
 <p><code>libctest.so</code>用于在编译期间使用<code>-lctest</code>让编译器找到动态库，而<code>libctest.so.1</code>用于在运行期间链接</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -I/path/to/include-files -L/path/to/libraries prog.c -lctest -o prog</span><br><span class="line">```shell</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>## 查看依赖</span><br><span class="line">使用ldd命令来查看程序对动态库的依赖。例如：</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">ldd prog</span><br><span class="line"></span><br><span class="line">libctest.so.1 =&gt; /opt/lib/libctest.so.1 (0x00002aaaaaaac000)</span><br><span class="line">libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)</span><br><span class="line">/lib64/ld-linux-x86-64.so.2 (0x0000003aa4c00000)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -I/path/to/include-files -L/path/to/libraries prog.c -lctest -o prog</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h3><p>使用ldd命令来查看程序对动态库的依赖。例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ldd prog</span><br><span class="line"></span><br><span class="line">libctest.so.1 =&gt; /opt/lib/libctest.so.1 (0x00002aaaaaaac000)</span><br><span class="line">libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)</span><br><span class="line">/lib64/ld-linux-x86-64.so.2 (0x0000003aa4c00000)</span><br></pre></td></tr></table></figure>
 
 <h3 id="obj文件"><a href="#obj文件" class="headerlink" title="obj文件"></a>obj文件</h3><p>obj文件的格式和组成可能是系统差异性的一大体现，比如windows下的PE、linux和一些unix下的elf、macos的mach-o、aix下的xcoff。</p>
 <p>查看obj文件的符号表信息，可以通过nm objdump readelf等方法。</p>
@@ -180,7 +183,7 @@
 <p><a href="https://segmentfault.com/a/1190000005988462" target="_blank" rel="noopener">传送门</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
             </audio>
             
@@ -219,7 +222,7 @@
                     <div class="box sticky animated fadeInRight faster">
                         <div id="toc" class="subbox">
                             <h4>Contents</h4>
-                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux下的静态库、动态库和动态加载库"><span class="toc-number">1.</span> <span class="toc-text">Linux下的静态库、动态库和动态加载库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux库类型"><span class="toc-number">1.1.</span> <span class="toc-text">Linux库类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名约定"><span class="toc-number">1.2.</span> <span class="toc-text">命名约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态库-a"><span class="toc-number">1.3.</span> <span class="toc-text">静态库(.a)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态库-so"><span class="toc-number">1.4.</span> <span class="toc-text">动态库(.so)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#obj文件"><span class="toc-number">1.4.1.</span> <span class="toc-text">obj文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行期间查找动态库"><span class="toc-number">1.4.2.</span> <span class="toc-text">运行期间查找动态库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态加载和卸载的库"><span class="toc-number">1.5.</span> <span class="toc-text">动态加载和卸载的库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNU-Libtool"><span class="toc-number">1.6.</span> <span class="toc-text">GNU Libtool</span></a></li></ol></li></ol>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux下的静态库、动态库和动态加载库"><span class="toc-number">1.</span> <span class="toc-text">Linux下的静态库、动态库和动态加载库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux库类型"><span class="toc-number">1.1.</span> <span class="toc-text">Linux库类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名约定"><span class="toc-number">1.2.</span> <span class="toc-text">命名约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态库-a"><span class="toc-number">1.3.</span> <span class="toc-text">静态库(.a)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态库-so"><span class="toc-number">1.4.</span> <span class="toc-text">动态库(.so)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看依赖"><span class="toc-number">1.4.1.</span> <span class="toc-text">查看依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#obj文件"><span class="toc-number">1.4.2.</span> <span class="toc-text">obj文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行期间查找动态库"><span class="toc-number">1.4.3.</span> <span class="toc-text">运行期间查找动态库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态加载和卸载的库"><span class="toc-number">1.5.</span> <span class="toc-text">动态加载和卸载的库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNU-Libtool"><span class="toc-number">1.6.</span> <span class="toc-text">GNU Libtool</span></a></li></ol></li></ol>
                         </div>
                     </div>
                 
