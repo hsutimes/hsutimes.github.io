@@ -100,33 +100,42 @@
             
             九月 27, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/27/os-py/" title="os.py" class="posttitle">os.py</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/27/Recommendation-System/" title="Recommendation System" class="posttitle">Recommendation System</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        141k
+                        19k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        2:08
+                        17 mins.
                     </span>
                 
                 
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/推荐系统/">推荐系统</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <p></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54...</span></pre></td></tr></table></figure>
+                <ul>
+<li><a href="#1-什么是推荐系统">1. 什么是推荐系统</a></li>
+<li><a href="#2-总体架构">2. 总体架构</a><ul>
+<li><a href="#21-离线推荐">2.1 离线推荐</a></li>
+<li><a href="#22-在线训练">2.2 在线训练</a></li>
+</ul>
+</li>
+<li><a href="#3-特征数据">3. 特征数据</a></li>
+<li><a href="#4-协同过滤算法">4. 协同过滤算法</a><ul>
+<li><a href="#41-基于物品的协同过滤itemcf">4.1 基于物品的协同过滤(ItemCF)</a></li>
+<li><a href="#42-基于用户的协同过滤usercf">4.2 基于用户的协同过滤(UserCF...</a></li></ul></li></ul>
             
-            <span class="read-more gradient-text"><a href="/2019/09/27/os-py/" title="Read article" class="posttitle">Read article</a></span>
+            <span class="read-more gradient-text"><a href="/2019/09/27/Recommendation-System/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
     
@@ -146,6 +155,85 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/文章">
+                  <b>「 </b>文章<b> 」</b>
+                </a>
+            
+            九月 27, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/09/27/Recommendation-System/" title="Recommendation System" class="posttitle">Recommendation System</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        19k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        17 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/推荐系统/">推荐系统</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <ul>
+<li><a href="#1-什么是推荐系统">1. 什么是推荐系统</a></li>
+<li><a href="#2-总体架构">2. 总体架构</a><ul>
+<li><a href="#21-离线推荐">2.1 离线推荐</a></li>
+<li><a href="#22-在线训练">2.2 在线训练</a></li>
+</ul>
+</li>
+<li><a href="#3-特征数据">3. 特征数据</a></li>
+<li><a href="#4-协同过滤算法">4. 协同过滤算法</a><ul>
+<li><a href="#41-基于物品的协同过滤itemcf">4.1 基于物品的协同过滤(ItemCF)</a></li>
+<li><a href="#42-基于用户的协同过滤usercf">4.2 基于用户的协同过滤(UserCF)</a></li>
+<li><a href="#43-矩阵分解">4.3 矩阵分解</a></li>
+</ul>
+</li>
+<li><a href="#5-隐语义模型">5. 隐语义模型</a><ul>
+<li><a href="#51-基本思想">5.1 基本思想</a></li>
+<li><a href="#52-模型理解">5.2 模型理解</a></li>
+</ul>
+</li>
+<li><a href="#6-排序算法">6. 排序算法</a></li>
+<li><a href="#7-评估测试">7. 评估测试</a><ul>
+<li><a href="#71-ab测试">7.1 A/B测试</a></li>
+<li><a href="#72-其它评估方法">7.2 其它评估方法</a></li>
+</ul>
+</li>
+<li><a href="#8-推荐系统冷启动问题">8. 推荐系统冷启动问题</a><ul>
+<li><a href="#81-用户冷启动">8.1 用户冷启动</a></li>
+<li><a href="#82-物品冷启动">8.2 物品冷启动</a></li>
+<li><a href="#83-系统冷启动">8.3 系统冷启动</a></li>
+</ul>
+</li>
+<li><a href="#9-参考文献">9. 参考文献</a></li>
+</ul>
+<p>推荐系统是利用电子商务网站向客...</p>
+            
+            <span class="read-more gradient-text"><a href="/2019/09/27/Recommendation-System/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -691,54 +779,6 @@
 <p>全面的机...</p>
             
             <span class="read-more gradient-text"><a href="/2019/09/12/TensorFlow-2-0-RC-is-available/" title="Read article" class="posttitle">Read article</a></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/文章">
-                  <b>「 </b>文章<b> 」</b>
-                </a>
-            
-            九月 12, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/12/nohup-在linux后台运行程序/" title="nohup:在linux后台运行程序" class="posttitle">nohup:在linux后台运行程序</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        2.8k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        3 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/linux/">linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/nohup/">nohup</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p></p>
-<p>今天在工作中，lz要在Linux系统上运行一个java程序，这个程序要在系统中持续运行。随后lz无意将ssh窗口关掉了，发现java程序停止了。原来，当使用ssh连接到系统运行程序的时候，该程序已经和你的ssh连接绑定了。如果你关闭连接，该程序就会停止。还有一个情景：如果要在后台运行多个java程序的时候，就需要启动多个ssh窗口，这样很麻烦。有没有方法来解决这个问题呢？答案是肯定的。</p>
-<p>1.使用nohup来执行命令，它会把命令自动调到linux后台运行，不锁定当前ssh窗口，也不会被ctrl ...</p>
-            
-            <span class="read-more gradient-text"><a href="/2019/09/12/nohup-在linux后台运行程序/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
 </div>
