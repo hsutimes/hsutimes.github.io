@@ -336,24 +336,42 @@ audio {
   background: #000;
   transition: display 400ms ease-in-out;
 }
-.image-logo {
-  animation-delay: 800ms;
-  animation-duration: 1.2s;
-  z-index: 10;
-  position: relative;
-  display: inline-block;
-  -webkit-background-size: 75px 32px;
-  -moz-background-size: 75px 32px;
-  background-size: 75px 32px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-mask-box-image: url("/img/logo.png");
-  background-color: #fff;
-  width: 75px;
-  height: 32px;
-  mask-image: url("/img/logo.png");
-  mask-size: contain;
-  transition: background-color 0.5s ease-in-out;
+.logo {
+    display:flex;
+    flex-direction:row;
+    width:200px;
+    height:32px;
+    animation-delay:800ms;
+    animation-duration:1.2s
+}
+.logo img {
+    display:flex;
+    width:32px;
+    height:32px
+}
+.logo .image-logo {
+    margin-left:.5rem;
+    z-index:10;
+    position:relative;
+    display:flex;
+    -webkit-background-size:75px 32px;
+    -moz-background-size:75px 32px;
+    background-size:75px 32px;
+    background-repeat:no-repeat;
+    background-position:center center;
+    -webkit-mask-box-image:url(/img/logo.png);
+    background-color:#fff;
+    width:75px;
+    height:32px;
+    mask-image:url(/img/logo.png);
+    mask-size:contain;
+    transition:background-color .5s ease-in-out
+}
+img.spin {
+    animation-delay:0;
+    animation-name:spin;
+    animation-duration:1.4s;
+    animation-timing-function:ease-in-out
 }
 .screen-gradient-after {
   background-image: -webkit-gradient(linear, left top, right top, from(var(--primary)), to(var(--gradient-dark)));
