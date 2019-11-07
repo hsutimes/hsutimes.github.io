@@ -98,36 +98,38 @@
             
                 <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
             
-            十月 13, 2019
+            十月 14, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/10/13/jna/" title="jna" class="posttitle">jna</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/10/14/linux-so/" title="linux_so" class="posttitle">linux_so</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        17k
+                        5.3k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        16 mins.
+                        5 mins.
                     </span>
                 
                 
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JNA/">JNA</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/c/">c</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/c/">c++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <p></p>
-<p><a href="https://travis-ci.org/java-native-access/jna" target="_blank" rel="noopener"></a><br><a href="https://ci.appveyor.com/project/dblock/jna-gsxuq/branch/master" target="_blank" rel="noopener"></a></p>
-<p>The definitive JNA reference (including an overview and usage details) is in the <a href="http://java-native-access.github.io/jna/5.4.0/javadoc/" target="_blank" rel="noopener">JavaDoc</a>.  Please read...</p>
+                <p>Linux下可以创建两种类型的库:</p>
+<ol>
+<li><p>静态库(.a): 在链接期间被应用程序直接链接进可执行文件</p>
+</li>
+<li><p>动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明...</p></li></ol>
             
-            <span class="read-more gradient-text"><a href="/2019/10/13/jna/" title="Read article" class="posttitle">Read article</a></span>
+            <span class="read-more gradient-text"><a href="/2019/10/14/linux-so/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
     
@@ -147,6 +149,59 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/文章">
+                  <b>「 </b>文章<b> 」</b>
+                </a>
+            
+            十月 14, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/10/14/linux-so/" title="linux_so" class="posttitle">linux_so</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        5.3k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        5 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/c/">c</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/c/">c++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>Linux下可以创建两种类型的库:</p>
+<ol>
+<li><p>静态库(.a): 在链接期间被应用程序直接链接进可执行文件</p>
+</li>
+<li><p>动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明动态库的存在，也就是说这种动态库必须在编译时对编译器可见，但编译器却不将此种库编译进可执行文件; b) 在运行期间，动态加载和卸载的库，使用动态加载方法加载。这种库的形式跟动态链接没有本质区别，区别是在调用时，是由用户程序决定何时链接的，而不是由系统链接器自动链接</p>
+</li>
+</ol>
+<p>库需要以<code>lib</code>作为开头，而在指...</p>
+            
+            <span class="read-more gradient-text"><a href="/2019/10/14/linux-so/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -693,59 +748,6 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const...</span></pre></td></tr></table></figure>
             
             <span class="read-more gradient-text"><a href="/2019/09/29/vue-route/" title="Read article" class="posttitle">Read article</a></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/文章">
-                  <b>「 </b>文章<b> 」</b>
-                </a>
-            
-            九月 28, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/28/python-style-rules/" title="python style rules" class="posttitle">python style rules</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        20k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        18 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>.. tip::<br>    不要在行尾加分号, 也不要用分号将两条命令放在同一行.   </p>
-<p>.. _line_length:    </p>
-<p>.. tip::<br>    每行不超过80个字符    </p>
-<p>例外:</p>
-<p>#. 长的导入模块语句</p>
-<p>#. 注释里的URL</p>
-<p>不要使用反斜杠连接行.</p>
-<p>Python会将 <code>圆括号, 中括号和花括号中的行隐式的连接起来 &lt;http://docs.python.org/2/reference/lexical_analysis.html#implicit-line-joining&gt;</code>_ , 你可以利用这个特点. 如...</p>
-            
-            <span class="read-more gradient-text"><a href="/2019/09/28/python-style-rules/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
 </div>
