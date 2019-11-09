@@ -106,13 +106,13 @@
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        1.1k
+                        13k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        1 mins.
+                        12 mins.
                     </span>
                 
                 
@@ -124,10 +124,9 @@
         <div class="md-content animated fadeIn">
             
                 <p>在 Linux 下这是一件很简单的事情：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name "*.py" | wc -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name "*.py" | wc -l</span><br><span class="line"></span><br><span class="line">find ./ -name "*.py" |xargs cat|grep -v ^$|wc -l</span><br></pre></td></tr></table></figure>
 
-<p>这行语句就可以很简单地统计出当前目录下所有py后缀文件的行数了。</p>
-<p>这时我们就不能用cmd而是应当用PowerShell...</p>
+...
             
             <span class="read-more gradient-text"><a href="/2019/11/09/count-file-lines/" title="Read article" class="posttitle">Read article</a></span>
         </div>
