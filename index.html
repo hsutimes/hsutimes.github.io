@@ -100,35 +100,32 @@
             
             十一月 09, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/11/09/count-file-lines/" title="count-file-lines" class="posttitle">count-file-lines</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/11/09/forbes-global-ceo-conference/" title="forbes-global-ceo-conference" class="posttitle">forbes-global-ceo-conference</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        13k
+                        3.6k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        12 mins.
+                        3 mins.
                     </span>
                 
                 
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Windows/">Windows</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/shell/">shell</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Global/">Global </a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Key/">Key </a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <p>在 Linux 下这是一件很简单的事情：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name "*.py" | wc -l</span><br><span class="line"></span><br><span class="line">find ./ -name "*.py" |xargs cat|grep -v ^$|wc -l</span><br></pre></td></tr></table></figure>
-
-...
+                <p>The 19th annual Forbes Global CEO Conference took place in Singapore Oct. 15 and Oct. 16, providing ...</p>
             
-            <span class="read-more gradient-text"><a href="/2019/11/09/count-file-lines/" title="Read article" class="posttitle">Read article</a></span>
+            <span class="read-more gradient-text"><a href="/2019/11/09/forbes-global-ceo-conference/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
     
@@ -148,6 +145,59 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/文章">
+                  <b>「 </b>文章<b> 」</b>
+                </a>
+            
+            十一月 09, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/11/09/count-file-lines/" title="count-file-lines" class="posttitle">count-file-lines</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        13k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        12 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Windows/">Windows</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/shell/">shell</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>在 Linux 下这是一件很简单的事情：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name "*.py" | wc -l</span><br><span class="line"></span><br><span class="line">find ./ -name "*.py" |xargs cat|grep -v ^$|wc -l</span><br></pre></td></tr></table></figure>
+
+<p>这行语句就可以很简单地统计出当前目录下所有py后缀文件的行数了。</p>
+<p>这时我们就不能用cmd而是应当用PowerShell啦。</p>
+<p>Powershell是Windows基于.NET开发的一个自动化配置框架。 （其实就是新版命令行）</p>
+<p>然后我们可以输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dir .\ -Recurse *.py | Get...</span></pre></td></tr></table></figure>
+            
+            <span class="read-more gradient-text"><a href="/2019/11/09/count-file-lines/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -542,57 +592,9 @@
 </div>
 
 
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/文章">
-                  <b>「 </b>文章<b> 」</b>
-                </a>
-            
-            十一月 01, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/11/01/android-fingerprint-security/" title="android-fingerprint-security" class="posttitle">android-fingerprint-security</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        3.5k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        3 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Android/">Android</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/安全/">安全</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/指纹/">指纹</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>安全性一直是移动开发的关键部分，正确实现它绝非易事。智能手机最初使用4位PIN码进行破解，最多需要10,000次破解。然后是锁定模式，尽管基本的人性极大地降低了这个数字，但锁定模式却将标准提高到了惊人的389112种不同的模式。 与PIN和锁定模式不同，指纹身份验证要提前数年。一个人的指纹确实是独一无二的，无法猜测。这项技术在消费类设备上正变得越来越流行，并且使用棉花糖，比以往任何时候都更容易在您的应用程序中实现它。</p>
-<p></p>
-<p>除了我们已经写过的 iOS Touch ID之外，Android上指纹扫描的...</p>
-            
-            <span class="read-more gradient-text"><a href="/2019/11/01/android-fingerprint-security/" title="Read article" class="posttitle">Read article</a></span>
-        </div>
-    </div>
-</div>
-
-
     </div>
     
-    <div id="pager"><a href="/page/2/" class="more" data-loading="Loading..." data-load-more="Load more">Load more</a></div>
+    <div id="pager"><a href="/page/2/" class="more" data-loading="加载中..." data-load-more="Load more">Load more</a></div>
     
 </div>
 <div id="preview"></div>
