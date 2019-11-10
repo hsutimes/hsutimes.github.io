@@ -98,36 +98,38 @@
             
                 <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
             
-            十月 13, 2019
+            十月 14, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/10/13/jna/" title="jna" class="posttitle">jna</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/10/14/linux-so/" title="linux_so" class="posttitle">linux_so</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        17k
+                        5.3k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        16 mins.
+                        5 mins.
                     </span>
                 
                 
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JNA/">JNA</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/c/">c</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/c/">c++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <p></p>
-<p><a href="https://travis-ci.org/java-native-access/jna" target="_blank" rel="noopener"></a><br><a href="https://ci.appveyor.com/project/dblock/jna-gsxuq/branch/master" target="_blank" rel="noopener"></a></p>
-<p>The definitive JNA reference (including an overview and usage details) is in the <a href="http://java-native-access.github.io/jna/5.4.0/javadoc/" target="_blank" rel="noopener">JavaDoc</a>.  Please read...</p>
+                <p>Linux下可以创建两种类型的库:</p>
+<ol>
+<li><p>静态库(.a): 在链接期间被应用程序直接链接进可执行文件</p>
+</li>
+<li><p>动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明...</p></li></ol>
             
-            <span class="read-more gradient-text"><a href="/2019/10/13/jna/" title="Read article" class="posttitle">Read article</a></span>
+            <span class="read-more gradient-text"><a href="/2019/10/14/linux-so/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
     
@@ -147,6 +149,59 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/文章">
+                  <b>「 </b>文章<b> 」</b>
+                </a>
+            
+            十月 14, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/10/14/linux-so/" title="linux_so" class="posttitle">linux_so</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        5.3k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        5 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/c/">c</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/c/">c++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>Linux下可以创建两种类型的库:</p>
+<ol>
+<li><p>静态库(.a): 在链接期间被应用程序直接链接进可执行文件</p>
+</li>
+<li><p>动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明动态库的存在，也就是说这种动态库必须在编译时对编译器可见，但编译器却不将此种库编译进可执行文件; b) 在运行期间，动态加载和卸载的库，使用动态加载方法加载。这种库的形式跟动态链接没有本质区别，区别是在调用时，是由用户程序决定何时链接的，而不是由系统链接器自动链接</p>
+</li>
+</ol>
+<p>库需要以<code>lib</code>作为开头，而在指...</p>
+            
+            <span class="read-more gradient-text"><a href="/2019/10/14/linux-so/" title="Read article" class="posttitle">Read article</a></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -577,64 +632,6 @@
 <p>An open-source binary debugger for Windows, aimed at malware analysis and reverse engineering of executables you do not have the source code for. There are many features available and a comprehensive <a href="http://plugins.x64dbg.com" target="_blank" rel="noopener">plugin system</a> to add your own. You can...</p>
             
             <span class="read-more gradient-text"><a href="/2019/10/05/x64dbg/" title="Read article" class="posttitle">Read article</a></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/文章">
-                  <b>「 </b>文章<b> 」</b>
-                </a>
-            
-            十月 05, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/10/05/search-engine/" title="search_engine" class="posttitle">search_engine</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        4.4k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        4 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <blockquote>
-<p>百度属于搜索引擎的其中之一，这个大家想必都知道。尤其对于做网络和媒体的人来说，你必须知道如何与搜索引擎打交道。但是你知道除了百度，世界上还有哪些好用的搜索引擎吗？</p>
-</blockquote>
-<p><a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a></p>
-<p>全球第一搜索引擎，不解释。</p>
-<p></p>
-<p><a href="http://www.bing.com" target="_blank" rel="noopener">www.bing.com</a></p>
-<p>Bing是微软旗下的搜索引擎，感觉它的搜索界面背景图非常美，是谷歌最好的替代品，备胎中的战斗机。</p>
-<p></p>
-<p><a href="http://www.search.yahoo.com" target="_blank" rel="noopener">www.search.yahoo.com</a></p>
-<p>在搜索方面，雅虎表现中规中矩，网页搜索表现不错，但死链率较高而且缺少一些应有的高级搜索功能。</p>
-<p></p>
-<p><a href="http://www.baidu.com" target="_blank" rel="noopener">www....</a></p>
-            
-            <span class="read-more gradient-text"><a href="/2019/10/05/search-engine/" title="Read article" class="posttitle">Read article</a></span>
         </div>
     </div>
 </div>
