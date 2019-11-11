@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>graph-convolution - Time</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hsutimes Obsidian,"> 
+    <meta name="description" content="图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型笔者最近看了一些图与图卷积神经网络的论文，深感其强大，但一些Survey或教程默认了读者对图神经网络背景,"> 
+    <meta name="author" content="times"> 
+    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="/font/Rubik-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="/font/Rubik-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Time</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://blog.hsutimes.com"></a>
+    <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
+    <h3 class="subtitle">graph-convolution</h3>
+    <div class="social">
+<!--        <div class="like-icon">-->
+<!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+<!--        </div>-->
+        <div>
+            <div class="share animated fadeIn">
+                
+                    <a href="javascript:;" class="iconfont icon-share1"></a>
+                    <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class= article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="/categories/文章"><b>「 </b>文章<b> 」</b></a>
+                
+                十一月 11, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/11/11/graph-convolution/" title="graph-convolution">graph-convolution</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        7.1k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        6 mins.
+                    </span>
+                    
+                    
+                    
+                        <span id="busuanzi_container_page_pv">
+                            <b class="iconfont icon-read"></b> <i>Read count</i>
+                            <span id="busuanzi_value_page_pv">0</span>
+                        </span>
+                    
+                </p>
+            
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/人工智能/">人工智能</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/卷积神经网络/">卷积神经网络</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn slower">
+            <h1 id="图系列-从图-Graph-到图卷积-Graph-Convolution-漫谈图神经网络模型"><a href="#图系列-从图-Graph-到图卷积-Graph-Convolution-漫谈图神经网络模型" class="headerlink" title="图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型"></a>图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型</h1><p>笔者最近看了一些图与图卷积神经网络的论文，深感其强大，但一些Survey或教程默认了读者对图神经网络背景知识的了解，对未学过信号处理的读者不太友好。同时，很多教程只讲是什么，不讲为什么，也没有梳理清楚不同网络结构的区别与设计初衷(Motivation)。</p>
+<p>因此，本文试图沿着图神经网络的历史脉络，从最早基于不动点理论的图神经网络(Graph Neural Network， GNN)一步步讲到当前用得最火的图卷积神经网络(Graph Convolutional Neural Network， GCN)， 期望通过本文带给读者一些灵感与启示。</p>
+<ul>
+<li>本文的提纲与叙述要点主要参考了2篇图神经网络的Survey，分别是来自IEEE Fellow的A Comprehensive Survey on Graph Neural Networks[1] 以及来自清华大学朱文武老师组的Deep Learning on Graphs: A Survey[7]， 在这里向两篇Survey的作者表示敬意。</li>
+<li>同时，本文关于部分图卷积神经网络的理解很多都是受到知乎问题[8]高赞答案的启发，非常感谢他们的无私分享！</li>
+<li>最后，本文还引用了一些来自互联网的生动形象的图片，在这里也向这些图片的作者表示感谢。本文中未注明出处的图片均为笔者制作，如需转载或引用请联系本人。</li>
+</ul>
+<h1 id="历史脉络"><a href="#历史脉络" class="headerlink" title="历史脉络"></a>历史脉络</h1><p>在开始正文之前，笔者先带大家回顾一下图神经网络的发展历史。不过，因为图神经网络的发展分支非常之多，笔者某些叙述可能并不全面，一家之言仅供各位读者参考：</p>
+<ol>
+<li>图神经网络的概念最早在2005年提出。2009年Franco博士在其论文 [2]中定义了图神经网络的理论基础，笔者呆会要讲的第一种图神经网络也是基于这篇论文。</li>
+<li>最早的GNN主要解决的还是如分子结构分类等严格意义上的图论问题。但实际上欧式空间(比如像图像 Image)或者是序列(比如像文本 Text)，许多常见场景也都可以转换成图(Graph)，然后就能使用图神经网络技术来建模。</li>
+<li>2009年后图神经网络也陆续有一些相关研究，但没有太大波澜。直到2013年，在图信号处理(Graph Signal Processing)的基础上，Bruna(这位是LeCun的学生)在文献 [3]中首次提出图上的基于频域(Spectral-domain)和基于空域(Spatial-domain)的卷积神经网络。</li>
+<li>其后至今，学界提出了很多基于空域的图卷积方式，也有不少学者试图通过统一的框架将前人的工作统一起来。而基于频域的工作相对较少，只受到部分学者的青睐。</li>
+<li>值得一提的是，图神经网络与图表示学习(Represent Learning for Graph)的发展历程也惊人地相似。2014年，在word2vec [4]的启发下，Perozzi等人提出了DeepWalk [5]，开启了深度学习时代图表示学习的大门。更有趣的是，就在几乎一样的时间，Bordes等人提出了大名鼎鼎的TransE [6]，为知识图谱的分布式表示(Represent Learning for Knowledge Graph)奠定了基础。</li>
+</ol>
+<h1 id="图神经网络-Graph-Neural-Network"><a href="#图神经网络-Graph-Neural-Network" class="headerlink" title="图神经网络(Graph Neural Network)"></a>图神经网络(Graph Neural Network)</h1><p>首先要澄清一点，除非特别指明，本文中所提到的图均指图论中的图(Graph)。它是一种由若干个结点(Node)及连接两个结点的边(Edge)所构成的图形，用于刻画不同结点之间的关系。下面是一个生动的例子，图片来自论文[7]:</p>
+<p><img src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
+<h1 id="状态更新与输出"><a href="#状态更新与输出" class="headerlink" title="状态更新与输出"></a>状态更新与输出</h1><p>最早的图神经网络起源于Franco博士的论文[2], 它的理论基础是不动点理论。给定一张图 G，每个结点都有其自己的特征(feature), 本文中用xv表示结点v的特征；连接两个结点的边也有自己的特征，本文中用x(v,u)表示结点v与结点u之间边的特征；GNN的学习目标是获得每个结点的图感知的隐藏状态 hv(state embedding)，这就意味着：对于每个节点，它的隐藏状态包含了来自邻居节点的信息。那么，如何让每个结点都感知到图上其他的结点呢？GNN通过迭代式更新所有结点的隐藏状态来实现，在t+1时刻，结点v的隐藏状态按照如下方式更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">𝐡^&#123;t+1&#125;_𝑣=𝑓(𝐱_𝑣,𝐱_𝑐𝑜[𝑣],𝐡^&#123;t&#125;_𝑛𝑒[𝑣] ,𝐱_𝑛𝑒[𝑣]),</span><br></pre></td></tr></table></figure>
+
+<p>上面这个公式中的 f 就是隐藏状态的状态更新函数，在论文中也被称为局部转移函数(local transaction function)。公式中的xco[v]指的是与结点v相邻的边的特征，xne[v]指的是结点v的邻居结点的特征，htne[v]则指邻居结点在t时刻的隐藏状态。注意 f 是对所有结点都成立的，是一个全局共享的函数。那么怎么把它跟深度学习结合在一起呢？聪明的读者应该想到了，那就是利用神经网络(Neural Network)来拟合这个复杂函数 f。值得一提的是，虽然看起来 f 的输入是不定长参数，但在 f 内部我们可以先将不定长的参数通过一定操作变成一个固定的参数，比如说用所有隐藏状态的加和来代表所有隐藏状态。我们举个例子来说明一下：</p>
+<p><img src="/images/2019/11/11/f5d6a880-0497-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
+<p>假设结点5为中心结点，其隐藏状态的更新函数如图所示。这个更新公式表达的思想自然又贴切：不断地利用当前时刻邻居结点的隐藏状态作为部分输入来生成下一时刻中心结点的隐藏状态，直到每个结点的隐藏状态变化幅度很小，整个图的信息流动趋于平稳。至此，每个结点都“知晓”了其邻居的信息。状态更新公式仅描述了如何获取每个结点的隐藏状态，除它以外，我们还需要另外一个函数 g 来描述如何适应下游任务。举个例子，给定一个社交网络，一个可能的下游任务是判断各个结点是否为水军账号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">𝐨_𝑣=𝑔(𝐡_𝑣,𝐱_𝑣)</span><br></pre></td></tr></table></figure>
+
+<p>在原论文中，g 又被称为局部输出函数(local output function)，与 f 类似，g 也可以由一个神经网络来表达，它也是一个全局共享的函数。那么，整个流程可以用下面这张图表达：</p>
+<p><img src="/images/2019/11/11/11946760-0498-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
+<p>仔细观察两个时刻之间的连线，它与图的连线密切相关。比如说在 T1 时刻，结点 1 的状态接受来自结点 3 的上一时刻的隐藏状态，因为结点 1 与结点 3相邻。直到 Tn 时刻，各个结点隐藏状态收敛，每个结点后面接一个 g 即可得到该结点的输出 o。</p>
+<p>对于不同的图来说，收敛的时刻可能不同，因为收敛是通过两个时刻p-范数的差值是否小于某个阈值 ϵ来判定的，比如：</p>
+<p><img src="/images/2019/11/11/415d6000-0498-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
+<p>…</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]. A Comprehensive Survey on Graph Neural Networks, <a href="https://arxiv.org/abs/1901.00596" target="_blank" rel="noopener">https://arxiv.org/abs/1901.00596</a></p>
+<p>[2]. The graph neural network model, <a href="https://persagen.com/files/misc/scarselli2009graph.pdf" target="_blank" rel="noopener">https://persagen.com/files/misc/scarselli2009graph.pdf</a></p>
+<p>[3]. Spectral networks and locally connected networks on graphs, <a href="https://arxiv.org/abs/1312.6203" target="_blank" rel="noopener">https://arxiv.org/abs/1312.6203</a></p>
+<p>[4]. Distributed Representations of Words and Phrases and their Compositionality, <a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-andphrases" target="_blank" rel="noopener">http://papers.nips.cc/paper/5021-distributed-representations-of-words-andphrases</a></p>
+<p>[5]. DeepWalk: Online Learning of Social Representations, <a href="https://arxiv.org/abs/1403.6652" target="_blank" rel="noopener">https://arxiv.org/abs/1403.6652</a></p>
+<p>[6]. Translating Embeddings for Modeling Multi-relational Data, <a href="https://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data" target="_blank" rel="noopener">https://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data</a></p>
+<p>[7]. Deep Learning on Graphs: A Survey, <a href="https://arxiv.org/abs/1812.04202" target="_blank" rel="noopener">https://arxiv.org/abs/1812.04202</a></p>
+<p>[8]. 如何理解Graph Convolutional Network（GCN）? <a href="https://www.zhihu.com/question/54504471" target="_blank" rel="noopener">https://www.zhihu.com/question/54504471</a></p>
+<p>[9]. Almeida–Pineda recurrent backpropagation, <a href="https://www.wikiwand.com/en/Almeida%E2%80%93Pineda_recurrent_backpropagation" target="_blank" rel="noopener">https://www.wikiwand.com/en/Almeida%E2%80%93Pineda_recurrent_backpropagation</a></p>
+<p>[10]. Gated graph sequence neural networks, <a href="https://arxiv.org/abs/1511.05493" target="_blank" rel="noopener">https://arxiv.org/abs/1511.05493</a></p>
+<p>[11]. Representing Schema Structure with Graph Neural Networks for Text-to-SQL Parsing, <a href="https://arxiv.org/abs/1905.06241" target="_blank" rel="noopener">https://arxiv.org/abs/1905.06241</a></p>
+<p>[12]. Spider1.0 Yale Semantic Parsing and Text-to-SQL Challenge, <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">https://yale-lily.github.io/spider</a></p>
+<p>[13]. <a href="https://www.wikiwand.com/en/Laplacian_matrix" target="_blank" rel="noopener">https://www.wikiwand.com/en/Laplacian_matrix</a></p>
+<blockquote>
+<p>作者： SivilTaram<br>出处：<a href="https://www.cnblogs.com/SivilTaram/p/graph_neural_network_1.html" target="_blank" rel="noopener">https://www.cnblogs.com/SivilTaram/p/graph_neural_network_1.html</a><br>本站使用「CC BY 4.0」创作共享协议，转载请在文章明显位置注明作者及出处。</p>
+</blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='/statics/chengdu.mp3'></li>
+                        
+                    
+                </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://user-gold-cdn.xitu.io/2018/8/13/16530d7f26a413c2?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" height=300 width=300></img>
+                    <p>times</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        <dd><a href="https://github.com/hsutimes" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/hsutimes" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/9998457/july-time" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">89 <p>Articles</p></a></li>
+                    <li><a href="/categories">5 <p>Categories</p></a></li>
+                    <li><a href="/tags">112 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+                
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>Contents</h4>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#图系列-从图-Graph-到图卷积-Graph-Convolution-漫谈图神经网络模型"><span class="toc-number">1.</span> <span class="toc-text">图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#历史脉络"><span class="toc-number">2.</span> <span class="toc-text">历史脉络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图神经网络-Graph-Neural-Network"><span class="toc-number">3.</span> <span class="toc-text">图神经网络(Graph Neural Network)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#状态更新与输出"><span class="toc-number">4.</span> <span class="toc-text">状态更新与输出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">5.</span> <span class="toc-text">参考文献</span></a></li></ol>
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </div>
+</div>
+
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            times
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.5" target="_blank" rel="noopener">v1.3.5</a></small>
+    </p>
+</footer>
+
+<script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134224598-1');
+    </script>
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+</html>
