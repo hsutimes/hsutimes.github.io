@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>数据库备份恢复容器化项目实践经验总结 - Time</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hsutimes Obsidian,"> 
+    <meta name="description" content="数据库备份恢复容器化项目实践经验总结
+本文分享了唯品会数据库Docker的异地容灾项目实践经验，项目中针对用户数据库的异地恢复场景的需求进行开发和测试，整合了网络，存储、调度、监控，镜像等多个模块。,"> 
+    <meta name="author" content="times"> 
+    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Time</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://blog.hsutimes.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">数据库备份恢复容器化项目实践经验总结</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/文章"><b>「
+                    </b>文章<b> 」</b></a>
+                
+                九月 08, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/09/08/数据库备份恢复容器化项目实践经验总结/" title="数据库备份恢复容器化项目实践经验总结">数据库备份恢复容器化项目实践经验总结</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    3.7k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    3 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Docker/">Docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/备份/">备份</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="数据库备份恢复容器化项目实践经验总结"><a href="#数据库备份恢复容器化项目实践经验总结" class="headerlink" title="数据库备份恢复容器化项目实践经验总结"></a>数据库备份恢复容器化项目实践经验总结</h1><blockquote>
+<p>本文分享了唯品会数据库Docker的异地容灾项目实践经验，项目中针对用户数据库的异地恢复场景的需求进行开发和测试，整合了网络，存储、调度、监控，镜像等多个模块。在实施完成后，从技术上总结关于选型、开发、踩坑、测试等方面的经验。</p>
+</blockquote>
+<h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>数据库Docker的异地备份恢复容灾项目，针对用户数据库的异地备份恢复场景的需求进行开发和测试，整合了容器网络、存储、调度、监控、镜像等多个模块。同时针对数据库的日常运维工作开发了监控、资源调度、日志、Puppet自动推送等工具。</p>
+<p>通过Docker天生隔离性和快速部署等特点，实现在单台物理机上运行多个数据库备份/恢复实例，大大提高服务器使用率，节省大量成本。通过对Docker本身和相关组件的研究和改造，从普通开源产品落地到公司内部生产环境，积累宝贵的开发经验。通过对Docker已经在其上层运行的数据库日常运维和监控，也积累宝贵的Docker运维经验，为更大规模推广容器提供基础。</p>
+<p><img src="/images/2019/09/08/9adb4490-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
+<h1 id="关于容器技术"><a href="#关于容器技术" class="headerlink" title="关于容器技术"></a>关于容器技术</h1><p>通过实践，证明容器技术在易用性，可管理性，快速部署具备天然的优势。在资源利用率方面，容器部署在上百个物理节点上，提供约500多个数据库灾备实例，提升了硬件资源的利用率，节约了约400台物理机的采购成本。这些是容器技术带来的实实在在收益。在资源分配与隔离方面，又不输于虚拟机。CPU、内存、磁盘IO、网络IO限流等技术的应用，保证了资源的合理使用，从机制上阻止了单一实例的资源过分消耗的问题。</p>
+<p>稳定性是使用容器技术非常关注的一个点，也是基石。MySQL备份/恢复属于CPU密集 + 磁盘IO密集 + 网络IO密集型业务，对于Docker daemon是个较大的考验。就目前来看，限制每台宿主机的容器数量（5个左右）的情况下，集群跑了三个多月没有出现因为容器负载过大导致的crash现象，还是值得信赖的。遇到的唯一相关问题是Docker daemon挂死，具体现象是docker info、docker ps没有响应，docker volume、docker images 正常，下面的容器运行正常。这是偶发事件，无法重现，以后需要继续观察。</p>
+<p>由于容器以进程方式存在，体现出几乎与物理机上相当的性能，Overheads极低（低于10%）。从数据抽取任务的结果来看，与物理机相比，使用容器对成功率没有影响，效率也差不多。这也很符合最初预想，不管跑容器还是外部服务从物理机角度来说它们之间是没有什么区别的，都是一个进程，唯一不同是父进程不一样而已。</p>
+<p>以上是容器“RUN”带来的好处，通过统一开发流程，应用微服务化，CI/CD等方面的改进，能够进一步利用容器“BUILD”、“SHIP” 优势，容器技术还来的潜力是巨大的。要说容器技术的缺点，还真的不明显。硬要提的话一个是需要一定的学习成本，改变开发流程与方式，一个是开发人员对容器技术的接受程度。这个项目仅用了不到二百人/天，对于一个采用新技术的项目来说，真的是很低的了。一开始我们也担心因为采用新技术导致开发推广有困难，后来实际能通过技术上解决问题，打消了大部分用户对使用Docker的疑虑，反而有助于该技术的普遍应用。</p>
+<p>关于Docker daemon版本的选择，我们之前是有过一些讨论的。现在Docker社区非常活跃，当时我们用1.10.3， 到现在已经出了两个新版本了。在功能满足的前提下，稳定性是第一考量。Docker自1.9.0引入CNM网络模型，1.10算是比较成熟。CNM是我们希望在这个项目尝试的一部分。网络与Volume插件功能与稳定性的提升，开始支持磁盘IO读写限速，Device Mapper的支持，等等，都是选择了这个版本的原因。另外，Docker插件的引入，很好地解耦了Docker与底层模块的关系，使我们可以专注于底层（网络、存储）实现而不需要修改Docker daemon本身，同时避免产生升级依赖。</p>
+<h1 id="关于容器存储"><a href="#关于容器存储" class="headerlink" title="关于容器存储"></a>关于容器存储</h1><p>容器外部卷使用Convoy，以插件的形式支持容器持久化数据。容器本身与外部卷均使用Device Mapper作为底层。没有选择分布式存储原因，主要是为了简化实现，更稳定。通过限制每个容器的BlkioDeviceReadBps、BlkioDeviceWriteBps、BlkioDeviceReadIOps、BlkioDeviceWriteIOps，使磁盘IO稳定地达到相当于95%物理机性能。</p>
+<p><img src="/images/2019/09/08/b8684530-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
+<p>对于Device Mapper，因为是红帽推荐的，而OS又是用的CentOS7.2, 所以就用了它。测试过程中发现Device Mapper健壮性不是很好，仅仅在低并发下，也会出现容器删除失败的情况，容器并发启停偶尔出现找不到设备的情况。这种使用映射关系的设备，功能是丰富，实现上过于复杂，每次对设备的修改都需要额外去更新Metadata，并发场景出错的机会就大了。让我再选的话我会考虑Overlay这种更简单的driver。</p>
+<p>对于Convoy，是来自Rancher的产品，Go语言，仍然处于未成熟阶段，版本号0.5, 并没有完全实现Volume Plugin接口。相比其它模块它的问题也是最多的，例如Volume创建失败，无法删除，UNIX Socket泄漏，重名冲突，异常自动退出等。属于能用，但未完善的状态，你自己得有一定开发调试能力去解决发现的问题。其它几个存储插件情况也差不多，Flocker、Blockbridge、Horcrux等等，有的连第一个正式发布版都还没有，Convoy反而相对好点，有点烂柿子堆里挑的感觉。</p>
+<h1 id="关于容器监控"><a href="#关于容器监控" class="headerlink" title="关于容器监控"></a>关于容器监控</h1><p>容器监控在这个项目里还可以有很大的空间可以改进。项目里用的是cAdvisor，容器内top、free、iostat命令劫持，基于已有的Zabbix体系作数据收集与展示。结论是Zabbix完全不合适做容器监控，数据收集密度，展示质量，灵活度都没能满足需求。</p>
+<p>后来在测试中尝试使用Telegraf + InfluxDB + Grafana。 只需要Grafana简单的配置，能够帮忙我们清晰地展示容器及服务进程CPU、内存、网络、磁盘等情况。Grafana上SQL查询语句的调试与开发，确实需要不少的时间，但这个工作量是一次性的。因为是Go写的，Telegraf CPU占用属于比较低的水平（0.4 – 5%）。功能上比较丰富，同时支持外部进程与容器的数据收集，多达55种数据源插件，有它就不需要布cAdvisor了，个人比较推荐。需要告警的同学，可以考虑把influxDB改成Prometheus。它包含Alertmanager实现Email、PagerDuty等消息通知。数据Backend可以选择自带的DB，也可以外接influxDB、Graphite、OpenTSDB等流行方案。</p>
+<p><img src="/images/2019/09/08/cd4a2fe0-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
+<p>监控领域业界已经有很多开源方案可以参考，以下是要衡量的标准：易扩展、开销低、入侵小、大集中、易部署、实时性、展现清晰灵活。这方面希望与各位有更多的交流。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci='d73d768ea9e3bd69ab54'
+        data-cs='4b958932671ae1a2ab37b2a112ee945824fd4abd'
+        data-r='gitment_blog'
+        data-o='hsutimes'
+        data-a='hsutimes'
+        data-d=''
+    >留言</div>
+
+
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://user-gold-cdn.xitu.io/2018/8/13/16530d7f26a413c2?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" height=300 width=300></img>
+                    <p>times</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        <dd><a href="https://github.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/9998457/july-time" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">92 <p>文章</p></a></li>
+                    <li><a href="/categories">5 <p>分类</p></a></li>
+                    <li><a href="/tags">115 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库备份恢复容器化项目实践经验总结"><span class="toc-number">1.</span> <span class="toc-text">数据库备份恢复容器化项目实践经验总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目背景"><span class="toc-number">2.</span> <span class="toc-text">项目背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于容器技术"><span class="toc-number">3.</span> <span class="toc-text">关于容器技术</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于容器存储"><span class="toc-number">4.</span> <span class="toc-text">关于容器存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于容器监控"><span class="toc-number">5.</span> <span class="toc-text">关于容器监控</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            times
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+    <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/java/java.min.js"></script>
+
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134224598-1');
+    </script>
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

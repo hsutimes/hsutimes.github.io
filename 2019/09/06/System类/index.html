@@ -1,0 +1,1667 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>System类 - Time</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hsutimes Obsidian,"> 
+    <meta name="description" content="
+/*
+ * Copyright (c) 1994, 2013, Oracle and/or its affiliates. All rights reserved.
+ * ORACLE PROPR,"> 
+    <meta name="author" content="times"> 
+    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Time</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://blog.hsutimes.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">System类</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/文章"><b>「
+                    </b>文章<b> 」</b></a>
+                
+                九月 06, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/09/06/System类/" title="System类">System类</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    59k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    53 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编程/">编程</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p><img src="/images/2019/09/06/6505ce10-d06e-11e9-b8c8-91efca18534b.png" alt="image.png"></p>
+<pre><code class="java">/*
+ * Copyright (c) 1994, 2013, Oracle and/or its affiliates. All rights reserved.
+ * ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ *
+ *
+ */
+package java.lang;
+
+import java.io.*;
+import java.lang.reflect.Executable;
+import java.lang.annotation.Annotation;
+import java.security.AccessControlContext;
+import java.util.Properties;
+import java.util.PropertyPermission;
+import java.util.StringTokenizer;
+import java.util.Map;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+import java.security.AllPermission;
+import java.nio.channels.Channel;
+import java.nio.channels.spi.SelectorProvider;
+import sun.nio.ch.Interruptible;
+import sun.reflect.CallerSensitive;
+import sun.reflect.Reflection;
+import sun.security.util.SecurityConstants;
+import sun.reflect.annotation.AnnotationType;
+
+/**
+ * The &lt;code&gt;System&lt;/code&gt; class contains several useful class fields
+ * and methods. It cannot be instantiated.
+ *
+ * &lt;p&gt;Among the facilities provided by the &lt;code&gt;System&lt;/code&gt; class
+ * are standard input, standard output, and error output streams;
+ * access to externally defined properties and environment
+ * variables; a means of loading files and libraries; and a utility
+ * method for quickly copying a portion of an array.
+ *
+ * @author  unascribed
+ * @since   JDK1.0
+ */
+public final class System {
+
+    /* register the natives via the static initializer.
+     *
+     * VM will invoke the initializeSystemClass method to complete
+     * the initialization for this class separated from clinit.
+     * Note that to use properties set by the VM, see the constraints
+     * described in the initializeSystemClass method.
+     */
+    private static native void registerNatives();
+    static {
+        registerNatives();
+    }
+
+    /** Don&#39;t let anyone instantiate this class */
+    private System() {
+    }
+
+    /**
+     * The &quot;standard&quot; input stream. This stream is already
+     * open and ready to supply input data. Typically this stream
+     * corresponds to keyboard input or another input source specified by
+     * the host environment or user.
+     */
+    public final static InputStream in = null;
+
+    /**
+     * The &quot;standard&quot; output stream. This stream is already
+     * open and ready to accept output data. Typically this stream
+     * corresponds to display output or another output destination
+     * specified by the host environment or user.
+     * &lt;p&gt;
+     * For simple stand-alone Java applications, a typical way to write
+     * a line of output data is:
+     * &lt;blockquote&gt;&lt;pre&gt;
+     *     System.out.println(data)
+     * &lt;/pre&gt;&lt;/blockquote&gt;
+     * &lt;p&gt;
+     * See the &lt;code&gt;println&lt;/code&gt; methods in class &lt;code&gt;PrintStream&lt;/code&gt;.
+     *
+     * @see     java.io.PrintStream#println()
+     * @see     java.io.PrintStream#println(boolean)
+     * @see     java.io.PrintStream#println(char)
+     * @see     java.io.PrintStream#println(char[])
+     * @see     java.io.PrintStream#println(double)
+     * @see     java.io.PrintStream#println(float)
+     * @see     java.io.PrintStream#println(int)
+     * @see     java.io.PrintStream#println(long)
+     * @see     java.io.PrintStream#println(java.lang.Object)
+     * @see     java.io.PrintStream#println(java.lang.String)
+     */
+    public final static PrintStream out = null;
+
+    /**
+     * The &quot;standard&quot; error output stream. This stream is already
+     * open and ready to accept output data.
+     * &lt;p&gt;
+     * Typically this stream corresponds to display output or another
+     * output destination specified by the host environment or user. By
+     * convention, this output stream is used to display error messages
+     * or other information that should come to the immediate attention
+     * of a user even if the principal output stream, the value of the
+     * variable &lt;code&gt;out&lt;/code&gt;, has been redirected to a file or other
+     * destination that is typically not continuously monitored.
+     */
+    public final static PrintStream err = null;
+
+    /* The security manager for the system.
+     */
+    private static volatile SecurityManager security = null;
+
+    /**
+     * Reassigns the &quot;standard&quot; input stream.
+     *
+     * &lt;p&gt;First, if there is a security manager, its &lt;code&gt;checkPermission&lt;/code&gt;
+     * method is called with a &lt;code&gt;RuntimePermission(&quot;setIO&quot;)&lt;/code&gt; permission
+     *  to see if it&#39;s ok to reassign the &quot;standard&quot; input stream.
+     * &lt;p&gt;
+     *
+     * @param in the new standard input stream.
+     *
+     * @throws SecurityException
+     *        if a security manager exists and its
+     *        &lt;code&gt;checkPermission&lt;/code&gt; method doesn&#39;t allow
+     *        reassigning of the standard input stream.
+     *
+     * @see SecurityManager#checkPermission
+     * @see java.lang.RuntimePermission
+     *
+     * @since   JDK1.1
+     */
+    public static void setIn(InputStream in) {
+        checkIO();
+        setIn0(in);
+    }
+
+    /**
+     * Reassigns the &quot;standard&quot; output stream.
+     *
+     * &lt;p&gt;First, if there is a security manager, its &lt;code&gt;checkPermission&lt;/code&gt;
+     * method is called with a &lt;code&gt;RuntimePermission(&quot;setIO&quot;)&lt;/code&gt; permission
+     *  to see if it&#39;s ok to reassign the &quot;standard&quot; output stream.
+     *
+     * @param out the new standard output stream
+     *
+     * @throws SecurityException
+     *        if a security manager exists and its
+     *        &lt;code&gt;checkPermission&lt;/code&gt; method doesn&#39;t allow
+     *        reassigning of the standard output stream.
+     *
+     * @see SecurityManager#checkPermission
+     * @see java.lang.RuntimePermission
+     *
+     * @since   JDK1.1
+     */
+    public static void setOut(PrintStream out) {
+        checkIO();
+        setOut0(out);
+    }
+
+    /**
+     * Reassigns the &quot;standard&quot; error output stream.
+     *
+     * &lt;p&gt;First, if there is a security manager, its &lt;code&gt;checkPermission&lt;/code&gt;
+     * method is called with a &lt;code&gt;RuntimePermission(&quot;setIO&quot;)&lt;/code&gt; permission
+     *  to see if it&#39;s ok to reassign the &quot;standard&quot; error output stream.
+     *
+     * @param err the new standard error output stream.
+     *
+     * @throws SecurityException
+     *        if a security manager exists and its
+     *        &lt;code&gt;checkPermission&lt;/code&gt; method doesn&#39;t allow
+     *        reassigning of the standard error output stream.
+     *
+     * @see SecurityManager#checkPermission
+     * @see java.lang.RuntimePermission
+     *
+     * @since   JDK1.1
+     */
+    public static void setErr(PrintStream err) {
+        checkIO();
+        setErr0(err);
+    }
+
+    private static volatile Console cons = null;
+    /**
+     * Returns the unique {@link java.io.Console Console} object associated
+     * with the current Java virtual machine, if any.
+     *
+     * @return  The system console, if any, otherwise &lt;tt&gt;null&lt;/tt&gt;.
+     *
+     * @since   1.6
+     */
+     public static Console console() {
+         if (cons == null) {
+             synchronized (System.class) {
+                 cons = sun.misc.SharedSecrets.getJavaIOAccess().console();
+             }
+         }
+         return cons;
+     }
+
+    /**
+     * Returns the channel inherited from the entity that created this
+     * Java virtual machine.
+     *
+     * &lt;p&gt; This method returns the channel obtained by invoking the
+     * {@link java.nio.channels.spi.SelectorProvider#inheritedChannel
+     * inheritedChannel} method of the system-wide default
+     * {@link java.nio.channels.spi.SelectorProvider} object. &lt;/p&gt;
+     *
+     * &lt;p&gt; In addition to the network-oriented channels described in
+     * {@link java.nio.channels.spi.SelectorProvider#inheritedChannel
+     * inheritedChannel}, this method may return other kinds of
+     * channels in the future.
+     *
+     * @return  The inherited channel, if any, otherwise &lt;tt&gt;null&lt;/tt&gt;.
+     *
+     * @throws  IOException
+     *          If an I/O error occurs
+     *
+     * @throws  SecurityException
+     *          If a security manager is present and it does not
+     *          permit access to the channel.
+     *
+     * @since 1.5
+     */
+    public static Channel inheritedChannel() throws IOException {
+        return SelectorProvider.provider().inheritedChannel();
+    }
+
+    private static void checkIO() {
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPermission(new RuntimePermission(&quot;setIO&quot;));
+        }
+    }
+
+    private static native void setIn0(InputStream in);
+    private static native void setOut0(PrintStream out);
+    private static native void setErr0(PrintStream err);
+
+    /**
+     * Sets the System security.
+     *
+     * &lt;p&gt; If there is a security manager already installed, this method first
+     * calls the security manager&#39;s &lt;code&gt;checkPermission&lt;/code&gt; method
+     * with a &lt;code&gt;RuntimePermission(&quot;setSecurityManager&quot;)&lt;/code&gt;
+     * permission to ensure it&#39;s ok to replace the existing
+     * security manager.
+     * This may result in throwing a &lt;code&gt;SecurityException&lt;/code&gt;.
+     *
+     * &lt;p&gt; Otherwise, the argument is established as the current
+     * security manager. If the argument is &lt;code&gt;null&lt;/code&gt; and no
+     * security manager has been established, then no action is taken and
+     * the method simply returns.
+     *
+     * @param      s   the security manager.
+     * @exception  SecurityException  if the security manager has already
+     *             been set and its &lt;code&gt;checkPermission&lt;/code&gt; method
+     *             doesn&#39;t allow it to be replaced.
+     * @see #getSecurityManager
+     * @see SecurityManager#checkPermission
+     * @see java.lang.RuntimePermission
+     */
+    public static
+    void setSecurityManager(final SecurityManager s) {
+        try {
+            s.checkPackageAccess(&quot;java.lang&quot;);
+        } catch (Exception e) {
+            // no-op
+        }
+        setSecurityManager0(s);
+    }
+
+    private static synchronized
+    void setSecurityManager0(final SecurityManager s) {
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            // ask the currently installed security manager if we
+            // can replace it.
+            sm.checkPermission(new RuntimePermission
+                                     (&quot;setSecurityManager&quot;));
+        }
+
+        if ((s != null) &amp;&amp; (s.getClass().getClassLoader() != null)) {
+            // New security manager class is not on bootstrap classpath.
+            // Cause policy to get initialized before we install the new
+            // security manager, in order to prevent infinite loops when
+            // trying to initialize the policy (which usually involves
+            // accessing some security and/or system properties, which in turn
+            // calls the installed security manager&#39;s checkPermission method
+            // which will loop infinitely if there is a non-system class
+            // (in this case: the new security manager class) on the stack).
+            AccessController.doPrivileged(new PrivilegedAction&lt;Object&gt;() {
+                public Object run() {
+                    s.getClass().getProtectionDomain().implies
+                        (SecurityConstants.ALL_PERMISSION);
+                    return null;
+                }
+            });
+        }
+
+        security = s;
+    }
+
+    /**
+     * Gets the system security interface.
+     *
+     * @return  if a security manager has already been established for the
+     *          current application, then that security manager is returned;
+     *          otherwise, &lt;code&gt;null&lt;/code&gt; is returned.
+     * @see     #setSecurityManager
+     */
+    public static SecurityManager getSecurityManager() {
+        return security;
+    }
+
+    /**
+     * Returns the current time in milliseconds.  Note that
+     * while the unit of time of the return value is a millisecond,
+     * the granularity of the value depends on the underlying
+     * operating system and may be larger.  For example, many
+     * operating systems measure time in units of tens of
+     * milliseconds.
+     *
+     * &lt;p&gt; See the description of the class &lt;code&gt;Date&lt;/code&gt; for
+     * a discussion of slight discrepancies that may arise between
+     * &quot;computer time&quot; and coordinated universal time (UTC).
+     *
+     * @return  the difference, measured in milliseconds, between
+     *          the current time and midnight, January 1, 1970 UTC.
+     * @see     java.util.Date
+     */
+    public static native long currentTimeMillis();
+
+    /**
+     * Returns the current value of the running Java Virtual Machine&#39;s
+     * high-resolution time source, in nanoseconds.
+     *
+     * &lt;p&gt;This method can only be used to measure elapsed time and is
+     * not related to any other notion of system or wall-clock time.
+     * The value returned represents nanoseconds since some fixed but
+     * arbitrary &lt;i&gt;origin&lt;/i&gt; time (perhaps in the future, so values
+     * may be negative).  The same origin is used by all invocations of
+     * this method in an instance of a Java virtual machine; other
+     * virtual machine instances are likely to use a different origin.
+     *
+     * &lt;p&gt;This method provides nanosecond precision, but not necessarily
+     * nanosecond resolution (that is, how frequently the value changes)
+     * - no guarantees are made except that the resolution is at least as
+     * good as that of {@link #currentTimeMillis()}.
+     *
+     * &lt;p&gt;Differences in successive calls that span greater than
+     * approximately 292 years (2&lt;sup&gt;63&lt;/sup&gt; nanoseconds) will not
+     * correctly compute elapsed time due to numerical overflow.
+     *
+     * &lt;p&gt;The values returned by this method become meaningful only when
+     * the difference between two such values, obtained within the same
+     * instance of a Java virtual machine, is computed.
+     *
+     * &lt;p&gt; For example, to measure how long some code takes to execute:
+     *  &lt;pre&gt; {@code
+     * long startTime = System.nanoTime();
+     * // ... the code being measured ...
+     * long estimatedTime = System.nanoTime() - startTime;}&lt;/pre&gt;
+     *
+     * &lt;p&gt;To compare two nanoTime values
+     *  &lt;pre&gt; {@code
+     * long t0 = System.nanoTime();
+     * ...
+     * long t1 = System.nanoTime();}&lt;/pre&gt;
+     *
+     * one should use {@code t1 - t0 &lt; 0}, not {@code t1 &lt; t0},
+     * because of the possibility of numerical overflow.
+     *
+     * @return the current value of the running Java Virtual Machine&#39;s
+     *         high-resolution time source, in nanoseconds
+     * @since 1.5
+     */
+    public static native long nanoTime();
+
+    /**
+     * Copies an array from the specified source array, beginning at the
+     * specified position, to the specified position of the destination array.
+     * A subsequence of array components are copied from the source
+     * array referenced by &lt;code&gt;src&lt;/code&gt; to the destination array
+     * referenced by &lt;code&gt;dest&lt;/code&gt;. The number of components copied is
+     * equal to the &lt;code&gt;length&lt;/code&gt; argument. The components at
+     * positions &lt;code&gt;srcPos&lt;/code&gt; through
+     * &lt;code&gt;srcPos+length-1&lt;/code&gt; in the source array are copied into
+     * positions &lt;code&gt;destPos&lt;/code&gt; through
+     * &lt;code&gt;destPos+length-1&lt;/code&gt;, respectively, of the destination
+     * array.
+     * &lt;p&gt;
+     * If the &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;dest&lt;/code&gt; arguments refer to the
+     * same array object, then the copying is performed as if the
+     * components at positions &lt;code&gt;srcPos&lt;/code&gt; through
+     * &lt;code&gt;srcPos+length-1&lt;/code&gt; were first copied to a temporary
+     * array with &lt;code&gt;length&lt;/code&gt; components and then the contents of
+     * the temporary array were copied into positions
+     * &lt;code&gt;destPos&lt;/code&gt; through &lt;code&gt;destPos+length-1&lt;/code&gt; of the
+     * destination array.
+     * &lt;p&gt;
+     * If &lt;code&gt;dest&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;, then a
+     * &lt;code&gt;NullPointerException&lt;/code&gt; is thrown.
+     * &lt;p&gt;
+     * If &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;, then a
+     * &lt;code&gt;NullPointerException&lt;/code&gt; is thrown and the destination
+     * array is not modified.
+     * &lt;p&gt;
+     * Otherwise, if any of the following is true, an
+     * &lt;code&gt;ArrayStoreException&lt;/code&gt; is thrown and the destination is
+     * not modified:
+     * &lt;ul&gt;
+     * &lt;li&gt;The &lt;code&gt;src&lt;/code&gt; argument refers to an object that is not an
+     *     array.
+     * &lt;li&gt;The &lt;code&gt;dest&lt;/code&gt; argument refers to an object that is not an
+     *     array.
+     * &lt;li&gt;The &lt;code&gt;src&lt;/code&gt; argument and &lt;code&gt;dest&lt;/code&gt; argument refer
+     *     to arrays whose component types are different primitive types.
+     * &lt;li&gt;The &lt;code&gt;src&lt;/code&gt; argument refers to an array with a primitive
+     *    component type and the &lt;code&gt;dest&lt;/code&gt; argument refers to an array
+     *     with a reference component type.
+     * &lt;li&gt;The &lt;code&gt;src&lt;/code&gt; argument refers to an array with a reference
+     *    component type and the &lt;code&gt;dest&lt;/code&gt; argument refers to an array
+     *     with a primitive component type.
+     * &lt;/ul&gt;
+     * &lt;p&gt;
+     * Otherwise, if any of the following is true, an
+     * &lt;code&gt;IndexOutOfBoundsException&lt;/code&gt; is
+     * thrown and the destination is not modified:
+     * &lt;ul&gt;
+     * &lt;li&gt;The &lt;code&gt;srcPos&lt;/code&gt; argument is negative.
+     * &lt;li&gt;The &lt;code&gt;destPos&lt;/code&gt; argument is negative.
+     * &lt;li&gt;The &lt;code&gt;length&lt;/code&gt; argument is negative.
+     * &lt;li&gt;&lt;code&gt;srcPos+length&lt;/code&gt; is greater than
+     *     &lt;code&gt;src.length&lt;/code&gt;, the length of the source array.
+     * &lt;li&gt;&lt;code&gt;destPos+length&lt;/code&gt; is greater than
+     *     &lt;code&gt;dest.length&lt;/code&gt;, the length of the destination array.
+     * &lt;/ul&gt;
+     * &lt;p&gt;
+     * Otherwise, if any actual component of the source array from
+     * position &lt;code&gt;srcPos&lt;/code&gt; through
+     * &lt;code&gt;srcPos+length-1&lt;/code&gt; cannot be converted to the component
+     * type of the destination array by assignment conversion, an
+     * &lt;code&gt;ArrayStoreException&lt;/code&gt; is thrown. In this case, let
+     * &lt;b&gt;&lt;i&gt;k&lt;/i&gt;&lt;/b&gt; be the smallest nonnegative integer less than
+     * length such that &lt;code&gt;src[srcPos+&lt;/code&gt;&lt;i&gt;k&lt;/i&gt;&lt;code&gt;]&lt;/code&gt;
+     * cannot be converted to the component type of the destination
+     * array; when the exception is thrown, source array components from
+     * positions &lt;code&gt;srcPos&lt;/code&gt; through
+     * &lt;code&gt;srcPos+&lt;/code&gt;&lt;i&gt;k&lt;/i&gt;&lt;code&gt;-1&lt;/code&gt;
+     * will already have been copied to destination array positions
+     * &lt;code&gt;destPos&lt;/code&gt; through
+     * &lt;code&gt;destPos+&lt;/code&gt;&lt;i&gt;k&lt;/I&gt;&lt;code&gt;-1&lt;/code&gt; and no other
+     * positions of the destination array will have been modified.
+     * (Because of the restrictions already itemized, this
+     * paragraph effectively applies only to the situation where both
+     * arrays have component types that are reference types.)
+     *
+     * @param      src      the source array.
+     * @param      srcPos   starting position in the source array.
+     * @param      dest     the destination array.
+     * @param      destPos  starting position in the destination data.
+     * @param      length   the number of array elements to be copied.
+     * @exception  IndexOutOfBoundsException  if copying would cause
+     *               access of data outside array bounds.
+     * @exception  ArrayStoreException  if an element in the &lt;code&gt;src&lt;/code&gt;
+     *               array could not be stored into the &lt;code&gt;dest&lt;/code&gt; array
+     *               because of a type mismatch.
+     * @exception  NullPointerException if either &lt;code&gt;src&lt;/code&gt; or
+     *               &lt;code&gt;dest&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+     */
+    public static native void arraycopy(Object src,  int  srcPos,
+                                        Object dest, int destPos,
+                                        int length);
+
+    /**
+     * Returns the same hash code for the given object as
+     * would be returned by the default method hashCode(),
+     * whether or not the given object&#39;s class overrides
+     * hashCode().
+     * The hash code for the null reference is zero.
+     *
+     * @param x object for which the hashCode is to be calculated
+     * @return  the hashCode
+     * @since   JDK1.1
+     */
+    public static native int identityHashCode(Object x);
+
+    /**
+     * System properties. The following properties are guaranteed to be defined:
+     * &lt;dl&gt;
+     * &lt;dt&gt;java.version         &lt;dd&gt;Java version number
+     * &lt;dt&gt;java.vendor          &lt;dd&gt;Java vendor specific string
+     * &lt;dt&gt;java.vendor.url      &lt;dd&gt;Java vendor URL
+     * &lt;dt&gt;java.home            &lt;dd&gt;Java installation directory
+     * &lt;dt&gt;java.class.version   &lt;dd&gt;Java class version number
+     * &lt;dt&gt;java.class.path      &lt;dd&gt;Java classpath
+     * &lt;dt&gt;os.name              &lt;dd&gt;Operating System Name
+     * &lt;dt&gt;os.arch              &lt;dd&gt;Operating System Architecture
+     * &lt;dt&gt;os.version           &lt;dd&gt;Operating System Version
+     * &lt;dt&gt;file.separator       &lt;dd&gt;File separator (&quot;/&quot; on Unix)
+     * &lt;dt&gt;path.separator       &lt;dd&gt;Path separator (&quot;:&quot; on Unix)
+     * &lt;dt&gt;line.separator       &lt;dd&gt;Line separator (&quot;\n&quot; on Unix)
+     * &lt;dt&gt;user.name            &lt;dd&gt;User account name
+     * &lt;dt&gt;user.home            &lt;dd&gt;User home directory
+     * &lt;dt&gt;user.dir             &lt;dd&gt;User&#39;s current working directory
+     * &lt;/dl&gt;
+     */
+
+    private static Properties props;
+    private static native Properties initProperties(Properties props);
+
+    /**
+     * Determines the current system properties.
+     * &lt;p&gt;
+     * First, if there is a security manager, its
+     * &lt;code&gt;checkPropertiesAccess&lt;/code&gt; method is called with no
+     * arguments. This may result in a security exception.
+     * &lt;p&gt;
+     * The current set of system properties for use by the
+     * {@link #getProperty(String)} method is returned as a
+     * &lt;code&gt;Properties&lt;/code&gt; object. If there is no current set of
+     * system properties, a set of system properties is first created and
+     * initialized. This set of system properties always includes values
+     * for the following keys:
+     * &lt;table summary=&quot;Shows property keys and associated values&quot;&gt;
+     * &lt;tr&gt;&lt;th&gt;Key&lt;/th&gt;
+     *     &lt;th&gt;Description of Associated Value&lt;/th&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.version&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Runtime Environment version&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.vendor&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Runtime Environment vendor&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.vendor.url&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java vendor URL&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.home&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java installation directory&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.vm.specification.version&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Virtual Machine specification version&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.vm.specification.vendor&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Virtual Machine specification vendor&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.vm.specification.name&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Virtual Machine specification name&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.vm.version&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Virtual Machine implementation version&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.vm.vendor&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Virtual Machine implementation vendor&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.vm.name&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Virtual Machine implementation name&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.specification.version&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Runtime Environment specification  version&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.specification.vendor&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Runtime Environment specification  vendor&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.specification.name&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java Runtime Environment specification  name&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.class.version&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java class format version number&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.class.path&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Java class path&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.library.path&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;List of paths to search when loading libraries&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.io.tmpdir&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Default temp file path&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.compiler&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Name of JIT compiler to use&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;java.ext.dirs&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Path of extension directory or directories
+     *         &lt;b&gt;Deprecated.&lt;/b&gt; &lt;i&gt;This property, and the mechanism
+     *            which implements it, may be removed in a future
+     *            release.&lt;/i&gt; &lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;os.name&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Operating system name&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;os.arch&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Operating system architecture&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;os.version&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Operating system version&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;file.separator&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;File separator (&quot;/&quot; on UNIX)&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;path.separator&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Path separator (&quot;:&quot; on UNIX)&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;line.separator&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;Line separator (&quot;\n&quot; on UNIX)&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;user.name&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;User&#39;s account name&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;user.home&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;User&#39;s home directory&lt;/td&gt;&lt;/tr&gt;
+     * &lt;tr&gt;&lt;td&gt;&lt;code&gt;user.dir&lt;/code&gt;&lt;/td&gt;
+     *     &lt;td&gt;User&#39;s current working directory&lt;/td&gt;&lt;/tr&gt;
+     * &lt;/table&gt;
+     * &lt;p&gt;
+     * Multiple paths in a system property value are separated by the path
+     * separator character of the platform.
+     * &lt;p&gt;
+     * Note that even if the security manager does not permit the
+     * &lt;code&gt;getProperties&lt;/code&gt; operation, it may choose to permit the
+     * {@link #getProperty(String)} operation.
+     *
+     * @return     the system properties
+     * @exception  SecurityException  if a security manager exists and its
+     *             &lt;code&gt;checkPropertiesAccess&lt;/code&gt; method doesn&#39;t allow access
+     *              to the system properties.
+     * @see        #setProperties
+     * @see        java.lang.SecurityException
+     * @see        java.lang.SecurityManager#checkPropertiesAccess()
+     * @see        java.util.Properties
+     */
+    public static Properties getProperties() {
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPropertiesAccess();
+        }
+
+        return props;
+    }
+
+    /**
+     * Returns the system-dependent line separator string.  It always
+     * returns the same value - the initial value of the {@linkplain
+     * #getProperty(String) system property} {@code line.separator}.
+     *
+     * &lt;p&gt;On UNIX systems, it returns {@code &quot;\n&quot;}; on Microsoft
+     * Windows systems it returns {@code &quot;\r\n&quot;}.
+     *
+     * @return the system-dependent line separator string
+     * @since 1.7
+     */
+    public static String lineSeparator() {
+        return lineSeparator;
+    }
+
+    private static String lineSeparator;
+
+    /**
+     * Sets the system properties to the &lt;code&gt;Properties&lt;/code&gt;
+     * argument.
+     * &lt;p&gt;
+     * First, if there is a security manager, its
+     * &lt;code&gt;checkPropertiesAccess&lt;/code&gt; method is called with no
+     * arguments. This may result in a security exception.
+     * &lt;p&gt;
+     * The argument becomes the current set of system properties for use
+     * by the {@link #getProperty(String)} method. If the argument is
+     * &lt;code&gt;null&lt;/code&gt;, then the current set of system properties is
+     * forgotten.
+     *
+     * @param      props   the new system properties.
+     * @exception  SecurityException  if a security manager exists and its
+     *             &lt;code&gt;checkPropertiesAccess&lt;/code&gt; method doesn&#39;t allow access
+     *              to the system properties.
+     * @see        #getProperties
+     * @see        java.util.Properties
+     * @see        java.lang.SecurityException
+     * @see        java.lang.SecurityManager#checkPropertiesAccess()
+     */
+    public static void setProperties(Properties props) {
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPropertiesAccess();
+        }
+        if (props == null) {
+            props = new Properties();
+            initProperties(props);
+        }
+        System.props = props;
+    }
+
+    /**
+     * Gets the system property indicated by the specified key.
+     * &lt;p&gt;
+     * First, if there is a security manager, its
+     * &lt;code&gt;checkPropertyAccess&lt;/code&gt; method is called with the key as
+     * its argument. This may result in a SecurityException.
+     * &lt;p&gt;
+     * If there is no current set of system properties, a set of system
+     * properties is first created and initialized in the same manner as
+     * for the &lt;code&gt;getProperties&lt;/code&gt; method.
+     *
+     * @param      key   the name of the system property.
+     * @return     the string value of the system property,
+     *             or &lt;code&gt;null&lt;/code&gt; if there is no property with that key.
+     *
+     * @exception  SecurityException  if a security manager exists and its
+     *             &lt;code&gt;checkPropertyAccess&lt;/code&gt; method doesn&#39;t allow
+     *              access to the specified system property.
+     * @exception  NullPointerException if &lt;code&gt;key&lt;/code&gt; is
+     *             &lt;code&gt;null&lt;/code&gt;.
+     * @exception  IllegalArgumentException if &lt;code&gt;key&lt;/code&gt; is empty.
+     * @see        #setProperty
+     * @see        java.lang.SecurityException
+     * @see        java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
+     * @see        java.lang.System#getProperties()
+     */
+    public static String getProperty(String key) {
+        checkKey(key);
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPropertyAccess(key);
+        }
+
+        return props.getProperty(key);
+    }
+
+    /**
+     * Gets the system property indicated by the specified key.
+     * &lt;p&gt;
+     * First, if there is a security manager, its
+     * &lt;code&gt;checkPropertyAccess&lt;/code&gt; method is called with the
+     * &lt;code&gt;key&lt;/code&gt; as its argument.
+     * &lt;p&gt;
+     * If there is no current set of system properties, a set of system
+     * properties is first created and initialized in the same manner as
+     * for the &lt;code&gt;getProperties&lt;/code&gt; method.
+     *
+     * @param      key   the name of the system property.
+     * @param      def   a default value.
+     * @return     the string value of the system property,
+     *             or the default value if there is no property with that key.
+     *
+     * @exception  SecurityException  if a security manager exists and its
+     *             &lt;code&gt;checkPropertyAccess&lt;/code&gt; method doesn&#39;t allow
+     *             access to the specified system property.
+     * @exception  NullPointerException if &lt;code&gt;key&lt;/code&gt; is
+     *             &lt;code&gt;null&lt;/code&gt;.
+     * @exception  IllegalArgumentException if &lt;code&gt;key&lt;/code&gt; is empty.
+     * @see        #setProperty
+     * @see        java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
+     * @see        java.lang.System#getProperties()
+     */
+    public static String getProperty(String key, String def) {
+        checkKey(key);
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPropertyAccess(key);
+        }
+
+        return props.getProperty(key, def);
+    }
+
+    /**
+     * Sets the system property indicated by the specified key.
+     * &lt;p&gt;
+     * First, if a security manager exists, its
+     * &lt;code&gt;SecurityManager.checkPermission&lt;/code&gt; method
+     * is called with a &lt;code&gt;PropertyPermission(key, &quot;write&quot;)&lt;/code&gt;
+     * permission. This may result in a SecurityException being thrown.
+     * If no exception is thrown, the specified property is set to the given
+     * value.
+     * &lt;p&gt;
+     *
+     * @param      key   the name of the system property.
+     * @param      value the value of the system property.
+     * @return     the previous value of the system property,
+     *             or &lt;code&gt;null&lt;/code&gt; if it did not have one.
+     *
+     * @exception  SecurityException  if a security manager exists and its
+     *             &lt;code&gt;checkPermission&lt;/code&gt; method doesn&#39;t allow
+     *             setting of the specified property.
+     * @exception  NullPointerException if &lt;code&gt;key&lt;/code&gt; or
+     *             &lt;code&gt;value&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+     * @exception  IllegalArgumentException if &lt;code&gt;key&lt;/code&gt; is empty.
+     * @see        #getProperty
+     * @see        java.lang.System#getProperty(java.lang.String)
+     * @see        java.lang.System#getProperty(java.lang.String, java.lang.String)
+     * @see        java.util.PropertyPermission
+     * @see        SecurityManager#checkPermission
+     * @since      1.2
+     */
+    public static String setProperty(String key, String value) {
+        checkKey(key);
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPermission(new PropertyPermission(key,
+                SecurityConstants.PROPERTY_WRITE_ACTION));
+        }
+
+        return (String) props.setProperty(key, value);
+    }
+
+    /**
+     * Removes the system property indicated by the specified key.
+     * &lt;p&gt;
+     * First, if a security manager exists, its
+     * &lt;code&gt;SecurityManager.checkPermission&lt;/code&gt; method
+     * is called with a &lt;code&gt;PropertyPermission(key, &quot;write&quot;)&lt;/code&gt;
+     * permission. This may result in a SecurityException being thrown.
+     * If no exception is thrown, the specified property is removed.
+     * &lt;p&gt;
+     *
+     * @param      key   the name of the system property to be removed.
+     * @return     the previous string value of the system property,
+     *             or &lt;code&gt;null&lt;/code&gt; if there was no property with that key.
+     *
+     * @exception  SecurityException  if a security manager exists and its
+     *             &lt;code&gt;checkPropertyAccess&lt;/code&gt; method doesn&#39;t allow
+     *              access to the specified system property.
+     * @exception  NullPointerException if &lt;code&gt;key&lt;/code&gt; is
+     *             &lt;code&gt;null&lt;/code&gt;.
+     * @exception  IllegalArgumentException if &lt;code&gt;key&lt;/code&gt; is empty.
+     * @see        #getProperty
+     * @see        #setProperty
+     * @see        java.util.Properties
+     * @see        java.lang.SecurityException
+     * @see        java.lang.SecurityManager#checkPropertiesAccess()
+     * @since 1.5
+     */
+    public static String clearProperty(String key) {
+        checkKey(key);
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPermission(new PropertyPermission(key, &quot;write&quot;));
+        }
+
+        return (String) props.remove(key);
+    }
+
+    private static void checkKey(String key) {
+        if (key == null) {
+            throw new NullPointerException(&quot;key can&#39;t be null&quot;);
+        }
+        if (key.equals(&quot;&quot;)) {
+            throw new IllegalArgumentException(&quot;key can&#39;t be empty&quot;);
+        }
+    }
+
+    /**
+     * Gets the value of the specified environment variable. An
+     * environment variable is a system-dependent external named
+     * value.
+     *
+     * &lt;p&gt;If a security manager exists, its
+     * {@link SecurityManager#checkPermission checkPermission}
+     * method is called with a
+     * &lt;code&gt;{@link RuntimePermission}(&quot;getenv.&quot;+name)&lt;/code&gt;
+     * permission.  This may result in a {@link SecurityException}
+     * being thrown.  If no exception is thrown the value of the
+     * variable &lt;code&gt;name&lt;/code&gt; is returned.
+     *
+     * &lt;p&gt;&lt;a name=&quot;EnvironmentVSSystemProperties&quot;&gt;&lt;i&gt;System
+     * properties&lt;/i&gt; and &lt;i&gt;environment variables&lt;/i&gt;&lt;/a&gt; are both
+     * conceptually mappings between names and values.  Both
+     * mechanisms can be used to pass user-defined information to a
+     * Java process.  Environment variables have a more global effect,
+     * because they are visible to all descendants of the process
+     * which defines them, not just the immediate Java subprocess.
+     * They can have subtly different semantics, such as case
+     * insensitivity, on different operating systems.  For these
+     * reasons, environment variables are more likely to have
+     * unintended side effects.  It is best to use system properties
+     * where possible.  Environment variables should be used when a
+     * global effect is desired, or when an external system interface
+     * requires an environment variable (such as &lt;code&gt;PATH&lt;/code&gt;).
+     *
+     * &lt;p&gt;On UNIX systems the alphabetic case of &lt;code&gt;name&lt;/code&gt; is
+     * typically significant, while on Microsoft Windows systems it is
+     * typically not.  For example, the expression
+     * &lt;code&gt;System.getenv(&quot;FOO&quot;).equals(System.getenv(&quot;foo&quot;))&lt;/code&gt;
+     * is likely to be true on Microsoft Windows.
+     *
+     * @param  name the name of the environment variable
+     * @return the string value of the variable, or &lt;code&gt;null&lt;/code&gt;
+     *         if the variable is not defined in the system environment
+     * @throws NullPointerException if &lt;code&gt;name&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;
+     * @throws SecurityException
+     *         if a security manager exists and its
+     *         {@link SecurityManager#checkPermission checkPermission}
+     *         method doesn&#39;t allow access to the environment variable
+     *         &lt;code&gt;name&lt;/code&gt;
+     * @see    #getenv()
+     * @see    ProcessBuilder#environment()
+     */
+    public static String getenv(String name) {
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPermission(new RuntimePermission(&quot;getenv.&quot;+name));
+        }
+
+        return ProcessEnvironment.getenv(name);
+    }
+
+
+    /**
+     * Returns an unmodifiable string map view of the current system environment.
+     * The environment is a system-dependent mapping from names to
+     * values which is passed from parent to child processes.
+     *
+     * &lt;p&gt;If the system does not support environment variables, an
+     * empty map is returned.
+     *
+     * &lt;p&gt;The returned map will never contain null keys or values.
+     * Attempting to query the presence of a null key or value will
+     * throw a {@link NullPointerException}.  Attempting to query
+     * the presence of a key or value which is not of type
+     * {@link String} will throw a {@link ClassCastException}.
+     *
+     * &lt;p&gt;The returned map and its collection views may not obey the
+     * general contract of the {@link Object#equals} and
+     * {@link Object#hashCode} methods.
+     *
+     * &lt;p&gt;The returned map is typically case-sensitive on all platforms.
+     *
+     * &lt;p&gt;If a security manager exists, its
+     * {@link SecurityManager#checkPermission checkPermission}
+     * method is called with a
+     * &lt;code&gt;{@link RuntimePermission}(&quot;getenv.*&quot;)&lt;/code&gt;
+     * permission.  This may result in a {@link SecurityException} being
+     * thrown.
+     *
+     * &lt;p&gt;When passing information to a Java subprocess,
+     * &lt;a href=#EnvironmentVSSystemProperties&gt;system properties&lt;/a&gt;
+     * are generally preferred over environment variables.
+     *
+     * @return the environment as a map of variable names to values
+     * @throws SecurityException
+     *         if a security manager exists and its
+     *         {@link SecurityManager#checkPermission checkPermission}
+     *         method doesn&#39;t allow access to the process environment
+     * @see    #getenv(String)
+     * @see    ProcessBuilder#environment()
+     * @since  1.5
+     */
+    public static java.util.Map&lt;String,String&gt; getenv() {
+        SecurityManager sm = getSecurityManager();
+        if (sm != null) {
+            sm.checkPermission(new RuntimePermission(&quot;getenv.*&quot;));
+        }
+
+        return ProcessEnvironment.getenv();
+    }
+
+    /**
+     * Terminates the currently running Java Virtual Machine. The
+     * argument serves as a status code; by convention, a nonzero status
+     * code indicates abnormal termination.
+     * &lt;p&gt;
+     * This method calls the &lt;code&gt;exit&lt;/code&gt; method in class
+     * &lt;code&gt;Runtime&lt;/code&gt;. This method never returns normally.
+     * &lt;p&gt;
+     * The call &lt;code&gt;System.exit(n)&lt;/code&gt; is effectively equivalent to
+     * the call:
+     * &lt;blockquote&gt;&lt;pre&gt;
+     * Runtime.getRuntime().exit(n)
+     * &lt;/pre&gt;&lt;/blockquote&gt;
+     *
+     * @param      status   exit status.
+     * @throws  SecurityException
+     *        if a security manager exists and its &lt;code&gt;checkExit&lt;/code&gt;
+     *        method doesn&#39;t allow exit with the specified status.
+     * @see        java.lang.Runtime#exit(int)
+     */
+    public static void exit(int status) {
+        Runtime.getRuntime().exit(status);
+    }
+
+    /**
+     * Runs the garbage collector.
+     * &lt;p&gt;
+     * Calling the &lt;code&gt;gc&lt;/code&gt; method suggests that the Java Virtual
+     * Machine expend effort toward recycling unused objects in order to
+     * make the memory they currently occupy available for quick reuse.
+     * When control returns from the method call, the Java Virtual
+     * Machine has made a best effort to reclaim space from all discarded
+     * objects.
+     * &lt;p&gt;
+     * The call &lt;code&gt;System.gc()&lt;/code&gt; is effectively equivalent to the
+     * call:
+     * &lt;blockquote&gt;&lt;pre&gt;
+     * Runtime.getRuntime().gc()
+     * &lt;/pre&gt;&lt;/blockquote&gt;
+     *
+     * @see     java.lang.Runtime#gc()
+     */
+    public static void gc() {
+        Runtime.getRuntime().gc();
+    }
+
+    /**
+     * Runs the finalization methods of any objects pending finalization.
+     * &lt;p&gt;
+     * Calling this method suggests that the Java Virtual Machine expend
+     * effort toward running the &lt;code&gt;finalize&lt;/code&gt; methods of objects
+     * that have been found to be discarded but whose &lt;code&gt;finalize&lt;/code&gt;
+     * methods have not yet been run. When control returns from the
+     * method call, the Java Virtual Machine has made a best effort to
+     * complete all outstanding finalizations.
+     * &lt;p&gt;
+     * The call &lt;code&gt;System.runFinalization()&lt;/code&gt; is effectively
+     * equivalent to the call:
+     * &lt;blockquote&gt;&lt;pre&gt;
+     * Runtime.getRuntime().runFinalization()
+     * &lt;/pre&gt;&lt;/blockquote&gt;
+     *
+     * @see     java.lang.Runtime#runFinalization()
+     */
+    public static void runFinalization() {
+        Runtime.getRuntime().runFinalization();
+    }
+
+    /**
+     * Enable or disable finalization on exit; doing so specifies that the
+     * finalizers of all objects that have finalizers that have not yet been
+     * automatically invoked are to be run before the Java runtime exits.
+     * By default, finalization on exit is disabled.
+     *
+     * &lt;p&gt;If there is a security manager,
+     * its &lt;code&gt;checkExit&lt;/code&gt; method is first called
+     * with 0 as its argument to ensure the exit is allowed.
+     * This could result in a SecurityException.
+     *
+     * @deprecated  This method is inherently unsafe.  It may result in
+     *      finalizers being called on live objects while other threads are
+     *      concurrently manipulating those objects, resulting in erratic
+     *      behavior or deadlock.
+     * @param value indicating enabling or disabling of finalization
+     * @throws  SecurityException
+     *        if a security manager exists and its &lt;code&gt;checkExit&lt;/code&gt;
+     *        method doesn&#39;t allow the exit.
+     *
+     * @see     java.lang.Runtime#exit(int)
+     * @see     java.lang.Runtime#gc()
+     * @see     java.lang.SecurityManager#checkExit(int)
+     * @since   JDK1.1
+     */
+    @Deprecated
+    public static void runFinalizersOnExit(boolean value) {
+        Runtime.runFinalizersOnExit(value);
+    }
+
+    /**
+     * Loads the native library specified by the filename argument.  The filename
+     * argument must be an absolute path name.
+     *
+     * If the filename argument, when stripped of any platform-specific library
+     * prefix, path, and file extension, indicates a library whose name is,
+     * for example, L, and a native library called L is statically linked
+     * with the VM, then the JNI_OnLoad_L function exported by the library
+     * is invoked rather than attempting to load a dynamic library.
+     * A filename matching the argument does not have to exist in the
+     * file system.
+     * See the JNI Specification for more details.
+     *
+     * Otherwise, the filename argument is mapped to a native library image in
+     * an implementation-dependent manner.
+     *
+     * &lt;p&gt;
+     * The call &lt;code&gt;System.load(name)&lt;/code&gt; is effectively equivalent
+     * to the call:
+     * &lt;blockquote&gt;&lt;pre&gt;
+     * Runtime.getRuntime().load(name)
+     * &lt;/pre&gt;&lt;/blockquote&gt;
+     *
+     * @param      filename   the file to load.
+     * @exception  SecurityException  if a security manager exists and its
+     *             &lt;code&gt;checkLink&lt;/code&gt; method doesn&#39;t allow
+     *             loading of the specified dynamic library
+     * @exception  UnsatisfiedLinkError  if either the filename is not an
+     *             absolute path name, the native library is not statically
+     *             linked with the VM, or the library cannot be mapped to
+     *             a native library image by the host system.
+     * @exception  NullPointerException if &lt;code&gt;filename&lt;/code&gt; is
+     *             &lt;code&gt;null&lt;/code&gt;
+     * @see        java.lang.Runtime#load(java.lang.String)
+     * @see        java.lang.SecurityManager#checkLink(java.lang.String)
+     */
+    @CallerSensitive
+    public static void load(String filename) {
+        Runtime.getRuntime().load0(Reflection.getCallerClass(), filename);
+    }
+
+    /**
+     * Loads the native library specified by the &lt;code&gt;libname&lt;/code&gt;
+     * argument.  The &lt;code&gt;libname&lt;/code&gt; argument must not contain any platform
+     * specific prefix, file extension or path. If a native library
+     * called &lt;code&gt;libname&lt;/code&gt; is statically linked with the VM, then the
+     * JNI_OnLoad_&lt;code&gt;libname&lt;/code&gt; function exported by the library is invoked.
+     * See the JNI Specification for more details.
+     *
+     * Otherwise, the libname argument is loaded from a system library
+     * location and mapped to a native library image in an implementation-
+     * dependent manner.
+     * &lt;p&gt;
+     * The call &lt;code&gt;System.loadLibrary(name)&lt;/code&gt; is effectively
+     * equivalent to the call
+     * &lt;blockquote&gt;&lt;pre&gt;
+     * Runtime.getRuntime().loadLibrary(name)
+     * &lt;/pre&gt;&lt;/blockquote&gt;
+     *
+     * @param      libname   the name of the library.
+     * @exception  SecurityException  if a security manager exists and its
+     *             &lt;code&gt;checkLink&lt;/code&gt; method doesn&#39;t allow
+     *             loading of the specified dynamic library
+     * @exception  UnsatisfiedLinkError if either the libname argument
+     *             contains a file path, the native library is not statically
+     *             linked with the VM,  or the library cannot be mapped to a
+     *             native library image by the host system.
+     * @exception  NullPointerException if &lt;code&gt;libname&lt;/code&gt; is
+     *             &lt;code&gt;null&lt;/code&gt;
+     * @see        java.lang.Runtime#loadLibrary(java.lang.String)
+     * @see        java.lang.SecurityManager#checkLink(java.lang.String)
+     */
+    @CallerSensitive
+    public static void loadLibrary(String libname) {
+        Runtime.getRuntime().loadLibrary0(Reflection.getCallerClass(), libname);
+    }
+
+    /**
+     * Maps a library name into a platform-specific string representing
+     * a native library.
+     *
+     * @param      libname the name of the library.
+     * @return     a platform-dependent native library name.
+     * @exception  NullPointerException if &lt;code&gt;libname&lt;/code&gt; is
+     *             &lt;code&gt;null&lt;/code&gt;
+     * @see        java.lang.System#loadLibrary(java.lang.String)
+     * @see        java.lang.ClassLoader#findLibrary(java.lang.String)
+     * @since      1.2
+     */
+    public static native String mapLibraryName(String libname);
+
+    /**
+     * Create PrintStream for stdout/err based on encoding.
+     */
+    private static PrintStream newPrintStream(FileOutputStream fos, String enc) {
+       if (enc != null) {
+            try {
+                return new PrintStream(new BufferedOutputStream(fos, 128), true, enc);
+            } catch (UnsupportedEncodingException uee) {}
+        }
+        return new PrintStream(new BufferedOutputStream(fos, 128), true);
+    }
+
+
+    /**
+     * Initialize the system class.  Called after thread initialization.
+     */
+    private static void initializeSystemClass() {
+
+        // VM might invoke JNU_NewStringPlatform() to set those encoding
+        // sensitive properties (user.home, user.name, boot.class.path, etc.)
+        // during &quot;props&quot; initialization, in which it may need access, via
+        // System.getProperty(), to the related system encoding property that
+        // have been initialized (put into &quot;props&quot;) at early stage of the
+        // initialization. So make sure the &quot;props&quot; is available at the
+        // very beginning of the initialization and all system properties to
+        // be put into it directly.
+        props = new Properties();
+        initProperties(props);  // initialized by the VM
+
+        // There are certain system configurations that may be controlled by
+        // VM options such as the maximum amount of direct memory and
+        // Integer cache size used to support the object identity semantics
+        // of autoboxing.  Typically, the library will obtain these values
+        // from the properties set by the VM.  If the properties are for
+        // internal implementation use only, these properties should be
+        // removed from the system properties.
+        //
+        // See java.lang.Integer.IntegerCache and the
+        // sun.misc.VM.saveAndRemoveProperties method for example.
+        //
+        // Save a private copy of the system properties object that
+        // can only be accessed by the internal implementation.  Remove
+        // certain system properties that are not intended for public access.
+        sun.misc.VM.saveAndRemoveProperties(props);
+
+
+        lineSeparator = props.getProperty(&quot;line.separator&quot;);
+        sun.misc.Version.init();
+
+        FileInputStream fdIn = new FileInputStream(FileDescriptor.in);
+        FileOutputStream fdOut = new FileOutputStream(FileDescriptor.out);
+        FileOutputStream fdErr = new FileOutputStream(FileDescriptor.err);
+        setIn0(new BufferedInputStream(fdIn));
+        setOut0(newPrintStream(fdOut, props.getProperty(&quot;sun.stdout.encoding&quot;)));
+        setErr0(newPrintStream(fdErr, props.getProperty(&quot;sun.stderr.encoding&quot;)));
+
+        // Load the zip library now in order to keep java.util.zip.ZipFile
+        // from trying to use itself to load this library later.
+        loadLibrary(&quot;zip&quot;);
+
+        // Setup Java signal handlers for HUP, TERM, and INT (where available).
+        Terminator.setup();
+
+        // Initialize any miscellenous operating system settings that need to be
+        // set for the class libraries. Currently this is no-op everywhere except
+        // for Windows where the process-wide error mode is set before the java.io
+        // classes are used.
+        sun.misc.VM.initializeOSEnvironment();
+
+        // The main thread is not added to its thread group in the same
+        // way as other threads; we must do it ourselves here.
+        Thread current = Thread.currentThread();
+        current.getThreadGroup().add(current);
+
+        // register shared secrets
+        setJavaLangAccess();
+
+        // Subsystems that are invoked during initialization can invoke
+        // sun.misc.VM.isBooted() in order to avoid doing things that should
+        // wait until the application class loader has been set up.
+        // IMPORTANT: Ensure that this remains the last initialization action!
+        sun.misc.VM.booted();
+    }
+
+    private static void setJavaLangAccess() {
+        // Allow privileged classes outside of java.lang
+        sun.misc.SharedSecrets.setJavaLangAccess(new sun.misc.JavaLangAccess(){
+            public sun.reflect.ConstantPool getConstantPool(Class&lt;?&gt; klass) {
+                return klass.getConstantPool();
+            }
+            public boolean casAnnotationType(Class&lt;?&gt; klass, AnnotationType oldType, AnnotationType newType) {
+                return klass.casAnnotationType(oldType, newType);
+            }
+            public AnnotationType getAnnotationType(Class&lt;?&gt; klass) {
+                return klass.getAnnotationType();
+            }
+            public Map&lt;Class&lt;? extends Annotation&gt;, Annotation&gt; getDeclaredAnnotationMap(Class&lt;?&gt; klass) {
+                return klass.getDeclaredAnnotationMap();
+            }
+            public byte[] getRawClassAnnotations(Class&lt;?&gt; klass) {
+                return klass.getRawAnnotations();
+            }
+            public byte[] getRawClassTypeAnnotations(Class&lt;?&gt; klass) {
+                return klass.getRawTypeAnnotations();
+            }
+            public byte[] getRawExecutableTypeAnnotations(Executable executable) {
+                return Class.getExecutableTypeAnnotationBytes(executable);
+            }
+            public &lt;E extends Enum&lt;E&gt;&gt;
+                    E[] getEnumConstantsShared(Class&lt;E&gt; klass) {
+                return klass.getEnumConstantsShared();
+            }
+            public void blockedOn(Thread t, Interruptible b) {
+                t.blockedOn(b);
+            }
+            public void registerShutdownHook(int slot, boolean registerShutdownInProgress, Runnable hook) {
+                Shutdown.add(slot, registerShutdownInProgress, hook);
+            }
+            public int getStackTraceDepth(Throwable t) {
+                return t.getStackTraceDepth();
+            }
+            public StackTraceElement getStackTraceElement(Throwable t, int i) {
+                return t.getStackTraceElement(i);
+            }
+            public String newStringUnsafe(char[] chars) {
+                return new String(chars, true);
+            }
+            public Thread newThreadWithAcc(Runnable target, AccessControlContext acc) {
+                return new Thread(target, acc);
+            }
+            public void invokeFinalize(Object o) throws Throwable {
+                o.finalize();
+            }
+        });
+    }
+}
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci='d73d768ea9e3bd69ab54'
+        data-cs='4b958932671ae1a2ab37b2a112ee945824fd4abd'
+        data-r='gitment_blog'
+        data-o='hsutimes'
+        data-a='hsutimes'
+        data-d=''
+    >留言</div>
+
+
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://user-gold-cdn.xitu.io/2018/8/13/16530d7f26a413c2?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" height=300 width=300></img>
+                    <p>times</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        <dd><a href="https://github.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/9998457/july-time" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">92 <p>文章</p></a></li>
+                    <li><a href="/categories">5 <p>分类</p></a></li>
+                    <li><a href="/tags">115 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            times
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+    <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/java/java.min.js"></script>
+
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134224598-1');
+    </script>
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

@@ -1,0 +1,1496 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>os.py - Time</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hsutimes Obsidian,"> 
+    <meta name="description" content="os.py
+r&amp;quot;&amp;quot;&amp;quot;OS routines for NT or Posix depending on what system we&amp;#39;re on.
+
+This e,"> 
+    <meta name="author" content="times"> 
+    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Time</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://blog.hsutimes.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">os.py</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/文章"><b>「
+                    </b>文章<b> 」</b></a>
+                
+                九月 27, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/09/27/os-py/" title="os.py">os.py</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    41k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    37 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="os-py"><a href="#os-py" class="headerlink" title="os.py"></a>os.py</h1><p><img src="/images/2019/09/27/60524ed0-e0da-11e9-8de7-a719535d5972.png" alt="image.png"></p>
+<pre><code class="python">r&quot;&quot;&quot;OS routines for NT or Posix depending on what system we&#39;re on.
+
+This exports:
+  - all functions from posix or nt, e.g. unlink, stat, etc.
+  - os.path is either posixpath or ntpath
+  - os.name is either &#39;posix&#39; or &#39;nt&#39;
+  - os.curdir is a string representing the current directory (always &#39;.&#39;)
+  - os.pardir is a string representing the parent directory (always &#39;..&#39;)
+  - os.sep is the (or a most common) pathname separator (&#39;/&#39; or &#39;\\&#39;)
+  - os.extsep is the extension separator (always &#39;.&#39;)
+  - os.altsep is the alternate pathname separator (None or &#39;/&#39;)
+  - os.pathsep is the component separator used in $PATH etc
+  - os.linesep is the line separator in text files (&#39;\r&#39; or &#39;\n&#39; or &#39;\r\n&#39;)
+  - os.defpath is the default search path for executables
+  - os.devnull is the file path of the null device (&#39;/dev/null&#39;, etc.)
+
+Programs that import and use &#39;os&#39; stand a better chance of being
+portable between different platforms.  Of course, they must then
+only use functions that are defined by all platforms (e.g., unlink
+and opendir), and leave all pathname manipulation to os.path
+(e.g., split and join).
+&quot;&quot;&quot;
+
+#&#39;
+import abc
+import sys
+import stat as st
+
+_names = sys.builtin_module_names
+
+# Note:  more names are added to __all__ later.
+__all__ = [&quot;altsep&quot;, &quot;curdir&quot;, &quot;pardir&quot;, &quot;sep&quot;, &quot;pathsep&quot;, &quot;linesep&quot;,
+           &quot;defpath&quot;, &quot;name&quot;, &quot;path&quot;, &quot;devnull&quot;, &quot;SEEK_SET&quot;, &quot;SEEK_CUR&quot;,
+           &quot;SEEK_END&quot;, &quot;fsencode&quot;, &quot;fsdecode&quot;, &quot;get_exec_path&quot;, &quot;fdopen&quot;,
+           &quot;popen&quot;, &quot;extsep&quot;]
+
+def _exists(name):
+    return name in globals()
+
+def _get_exports_list(module):
+    try:
+        return list(module.__all__)
+    except AttributeError:
+        return [n for n in dir(module) if n[0] != &#39;_&#39;]
+
+# Any new dependencies of the os module and/or changes in path separator
+# requires updating importlib as well.
+if &#39;posix&#39; in _names:
+    name = &#39;posix&#39;
+    linesep = &#39;\n&#39;
+    from posix import *
+    try:
+        from posix import _exit
+        __all__.append(&#39;_exit&#39;)
+    except ImportError:
+        pass
+    import posixpath as path
+
+    try:
+        from posix import _have_functions
+    except ImportError:
+        pass
+
+    import posix
+    __all__.extend(_get_exports_list(posix))
+    del posix
+
+elif &#39;nt&#39; in _names:
+    name = &#39;nt&#39;
+    linesep = &#39;\r\n&#39;
+    from nt import *
+    try:
+        from nt import _exit
+        __all__.append(&#39;_exit&#39;)
+    except ImportError:
+        pass
+    import ntpath as path
+
+    import nt
+    __all__.extend(_get_exports_list(nt))
+    del nt
+
+    try:
+        from nt import _have_functions
+    except ImportError:
+        pass
+
+else:
+    raise ImportError(&#39;no os specific module found&#39;)
+
+sys.modules[&#39;os.path&#39;] = path
+from os.path import (curdir, pardir, sep, pathsep, defpath, extsep, altsep,
+    devnull)
+
+del _names
+
+
+if _exists(&quot;_have_functions&quot;):
+    _globals = globals()
+    def _add(str, fn):
+        if (fn in _globals) and (str in _have_functions):
+            _set.add(_globals[fn])
+
+    _set = set()
+    _add(&quot;HAVE_FACCESSAT&quot;,  &quot;access&quot;)
+    _add(&quot;HAVE_FCHMODAT&quot;,   &quot;chmod&quot;)
+    _add(&quot;HAVE_FCHOWNAT&quot;,   &quot;chown&quot;)
+    _add(&quot;HAVE_FSTATAT&quot;,    &quot;stat&quot;)
+    _add(&quot;HAVE_FUTIMESAT&quot;,  &quot;utime&quot;)
+    _add(&quot;HAVE_LINKAT&quot;,     &quot;link&quot;)
+    _add(&quot;HAVE_MKDIRAT&quot;,    &quot;mkdir&quot;)
+    _add(&quot;HAVE_MKFIFOAT&quot;,   &quot;mkfifo&quot;)
+    _add(&quot;HAVE_MKNODAT&quot;,    &quot;mknod&quot;)
+    _add(&quot;HAVE_OPENAT&quot;,     &quot;open&quot;)
+    _add(&quot;HAVE_READLINKAT&quot;, &quot;readlink&quot;)
+    _add(&quot;HAVE_RENAMEAT&quot;,   &quot;rename&quot;)
+    _add(&quot;HAVE_SYMLINKAT&quot;,  &quot;symlink&quot;)
+    _add(&quot;HAVE_UNLINKAT&quot;,   &quot;unlink&quot;)
+    _add(&quot;HAVE_UNLINKAT&quot;,   &quot;rmdir&quot;)
+    _add(&quot;HAVE_UTIMENSAT&quot;,  &quot;utime&quot;)
+    supports_dir_fd = _set
+
+    _set = set()
+    _add(&quot;HAVE_FACCESSAT&quot;,  &quot;access&quot;)
+    supports_effective_ids = _set
+
+    _set = set()
+    _add(&quot;HAVE_FCHDIR&quot;,     &quot;chdir&quot;)
+    _add(&quot;HAVE_FCHMOD&quot;,     &quot;chmod&quot;)
+    _add(&quot;HAVE_FCHOWN&quot;,     &quot;chown&quot;)
+    _add(&quot;HAVE_FDOPENDIR&quot;,  &quot;listdir&quot;)
+    _add(&quot;HAVE_FDOPENDIR&quot;,  &quot;scandir&quot;)
+    _add(&quot;HAVE_FEXECVE&quot;,    &quot;execve&quot;)
+    _set.add(stat) # fstat always works
+    _add(&quot;HAVE_FTRUNCATE&quot;,  &quot;truncate&quot;)
+    _add(&quot;HAVE_FUTIMENS&quot;,   &quot;utime&quot;)
+    _add(&quot;HAVE_FUTIMES&quot;,    &quot;utime&quot;)
+    _add(&quot;HAVE_FPATHCONF&quot;,  &quot;pathconf&quot;)
+    if _exists(&quot;statvfs&quot;) and _exists(&quot;fstatvfs&quot;): # mac os x10.3
+        _add(&quot;HAVE_FSTATVFS&quot;, &quot;statvfs&quot;)
+    supports_fd = _set
+
+    _set = set()
+    _add(&quot;HAVE_FACCESSAT&quot;,  &quot;access&quot;)
+    # Some platforms don&#39;t support lchmod().  Often the function exists
+    # anyway, as a stub that always returns ENOSUP or perhaps EOPNOTSUPP.
+    # (No, I don&#39;t know why that&#39;s a good design.)  ./configure will detect
+    # this and reject it--so HAVE_LCHMOD still won&#39;t be defined on such
+    # platforms.  This is Very Helpful.
+    #
+    # However, sometimes platforms without a working lchmod() *do* have
+    # fchmodat().  (Examples: Linux kernel 3.2 with glibc 2.15,
+    # OpenIndiana 3.x.)  And fchmodat() has a flag that theoretically makes
+    # it behave like lchmod().  So in theory it would be a suitable
+    # replacement for lchmod().  But when lchmod() doesn&#39;t work, fchmodat()&#39;s
+    # flag doesn&#39;t work *either*.  Sadly ./configure isn&#39;t sophisticated
+    # enough to detect this condition--it only determines whether or not
+    # fchmodat() minimally works.
+    #
+    # Therefore we simply ignore fchmodat() when deciding whether or not
+    # os.chmod supports follow_symlinks.  Just checking lchmod() is
+    # sufficient.  After all--if you have a working fchmodat(), your
+    # lchmod() almost certainly works too.
+    #
+    # _add(&quot;HAVE_FCHMODAT&quot;,   &quot;chmod&quot;)
+    _add(&quot;HAVE_FCHOWNAT&quot;,   &quot;chown&quot;)
+    _add(&quot;HAVE_FSTATAT&quot;,    &quot;stat&quot;)
+    _add(&quot;HAVE_LCHFLAGS&quot;,   &quot;chflags&quot;)
+    _add(&quot;HAVE_LCHMOD&quot;,     &quot;chmod&quot;)
+    if _exists(&quot;lchown&quot;): # mac os x10.3
+        _add(&quot;HAVE_LCHOWN&quot;, &quot;chown&quot;)
+    _add(&quot;HAVE_LINKAT&quot;,     &quot;link&quot;)
+    _add(&quot;HAVE_LUTIMES&quot;,    &quot;utime&quot;)
+    _add(&quot;HAVE_LSTAT&quot;,      &quot;stat&quot;)
+    _add(&quot;HAVE_FSTATAT&quot;,    &quot;stat&quot;)
+    _add(&quot;HAVE_UTIMENSAT&quot;,  &quot;utime&quot;)
+    _add(&quot;MS_WINDOWS&quot;,      &quot;stat&quot;)
+    supports_follow_symlinks = _set
+
+    del _set
+    del _have_functions
+    del _globals
+    del _add
+
+
+# Python uses fixed values for the SEEK_ constants; they are mapped
+# to native constants if necessary in posixmodule.c
+# Other possible SEEK values are directly imported from posixmodule.c
+SEEK_SET = 0
+SEEK_CUR = 1
+SEEK_END = 2
+
+# Super directory utilities.
+# (Inspired by Eric Raymond; the doc strings are mostly his)
+
+def makedirs(name, mode=0o777, exist_ok=False):
+    &quot;&quot;&quot;makedirs(name [, mode=0o777][, exist_ok=False])
+
+    Super-mkdir; create a leaf directory and all intermediate ones.  Works like
+    mkdir, except that any intermediate path segment (not just the rightmost)
+    will be created if it does not exist. If the target directory already
+    exists, raise an OSError if exist_ok is False. Otherwise no exception is
+    raised.  This is recursive.
+
+    &quot;&quot;&quot;
+    head, tail = path.split(name)
+    if not tail:
+        head, tail = path.split(head)
+    if head and tail and not path.exists(head):
+        try:
+            makedirs(head, exist_ok=exist_ok)
+        except FileExistsError:
+            # Defeats race condition when another thread created the path
+            pass
+        cdir = curdir
+        if isinstance(tail, bytes):
+            cdir = bytes(curdir, &#39;ASCII&#39;)
+        if tail == cdir:           # xxx/newdir/. exists if xxx/newdir exists
+            return
+    try:
+        mkdir(name, mode)
+    except OSError:
+        # Cannot rely on checking for EEXIST, since the operating system
+        # could give priority to other errors like EACCES or EROFS
+        if not exist_ok or not path.isdir(name):
+            raise
+
+def removedirs(name):
+    &quot;&quot;&quot;removedirs(name)
+
+    Super-rmdir; remove a leaf directory and all empty intermediate
+    ones.  Works like rmdir except that, if the leaf directory is
+    successfully removed, directories corresponding to rightmost path
+    segments will be pruned away until either the whole path is
+    consumed or an error occurs.  Errors during this latter phase are
+    ignored -- they generally mean that a directory was not empty.
+
+    &quot;&quot;&quot;
+    rmdir(name)
+    head, tail = path.split(name)
+    if not tail:
+        head, tail = path.split(head)
+    while head and tail:
+        try:
+            rmdir(head)
+        except OSError:
+            break
+        head, tail = path.split(head)
+
+def renames(old, new):
+    &quot;&quot;&quot;renames(old, new)
+
+    Super-rename; create directories as necessary and delete any left
+    empty.  Works like rename, except creation of any intermediate
+    directories needed to make the new pathname good is attempted
+    first.  After the rename, directories corresponding to rightmost
+    path segments of the old name will be pruned until either the
+    whole path is consumed or a nonempty directory is found.
+
+    Note: this function can fail with the new directory structure made
+    if you lack permissions needed to unlink the leaf directory or
+    file.
+
+    &quot;&quot;&quot;
+    head, tail = path.split(new)
+    if head and tail and not path.exists(head):
+        makedirs(head)
+    rename(old, new)
+    head, tail = path.split(old)
+    if head and tail:
+        try:
+            removedirs(head)
+        except OSError:
+            pass
+
+__all__.extend([&quot;makedirs&quot;, &quot;removedirs&quot;, &quot;renames&quot;])
+
+def walk(top, topdown=True, onerror=None, followlinks=False):
+    &quot;&quot;&quot;Directory tree generator.
+
+    For each directory in the directory tree rooted at top (including top
+    itself, but excluding &#39;.&#39; and &#39;..&#39;), yields a 3-tuple
+
+        dirpath, dirnames, filenames
+
+    dirpath is a string, the path to the directory.  dirnames is a list of
+    the names of the subdirectories in dirpath (excluding &#39;.&#39; and &#39;..&#39;).
+    filenames is a list of the names of the non-directory files in dirpath.
+    Note that the names in the lists are just names, with no path components.
+    To get a full path (which begins with top) to a file or directory in
+    dirpath, do os.path.join(dirpath, name).
+
+    If optional arg &#39;topdown&#39; is true or not specified, the triple for a
+    directory is generated before the triples for any of its subdirectories
+    (directories are generated top down).  If topdown is false, the triple
+    for a directory is generated after the triples for all of its
+    subdirectories (directories are generated bottom up).
+
+    When topdown is true, the caller can modify the dirnames list in-place
+    (e.g., via del or slice assignment), and walk will only recurse into the
+    subdirectories whose names remain in dirnames; this can be used to prune the
+    search, or to impose a specific order of visiting.  Modifying dirnames when
+    topdown is false is ineffective, since the directories in dirnames have
+    already been generated by the time dirnames itself is generated. No matter
+    the value of topdown, the list of subdirectories is retrieved before the
+    tuples for the directory and its subdirectories are generated.
+
+    By default errors from the os.scandir() call are ignored.  If
+    optional arg &#39;onerror&#39; is specified, it should be a function; it
+    will be called with one argument, an OSError instance.  It can
+    report the error to continue with the walk, or raise the exception
+    to abort the walk.  Note that the filename is available as the
+    filename attribute of the exception object.
+
+    By default, os.walk does not follow symbolic links to subdirectories on
+    systems that support them.  In order to get this functionality, set the
+    optional argument &#39;followlinks&#39; to true.
+
+    Caution:  if you pass a relative pathname for top, don&#39;t change the
+    current working directory between resumptions of walk.  walk never
+    changes the current directory, and assumes that the client doesn&#39;t
+    either.
+
+    Example:
+
+    import os
+    from os.path import join, getsize
+    for root, dirs, files in os.walk(&#39;python/Lib/email&#39;):
+        print(root, &quot;consumes&quot;, end=&quot;&quot;)
+        print(sum([getsize(join(root, name)) for name in files]), end=&quot;&quot;)
+        print(&quot;bytes in&quot;, len(files), &quot;non-directory files&quot;)
+        if &#39;CVS&#39; in dirs:
+            dirs.remove(&#39;CVS&#39;)  # don&#39;t visit CVS directories
+
+    &quot;&quot;&quot;
+    top = fspath(top)
+    dirs = []
+    nondirs = []
+    walk_dirs = []
+
+    # We may not have read permission for top, in which case we can&#39;t
+    # get a list of the files the directory contains.  os.walk
+    # always suppressed the exception then, rather than blow up for a
+    # minor reason when (say) a thousand readable directories are still
+    # left to visit.  That logic is copied here.
+    try:
+        # Note that scandir is global in this module due
+        # to earlier import-*.
+        scandir_it = scandir(top)
+    except OSError as error:
+        if onerror is not None:
+            onerror(error)
+        return
+
+    with scandir_it:
+        while True:
+            try:
+                try:
+                    entry = next(scandir_it)
+                except StopIteration:
+                    break
+            except OSError as error:
+                if onerror is not None:
+                    onerror(error)
+                return
+
+            try:
+                is_dir = entry.is_dir()
+            except OSError:
+                # If is_dir() raises an OSError, consider that the entry is not
+                # a directory, same behaviour than os.path.isdir().
+                is_dir = False
+
+            if is_dir:
+                dirs.append(entry.name)
+            else:
+                nondirs.append(entry.name)
+
+            if not topdown and is_dir:
+                # Bottom-up: recurse into sub-directory, but exclude symlinks to
+                # directories if followlinks is False
+                if followlinks:
+                    walk_into = True
+                else:
+                    try:
+                        is_symlink = entry.is_symlink()
+                    except OSError:
+                        # If is_symlink() raises an OSError, consider that the
+                        # entry is not a symbolic link, same behaviour than
+                        # os.path.islink().
+                        is_symlink = False
+                    walk_into = not is_symlink
+
+                if walk_into:
+                    walk_dirs.append(entry.path)
+
+    # Yield before recursion if going top down
+    if topdown:
+        yield top, dirs, nondirs
+
+        # Recurse into sub-directories
+        islink, join = path.islink, path.join
+        for dirname in dirs:
+            new_path = join(top, dirname)
+            # Issue #23605: os.path.islink() is used instead of caching
+            # entry.is_symlink() result during the loop on os.scandir() because
+            # the caller can replace the directory entry during the &quot;yield&quot;
+            # above.
+            if followlinks or not islink(new_path):
+                yield from walk(new_path, topdown, onerror, followlinks)
+    else:
+        # Recurse into sub-directories
+        for new_path in walk_dirs:
+            yield from walk(new_path, topdown, onerror, followlinks)
+        # Yield after recursion if going bottom up
+        yield top, dirs, nondirs
+
+__all__.append(&quot;walk&quot;)
+
+if {open, stat} &lt;= supports_dir_fd and {scandir, stat} &lt;= supports_fd:
+
+    def fwalk(top=&quot;.&quot;, topdown=True, onerror=None, *, follow_symlinks=False, dir_fd=None):
+        &quot;&quot;&quot;Directory tree generator.
+
+        This behaves exactly like walk(), except that it yields a 4-tuple
+
+            dirpath, dirnames, filenames, dirfd
+
+        `dirpath`, `dirnames` and `filenames` are identical to walk() output,
+        and `dirfd` is a file descriptor referring to the directory `dirpath`.
+
+        The advantage of fwalk() over walk() is that it&#39;s safe against symlink
+        races (when follow_symlinks is False).
+
+        If dir_fd is not None, it should be a file descriptor open to a directory,
+          and top should be relative; top will then be relative to that directory.
+          (dir_fd is always supported for fwalk.)
+
+        Caution:
+        Since fwalk() yields file descriptors, those are only valid until the
+        next iteration step, so you should dup() them if you want to keep them
+        for a longer period.
+
+        Example:
+
+        import os
+        for root, dirs, files, rootfd in os.fwalk(&#39;python/Lib/email&#39;):
+            print(root, &quot;consumes&quot;, end=&quot;&quot;)
+            print(sum([os.stat(name, dir_fd=rootfd).st_size for name in files]),
+                  end=&quot;&quot;)
+            print(&quot;bytes in&quot;, len(files), &quot;non-directory files&quot;)
+            if &#39;CVS&#39; in dirs:
+                dirs.remove(&#39;CVS&#39;)  # don&#39;t visit CVS directories
+        &quot;&quot;&quot;
+        if not isinstance(top, int) or not hasattr(top, &#39;__index__&#39;):
+            top = fspath(top)
+        # Note: To guard against symlink races, we use the standard
+        # lstat()/open()/fstat() trick.
+        if not follow_symlinks:
+            orig_st = stat(top, follow_symlinks=False, dir_fd=dir_fd)
+        topfd = open(top, O_RDONLY, dir_fd=dir_fd)
+        try:
+            if (follow_symlinks or (st.S_ISDIR(orig_st.st_mode) and
+                                    path.samestat(orig_st, stat(topfd)))):
+                yield from _fwalk(topfd, top, isinstance(top, bytes),
+                                  topdown, onerror, follow_symlinks)
+        finally:
+            close(topfd)
+
+    def _fwalk(topfd, toppath, isbytes, topdown, onerror, follow_symlinks):
+        # Note: This uses O(depth of the directory tree) file descriptors: if
+        # necessary, it can be adapted to only require O(1) FDs, see issue
+        # #13734.
+
+        scandir_it = scandir(topfd)
+        dirs = []
+        nondirs = []
+        entries = None if topdown or follow_symlinks else []
+        for entry in scandir_it:
+            name = entry.name
+            if isbytes:
+                name = fsencode(name)
+            try:
+                if entry.is_dir():
+                    dirs.append(name)
+                    if entries is not None:
+                        entries.append(entry)
+                else:
+                    nondirs.append(name)
+            except OSError:
+                try:
+                    # Add dangling symlinks, ignore disappeared files
+                    if entry.is_symlink():
+                        nondirs.append(name)
+                except OSError:
+                    pass
+
+        if topdown:
+            yield toppath, dirs, nondirs, topfd
+
+        for name in dirs if entries is None else zip(dirs, entries):
+            try:
+                if not follow_symlinks:
+                    if topdown:
+                        orig_st = stat(name, dir_fd=topfd, follow_symlinks=False)
+                    else:
+                        assert entries is not None
+                        name, entry = name
+                        orig_st = entry.stat(follow_symlinks=False)
+                dirfd = open(name, O_RDONLY, dir_fd=topfd)
+            except OSError as err:
+                if onerror is not None:
+                    onerror(err)
+                continue
+            try:
+                if follow_symlinks or path.samestat(orig_st, stat(dirfd)):
+                    dirpath = path.join(toppath, name)
+                    yield from _fwalk(dirfd, dirpath, isbytes,
+                                      topdown, onerror, follow_symlinks)
+            finally:
+                close(dirfd)
+
+        if not topdown:
+            yield toppath, dirs, nondirs, topfd
+
+    __all__.append(&quot;fwalk&quot;)
+
+# Make sure os.environ exists, at least
+try:
+    environ
+except NameError:
+    environ = {}
+
+def execl(file, *args):
+    &quot;&quot;&quot;execl(file, *args)
+
+    Execute the executable file with argument list args, replacing the
+    current process. &quot;&quot;&quot;
+    execv(file, args)
+
+def execle(file, *args):
+    &quot;&quot;&quot;execle(file, *args, env)
+
+    Execute the executable file with argument list args and
+    environment env, replacing the current process. &quot;&quot;&quot;
+    env = args[-1]
+    execve(file, args[:-1], env)
+
+def execlp(file, *args):
+    &quot;&quot;&quot;execlp(file, *args)
+
+    Execute the executable file (which is searched for along $PATH)
+    with argument list args, replacing the current process. &quot;&quot;&quot;
+    execvp(file, args)
+
+def execlpe(file, *args):
+    &quot;&quot;&quot;execlpe(file, *args, env)
+
+    Execute the executable file (which is searched for along $PATH)
+    with argument list args and environment env, replacing the current
+    process. &quot;&quot;&quot;
+    env = args[-1]
+    execvpe(file, args[:-1], env)
+
+def execvp(file, args):
+    &quot;&quot;&quot;execvp(file, args)
+
+    Execute the executable file (which is searched for along $PATH)
+    with argument list args, replacing the current process.
+    args may be a list or tuple of strings. &quot;&quot;&quot;
+    _execvpe(file, args)
+
+def execvpe(file, args, env):
+    &quot;&quot;&quot;execvpe(file, args, env)
+
+    Execute the executable file (which is searched for along $PATH)
+    with argument list args and environment env , replacing the
+    current process.
+    args may be a list or tuple of strings. &quot;&quot;&quot;
+    _execvpe(file, args, env)
+
+__all__.extend([&quot;execl&quot;,&quot;execle&quot;,&quot;execlp&quot;,&quot;execlpe&quot;,&quot;execvp&quot;,&quot;execvpe&quot;])
+
+def _execvpe(file, args, env=None):
+    if env is not None:
+        exec_func = execve
+        argrest = (args, env)
+    else:
+        exec_func = execv
+        argrest = (args,)
+        env = environ
+
+    if path.dirname(file):
+        exec_func(file, *argrest)
+        return
+    saved_exc = None
+    path_list = get_exec_path(env)
+    if name != &#39;nt&#39;:
+        file = fsencode(file)
+        path_list = map(fsencode, path_list)
+    for dir in path_list:
+        fullname = path.join(dir, file)
+        try:
+            exec_func(fullname, *argrest)
+        except (FileNotFoundError, NotADirectoryError) as e:
+            last_exc = e
+        except OSError as e:
+            last_exc = e
+            if saved_exc is None:
+                saved_exc = e
+    if saved_exc is not None:
+        raise saved_exc
+    raise last_exc
+
+
+def get_exec_path(env=None):
+    &quot;&quot;&quot;Returns the sequence of directories that will be searched for the
+    named executable (similar to a shell) when launching a process.
+
+    *env* must be an environment variable dict or None.  If *env* is None,
+    os.environ will be used.
+    &quot;&quot;&quot;
+    # Use a local import instead of a global import to limit the number of
+    # modules loaded at startup: the os module is always loaded at startup by
+    # Python. It may also avoid a bootstrap issue.
+    import warnings
+
+    if env is None:
+        env = environ
+
+    # {b&#39;PATH&#39;: ...}.get(&#39;PATH&#39;) and {&#39;PATH&#39;: ...}.get(b&#39;PATH&#39;) emit a
+    # BytesWarning when using python -b or python -bb: ignore the warning
+    with warnings.catch_warnings():
+        warnings.simplefilter(&quot;ignore&quot;, BytesWarning)
+
+        try:
+            path_list = env.get(&#39;PATH&#39;)
+        except TypeError:
+            path_list = None
+
+        if supports_bytes_environ:
+            try:
+                path_listb = env[b&#39;PATH&#39;]
+            except (KeyError, TypeError):
+                pass
+            else:
+                if path_list is not None:
+                    raise ValueError(
+                        &quot;env cannot contain &#39;PATH&#39; and b&#39;PATH&#39; keys&quot;)
+                path_list = path_listb
+
+            if path_list is not None and isinstance(path_list, bytes):
+                path_list = fsdecode(path_list)
+
+    if path_list is None:
+        path_list = defpath
+    return path_list.split(pathsep)
+
+
+# Change environ to automatically call putenv(), unsetenv if they exist.
+from _collections_abc import MutableMapping
+
+class _Environ(MutableMapping):
+    def __init__(self, data, encodekey, decodekey, encodevalue, decodevalue, putenv, unsetenv):
+        self.encodekey = encodekey
+        self.decodekey = decodekey
+        self.encodevalue = encodevalue
+        self.decodevalue = decodevalue
+        self.putenv = putenv
+        self.unsetenv = unsetenv
+        self._data = data
+
+    def __getitem__(self, key):
+        try:
+            value = self._data[self.encodekey(key)]
+        except KeyError:
+            # raise KeyError with the original key value
+            raise KeyError(key) from None
+        return self.decodevalue(value)
+
+    def __setitem__(self, key, value):
+        key = self.encodekey(key)
+        value = self.encodevalue(value)
+        self.putenv(key, value)
+        self._data[key] = value
+
+    def __delitem__(self, key):
+        encodedkey = self.encodekey(key)
+        self.unsetenv(encodedkey)
+        try:
+            del self._data[encodedkey]
+        except KeyError:
+            # raise KeyError with the original key value
+            raise KeyError(key) from None
+
+    def __iter__(self):
+        # list() from dict object is an atomic operation
+        keys = list(self._data)
+        for key in keys:
+            yield self.decodekey(key)
+
+    def __len__(self):
+        return len(self._data)
+
+    def __repr__(self):
+        return &#39;environ({{{}}})&#39;.format(&#39;, &#39;.join(
+            (&#39;{!r}: {!r}&#39;.format(self.decodekey(key), self.decodevalue(value))
+            for key, value in self._data.items())))
+
+    def copy(self):
+        return dict(self)
+
+    def setdefault(self, key, value):
+        if key not in self:
+            self[key] = value
+        return self[key]
+
+try:
+    _putenv = putenv
+except NameError:
+    _putenv = lambda key, value: None
+else:
+    if &quot;putenv&quot; not in __all__:
+        __all__.append(&quot;putenv&quot;)
+
+try:
+    _unsetenv = unsetenv
+except NameError:
+    _unsetenv = lambda key: _putenv(key, &quot;&quot;)
+else:
+    if &quot;unsetenv&quot; not in __all__:
+        __all__.append(&quot;unsetenv&quot;)
+
+def _createenviron():
+    if name == &#39;nt&#39;:
+        # Where Env Var Names Must Be UPPERCASE
+        def check_str(value):
+            if not isinstance(value, str):
+                raise TypeError(&quot;str expected, not %s&quot; % type(value).__name__)
+            return value
+        encode = check_str
+        decode = str
+        def encodekey(key):
+            return encode(key).upper()
+        data = {}
+        for key, value in environ.items():
+            data[encodekey(key)] = value
+    else:
+        # Where Env Var Names Can Be Mixed Case
+        encoding = sys.getfilesystemencoding()
+        def encode(value):
+            if not isinstance(value, str):
+                raise TypeError(&quot;str expected, not %s&quot; % type(value).__name__)
+            return value.encode(encoding, &#39;surrogateescape&#39;)
+        def decode(value):
+            return value.decode(encoding, &#39;surrogateescape&#39;)
+        encodekey = encode
+        data = environ
+    return _Environ(data,
+        encodekey, decode,
+        encode, decode,
+        _putenv, _unsetenv)
+
+# unicode environ
+environ = _createenviron()
+del _createenviron
+
+
+def getenv(key, default=None):
+    &quot;&quot;&quot;Get an environment variable, return None if it doesn&#39;t exist.
+    The optional second argument can specify an alternate default.
+    key, default and the result are str.&quot;&quot;&quot;
+    return environ.get(key, default)
+
+supports_bytes_environ = (name != &#39;nt&#39;)
+__all__.extend((&quot;getenv&quot;, &quot;supports_bytes_environ&quot;))
+
+if supports_bytes_environ:
+    def _check_bytes(value):
+        if not isinstance(value, bytes):
+            raise TypeError(&quot;bytes expected, not %s&quot; % type(value).__name__)
+        return value
+
+    # bytes environ
+    environb = _Environ(environ._data,
+        _check_bytes, bytes,
+        _check_bytes, bytes,
+        _putenv, _unsetenv)
+    del _check_bytes
+
+    def getenvb(key, default=None):
+        &quot;&quot;&quot;Get an environment variable, return None if it doesn&#39;t exist.
+        The optional second argument can specify an alternate default.
+        key, default and the result are bytes.&quot;&quot;&quot;
+        return environb.get(key, default)
+
+    __all__.extend((&quot;environb&quot;, &quot;getenvb&quot;))
+
+def _fscodec():
+    encoding = sys.getfilesystemencoding()
+    errors = sys.getfilesystemencodeerrors()
+
+    def fsencode(filename):
+        &quot;&quot;&quot;Encode filename (an os.PathLike, bytes, or str) to the filesystem
+        encoding with &#39;surrogateescape&#39; error handler, return bytes unchanged.
+        On Windows, use &#39;strict&#39; error handler if the file system encoding is
+        &#39;mbcs&#39; (which is the default encoding).
+        &quot;&quot;&quot;
+        filename = fspath(filename)  # Does type-checking of `filename`.
+        if isinstance(filename, str):
+            return filename.encode(encoding, errors)
+        else:
+            return filename
+
+    def fsdecode(filename):
+        &quot;&quot;&quot;Decode filename (an os.PathLike, bytes, or str) from the filesystem
+        encoding with &#39;surrogateescape&#39; error handler, return str unchanged. On
+        Windows, use &#39;strict&#39; error handler if the file system encoding is
+        &#39;mbcs&#39; (which is the default encoding).
+        &quot;&quot;&quot;
+        filename = fspath(filename)  # Does type-checking of `filename`.
+        if isinstance(filename, bytes):
+            return filename.decode(encoding, errors)
+        else:
+            return filename
+
+    return fsencode, fsdecode
+
+fsencode, fsdecode = _fscodec()
+del _fscodec
+
+# Supply spawn*() (probably only for Unix)
+if _exists(&quot;fork&quot;) and not _exists(&quot;spawnv&quot;) and _exists(&quot;execv&quot;):
+
+    P_WAIT = 0
+    P_NOWAIT = P_NOWAITO = 1
+
+    __all__.extend([&quot;P_WAIT&quot;, &quot;P_NOWAIT&quot;, &quot;P_NOWAITO&quot;])
+
+    # XXX Should we support P_DETACH?  I suppose it could fork()**2
+    # and close the std I/O streams.  Also, P_OVERLAY is the same
+    # as execv*()?
+
+    def _spawnvef(mode, file, args, env, func):
+        # Internal helper; func is the exec*() function to use
+        if not isinstance(args, (tuple, list)):
+            raise TypeError(&#39;argv must be a tuple or a list&#39;)
+        if not args or not args[0]:
+            raise ValueError(&#39;argv first element cannot be empty&#39;)
+        pid = fork()
+        if not pid:
+            # Child
+            try:
+                if env is None:
+                    func(file, args)
+                else:
+                    func(file, args, env)
+            except:
+                _exit(127)
+        else:
+            # Parent
+            if mode == P_NOWAIT:
+                return pid # Caller is responsible for waiting!
+            while 1:
+                wpid, sts = waitpid(pid, 0)
+                if WIFSTOPPED(sts):
+                    continue
+                elif WIFSIGNALED(sts):
+                    return -WTERMSIG(sts)
+                elif WIFEXITED(sts):
+                    return WEXITSTATUS(sts)
+                else:
+                    raise OSError(&quot;Not stopped, signaled or exited???&quot;)
+
+    def spawnv(mode, file, args):
+        &quot;&quot;&quot;spawnv(mode, file, args) -&gt; integer
+
+Execute file with arguments from args in a subprocess.
+If mode == P_NOWAIT return the pid of the process.
+If mode == P_WAIT return the process&#39;s exit code if it exits normally;
+otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;
+        return _spawnvef(mode, file, args, None, execv)
+
+    def spawnve(mode, file, args, env):
+        &quot;&quot;&quot;spawnve(mode, file, args, env) -&gt; integer
+
+Execute file with arguments from args in a subprocess with the
+specified environment.
+If mode == P_NOWAIT return the pid of the process.
+If mode == P_WAIT return the process&#39;s exit code if it exits normally;
+otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;
+        return _spawnvef(mode, file, args, env, execve)
+
+    # Note: spawnvp[e] isn&#39;t currently supported on Windows
+
+    def spawnvp(mode, file, args):
+        &quot;&quot;&quot;spawnvp(mode, file, args) -&gt; integer
+
+Execute file (which is looked for along $PATH) with arguments from
+args in a subprocess.
+If mode == P_NOWAIT return the pid of the process.
+If mode == P_WAIT return the process&#39;s exit code if it exits normally;
+otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;
+        return _spawnvef(mode, file, args, None, execvp)
+
+    def spawnvpe(mode, file, args, env):
+        &quot;&quot;&quot;spawnvpe(mode, file, args, env) -&gt; integer
+
+Execute file (which is looked for along $PATH) with arguments from
+args in a subprocess with the supplied environment.
+If mode == P_NOWAIT return the pid of the process.
+If mode == P_WAIT return the process&#39;s exit code if it exits normally;
+otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;
+        return _spawnvef(mode, file, args, env, execvpe)
+
+
+    __all__.extend([&quot;spawnv&quot;, &quot;spawnve&quot;, &quot;spawnvp&quot;, &quot;spawnvpe&quot;])
+
+
+if _exists(&quot;spawnv&quot;):
+    # These aren&#39;t supplied by the basic Windows code
+    # but can be easily implemented in Python
+
+    def spawnl(mode, file, *args):
+        &quot;&quot;&quot;spawnl(mode, file, *args) -&gt; integer
+
+Execute file with arguments from args in a subprocess.
+If mode == P_NOWAIT return the pid of the process.
+If mode == P_WAIT return the process&#39;s exit code if it exits normally;
+otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;
+        return spawnv(mode, file, args)
+
+    def spawnle(mode, file, *args):
+        &quot;&quot;&quot;spawnle(mode, file, *args, env) -&gt; integer
+
+Execute file with arguments from args in a subprocess with the
+supplied environment.
+If mode == P_NOWAIT return the pid of the process.
+If mode == P_WAIT return the process&#39;s exit code if it exits normally;
+otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;
+        env = args[-1]
+        return spawnve(mode, file, args[:-1], env)
+
+
+    __all__.extend([&quot;spawnl&quot;, &quot;spawnle&quot;])
+
+
+if _exists(&quot;spawnvp&quot;):
+    # At the moment, Windows doesn&#39;t implement spawnvp[e],
+    # so it won&#39;t have spawnlp[e] either.
+    def spawnlp(mode, file, *args):
+        &quot;&quot;&quot;spawnlp(mode, file, *args) -&gt; integer
+
+Execute file (which is looked for along $PATH) with arguments from
+args in a subprocess with the supplied environment.
+If mode == P_NOWAIT return the pid of the process.
+If mode == P_WAIT return the process&#39;s exit code if it exits normally;
+otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;
+        return spawnvp(mode, file, args)
+
+    def spawnlpe(mode, file, *args):
+        &quot;&quot;&quot;spawnlpe(mode, file, *args, env) -&gt; integer
+
+Execute file (which is looked for along $PATH) with arguments from
+args in a subprocess with the supplied environment.
+If mode == P_NOWAIT return the pid of the process.
+If mode == P_WAIT return the process&#39;s exit code if it exits normally;
+otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;
+        env = args[-1]
+        return spawnvpe(mode, file, args[:-1], env)
+
+
+    __all__.extend([&quot;spawnlp&quot;, &quot;spawnlpe&quot;])
+
+
+# Supply os.popen()
+def popen(cmd, mode=&quot;r&quot;, buffering=-1):
+    if not isinstance(cmd, str):
+        raise TypeError(&quot;invalid cmd type (%s, expected string)&quot; % type(cmd))
+    if mode not in (&quot;r&quot;, &quot;w&quot;):
+        raise ValueError(&quot;invalid mode %r&quot; % mode)
+    if buffering == 0 or buffering is None:
+        raise ValueError(&quot;popen() does not support unbuffered streams&quot;)
+    import subprocess, io
+    if mode == &quot;r&quot;:
+        proc = subprocess.Popen(cmd,
+                                shell=True,
+                                stdout=subprocess.PIPE,
+                                bufsize=buffering)
+        return _wrap_close(io.TextIOWrapper(proc.stdout), proc)
+    else:
+        proc = subprocess.Popen(cmd,
+                                shell=True,
+                                stdin=subprocess.PIPE,
+                                bufsize=buffering)
+        return _wrap_close(io.TextIOWrapper(proc.stdin), proc)
+
+# Helper for popen() -- a proxy for a file whose close waits for the process
+class _wrap_close:
+    def __init__(self, stream, proc):
+        self._stream = stream
+        self._proc = proc
+    def close(self):
+        self._stream.close()
+        returncode = self._proc.wait()
+        if returncode == 0:
+            return None
+        if name == &#39;nt&#39;:
+            return returncode
+        else:
+            return returncode &lt;&lt; 8  # Shift left to match old behavior
+    def __enter__(self):
+        return self
+    def __exit__(self, *args):
+        self.close()
+    def __getattr__(self, name):
+        return getattr(self._stream, name)
+    def __iter__(self):
+        return iter(self._stream)
+
+# Supply os.fdopen()
+def fdopen(fd, *args, **kwargs):
+    if not isinstance(fd, int):
+        raise TypeError(&quot;invalid fd type (%s, expected integer)&quot; % type(fd))
+    import io
+    return io.open(fd, *args, **kwargs)
+
+
+# For testing purposes, make sure the function is available when the C
+# implementation exists.
+def _fspath(path):
+    &quot;&quot;&quot;Return the path representation of a path-like object.
+
+    If str or bytes is passed in, it is returned unchanged. Otherwise the
+    os.PathLike interface is used to get the path representation. If the
+    path representation is not str or bytes, TypeError is raised. If the
+    provided path is not str, bytes, or os.PathLike, TypeError is raised.
+    &quot;&quot;&quot;
+    if isinstance(path, (str, bytes)):
+        return path
+
+    # Work from the object&#39;s type to match method resolution of other magic
+    # methods.
+    path_type = type(path)
+    try:
+        path_repr = path_type.__fspath__(path)
+    except AttributeError:
+        if hasattr(path_type, &#39;__fspath__&#39;):
+            raise
+        else:
+            raise TypeError(&quot;expected str, bytes or os.PathLike object, &quot;
+                            &quot;not &quot; + path_type.__name__)
+    if isinstance(path_repr, (str, bytes)):
+        return path_repr
+    else:
+        raise TypeError(&quot;expected {}.__fspath__() to return str or bytes, &quot;
+                        &quot;not {}&quot;.format(path_type.__name__,
+                                        type(path_repr).__name__))
+
+# If there is no C implementation, make the pure Python version the
+# implementation as transparently as possible.
+if not _exists(&#39;fspath&#39;):
+    fspath = _fspath
+    fspath.__name__ = &quot;fspath&quot;
+
+
+class PathLike(abc.ABC):
+
+    &quot;&quot;&quot;Abstract base class for implementing the file system path protocol.&quot;&quot;&quot;
+
+    @abc.abstractmethod
+    def __fspath__(self):
+        &quot;&quot;&quot;Return the file system path representation of the object.&quot;&quot;&quot;
+        raise NotImplementedError
+
+    @classmethod
+    def __subclasshook__(cls, subclass):
+        return hasattr(subclass, &#39;__fspath__&#39;)
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci='d73d768ea9e3bd69ab54'
+        data-cs='4b958932671ae1a2ab37b2a112ee945824fd4abd'
+        data-r='gitment_blog'
+        data-o='hsutimes'
+        data-a='hsutimes'
+        data-d=''
+    >留言</div>
+
+
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://user-gold-cdn.xitu.io/2018/8/13/16530d7f26a413c2?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" height=300 width=300></img>
+                    <p>times</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        <dd><a href="https://github.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/9998457/july-time" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">92 <p>文章</p></a></li>
+                    <li><a href="/categories">5 <p>分类</p></a></li>
+                    <li><a href="/tags">115 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#os-py"><span class="toc-number">1.</span> <span class="toc-text">os.py</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            times
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+    <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/java/java.min.js"></script>
+
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134224598-1');
+    </script>
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

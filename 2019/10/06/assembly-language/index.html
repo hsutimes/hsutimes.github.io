@@ -1,0 +1,926 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>assembly language - Time</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hsutimes Obsidian,"> 
+    <meta name="description" content="================================================================
+MOV - Move:
+| Opcode              ,"> 
+    <meta name="author" content="times"> 
+    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Time</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://blog.hsutimes.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">assembly language</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/文章"><b>「
+                    </b>文章<b> 」</b></a>
+                
+                十月 06, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/10/06/assembly-language/" title="assembly language">assembly language</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    29k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    27 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/汇编语言/">汇编语言</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <pre><code class="shell">================================================================
+MOV - Move:
+| Opcode                   | Instruction                   | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                               
+| 88 /r REX + 88 /r        | MOV r/m8,r8 MOV r/m8***,r8*** | MR MR| Valid Valid| Valid N.E.     | Move r8 to r/m8.Move r8 to r/m8.         
+| 89 /r                    | MOV r/m16,r16                 | MR   | Valid      | Valid          | Move r16 to r/m16.                        
+| 89 /r                    | MOV r/m32,r32                 | MR   | Valid      | Valid          | Move r32 to r/m32.                        
+| REX.W + 89 /r            | MOV r/m64,r64                 | MR   | Valid      | N.E.           | Move r64 to r/m64.                        
+| 8A /r                    | MOV r8,r/m8                   | RM   | Valid      | Valid          | Move r/m8 to r8.                          
+| REX + 8A /r              | MOV r8***,r/m8***             | RM   | Valid      | N.E.           | Move r/m8 to r8.                          
+| 8B /r                    | MOV r16,r/m16                 | RM   | Valid      | Valid          | Move r/m16 to r16.                        
+| 8B /r                    | MOV r32,r/m32                 | RM   | Valid      | Valid          | Move r/m32 to r32.                        
+| REX.W + 8B /r            | MOV r64,r/m64                 | RM   | Valid      | N.E.           | Move r/m64 to r64.                        
+| 8C /r                    | MOV r/m16,Sreg**              | MR   | Valid      | Valid          | Move segment register to r/m16.           
+| REX.W + 8C /r            | MOV r/m64,Sreg**              | MR   | Valid      | Valid          | Move zero extended 16-bit segment register
+|                          |                               |      |            |                | to r/m64.                                 
+| 8E /r                    | MOV Sreg,r/m16**              | RM   | Valid      | Valid          | Move r/m16 to segment register.           
+| REX.W + 8E /r            | MOV Sreg,r/m64**              | RM   | Valid      | Valid          | Move lower 16 bits of r/m64 to segment    
+|                          |                               |      |            |                | register.                                 
+| A0                       | MOV AL,moffs8*                | FD   | Valid      | Valid          | Move byte at (seg:offset) to AL.          
+| REX.W + A0               | MOV AL,moffs8*                | FD   | Valid      | N.E.           | Move byte at (offset) to AL.              
+| A1                       | MOV AX,moffs16*               | FD   | Valid      | Valid          | Move word at (seg:offset) to AX.          
+| A1                       | MOV EAX,moffs32*              | FD   | Valid      | Valid          | Move doubleword at (seg:offset) to EAX.   
+| REX.W + A1               | MOV RAX,moffs64*              | FD   | Valid      | N.E.           | Move quadword at (offset) to RAX.         
+| A2 REX.W + A2            | MOV moffs8,AL MOV moffs8***,AL| TD TD| Valid Valid| Valid N.E.     | Move AL to (seg:offset).Move AL to       
+|                          |                               |      |            |                | (offset).                                 
+| A3                       | MOV moffs16*,AX               | TD   | Valid      | Valid          | Move AX to (seg:offset).                  
+| A3                       | MOV moffs32*,EAX              | TD   | Valid      | Valid          | Move EAX to (seg:offset).                 
+| REX.W + A3               | MOV moffs64*,RAX              | TD   | Valid      | N.E.           | Move RAX to (offset).                     
+| B0+ rb ib REX + B0+ rb ib| MOV r8, imm8 MOV r8***, imm8  | OI OI| Valid Valid| Valid N.E.     | Move imm8 to r8.Move imm8 to r8.         
+| B8+ rw iw                | MOV r16, imm16                | OI   | Valid      | Valid          | Move imm16 to r16.                        
+| B8+ rd id                | MOV r32, imm32                | OI   | Valid      | Valid          | Move imm32 to r32.                        
+| REX.W + B8+ rd io        | MOV r64, imm64                | OI   | Valid      | N.E.           | Move imm64 to r64.                        
+| C6 /0 ib                 | MOV r/m8, imm8                | MI   | Valid      | Valid          | Move imm8 to r/m8.                        
+| REX + C6 /0 ib           | MOV r/m8***, imm8             | MI   | Valid      | N.E.           | Move imm8 to r/m8.                        
+| C7 /0 iw                 | MOV r/m16, imm16              | MI   | Valid      | Valid          | Move imm16 to r/m16.                      
+| C7 /0 id                 | MOV r/m32, imm32              | MI   | Valid      | Valid          | Move imm32 to r/m32.                      
+| REX.W + C7 /0 io         | MOV r/m64, imm32              | MI   | Valid      | N.E.           | Move imm32 sign extended to 64-bits       
+|                          |                               |      |            |                | to r/m64.                                 
+Notes:* The moffs8, moffs16, moffs32 and moffs64 operands specify a simple
+offset relative to the segment base, where 8, 16, 32 and 64 refer to the size
+of the data.The address-size attribute of the instruction determines the size
+of the offset, either 16, 32 or 64 bits.** In 32-bit mode, the assembler may
+insert the 16-bit operand-size prefix with this instruction (see the following
+“Description” section for further information).***In 64-bit mode, r/m8 can
+not be encoded to access the following byte registers if a REX prefix is used:
+AH, BH, CH, DH.
+
+
+指令操作数编码：
+| Op/En| Operand 1      | Operand 2    | Operand 3| Operand 4
+| MR   | ModRM:r/m (w)  | ModRM:reg (r)| NA       | NA       
+| RM   | ModRM:reg (w)  | ModRM:r/m (r)| NA       | NA       
+| FD   | AL/AX/EAX/RAX  | Moffs        | NA       | NA       
+| TD   | Moffs (w)      | AL/AX/EAX/RAX| NA       | NA       
+| OI   | opcode + rd (w)| imm8/16/32/64| NA       | NA       
+| MI   | ModRM:r/m (w)  | imm8/16/32/64| NA       | NA       
+
+Description:
+Copies the second operand (source operand) to the first operand (destination
+operand).The source operand can be an immediate value, general-purpose register,
+segment register, or memory location; the destination register can be a general-purpose
+register, segment register, or memory location.Both operands must be the same
+size, which can be a byte, a word, a doubleword, or a quadword.
+
+The MOV instruction cannot be used to load the CS register.Attempting to do
+so results in an invalid opcode exception (#UD).To load the CS register, use
+the far JMP, CALL, or RET instruction.
+
+If the destination operand is a segment register (DS, ES, FS, GS, or SS), the
+source operand must be a valid segment selector.In protected mode, moving a
+segment selector into a segment register automatically causes the segment descriptor
+information associated with that segment selector to be loaded into the hidden
+(shadow) part of the segment register.While loading this information, the segment
+selector and segment descriptor information is validated (see the “Operation”
+algorithm below).The segment descriptor data is obtained from the GDT or LDT
+entry for the specified segment selector.
+
+A NULL segment selector (values 0000-0003) can be loaded into the DS, ES, FS,
+and GS registers without causing a protection exception.However, any subsequent
+attempt to reference a segment whose corresponding segment register is loaded
+with a NULL value causes a general protection exception (#GP) and no memory
+reference occurs.
+
+Loading the SS register with a MOV instruction inhibits all interrupts until
+after the execution of the next instruction.This operation allows a stack pointer
+to be loaded into the ESP register with the next instruction (MOV ESP, stack-pointer
+value) before an interrupt occurs1.Be aware that the LSS instruction offers
+a more efficient method of loading the SS and ESP registers.
+
+When operating in 32-bit mode and moving data between a segment register and
+a general-purpose register, the 32-bit IA-32 processors do not require the use
+of the 16-bit operand-size prefix (a byte with the value 66H) with
+
+| 1.| If a code instruction breakpoint (for      
+|   | debug) is placed on an instruction located 
+|   | immediately after a MOV SS instruction,    
+|   | the breakpoint may not be triggered.       
+|   | However, in a sequence of instructions     
+|   | that load the SS register, only the        
+|   | first instruction in the sequence is       
+|   | guaranteed to delay an interrupt.In       
+|   | the following sequence, interrupts may     
+|   | be recognized before MOV ESP, EBP executes:
+|   | MOV SS, EDX MOV SS, EAX MOV ESP, EBP       
+this instruction, but most assemblers will insert it if the standard form of
+the instruction is used (for example, MOV DS, AX).The processor will execute
+this instruction correctly, but it will usually require an extra clock.With
+most assemblers, using the instruction form MOV DS, EAX will avoid this unneeded
+66H prefix.When the processor executes the instruction with a 32-bit general-purpose
+register, it assumes that the 16 least-significant bits of the general-purpose
+register are the destination or source operand.If the register is a destination
+operand, the resulting value in the two high-order bytes of the register is
+implementation dependent.For the Pentium 4, Intel Xeon, and P6 family processors,
+the two high-order bytes are filled with zeros; for earlier 32-bit IA-32 processors,
+the two high order bytes are undefined.
+
+In 64-bit mode, the instruction&#39;s default operation size is 32 bits.Use of
+the REX.R prefix permits access to additional registers (R8-R15).Use of the
+REX.W prefix promotes operation to 64 bits.See the summary chart at the beginning
+of this section for encoding data and limits.
+
+操作: 
+
+DEST &lt;- SRC;
+Loading a segment register while in protected mode results in special checks and actions, as described in the
+following listing.These checks are performed on the segment selector and the segment descriptor to which it
+points.
+IF SS is loaded
+  THEN
+     IF segment selector is NULL
+       THEN #GP(0); FI;
+     IF segment selector index is outside descriptor table limits
+     or segment selector&#39;s RPL != CPL
+     or segment is not a writable data segment
+     or DPL != CPL
+       THEN #GP(selector); FI;
+     IF segment not marked present
+       THEN #SS(selector);
+       ELSE
+          SS &lt;- segment selector;
+          SS &lt;- segment descriptor; FI;
+FI;
+IF DS, ES, FS, or GS is loaded with non-NULL selector
+THEN
+  IF segment selector index is outside descriptor table limits
+  or segment is not a data or readable code segment
+  or ((segment is a data or nonconforming code segment)
+  or ((RPL &gt; DPL) and (CPL &gt; DPL))
+     THEN #GP(selector); FI;
+  IF segment not marked present
+     THEN #NP(selector);
+     ELSE
+       SegmentRegister &lt;- segment selector;
+       SegmentRegister &lt;- segment descriptor; FI;
+FI;
+IF DS, ES, FS, or GS is loaded with NULL selector
+  THEN
+     SegmentRegister &lt;- segment selector;
+     SegmentRegister &lt;- segment descriptor;
+FI;
+
+Flags Affected:
+None.
+
+
+保护模式：
+| #GP(0)         | If attempt is made to load SS register        
+|                | with NULL segment selector.If the destination
+|                | operand is in a non-writable segment.         
+|                | If a memory operand effective address         
+|                | is outside the CS, DS, ES, FS, or GS          
+|                | segment limit.If the DS, ES, FS, or          
+|                | GS register contains a NULL segment           
+|                | selector.                                     
+| #GP(selector)  | If segment selector index is outside          
+|                | descriptor table limits.If the SS register   
+|                | is being loaded and the segment selector&#39;s    
+|                | RPL and the segment descriptor&#39;s DPL          
+|                | are not equal to the CPL.If the SS           
+|                | register is being loaded and the segment      
+|                | pointed to is a non-writable data segment.    
+|                | If the DS, ES, FS, or GS register is          
+|                | being loaded and the segment pointed          
+|                | to is not a data or readable code segment.    
+|                | If the DS, ES, FS, or GS register is          
+|                | being loaded and the segment pointed          
+|                | to is a data or nonconforming code segment,   
+|                | but both the RPL and the CPL are greater      
+|                | than the DPL.                                 
+| #SS(0)         | If a memory operand effective address         
+|                | is outside the SS segment limit.              
+| #SS(selector)  | If the SS register is being loaded and        
+|                | the segment pointed to is marked not          
+|                | present.                                      
+| #NP            | If the DS, ES, FS, or GS register is          
+|                | being loaded and the segment pointed          
+|                | to is marked not present.                     
+| #PF(fault-code)| If a page fault occurs.                       
+| #AC(0)         | If alignment checking is enabled and          
+|                | an unaligned memory reference is made         
+|                | while the current privilege level is          
+|                | 3.                                            
+| #UD            | If attempt is made to load the CS register.   
+|                | If the LOCK prefix is used.                   
+
+Real-地址模式异常: 
+| #GP| If a memory operand effective address      
+|    | is outside the CS, DS, ES, FS, or GS       
+|    | segment limit.                             
+| #SS| If a memory operand effective address      
+|    | is outside the SS segment limit.           
+| #UD| If attempt is made to load the CS register.
+|    | If the LOCK prefix is used.                
+
+Virtual-8086 模式异常: 
+| #GP(0)         | If a memory operand effective address      
+|                | is outside the CS, DS, ES, FS, or GS       
+|                | segment limit.                             
+| #SS(0)         | If a memory operand effective address      
+|                | is outside the SS segment limit.           
+| #PF(fault-code)| If a page fault occurs.                    
+| #AC(0)         | If alignment checking is enabled and       
+|                | an unaligned memory reference is made.     
+| #UD            | If attempt is made to load the CS register.
+|                | If the LOCK prefix is used.                
+
+兼容模式：
+Same exceptions as in protected mode.
+
+
+64-Bit 模式异常: 
+| #GP(0)         | If the memory address is in a non-canonical     
+|                | form.If an attempt is made to load             
+|                | SS register with NULL segment selector          
+|                | when CPL = 3.If an attempt is made             
+|                | to load SS register with NULL segment           
+|                | selector when CPL &lt; 3 and CPL != RPL.            
+| #GP(selector)  | If segment selector index is outside            
+|                | descriptor table limits.If the memory          
+|                | access to the descriptor table is non-canonical.
+|                | If the SS register is being loaded and          
+|                | the segment selector&#39;s RPL and the segment      
+|                | descriptor&#39;s DPL are not equal to the           
+|                | CPL.If the SS register is being loaded         
+|                | and the segment pointed to is a nonwritable     
+|                | data segment.If the DS, ES, FS, or             
+|                | GS register is being loaded and the             
+|                | segment pointed to is not a data or             
+|                | readable code segment.If the DS, ES,           
+|                | FS, or GS register is being loaded and          
+|                | the segment pointed to is a data or             
+|                | nonconforming code segment, but both            
+|                | the RPL and the CPL are greater than            
+|                | the DPL.                                        
+| #SS(0)         | If the stack address is in a non-canonical      
+|                | form.                                           
+| #SS(selector)  | If the SS register is being loaded and          
+|                | the segment pointed to is marked not            
+|                | present.                                        
+| #PF(fault-code)| If a page fault occurs.                         
+| #AC(0)         | If alignment checking is enabled and            
+|                | an unaligned memory reference is made           
+|                | while the current privilege level is            
+|                | 3.                                              
+| #UD            | If attempt is made to load the CS register.     
+|                | If the LOCK prefix is used.                     
+
+MOV - Move to/from Control Registers:
+| Opcode/Instruction                 | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                           
+| 0F 20/r MOV r32, CR0-CR7           | MR   | N.E.       | Valid          | Move control register to r32.         
+| 0F 20/r MOV r64, CR0-CR7 REX.R + 0F| MR MR| Valid Valid| N.E.N.E.      | Move extended control register to r64.
+| 20 /0 MOV r64, CR8                 |      |            |                | Move extended CR8 to r64.1            
+| 0F 22 /r MOV CR0-CR7, r32          | RM   | N.E.       | Valid          | Move r32 to control register.         
+| 0F 22 /r MOV CR0-CR7, r64          | RM   | Valid      | N.E.           | Move r64 to extended control register.
+| REX.R + 0F 22 /0 MOV CR8, r64      | RM   | Valid      | N.E.           | Move r64 to extended CR8.1            
+
+NOTE::
+| 1.| MOV CR* instructions, except for MOV  
+|   | CR8, are serializing instructions.MOV
+|   | CR8 is not architecturally defined as 
+|   | a serializing instruction.For more   
+|   | information, see Chapter 8 in Intel®  
+|   | 64 and IA-32 Architectures Software   
+|   | Developer&#39;s Manual, Volume 3A.        
+
+指令操作数编码：
+| Op/En| Operand 1    | Operand 2    | Operand 3| Operand 4
+| MR   | ModRM:r/m (w)| ModRM:reg (r)| NA       | NA       
+| RM   | ModRM:reg (w)| ModRM:r/m (r)| NA       | NA       
+
+Description:
+Moves the contents of a control register (CR0, CR2, CR3, CR4, or CR8) to a general-purpose
+register or the contents of a general purpose register to a control register.
+The operand size for these instructions is always 32 bits in non-64-bit modes,
+regardless of the operand-size attribute.(See “Control Registers” in Chapter
+2 of the Intel®64 and IA-32 Architectures Software Developer&#39;s Manual, Volume
+3A, for a detailed description of the flags and fields in the control registers.)
+This instruction can be executed only when the current privilege level is 0.
+
+At the opcode level, the reg field within the ModR/M byte specifies which of
+the control registers is loaded or read.The 2 bits in the mod field are ignored.
+The r/m field specifies the general-purpose register loaded or read.Attempts
+to reference CR1, CR5, CR6, CR7, and CR9-CR15 result in undefined opcode (#UD)
+exceptions.
+
+When loading control registers, programs should not attempt to change the reserved
+bits; that is, always set reserved bits to the value previously read.An attempt
+to change CR4&#39;s reserved bits will cause a general protection fault.Reserved
+bits in CR0 and CR3 remain clear after any load of those registers; attempts
+to set them have no impact.On Pentium 4, Intel Xeon and P6 family processors,
+CR0.ET remains set after any load of CR0; attempts to clear this bit have no
+impact.
+
+In certain cases, these instructions have the side effect of invalidating entries
+in the TLBs and the paging-structure caches.See Section 4.10.4.1, “Operations
+that Invalidate TLBs and Paging-Structure Caches,” in the Intel® 64 and IA-32
+Architectures Software Developer&#39;s Manual, Volume 3A for details.
+
+The following side effects are implementation-specific for the Pentium 4, Intel
+Xeon, and P6 processor family: when modifying PE or PG in register CR0, or PSE
+or PAE in register CR4, all TLB entries are flushed, including global entries.
+Software should not depend on this functionality in all Intel 64 or IA-32 processors.
+
+In 64-bit mode, the instruction&#39;s default operation size is 64 bits.The REX.R
+prefix must be used to access CR8.Use of REX.B permits access to additional
+registers (R8-R15).Use of the REX.W prefix or 66H prefix is ignored.Use of
+
+the REX.R prefix to specify a register other than CR8 causes an invalid-opcode
+exception.See the summary chart at the beginning of this section for encoding
+data and limits.
+
+If CR4.PCIDE = 1, bit 63 of the source operand to MOV to CR3 determines whether
+the instruction invalidates entries in the TLBs and the paging-structure caches
+(see Section 4.10.4.1, “Operations that Invalidate TLBs and Paging-Structure
+Caches,” in the Intel® 64 and IA-32 Architectures Software Developer&#39;s Manual,
+Volume 3A).The instruction does not modify bit 63 of CR3, which is reserved
+and always 0.
+
+See “Changes to Instruction Behavior in VMX Non-Root Operation” in Chapter 25
+of the Intel® 64 and IA-32 Architectures Software Developer&#39;s Manual, Volume
+3C, for more information about the behavior of this instruction in VMX non-root
+operation.
+
+操作: 
+
+DEST &lt;- SRC;
+
+Flags Affected:
+The OF, SF, ZF, AF, PF, and CF flags are undefined.
+
+
+保护模式：
+| #GP(0)| If the current privilege level is not    
+|       | 0.If an attempt is made to write invalid
+|       | bit combinations in CR0 (such as setting 
+|       | the PG flag to 1 when the PE flag is     
+|       | set to 0, or setting the CD flag to      
+|       | 0 when the NW flag is set to 1).If      
+|       | an attempt is made to write a 1 to any   
+|       | reserved bit in CR4.If an attempt is    
+|       | made to write 1 to CR4.PCIDE.If any     
+|       | of the reserved bits are set in the      
+|       | page-directory pointers table (PDPT)     
+|       | and the loading of a control register    
+|       | causes the PDPT to be loaded into the    
+|       | processor.                               
+| #UD   | If the LOCK prefix is used.If an attempt
+|       | is made to access CR1, CR5, CR6, or      
+|       | CR7.                                     
+
+Real-地址模式异常: 
+| #GP| If an attempt is made to write a 1 to    
+|    | any reserved bit in CR4.If an attempt   
+|    | is made to write 1 to CR4.PCIDE.If      
+|    | an attempt is made to write invalid      
+|    | bit combinations in CR0 (such as setting 
+|    | the PG flag to 1 when the PE flag is     
+|    | set to 0).                               
+| #UD| 如果使用LOCK前缀.If an attempt
+|    | is made to access CR1, CR5, CR6, or      
+|    | CR7.                                     
+
+Virtual-8086 模式异常: 
+| #GP(0)| These instructions cannot be executed
+|       | in virtual-8086 mode.                
+
+兼容模式：
+| #GP(0)| If the current privilege level is not    
+|       | 0.If an attempt is made to write invalid
+|       | bit combinations in CR0 (such as setting 
+|       | the PG flag to 1 when the PE flag is     
+|       | set to 0, or setting the CD flag to      
+|       | 0 when the NW flag is set to 1).If      
+|       | an attempt is made to change CR4.PCIDE   
+|       | from 0 to 1 while CR3[11:0] != 000H.      
+|       | If an attempt is made to clear CR0.PG[bit
+|       | 31] while CR4.PCIDE = 1.If an attempt   
+|       | is made to write a 1 to any reserved     
+|       | bit in CR3.If an attempt is made to     
+|       | leave IA-32e mode by clearing CR4.PAE[bit
+|       | 5].                                      
+| #UD   | If the LOCK prefix is used.If an attempt
+|       | is made to access CR1, CR5, CR6, or      
+|       | CR7.                                     
+
+64-Bit 模式异常: 
+| #GP(0)| If the current privilege level is not    
+|       | 0.If an attempt is made to write invalid
+|       | bit combinations in CR0 (such as setting 
+|       | the PG flag to 1 when the PE flag is     
+|       | set to 0, or setting the CD flag to      
+|       | 0 when the NW flag is set to 1).If      
+|       | an attempt is made to change CR4.PCIDE   
+|       | from 0 to 1 while CR3[11:0] != 000H.      
+|       | If an attempt is made to clear CR0.PG[bit
+|       | 31].If an attempt is made to write      
+|       | a 1 to any reserved bit in CR4.If an    
+|       | attempt is made to write a 1 to any      
+|       | reserved bit in CR8.If an attempt is    
+|       | made to write a 1 to any reserved bit    
+|       | in CR3.If an attempt is made to leave   
+|       | IA-32e mode by clearing CR4.PAE[bit      
+|       | 5].                                      
+| #UD   | If the LOCK prefix is used.If an attempt
+|       | is made to access CR1, CR5, CR6, or      
+|       | CR7.If the REX.R prefix is used to      
+|       | specify a register other than CR8.       
+
+MOV - Move to/from Debug Registers:
+| Opcode/Instruction       | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                         
+| 0F 21/r MOV r32, DR0-DR7 | MR   | N.E.       | Valid          | Move debug register to r32.         
+| 0F 21/r MOV r64, DR0-DR7 | MR   | Valid      | N.E.           | Move extended debug register to r64.
+| 0F 23 /r MOV DR0-DR7, r32| RM   | N.E.       | Valid          | Move r32 to debug register.         
+| 0F 23 /r MOV DR0-DR7, r64| RM   | Valid      | N.E.           | Move r64 to extended debug register.
+
+指令操作数编码：
+| Op/En| Operand 1    | Operand 2    | Operand 3| Operand 4
+| MR   | ModRM:r/m (w)| ModRM:reg (r)| NA       | NA       
+| RM   | ModRM:reg (w)| ModRM:r/m (r)| NA       | NA       
+
+Description:
+Moves the contents of a debug register (DR0, DR1, DR2, DR3, DR4, DR5, DR6, or
+DR7) to a general-purpose register or vice versa.The operand size for these
+instructions is always 32 bits in non-64-bit modes, regardless of the operand-size
+attribute.(See Section 17.2, “Debug Registers”, of the Intel® 64 and IA-32
+Architectures Software Developer&#39;s Manual, Volume 3A, for a detailed description
+of the flags and fields in the debug registers.)
+
+The instructions must be executed at privilege level 0 or in real-address mode.
+
+When the debug extension (DE) flag in register CR4 is clear, these instructions
+operate on debug registers in a manner that is compatible with Intel386 and
+Intel486 processors.In this mode, references to DR4 and DR5 refer to DR6 and
+DR7, respectively.When the DE flag in CR4 is set, attempts to reference DR4
+and DR5 result in an undefined opcode (#UD) exception.(The CR4 register was
+added to the IA-32 Architecture beginning with the Pentium processor.)
+
+At the opcode level, the reg field within the ModR/M byte specifies which of
+the debug registers is loaded or read.The two bits in the mod field are ignored.
+The r/m field specifies the general-purpose register loaded or read.
+
+In 64-bit mode, the instruction&#39;s default operation size is 64 bits.Use of
+the REX.B prefix permits access to additional registers (R8-R15).Use of the
+REX.W or 66H prefix is ignored.Use of the REX.R prefix causes an invalidopcode
+exception.See the summary chart at the beginning of this section for encoding
+data and limits.
+
+操作: 
+
+IF ((DE = 1) and (SRC or DEST = DR4 or DR5))
+  THEN
+     #UD;
+  ELSE
+     DEST &lt;- SRC;
+FI;
+
+Flags Affected:
+The OF, SF, ZF, AF, PF, and CF flags are undefined.
+
+
+保护模式：
+| #GP(0)| If the current privilege level is not      
+|       | 0.                                         
+| #UD   | If CR4.DE[bit 3] = 1 (debug extensions)    
+|       | and a MOV instruction is executed involving
+|       | DR4 or DR5.If the LOCK prefix is used.    
+| #DB   | If any debug register is accessed while    
+|       | the DR7.GD[bit 13] = 1.                    
+
+Real-地址模式异常: 
+| #UD| If CR4.DE[bit 3] = 1 (debug extensions)    
+|    | and a MOV instruction is executed involving
+|    | DR4 or DR5.If the LOCK prefix is used.    
+| #DB| If any debug register is accessed while    
+|    | the DR7.GD[bit 13] = 1.                    
+
+Virtual-8086 模式异常: 
+| #GP(0)| The debug registers cannot be loaded
+|       | or read when in virtual-8086 mode.  
+
+兼容模式：
+Same exceptions as in protected mode.
+
+
+64-Bit 模式异常: 
+| #GP(0)| If the current privilege level is not      
+|       | 0.If an attempt is made to write a        
+|       | 1 to any of bits 63:32 in DR6.If an       
+|       | attempt is made to write a 1 to any        
+|       | of bits 63:32 in DR7.                      
+| #UD   | If CR4.DE[bit 3] = 1 (debug extensions)    
+|       | and a MOV instruction is executed involving
+|       | DR4 or DR5.If the LOCK prefix is used.    
+|       | If the REX.R prefix is used.               
+| #DB   | If any debug register is accessed while    
+|       | the DR7.GD[bit 13] = 1.                    
+================================================================
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci='d73d768ea9e3bd69ab54'
+        data-cs='4b958932671ae1a2ab37b2a112ee945824fd4abd'
+        data-r='gitment_blog'
+        data-o='hsutimes'
+        data-a='hsutimes'
+        data-d=''
+    >留言</div>
+
+
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://user-gold-cdn.xitu.io/2018/8/13/16530d7f26a413c2?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" height=300 width=300></img>
+                    <p>times</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        <dd><a href="https://github.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/9998457/july-time" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">92 <p>文章</p></a></li>
+                    <li><a href="/categories">5 <p>分类</p></a></li>
+                    <li><a href="/tags">115 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            times
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+    <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/java/java.min.js"></script>
+
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134224598-1');
+    </script>
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

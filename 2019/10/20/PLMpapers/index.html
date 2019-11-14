@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PLMpapers - Time</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hsutimes Obsidian,"> 
+    <meta name="description" content="PLMpapersContributed by Xiaozhi Wang and Zhengyan Zhang.
+IntroductionPre-trained Languge Model (PLM,"> 
+    <meta name="author" content="times"> 
+    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Time</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://blog.hsutimes.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">PLMpapers</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/文章"><b>「
+                    </b>文章<b> 」</b></a>
+                
+                十月 20, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/10/20/PLMpapers/" title="PLMpapers">PLMpapers</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    26k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    24 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/NLP/">NLP</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="PLMpapers"><a href="#PLMpapers" class="headerlink" title="PLMpapers"></a>PLMpapers</h1><p>Contributed by <a href="https://bakser.github.io/" target="_blank" rel="noopener">Xiaozhi Wang</a> and <a href="https://github.com/zzy14" target="_blank" rel="noopener">Zhengyan Zhang</a>.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Pre-trained Languge Model (PLM) is a very popular topic in NLP. In this repo, we list some representative work on PLM and show their relationship with a diagram. Feel free to distribute or use it! <a href="https://github.com/thunlp/PLMpapers/blob/master/PLMfamily.pptx" target="_blank" rel="noopener">Here</a> you can get the source PPT file of the diagram if you want to use it in your presentation.</p>
+<p><img src="/images/2019/10/20/3f634050-f316-11e9-b017-0b2638cf8a9a.png" alt="image.png"></p>
+<p>Corrections and suggestions are welcomed. </p>
+<p>We also released <a href="https://github.com/thunlp/OpenCLaP" target="_blank" rel="noopener">OpenCLap</a>, an open-source Chinese language pre-trained model zoo. Welcome to try it.</p>
+<h2 id="Papers"><a href="#Papers" class="headerlink" title="Papers"></a>Papers</h2><h3 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h3><ol>
+<li><strong>Semi-supervised Sequence Learning</strong>. <em>Andrew M. Dai, Quoc V. Le</em>. NIPS 2015. [<a href="https://arxiv.org/pdf/1511.01432.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>context2vec: Learning Generic Context Embedding with Bidirectional LSTM</strong>. <em>Oren Melamud, Jacob Goldberger, Ido Dagan</em>. CoNLL 2016. [<a href="https://www.aclweb.org/anthology/K16-1006.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="http://u.cs.biu.ac.il/~nlp/resources/downloads/context2vec/" target="_blank" rel="noopener">project</a>] (<strong>context2vec</strong>)</li>
+<li><strong>Unsupervised Pretraining for Sequence to Sequence Learning</strong>. <em>Prajit Ramachandran, Peter J. Liu, Quoc V. Le</em>. EMNLP 2017. [<a href="https://arxiv.org/pdf/1611.02683.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>Pre-trained seq2seq</strong>)`</li>
+<li><strong>Deep contextualized word representations</strong>. <em>Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee and Luke Zettlemoyer</em>. NAACL 2018. [<a href="https://arxiv.org/pdf/1802.05365.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://allennlp.org/elmo" target="_blank" rel="noopener">project</a>] (<strong>ELMo</strong>)</li>
+<li><strong>Universal Language Model Fine-tuning for Text Classification</strong>. <em>Jeremy Howard and Sebastian Ruder</em>. ACL 2018. [<a href="https://www.aclweb.org/anthology/P18-1031" target="_blank" rel="noopener">pdf</a>] [<a href="http://nlp.fast.ai/category/classification.html" target="_blank" rel="noopener">project</a>] (<strong>ULMFiT</strong>)</li>
+<li><strong>Improving Language Understanding by Generative Pre-Training</strong>. <em>Alec Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever</em>. Preprint. [<a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://openai.com/blog/language-unsupervised/" target="_blank" rel="noopener">project</a>] (<strong>GPT</strong>)</li>
+<li><strong>BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</strong>. <em>Jacob Devlin, Ming-Wei Chang, Kenton Lee and Kristina Toutanova</em>. NAACL 2019. [<a href="https://arxiv.org/pdf/1810.04805.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/google-research/bert" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>Language Models are Unsupervised Multitask Learners</strong>. <em>Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskever</em>. Preprint. [<a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/openai/gpt-2" target="_blank" rel="noopener">code</a>] (<strong>GPT-2</strong>)</li>
+<li><strong>ERNIE: Enhanced Language Representation with Informative Entities</strong>. <em>Zhengyan Zhang, Xu Han, Zhiyuan Liu, Xin Jiang, Maosong Sun and Qun Liu</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1139" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/thunlp/ERNIE" target="_blank" rel="noopener">code &amp; model</a>] (<strong>ERNIE (Tsinghua)</strong> )</li>
+<li><strong>ERNIE: Enhanced Representation through Knowledge Integration</strong>. <em>Yu Sun, Shuohuan Wang, Yukun Li, Shikun Feng, Xuyi Chen, Han Zhang, Xin Tian, Danxiang Zhu, Hao Tian and Hua Wu</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09223.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/PaddlePaddle/ERNIE/tree/develop/ERNIE" target="_blank" rel="noopener">code</a>] (<strong>ERNIE (Baidu)</strong> )</li>
+<li><strong>Defending Against Neural Fake News</strong>. <em>Rowan Zellers, Ari Holtzman, Hannah Rashkin, Yonatan Bisk, Ali Farhadi, Franziska Roesner, Yejin Choi</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1905.12616.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://rowanzellers.com/grover/" target="_blank" rel="noopener">project</a>] (<strong>Grover</strong>)</li>
+<li><strong>Cross-lingual Language Model Pretraining</strong>. <em>Guillaume Lample, Alexis Conneau</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1901.07291.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/XLM" target="_blank" rel="noopener">code &amp; model</a>] (<strong>XLM</strong>)</li>
+<li><strong>Multi-Task Deep Neural Networks for Natural Language Understanding</strong>. <em>Xiaodong Liu, Pengcheng He, Weizhu Chen, Jianfeng Gao</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1441" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/namisan/mt-dnn" target="_blank" rel="noopener">code &amp; model</a>] (<strong>MT-DNN</strong>)</li>
+<li><strong>MASS: Masked Sequence to Sequence Pre-training for Language Generation</strong>. <em>Kaitao Song, Xu Tan, Tao Qin, Jianfeng Lu, Tie-Yan Liu</em>. ICML 2019. [<a href="https://arxiv.org/pdf/1905.02450.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/microsoft/MASS" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>Unified Language Model Pre-training for Natural Language Understanding and Generation</strong>. <em>Li Dong, Nan Yang, Wenhui Wang, Furu Wei, Xiaodong Liu, Yu Wang, Jianfeng Gao, Ming Zhou, Hsiao-Wuen Hon</em>. Preprint. [<a href="https://arxiv.org/pdf/1905.03197.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>UniLM</strong>)</li>
+<li><strong>XLNet: Generalized Autoregressive Pretraining for Language Understanding</strong>. <em>Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1906.08237.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/zihangdai/xlnet" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>RoBERTa: A Robustly Optimized BERT Pretraining Approach</strong>. <em>Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, Veselin Stoyanov</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.11692.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/pytorch/fairseq" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>SpanBERT: Improving Pre-training by Representing and Predicting Spans</strong>. <em>Mandar Joshi, Danqi Chen, Yinhan Liu, Daniel S. Weld, Luke Zettlemoyer, Omer Levy</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.10529.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/SpanBERT" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>Knowledge Enhanced Contextual Word Representations</strong>. <em>Matthew E. Peters, Mark Neumann, Robert L. Logan IV, Roy Schwartz, Vidur Joshi, Sameer Singh, Noah A. Smith</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.04164.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>KnowBert</strong>) </li>
+<li><strong>VisualBERT: A Simple and Performant Baseline for Vision and Language</strong>. <em>Liunian Harold Li, Mark Yatskar, Da Yin, Cho-Jui Hsieh, Kai-Wei Chang</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.03557.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/uclanlp/visualbert" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks</strong>. <em>Jiasen Lu, Dhruv Batra, Devi Parikh, Stefan Lee</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1908.02265.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/jiasenlu/vilbert_beta" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>VideoBERT: A Joint Model for Video and Language Representation Learning</strong>. <em>Chen Sun, Austin Myers, Carl Vondrick, Kevin Murphy, Cordelia Schmid</em>. ICCV 2019. [<a href="https://arxiv.org/pdf/1904.01766.pdf" target="_blank" rel="noopener">pdf</a>] </li>
+<li><strong>LXMERT: Learning Cross-Modality Encoder Representations from Transformers</strong>. <em>Hao Tan, Mohit Bansal</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.07490.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/airsplay/lxmert" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>VL-BERT: Pre-training of Generic Visual-Linguistic Representations</strong>. <em>Weijie Su, Xizhou Zhu, Yue Cao, Bin Li, Lewei Lu, Furu Wei, Jifeng Dai</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.08530.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Unicoder-VL: A Universal Encoder for Vision and Language by Cross-modal Pre-training</strong>. <em>Gen Li, Nan Duan, Yuejian Fang, Ming Gong, Daxin Jiang, Ming Zhou</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.06066.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>K-BERT: Enabling Language Representation with Knowledge Graph</strong>. <em>Weijie Liu, Peng Zhou, Zhe Zhao, Zhiruo Wang, Qi Ju, Haotang Deng, Ping Wang</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.07606.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Fusion of Detected Objects in Text for Visual Question Answering</strong>. <em>Chris Alberti, Jeffrey Ling, Michael Collins, David Reitter</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.05054.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>B2T2</strong>)</li>
+<li><strong>Contrastive Bidirectional Transformer for Temporal Representation Learning</strong>. <em>Chen Sun, Fabien Baradel, Kevin Murphy, Cordelia Schmid</em>. Preprint. [<a href="https://arxiv.org/pdf/1906.05743.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>CBT</strong>)</li>
+<li><strong>ERNIE 2.0: A Continual Pre-training Framework for Language Understanding</strong>. <em>Yu Sun, Shuohuan Wang, Yukun Li, Shikun Feng, Hao Tian, Hua Wu, Haifeng Wang</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.12412v1.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/PaddlePaddle/ERNIE/blob/develop/README.md" target="_blank" rel="noopener">code</a>] </li>
+<li><strong>75 Languages, 1 Model: Parsing Universal Dependencies Universally</strong>. <em>Dan Kondratyuk, Milan Straka</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1904.02099.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/hyperparticle/udify" target="_blank" rel="noopener">code &amp; model</a>] (<strong>UDify</strong>)</li>
+<li><strong>Pre-Training with Whole Word Masking for Chinese BERT</strong>. <em>Yiming Cui, Wanxiang Che, Ting Liu, Bing Qin, Ziqing Yang, Shijin Wang, Guoping Hu</em>. Preprint. [<a href="https://arxiv.org/pdf/1906.08101.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/ymcui/Chinese-BERT-wwm/blob/master/README_EN.md" target="_blank" rel="noopener">code &amp; model</a>] (<strong>Chinese-BERT-wwm</strong>)</li>
+<li><strong>UNITER: Learning UNiversal Image-TExt Representations</strong>. <em>Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, Jingjing Liu</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.11740.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>HUBERT Untangles BERT to Improve Transfer across NLP Tasks</strong>. <em>Anonymous authors</em>. ICLR 2020 under review. [<a href="https://openreview.net/pdf?id=HJxnM1rFvr" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>MultiFiT: Efficient Multi-lingual Language Model Fine-tuning</strong>.  <em>Julian Eisenschlos, Sebastian Ruder, Piotr Czapla, Marcin Kardas, Sylvain Gugger, Jeremy Howard</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.04761.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="http://nlp.fast.ai/classification/2019/09/10/multifit.html" target="_blank" rel="noopener">code &amp; model</a>]</li>
+</ol>
+<h3 id="Knowledge-Distillation-amp-Model-Compression"><a href="#Knowledge-Distillation-amp-Model-Compression" class="headerlink" title="Knowledge Distillation &amp; Model Compression"></a>Knowledge Distillation &amp; Model Compression</h3><ol>
+<li><strong>TinyBERT: Distilling BERT for Natural Language Understanding</strong>. <em>Xiaoqi Jiao, Yichun Yin, Lifeng Shang, Xin Jiang, Xiao Chen, Linlin Li, Fang Wang, Qun Liu</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.10351v2.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Distilling Task-Specific Knowledge from BERT into Simple Neural Networks</strong>. <em>Raphael Tang, Yao Lu, Linqing Liu, Lili Mou, Olga Vechtomova, Jimmy Lin</em>. Preprint. [<a href="https://arxiv.org/pdf/1903.12136.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Patient Knowledge Distillation for BERT Model Compression</strong>. <em>Siqi Sun, Yu Cheng, Zhe Gan, Jingjing Liu</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.09355.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/intersun/PKD-for-BERT-Model-Compression" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>Model Compression with Multi-Task Knowledge Distillation for Web-scale Question Answering System</strong>. <em>Ze Yang, Linjun Shou, Ming Gong, Wutao Lin, Daxin Jiang</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09636.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>PANLP at MEDIQA 2019: Pre-trained Language Models, Transfer Learning and Knowledge Distillation</strong>. <em>Wei Zhu, Xiaofeng Zhou, Keqiang Wang, Xun Luo, Xiepeng Li, Yuan Ni, Guotong Xie</em>. The 18th BioNLP workshop. [<a href="https://www.aclweb.org/anthology/W19-5040" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Improving Multi-Task Deep Neural Networks via Knowledge Distillation for Natural Language Understanding</strong>. <em>Xiaodong Liu, Pengcheng He, Weizhu Chen, Jianfeng Gao</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09482.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/namisan/mt-dnn" target="_blank" rel="noopener">code &amp; model</a>]</li>
+<li><strong>Well-Read Students Learn Better: The Impact of Student Initialization on Knowledge Distillation</strong>. <em>Iulia Turc, Ming-Wei Chang, Kenton Lee, Kristina Toutanova</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.08962.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Small and Practical BERT Models for Sequence Labeling</strong>. <em>Henry Tsai, Jason Riesa, Melvin Johnson, Naveen Arivazhagan, Xin Li, Amelia Archer</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.00100.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Q-BERT: Hessian Based Ultra Low Precision Quantization of BERT</strong>. <em>Sheng Shen, Zhen Dong, Jiayu Ye, Linjian Ma, Zhewei Yao, Amir Gholami, Michael W. Mahoney, Kurt Keutzer</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.05840.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>ALBERT: A Lite BERT for Self-supervised Learning of Language Representations</strong>.  <em>Anonymous authors</em>. ICLR 2020 under review. [<a href="https://openreview.net/pdf?id=H1eA7AEtvS" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Extreme Language Model Compression with Optimal Subwords and Shared Projections</strong>. <em>Sanqiang Zhao, Raghav Gupta, Yang Song, Denny Zhou</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.11687" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter</strong>. <em>Victor Sanh, Lysandre Debut, Julien Chaumond, Thomas Wolf</em>. Preprint. [<a href="https://arxiv.org/pdf/1910.01108" target="_blank" rel="noopener">pdf</a>]</li>
+</ol>
+<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><ol>
+<li><strong>Revealing the Dark Secrets of BERT</strong>. <em>Olga Kovaleva, Alexey Romanov, Anna Rogers, Anna Rumshisky</em>. EMNLP 2019. [<a href="https://arxiv.org/abs/1908.08593" target="_blank" rel="noopener">pdf</a>] </li>
+<li><strong>How Does BERT Answer Questions? A Layer-Wise Analysis of Transformer Representations</strong>. <em>Betty van Aken, Benjamin Winter, Alexander Löser, Felix A. Gers</em>. CIKM 2019. [<a href="https://arxiv.org/pdf/1909.04925.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Are Sixteen Heads Really Better than One?</strong>. <em>Paul Michel, Omer Levy, Graham Neubig</em>. Preprint. [<a href="https://arxiv.org/pdf/1905.10650.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/pmichel31415/are-16-heads-really-better-than-1" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>Is BERT Really Robust? A Strong Baseline for Natural Language Attack on Text Classification and Entailment</strong>. <em>Di Jin, Zhijing Jin, Joey Tianyi Zhou, Peter Szolovits</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.11932.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/jind11/TextFooler" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>BERT has a Mouth, and It Must Speak: BERT as a Markov Random Field Language Model</strong>. <em>Alex Wang, Kyunghyun Cho</em>. NeuralGen 2019. [<a href="https://arxiv.org/pdf/1902.04094.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/nyu-dl/bert-gen" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>Linguistic Knowledge and Transferability of Contextual Representations</strong>. <em>Nelson F. Liu, Matt Gardner, Yonatan Belinkov, Matthew E. Peters, Noah A. Smith</em>. NAACL 2019. [<a href="https://www.aclweb.org/anthology/N19-1112" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>What Does BERT Look At? An Analysis of BERT’s Attention</strong>. <em>Kevin Clark, Urvashi Khandelwal, Omer Levy, Christopher D. Manning</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.04341.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/clarkkev/attention-analysis" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>Open Sesame: Getting Inside BERT’s Linguistic Knowledge</strong>. <em>Yongjie Lin, Yi Chern Tan, Robert Frank</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.01698.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/yongjie-lin/bert-opensesame" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>Analyzing the Structure of Attention in a Transformer Language Model</strong>. <em>Jesse Vig, Yonatan Belinkov</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.04284.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains</strong>. <em>Samira Abnar, Lisa Beinborn, Rochelle Choenni, Willem Zuidema</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.01539.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>BERT Rediscovers the Classical NLP Pipeline</strong>. <em>Ian Tenney, Dipanjan Das, Ellie Pavlick</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1452" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>How multilingual is Multilingual BERT?</strong>. <em>Telmo Pires, Eva Schlinger, Dan Garrette</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1493" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>What Does BERT Learn about the Structure of Language?</strong>. <em>Ganesh Jawahar, Benoît Sagot, Djamé Seddah</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1356" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT</strong>. <em>Shijie Wu, Mark Dredze</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1904.09077.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>How Contextual are Contextualized Word Representations? Comparing the Geometry of BERT, ELMo, and GPT-2 Embeddings</strong>. <em>Kawin Ethayarajh</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.00512.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Probing Neural Network Comprehension of Natural Language Arguments</strong>. <em>Timothy Niven, Hung-Yu Kao</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1459" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/IKMLab/arct2" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>Universal Adversarial Triggers for Attacking and Analyzing NLP</strong>. <em>Eric Wallace, Shi Feng, Nikhil Kandpal, Matt Gardner, Sameer Singh</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.07125.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/Eric-Wallace/universal-triggers" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>The Bottom-up Evolution of Representations in the Transformer: A Study with Machine Translation and Language Modeling Objectives</strong>. <em>Elena Voita, Rico Sennrich, Ivan Titov</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.01380.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Do NLP Models Know Numbers? Probing Numeracy in Embeddings</strong>. <em>Eric Wallace, Yizhong Wang, Sujian Li, Sameer Singh, Matt Gardner</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.07940.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Investigating BERT’s Knowledge of Language: Five Analysis Methods with NPIs</strong>. <em>Alex Warstadt, Yu Cao, Ioana Grosu, Wei Peng, Hagen Blix, Yining Nie, Anna Alsop, Shikha Bordia, Haokun Liu, Alicia Parrish, Sheng-Fu Wang, Jason Phang, Anhad Mohananey, Phu Mon Htut, Paloma Jeretič, Samuel R. Bowman</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.02597.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/alexwarstadt/data_generation" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>Visualizing and Understanding the Effectiveness of BERT</strong>. <em>Yaru Hao, Li Dong, Furu Wei, Ke Xu</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.05620.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Visualizing and Measuring the Geometry of BERT</strong>. <em>Andy Coenen, Emily Reif, Ann Yuan, Been Kim, Adam Pearce, Fernanda Viégas, Martin Wattenberg</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1906.02715.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>On the Validity of Self-Attention as Explanation in Transformer Models</strong>. <em>Gino Brunner, Yang Liu, Damián Pascual, Oliver Richter, Roger Wattenhofer</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.04211.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Transformer Dissection: An Unified Understanding for Transformer’s Attention via the Lens of Kernel</strong>. <em>Yao-Hung Hubert Tsai, Shaojie Bai, Makoto Yamada, Louis-Philippe Morency, Ruslan Salakhutdinov</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.11775.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<li><strong>Language Models as Knowledge Bases?</strong> <em>Fabio Petroni, Tim Rocktäschel, Patrick Lewis, Anton Bakhtin, Yuxiang Wu, Alexander H. Miller, Sebastian Riedel</em>. EMNLP 2019, [<a href="https://arxiv.org/pdf/1909.01066.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/LAMA" target="_blank" rel="noopener">code</a>]</li>
+<li><strong>To Tune or Not to Tune? Adapting Pretrained Representations to Diverse Tasks</strong>. <em>Matthew E. Peters, Sebastian Ruder, Noah A. Smith</em>. RepL4NLP 2019, [<a href="https://www.aclweb.org/anthology/W19-4302.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+</ol>
+<h2 id="Tutorial-amp-Resource"><a href="#Tutorial-amp-Resource" class="headerlink" title="Tutorial &amp; Resource"></a>Tutorial &amp; Resource</h2><ol>
+<li><strong>Transfer Learning in Natural Language Processing</strong>. <em>Sebastian Ruder, Matthew E. Peters, Swabha Swayamdipta, Thomas Wolf</em>. NAACL 2019. [<a href="https://docs.google.com/presentation/d/1fIhGikFPnb7G5kr58OvYC3GN4io7MznnM0aAgadvJfc/edit?usp=sharing" target="_blank" rel="noopener">slides</a>] </li>
+<li><strong>Transformers: State-of-the-art Natural Language Processing</strong>. <em>Thomas Wolf, Lysandre Debut, Victor Sanh, Julien Chaumond, Clement Delangue, Anthony Moi, Pierric Cistac, Tim Rault, Rémi Louf, Morgan Funtowicz, Jamie Brew</em>. Preprint. [<a href="https://arxiv.org/pdf/1910.03771.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">code</a>]</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci='d73d768ea9e3bd69ab54'
+        data-cs='4b958932671ae1a2ab37b2a112ee945824fd4abd'
+        data-r='gitment_blog'
+        data-o='hsutimes'
+        data-a='hsutimes'
+        data-d=''
+    >留言</div>
+
+
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://user-gold-cdn.xitu.io/2018/8/13/16530d7f26a413c2?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" height=300 width=300></img>
+                    <p>times</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        <dd><a href="https://github.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/hsutimes" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/9998457/july-time" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">92 <p>文章</p></a></li>
+                    <li><a href="/categories">5 <p>分类</p></a></li>
+                    <li><a href="/tags">115 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PLMpapers"><span class="toc-number">1.</span> <span class="toc-text">PLMpapers</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Papers"><span class="toc-number">1.2.</span> <span class="toc-text">Papers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Models"><span class="toc-number">1.2.1.</span> <span class="toc-text">Models</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Knowledge-Distillation-amp-Model-Compression"><span class="toc-number">1.2.2.</span> <span class="toc-text">Knowledge Distillation &amp; Model Compression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis"><span class="toc-number">1.2.3.</span> <span class="toc-text">Analysis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tutorial-amp-Resource"><span class="toc-number">1.3.</span> <span class="toc-text">Tutorial &amp; Resource</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            times
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+    <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/java/java.min.js"></script>
+
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134224598-1');
+    </script>
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>
