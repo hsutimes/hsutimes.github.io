@@ -1,256 +1,373 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN" class="loading">
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tag: 机器学习 - Time</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    <meta name="keywords" content="hsutimes Obsidian,"> 
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>标签: 机器学习 - Time</title>
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Time">
+<meta property="og:url" content="https://blog.hsutimes.com/tags/机器学习/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Time">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
     
-    <meta name="author" content="times"> 
-    <link rel="alternative" href="atom.xml" title="Time" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
-    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
-    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
-    <link rel="stylesheet" href="/css/obsidian.css">
-    <link rel="stylesheet" href="/css/ball-atom.min.css">
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
 </head>
-</html>
-
-<body class="loading">
-    <div class="loader">
-        <div class="la-ball-atom la-2x">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Time" height="28">
+            
+            </a>
         </div>
-    </div>
-    <span id="config-title" style="display:none">Time</span>
-    <div id="loader"></div>
-    <div class="nav">
-    <ul id="menu-menu" class="menu">
-        
-        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/archives/" title="ARCHIVES">ARCHIVES</a>
-        </li>
-        
-        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/categories/" title="CATEGORIES">CATEGORIES</a>
-        </li>
-        
-        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/tags/" title="TAGS">TAGS</a>
-        </li>
-        
-    </ul>
-    <p class="copyright" id="copyright">
-        &copy; 2019 times.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
-    </p>
-</div>
-
-<div id="container">
-    
-<div class="search-box">
-    <form class="site-search-form">
-        <span class="iconfont icon-search"></span>
-        <input type="text" id="local-search-input" class="st-search-input" />
-        <div class="iconfont icon-cross search-box-close"></div>
-    </form>
-    <div class="search-scrollable">
-        <div id="local-search-result" class="local-search-result-cls" data-initialise="首次搜索，正在载入索引文件，请稍后……"
-            data-start="输入关键词搜索。" data-empty="没有找到内容，请尝试更换检索词。">
-            <span>输入关键词搜索。</span>
-        </div>
-    </div>
-</div>
-<div id="header">
-    <div>
-        <div class="logo animated fadeInDown">
-            <img src="/img/favicon.png" alt="">
-            <a class="image-logo" href="/"></a>
-        </div>
-        <ul id="menu-menu" class="menu text-menu">
+        <div class="navbar-menu">
             
-            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="/archives/" title="ARCHIVES" class="menu-link">ARCHIVES</a>
-            </li>
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
             
-            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="/categories/" title="CATEGORIES" class="menu-link">CATEGORIES</a>
-            </li>
-            
-            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="/tags/" title="TAGS" class="menu-link">TAGS</a>
-            </li>
-            
-            
-        </ul>
-        <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
-    </div>
-</div>
-<div id="screen">
-    <div id="mark">
-        <div class="cover animated fadeIn" style="
-            animation-delay: 900ms;
-            animation-duration: 2.8s;
-            background-image:
-                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
-                url(/img/cover.jpg);">
-        </div>
-    </div>
-    
-    <div id="post0" class="else">
-        <p class="animated fadeInDown">
-            
-            <a href="/categories/文章"><b>「
-                </b>文章<b> 」</b></a>
-            
-            十一月 11, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown">
-            <a href="/2019/11/11/graph-convolution/" title="graph-convolution" class="posttitle">graph-convolution</a></h3>
-        
-        <p class="post-count animated fadeInDown">
-            
-            <span>
-                <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                6.7k
-            </span>
-            
-            
-            <span>
-                <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                6 mins.
-            </span>
-            
-            
-        </p>
-        
-        
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/人工智能/">人工智能</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/卷积神经网络/">卷积神经网络</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-        
-        <div class="md-content animated fadeIn">
-            
-            <p>笔者最近看了一些图与图卷积神经网络的论文，深感其强大，但一些Survey或教程默认了读者对图神经网络背景知识的了解，对未学过信号处理的读者不太友好。同时，很多教程只讲是什么，不讲为什么，也没有梳理清楚...</p>
-            
-            <span class="read-more"><a href="/2019/11/11/graph-convolution/" title="查看全文" class="posttitle">查看全文</a>
-                <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-    
-</div>
-
-<div class="screen-gradient-after">
-    <div class="screen-gradient-content">
-        <div class="screen-gradient-content-inside">
-            <div class="bold-underline-links screen-gradient-sponsor">
-                <p>
-                    <span class="typed-text"></span>
-                </p>
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
             </div>
         </div>
     </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">机器学习</a></li>
+        </ul>
+        </nav>
+    </div>
 </div>
 
-    <div id="primary">
+    
+<div class="card">
+    
+    <div class="card-content article ">
         
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/文章">
-                  <b>「 </b>文章<b> 」</b>
-                </a>
-            
-            十月 30, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/10/30/tabnine/" title="tabnine" class="posttitle">tabnine</a></h3>
-        
-            <p class="post-count animated fadeInDown">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time>
                 
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        9k
-                    </span>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
                 
                 
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        8 mins.
-                    </span>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 分钟 读完 (大约 2291 个字)
+                </span>
                 
                 
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/TabNine/">TabNine</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>This is the repository for the backend of <a href="https://tabnine.com" target="_blank" rel="noopener">TabNine</a>, the all-language autocompleter.<br>There are no source files here because the backend is closed source.</p>
-<p>You can make feature requests by filing an issue. You are also welcome to make pull requests for changes...</p>
-            
-            <span class="read-more"><a href="/2019/10/30/tabnine/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/11/graph-convolution/">graph-convolution</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="图系列-从图-Graph-到图卷积-Graph-Convolution-漫谈图神经网络模型"><a href="#图系列-从图-Graph-到图卷积-Graph-Convolution-漫谈图神经网络模型" class="headerlink" title="图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型"></a>图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型</h1><p>笔者最近看了一些图与图卷积神经网络的论文，深感其强大，但一些Survey或教程默认了读者对图神经网络背景知识的了解，对未学过信号处理的读者不太友好。同时，很多教程只讲是什么，不讲为什么，也没有梳理清楚不同网络结构的区别与设计初衷(Motivation)。</p>
+<p>因此，本文试图沿着图神经网络的历史脉络，从最早基于不动点理论的图神经网络(Graph Neural Network， GNN)一步步讲到当前用得最火的图卷积神经网络(Graph Convolutional Neural Network， GCN)， 期望通过本文带给读者一些灵感与启示。</p>
+<ul>
+<li>本文的提纲与叙述要点主要参考了2篇图神经网络的Survey，分别是来自IEEE Fellow的A Comprehensive Survey on Graph Neural Networks[1] 以及来自清华大学朱文武老师组的Deep Learning on Graphs: A Survey[7]， 在这里向两篇Survey的作者表示敬意。</li>
+<li>同时，本文关于部分图卷积神经网络的理解很多都是受到知乎问题[8]高赞答案的启发，非常感谢他们的无私分享！</li>
+<li>最后，本文还引用了一些来自互联网的生动形象的图片，在这里也向这些图片的作者表示感谢。本文中未注明出处的图片均为笔者制作，如需转载或引用请联系本人。</li>
+</ul>
+<h1 id="历史脉络"><a href="#历史脉络" class="headerlink" title="历史脉络"></a>历史脉络</h1><p>在开始正文之前，笔者先带大家回顾一下图神经网络的发展历史。不过，因为图神经网络的发展分支非常之多，笔者某些叙述可能并不全面，一家之言仅供各位读者参考：</p>
+<ol>
+<li>图神经网络的概念最早在2005年提出。2009年Franco博士在其论文 [2]中定义了图神经网络的理论基础，笔者呆会要讲的第一种图神经网络也是基于这篇论文。</li>
+<li>最早的GNN主要解决的还是如分子结构分类等严格意义上的图论问题。但实际上欧式空间(比如像图像 Image)或者是序列(比如像文本 Text)，许多常见场景也都可以转换成图(Graph)，然后就能使用图神经网络技术来建模。</li>
+<li>2009年后图神经网络也陆续有一些相关研究，但没有太大波澜。直到2013年，在图信号处理(Graph Signal Processing)的基础上，Bruna(这位是LeCun的学生)在文献 [3]中首次提出图上的基于频域(Spectral-domain)和基于空域(Spatial-domain)的卷积神经网络。</li>
+<li>其后至今，学界提出了很多基于空域的图卷积方式，也有不少学者试图通过统一的框架将前人的工作统一起来。而基于频域的工作相对较少，只受到部分学者的青睐。</li>
+<li>值得一提的是，图神经网络与图表示学习(Represent Learning for Graph)的发展历程也惊人地相似。2014年，在word2vec [4]的启发下，Perozzi等人提出了DeepWalk [5]，开启了深度学习时代图表示学习的大门。更有趣的是，就在几乎一样的时间，Bordes等人提出了大名鼎鼎的TransE [6]，为知识图谱的分布式表示(Represent Learning for Knowledge Graph)奠定了基础。</li>
+</ol>
+<h1 id="图神经网络-Graph-Neural-Network"><a href="#图神经网络-Graph-Neural-Network" class="headerlink" title="图神经网络(Graph Neural Network)"></a>图神经网络(Graph Neural Network)</h1><p>首先要澄清一点，除非特别指明，本文中所提到的图均指图论中的图(Graph)。它是一种由若干个结点(Node)及连接两个结点的边(Edge)所构成的图形，用于刻画不同结点之间的关系。下面是一个生动的例子，图片来自论文[7]:</p>
+<p><img src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
+<h1 id="状态更新与输出"><a href="#状态更新与输出" class="headerlink" title="状态更新与输出"></a>状态更新与输出</h1><p>最早的图神经网络起源于Franco博士的论文[2], 它的理论基础是不动点理论。给定一张图 G，每个结点都有其自己的特征(feature), 本文中用xv表示结点v的特征；连接两个结点的边也有自己的特征，本文中用x(v,u)表示结点v与结点u之间边的特征；GNN的学习目标是获得每个结点的图感知的隐藏状态 hv(state embedding)，这就意味着：对于每个节点，它的隐藏状态包含了来自邻居节点的信息。那么，如何让每个结点都感知到图上其他的结点呢？GNN通过迭代式更新所有结点的隐藏状态来实现，在t+1时刻，结点v的隐藏状态按照如下方式更新：</p>
+<pre><code>𝐡^{t+1}_𝑣=𝑓(𝐱_𝑣,𝐱_𝑐𝑜[𝑣],𝐡^{t}_𝑛𝑒[𝑣] ,𝐱_𝑛𝑒[𝑣]),</code></pre><p>上面这个公式中的 f 就是隐藏状态的状态更新函数，在论文中也被称为局部转移函数(local transaction function)。公式中的xco[v]指的是与结点v相邻的边的特征，xne[v]指的是结点v的邻居结点的特征，htne[v]则指邻居结点在t时刻的隐藏状态。注意 f 是对所有结点都成立的，是一个全局共享的函数。那么怎么把它跟深度学习结合在一起呢？聪明的读者应该想到了，那就是利用神经网络(Neural Network)来拟合这个复杂函数 f。值得一提的是，虽然看起来 f 的输入是不定长参数，但在 f 内部我们可以先将不定长的参数通过一定操作变成一个固定的参数，比如说用所有隐藏状态的加和来代表所有隐藏状态。我们举个例子来说明一下：</p>
+<p><img src="/images/2019/11/11/f5d6a880-0497-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
+<p>假设结点5为中心结点，其隐藏状态的更新函数如图所示。这个更新公式表达的思想自然又贴切：不断地利用当前时刻邻居结点的隐藏状态作为部分输入来生成下一时刻中心结点的隐藏状态，直到每个结点的隐藏状态变化幅度很小，整个图的信息流动趋于平稳。至此，每个结点都“知晓”了其邻居的信息。状态更新公式仅描述了如何获取每个结点的隐藏状态，除它以外，我们还需要另外一个函数 g 来描述如何适应下游任务。举个例子，给定一个社交网络，一个可能的下游任务是判断各个结点是否为水军账号。</p>
+<pre><code>𝐨_𝑣=𝑔(𝐡_𝑣,𝐱_𝑣)</code></pre><p>在原论文中，g 又被称为局部输出函数(local output function)，与 f 类似，g 也可以由一个神经网络来表达，它也是一个全局共享的函数。那么，整个流程可以用下面这张图表达：</p>
+<p><img src="/images/2019/11/11/11946760-0498-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
+<p>仔细观察两个时刻之间的连线，它与图的连线密切相关。比如说在 T1 时刻，结点 1 的状态接受来自结点 3 的上一时刻的隐藏状态，因为结点 1 与结点 3相邻。直到 Tn 时刻，各个结点隐藏状态收敛，每个结点后面接一个 g 即可得到该结点的输出 o。</p>
+<p>对于不同的图来说，收敛的时刻可能不同，因为收敛是通过两个时刻p-范数的差值是否小于某个阈值 ϵ来判定的，比如：</p>
+<p><img src="/images/2019/11/11/415d6000-0498-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
+<p>…</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]. A Comprehensive Survey on Graph Neural Networks, <a href="https://arxiv.org/abs/1901.00596" target="_blank" rel="noopener">https://arxiv.org/abs/1901.00596</a></p>
+<p>[2]. The graph neural network model, <a href="https://persagen.com/files/misc/scarselli2009graph.pdf" target="_blank" rel="noopener">https://persagen.com/files/misc/scarselli2009graph.pdf</a></p>
+<p>[3]. Spectral networks and locally connected networks on graphs, <a href="https://arxiv.org/abs/1312.6203" target="_blank" rel="noopener">https://arxiv.org/abs/1312.6203</a></p>
+<p>[4]. Distributed Representations of Words and Phrases and their Compositionality, <a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-andphrases" target="_blank" rel="noopener">http://papers.nips.cc/paper/5021-distributed-representations-of-words-andphrases</a></p>
+<p>[5]. DeepWalk: Online Learning of Social Representations, <a href="https://arxiv.org/abs/1403.6652" target="_blank" rel="noopener">https://arxiv.org/abs/1403.6652</a></p>
+<p>[6]. Translating Embeddings for Modeling Multi-relational Data, <a href="https://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data" target="_blank" rel="noopener">https://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data</a></p>
+<p>[7]. Deep Learning on Graphs: A Survey, <a href="https://arxiv.org/abs/1812.04202" target="_blank" rel="noopener">https://arxiv.org/abs/1812.04202</a></p>
+<p>[8]. 如何理解Graph Convolutional Network（GCN）? <a href="https://www.zhihu.com/question/54504471" target="_blank" rel="noopener">https://www.zhihu.com/question/54504471</a></p>
+<p>[9]. Almeida–Pineda recurrent backpropagation, <a href="https://www.wikiwand.com/en/Almeida%E2%80%93Pineda_recurrent_backpropagation" target="_blank" rel="noopener">https://www.wikiwand.com/en/Almeida%E2%80%93Pineda_recurrent_backpropagation</a></p>
+<p>[10]. Gated graph sequence neural networks, <a href="https://arxiv.org/abs/1511.05493" target="_blank" rel="noopener">https://arxiv.org/abs/1511.05493</a></p>
+<p>[11]. Representing Schema Structure with Graph Neural Networks for Text-to-SQL Parsing, <a href="https://arxiv.org/abs/1905.06241" target="_blank" rel="noopener">https://arxiv.org/abs/1905.06241</a></p>
+<p>[12]. Spider1.0 Yale Semantic Parsing and Text-to-SQL Challenge, <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">https://yale-lily.github.io/spider</a></p>
+<p>[13]. <a href="https://www.wikiwand.com/en/Laplacian_matrix" target="_blank" rel="noopener">https://www.wikiwand.com/en/Laplacian_matrix</a></p>
+<blockquote>
+<p>作者： SivilTaram<br>出处：<a href="https://www.cnblogs.com/SivilTaram/p/graph_neural_network_1.html" target="_blank" rel="noopener">https://www.cnblogs.com/SivilTaram/p/graph_neural_network_1.html</a><br>本站使用「CC BY 4.0」创作共享协议，转载请在文章明显位置注明作者及出处。</p>
+</blockquote>
+
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-30T14:06:40.000Z">2019-10-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 943 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/30/tabnine/">tabnine</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="TabNine"><a href="#TabNine" class="headerlink" title="TabNine"></a>TabNine</h1><p>This is the repository for the backend of <a href="https://tabnine.com" target="_blank" rel="noopener">TabNine</a>, the all-language autocompleter.<br>There are no source files here because the backend is closed source.</p>
+<p>You can make feature requests by filing an issue. You are also welcome to make pull requests for changes to the configuration files.</p>
+<p><code>languages.yml</code> determines which file extensions are considered part of the same language. (For example, identifiers from <code>.c</code> files will be suggested in <code>.h</code> files.)</p>
+<p><code>language_tokenization.json</code> determines how languages are tokenized. For example, identifiers can contain dashes in Lisp, but not in Java.</p>
+<p>If your feature request is specific to a particular editor’s TabNine client, please file an issue in one of these repositories:</p>
+<ul>
+<li><a href="https://github.com/zxqfl/tabnine-vscode" target="_blank" rel="noopener">VS Code</a></li>
+<li><a href="https://github.com/zxqfl/tabnine-sublime" target="_blank" rel="noopener">Sublime Text</a></li>
+<li><a href="https://github.com/zxqfl/tabnine-vim" target="_blank" rel="noopener">Vim</a></li>
+<li><a href="https://github.com/zxqfl/tabnine-atom" target="_blank" rel="noopener">Atom</a></li>
+</ul>
+<p>You may be interested in these TabNine clients written by third parties:</p>
+<ul>
+<li><a href="https://github.com/TommyX12/company-tabnine" target="_blank" rel="noopener">Emacs</a></li>
+<li><a href="https://github.com/tbodt/deoplete-tabnine" target="_blank" rel="noopener">Vim (Deoplete)</a></li>
+</ul>
+<h1 id="Changelogs"><a href="#Changelogs" class="headerlink" title="Changelogs"></a>Changelogs</h1><p>If new features don’t work for you, check that you have the most recent version by typing <code>TabNine::version</code> into your text editor. If you don’t have the most recent version, try restarting your editor.</p>
+<h2 id="2-0-11-August-24-2019"><a href="#2-0-11-August-24-2019" class="headerlink" title="2.0.11 (August 24, 2019)"></a>2.0.11 (August 24, 2019)</h2><ul>
+<li><a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> is now enabled by default</li>
+</ul>
+<h2 id="2-0-0-—-2-0-10-July-15-—-August-20-2019"><a href="#2-0-0-—-2-0-10-July-15-—-August-20-2019" class="headerlink" title="2.0.0 — 2.0.10 (July 15 — August 20, 2019)"></a>2.0.0 — 2.0.10 (July 15 — August 20, 2019)</h2><ul>
+<li><a href="https://tabnine.com/blog/deep" target="_blank" rel="noopener">Deep TabNine</a><ul>
+<li>Can download and run <a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> models</li>
+<li>Can connect to <a href="https://tabnine.com/subscribe#cloud" target="_blank" rel="noopener">TabNine Cloud</a></li>
+</ul>
+</li>
+<li>Simplified bracket pairing logic</li>
+<li>Simplified filesystem event handling</li>
+<li>Added a configuration panel for viewing settings and logs which can be accessed by typing <code>TabNine::config</code></li>
+</ul>
+<h2 id="1-0-14-May-16-2019"><a href="#1-0-14-May-16-2019" class="headerlink" title="1.0.14 (May 16, 2019)"></a>1.0.14 (May 16, 2019)</h2><ul>
+<li>TabNine no longer watches for filesystem events in ignored directories (closes <a href="https://github.com/zxqfl/TabNine/issues/43" target="_blank" rel="noopener">#43</a>).</li>
+<li>TabNine now waits until a completion is requested to start the language server (closes <a href="https://github.com/zxqfl/TabNine/issues/50" target="_blank" rel="noopener">#50</a>).</li>
+<li>Files with the <code>.d</code> extension are now recognized as D source files (closes <a href="https://github.com/zxqfl/TabNine/issues/56" target="_blank" rel="noopener">#56</a>).</li>
+<li>Added LSP default configuration for PureScript.</li>
+<li>Fixed a logic error that caused index size to be tracked incorrectly in some cases.</li>
+</ul>
+<h2 id="1-0-10-December-1-2018"><a href="#1-0-10-December-1-2018" class="headerlink" title="1.0.10 (December 1, 2018)"></a>1.0.10 (December 1, 2018)</h2><ul>
+<li>Fixed an internal logic error which could put indexing threads into a bad state, leading to an infinite loop (might close <a href="https://github.com/zxqfl/TabNine/issues/24" target="_blank" rel="noopener">#24</a>, we’ll see).</li>
+<li>TabNine now considers a wider range of possibilities when completing in a zero-char context (i.e. when there are no characters immediately before the cursor).</li>
+<li>TabNine now includes <code>-</code> in identifiers when parsing Racket code.</li>
+</ul>
+<h2 id="1-0-9-November-27-2018"><a href="#1-0-9-November-27-2018" class="headerlink" title="1.0.9 (November 27, 2018)"></a>1.0.9 (November 27, 2018)</h2><ul>
+<li>TabNine now uses the context after the cursor to filter its suggestions. For example, if there are tokens on the same line as the cursor, TabNine will not make a suggestion ending in a semicolon (unless there are already instances in the codebase of semicolons occurring in the middle of a line).</li>
+<li>TabNine removes tokens matching the regex <code>\d.*[a-zA-Z].*\d.*[a-zA-Z]</code> from the project index. This is supposed to prevent long keys or base64 literals from occurring in autocompletion suggestions. The tokens are <strong>not</strong> filtered from the directory index or the file index.</li>
+<li>TabNine now recognizes <code>.tsx</code> files as TypeScript rather than <code>.xml</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/21" target="_blank" rel="noopener">#21</a>).</li>
+<li>TabNine only checks its version directory, not its target directory, when auto-updating or writing registration keys. (This fixes an issue associated with DOS path shortening.)</li>
+</ul>
+<h2 id="1-0-7-November-20-2018"><a href="#1-0-7-November-20-2018" class="headerlink" title="1.0.7 (November 20, 2018)"></a>1.0.7 (November 20, 2018)</h2><ul>
+<li>Semantic completion is added! This allows TabNine to integrate with any language server that implements the <a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a>.<ul>
+<li>TabNine will integrate the language server’s suggestions with its own. For example, TabNine can suggest multi-token completions where the first token is provided by the language server.</li>
+<li>TabNine queries the language server asynchronously. So, if the language server is slow, you will see TabNine’s results only. Continue typing to see the language server’s results.</li>
+<li>TabNine passes along any type information or documentation provided by the language server. (The Sublime and VS Code clients are not yet updated to display the documentation; this is coming soon.)</li>
+<li>See the <a href="https://tabnine.com/semantic" target="_blank" rel="noopener">semantic completion guide</a> for configuration help.</li>
+</ul>
+</li>
+<li>Paid index size limit increased to 100 MB (from 15 MB).</li>
+<li>Free index size limit increased to 400 KB (from 200 KB).</li>
+<li>Improved indexing performance.</li>
+<li>Increased license price to $49/$99 personal/business (from $29/$89).</li>
+<li>TabNine now provides closing brackets for its suggestions (so if it suggests <code>foo(</code> it will additionally insert <code>)</code> to the right of the cursor once the suggestion is accepted). The editor clients do not support this yet as it requires an upgrade to the communication protocol with TabNine; this is coming soon. Closes <a href="https://github.com/zxqfl/TabNine/issues/11" target="_blank" rel="noopener">#11</a> as this is no longer an issue with the TabNine backend.</li>
+<li>TabNine now searches all parents to find the project root rather than stopping at the first <code>.git</code>. This permits nested Git repositories (closes <a href="https://github.com/zxqfl/TabNine/issues/5" target="_blank" rel="noopener">#5</a>).</li>
+<li>TabNine provides an API call to get the regex it uses to find identifiers (closes <a href="https://github.com/zxqfl/TabNine/issues/7" target="_blank" rel="noopener">#7</a>).</li>
+<li>TabNine no longer indexes files in <code>.git</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/8" target="_blank" rel="noopener">#8</a>).</li>
+<li>TabNine now respects <code>.tabnineignore</code> files (closes <a href="https://github.com/zxqfl/TabNine/issues/15" target="_blank" rel="noopener">#15</a>).</li>
+<li>TabNine allows disabling auto-update by typing <code>TabNine::disable_auto_update</code> into your text editor (closes <a href="https://github.com/zxqfl/TabNine/issues/14" target="_blank" rel="noopener">#14</a>).</li>
+<li>TabNine no longer stores registration keys and config in same directory where it is installed. This should prevent registration keys and config from being overwritten by client updates (closes <a href="https://github.com/zxqfl/TabNine/issues/10" target="_blank" rel="noopener">#10</a>). You can type <code>TabNine::config_dir</code> to see where config files are being stored.</li>
+</ul>
+
+        </div>
+        
+        
+        
     </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/人工智能">
-                  <b>「 </b>人工智能<b> 」</b>
-                </a>
-            
-            九月 27, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/27/Desition-Tree/" title="Desition Tree" class="posttitle">Desition Tree</a></h3>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <p class="post-count animated fadeInDown">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-27T06:52:07.000Z">2019-09-27</time>
                 
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        9.8k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        9 mins.
-                    </span>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                </div>
                 
                 
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Tree/">Tree</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-            
+                <span class="level-item has-text-grey">
+                    
+                    
+                    23 分钟 读完 (大约 3425 个字)
+                </span>
+                
+                
+            </div>
+        </div>
         
-        <div class="md-content animated fadeIn">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <ul>
+                <a class="has-link-black-ter" href="/2019/09/27/Desition-Tree/">Desition Tree</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#1-什么是决策树" target="_blank" rel="noopener">1. 什么是决策树</a><ul>
 <li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#11-决策树的基本思想" target="_blank" rel="noopener">1.1 决策树的基本思想</a></li>
 <li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#12-树的成长过程" target="_blank" rel="noopener">1.2 “树”的成长过程</a></li>
@@ -266,55 +383,141 @@
 <li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#4-决策树如何剪枝" target="_blank" rel="noopener">4. 决策树如何剪枝</a></li>
 <li><a href="https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.Desition%20Tree/DecisionTree.ipynb" target="_blank" rel="noopener">5. 代码实现</a></li>
 </ul>
-<h3 id="1-1-决策树的基本思想"><a href="#1-1-决策树的基本思想" class="headerlink" title="1.1 决策树的基本思想"></a>1.1 决策树的基本思想</h3><p>其实用一下图片能更好的理解LR模型和决策树模型算法的根本区别，我们可以思考一下一个决策问题：是否去相亲，一个女孩的母亲要给这个女海介绍对象。</p>
-<p></p>
-<p>大家都看得很明白了...</p>
-            
-            <span class="read-more"><a href="/2019/09/27/Desition-Tree/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+<h2 id="1-什么是决策树"><a href="#1-什么是决策树" class="headerlink" title="1. 什么是决策树"></a>1. 什么是决策树</h2><h3 id="1-1-决策树的基本思想"><a href="#1-1-决策树的基本思想" class="headerlink" title="1.1 决策树的基本思想"></a>1.1 决策树的基本思想</h3><p>其实用一下图片能更好的理解LR模型和决策树模型算法的根本区别，我们可以思考一下一个决策问题：是否去相亲，一个女孩的母亲要给这个女海介绍对象。</p>
+<p><img src="https://wx2.sinaimg.cn/large/00630Defly1g4q286viibj30pk0pfk09.jpg" alt="image"></p>
+<p>大家都看得很明白了吧！LR模型是一股脑儿的把所有特征塞入学习，而决策树更像是编程语言中的if-else一样，去做条件判断，这就是根本性的区别。</p>
+<h3 id="1-2-“树”的成长过程"><a href="#1-2-“树”的成长过程" class="headerlink" title="1.2 “树”的成长过程"></a>1.2 “树”的成长过程</h3><p>决策树基于“树”结构进行决策的，这时我们就要面临两个问题 ：</p>
+<ul>
+<li>“树”怎么长。</li>
+<li>这颗“树”长到什么时候停。</li>
+</ul>
+<p>弄懂了这两个问题，那么这个模型就已经建立起来了，决策树的总体流程是“分而治之”的思想，一是自根至叶的递归过程，一是在每个中间节点寻找一个“划分”属性，相当于就是一个特征属性了。接下来我们来逐个解决以上两个问题。</p>
+<h4 id="这颗“树”长到什么时候停"><a href="#这颗“树”长到什么时候停" class="headerlink" title="这颗“树”长到什么时候停"></a>这颗“树”长到什么时候停</h4><ul>
+<li>当前结点包含的样本全属于同一类别，无需划分；例如：样本当中都是决定去相亲的，属于同一类别，就是不管特征如何改变都不会影响结果，这种就不需要划分了。</li>
+<li>当前属性集为空，或是所有样本在所有属性上取值相同，无法划分；例如：所有的样本特征都是一样的，就造成无法划分了，训练集太单一。</li>
+<li>当前结点包含的样本集合为空，不能划分。</li>
+</ul>
+<h3 id="1-3-“树”怎么长"><a href="#1-3-“树”怎么长" class="headerlink" title="1.3 “树”怎么长"></a>1.3 “树”怎么长</h3><p>在生活当中，我们都会碰到很多需要做出决策的地方，例如：吃饭地点、数码产品购买、旅游地区等，你会发现在这些选择当中都是依赖于大部分人做出的选择，也就是跟随大众的选择。其实在决策树当中也是一样的，当大部分的样本都是同一类的时候，那么就已经做出了决策。</p>
+<p>我们可以把大众的选择抽象化，这就引入了一个概念就是纯度，想想也是如此，大众选择就意味着纯度越高。好，在深入一点，就涉及到一句话：<strong>信息熵越低，纯度越高</strong>。我相信大家或多或少都听说过“熵”这个概念，信息熵通俗来说就是用来度量包含的“信息量”，如果样本的属性都是一样的，就会让人觉得这包含的信息很单一，没有差异化，相反样本的属性都不一样，那么包含的信息量就很多了。</p>
+<p>一到这里就头疼了，因为马上要引入信息熵的公式，其实也很简单：</p>
+<p><img src="https://latex.codecogs.com/gif.latex?Ent(D)=-%5Csum_%7Bk=1%7D%5E%7B%7Cy%7C%7Dp_klog_2p_k" alt></p>
+<p>Pk表示的是：当前样本集合D中第k类样本所占的比例为Pk。</p>
+<p><strong>信息增益</strong></p>
+<p>废话不多说直接上公式：</p>
+<p><img src="https://wx3.sinaimg.cn/large/00630Defly1g4q5h6oby7j30he08tdh5.jpg" alt="image"></p>
+<p>看不懂的先不管，简单一句话就是：划分前的信息熵–划分后的信息熵。表示的是向纯度方向迈出的“步长”。</p>
+<p>好了，有了前面的知识，我们就可以开始“树”的生长了。</p>
+<h4 id="1-3-1-ID3算法"><a href="#1-3-1-ID3算法" class="headerlink" title="1.3.1 ID3算法"></a>1.3.1 ID3算法</h4><p>解释：在根节点处计算信息熵，然后根据属性依次划分并计算其节点的信息熵，用根节点信息熵–属性节点的信息熵=信息增益，根据信息增益进行降序排列，排在前面的就是第一个划分属性，其后依次类推，这就得到了决策树的形状，也就是怎么“长”了。</p>
+<p>如果不理解的，可以查看我分享的图片示例，结合我说的，包你看懂：</p>
+<ol>
+<li><a href="https://www.wailian.work/images/2018/12/11/image39e7b.png" target="_blank" rel="noopener">第一张图.jpg</a></li>
+<li><a href="https://www.wailian.work/images/2018/12/11/image61cdc.png" target="_blank" rel="noopener">第二张图.jpg</a></li>
+<li><a href="https://www.wailian.work/images/2018/12/11/image9e194.png" target="_blank" rel="noopener">第三张图.jpg</a></li>
+<li><a href="https://www.wailian.work/images/2018/12/11/image09288.png" target="_blank" rel="noopener">第四张图.jpg</a></li>
+</ol>
+<p>不过，信息增益有一个问题：对可取值数目较多的属性有所偏好，例如：考虑将“编号”作为一个属性。为了解决这个问题，引出了另一个 算法C4.5。</p>
+<h4 id="1-3-2-C4-5"><a href="#1-3-2-C4-5" class="headerlink" title="1.3.2 C4.5"></a>1.3.2 C4.5</h4><p>为了解决信息增益的问题，引入一个信息增益率：</p>
+<p><img src="https://latex.codecogs.com/gif.latex?Gain_ratio(D,a)=%5Cfrac%7BGain(D,a)%7D%7BIV(a)%7D" alt></p>
+<p>其中：</p>
+<p><img src="https://latex.codecogs.com/gif.latex?IV(a)=-%5Csum_%7Bv=1%7D%5E%7BV%7D%5Cfrac%7B%7CD%5Ev%7C%7D%7B%7CD%7C%7Dlog_2%5Cfrac%7B%7CD%5Ev%7C%7D%7B%7CD%7C%7D" alt></p>
+<p>属性a的可能取值数目越多(即V越大)，则IV(a)的值通常就越大。<strong>信息增益比本质： 是在信息增益的基础之上乘上一个惩罚参数。特征个数较多时，惩罚参数较小；特征个数较少时，惩罚参数较大。</strong>不过有一个缺点：</p>
+<ul>
+<li>缺点：信息增益率偏向取值较少的特征。</li>
+</ul>
+<p>使用信息增益率：基于以上缺点，并不是直接选择信息增益率最大的特征，而是现在候选特征中找出信息增益高于平均水平的特征，然后在这些特征中再选择信息增益率最高的特征。</p>
+<h4 id="1-3-3-CART算法"><a href="#1-3-3-CART算法" class="headerlink" title="1.3.3 CART算法"></a>1.3.3 CART算法</h4><p>数学家真实聪明，想到了另外一个表示纯度的方法，叫做基尼指数(讨厌的公式)：</p>
+<p><img src="https://wx1.sinaimg.cn/large/00630Defly1g4q5dmvyykj30eb01edfs.jpg" alt="image"></p>
+<p>表示在样本集合中一个随机选中的样本被分错的概率。举例来说，现在一个袋子里有3种颜色的球若干个，伸手进去掏出2个球，颜色不一样的概率，这下明白了吧。<strong>Gini(D)越小，数据集D的纯度越高。</strong></p>
+<h5 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h5><p>假设现在有特征 “学历”，此特征有三个特征取值： “本科”，“硕士”， “博士”，</p>
+<p>当使用“学历”这个特征对样本集合D进行划分时，划分值分别有三个，因而有三种划分的可能集合，划分后的子集如下：</p>
+<p>1.划分点： “本科”，划分后的子集合 ： {本科}，{硕士，博士}</p>
+<p>2.划分点： “硕士”，划分后的子集合 ： {硕士}，{本科，博士}</p>
+<p>3.划分点： “硕士”，划分后的子集合 ： {博士}，{本科，硕士}}</p>
+<p>对于上述的每一种划分，都可以计算出基于 <strong>划分特征= 某个特征值</strong> 将样本集合D划分为两个子集的纯度：</p>
+<p><img src="https://latex.codecogs.com/gif.latex?Gini(D,A)=%5Cfrac%7B%7CD_1%7C%7D%7B%7CD%7C%7DGini(D_1)+%5Cfrac%7B%7CD_2%7C%7D%7B%7CD%7C%7DGini(D_2)" alt></p>
+<p>因而<strong>对于一个具有多个取值（超过2个）的特征，需要计算以每一个取值作为划分点，对样本D划分之后子集的纯度Gini(D,Ai)，(其中Ai 表示特征A的可能取值)</strong></p>
+<p>然后从所有的可能划分的Gini(D,Ai)中找出Gini指数最小的划分，这个划分的划分点，便是使用特征A对样本集合D进行划分的最佳划分点。到此就可以长成一棵“大树”了。</p>
+<h4 id="1-3-4-三种不同的决策树"><a href="#1-3-4-三种不同的决策树" class="headerlink" title="1.3.4 三种不同的决策树"></a>1.3.4 三种不同的决策树</h4><ul>
+<li><p><strong>ID3</strong>：取值多的属性，更容易使数据更纯，其信息增益更大。</p>
+<p>训练得到的是一棵庞大且深度浅的树：不合理。</p>
+</li>
+<li><p><strong>C4.5</strong>：采用信息增益率替代信息增益。</p>
+</li>
+<li><p><strong>CART</strong>：以基尼系数替代熵，最小化不纯度，而不是最大化信息增益。</p>
+</li>
+</ul>
+<h2 id="2-树形结构为什么不需要归一化"><a href="#2-树形结构为什么不需要归一化" class="headerlink" title="2. 树形结构为什么不需要归一化?"></a>2. 树形结构为什么不需要归一化?</h2><p>因为数值缩放不影响分裂点位置，对树模型的结构不造成影响。<br>按照特征值进行排序的，排序的顺序不变，那么所属的分支以及分裂点就不会有不同。而且，树模型是不能进行梯度下降的，因为构建树模型（回归树）寻找最优点时是通过寻找最优分裂点完成的，因此树模型是阶跃的，阶跃点是不可导的，并且求导没意义，也就不需要归一化。</p>
+<p>既然树形结构（如决策树、RF）不需要归一化，那为何非树形结构比如Adaboost、SVM、LR、Knn、KMeans之类则需要归一化。</p>
+<p>对于线性模型，特征值差别很大时，运用梯度下降的时候，损失等高线是椭圆形，需要进行多次迭代才能到达最优点。<br>但是如果进行了归一化，那么等高线就是圆形的，促使SGD往原点迭代，从而导致需要的迭代次数较少。</p>
+<h2 id="3-分类决策树和回归决策树的区别"><a href="#3-分类决策树和回归决策树的区别" class="headerlink" title="3. 分类决策树和回归决策树的区别"></a>3. 分类决策树和回归决策树的区别</h2><p>Classification And Regression Tree(CART)是决策树的一种，CART算法既可以用于创建分类树（Classification Tree），也可以用于创建回归树（Regression Tree），两者在建树的过程稍有差异。</p>
+<p><strong>回归树</strong>：</p>
+<p>CART回归树是假设树为二叉树，通过不断将特征进行分裂。比如当前树结点是基于第j个特征值进行分裂的，设该特征值小于s的样本划分为左子树，大于s的样本划分为右子树。 </p>
+<p><img src="https://julyedu-img.oss-cn-beijing.aliyuncs.com/quesbase6415343854853617715.png" alt></p>
+<p>而CART回归树实质上就是在该特征维度对样本空间进行划分，而这种空间划分的优化是一种NP难问题，因此，在决策树模型中是使用启发式方法解决。典型CART回归树产生的目标函数为：</p>
+<p><img src="https://julyedu-img.oss-cn-beijing.aliyuncs.com/quesbase64153438551488112806.png" alt></p>
+<p>因此，当我们为了求解最优的切分特征j和最优的切分点s，就转化为求解这么一个目标函数：</p>
+<p><img src="https://julyedu-img.oss-cn-beijing.aliyuncs.com/quesbase6415343855213970444.png" alt></p>
+<p>所以我们只要遍历所有特征的的所有切分点，就能找到最优的切分特征和切分点。最终得到一棵回归树。</p>
+<p>参考文章：<a href="https://blog.csdn.net/jiede1/article/details/76034328" target="_blank" rel="noopener">经典算法详解–CART分类决策树、回归树和模型树</a></p>
+<h2 id="4-决策树如何剪枝"><a href="#4-决策树如何剪枝" class="headerlink" title="4. 决策树如何剪枝"></a>4. 决策树如何剪枝</h2><p>决策树的剪枝基本策略有 预剪枝 (Pre-Pruning) 和 后剪枝 (Post-Pruning)。</p>
+<ul>
+<li><strong>预剪枝</strong>：其中的核心思想就是，在每一次实际对结点进行进一步划分之前，先采用验证集的数据来验证如果划分是否能提高划分的准确性。如果不能，就把结点标记为叶结点并退出进一步划分；如果可以就继续递归生成节点。</li>
+<li><strong>后剪枝</strong>：后剪枝则是先从训练集生成一颗完整的决策树，然后自底向上地对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来泛化性能提升，则将该子树替换为叶结点。</li>
+</ul>
+<p>参考文章：<a href="https://blog.csdn.net/am290333566/article/details/81187562" target="_blank" rel="noopener">决策树及决策树生成与剪枝</a></p>
+<h2 id="5-代码实现"><a href="#5-代码实现" class="headerlink" title="5. 代码实现"></a>5. 代码实现</h2><p>GitHub：<a href="https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.Desition%20Tree/DecisionTree.ipynb" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.Desition%20Tree/DecisionTree.ipynb</a></p>
+<hr>
+<blockquote>
+<p>作者：<a href="https://github.com/NLP-LOVE/ML-NLP" target="_blank" rel="noopener">@mantchs</a></p>
+<p>GitHub：<a href="https://github.com/NLP-LOVE/ML-NLP" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP</a></p>
+<p>欢迎大家加入讨论！共同完善此项目！群号：【541954936】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=863f915b9178560bd32ca07cd090a7d9e6f5f90fcff5667489697b1621cecdb3"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="NLP面试学习群" title="NLP面试学习群"></a></p>
+</blockquote>
+
         </div>
+        
+        
+        
     </div>
 </div>
 
 
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/人工智能">
-                  <b>「 </b>人工智能<b> 」</b>
-                </a>
-            
-            九月 16, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/16/2019年度机器学习49个顶级工程汇总/" title="2019年度机器学习49个顶级工程汇总" class="posttitle">2019年度机器学习49个顶级工程汇总</a></h3>
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <p class="post-count animated fadeInDown">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-16T01:56:47.000Z">2019-09-16</time>
                 
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        18k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        16 mins.
-                    </span>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                </div>
                 
                 
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-            
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 分钟 读完 (大约 2440 个字)
+                </span>
+                
+                
+            </div>
+        </div>
         
-        <div class="md-content animated fadeIn">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <blockquote>
+                <a class="has-link-black-ter" href="/2019/09/16/2019年度机器学习49个顶级工程汇总/">2019年度机器学习49个顶级工程汇总</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="2019年度机器学习49个顶级工程汇总"><a href="#2019年度机器学习49个顶级工程汇总" class="headerlink" title="2019年度机器学习49个顶级工程汇总"></a>2019年度机器学习49个顶级工程汇总</h1><blockquote>
 <p>过去一年中，我们比较了近22000个机器学习开源工程，并筛选了49个顶级项目（筛选率0.22%）。</p>
 </blockquote>
 <p>其中包括以下6个分类</p>
@@ -329,286 +532,2510 @@
 <blockquote>
 <p>我们花了很大的精力筛选这个list，并小心的选择出2018年1月到12月间最好的工程。为了保证名单质量，Mybridge AI协同考虑了流行度、参与度、发布时间等多重因素。</p>
 </blockquote>
-<p>计算机视觉<br>1、Detectron...</p>
-            
-            <span class="read-more"><a href="/2019/09/16/2019年度机器学习49个顶级工程汇总/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+<p>计算机视觉<br>1、Detectron：facebook发布的目标检测工具【18913 star on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Detectron?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Detectron?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/34d7fab0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>2、Openpost：多人实时特征点检测工具【11052 stars on GitHub】<br>项目地址：<br><a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/CMU-Perceptual-Computing-Lab/openpose?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/490fc2b0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>3、DensePost：2维人体图片转3维的实时映射方法。【4165 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Densepose?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Densepose?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/5596da50-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>4、Maskrcnn-benchmark：（Pytorch）语义分割与目标检测工具包。【3888 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/maskrcnn-benchmark?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/maskrcnn-benchmark?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/62cf8eb0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>5、SNIPER：多尺度目标检测算法。【1963 stars on Github】<br>项目地址：<br><a href="https://github.com/mahyarnajibi/SNIPER?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mahyarnajibi/SNIPER?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/728c2ed0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>强化学习<br>6、Psychlab：Psychlab实验范例。【5595 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/lab/tree/master/game_scripts/levels/contributed/psychlab?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/lab/tree/master/game_scripts/levels/contributed/psychlab?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/7faf1140-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>7、ELF：一个灵活、轻量、可扩展的游戏研究平台。【2406 stars on Github】<br>项目地址：<br><a href="https://github.com/pytorch/elf?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/pytorch/elf?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>8、TRFL：（TensorFlow）强化学习agent工具包。【2312 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/trfl?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/trfl?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>9、Horizon：首个用于大规模需求的开源强化学习平台。【1703 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Horizon?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Horizon?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>10、Chess-alpha-zero：国际象棋强化学习项目（基于AlphaGo Zero方法）。【1307 stars on Github】<br>项目地址：<br><a href="https://github.com/Zeta36/chess-alpha-zero?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Zeta36/chess-alpha-zero?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>11、Dm_control：DeepMind工具包。【1231 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/dm_control?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/dm_control?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>12、MAMEToolkit：基于强化学习的电子游戏python库。【437 stars on Github】<br>项目地址：<br><a href="https://github.com/M-J-Murray/MAMEToolkit?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/M-J-Murray/MAMEToolkit?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>13、Reaver：模块化的深度强化学习框架（星际争霸2）。【355 stars on Github】<br>项目地址：<br><a href="https://github.com/inoryy/reaver?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/inoryy/reaver?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>NLP<br>14、Bert：BERT的TensorFlow代码，以及预训练模型。【11703 stars on Github】<br>项目地址：<br><a href="https://github.com/google-research/bert?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google-research/bert?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>15、Pytext：基于Pytorch的神经语言模型框架。【4466 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/pytext?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/pytext?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>16、Bert-as-service：BERT模型的网络服务版本<br>项目地址：<br><a href="https://github.com/hanxiao/bert-as-service?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/hanxiao/bert-as-service?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>17、UnsupervisedMT：基于Phrase的无监督机器翻译方法。【1068 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/UnsupervisedMT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/UnsupervisedMT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>18、DecaNLP：NLP十项全能工具，多任务模型。【1648 stars on Github】<br>项目地址：<br><a href="https://github.com/salesforce/decaNLP?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/salesforce/decaNLP?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>19、NLP-architect：来自英特尔AI实验室的python工具包，包含了当前NLP领域的多种最佳模型。【1751 stars on Github】<br>项目地址：<br><a href="https://github.com/NervanaSystems/nlp-architect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NervanaSystems/nlp-architect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>20、Gluon-nlp：NLP工具包。【1263 stars on Github】<br>项目地址：<br><a href="https://github.com/dmlc/gluon-nlp?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/dmlc/gluon-nlp?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>GAN<br>21、DeOldify：一个基于深度学习的图像补全工具包。【5060 stars on Github】<br>项目地址：<br><a href="https://github.com/jantic/DeOldify?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/jantic/DeOldify?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>22、Progressive_growing_of_gans：GAN的变种实现，提高生产质量、稳定性以及多样性。<br>项目地址：<br><a href="https://github.com/tkarras/progressive_growing_of_gans?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tkarras/progressive_growing_of_gans?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>23、MUNIT：多模态无监督图像翻译。【1339 stars on Github】<br>项目地址：<br><a href="https://github.com/NVlabs/MUNIT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NVlabs/MUNIT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>24、Transparent_latent_gan：使用监督学习来解释GAN的隐空间信息。【1337 stars on Github】<br>项目地址：<br><a href="https://github.com/SummitKwan/transparent_latent_gan?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/SummitKwan/transparent_latent_gan?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>25、Gandissect：基于Pytorch的可视化以及理解GAN的神经元信息。【1065 stars on Github】<br>项目地址：<br><a href="https://github.com/CSAILVision/gandissect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/CSAILVision/gandissect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>26、GANimation：单张图片的表情变换。【869 stars on Github】<br>项目地址：<br><a href="https://github.com/albertpumarola/GANimation?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/albertpumarola/GANimation?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a><br>神经网络<br>27、Fastai：加速神经网络训练过程，并提高准确率。【11597 stars on Github】<br>项目地址：<br><a href="https://github.com/fastai/fastai?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/fastai/fastai?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>28、DeepCreamPy：图像修复。【7046 stars on Github】<br>项目地址：<br><a href="https://github.com/deeppomf/DeepCreamPy?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deeppomf/DeepCreamPy?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>29、Augmentor v0.2、图像增强工具包。【2805 stars on Github】<br>项目地址：<br><a href="https://github.com/mdbloice/Augmentor?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mdbloice/Augmentor?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>30、Graph_nets：Tensorflow的图网络构建工具。【2723 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/graph_nets?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/graph_nets?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>31、Textgenrnn：使用预训练字符级RNN生成文本。【1900 stars on Github】<br>项目地址：<br><a href="https://github.com/minimaxir/textgenrnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/minimaxir/textgenrnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>32、Person-blocker：图像中自动删除人像。【1806 stars on Github】<br>项目地址：<br><a href="https://github.com/minimaxir/person-blocker?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/minimaxir/person-blocker?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>33、Deepvariant：DNA序列数据的分析工具<br>项目地址：<br><a href="https://github.com/google/deepvariant?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google/deepvariant?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>34、Video-nolocal-net：non-local神经网络的视频分类方法。【1049 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/video-nonlocal-net?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/video-nonlocal-net?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>35、Ann-visualizer：神经网络可视化工具。【922 stars on Github】<br>项目地址：<br><a href="https://github.com/Prodicode/ann-visualizer?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Prodicode/ann-visualizer?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>工具包<br>36、Tfjs：一个基于JS的ML模型训练部署工具包。【10268 stars on Github】<br>项目地址：<br><a href="https://github.com/tensorflow/tfjs?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tensorflow/tfjs?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>37：Dopamine：快速的强化学习研究框架。【7142 stars on Github】<br>项目地址：<br><a href="https://github.com/google/dopamine?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google/dopamine?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>38、Lime：分类器解释工具包。【5173 stars on Github】<br>项目地址：<br><a href="https://github.com/marcotcr/lime?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/marcotcr/lime?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>39、Autokeras：自动机器学习的开源软件库。【4520 stars on Github】<br>项目地址：<br><a href="https://github.com/jhfjhfj1/autokeras?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/jhfjhfj1/autokeras?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>40、Shap：神经网络解释工具。【3496 stars on Github】<br>项目地址：<br><a href="https://github.com/slundberg/shap?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/slundberg/shap?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>41、MMdnn：模型适配器。【3021 stars on Github】<br>项目地址：<br><a href="https://github.com/Microsoft/MMdnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Microsoft/MMdnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>42、Mlflow：机器学习生命周期管理。【3013 stars on Github】<br>项目地址：<br><a href="https://github.com/mlflow/mlflow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mlflow/mlflow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>43、Mace：面向移动计算平台的深度学习推断框架。【2979 stars on Github】<br>项目地址：<br><a href="https://github.com/XiaoMi/mace?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/XiaoMi/mace?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>44、PySyft：关注安全性的深度学习库。【2595 stars on Github】<br>项目地址：<br><a href="https://github.com/OpenMined/PySyft?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/OpenMined/PySyft?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>45、Adanet：AutoML计算库。【2293 stars on Github】<br>项目地址：<br><a href="https://github.com/tensorflow/adanet?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tensorflow/adanet?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>46、Tencent-ml-images：最大的多标签图像数据库。【2094 stars on Github】<br>项目地址：<br><a href="https://github.com/Tencent/tencent-ml-images?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Tencent/tencent-ml-images?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>47、Donkeycar、开源的软硬件自动驾驶平台。【1207 stars on Github】</p>
+<p>项目地址：<br><a href="https://github.com/autorope/donkeycar?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/autorope/donkeycar?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>48、PocketFlow：自动模型压缩框架。【1677 stars on Github】<br>项目地址：<br><a href="https://github.com/Tencent/PocketFlow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Tencent/PocketFlow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>49、DALI：深度学习应用的优化工具包以及数据处理扩展引擎。【1013 stars on Github】<br>项目地址：<br><a href="https://github.com/NVIDIA/dali?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NVIDIA/dali?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzIyOTkyOTEzOQ==&mid=2247484033&idx=1&sn=fd58e5e58f50917809d6cf133b3f7476&chksm=e8ba7b5ddfcdf24bb77d9b6db0084733d9d2815d350a0fbfc8401191c3206b72db588e51c41c&sessionid=0&scene=126&clicktime=1568597193&enterid=1568597193&asce" target="_blank" rel="noopener">传送门</a></p>
+
         </div>
+        
+        
+        
     </div>
 </div>
 
 
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/文章">
-                  <b>「 </b>文章<b> 」</b>
-                </a>
-            
-            九月 12, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/09/12/TensorFlow-2-0-RC-is-available/" title="TensorFlow 2.0 RC is available" class="posttitle">TensorFlow 2.0 RC is available</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        1.6k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p></p>
-<p>工具<br>探索可支持和加速 TensorFlow 工作流程的工具。</p>
-<p></p>
-<p>Colaboratory 是一个免费的 Jupyter 笔记本环境，不需要进行任何设置就可以使用，并且完全在云端运行。借助 Colaboratory，您只需点击一下鼠标，即可在浏览器中执行 TensorFlow 代码。</p>
-<p>一套可视化工具，用于理解、调试和优化TensorFlow程序。</p>
-<p>一种无代码的方式探究机器学习模型的工具，对模型的理解、调试和公平性很有用。可在TensorFlow和Jupyter或CoLab笔记本中使用。</p>
-<p>全面的机...</p>
-            
-            <span class="read-more"><a href="/2019/09/12/TensorFlow-2-0-RC-is-available/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
 
 
-    </div>
+
+
+
+
     
-</div>
-<div id="preview"></div>
-
-
-    <div id="back-to-top" class="animated fadeIn faster">
-        <div class="flow"></div>
-        <span class="percentage animated fadeIn faster">0%</span>
-        <span class="iconfont icon-top02 animated fadeIn faster"></span>
-    </div>
-</body>
-<footer>
-    <p class="copyright" id="copyright">
-        &copy; 2019
-        <span class="gradient-text">
-            times
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        Theme
-        <span class="gradient-text">
-            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
-        </span>
-        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
-    </p>
-</footer>
-
-<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<script>
-  MathJax.Hub.Config({
-    "HTML-CSS": {
-      preferredFont: "TeX",
-      availableFonts: ["STIX", "TeX"],
-      linebreaks: {
-        automatic: true
-      },
-      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-      inlineMath: [
-        ["$", "$"],
-        ["\\(", "\\)"]
-      ],
-      processEscapes: true,
-      ignoreClass: "tex2jax_ignore|dno",
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      noUndefined: {
-        attributes: {
-          mathcolor: "red",
-          mathbackground: "#FFEEEE",
-          mathsize: "90%"
-        }
-      },
-      Macros: {
-        href: "{}"
-      }
-    },
-    messageStyle: "none"
-  });
-</script>
-<script>
-  function initialMathJax() {
-    MathJax.Hub.Queue(function () {
-      var all = MathJax.Hub.getAllJax(),
-        i;
-      // console.log(all);
-      for (i = 0; i < all.length; i += 1) {
-        console.log(all[i].SourceElement().parentNode)
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-    });
-  }
-
-  function reprocessMathJax() {
-    if (typeof MathJax !== 'undefined') {
-      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-    }
-  }
-</script>
-
-
-
-    <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
-    <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/obsidian.js"></script>
-<script src="/js/jquery.truncate.js"></script>
-<script src="/js/search.js"></script>
-<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
-<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-
-<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/java/java.min.js"></script>
-
-
-
-    <script src="/js/busuanzi.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            if ($('span[id^="busuanzi_"]').length) {
-                initialBusuanzi();
-            }
-        });
-    </script>
-
-
-<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
-<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
-<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
-<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-12T13:41:44.000Z">2019-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 382 个字)
+                </span>
+                
+                
+            </div>
         </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/12/TensorFlow-2-0-RC-is-available/">TensorFlow 2.0 RC is available</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/12/fc47ee60-d560-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
+<h1 id="TensorFlow-2-0-RC"><a href="#TensorFlow-2-0-RC" class="headerlink" title="TensorFlow 2.0 RC"></a>TensorFlow 2.0 RC</h1><p>工具<br>探索可支持和加速 TensorFlow 工作流程的工具。</p>
+<p><img src="/images/2019/09/12/0d102030-d563-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
+<h2 id="CoLab"><a href="#CoLab" class="headerlink" title="CoLab"></a>CoLab</h2><p>Colaboratory 是一个免费的 Jupyter 笔记本环境，不需要进行任何设置就可以使用，并且完全在云端运行。借助 Colaboratory，您只需点击一下鼠标，即可在浏览器中执行 TensorFlow 代码。</p>
+<h2 id="TensorBoard"><a href="#TensorBoard" class="headerlink" title="TensorBoard"></a>TensorBoard</h2><p>一套可视化工具，用于理解、调试和优化TensorFlow程序。</p>
+<h2 id="What-If工具"><a href="#What-If工具" class="headerlink" title="What-If工具"></a>What-If工具</h2><p>一种无代码的方式探究机器学习模型的工具，对模型的理解、调试和公平性很有用。可在TensorFlow和Jupyter或CoLab笔记本中使用。</p>
+<h2 id="ML-Perf"><a href="#ML-Perf" class="headerlink" title="ML Perf"></a>ML Perf</h2><p>全面的机器学习基准测试套件，用于衡量机器学习软件框架、机器学习硬件加速器和机器学习云端平台的性能。</p>
+<h2 id="XLA"><a href="#XLA" class="headerlink" title="XLA"></a>XLA</h2><p>XLA(加速线性代数)是一种特定领域的线性代数编译器，能够优化TensorFlow计算，它可以提高服务器和移动平台的运行速度改进内存使用情况和可移植性。</p>
+<h2 id="TensorFlow-Playground"><a href="#TensorFlow-Playground" class="headerlink" title="TensorFlow Playground"></a>TensorFlow Playground</h2><p>在浏览器中设计神经网络。别担心，不会使浏览器崩溃。</p>
+<h2 id="TensorFlow-Research-Cloud"><a href="#TensorFlow-Research-Cloud" class="headerlink" title="TensorFlow Research Cloud"></a>TensorFlow Research Cloud</h2><p>加入TensorFlow Research Cloud（TFRC）计划后，研究人员可于申请访问Cloud TPU来加快实现下一波研究突破；我们免费提供1000个Cloud TPU.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="https://user-gold-cdn.xitu.io/2018/8/13/16530d7f26a413c2?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
                 </div>
             </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            91
+                        </p>
+                    </a>
+                </div>
             </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            5
+                        </p>
+                    </a>
+                </div>
             </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            115
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
         </div>
     </div>
 </div>
 
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">73</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/2019/" style="font-size: 10px;">2019</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/ASM/" style="font-size: 10px;">ASM</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/B-树/" style="font-size: 10px;">B+树</a> <a href="/tags/B-树/" style="font-size: 10px;">B-树</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Docker/" style="font-size: 11.43px;">Docker</a> <a href="/tags/Flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/Global/" style="font-size: 10px;">Global </a> <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/JNA/" style="font-size: 10px;">JNA</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Key/" style="font-size: 10px;">Key </a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/MD5/" style="font-size: 10px;">MD5</a> <a href="/tags/NLP/" style="font-size: 11.43px;">NLP</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/OpenCV/" style="font-size: 11.43px;">OpenCV</a> <a href="/tags/RSA/" style="font-size: 10px;">RSA</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/Stack-Overflow/" style="font-size: 10px;">Stack Overflow</a> <a href="/tags/TabNine/" style="font-size: 10px;">TabNine</a> <a href="/tags/TensorFlow/" style="font-size: 11.43px;">TensorFlow</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Xbox/" style="font-size: 10px;">Xbox</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/c/" style="font-size: 11.43px;">c++</a> <a href="/tags/dio/" style="font-size: 10px;">dio</a> <a href="/tags/edb/" style="font-size: 10px;">edb</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/git/" style="font-size: 12.86px;">git</a> <a href="/tags/github/" style="font-size: 11.43px;">github</a> <a href="/tags/jad/" style="font-size: 10px;">jad</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/lazydocker/" style="font-size: 10px;">lazydocker</a> <a href="/tags/leetcode/" style="font-size: 17.14px;">leetcode</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/minio/" style="font-size: 10px;">minio</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/python/" style="font-size: 11.43px;">python</a> <a href="/tags/sha256/" style="font-size: 10px;">sha256</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/vue/" style="font-size: 11.43px;">vue</a> <a href="/tags/webhooks/" style="font-size: 10px;">webhooks</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/x64dbg/" style="font-size: 11.43px;">x64dbg</a> <a href="/tags/书籍/" style="font-size: 10px;">书籍</a> <a href="/tags/二叉树/" style="font-size: 10px;">二叉树</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/军事/" style="font-size: 10px;">军事</a> <a href="/tags/加密算法/" style="font-size: 10px;">加密算法</a> <a href="/tags/卷积神经网络/" style="font-size: 10px;">卷积神经网络</a> <a href="/tags/双指针/" style="font-size: 10px;">双指针</a> <a href="/tags/反汇编/" style="font-size: 10px;">反汇编</a> <a href="/tags/反编译/" style="font-size: 12.86px;">反编译</a> <a href="/tags/后缀表达式/" style="font-size: 10px;">后缀表达式</a> <a href="/tags/国家/" style="font-size: 10px;">国家</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/天平/" style="font-size: 10px;">天平</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/战斗机/" style="font-size: 10px;">战斗机</a> <a href="/tags/拟真/" style="font-size: 10px;">拟真</a> <a href="/tags/指纹/" style="font-size: 10px;">指纹</a> <a href="/tags/推荐系统/" style="font-size: 10px;">推荐系统</a> <a href="/tags/搜索引擎/" style="font-size: 10px;">搜索引擎</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/文章/" style="font-size: 11.43px;">文章</a> <a href="/tags/暴力破解/" style="font-size: 10px;">暴力破解</a> <a href="/tags/机器学习/" style="font-size: 15.71px;">机器学习</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/汇编/" style="font-size: 10px;">汇编</a> <a href="/tags/汇编语言/" style="font-size: 11.43px;">汇编语言</a> <a href="/tags/游戏/" style="font-size: 12.86px;">游戏</a> <a href="/tags/爱因斯坦/" style="font-size: 10px;">爱因斯坦</a> <a href="/tags/狂野飙车/" style="font-size: 10px;">狂野飙车</a> <a href="/tags/百科/" style="font-size: 10px;">百科</a> <a href="/tags/相对论/" style="font-size: 10px;">相对论</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/算法/" style="font-size: 18.57px;">算法</a> <a href="/tags/素数/" style="font-size: 10px;">素数</a> <a href="/tags/红黑树/" style="font-size: 10px;">红黑树</a> <a href="/tags/编程/" style="font-size: 14.29px;">编程</a> <a href="/tags/编程思想/" style="font-size: 10px;">编程思想</a> <a href="/tags/网络安全/" style="font-size: 12.86px;">网络安全</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/自动化部署/" style="font-size: 10px;">自动化部署</a> <a href="/tags/行业分析/" style="font-size: 10px;">行业分析</a> <a href="/tags/计算机视觉/" style="font-size: 10px;">计算机视觉</a> <a href="/tags/论文/" style="font-size: 10px;">论文</a> <a href="/tags/诺贝尔奖/" style="font-size: 10px;">诺贝尔奖</a> <a href="/tags/跑车/" style="font-size: 10px;">跑车</a> <a href="/tags/边缘检测/" style="font-size: 10px;">边缘检测</a> <a href="/tags/逆向工程/" style="font-size: 11.43px;">逆向工程</a> <a href="/tags/递归/" style="font-size: 12.86px;">递归</a> <a href="/tags/链表/" style="font-size: 11.43px;">链表</a> <a href="/tags/陨石/" style="font-size: 10px;">陨石</a> <a href="/tags/面试/" style="font-size: 17.14px;">面试</a> <a href="/tags/飞行/" style="font-size: 10px;">飞行</a> <a href="/tags/魔方/" style="font-size: 10px;">魔方</a> <a href="/tags/黄山/" style="font-size: 10px;">黄山</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/13/3sum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-13T13:12:37.000Z">2019-11-13</time></div>
+                    <a href="/2019/11/13/3sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3sum</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/12/minio/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T14:22:14.000Z">2019-11-12</time></div>
+                    <a href="/2019/11/12/minio/" class="title has-link-black-ter is-size-6 has-text-weight-normal">minio</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/11/graph-convolution/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
+                    <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/10/falling-stone/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
+                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/09/forbes-global-ceo-conference/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="forbes-global-ceo-conference">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T13:28:33.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/forbes-global-ceo-conference/" class="title has-link-black-ter is-size-6 has-text-weight-normal">forbes-global-ceo-conference</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">15</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">30</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">40</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/2019/">
+                        <span class="tag">2019</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/AI/">
+                        <span class="tag">AI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ASM/">
+                        <span class="tag">ASM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/B-树/">
+                        <span class="tag">B+树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/B-树/">
+                        <span class="tag">B-树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Flutter/">
+                        <span class="tag">Flutter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Global/">
+                        <span class="tag">Global </span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HashMap/">
+                        <span class="tag">HashMap</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Http/">
+                        <span class="tag">Http</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JNA/">
+                        <span class="tag">JNA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JVM/">
+                        <span class="tag">JVM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">13</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Key/">
+                        <span class="tag">Key </span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MD5/">
+                        <span class="tag">MD5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NLP/">
+                        <span class="tag">NLP</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Nodejs/">
+                        <span class="tag">Nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/OCR/">
+                        <span class="tag">OCR</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/OpenCV/">
+                        <span class="tag">OpenCV</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RSA/">
+                        <span class="tag">RSA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring-Boot/">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Stack-Overflow/">
+                        <span class="tag">Stack Overflow</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TabNine/">
+                        <span class="tag">TabNine</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TensorFlow/">
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/VR/">
+                        <span class="tag">VR</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Web/">
+                        <span class="tag">Web</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Windows/">
+                        <span class="tag">Windows</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Xbox/">
+                        <span class="tag">Xbox</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dio/">
+                        <span class="tag">dio</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/edb/">
+                        <span class="tag">edb</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/electron/">
+                        <span class="tag">electron</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/github/">
+                        <span class="tag">github</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jad/">
+                        <span class="tag">jad</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lazydocker/">
+                        <span class="tag">lazydocker</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/leetcode/">
+                        <span class="tag">leetcode</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/minio/">
+                        <span class="tag">minio</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nohup/">
+                        <span class="tag">nohup</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/openssl/">
+                        <span class="tag">openssl</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python/">
+                        <span class="tag">python</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/sha256/">
+                        <span class="tag">sha256</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell/">
+                        <span class="tag">shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/webhooks/">
+                        <span class="tag">webhooks</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/windows/">
+                        <span class="tag">windows</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/x64dbg/">
+                        <span class="tag">x64dbg</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/书籍/">
+                        <span class="tag">书籍</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二叉树/">
+                        <span class="tag">二叉树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/人工智能/">
+                        <span class="tag">人工智能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/信息安全/">
+                        <span class="tag">信息安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/军事/">
+                        <span class="tag">军事</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/加密算法/">
+                        <span class="tag">加密算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/卷积神经网络/">
+                        <span class="tag">卷积神经网络</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/双指针/">
+                        <span class="tag">双指针</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/反汇编/">
+                        <span class="tag">反汇编</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/反编译/">
+                        <span class="tag">反编译</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/后缀表达式/">
+                        <span class="tag">后缀表达式</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/国家/">
+                        <span class="tag">国家</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/备份/">
+                        <span class="tag">备份</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/天平/">
+                        <span class="tag">天平</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/安全/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/工具/">
+                        <span class="tag">工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/战斗机/">
+                        <span class="tag">战斗机</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拟真/">
+                        <span class="tag">拟真</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/指纹/">
+                        <span class="tag">指纹</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/推荐系统/">
+                        <span class="tag">推荐系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搜索引擎/">
+                        <span class="tag">搜索引擎</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/操作系统/">
+                        <span class="tag">操作系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数组/">
+                        <span class="tag">数组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/文章/">
+                        <span class="tag">文章</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/暴力破解/">
+                        <span class="tag">暴力破解</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/机器学习/">
+                        <span class="tag">机器学习</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树/">
+                        <span class="tag">树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/框架/">
+                        <span class="tag">框架</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/模拟/">
+                        <span class="tag">模拟</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/汇编/">
+                        <span class="tag">汇编</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/汇编语言/">
+                        <span class="tag">汇编语言</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/游戏/">
+                        <span class="tag">游戏</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/爱因斯坦/">
+                        <span class="tag">爱因斯坦</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/狂野飙车/">
+                        <span class="tag">狂野飙车</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/百科/">
+                        <span class="tag">百科</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/相对论/">
+                        <span class="tag">相对论</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/矩阵/">
+                        <span class="tag">矩阵</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/算法/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/素数/">
+                        <span class="tag">素数</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/红黑树/">
+                        <span class="tag">红黑树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程思想/">
+                        <span class="tag">编程思想</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络安全/">
+                        <span class="tag">网络安全</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/脚本/">
+                        <span class="tag">脚本</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/自动化部署/">
+                        <span class="tag">自动化部署</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/行业分析/">
+                        <span class="tag">行业分析</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/计算机视觉/">
+                        <span class="tag">计算机视觉</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/论文/">
+                        <span class="tag">论文</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/诺贝尔奖/">
+                        <span class="tag">诺贝尔奖</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/跑车/">
+                        <span class="tag">跑车</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/边缘检测/">
+                        <span class="tag">边缘检测</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/逆向工程/">
+                        <span class="tag">逆向工程</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/递归/">
+                        <span class="tag">递归</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/链表/">
+                        <span class="tag">链表</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/陨石/">
+                        <span class="tag">陨石</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/飞行/">
+                        <span class="tag">飞行</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/魔方/">
+                        <span class="tag">魔方</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/黄山/">
+                        <span class="tag">黄山</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
 
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="//www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-134224598-1');
-    </script>
 
 
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/13/3sum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-13T13:12:37.000Z">2019-11-13</time></div>
+                    <a href="/2019/11/13/3sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3sum</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/12/minio/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T14:22:14.000Z">2019-11-12</time></div>
+                    <a href="/2019/11/12/minio/" class="title has-link-black-ter is-size-6 has-text-weight-normal">minio</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/11/graph-convolution/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
+                    <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/10/falling-stone/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
+                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/09/forbes-global-ceo-conference/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="forbes-global-ceo-conference">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T13:28:33.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/forbes-global-ceo-conference/" class="title has-link-black-ter is-size-6 has-text-weight-normal">forbes-global-ceo-conference</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">15</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">30</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">40</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/2019/">
+                        <span class="tag">2019</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/AI/">
+                        <span class="tag">AI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ASM/">
+                        <span class="tag">ASM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/B-树/">
+                        <span class="tag">B+树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/B-树/">
+                        <span class="tag">B-树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Flutter/">
+                        <span class="tag">Flutter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Global/">
+                        <span class="tag">Global </span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HashMap/">
+                        <span class="tag">HashMap</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Http/">
+                        <span class="tag">Http</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JNA/">
+                        <span class="tag">JNA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JVM/">
+                        <span class="tag">JVM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">13</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Key/">
+                        <span class="tag">Key </span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MD5/">
+                        <span class="tag">MD5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NLP/">
+                        <span class="tag">NLP</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Nodejs/">
+                        <span class="tag">Nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/OCR/">
+                        <span class="tag">OCR</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/OpenCV/">
+                        <span class="tag">OpenCV</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RSA/">
+                        <span class="tag">RSA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring-Boot/">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Stack-Overflow/">
+                        <span class="tag">Stack Overflow</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TabNine/">
+                        <span class="tag">TabNine</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TensorFlow/">
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/VR/">
+                        <span class="tag">VR</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Web/">
+                        <span class="tag">Web</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Windows/">
+                        <span class="tag">Windows</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Xbox/">
+                        <span class="tag">Xbox</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dio/">
+                        <span class="tag">dio</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/edb/">
+                        <span class="tag">edb</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/electron/">
+                        <span class="tag">electron</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/github/">
+                        <span class="tag">github</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jad/">
+                        <span class="tag">jad</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lazydocker/">
+                        <span class="tag">lazydocker</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/leetcode/">
+                        <span class="tag">leetcode</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/minio/">
+                        <span class="tag">minio</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nohup/">
+                        <span class="tag">nohup</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/openssl/">
+                        <span class="tag">openssl</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python/">
+                        <span class="tag">python</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/sha256/">
+                        <span class="tag">sha256</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell/">
+                        <span class="tag">shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/webhooks/">
+                        <span class="tag">webhooks</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/windows/">
+                        <span class="tag">windows</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/x64dbg/">
+                        <span class="tag">x64dbg</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/书籍/">
+                        <span class="tag">书籍</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二叉树/">
+                        <span class="tag">二叉树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/人工智能/">
+                        <span class="tag">人工智能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/信息安全/">
+                        <span class="tag">信息安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/军事/">
+                        <span class="tag">军事</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/加密算法/">
+                        <span class="tag">加密算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/卷积神经网络/">
+                        <span class="tag">卷积神经网络</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/双指针/">
+                        <span class="tag">双指针</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/反汇编/">
+                        <span class="tag">反汇编</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/反编译/">
+                        <span class="tag">反编译</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/后缀表达式/">
+                        <span class="tag">后缀表达式</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/国家/">
+                        <span class="tag">国家</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/备份/">
+                        <span class="tag">备份</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/天平/">
+                        <span class="tag">天平</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/安全/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/工具/">
+                        <span class="tag">工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/战斗机/">
+                        <span class="tag">战斗机</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拟真/">
+                        <span class="tag">拟真</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/指纹/">
+                        <span class="tag">指纹</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/推荐系统/">
+                        <span class="tag">推荐系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搜索引擎/">
+                        <span class="tag">搜索引擎</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/操作系统/">
+                        <span class="tag">操作系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数组/">
+                        <span class="tag">数组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/文章/">
+                        <span class="tag">文章</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/暴力破解/">
+                        <span class="tag">暴力破解</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/机器学习/">
+                        <span class="tag">机器学习</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树/">
+                        <span class="tag">树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/框架/">
+                        <span class="tag">框架</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/模拟/">
+                        <span class="tag">模拟</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/汇编/">
+                        <span class="tag">汇编</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/汇编语言/">
+                        <span class="tag">汇编语言</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/游戏/">
+                        <span class="tag">游戏</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/爱因斯坦/">
+                        <span class="tag">爱因斯坦</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/狂野飙车/">
+                        <span class="tag">狂野飙车</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/百科/">
+                        <span class="tag">百科</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/相对论/">
+                        <span class="tag">相对论</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/矩阵/">
+                        <span class="tag">矩阵</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/算法/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/素数/">
+                        <span class="tag">素数</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/红黑树/">
+                        <span class="tag">红黑树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程思想/">
+                        <span class="tag">编程思想</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络安全/">
+                        <span class="tag">网络安全</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/脚本/">
+                        <span class="tag">脚本</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/自动化部署/">
+                        <span class="tag">自动化部署</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/行业分析/">
+                        <span class="tag">行业分析</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/计算机视觉/">
+                        <span class="tag">计算机视觉</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/论文/">
+                        <span class="tag">论文</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/诺贝尔奖/">
+                        <span class="tag">诺贝尔奖</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/跑车/">
+                        <span class="tag">跑车</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/边缘检测/">
+                        <span class="tag">边缘检测</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/逆向工程/">
+                        <span class="tag">逆向工程</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/递归/">
+                        <span class="tag">递归</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/链表/">
+                        <span class="tag">链表</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/陨石/">
+                        <span class="tag">陨石</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/飞行/">
+                        <span class="tag">飞行</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/魔方/">
+                        <span class="tag">魔方</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/黄山/">
+                        <span class="tag">黄山</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
 
-
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Time" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
 
 <script>
-    function initialTyped () {
-        var typedTextEl = $('.typed-text');
-        if (typedTextEl && typedTextEl.length > 0) {
-            var typed = new Typed('.typed-text', {
-                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
-                typeSpeed: 90,
-                loop: true,
-                loopCount: Infinity,
-                backSpeed: 20,
-            });
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'folded'
         }
     }
-
-    if ($('.article-header') && $('.article-header').length) {
-        $(document).ready(function () {
-            initialTyped();
-        });
-    }
+};
 </script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
 
 
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
 </html>
