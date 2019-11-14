@@ -182,7 +182,8 @@
 </li>
 </ol>
 <h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><p>库需要以<code>lib</code>作为开头，而在指定链接命令行参数时，却无需包含开头和扩展名，例如：</p>
-<pre><code class="shell">gcc src-file.c -lm -lpthread</code></pre>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc src-file.c -lm -lpthread</span><br></pre></td></tr></table></figure>
+
 <p>这个例子中，链接了<code>libmath.a</code>和<code>libpthread.a</code></p>
 <h2 id="静态库-a"><a href="#静态库-a" class="headerlink" title="静态库(.a)"></a>静态库(.a)</h2><p>生成静态库的方法如下：</p>
 <ul>
@@ -200,10 +201,12 @@
 <ul>
 <li>编译object文件时使用-fPIC选项：</li>
 </ul>
-<pre><code class="shell">gcc -Wall -fPIC -c *.c</code></pre>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -fPIC -c *.c</span><br></pre></td></tr></table></figure>
+
 <p>这个选项的目的是让编译器生成地址无关(position independent)的代码，这是因为，动态库是在运行期间链接的，变量和函数的偏移量是事先不知道的，需要链接以后根据offset进行地址重定向。</p>
 <ul>
-<li>使用-shared链接<pre><code class="shell">gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 *.o</code></pre>
+<li>使用-shared链接<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 *.o</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p><code>-shared</code>选项是让动态库得以在运行期间被动态链接;<code>-Wl,options</code>是设置传递给<code>ld(链接器)</code>的参数，在上面的例子中，当链接器在链接<code>.o</code>时会执行<code>ld -soname ibctest.so.1</code></p>
@@ -211,17 +214,14 @@
 <li>创建软链</li>
 </ul>
 <p>上面的命令将最终输出一个动态库libctest.so.1.0，而出于习惯，会创建两个软链:</p>
-<pre><code class="shell">mv libctest.so.1.0 /opt/lib
-ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1
-ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so</code></pre>
-<p><code>libctest.so</code>用于在编译期间使用<code>-lctest</code>让编译器找到动态库，而<code>libctest.so.1</code>用于在运行期间链接</p>
-<pre><code class="shell">gcc -Wall -I/path/to/include-files -L/path/to/libraries prog.c -lctest -o prog</code></pre>
-<h3 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h3><p>使用ldd命令来查看程序对动态库的依赖。例如：</p>
-<pre><code class="shell">ldd prog
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv libctest.so.1.0 /opt/lib</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so</span><br></pre></td></tr></table></figure>
 
-libctest.so.1 =&gt; /opt/lib/libctest.so.1 (0x00002aaaaaaac000)
-libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
-/lib64/ld-linux-x86-64.so.2 (0x0000003aa4c00000)</code></pre>
+<p><code>libctest.so</code>用于在编译期间使用<code>-lctest</code>让编译器找到动态库，而<code>libctest.so.1</code>用于在运行期间链接</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -I/path/to/include-files -L/path/to/libraries prog.c -lctest -o prog</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h3><p>使用ldd命令来查看程序对动态库的依赖。例如：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ldd prog</span><br><span class="line"></span><br><span class="line">libctest.so.1 =&gt; /opt/lib/libctest.so.1 (0x00002aaaaaaac000)</span><br><span class="line">libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)</span><br><span class="line">/lib64/ld-linux-x86-64.so.2 (0x0000003aa4c00000)</span><br></pre></td></tr></table></figure>
+
 <h3 id="obj文件"><a href="#obj文件" class="headerlink" title="obj文件"></a>obj文件</h3><p>obj文件的格式和组成可能是系统差异性的一大体现，比如windows下的PE、linux和一些unix下的elf、macos的mach-o、aix下的xcoff。</p>
 <p>查看obj文件的符号表信息，可以通过nm objdump readelf等方法。</p>
 <h3 id="运行期间查找动态库"><a href="#运行期间查找动态库" class="headerlink" title="运行期间查找动态库"></a>运行期间查找动态库</h3><p>运行期间，系统需要知道到哪里去查找动态库，这是通过/etc/ld.so.conf配置的。ldconfig用于配置运行时动态库查找路径，实际是更新/etc/ld.so.cache。另外一些环境变量也可以影响查找：(Linux/Solaris: LD_LIBRARY_PATH, SGI: LD_LIBRARYN32_PATH, AIX: LIBPATH, Mac OS X: DYLD_LIBRARY_PATH, HP-UX: SHLIB_PATH)</p>
@@ -394,7 +394,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -406,7 +406,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -418,7 +418,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -519,6 +519,14 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -577,6 +585,25 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -598,7 +625,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -617,7 +644,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -636,7 +663,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -644,25 +671,6 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -687,7 +695,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1309,6 +1317,13 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1581,6 +1596,25 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1602,7 +1636,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1621,7 +1655,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1640,7 +1674,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1648,25 +1682,6 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1691,7 +1706,7 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2313,6 +2328,13 @@ libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

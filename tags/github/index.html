@@ -248,61 +248,15 @@
 <li>配置github webhooks</li>
 </ol>
 <h1 id="自动化脚本"><a href="#自动化脚本" class="headerlink" title="自动化脚本"></a>自动化脚本</h1><p><code>auto_build.sh</code></p>
-<pre><code class="shell">#! /bin/bash
-SITE_PATH=&#39;/root/nginx/www&#39;
-cd $SITE_PATH
-git reset --hard origin/master
-git clean -f
-git pull
-git checkout master</code></pre>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span>! /bin/bash</span><br><span class="line">SITE_PATH='/root/nginx/www'</span><br><span class="line">cd $SITE_PATH</span><br><span class="line">git reset --hard origin/master</span><br><span class="line">git clean -f</span><br><span class="line">git pull</span><br><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+
 <p>Note: 在执行上面shell脚本之前我们必须第一次手动git clone项目进去</p>
 <h1 id="服务端实现"><a href="#服务端实现" class="headerlink" title="服务端实现"></a>服务端实现</h1><p>Github webhooks需要跟我们的服务器进行通信，确保是可以推送到我们的服务器，所以会发送一个带有X-Hub-Signature的POST请求，为了方便我们直接用第三方的库github-webhook-handler来接收参数并且做监听事件的处理等工作。</p>
-<pre><code class="shell">npm i github-webhook-handler -S</code></pre>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i github-webhook-handler -S</span><br></pre></td></tr></table></figure>
+
 <p><code>index.js</code></p>
-<pre><code class="js">var http = require(&#39;http&#39;);
-var spawn = require(&#39;child_process&#39;).spawn;
-var createHandler = require(&#39;github-webhook-handler&#39;);
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> spawn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>).spawn;</span><br><span class="line"><span class="hljs-keyword">var</span> createHandler = <span class="hljs-built_in">require</span>(<span class="hljs-string">'github-webhook-handler'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 下面填写的myscrect跟github webhooks配置一样，下一步会说；path是我们访问的路径</span></span><br><span class="line"><span class="hljs-keyword">var</span> handler = createHandler(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/auto_build'</span>, <span class="hljs-attr">secret</span>: <span class="hljs-string">''</span> &#125;);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>&#123;</span><br><span class="line">  handler(req, res, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;</span><br><span class="line">    res.statusCode = <span class="hljs-number">404</span>;</span><br><span class="line">    res.end(<span class="hljs-string">'no such location'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).listen(<span class="hljs-number">6666</span>);</span><br><span class="line"></span><br><span class="line">handler.on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Error:'</span>, err.message)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 监听到push事件的时候执行我们的自动化脚本</span></span><br><span class="line">handler.on(<span class="hljs-string">'push'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Received a push event for %s to %s'</span>,</span><br><span class="line">    event.payload.repository.name,</span><br><span class="line">    event.payload.ref);</span><br><span class="line"></span><br><span class="line">  runCommand(<span class="hljs-string">'sh'</span>, [<span class="hljs-string">'auto_build.sh'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> txt </span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(txt);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runCommand</span>(<span class="hljs-params"> cmd, args, callback </span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> child = spawn( cmd, args );</span><br><span class="line">    <span class="hljs-keyword">var</span> response = <span class="hljs-string">''</span>;</span><br><span class="line">    child.stdout.on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> buffer </span>)</span>&#123; resp += buffer.toString(); &#125;);</span><br><span class="line">    child.stdout.on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; callback( resp ) &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 由于我们不需要监听issues，所以下面代码注释掉</span></span><br><span class="line"><span class="hljs-comment">//  handler.on('issues', function (event) &#123;</span></span><br><span class="line"><span class="hljs-comment">//    console.log('Received an issue event for %s action=%s: #%d %s',</span></span><br><span class="line"><span class="hljs-comment">//      event.payload.repository.name,</span></span><br><span class="line"><span class="hljs-comment">//      event.payload.action,</span></span><br><span class="line"><span class="hljs-comment">//      event.payload.issue.number,</span></span><br><span class="line"><span class="hljs-comment">//      event.payload.issue.title)</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-// 下面填写的myscrect跟github webhooks配置一样，下一步会说；path是我们访问的路径
-var handler = createHandler({ path: &#39;/auto_build&#39;, secret: &#39;&#39; });
-
-http.createServer(function (req, res) {
-  handler(req, res, function (err) {
-    res.statusCode = 404;
-    res.end(&#39;no such location&#39;);
-  })
-}).listen(6666);
-
-handler.on(&#39;error&#39;, function (err) {
-  console.error(&#39;Error:&#39;, err.message)
-});
-
-// 监听到push事件的时候执行我们的自动化脚本
-handler.on(&#39;push&#39;, function (event) {
-  console.log(&#39;Received a push event for %s to %s&#39;,
-    event.payload.repository.name,
-    event.payload.ref);
-
-  runCommand(&#39;sh&#39;, [&#39;auto_build.sh&#39;], function( txt ){
-    console.log(txt);
-  });
-});
-
-function runCommand( cmd, args, callback ){
-    var child = spawn( cmd, args );
-    var response = &#39;&#39;;
-    child.stdout.on(&#39;data&#39;, function( buffer ){ resp += buffer.toString(); });
-    child.stdout.on(&#39;end&#39;, function(){ callback( resp ) });
-}
-
-// 由于我们不需要监听issues，所以下面代码注释掉
-//  handler.on(&#39;issues&#39;, function (event) {
-//    console.log(&#39;Received an issue event for %s action=%s: #%d %s&#39;,
-//      event.payload.repository.name,
-//      event.payload.action,
-//      event.payload.issue.number,
-//      event.payload.issue.title)
-});</code></pre>
 <h1 id="配置github-webhooks"><a href="#配置github-webhooks" class="headerlink" title="配置github webhooks"></a>配置github webhooks</h1><p><img src="/images/2019/09/09/3f507120-d294-11e9-9a4a-2f1c09bb03b0.png" alt="image.png"></p>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>上面就是利用Github webhooks进行网站自动化部署的全部内容了，不难发现其实这项技术还是有局限性的，那就是依赖于github，一般我们选择的都是免费github账号，所有项目都对外，一些敏感项目是不适合放置上去的。</p>
 
@@ -365,7 +319,7 @@ function runCommand( cmd, args, callback ){
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -377,7 +331,7 @@ function runCommand( cmd, args, callback ){
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -389,7 +343,7 @@ function runCommand( cmd, args, callback ){
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -490,6 +444,14 @@ function runCommand( cmd, args, callback ){
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -548,6 +510,25 @@ function runCommand( cmd, args, callback ){
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -569,7 +550,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -588,7 +569,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -607,7 +588,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -615,25 +596,6 @@ function runCommand( cmd, args, callback ){
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -658,7 +620,7 @@ function runCommand( cmd, args, callback ){
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1280,6 +1242,13 @@ function runCommand( cmd, args, callback ){
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1552,6 +1521,25 @@ function runCommand( cmd, args, callback ){
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1573,7 +1561,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1592,7 +1580,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1611,7 +1599,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1619,25 +1607,6 @@ function runCommand( cmd, args, callback ){
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1662,7 +1631,7 @@ function runCommand( cmd, args, callback ){
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2284,6 +2253,13 @@ function runCommand( cmd, args, callback ){
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

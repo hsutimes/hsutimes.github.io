@@ -10,19 +10,19 @@
 <title>24. 两两交换链表中的节点 - Time</title>
 
 
-    <meta name="description" content="24. 两两交换链表中的节点题目给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 示例: 给定 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, 你应该返回 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.题解 非递归  /**  * Definition for singly-linked list.  * public class L">
+    <meta name="description" content="24. 两两交换链表中的节点题目给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 示例: 给定 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, 你应该返回 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.题解 非递归  123456789101112131415161718192021222324/** * Definition for">
 <meta name="keywords" content="算法,leetcode,递归,链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="24. 两两交换链表中的节点">
 <meta property="og:url" content="https://blog.hsutimes.com/2019/08/31/24-两两交换链表中的节点/index.html">
 <meta property="og:site_name" content="Time">
-<meta property="og:description" content="24. 两两交换链表中的节点题目给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 示例: 给定 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, 你应该返回 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.题解 非递归  /**  * Definition for singly-linked list.  * public class L">
+<meta property="og:description" content="24. 两两交换链表中的节点题目给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 示例: 给定 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, 你应该返回 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.题解 非递归  123456789101112131415161718192021222324/** * Definition for">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta property="og:updated_time" content="2019-08-31T15:28:43.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="24. 两两交换链表中的节点">
-<meta name="twitter:description" content="24. 两两交换链表中的节点题目给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 示例: 给定 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, 你应该返回 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.题解 非递归  /**  * Definition for singly-linked list.  * public class L">
+<meta name="twitter:description" content="24. 两两交换链表中的节点题目给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 示例: 给定 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, 你应该返回 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.题解 非递归  123456789101112131415161718192021222324/** * Definition for">
 <meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
@@ -181,30 +181,8 @@
 <pre><code>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
 <li>非递归</li>
 </ol>
-<pre><code class="java">/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode swapPairs(ListNode head) {
-        ListNode pre = new ListNode(0);
-        pre.next = head;
-        ListNode temp = pre;
-        while(temp.next != null &amp;&amp; temp.next.next != null) {
-            ListNode start = temp.next;
-            ListNode end = temp.next.next;
-            temp.next = end;
-            start.next = end.next;
-            end.next = start;
-            temp = start;
-        }
-        return pre.next;
-    }
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     int val;</span></span><br><span class="line"><span class="hljs-comment"> *     ListNode next;</span></span><br><span class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pre = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</span><br><span class="line">        pre.next = head;</span><br><span class="line">        ListNode temp = pre;</span><br><span class="line">        <span class="hljs-keyword">while</span>(temp.next != <span class="hljs-keyword">null</span> &amp;&amp; temp.next.next != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">            ListNode start = temp.next;</span><br><span class="line">            ListNode end = temp.next.next;</span><br><span class="line">            temp.next = end;</span><br><span class="line">            start.next = end.next;</span><br><span class="line">            end.next = start;</span><br><span class="line">            temp = start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> pre.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li><p>递归解法</p>
 <ol>
@@ -217,19 +195,7 @@ class Solution {
 </li>
 </ol>
 <p><img src="/images/2019/08/31/edb550e0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
-<pre><code class="java">class Solution {
-    public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null)
-            return head;
-
-        // 三个节点顺序:head, next, swapPairs(next.next)
-        ListNode next = head.next;
-        head.next = swapPairs(next.next);
-        next.next = head;
-        return next;
-    }
-}</code></pre>
-
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span> || head.next == <span class="hljs-keyword">null</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 三个节点顺序:head, next, swapPairs(next.next)</span></span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        head.next = swapPairs(next.next);</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="hljs-keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -393,7 +359,7 @@ class Solution {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -405,7 +371,7 @@ class Solution {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -417,7 +383,7 @@ class Solution {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -518,6 +484,14 @@ class Solution {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -576,6 +550,25 @@ class Solution {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -597,7 +590,7 @@ class Solution {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -616,7 +609,7 @@ class Solution {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -635,7 +628,7 @@ class Solution {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -643,25 +636,6 @@ class Solution {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -686,7 +660,7 @@ class Solution {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1308,6 +1282,13 @@ class Solution {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1580,6 +1561,25 @@ class Solution {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1601,7 +1601,7 @@ class Solution {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1620,7 +1620,7 @@ class Solution {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1639,7 +1639,7 @@ class Solution {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1647,25 +1647,6 @@ class Solution {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1690,7 +1671,7 @@ class Solution {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2312,6 +2293,13 @@ class Solution {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

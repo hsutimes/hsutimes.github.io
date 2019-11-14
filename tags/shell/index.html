@@ -180,123 +180,17 @@
         </h1>
         <div class="content">
             <h1 id="命令行统计文件行数"><a href="#命令行统计文件行数" class="headerlink" title="命令行统计文件行数"></a>命令行统计文件行数</h1><h2 id="Linux-统计代码行数"><a href="#Linux-统计代码行数" class="headerlink" title="Linux 统计代码行数"></a>Linux 统计代码行数</h2><p>在 Linux 下这是一件很简单的事情：</p>
-<pre><code class="shell">find . -name &quot;*.py&quot; | wc -l
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name "*.py" | wc -l</span><br><span class="line"></span><br><span class="line">find ./ -name "*.py" |xargs cat|grep -v ^$|wc -l</span><br></pre></td></tr></table></figure>
 
-find ./ -name &quot;*.py&quot; |xargs cat|grep -v ^$|wc -l</code></pre>
 <p>这行语句就可以很简单地统计出当前目录下所有py后缀文件的行数了。</p>
 <h2 id="Windows-统计代码行数"><a href="#Windows-统计代码行数" class="headerlink" title="Windows 统计代码行数"></a>Windows 统计代码行数</h2><p>这时我们就不能用cmd而是应当用PowerShell啦。</p>
 <p>Powershell是Windows基于.NET开发的一个自动化配置框架。 （其实就是新版命令行）</p>
 <p>然后我们可以输入：</p>
-<pre><code class="shell">dir .\ -Recurse *.py | Get-Content | 
-Measure-Object</code></pre>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dir .\ -Recurse *.py | Get-Content | </span><br><span class="line">Measure-Object</span><br></pre></td></tr></table></figure>
+
 <p>我们就可以看到输出：</p>
 <p>Count : 577966<br>表示当前目录下py后缀文件一共有577966行。</p>
-<h2 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h2><pre><code class="java">import java.io.*;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-/**
- * Created by 杨华彬 on 2016/12/19.
- */
-public class Main {
-
-    public static void main(String[] args) {
-        //输入路径,请在括号内输入路径。
-        File f = new File(&quot;D:\\程序文件\\IntelliJ IDEA\\Java\\JnaTest&quot;);
-        Map map = new HashMap&lt;String, Integer&gt;();  //用来存放统计出来的行数
-        Plus(f, map);
-        //输出统计的结果
-        getResult(map);
-    }
-
-    /*
-    遍历文件夹
-     */
-    public static void Plus(File f, Map map) {
-
-        File[] files = f.listFiles();//获取传入路径的所有文件
-
-
-        //遍历这些文件,需求是CVS中的不统计，所以加判断
-
-        for (File a : files) {
-            //如果文件名是CVS的就跳过
-            if (a.getName().equals(&quot;CVS&quot;)) {
-                continue;
-            } else {
-                //如果a是文件的话就进入下一级目录，否则就统计行数
-                if (a.isDirectory()) {
-                    Plus(a, map);
-                } else {
-//                    if (a.getName().endsWith(&quot;.java&quot;))
-                    map = lineNumber(a.getAbsolutePath(), map);  //否者调方法统计行数
-                }
-            }
-        }
-
-
-    }
-
-    /*
-    统计相应文件的行数
-     */
-    public static Map&lt;String, Integer&gt; lineNumber(String f, Map map) {
-        //定义字符流读取文件
-        FileReader fileReader = null;
-        try {
-            fileReader = new FileReader(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println(&quot;输入的路径不正确&quot;);
-        }
-
-        BufferedReader bufferedReader = new BufferedReader(fileReader);          //从字节流中升级为字符流，方便按行读取。
-        int index = 0;
-
-
-        try {
-            while (bufferedReader.readLine() != null) {
-                index++;
-            }
-            map.put(f, index);    //将结果放到map中
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println(&quot;这个文件读不到！&quot;);
-        } finally {
-            if (fileReader != null) {
-                try {
-                    fileReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return map;
-        }
-    }
-
-    /*
-    将文件的行数存放在一个map中，然后输出行数的和
-     */
-    public static void getResult(Map map) {
-        int sum = 0;
-        //使用iterator遍历map集合
-        Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; entries =
-                map.entrySet().iterator();
-
-        while (entries.hasNext()) {
-            Map.Entry&lt;String, Integer&gt; entry = entries.next();
-            System.out.printf(&quot;%5d - %s\n&quot;, entry.getValue(), entry.getKey());
-            sum += entry.getValue();
-        }
-
-        System.out.println(&quot;line num：&quot; + sum);
-
-    }
-}</code></pre>
-
+<h2 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.*;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by 杨华彬 on 2016/12/19.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//输入路径,请在括号内输入路径。</span></span><br><span class="line">        File f = <span class="hljs-keyword">new</span> File(<span class="hljs-string">"D:\\程序文件\\IntelliJ IDEA\\Java\\JnaTest"</span>);</span><br><span class="line">        Map map = <span class="hljs-keyword">new</span> HashMap&lt;String, Integer&gt;();  <span class="hljs-comment">//用来存放统计出来的行数</span></span><br><span class="line">        Plus(f, map);</span><br><span class="line">        <span class="hljs-comment">//输出统计的结果</span></span><br><span class="line">        getResult(map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    遍历文件夹</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Plus</span><span class="hljs-params">(File f, Map map)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        File[] files = f.listFiles();<span class="hljs-comment">//获取传入路径的所有文件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//遍历这些文件,需求是CVS中的不统计，所以加判断</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (File a : files) &#123;</span><br><span class="line">            <span class="hljs-comment">//如果文件名是CVS的就跳过</span></span><br><span class="line">            <span class="hljs-keyword">if</span> (a.getName().equals(<span class="hljs-string">"CVS"</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-comment">//如果a是文件的话就进入下一级目录，否则就统计行数</span></span><br><span class="line">                <span class="hljs-keyword">if</span> (a.isDirectory()) &#123;</span><br><span class="line">                    Plus(a, map);</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line"><span class="hljs-comment">//                    if (a.getName().endsWith(".java"))</span></span><br><span class="line">                    map = lineNumber(a.getAbsolutePath(), map);  <span class="hljs-comment">//否者调方法统计行数</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    统计相应文件的行数</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Map&lt;String, Integer&gt; <span class="hljs-title">lineNumber</span><span class="hljs-params">(String f, Map map)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//定义字符流读取文件</span></span><br><span class="line">        FileReader fileReader = <span class="hljs-keyword">null</span>;</span><br><span class="line">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">            fileReader = <span class="hljs-keyword">new</span> FileReader(f);</span><br><span class="line">        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="hljs-string">"输入的路径不正确"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BufferedReader bufferedReader = <span class="hljs-keyword">new</span> BufferedReader(fileReader);          <span class="hljs-comment">//从字节流中升级为字符流，方便按行读取。</span></span><br><span class="line">        <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">while</span> (bufferedReader.readLine() != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(f, index);    <span class="hljs-comment">//将结果放到map中</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="hljs-string">"这个文件读不到！"</span>);</span><br><span class="line">        &#125; <span class="hljs-keyword">finally</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (fileReader != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">                    fileReader.close();</span><br><span class="line">                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    将文件的行数存放在一个map中，然后输出行数的和</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getResult</span><span class="hljs-params">(Map map)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-comment">//使用iterator遍历map集合</span></span><br><span class="line">        Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; entries =</span><br><span class="line">                map.entrySet().iterator();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (entries.hasNext()) &#123;</span><br><span class="line">            Map.Entry&lt;String, Integer&gt; entry = entries.next();</span><br><span class="line">            System.out.printf(<span class="hljs-string">"%5d - %s\n"</span>, entry.getValue(), entry.getKey());</span><br><span class="line">            sum += entry.getValue();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="hljs-string">"line num："</span> + sum);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -356,7 +250,7 @@ public class Main {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -368,7 +262,7 @@ public class Main {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -380,7 +274,7 @@ public class Main {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -481,6 +375,14 @@ public class Main {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -539,6 +441,25 @@ public class Main {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -560,7 +481,7 @@ public class Main {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -579,7 +500,7 @@ public class Main {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -598,7 +519,7 @@ public class Main {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -606,25 +527,6 @@ public class Main {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -649,7 +551,7 @@ public class Main {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1271,6 +1173,13 @@ public class Main {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1543,6 +1452,25 @@ public class Main {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1564,7 +1492,7 @@ public class Main {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1583,7 +1511,7 @@ public class Main {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1602,7 +1530,7 @@ public class Main {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1610,25 +1538,6 @@ public class Main {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1653,7 +1562,7 @@ public class Main {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2275,6 +2184,13 @@ public class Main {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

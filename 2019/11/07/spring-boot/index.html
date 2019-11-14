@@ -185,24 +185,8 @@
 </ul>
 <p>== Installation and Getting Started<br>The {docs}/html/[reference documentation] includes detailed<br>{docs}/html/getting-started.html#getting-started-installing-spring-boot[installation<br>instructions] as well as a comprehensive<br>{docs}/html/getting-started.html#getting-started-first-application[<code>getting started</code>]<br>guide.</p>
 <p>Here is a quick teaser of a complete Spring Boot application in Java:</p>
-<pre><code class="Java">    import org.springframework.boot.*;
-    import org.springframework.boot.autoconfigure.*;
-    import org.springframework.web.bind.annotation.*;
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> org.springframework.boot.*;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.*;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@RestController</span></span><br><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/"</span>)</span><br><span class="line">	<span class="hljs-function">String <span class="hljs-title">home</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-string">"Hello World!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(Example.class, args);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    @RestController
-    @SpringBootApplication
-    public class Example {
-
-        @RequestMapping(&quot;/&quot;)
-        String home() {
-            return &quot;Hello World!&quot;;
-        }
-
-        public static void main(String[] args) {
-            SpringApplication.run(Example.class, args);
-        }
-
-    }</code></pre>
 <h1 id="Getting-help"><a href="#Getting-help" class="headerlink" title="Getting help"></a>Getting help</h1><p>Having trouble with Spring Boot? We’d like to help!</p>
 <ul>
 <li>Check the {docs}/html/[reference documentation], especially the<br>{docs}/html/howto.html#howto[How-to’s] – they provide solutions to the most common<br>questions.</li>
@@ -216,23 +200,24 @@
 <li>Before you log a bug, please search the {github}/issues[issue tracker] to see if someone<br>has already reported the problem.</li>
 <li>If the issue doesn’t already exist, {github}/issues/new[create a new issue].</li>
 <li>Please provide as much information as possible with the issue report, we like to know<br>the version of Spring Boot that you are using, as well as your Operating System and<br>JVM version.</li>
-<li>If you need to paste code, or include a stack trace use Markdown +++```+++ escapes<br>before and after your text.</li>
-<li>If possible try to create a test-case or project that replicates the problem and attach<br>it to the issue.</li>
+<li>If you need to paste code, or include a stack trace use Markdown +++<figure class="highlight plain hljs"><figcaption><span>escapes</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  before and after your text.</span><br><span class="line">* If possible try to create a test-case or project that replicates the problem and attach</span><br><span class="line">  it to the issue.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Building from Source</span><br><span class="line">You don&apos;t need to build from source to use Spring Boot (binaries in</span><br><span class="line">https://repo.spring.io[repo.spring.io]), but if you want to try out the latest and</span><br><span class="line">greatest, Spring Boot can be easily built with the</span><br><span class="line">https://github.com/takari/maven-wrapper[maven wrapper]. You also need JDK 1.8.</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">	$ ./mvnw clean install</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="Building-from-Source"><a href="#Building-from-Source" class="headerlink" title="Building from Source"></a>Building from Source</h1><p>You don’t need to build from source to use Spring Boot (binaries in<br><a href="https://repo.spring.io[repo.spring.io]" target="_blank" rel="noopener">https://repo.spring.io[repo.spring.io]</a>), but if you want to try out the latest and<br>greatest, Spring Boot can be easily built with the<br><a href="https://github.com/takari/maven-wrapper[maven" target="_blank" rel="noopener">https://github.com/takari/maven-wrapper[maven</a> wrapper]. You also need JDK 1.8.</p>
-<pre><code class="bash">    $ ./mvnw clean install</code></pre>
 <p>If you want to build with the regular <code>mvn</code> command, you will need<br><a href="https://maven.apache.org/run-maven/index.html[Maven" target="_blank" rel="noopener">https://maven.apache.org/run-maven/index.html[Maven</a> v3.5.0 or above].</p>
 <p>NOTE: You may need to increase the amount of memory available to Maven by setting<br>a <code>MAVEN_OPTS</code> environment variable with the value <code>-Xmx512m</code>. Remember<br>to set the corresponding property in your IDE as well if you are building and running<br>tests there (e.g. in Eclipse go to <code>Preferences-&gt;Java-&gt;Installed JREs</code> and edit the<br>JRE definition so that all processes are launched with those arguments). This property<br>is automatically set if you use the maven wrapper.</p>
 <p><em>Also see link:CONTRIBUTING.adoc[CONTRIBUTING.adoc] if you wish to submit pull requests,<br>and in particular please fill out the<br><a href="https://support.springsource.com/spring_committer_signup[Contributor&#39;s" target="_blank" rel="noopener">https://support.springsource.com/spring_committer_signup[Contributor&#39;s</a> Agreement]<br>before your first change, however trivial.</em></p>
 <p>=== Building reference documentation</p>
 <p>First of all, make sure you have built the project:</p>
-<pre><code class="bash">    $ ./mvnw clean install</code></pre>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install</span><br></pre></td></tr></table></figure>
+
 <p>The reference documentation requires the documentation of the Maven plugin to be<br>available so you need to build that first since it’s not generated by default.</p>
-<pre><code class="bash">    $ ./mvnw clean install -pl spring-boot-project/spring-boot-tools/spring-boot-maven-plugin -Pdefault,full</code></pre>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install -pl spring-boot-project/spring-boot-tools/spring-boot-maven-plugin -Pdefault,full</span><br></pre></td></tr></table></figure>
+
 <p>The documentation also includes auto-generated information about the starters. You might<br>have that in your local repository already (per the first step) but if you want to refresh<br>it:</p>
-<pre><code class="bash">    $ ./mvnw clean install -f spring-boot-project/spring-boot-starters</code></pre>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install -f spring-boot-project/spring-boot-starters</span><br></pre></td></tr></table></figure>
+
 <p>Once this is done, you can build the reference documentation with the command below:</p>
-<pre><code class="bash">    $ ./mvnw clean prepare-package -pl spring-boot-project/spring-boot-docs -Pdefault,full</code></pre>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean prepare-package -pl spring-boot-project/spring-boot-docs -Pdefault,full</span><br></pre></td></tr></table></figure>
+
 <p>TIP: The generated documentation is available from <code>spring-boot-project/spring-boot-docs/target/generated-docs/reference/html</code></p>
 <h1 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h1><p>There are a number of modules in Spring Boot, here is a quick overview:</p>
 <h2 id="spring-boot"><a href="#spring-boot" class="headerlink" title="spring-boot"></a>spring-boot</h2><p>The main library providing features that support the other parts of Spring Boot,<br>these include:</p>
@@ -424,7 +409,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -436,7 +421,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -448,7 +433,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -549,6 +534,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -607,6 +600,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -628,7 +640,7 @@
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -647,7 +659,7 @@
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -666,7 +678,7 @@
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -674,25 +686,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -717,7 +710,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1339,6 +1332,13 @@
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1611,6 +1611,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1632,7 +1651,7 @@
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1651,7 +1670,7 @@
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1670,7 +1689,7 @@
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1678,25 +1697,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1721,7 +1721,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2343,6 +2343,13 @@
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -146,7 +146,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-06T13:41:43.000Z">2019-10-06</time>
+                <time class="level-item has-text-grey" datetime="2019-10-28T15:20:52.000Z">2019-10-28</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 208 个字)
+                    2 分钟 读完 (大约 283 个字)
                 </span>
                 
                 
@@ -165,69 +165,114 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/06/decompilation/">decompilation</a>
+                <a class="has-link-black-ter" href="/2019/10/28/asmttpd/">asmttpd</a>
             
         </h1>
         <div class="content">
-            <h1 id="可以执行程序反编译为汇编程序"><a href="#可以执行程序反编译为汇编程序" class="headerlink" title="可以执行程序反编译为汇编程序"></a>可以执行程序反编译为汇编程序</h1><p><img src="/images/2019/10/06/8f80cc70-e83e-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<pre><code class="c">#include &lt;stdio.h&gt;
-
-int f(int a){
-    if(a==100) return 1;
-    return 0;
-}
-
-int main()
-{
-    printf(&quot;Enter a num: &quot;);
-
-     int a;
-     scanf(&quot;%d&quot;,&amp;a);
-     printf(&quot;num is %d\n&quot;, a);
-     // int code = 100;
-     if(f(a)){
-         printf(&quot;code is true\n&quot;);
-     }else{
-         printf(&quot;code is false\n&quot;);
-     }
-     scanf(&quot;%s&quot;,&amp;a);
-    return 0;
-}</code></pre>
-<p>使用x64dbg加载 <code>main.exe</code></p>
-<pre><code class="armasm">push ebp
-mov ebp,esp
-and esp,FFFFFFF0
-sub esp,20
-call main.401A30
-mov dword ptr ss:[esp],main.405064
-call &lt;JMP.&amp;printf&gt;
-lea eax,dword ptr ss:[esp+1C]
-mov dword ptr ss:[esp+4],eax
-mov dword ptr ss:[esp],main.405072
-call &lt;JMP.&amp;scanf&gt;
-mov eax,dword ptr ss:[esp+1C]
-mov dword ptr ss:[esp+4],eax
-mov dword ptr ss:[esp],main.405075
-call &lt;JMP.&amp;printf&gt;
-mov eax,dword ptr ss:[esp+1C]
-mov dword ptr ss:[esp],eax
-call main.401460
-test eax,eax
-je main.4014D7
-mov dword ptr ss:[esp],main.405080
-call &lt;JMP.&amp;puts&gt;
-jmp main.4014E3
-mov dword ptr ss:[esp],main.40508D
-call &lt;JMP.&amp;puts&gt;
-lea eax,dword ptr ss:[esp+1C]
-mov dword ptr ss:[esp+4],eax
-mov dword ptr ss:[esp],main.40509B
-call &lt;JMP.&amp;scanf&gt;
-mov eax,0
-leave 
-ret 
-nop 
-nop </code></pre>
+            <h1 id="asmttpd"><a href="#asmttpd" class="headerlink" title="asmttpd"></a>asmttpd</h1><p>Web server for Linux written in amd64 assembly.</p>
+<p>Features:</p>
+<ul>
+<li>Multi-threaded.</li>
+<li>No libraries required ( only 64-bit Linux ).</li>
+<li>Very small binary, roughly 6 KB.</li>
+<li>Quite fast.</li>
+</ul>
+<p>What works:</p>
+<ul>
+<li>Serving files from specified document root.</li>
+<li>HEAD requests.</li>
+<li>200, 206, 404, 400, 413, 416</li>
+<li>Content-types: xml, html, xhtml, gif, png, jpeg, css, js, svg, and octet-stream.</li>
+</ul>
+<p>Planned Features:</p>
+<ul>
+<li>Directory listing.</li>
+</ul>
+<h1 id="Current-Limitations-Known-Issues"><a href="#Current-Limitations-Known-Issues" class="headerlink" title="Current Limitations / Known Issues"></a>Current Limitations / Known Issues</h1><ul>
+<li>Sendfile can hang if GET is cancelled.</li>
+</ul>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>Run <code>make</code> or <code>make release</code> for non-debug version.</p>
+<p>You will need <code>yasm</code> installed.</p>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p><code>./asmttpd /path/to/web_root port_number</code></p>
+<p>Example: <code>./asmttpd ./web_root 8080</code></p>
+<h1 id="Changes"><a href="#Changes" class="headerlink" title="Changes"></a>Changes</h1><p>2019-04-22 : asmttpd - 0.4.4</p>
+<ul>
+<li>Added SVG support.</li>
+</ul>
+<p>2019-01-24 : asmttpd - 0.4.3</p>
+<ul>
+<li>Added port number as parameter.</li>
+</ul>
+<p>2017-10-18 : asmttpd - 0.4.2</p>
+<ul>
+<li>Set REUSEADDR.</li>
+</ul>
+<p>2017-10-17 : asmttpd - 0.4.1</p>
+<ul>
+<li>Stack address bug fix.</li>
+</ul>
+<p>2016-10-31 : asmttpd - 0.4</p>
+<ul>
+<li>HEAD support.</li>
+</ul>
+<p>2014-07-14 : asmttpd - 0.3</p>
+<ul>
+<li>Added default document support.</li>
+</ul>
+<p>2014-02-10 : asmttpd - 0.2</p>
+<ul>
+<li>Added 400, 413, 416 responses.</li>
+<li>Fixed header processing bug.</li>
+</ul>
+<p>2014-02-07 : asmttpd - 0.1.1</p>
+<ul>
+<li>Fixed 206 max length bug.</li>
+<li>Commented out simple request logging, uncomment in main.asm to enable.</li>
+</ul>
+<p>2014-02-06 : asmttpd - 0.1</p>
+<ul>
+<li>Fixed SIGPIPE when transfer is cancelled.</li>
+<li>Added a more useful error on bind failure.</li>
+<li>Fixed 206 size calculation.</li>
+<li>Combined seek &amp; get file size system calls.</li>
+</ul>
+<p>2014-02-05 : asmttpd - 0.09</p>
+<ul>
+<li>Issue #8 fix. Crashes on long request paths.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.08</p>
+<ul>
+<li>Added TCP corking.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.07</p>
+<ul>
+<li>Removed thread pool after benchmarking, changed to an accept-per-thread model.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.06</p>
+<ul>
+<li>Worker thread stack corruption bug fix.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.05</p>
+<ul>
+<li>Changed 200 and 206 implementation to use sendfile system call.</li>
+<li>Got rid of read/write buffer, changed request read buffer to standard 8KB.</li>
+</ul>
+<p>2014-02-03 : asmttpd - 0.04</p>
+<ul>
+<li>200 now streams full amount</li>
+</ul>
+<p>2014-02-01 : asmttpd - 0.03</p>
+<ul>
+<li>Files are split if too large to fit into buffer. </li>
+<li>Added 206 responses with Content-Range handling</li>
+</ul>
+<p>2014-01-30 : asmttpd - 0.02</p>
+<ul>
+<li>Added xml, xhtml, gif, png, jpeg, css, and javascript content types.</li>
+<li>Changed thread memory size to something reasonable. You can tweak it according to available memory. See comments in main.asm</li>
+<li>Added simple request logging.</li>
+<li>Added removal of ‘../‘ in URL.</li>
+</ul>
 
         </div>
         
@@ -250,7 +295,7 @@ nop </code></pre>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-06T13:25:30.000Z">2019-10-06</time>
+                <time class="level-item has-text-grey" datetime="2019-10-27T15:15:00.000Z">2019-10-27</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -260,7 +305,7 @@ nop </code></pre>
                 <span class="level-item has-text-grey">
                     
                     
-                    26 分钟 读完 (大约 3940 个字)
+                    11 分钟 读完 (大约 1624 个字)
                 </span>
                 
                 
@@ -269,1705 +314,451 @@ nop </code></pre>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/06/assembly-language/">assembly language</a>
+                <a class="has-link-black-ter" href="/2019/10/27/lazydocker/">lazydocker</a>
             
         </h1>
         <div class="content">
-            <pre><code class="shell">================================================================
-MOV - Move:
-| Opcode                   | Instruction                   | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                               
-| 88 /r REX + 88 /r        | MOV r/m8,r8 MOV r/m8***,r8*** | MR MR| Valid Valid| Valid N.E.     | Move r8 to r/m8.Move r8 to r/m8.         
-| 89 /r                    | MOV r/m16,r16                 | MR   | Valid      | Valid          | Move r16 to r/m16.                        
-| 89 /r                    | MOV r/m32,r32                 | MR   | Valid      | Valid          | Move r32 to r/m32.                        
-| REX.W + 89 /r            | MOV r/m64,r64                 | MR   | Valid      | N.E.           | Move r64 to r/m64.                        
-| 8A /r                    | MOV r8,r/m8                   | RM   | Valid      | Valid          | Move r/m8 to r8.                          
-| REX + 8A /r              | MOV r8***,r/m8***             | RM   | Valid      | N.E.           | Move r/m8 to r8.                          
-| 8B /r                    | MOV r16,r/m16                 | RM   | Valid      | Valid          | Move r/m16 to r16.                        
-| 8B /r                    | MOV r32,r/m32                 | RM   | Valid      | Valid          | Move r/m32 to r32.                        
-| REX.W + 8B /r            | MOV r64,r/m64                 | RM   | Valid      | N.E.           | Move r/m64 to r64.                        
-| 8C /r                    | MOV r/m16,Sreg**              | MR   | Valid      | Valid          | Move segment register to r/m16.           
-| REX.W + 8C /r            | MOV r/m64,Sreg**              | MR   | Valid      | Valid          | Move zero extended 16-bit segment register
-|                          |                               |      |            |                | to r/m64.                                 
-| 8E /r                    | MOV Sreg,r/m16**              | RM   | Valid      | Valid          | Move r/m16 to segment register.           
-| REX.W + 8E /r            | MOV Sreg,r/m64**              | RM   | Valid      | Valid          | Move lower 16 bits of r/m64 to segment    
-|                          |                               |      |            |                | register.                                 
-| A0                       | MOV AL,moffs8*                | FD   | Valid      | Valid          | Move byte at (seg:offset) to AL.          
-| REX.W + A0               | MOV AL,moffs8*                | FD   | Valid      | N.E.           | Move byte at (offset) to AL.              
-| A1                       | MOV AX,moffs16*               | FD   | Valid      | Valid          | Move word at (seg:offset) to AX.          
-| A1                       | MOV EAX,moffs32*              | FD   | Valid      | Valid          | Move doubleword at (seg:offset) to EAX.   
-| REX.W + A1               | MOV RAX,moffs64*              | FD   | Valid      | N.E.           | Move quadword at (offset) to RAX.         
-| A2 REX.W + A2            | MOV moffs8,AL MOV moffs8***,AL| TD TD| Valid Valid| Valid N.E.     | Move AL to (seg:offset).Move AL to       
-|                          |                               |      |            |                | (offset).                                 
-| A3                       | MOV moffs16*,AX               | TD   | Valid      | Valid          | Move AX to (seg:offset).                  
-| A3                       | MOV moffs32*,EAX              | TD   | Valid      | Valid          | Move EAX to (seg:offset).                 
-| REX.W + A3               | MOV moffs64*,RAX              | TD   | Valid      | N.E.           | Move RAX to (offset).                     
-| B0+ rb ib REX + B0+ rb ib| MOV r8, imm8 MOV r8***, imm8  | OI OI| Valid Valid| Valid N.E.     | Move imm8 to r8.Move imm8 to r8.         
-| B8+ rw iw                | MOV r16, imm16                | OI   | Valid      | Valid          | Move imm16 to r16.                        
-| B8+ rd id                | MOV r32, imm32                | OI   | Valid      | Valid          | Move imm32 to r32.                        
-| REX.W + B8+ rd io        | MOV r64, imm64                | OI   | Valid      | N.E.           | Move imm64 to r64.                        
-| C6 /0 ib                 | MOV r/m8, imm8                | MI   | Valid      | Valid          | Move imm8 to r/m8.                        
-| REX + C6 /0 ib           | MOV r/m8***, imm8             | MI   | Valid      | N.E.           | Move imm8 to r/m8.                        
-| C7 /0 iw                 | MOV r/m16, imm16              | MI   | Valid      | Valid          | Move imm16 to r/m16.                      
-| C7 /0 id                 | MOV r/m32, imm32              | MI   | Valid      | Valid          | Move imm32 to r/m32.                      
-| REX.W + C7 /0 io         | MOV r/m64, imm32              | MI   | Valid      | N.E.           | Move imm32 sign extended to 64-bits       
-|                          |                               |      |            |                | to r/m64.                                 
-Notes:* The moffs8, moffs16, moffs32 and moffs64 operands specify a simple
-offset relative to the segment base, where 8, 16, 32 and 64 refer to the size
-of the data.The address-size attribute of the instruction determines the size
-of the offset, either 16, 32 or 64 bits.** In 32-bit mode, the assembler may
-insert the 16-bit operand-size prefix with this instruction (see the following
-“Description” section for further information).***In 64-bit mode, r/m8 can
-not be encoded to access the following byte registers if a REX prefix is used:
-AH, BH, CH, DH.
-
-
-指令操作数编码：
-| Op/En| Operand 1      | Operand 2    | Operand 3| Operand 4
-| MR   | ModRM:r/m (w)  | ModRM:reg (r)| NA       | NA       
-| RM   | ModRM:reg (w)  | ModRM:r/m (r)| NA       | NA       
-| FD   | AL/AX/EAX/RAX  | Moffs        | NA       | NA       
-| TD   | Moffs (w)      | AL/AX/EAX/RAX| NA       | NA       
-| OI   | opcode + rd (w)| imm8/16/32/64| NA       | NA       
-| MI   | ModRM:r/m (w)  | imm8/16/32/64| NA       | NA       
-
-Description:
-Copies the second operand (source operand) to the first operand (destination
-operand).The source operand can be an immediate value, general-purpose register,
-segment register, or memory location; the destination register can be a general-purpose
-register, segment register, or memory location.Both operands must be the same
-size, which can be a byte, a word, a doubleword, or a quadword.
-
-The MOV instruction cannot be used to load the CS register.Attempting to do
-so results in an invalid opcode exception (#UD).To load the CS register, use
-the far JMP, CALL, or RET instruction.
-
-If the destination operand is a segment register (DS, ES, FS, GS, or SS), the
-source operand must be a valid segment selector.In protected mode, moving a
-segment selector into a segment register automatically causes the segment descriptor
-information associated with that segment selector to be loaded into the hidden
-(shadow) part of the segment register.While loading this information, the segment
-selector and segment descriptor information is validated (see the “Operation”
-algorithm below).The segment descriptor data is obtained from the GDT or LDT
-entry for the specified segment selector.
-
-A NULL segment selector (values 0000-0003) can be loaded into the DS, ES, FS,
-and GS registers without causing a protection exception.However, any subsequent
-attempt to reference a segment whose corresponding segment register is loaded
-with a NULL value causes a general protection exception (#GP) and no memory
-reference occurs.
-
-Loading the SS register with a MOV instruction inhibits all interrupts until
-after the execution of the next instruction.This operation allows a stack pointer
-to be loaded into the ESP register with the next instruction (MOV ESP, stack-pointer
-value) before an interrupt occurs1.Be aware that the LSS instruction offers
-a more efficient method of loading the SS and ESP registers.
-
-When operating in 32-bit mode and moving data between a segment register and
-a general-purpose register, the 32-bit IA-32 processors do not require the use
-of the 16-bit operand-size prefix (a byte with the value 66H) with
-
-| 1.| If a code instruction breakpoint (for      
-|   | debug) is placed on an instruction located 
-|   | immediately after a MOV SS instruction,    
-|   | the breakpoint may not be triggered.       
-|   | However, in a sequence of instructions     
-|   | that load the SS register, only the        
-|   | first instruction in the sequence is       
-|   | guaranteed to delay an interrupt.In       
-|   | the following sequence, interrupts may     
-|   | be recognized before MOV ESP, EBP executes:
-|   | MOV SS, EDX MOV SS, EAX MOV ESP, EBP       
-this instruction, but most assemblers will insert it if the standard form of
-the instruction is used (for example, MOV DS, AX).The processor will execute
-this instruction correctly, but it will usually require an extra clock.With
-most assemblers, using the instruction form MOV DS, EAX will avoid this unneeded
-66H prefix.When the processor executes the instruction with a 32-bit general-purpose
-register, it assumes that the 16 least-significant bits of the general-purpose
-register are the destination or source operand.If the register is a destination
-operand, the resulting value in the two high-order bytes of the register is
-implementation dependent.For the Pentium 4, Intel Xeon, and P6 family processors,
-the two high-order bytes are filled with zeros; for earlier 32-bit IA-32 processors,
-the two high order bytes are undefined.
-
-In 64-bit mode, the instruction&#39;s default operation size is 32 bits.Use of
-the REX.R prefix permits access to additional registers (R8-R15).Use of the
-REX.W prefix promotes operation to 64 bits.See the summary chart at the beginning
-of this section for encoding data and limits.
-
-操作: 
-
-DEST &lt;- SRC;
-Loading a segment register while in protected mode results in special checks and actions, as described in the
-following listing.These checks are performed on the segment selector and the segment descriptor to which it
-points.
-IF SS is loaded
-  THEN
-     IF segment selector is NULL
-       THEN #GP(0); FI;
-     IF segment selector index is outside descriptor table limits
-     or segment selector&#39;s RPL != CPL
-     or segment is not a writable data segment
-     or DPL != CPL
-       THEN #GP(selector); FI;
-     IF segment not marked present
-       THEN #SS(selector);
-       ELSE
-          SS &lt;- segment selector;
-          SS &lt;- segment descriptor; FI;
-FI;
-IF DS, ES, FS, or GS is loaded with non-NULL selector
-THEN
-  IF segment selector index is outside descriptor table limits
-  or segment is not a data or readable code segment
-  or ((segment is a data or nonconforming code segment)
-  or ((RPL &gt; DPL) and (CPL &gt; DPL))
-     THEN #GP(selector); FI;
-  IF segment not marked present
-     THEN #NP(selector);
-     ELSE
-       SegmentRegister &lt;- segment selector;
-       SegmentRegister &lt;- segment descriptor; FI;
-FI;
-IF DS, ES, FS, or GS is loaded with NULL selector
-  THEN
-     SegmentRegister &lt;- segment selector;
-     SegmentRegister &lt;- segment descriptor;
-FI;
-
-Flags Affected:
-None.
-
-
-保护模式：
-| #GP(0)         | If attempt is made to load SS register        
-|                | with NULL segment selector.If the destination
-|                | operand is in a non-writable segment.         
-|                | If a memory operand effective address         
-|                | is outside the CS, DS, ES, FS, or GS          
-|                | segment limit.If the DS, ES, FS, or          
-|                | GS register contains a NULL segment           
-|                | selector.                                     
-| #GP(selector)  | If segment selector index is outside          
-|                | descriptor table limits.If the SS register   
-|                | is being loaded and the segment selector&#39;s    
-|                | RPL and the segment descriptor&#39;s DPL          
-|                | are not equal to the CPL.If the SS           
-|                | register is being loaded and the segment      
-|                | pointed to is a non-writable data segment.    
-|                | If the DS, ES, FS, or GS register is          
-|                | being loaded and the segment pointed          
-|                | to is not a data or readable code segment.    
-|                | If the DS, ES, FS, or GS register is          
-|                | being loaded and the segment pointed          
-|                | to is a data or nonconforming code segment,   
-|                | but both the RPL and the CPL are greater      
-|                | than the DPL.                                 
-| #SS(0)         | If a memory operand effective address         
-|                | is outside the SS segment limit.              
-| #SS(selector)  | If the SS register is being loaded and        
-|                | the segment pointed to is marked not          
-|                | present.                                      
-| #NP            | If the DS, ES, FS, or GS register is          
-|                | being loaded and the segment pointed          
-|                | to is marked not present.                     
-| #PF(fault-code)| If a page fault occurs.                       
-| #AC(0)         | If alignment checking is enabled and          
-|                | an unaligned memory reference is made         
-|                | while the current privilege level is          
-|                | 3.                                            
-| #UD            | If attempt is made to load the CS register.   
-|                | If the LOCK prefix is used.                   
-
-Real-地址模式异常: 
-| #GP| If a memory operand effective address      
-|    | is outside the CS, DS, ES, FS, or GS       
-|    | segment limit.                             
-| #SS| If a memory operand effective address      
-|    | is outside the SS segment limit.           
-| #UD| If attempt is made to load the CS register.
-|    | If the LOCK prefix is used.                
-
-Virtual-8086 模式异常: 
-| #GP(0)         | If a memory operand effective address      
-|                | is outside the CS, DS, ES, FS, or GS       
-|                | segment limit.                             
-| #SS(0)         | If a memory operand effective address      
-|                | is outside the SS segment limit.           
-| #PF(fault-code)| If a page fault occurs.                    
-| #AC(0)         | If alignment checking is enabled and       
-|                | an unaligned memory reference is made.     
-| #UD            | If attempt is made to load the CS register.
-|                | If the LOCK prefix is used.                
-
-兼容模式：
-Same exceptions as in protected mode.
-
-
-64-Bit 模式异常: 
-| #GP(0)         | If the memory address is in a non-canonical     
-|                | form.If an attempt is made to load             
-|                | SS register with NULL segment selector          
-|                | when CPL = 3.If an attempt is made             
-|                | to load SS register with NULL segment           
-|                | selector when CPL &lt; 3 and CPL != RPL.            
-| #GP(selector)  | If segment selector index is outside            
-|                | descriptor table limits.If the memory          
-|                | access to the descriptor table is non-canonical.
-|                | If the SS register is being loaded and          
-|                | the segment selector&#39;s RPL and the segment      
-|                | descriptor&#39;s DPL are not equal to the           
-|                | CPL.If the SS register is being loaded         
-|                | and the segment pointed to is a nonwritable     
-|                | data segment.If the DS, ES, FS, or             
-|                | GS register is being loaded and the             
-|                | segment pointed to is not a data or             
-|                | readable code segment.If the DS, ES,           
-|                | FS, or GS register is being loaded and          
-|                | the segment pointed to is a data or             
-|                | nonconforming code segment, but both            
-|                | the RPL and the CPL are greater than            
-|                | the DPL.                                        
-| #SS(0)         | If the stack address is in a non-canonical      
-|                | form.                                           
-| #SS(selector)  | If the SS register is being loaded and          
-|                | the segment pointed to is marked not            
-|                | present.                                        
-| #PF(fault-code)| If a page fault occurs.                         
-| #AC(0)         | If alignment checking is enabled and            
-|                | an unaligned memory reference is made           
-|                | while the current privilege level is            
-|                | 3.                                              
-| #UD            | If attempt is made to load the CS register.     
-|                | If the LOCK prefix is used.                     
-
-MOV - Move to/from Control Registers:
-| Opcode/Instruction                 | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                           
-| 0F 20/r MOV r32, CR0-CR7           | MR   | N.E.       | Valid          | Move control register to r32.         
-| 0F 20/r MOV r64, CR0-CR7 REX.R + 0F| MR MR| Valid Valid| N.E.N.E.      | Move extended control register to r64.
-| 20 /0 MOV r64, CR8                 |      |            |                | Move extended CR8 to r64.1            
-| 0F 22 /r MOV CR0-CR7, r32          | RM   | N.E.       | Valid          | Move r32 to control register.         
-| 0F 22 /r MOV CR0-CR7, r64          | RM   | Valid      | N.E.           | Move r64 to extended control register.
-| REX.R + 0F 22 /0 MOV CR8, r64      | RM   | Valid      | N.E.           | Move r64 to extended CR8.1            
-
-NOTE::
-| 1.| MOV CR* instructions, except for MOV  
-|   | CR8, are serializing instructions.MOV
-|   | CR8 is not architecturally defined as 
-|   | a serializing instruction.For more   
-|   | information, see Chapter 8 in Intel®  
-|   | 64 and IA-32 Architectures Software   
-|   | Developer&#39;s Manual, Volume 3A.        
-
-指令操作数编码：
-| Op/En| Operand 1    | Operand 2    | Operand 3| Operand 4
-| MR   | ModRM:r/m (w)| ModRM:reg (r)| NA       | NA       
-| RM   | ModRM:reg (w)| ModRM:r/m (r)| NA       | NA       
-
-Description:
-Moves the contents of a control register (CR0, CR2, CR3, CR4, or CR8) to a general-purpose
-register or the contents of a general purpose register to a control register.
-The operand size for these instructions is always 32 bits in non-64-bit modes,
-regardless of the operand-size attribute.(See “Control Registers” in Chapter
-2 of the Intel®64 and IA-32 Architectures Software Developer&#39;s Manual, Volume
-3A, for a detailed description of the flags and fields in the control registers.)
-This instruction can be executed only when the current privilege level is 0.
-
-At the opcode level, the reg field within the ModR/M byte specifies which of
-the control registers is loaded or read.The 2 bits in the mod field are ignored.
-The r/m field specifies the general-purpose register loaded or read.Attempts
-to reference CR1, CR5, CR6, CR7, and CR9-CR15 result in undefined opcode (#UD)
-exceptions.
-
-When loading control registers, programs should not attempt to change the reserved
-bits; that is, always set reserved bits to the value previously read.An attempt
-to change CR4&#39;s reserved bits will cause a general protection fault.Reserved
-bits in CR0 and CR3 remain clear after any load of those registers; attempts
-to set them have no impact.On Pentium 4, Intel Xeon and P6 family processors,
-CR0.ET remains set after any load of CR0; attempts to clear this bit have no
-impact.
-
-In certain cases, these instructions have the side effect of invalidating entries
-in the TLBs and the paging-structure caches.See Section 4.10.4.1, “Operations
-that Invalidate TLBs and Paging-Structure Caches,” in the Intel® 64 and IA-32
-Architectures Software Developer&#39;s Manual, Volume 3A for details.
-
-The following side effects are implementation-specific for the Pentium 4, Intel
-Xeon, and P6 processor family: when modifying PE or PG in register CR0, or PSE
-or PAE in register CR4, all TLB entries are flushed, including global entries.
-Software should not depend on this functionality in all Intel 64 or IA-32 processors.
-
-In 64-bit mode, the instruction&#39;s default operation size is 64 bits.The REX.R
-prefix must be used to access CR8.Use of REX.B permits access to additional
-registers (R8-R15).Use of the REX.W prefix or 66H prefix is ignored.Use of
-
-the REX.R prefix to specify a register other than CR8 causes an invalid-opcode
-exception.See the summary chart at the beginning of this section for encoding
-data and limits.
-
-If CR4.PCIDE = 1, bit 63 of the source operand to MOV to CR3 determines whether
-the instruction invalidates entries in the TLBs and the paging-structure caches
-(see Section 4.10.4.1, “Operations that Invalidate TLBs and Paging-Structure
-Caches,” in the Intel® 64 and IA-32 Architectures Software Developer&#39;s Manual,
-Volume 3A).The instruction does not modify bit 63 of CR3, which is reserved
-and always 0.
-
-See “Changes to Instruction Behavior in VMX Non-Root Operation” in Chapter 25
-of the Intel® 64 and IA-32 Architectures Software Developer&#39;s Manual, Volume
-3C, for more information about the behavior of this instruction in VMX non-root
-operation.
-
-操作: 
-
-DEST &lt;- SRC;
-
-Flags Affected:
-The OF, SF, ZF, AF, PF, and CF flags are undefined.
-
-
-保护模式：
-| #GP(0)| If the current privilege level is not    
-|       | 0.If an attempt is made to write invalid
-|       | bit combinations in CR0 (such as setting 
-|       | the PG flag to 1 when the PE flag is     
-|       | set to 0, or setting the CD flag to      
-|       | 0 when the NW flag is set to 1).If      
-|       | an attempt is made to write a 1 to any   
-|       | reserved bit in CR4.If an attempt is    
-|       | made to write 1 to CR4.PCIDE.If any     
-|       | of the reserved bits are set in the      
-|       | page-directory pointers table (PDPT)     
-|       | and the loading of a control register    
-|       | causes the PDPT to be loaded into the    
-|       | processor.                               
-| #UD   | If the LOCK prefix is used.If an attempt
-|       | is made to access CR1, CR5, CR6, or      
-|       | CR7.                                     
-
-Real-地址模式异常: 
-| #GP| If an attempt is made to write a 1 to    
-|    | any reserved bit in CR4.If an attempt   
-|    | is made to write 1 to CR4.PCIDE.If      
-|    | an attempt is made to write invalid      
-|    | bit combinations in CR0 (such as setting 
-|    | the PG flag to 1 when the PE flag is     
-|    | set to 0).                               
-| #UD| 如果使用LOCK前缀.If an attempt
-|    | is made to access CR1, CR5, CR6, or      
-|    | CR7.                                     
-
-Virtual-8086 模式异常: 
-| #GP(0)| These instructions cannot be executed
-|       | in virtual-8086 mode.                
-
-兼容模式：
-| #GP(0)| If the current privilege level is not    
-|       | 0.If an attempt is made to write invalid
-|       | bit combinations in CR0 (such as setting 
-|       | the PG flag to 1 when the PE flag is     
-|       | set to 0, or setting the CD flag to      
-|       | 0 when the NW flag is set to 1).If      
-|       | an attempt is made to change CR4.PCIDE   
-|       | from 0 to 1 while CR3[11:0] != 000H.      
-|       | If an attempt is made to clear CR0.PG[bit
-|       | 31] while CR4.PCIDE = 1.If an attempt   
-|       | is made to write a 1 to any reserved     
-|       | bit in CR3.If an attempt is made to     
-|       | leave IA-32e mode by clearing CR4.PAE[bit
-|       | 5].                                      
-| #UD   | If the LOCK prefix is used.If an attempt
-|       | is made to access CR1, CR5, CR6, or      
-|       | CR7.                                     
-
-64-Bit 模式异常: 
-| #GP(0)| If the current privilege level is not    
-|       | 0.If an attempt is made to write invalid
-|       | bit combinations in CR0 (such as setting 
-|       | the PG flag to 1 when the PE flag is     
-|       | set to 0, or setting the CD flag to      
-|       | 0 when the NW flag is set to 1).If      
-|       | an attempt is made to change CR4.PCIDE   
-|       | from 0 to 1 while CR3[11:0] != 000H.      
-|       | If an attempt is made to clear CR0.PG[bit
-|       | 31].If an attempt is made to write      
-|       | a 1 to any reserved bit in CR4.If an    
-|       | attempt is made to write a 1 to any      
-|       | reserved bit in CR8.If an attempt is    
-|       | made to write a 1 to any reserved bit    
-|       | in CR3.If an attempt is made to leave   
-|       | IA-32e mode by clearing CR4.PAE[bit      
-|       | 5].                                      
-| #UD   | If the LOCK prefix is used.If an attempt
-|       | is made to access CR1, CR5, CR6, or      
-|       | CR7.If the REX.R prefix is used to      
-|       | specify a register other than CR8.       
-
-MOV - Move to/from Debug Registers:
-| Opcode/Instruction       | Op/En| 64-Bit Mode| Compat/Leg Mode| Description                         
-| 0F 21/r MOV r32, DR0-DR7 | MR   | N.E.       | Valid          | Move debug register to r32.         
-| 0F 21/r MOV r64, DR0-DR7 | MR   | Valid      | N.E.           | Move extended debug register to r64.
-| 0F 23 /r MOV DR0-DR7, r32| RM   | N.E.       | Valid          | Move r32 to debug register.         
-| 0F 23 /r MOV DR0-DR7, r64| RM   | Valid      | N.E.           | Move r64 to extended debug register.
-
-指令操作数编码：
-| Op/En| Operand 1    | Operand 2    | Operand 3| Operand 4
-| MR   | ModRM:r/m (w)| ModRM:reg (r)| NA       | NA       
-| RM   | ModRM:reg (w)| ModRM:r/m (r)| NA       | NA       
-
-Description:
-Moves the contents of a debug register (DR0, DR1, DR2, DR3, DR4, DR5, DR6, or
-DR7) to a general-purpose register or vice versa.The operand size for these
-instructions is always 32 bits in non-64-bit modes, regardless of the operand-size
-attribute.(See Section 17.2, “Debug Registers”, of the Intel® 64 and IA-32
-Architectures Software Developer&#39;s Manual, Volume 3A, for a detailed description
-of the flags and fields in the debug registers.)
-
-The instructions must be executed at privilege level 0 or in real-address mode.
-
-When the debug extension (DE) flag in register CR4 is clear, these instructions
-operate on debug registers in a manner that is compatible with Intel386 and
-Intel486 processors.In this mode, references to DR4 and DR5 refer to DR6 and
-DR7, respectively.When the DE flag in CR4 is set, attempts to reference DR4
-and DR5 result in an undefined opcode (#UD) exception.(The CR4 register was
-added to the IA-32 Architecture beginning with the Pentium processor.)
-
-At the opcode level, the reg field within the ModR/M byte specifies which of
-the debug registers is loaded or read.The two bits in the mod field are ignored.
-The r/m field specifies the general-purpose register loaded or read.
-
-In 64-bit mode, the instruction&#39;s default operation size is 64 bits.Use of
-the REX.B prefix permits access to additional registers (R8-R15).Use of the
-REX.W or 66H prefix is ignored.Use of the REX.R prefix causes an invalidopcode
-exception.See the summary chart at the beginning of this section for encoding
-data and limits.
-
-操作: 
-
-IF ((DE = 1) and (SRC or DEST = DR4 or DR5))
-  THEN
-     #UD;
-  ELSE
-     DEST &lt;- SRC;
-FI;
-
-Flags Affected:
-The OF, SF, ZF, AF, PF, and CF flags are undefined.
-
-
-保护模式：
-| #GP(0)| If the current privilege level is not      
-|       | 0.                                         
-| #UD   | If CR4.DE[bit 3] = 1 (debug extensions)    
-|       | and a MOV instruction is executed involving
-|       | DR4 or DR5.If the LOCK prefix is used.    
-| #DB   | If any debug register is accessed while    
-|       | the DR7.GD[bit 13] = 1.                    
-
-Real-地址模式异常: 
-| #UD| If CR4.DE[bit 3] = 1 (debug extensions)    
-|    | and a MOV instruction is executed involving
-|    | DR4 or DR5.If the LOCK prefix is used.    
-| #DB| If any debug register is accessed while    
-|    | the DR7.GD[bit 13] = 1.                    
-
-Virtual-8086 模式异常: 
-| #GP(0)| The debug registers cannot be loaded
-|       | or read when in virtual-8086 mode.  
-
-兼容模式：
-Same exceptions as in protected mode.
-
-
-64-Bit 模式异常: 
-| #GP(0)| If the current privilege level is not      
-|       | 0.If an attempt is made to write a        
-|       | 1 to any of bits 63:32 in DR6.If an       
-|       | attempt is made to write a 1 to any        
-|       | of bits 63:32 in DR7.                      
-| #UD   | If CR4.DE[bit 3] = 1 (debug extensions)    
-|       | and a MOV instruction is executed involving
-|       | DR4 or DR5.If the LOCK prefix is used.    
-|       | If the REX.R prefix is used.               
-| #DB   | If any debug register is accessed while    
-|       | the DR7.GD[bit 13] = 1.                    
-================================================================
-</code></pre>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-05T07:35:05.000Z">2019-10-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 499 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/05/x64dbg破解code/">x64dbg破解code</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="x64dbg破解code"><a href="#x64dbg破解code" class="headerlink" title="x64dbg破解code"></a>x64dbg破解code</h1><pre><code>1075248.PAR  pp.las  ppcheck.scr  ppcheck_A.exe*  新建文本文档.txt
-1075248.SET  pp.pwd  ppcheck.txt  PPM1828.DAT</code></pre><blockquote>
-<p>将后缀是.par .set的文件名称修改为想要查询的序列号，后缀要保留。 点击PPCHUCK_A.EXE的执行文件执行，选择适当的机器型号，选择需要查询的选项，回车执行，选择三种润滑方式任意一种。执行。</p>
-</blockquote>
-<h2 id="x64dbg加载ppcheck-A-exe"><a href="#x64dbg加载ppcheck-A-exe" class="headerlink" title="x64dbg加载ppcheck_A.exe"></a>x64dbg加载ppcheck_A.exe</h2><p><img src="/images/2019/10/05/96dd00a0-e740-11e9-8a93-9b78d2af1e3b.png" alt="image.png"></p>
-<p>设置断点，运行程序，进行测试。</p>
-<p><img src="/images/2019/10/05/c9255120-e740-11e9-8a93-9b78d2af1e3b.png" alt="image.png"></p>
-<p>CALL 过程调用相同</p>
-<pre><code class="bash">call 0x0040ACE6</code></pre>
-<p><img src="/images/2019/10/05/34fb0810-e744-11e9-8a93-9b78d2af1e3b.png" alt="image.png"></p>
-<p>分析核心代码。。。</p>
-<h2 id="模拟程序执行过程"><a href="#模拟程序执行过程" class="headerlink" title="模拟程序执行过程"></a>模拟程序执行过程</h2><ol>
-<li>Please enter a serial number:</li>
+            <p><img src="/images/2019/10/27/57b9c500-f8cc-11e9-9156-23e5f2285253.png" alt="image.png"></p>
+<p>A simple terminal UI for both docker and docker-compose, written in Go with the <a href="https://github.com/jroimartin/gocui" title="gocui" target="_blank" rel="noopener">gocui</a> library.</p>
+<p><a href="https://circleci.com/gh/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://circleci.com/gh/jesseduffield/lazydocker.svg?style=svg" alt="CircleCI"></a><br><a href="https://goreportcard.com/report/github.com/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://goreportcard.com/badge/github.com/jesseduffield/lazydocker" alt="Go Report Card"></a><br><a href="https://golangci.com" target="_blank" rel="noopener"><img src="https://golangci.com/badges/github.com/jesseduffield/lazydocker.svg" alt="GolangCI"></a><br><a href="http://godoc.org/github.com/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://godoc.org/github.com/jesseduffield/lazydocker?status.svg" alt="GoDoc"></a><br><img src="https://img.shields.io/github/repo-size/jesseduffield/lazydocker" alt="GitHub repo size"><br><a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener"><img src="https://img.shields.io/github/downloads/jesseduffield/lazydocker/total" alt="GitHub Releases"></a><br><a href="https://github.com/jesseduffield/lazydocker/releases/latest" target="_blank" rel="noopener"><img src="https://img.shields.io/github/tag/jesseduffield/lazydocker.svg" alt="GitHub tag"></a><br><a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/lazydocker.rb" target="_blank" rel="noopener"><img src="https://img.shields.io/homebrew/v/lazydocker" alt="homebrew"></a></p>
+<p><img src="https://github.com/jesseduffield/lazydocker/raw/master/docs/resources/demo3.gif" alt="Gif"></p>
+<p><a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">Demo</a></p>
+<p>Minor rant incoming: Something’s not working? Maybe a service is down. <code>docker-compose ps</code>. Yep, it’s that microservice that’s still buggy. No issue, I’ll just restart it: <code>docker-compose restart</code>. Okay now let’s try again. Oh wait the issue is still there. Hmm. <code>docker-compose ps</code>. Right so the service must have just stopped immediately after starting. I probably would have known that if I was reading the log stream, but there is a lot of clutter in there from other services. I could get the logs for just that one service with <code>docker compose logs --follow myservice</code> but that dies everytime the service dies so I’d need to run that command every time I restart the service. I could alternatively run <code>docker-compose up myservice</code> and in that terminal window if the service is down I could just <code>up</code> it again, but now I’ve got one service hogging a terminal window even after I no longer care about its logs. I guess when I want to reclaim the terminal realestate I can do <code>ctrl+P,Q</code>, but… wait, that’s not working for some reason. Should I use ctrl+C instead? I can’t remember if that closes the foreground process or kills the actual service.</p>
+<p>What a headache!</p>
+<p>Memorising docker commands is hard. Memorising aliases is slightly less hard. Keeping track of your containers across multiple terminal windows is near impossible. What if you had all the information you needed in one terminal window with every common command living one keypress away (and the ability to add custom commands as well). Lazydocker’s goal is to make that dream a reality.</p>
+<ul>
+<li><a href="https://github.com/jesseduffield/lazydocker#requirements" target="_blank" rel="noopener">Requirements</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#installation" target="_blank" rel="noopener">Installation</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#usage" target="_blank" rel="noopener">Usage</a></li>
+<li><a href="/docs/keybindings">Keybindings</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#cool-features" target="_blank" rel="noopener">Cool Features</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#contributing" target="_blank" rel="noopener">Contributing</a></li>
+<li><a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">Video Tutorial</a></li>
+<li><a href="/docs/Config.md">Config Docs</a></li>
+<li><a href="https://www.twitch.tv/jesseduffield" target="_blank" rel="noopener">Twitch Stream</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#faq" target="_blank" rel="noopener">FAQ</a></li>
+</ul>
+<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
+<li>Docker &gt;= <strong>1.13</strong> (API &gt;= <strong>1.25</strong>)</li>
+<li>Docker-Compose &gt;= <strong>1.23.2</strong> (optional)</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><p>Normally <code>lazydocker</code> formula can be found in the Homebrew core but we suggest you to tap our formula to get frequently updated one. It works with Linux, too.</p>
+<p><strong>Tap</strong>:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jesseduffield/lazydocker/lazydocker</span><br></pre></td></tr></table></figure>
+
+<p><strong>Core</strong>:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazydocker</span><br></pre></td></tr></table></figure>
+
+<h3 id="Binary-Release-Linux-OSX"><a href="#Binary-Release-Linux-OSX" class="headerlink" title="Binary Release (Linux/OSX)"></a>Binary Release (Linux/OSX)</h3><p>You can manually download a binary release from <a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener">the release page</a>.</p>
+<p>Automated install/update, don’t forget to always verify what you’re piping into bash:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><p>Required Go version &gt;= <strong>1.8</strong></p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/jesseduffield/lazydocker</span><br></pre></td></tr></table></figure>
+
+<h3 id="Arch-Linux-AUR"><a href="#Arch-Linux-AUR" class="headerlink" title="Arch Linux AUR"></a>Arch Linux AUR</h3><p>You can install lazydocker using your AUR package manager of choice or by running:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/lazydocker.git ~/lazydocker</span><br><span class="line"><span class="hljs-built_in">cd</span> ~/lazydocker</span><br><span class="line">makepkg --install</span><br></pre></td></tr></table></figure>
+
+<p>A development version of the AUR package is also <a href="https://aur.archlinux.org/lazydocker-git.git" target="_blank" rel="noopener">available</a></p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/pulls/lazyteam/lazydocker.svg" alt="Docker Pulls"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/stars/lazyteam/lazydocker.svg" alt="Docker Stars"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/cloud/automated/lazyteam/lazydocker.svg" alt="Docker Automated"></a></p>
+<ol>
+<li><details><summary>Click if you have an ARM device</summary><p>
+
+<ul>
+<li><p>If you have a ARM 32 bit v6 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v6/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=6 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If you have a ARM 32 bit v7 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v7/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=7 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If you have a ARM 64 bit v8 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm64v8/golang \</span><br><span class="line">--build-arg GOARCH=arm64 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+
+</li></ul></p></details>
+</li>
+
+
+<li><p>Run the container</p>
+ <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v \</span><br><span class="line">/var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">-v /yourpath:/.config/jesseduffield/lazydocker \</span><br><span class="line">lazyteam/lazydocker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Don’t forget to change <code>/yourpath</code> to an actual path you created to store lazydocker’s config</p>
+</li>
+<li><p>You can also use this <a href="https://github.com/jesseduffield/lazydocker/blob/master/docker-compose.yml" target="_blank" rel="noopener">docker-compose.yml</a></p>
+</li>
+<li><p>You might want to create an alias, for example:</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'"</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
 </ol>
-<p>输入 num </p>
-<p><img src="/images/2019/10/06/e17c47d0-e810-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>输入的数据存入内存 <code>0x42A708</code> </p>
-<p><img src="/images/2019/10/06/8870daa0-e817-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p><img src="/images/2019/10/06/9c557990-e817-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p><code>0x00429374</code></p>
+<p>For development, you can build the image using:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://github.com/jesseduffield/lazydocker.git</span><br><span class="line"><span class="hljs-built_in">cd</span> lazydocker</span><br><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">    --build-arg BUILD_DATE=`date -u +<span class="hljs-string">"%Y-%m-%dT%H:%M:%SZ"</span>` \</span><br><span class="line">    --build-arg VCS_REF=`git rev-parse --short HEAD` \</span><br><span class="line">    --build-arg VERSION=`git describe --abbrev=0 --tag` \</span><br><span class="line">    .</span><br></pre></td></tr></table></figure>
+
+<p>If you encounter a compatibility issue with Docker bundled binary, try rebuilding<br>the image with the build argument <code>--build-arg DOCKER_VERSION=&quot;v$(docker -v | cut -d&quot; &quot; -f3 | rev | cut -c 2- | rev)&quot;</code><br>so that the bundled docker binary matches your host docker binary version.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Call <code>lazydocker</code> in your terminal. I personally use this a lot so I’ve made an alias for it like so:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;alias lzd=&apos;lazydocker&apos;&quot; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>(you can substitute .zshrc for whatever rc file you’re using)</p>
+<ul>
+<li>Basic video tutorial <a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">here</a>.</li>
+<li>List of keybindings<br><a href="/docs/keybindings">here</a>.</li>
+</ul>
+<h2 id="Cool-features"><a href="#Cool-features" class="headerlink" title="Cool features"></a>Cool features</h2><p>everything is one keypress away (or one click away! Mouse support FTW):</p>
+<ul>
+<li>viewing the state of your docker or docker-compose container environment at a glance</li>
+<li>viewing logs for a container/service</li>
+<li>viewing ascii graphs of your containers’ metrics so that you can not only feel but also look like a developer</li>
+<li>customising those graphs to measure nearly any metric you want</li>
+<li>attaching to a container/service</li>
+<li>restarting/removing/rebuilding containers/services</li>
+<li>viewing the ancestor layers of a given image</li>
+<li>pruning containers, images, or volumes that are hogging up disk space</li>
+</ul>
+<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>There is still a lot of work to go! Please check out the <a href="CONTRIBUTING.md">contributing guide</a>.<br>For contributor discussion about things not better discussed here in the repo, join the slack channel</p>
+<p><a href="https://join.slack.com/t/lazydocker/shared_invite/enQtNjgwMjc0Njk3MzgwLTM0NThlMTZiZmNkNWJkY2VlYWYwZmY1NWYyYWViZmE0ZTcxMWZjMTFjNTU1ZTEwMDBiNWIxZTIxYzkwNDgyY2M" target="_blank" rel="noopener"><img src="/docs/resources/slack_rgb.png" alt="Slack"></a></p>
+<h2 id="Donate"><a href="#Donate" class="headerlink" title="Donate"></a>Donate</h2><p>If you would like to support the development of lazydocker, please donate</p>
+<p><a href="https://donorbox.org/lazydocker" target="_blank" rel="noopener"><img src="https://d1iczxrky3cnb2.cloudfront.net/button-medium-blue.png" alt="Donate"></a></p>
+<h2 id="Social"><a href="#Social" class="headerlink" title="Social"></a>Social</h2><p>If you want to see what I (Jesse) am up to in terms of development, follow me on<br><a href="https://twitter.com/DuffieldJesse" target="_blank" rel="noopener">twitter</a> or watch me program on<br><a href="https://www.twitch.tv/jesseduffield" target="_blank" rel="noopener">twitch</a></p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="How-do-I-edit-my-config"><a href="#How-do-I-edit-my-config" class="headerlink" title="How do I edit my config?"></a>How do I edit my config?</h3><p>By opening lazydocker, clicking on the ‘project’ panel in the top left, and pressing ‘o’ (or ‘e’ if your editor is vim). See <a href="/docs/Config.md">Config Docs</a></p>
+<h3 id="How-do-I-get-text-to-wrap-in-my-main-panel"><a href="#How-do-I-get-text-to-wrap-in-my-main-panel" class="headerlink" title="How do I get text to wrap in my main panel?"></a>How do I get text to wrap in my main panel?</h3><p>In the future I want to make this the default, but for now there are some CPU issues that arise with wrapping. If you want to enable wrapping, use <code>gui.wrapMainPanel: true</code></p>
+<h3 id="How-do-you-select-text"><a href="#How-do-you-select-text" class="headerlink" title="How do you select text?"></a>How do you select text?</h3><p>Because we support mouse events, you will need to hold option while dragging the mouse to indicate you’re trying to select text rather than click on something. Alternatively you can disable mouse events via the <code>gui.ignoreMouseEvents</code> config value</p>
+<h3 id="Does-this-work-with-Windows"><a href="#Does-this-work-with-Windows" class="headerlink" title="Does this work with Windows?"></a>Does this work with Windows?</h3><p>Currently not unless you use WSL. Instructions for setting up docker for WSL can be found here <a href="https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly" target="_blank" rel="noopener">here</a></p>
+<h3 id="Why-can’t-I-see-my-container’s-logs"><a href="#Why-can’t-I-see-my-container’s-logs" class="headerlink" title="Why can’t I see my container’s logs?"></a>Why can’t I see my container’s logs?</h3><p>By default we only show logs from the last hour, so that we’re not putting too much strain on the machine. This may be why you can’t see logs when you first start lazydocker. This can be overwritten in the config’s <code>commandTemplates</code></p>
+<p>If you are running lazydocker in Docker container, it is a know bug, that you can’t see logs or CPU usage.</p>
+<h2 id="Alternatives"><a href="#Alternatives" class="headerlink" title="Alternatives"></a>Alternatives</h2><ul>
+<li><a href="https://github.com/skanehira/docui" target="_blank" rel="noopener">docui</a> - Skanehira beat me to the punch on making a docker terminal UI, so definitely check out that repo as well! I think the two repos can live in harmony though: lazydocker is more about managing existing containers/services, and docui is more about creating and configuring them.</li>
+<li><a href="https://github.com/portainer/portainer" target="_blank" rel="noopener">Portainer</a> - Portainer tries to solve the same problem but it’s accessed via your browser rather than your terminal. It also supports docker swarm.</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-27T14:11:36.000Z">2019-10-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 295 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/27/copying-codes-from-stack-overflow/">copying-codes-from-stack-overflow</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="从-Stack-Overflow-复制代码导致-GitHub-项目漏洞多"><a href="#从-Stack-Overflow-复制代码导致-GitHub-项目漏洞多" class="headerlink" title="从 Stack Overflow 复制代码导致 GitHub 项目漏洞多"></a>从 Stack Overflow 复制代码导致 GitHub 项目漏洞多</h1><p>现在从网上找代码直接复制到项目中的做法成为程序员的一种常规操作，Stack Overflow 更是其中主要的代码来源。但是最近有研究显示，从 Stack Overflow 上复制代码凑到项目中会使出现漏洞的概率大大增加。</p>
+<p><img src="/images/2019/10/27/a9e99700-f8c3-11e9-ba7d-05accc771851.png" alt="image.png"></p>
+<p>研究人员分析了 1325 个 Stack Overflow 帖子，并获取了其中 72 000 多段 C++ 代码，发现了其中包含有 29 种类型的 69 个漏洞。</p>
+<p>这些漏洞出现在 2589 个 GitHub 仓库中，研究人员通知了受影响的 GitHub 项目作者，但只有少数人选择修复已知这些危险情况。</p>
+<p>研究人员展示了含有漏洞的代码主要是以什么方式从 Stack Overflow 进入到 GitHub 中的，包括最经常发现的输入验证不正确、异常或异常情况的不正确检查与错误编码，比如复制代码不完整。</p>
+<p>详情查看：</p>
+<p><a href="https://fossbytes.com/copying-codes-from-stack-overflow-leads-to-vulnerable-github-project" target="_blank" rel="noopener">https://fossbytes.com/copying-codes-from-stack-overflow-leads-to-vulnerable-github-project</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-26T06:33:24.000Z">2019-10-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 828 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/26/DCS-World-Steam-Edition/">DCS-World-Steam-Edition</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="DCS-World-Steam-Edition"><a href="#DCS-World-Steam-Edition" class="headerlink" title="DCS World Steam Edition"></a>DCS World Steam Edition</h1><blockquote>
+<p>Feel the excitement of flying the Su-25T “Frogfoot” attack jet and the TF-51D “Mustang” in the free-to-play Digital Combat Simulator World!</p>
+</blockquote>
+<p><img src="/images/2019/10/26/517c0ca0-f7bb-11e9-963e-2bb23907e692.png" alt="image.png"></p>
+<p>The Open Beta version of Digital Combat Simulator World (DCS World) 2.5 is a free-to-play digital battlefield game and simulation environment. The “release” version will be available shortly after Open Beta testing is complete. The Open Beta is an optional version of DCS World that we use to first test new content and technologies before moving them to our release version.</p>
+<p>Our dream is to offer the most authentic and realistic simulation of military aircraft, tanks, ground vehicles and ships possible. This free download includes a vast mission area of the Caucasus region and Black Sea that encompasses much of Georgia. It also includes a flyable Russian Sukhoi Su-25T ground attack aircraft and the famous WWII North American TF-51D fighter. An additional 25 aircraft are available for purchase.</p>
+<p>The download comes with one of the most powerful mission editor ever designed, full network play and more than 156 AI weapons systems, 105 ground vehicles and trains, 50 air defense systems, 19 ships and 84 AI aircraft permitting you to plan and play highly sophisticated missions. DCS World is massively extensible through additional DCS modules as well as user-made add-ons and mods which you can purchase and download from our site.</p>
+<p>DCS is a true “sandbox” simulation that is also designed to cover multiple time periods of interest such as WWII, Korean War, Vietnam, Gulf War and others. Current regions to battle include the Caucasus, Nevada Test and Training Range, and Normandy 1944. New maps in development include the Persian, Syria, Afghanistan, and others.</p>
+<p>DCS World is fundamentally a deep, authentic and realistic simulation designed also to offer a more relaxed gameplay to suit the user and his particular level of experience and training. The ambition is to hand hold users from novice pilot all the way to the most advanced and sophisticated operator of such complex weapons systems as the A-10C Warthog or the F/A-18C Hornet. The only next step is the real thing!</p>
+<p>Key features of DCS World 2.5:</p>
+<ul>
+<li>The most realistic Free-to-Play digital battlefield ever.</li>
+<li>One-of-a-kind, internally developed graphics engine that looks amazing from 0 to 80,000 feet.</li>
+<li>Includes a beautiful, free, and highly detailed map of the Caucasus region that includes south western Russia and Georgia.</li>
+<li>Includes millions of buildings, millions of km of usable roads and railways, more than 50 million trees, and 20 fully– - - equipped operational airbases.</li>
+<li>Includes 156 free and fully operational weapons systems, 105 ground vehicles, 19 ships and 84 AI-controlled aircraft.</li>
+<li>Fly the TF-51 Mustang and Su-25T attack jet for free!</li>
+<li>Play all DCS World modules from one DCS World version.</li>
+<li>State-of-the-art graphics with amazing lighting, shadows, and performance.</li>
+<li>New breathtaking effects for explosions, clouds, fog, fire, and smoke.</li>
+<li>Hundreds of land, air and seaborne AI vehicles. The world is your sandbox.</li>
+<li>Create your own missions and campaigns for unlimited gameplay!</li>
+<li>Mission generator included allowing rapid mission creation.</li>
+<li>Enjoy multiplayer with friends, and even fly together in the same aircraft for multi-crew missions!</li>
+<li>Purchase and fly the most iconic airplanes and helicopters from WWII up to the modern day.</li>
+<li>Mouse interactive 6 degrees of freedom cockpits for most aircraft and the most accurate flight models, cockpit systems, sensors, targeting systems and sounds available.</li>
+<li>Purchase and fly the most authentic simulations of the A-10C Warthog, UH-1H Huey, F-86F Sabre, Spitfire, and many others now.</li>
+<li>Exciting new aircraft coming to DCS World like the F-14 Tomcat, F/A-18C Hornet, F-4E Phantom II, Mi-24P Hind, P-47D Thunderbolt, and many more!</li>
+<li>Purchase additional high-quality maps such as Normandy 1944, the Nevada Test and Training Range, and the Persian Gulf.</li>
+<li>Play hundreds of missions and campaigns with new campaigns continually created.</li>
+<li>Both hardcore realistic and casual gameplay modes and options available.</li>
+</ul>
+<p><strong>MINIMUM SYSTEM REQUIREMENTS (LOW GRAPHICS SETTINGS):</strong><br>OS 64-bit Windows 7/8/10; DirectX11; CPU: Intel Core i3 at 2.8 GHz or AMD FX; RAM: 8 GB (16 GB for heavy missions); Free hard disk space: 60 GB; Discrete video card NVIDIA GeForce GTX 760 / AMD R9 280X or better; requires internet activation.</p>
+<p><strong>RECOMMENDED SYSTEM REQUIREMENTS (HIGH GRAPHICS SETTINGS):</strong><br>OS 64-bit Windows 8/10; DirectX11; CPU: Core i5+ at 3+ GHz or AMD FX / Ryzen; RAM: 16 GB (32 GB for heavy missions); Free hard disk space: 120 GB on Solid State Drive (SSD); Discrete video card NVIDIA GeForce GTX 1070 / AMD Radeon RX VEGA 56 with 8GB VRAM or better; Joystick; requires internet activation.</p>
+<p><strong>RECOMMENDED VR SYSTEMS REQUIREMENTS (VR GRAPHICS SETTINGS):</strong><br>OS 64-bit Windows 8/10; DirectX11; CPU: Core i5+ at 3+ GHz or AMD FX / Ryzen; RAM: 16 GB (32 GB for heavy missions); Free hard disk space: 120 GB on Solid State Drive (SSD); Discrete video card NVIDIA GeForce GTX 1080 / AMD Radeon RX VEGA 64 or better; Joystick; requires internet activation.</p>
+<p><a href="https://store.steampowered.com/app/223750/DCS_World_Steam_Edition/" target="_blank" rel="noopener">传送门</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-25T10:37:29.000Z">2019-10-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2065 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/25/paper-e-database/">paper-e-database</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="写论文不用愁，50个全球免费电子数据库了解下（纯文字版）"><a href="#写论文不用愁，50个全球免费电子数据库了解下（纯文字版）" class="headerlink" title="写论文不用愁，50个全球免费电子数据库了解下（纯文字版）"></a>写论文不用愁，50个全球免费电子数据库了解下（纯文字版）</h1><blockquote>
+<p>最近人民日报小编很给力，整理了50个找文献资料的中外全球电子数据库，无论你是写毕业论文还是学术论文，总有一款适合你，快先收藏起来，查尔斯沃思小编将其整理成纯文字，方便作者检索，码字不易，多行点赞鼓励下吧！</p>
+</blockquote>
+<h2 id="中文数据库"><a href="#中文数据库" class="headerlink" title="中文数据库"></a>中文数据库</h2><ol>
+<li>国家哲学社会科学文献中心(上线文献数据超过1000万条）<br><a href="http://www.ncpssd.org" target="_blank" rel="noopener">http://www.ncpssd.org</a></li>
+</ol>
 <ol start="2">
-<li>选择后Enter</li>
+<li>中西文科技文献服务平台<br><a href="http://lib.sstir.cn/" target="_blank" rel="noopener">http://lib.sstir.cn/</a></li>
 </ol>
-<pre><code>Code to turn on TSC：   742</code></pre><p><img src="/images/2019/10/06/777a09a0-e813-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>汇编代码执行到</p>
-<p><img src="/images/2019/10/06/d67d2860-e813-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>推测，计算code的程序在打印头部信息 HAAS 与 打印 Code 之间</p>
-<p>存储 TSC code 的地址为 <code>0x0042F26C</code></p>
-<p><img src="/images/2019/10/06/3d9ba030-e814-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>16进制表示： <code>000002E6</code></p>
-<p><img src="/images/2019/10/06/4d72a620-e814-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>总结执行步骤</p>
-<ul>
-<li>输入num</li>
-<li>选择型号（三次选择）</li>
-<li>打印对应参数的code</li>
-</ul>
-<p>在汇编程序中的输入num的内存地址与code的值得内存地址都可以找到，而且程序执行中均已常数形式存在，推测在（三次选择）结束后，所有参数对应的code值均计算后，以常数形式保存在，之后的程序判断将部分的参数对应的code值打印出。</p>
-<p><img src="/images/2019/10/07/3a6e4da0-e8db-11e9-b1c6-59aa3ad54a59.png" alt="image.png"></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-05T02:45:54.000Z">2019-10-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 837 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/05/x64dbg/">x64dbg</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="x64dbg"><a href="#x64dbg" class="headerlink" title="x64dbg"></a>x64dbg</h1><p><img src="https://github.com/x64dbg/x64dbg/raw/development/src/bug_black.png" alt="x64dbg"></p>
-<p><a href="https://www.bountysource.com/teams/x64dbg?utm_source=x64dbg&utm_medium=shield&utm_campaign=raised" target="_blank" rel="noopener"><img src="https://www.bountysource.com/badge/team?team_id=18188&style=raised" alt="BountySource"></a> <a href="https://ci.appveyor.com/project/mrexodia/x64dbg" target="_blank" rel="noopener"><img src="https://ci.appveyor.com/api/projects/status/h1j489qa1mx67e0h?svg=true" alt="Build status"></a> <a href="https://www.codetriage.com/x64dbg/x64dbg" target="_blank" rel="noopener"><img src="https://www.codetriage.com/x64dbg/x64dbg/badges/users.svg" alt="Open Source Helpers"></a> <a href="http://translate.x64dbg.com" target="_blank" rel="noopener"><img src="https://d322cqt584bo4o.cloudfront.net/x64dbg/localized.svg" alt="Crowdin"></a> <a href="https://sourceforge.net/projects/x64dbg/files/latest/download" target="_blank" rel="noopener"><img src="https://img.shields.io/sourceforge/dm/x64dbg.svg" alt="Download x64dbg"></a></p>
-<p><a href="https://telegram.me/x64dbg" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-%20on%20Telegram-blue.svg" alt="Telegram"></a> <a href="https://invite.gg/x64dbg" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-on%20Discord-green.svg" alt="Discord"></a> <a href="https://x64dbg-slack.herokuapp.com" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-on%20Slack-red.svg" alt="Slack"></a> <a href="https://gitter.im/x64dbg/x64dbg" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-on%20Gitter-lightseagreen.svg" alt="Gitter"></a> <a href="https://webchat.freenode.net/?channels=x64dbg" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-%20on%20freenode-brightgreen.svg" alt="Freenode"></a> <a href="https://riot.im/app/#/room/#x64dbg:matrix.org" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-on%20Matrix-yellowgreen.svg" alt="Matrix"></a> <a href="https://inverse.chat/#converse/room?jid=x64dbg@conference.jwchat.org" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/chat-%20on%20XMPP-orange.svg" alt="XMPP"></a></p>
-<p>An open-source binary debugger for Windows, aimed at malware analysis and reverse engineering of executables you do not have the source code for. There are many features available and a comprehensive <a href="http://plugins.x64dbg.com" target="_blank" rel="noopener">plugin system</a> to add your own. You can find more information on the <a href="https://x64dbg.com/blog" target="_blank" rel="noopener">blog</a>!</p>
-<h2 id="Screenshots"><a href="#Screenshots" class="headerlink" title="Screenshots"></a>Screenshots</h2><p><img src="/images/2019/10/05/34643860-e71a-11e9-890b-79bf1bc40a48.png" alt="image.png"><br><img src="/images/2019/10/05/38fa3b40-e71a-11e9-890b-79bf1bc40a48.png" alt="image.png"><br><img src="/images/2019/10/05/3b7e4e10-e71a-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="Installation-amp-Usage"><a href="#Installation-amp-Usage" class="headerlink" title="Installation &amp; Usage"></a>Installation &amp; Usage</h2><ol>
-<li>Download a snapshot from <a href="https://github.com/x64dbg/x64dbg/releases" target="_blank" rel="noopener">GitHub</a>, <a href="https://sourceforge.net/projects/x64dbg/files/snapshots" target="_blank" rel="noopener">SourceForge</a> or <a href="https://osdn.net/projects/x64dbg" target="_blank" rel="noopener">OSDN</a> and extract it in a location your user has write access to.</li>
-<li><em>Optionally</em> use <code>x96dbg.exe</code> to register a shell extension and add shortcuts to your desktop.</li>
-<li>You can now run <code>x32\x32dbg.exe</code> if you want to debug a 32-bit executable or <code>x64\x64dbg.exe</code> to debug a 64-bit executable! If you are unsure you can always run <code>x96dbg.exe</code> and chose your architecture there.</li>
+<ol start="3">
+<li>中国科技论文在线精品论文(自然科学领域的论文成果）<br><a href="http://highlights.paper.edu.cn/" target="_blank" rel="noopener">http://highlights.paper.edu.cn/</a></li>
 </ol>
-<p>You can also <a href="https://github.com/x64dbg/x64dbg/wiki/Compiling-the-whole-project" target="_blank" rel="noopener">compile</a> x64dbg yourself with a few easy steps!</p>
-<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>This is a community effort and we accept pull requests! See the <a href="https://github.com/x64dbg/x64dbg/blob/development/CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING</a> document for more information. If you have any questions you can always <a href="https://x64dbg.com/#contact" target="_blank" rel="noopener">contact us</a> or open an <a href="https://github.com/x64dbg/x64dbg/issues" target="_blank" rel="noopener">issue</a>. You can take a look at the <a href="https://github.com/x64dbg/x64dbg/issues?q=is%3Aissue+is%3Aopen+label%3Aeasy" target="_blank" rel="noopener">easy issues</a> to get started.</p>
-<h2 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h2><ul>
-<li>Debugger core by <a href="https://bitbucket.org/titanengineupdate/titanengine-update" target="_blank" rel="noopener">TitanEngine Community Edition</a></li>
-<li>Disassembly powered by <a href="https://zydis.re" target="_blank" rel="noopener">Zydis</a></li>
-<li>Assembly powered by <a href="https://github.com/x64dbg/XEDParse" target="_blank" rel="noopener">XEDParse</a> and <a href="https://github.com/asmjit" target="_blank" rel="noopener">asmjit</a></li>
-<li>Import reconstruction powered by <a href="https://github.com/NtQuery/Scylla" target="_blank" rel="noopener">Scylla</a></li>
-<li>JSON powered by <a href="http://www.digip.org/jansson" target="_blank" rel="noopener">Jansson</a></li>
-<li>Database compression powered by <a href="https://bitbucket.org/mrexodia/lz4" target="_blank" rel="noopener">lz4</a></li>
-<li>Bug icon by <a href="http://www.visualpharm.com" target="_blank" rel="noopener">VisualPharm</a></li>
-<li>Interface icons by <a href="http://p.yusukekamiyamane.com" target="_blank" rel="noopener">Fugue</a></li>
-<li>Website by <a href="http://tr4ceflow.com" target="_blank" rel="noopener">tr4ceflow</a></li>
-</ul>
-<h2 id="Developers"><a href="#Developers" class="headerlink" title="Developers"></a>Developers</h2><ul>
-<li><a href="http://mrexodia.github.io" target="_blank" rel="noopener">mrexodia</a></li>
-<li>Sigma</li>
-<li><a href="http://blog.tr4ceflow.com" target="_blank" rel="noopener">tr4ceflow</a></li>
-<li><a href="http://www.fr33project.org" target="_blank" rel="noopener">Dreg</a></li>
-<li><a href="https://github.com/Nukem9" target="_blank" rel="noopener">Nukem</a></li>
-<li><a href="https://github.com/Herz3h" target="_blank" rel="noopener">Herz3h</a></li>
-<li><a href="https://github.com/torusrxxx" target="_blank" rel="noopener">torusrxxx</a></li>
-</ul>
-<h2 id="Code-contributions"><a href="#Code-contributions" class="headerlink" title="Code contributions"></a>Code contributions</h2><p>You can find an exhaustive list of GitHub contributers <a href="https://github.com/x64dbg/x64dbg/graphs/contributors" target="_blank" rel="noopener">here</a>.</p>
-<h2 id="Special-Thanks"><a href="#Special-Thanks" class="headerlink" title="Special Thanks"></a>Special Thanks</h2><ul>
-<li>Sigma for developing the initial GUI</li>
-<li>All the <a href="https://www.bountysource.com/teams/x64dbg/backers" target="_blank" rel="noopener">donators</a>!</li>
-<li>Everybody adding issues!</li>
-<li>People I forgot to add to this list</li>
-<li><a href="https://x64dbg.com/blog/2016/07/09/Looking-for-writers.html" target="_blank" rel="noopener">Writers of the blog</a>!</li>
-<li><a href="http://forum.exetools.com" target="_blank" rel="noopener">EXETools community</a></li>
-<li><a href="http://forum.tuts4you.com" target="_blank" rel="noopener">Tuts4You community</a></li>
-<li><a href="https://www.jetbrains.com/resharper" target="_blank" rel="noopener">ReSharper</a></li>
-<li><a href="http://www.coverity.com" target="_blank" rel="noopener">Coverity</a></li>
-<li>acidflash</li>
-<li>cyberbob</li>
-<li>cypher</li>
-<li>Teddy Rogers</li>
-<li>TEAM DVT</li>
-<li>DMichael</li>
-<li>Artic</li>
-<li>ahmadmansoor</li>
-<li>_pusher_</li>
-<li>firelegend</li>
-<li><a href="http://lifeinhex.com" target="_blank" rel="noopener">kao</a></li>
-<li>sstrato</li>
-<li><a href="https://github.com/kobalicek" target="_blank" rel="noopener">kobalicek</a></li>
-<li><a href="https://github.com/athre0z" target="_blank" rel="noopener">athre0z</a></li>
-<li><a href="https://github.com/ZehMatt" target="_blank" rel="noopener">ZehMatt</a></li>
-</ul>
-<p>Without the help of many people and other open source projects it would not have been possible to make x64dbg what is it today, thank you!</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-05T02:22:55.000Z">2019-10-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1035 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/05/search-engine/">search_engine</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="全球十大搜索引擎"><a href="#全球十大搜索引擎" class="headerlink" title="全球十大搜索引擎"></a>全球十大搜索引擎</h1><blockquote>
-<p>百度属于搜索引擎的其中之一，这个大家想必都知道。尤其对于做网络和媒体的人来说，你必须知道如何与搜索引擎打交道。但是你知道除了百度，世界上还有哪些好用的搜索引擎吗？</p>
-</blockquote>
-<h2 id="NO-1-Google（谷歌）-：18亿"><a href="#NO-1-Google（谷歌）-：18亿" class="headerlink" title="NO.1 Google（谷歌） ：18亿"></a>NO.1 Google（谷歌） ：18亿</h2><p><a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a></p>
-<p>全球第一搜索引擎，不解释。</p>
-<p><img src="/images/2019/10/05/5f892130-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-2-Bing（必应）-：5亿"><a href="#NO-2-Bing（必应）-：5亿" class="headerlink" title="NO.2 Bing（必应） ：5亿"></a>NO.2 Bing（必应） ：5亿</h2><p><a href="http://www.bing.com" target="_blank" rel="noopener">www.bing.com</a></p>
-<p>Bing是微软旗下的搜索引擎，感觉它的搜索界面背景图非常美，是谷歌最好的替代品，备胎中的战斗机。</p>
-<p><img src="/images/2019/10/05/80f99d90-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-3-Yahoo-（雅虎）-：4-9亿"><a href="#NO-3-Yahoo-（雅虎）-：4-9亿" class="headerlink" title="NO.3 Yahoo!（雅虎） ：4.9亿"></a>NO.3 Yahoo!（雅虎） ：4.9亿</h2><p><a href="http://www.search.yahoo.com" target="_blank" rel="noopener">www.search.yahoo.com</a></p>
-<p>在搜索方面，雅虎表现中规中矩，网页搜索表现不错，但死链率较高而且缺少一些应有的高级搜索功能。</p>
-<p><img src="/images/2019/10/05/87685810-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-4-Baidu（百度）：4-8亿"><a href="#NO-4-Baidu（百度）：4-8亿" class="headerlink" title="NO.4 Baidu（百度）：4.8亿"></a>NO.4 Baidu（百度）：4.8亿</h2><p><a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
-<p>全球最大的中文搜索引擎，不解释。</p>
-<p><img src="/images/2019/10/05/8aaa1590-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-5-Ask-：3亿"><a href="#NO-5-Ask-：3亿" class="headerlink" title="NO.5 Ask ：3亿"></a>NO.5 Ask ：3亿</h2><p><a href="http://www.ask.com" target="_blank" rel="noopener">www.ask.com</a></p>
-<p>Ask搜索引擎是国外比较出名的一款搜索引擎，其规模虽不大，但很有特色。Ask是DirectHit的母公司，于2001年收购Teoma搜索引擎，并全部采用Teoma搜索结果。是支持自然提问的搜索引擎，其数据库里储存了超过1000万个问题的答案，只要用户用英文直接输入一个问题，它就会给出问题答案，如果用户的问题答案不在其数据库中，那么它会列出一串跟用户的问题类似的问题和含有答案的链接，供用户选择。</p>
-<p><img src="/images/2019/10/05/8de9d740-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-6-Aol-：2亿"><a href="#NO-6-Aol-：2亿" class="headerlink" title="NO.6 Aol ：2亿"></a>NO.6 Aol ：2亿</h2><p><a href="http://www.search.aol.com" target="_blank" rel="noopener">www.search.aol.com</a></p>
-<p>Aol Search是美国在线旗下搜索引擎网站。Aol Search为用户提供快速、方便地访问相关视频、图片、本地地图、新闻、股市行情和更全面的网页搜索结果。Aol Search的搜索技术服务是由谷歌提供的。</p>
-<p><img src="/images/2019/10/05/9148b9b0-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-7-DuckDuckGo-：1-5亿"><a href="#NO-7-DuckDuckGo-：1-5亿" class="headerlink" title="NO.7 DuckDuckGo ：1.5亿"></a>NO.7 DuckDuckGo ：1.5亿</h2><p><a href="http://www.duckduckgo.com" target="_blank" rel="noopener">www.duckduckgo.com</a></p>
-<p>DuckDuckGo是一个很特殊的网络搜索引擎，他和Google、Bing 这些不一样，他不会追踪、搜寻用户的信息，这对用户来说可以安个心了。</p>
-<p><img src="/images/2019/10/05/94586ab0-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-8-WolframAlpha-：0-35亿"><a href="#NO-8-WolframAlpha-：0-35亿" class="headerlink" title="NO.8 WolframAlpha ：0.35亿"></a>NO.8 WolframAlpha ：0.35亿</h2><p><a href="http://www.wolframalpha.com" target="_blank" rel="noopener">www.wolframalpha.com</a></p>
-<p>与其他搜索引擎不同，WolframAlpha其实是一个计算知识引擎，它真正的创新之处在于能够马上理解问题，并给出答案。它可以进行各种算术，还有数据分析，物理，艺术等等各个行业的查询。</p>
-<p>比如你查询一个城市，它会出来和这个城市相关数据，它在地图上显示位置，人口，机场，著名的公司，它就像一个只能的机器人，你想知道有关一个东西的所有信息，它都能告诉你。</p>
-<p><img src="/images/2019/10/05/976360c0-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-9-Яндекс"><a href="#NO-9-Яндекс" class="headerlink" title="NO.9 Яндекс"></a>NO.9 Яндекс</h2><p><a href="http://www.yandex.com" target="_blank" rel="noopener">www.yandex.com</a></p>
-<p>Yandex搜索引擎是俄罗斯第一大搜索引擎，创建于1997年，目前已经发展成为一个提供搜索、图片共享、社交网络、网络支付、免费网站托管、以及其它服务的门户网站。因为份额太小，我们就不放数字了。</p>
-<p><img src="/images/2019/10/05/9d1f6d10-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<h2 id="NO-10-webcrawler"><a href="#NO-10-webcrawler" class="headerlink" title="NO.10 webcrawler"></a>NO.10 webcrawler</h2><p><a href="http://www.webcrawler.com" target="_blank" rel="noopener">www.webcrawler.com</a></p>
-<p>WebCrawler是一个融合来自谷歌搜索和雅虎搜索等世界著名的搜索结果的元搜索引擎。WebCrawler为用户提供搜索图片、音频、视频、新闻、黄页和白页的选项卡。</p>
-<p><img src="/images/2019/10/05/9f894120-e716-11e9-890b-79bf1bc40a48.png" alt="image.png"></p>
-<p><a href="https://zhuanlan.zhihu.com/p/28517693" target="_blank" rel="noopener">传送门</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-04T02:50:35.000Z">2019-10-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 468 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/04/26-remove-duplicates-from-sorted-array/">26 remove-duplicates-from-sorted-array</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26. 删除排序数组中的重复项"></a>26. <a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">删除排序数组中的重复项</a></h1><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p>示例 1:</p>
-<pre><code>给定数组 nums = [1,1,2], 
-
-函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 
-
-你不需要考虑数组中超出新长度后面的元素。</code></pre><p>示例 2:</p>
-<pre><code>给定 nums = [0,0,1,1,1,2,2,3,3,4],
-
-函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。
-
-你不需要考虑数组中超出新长度后面的元素。</code></pre><p>说明:</p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<pre><code>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝
-int len = removeDuplicates(nums);
-
-// 在函数里修改输入数组对于调用者是可见的。
-// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。
-for (int i = 0; i &lt; len; i++) {
-    print(nums[i]);
-}</code></pre><p>双指针法</p>
-<pre><code class="java">class Solution {
-    public int removeDuplicates(int[] nums) {
-        if (nums.length == 0) return 0;
-        int i = 0;
-        for (int j = 1; j &lt; nums.length; j++) {
-            if (nums[j] != nums[i]) {
-                i++;
-                nums[i] = nums[j];
-            }
-        }
-        return i + 1;
-    }
-}</code></pre>
-<p>复杂度分析</p>
-<ul>
-<li><p>时间复杂度：O(n)，假设数组的长度是 n，那么 i 和 j 分别最多遍历 n 步。</p>
+<ol start="4">
+<li>中国国家图书馆馆藏中文图书数字化资源库（提供17万多种各学科的图书，可在线阅读）<br><a href="http://mylib.nlc.cn/web/guest/zhongwentushu" target="_blank" rel="noopener">http://mylib.nlc.cn/web/guest/zhongwentushu</a></li>
+</ol>
+<ol start="5">
+<li>汉斯出版社中文学术期刊(提供125本国际开源中文期刊的免费下载阅读）<br><a href="http://www.hanspub.org" target="_blank" rel="noopener">http://www.hanspub.org</a></li>
+</ol>
+<ol start="6">
+<li>全国图书馆参考咨询联盟(绝大多数文献需要用邮箱传递）<br><a href="http://www.ucdrs.superlib.net/" target="_blank" rel="noopener">http://www.ucdrs.superlib.net/</a></li>
+</ol>
+<ol start="7">
+<li>国家科技图书文献中心(现有期刊资源6908本，会议资源1506个）<br><a href="http://www.nstl.gov.cn/" target="_blank" rel="noopener">http://www.nstl.gov.cn/</a></li>
+</ol>
+<ol start="8">
+<li>国家哲学社会科学学术期刊数据库(国内最大的公益性社科精品期刊数据库，收录精品学术期刊600多种，论文近300万篇）<br><a href="http://www.nssd.org/articles/articlesearch.aspx" target="_blank" rel="noopener">http://www.nssd.org/articles/articlesearch.aspx</a></li>
+</ol>
+<ol start="9">
+<li>中国科学院文献情报中心(国家科学图书馆）<br><a href="http://www.las.ac.cn/" target="_blank" rel="noopener">http://www.las.ac.cn/</a></li>
+</ol>
+<ol start="10">
+<li>CALIS 高校学位论文库(免费文摘）<br><a href="http://opac.calis.edu.cn" target="_blank" rel="noopener">http://opac.calis.edu.cn</a></li>
+</ol>
+<ol start="11">
+<li>中国国家数据(中国国家统计局提供的海量数据查询和下载的数据库，内容包含各个地区和国家的数据）<br><a href="http://data.stats.gov.cn/index.htm" target="_blank" rel="noopener">http://data.stats.gov.cn/index.htm</a></li>
+</ol>
+<ol start="12">
+<li>中国国家图书馆(中国国家图书馆数字平台）<br><a href="http://www.nlc.gov.cn/" target="_blank" rel="noopener">http://www.nlc.gov.cn/</a></li>
+</ol>
+<h2 id="外文数据库"><a href="#外文数据库" class="headerlink" title="外文数据库"></a>外文数据库</h2><ol start="13">
+<li>ERIC 教育资源信息中心(教育资源数据库，部分资源可查找到全文）<br><a href="http://www.eric.ed.gov/" target="_blank" rel="noopener">http://www.eric.ed.gov/</a></li>
+</ol>
+<ol start="14">
+<li>Blackwell电子期刊(国际性期刊800余种，涵盖十多个学科，部分期刊提供全文）<br><a href="http://www.blackwell-synergy.com/" target="_blank" rel="noopener">http://www.blackwell-synergy.com/</a></li>
+</ol>
+<ol start="15">
+<li>加拿大 AMICUS 学位论文(收录加拿大1300多个图书馆的学位论文信息）<br><a href="http://www.collectionscanada.gc.ca/theses-canada/index-e.html" target="_blank" rel="noopener">http://www.collectionscanada.gc.ca/theses-canada/index-e.html</a></li>
+</ol>
+<ol start="16">
+<li>欧洲学位论文库(收录来自欧洲28个国家的563所大学的开放学术资源）<br><a href="http://www.dart-europe.eu/basic-search.php" target="_blank" rel="noopener">http://www.dart-europe.eu/basic-search.php</a></li>
+</ol>
+<ol start="17">
+<li><p>Project Gutenberg(提供超过5万本免费电子书籍）<br><a href="http://www.gutenberg.org/" target="_blank" rel="noopener">http://www.gutenberg.org/</a></p>
 </li>
-<li><p>空间复杂度：O(1)。</p>
-</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-30T09:41:21.000Z">2019-09-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    几秒 读完 (大约 24 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/30/BPlusTree/">BPlusTree</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="B-Trees"><a href="#B-Trees" class="headerlink" title="B+ Trees"></a>B+ Trees</h1><p><img src="/images/2019/09/30/d0924640-e365-11e9-8f30-076010c7e3d6.png" alt="image.png"></p>
-<p><a href="https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html" target="_blank" rel="noopener">B+ Trees</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-29T15:37:49.000Z">2019-09-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 438 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/29/vue-route/">vue_route</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="vue自动化路由"><a href="#vue自动化路由" class="headerlink" title="vue自动化路由"></a>vue自动化路由</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>解放双手，从此不用配置路由。当你看到项目中大批量的路由思考是拆分维护业务路由还是统一入口维护时，无需多虑，<code>router-auto</code>是你的最优选择，它帮你解决路由的维护成本，你只需要创建相应的文件夹，路由就能动态生成，路由拦截你可以在main.js中去拦截他，总之比你想象的开发还要简单。</p>
-<ul>
-<li>router-auto github地址有帮助的可以star一下</li>
-<li>router-auto npm地址欢迎提issue</li>
-</ul>
-<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://user-gold-cdn.xitu.io/2019/9/29/16d7c6065291abeb?imageslim" alt="1"></p>
-<h2 id="简要用法"><a href="#简要用法" class="headerlink" title="简要用法"></a>简要用法</h2><p>具体用法请实时查看github或者npm，下面做一些简要用法介绍</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><pre><code class="python">const RouterAuto = require(&#39;router-auto&#39;)
-
-module.exports = {
-    entry: &#39;...&#39;,
-    output: {},
-    module: {},
-    plugin:[
-        new RouterAuto()
-    ]
-}</code></pre>
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><ul>
-<li>package.json 等等文件与目录</li>
-<li>src 项目目录<ul>
-<li>page 页面目录<ul>
-<li>helloworld<ul>
-<li>Index.vue 页面入口</li>
-<li>hello.vue 业务组件</li>
-<li>router.js 额外配置</li>
-</ul>
-</li>
-<li>demo<ul>
-<li>test<ul>
-<li>Index.vue 页面入口</li>
-<li>test.vue 业务组件</li>
-</ul>
-</li>
-<li>Index.vue 页面入口</li>
-</ul>
-</li>
-<li>home<ul>
-<li>Index.vue 页面入口</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>上面的目录结构生成的路由结构为</p>
-<pre><code class="python">import Vue from &#39;vue&#39;
-import Router from &#39;vue-router&#39;
-import helloworld from &#39;@/page/helloworld/Index.vue&#39;
-import demo from &#39;@/page/demo/Index.vue&#39;
-import demo_test from &#39;@/page/demo/test/Index.vue&#39;
-import home from &#39;@/page/home/Index.vue&#39;
-
-Vue.use(Router)
-
-export default new Router({
-    mode:&#39;history&#39;,
-    base:&#39;/auto/&#39;,
-    routes:[{
-      path: &#39;/helloworld/index&#39;,
-      name: &#39;helloworld&#39;,
-      component: helloworld
-    },{
-      path: &#39;/demo/index&#39;,
-      name: &#39;demo&#39;,
-      component: demo
-    },{
-      path: &#39;/demo/test/index&#39;,
-      name: &#39;demo_test&#39;,
-      component: demo_test
-    },{
-      path: &#39;/home/index&#39;,
-      name: &#39;home&#39;,
-      component: home
-    }]
-})</code></pre>
-<blockquote>
-<p>作者：ngaiwe<br>链接：<a href="https://juejin.im/post/5d90798151882576e44088e8" target="_blank" rel="noopener">https://juejin.im/post/5d90798151882576e44088e8</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-</blockquote>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-28T10:13:42.000Z">2019-09-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    34 分钟 读完 (大约 5033 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/28/python-style-rules/">python style rules</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Python风格规范"><a href="#Python风格规范" class="headerlink" title="Python风格规范"></a>Python风格规范</h1><h2 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h2><p>.. tip::<br>    不要在行尾加分号, 也不要用分号将两条命令放在同一行.   </p>
-<p>.. _line_length:    </p>
-<h2 id="行长度"><a href="#行长度" class="headerlink" title="行长度"></a>行长度</h2><p>.. tip::<br>    每行不超过80个字符    </p>
-<p>例外:</p>
-<p>#. 长的导入模块语句</p>
-<p>#. 注释里的URL</p>
-<p>不要使用反斜杠连接行.</p>
-<p>Python会将 <code>圆括号, 中括号和花括号中的行隐式的连接起来 &lt;http://docs.python.org/2/reference/lexical_analysis.html#implicit-line-joining&gt;</code>_ , 你可以利用这个特点. 如果需要, 你可以在表达式外围增加一对额外的圆括号. </p>
-<p>.. code-block:: python</p>
-<pre><code>Yes: foo_bar(self, width, height, color=&#39;black&#39;, design=None, x=&#39;foo&#39;,
-             emphasis=None, highlight=0)
-
-     if (width == 0 and height == 0 and
-         color == &#39;red&#39; and emphasis == &#39;strong&#39;):    </code></pre><p>如果一个文本字符串在一行放不下, 可以使用圆括号来实现隐式行连接:</p>
-<p>.. code-block:: python</p>
-<pre><code>x = (&#39;This will build a very long long &#39;
-     &#39;long long long long long long string&#39;)</code></pre><p>在注释中，如果必要，将长的URL放在一行上。</p>
-<p>.. code-block:: python</p>
-<pre><code>Yes:  # See details at
-      # http://www.example.com/us/developer/documentation/api/content/v2.0/csv_file_name_extension_full_specification.html</code></pre><p>.. code-block:: python</p>
-<pre><code>No:  # See details at
-     # http://www.example.com/us/developer/documentation/api/content/\
-     # v2.0/csv_file_name_extension_full_specification.html     </code></pre><p>注意上面例子中的元素缩进; 你可以在本文的 :ref:<code>缩进 &lt;indentation&gt;</code> 部分找到解释. </p>
-<h2 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h2><p>.. tip::<br>    宁缺毋滥的使用括号    </p>
-<p>除非是用于实现行连接, 否则不要在返回语句或条件语句中使用括号. 不过在元组两边使用括号是可以的. </p>
-<p>.. code-block:: python    </p>
-<pre><code>Yes: if foo:
-         bar()
-     while x:
-         x = bar()
-     if x and y:
-         bar()
-     if not x:
-         bar()
-     return foo
-     for (x, y) in dict.items(): ...  </code></pre><p>.. code-block:: python</p>
-<pre><code>No:  if (x):
-         bar()
-     if not(x):
-         bar()
-     return (foo)</code></pre><p>.. _indentation:  </p>
-<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p>.. tip::<br>    用4个空格来缩进代码</p>
-<p>绝对不要用tab, 也不要tab和空格混用. 对于行连接的情况, 你应该要么垂直对齐换行的元素(见 :ref:<code>行长度 &lt;line_length&gt;</code> 部分的示例), 或者使用4空格的悬挂式缩进(这时第一行不应该有参数):</p>
-<p>.. code-block:: python</p>
-<p>   Yes:   # Aligned with opening delimiter<br>          foo = long_function_name(var_one, var_two,<br>                                   var_three, var_four)</p>
-<pre><code>      # Aligned with opening delimiter in a dictionary
-      foo = {
-          long_dictionary_key: value1 +
-                               value2,
-          ...
-      }
-
-      # 4-space hanging indent; nothing on first line
-      foo = long_function_name(
-          var_one, var_two, var_three,
-          var_four)
-
-      # 4-space hanging indent in a dictionary
-      foo = {
-          long_dictionary_key:
-              long_dictionary_value,
-          ...
-      }</code></pre><p>.. code-block:: python</p>
-<pre><code>No:    # Stuff on first line forbidden
-      foo = long_function_name(var_one, var_two,
-          var_three, var_four)
-
-      # 2-space hanging indent forbidden
-      foo = long_function_name(
-        var_one, var_two, var_three,
-        var_four)
-
-      # No hanging indent in a dictionary
-      foo = {
-          long_dictionary_key:
-              long_dictionary_value,
-              ...
-      }</code></pre><h2 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h2><p>.. tip::<br>    顶级定义之间空两行, 方法定义之间空一行</p>
-<p>顶级定义之间空两行, 比如函数或者类定义. 方法定义, 类定义与第一个方法之间, 都应该空一行. 函数或方法中, 某些地方要是你觉得合适, 就空一行.     </p>
-<h2 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h2><p>.. tip::<br>    按照标准的排版规范来使用标点两边的空格</p>
-<p>括号内不要有空格.</p>
-<p>.. code-block:: python</p>
-<pre><code>Yes: spam(ham[1], {eggs: 2}, [])</code></pre><p>.. code-block:: python</p>
-<pre><code>No:  spam( ham[ 1 ], { eggs: 2 }, [ ] )</code></pre><p>不要在逗号, 分号, 冒号前面加空格, 但应该在它们后面加(除了在行尾).</p>
-<p>.. code-block:: python</p>
-<pre><code>Yes: if x == 4:
-         print x, y
-     x, y = y, x</code></pre><p>.. code-block:: python</p>
-<pre><code>No:  if x == 4 :
-         print x , y
-     x , y = y , x</code></pre><p>参数列表, 索引或切片的左括号前不应加空格.</p>
-<p>.. code-block:: python   </p>
-<pre><code>Yes: spam(1)</code></pre><p>.. code-block:: python</p>
-<pre><code>no: spam (1)</code></pre><p>.. code-block:: python  </p>
-<pre><code>Yes: dict[&#39;key&#39;] = list[index]</code></pre><p>.. code-block:: python  </p>
-<pre><code>No:  dict [&#39;key&#39;] = list [index]       </code></pre><p>在二元操作符两边都加上一个空格, 比如赋值(=), 比较(==, &lt;, &gt;, !=, &lt;&gt;, &lt;=, &gt;=, in, not in, is, is not), 布尔(and, or, not).  至于算术操作符两边的空格该如何使用, 需要你自己好好判断. 不过两侧务必要保持一致. </p>
-<p>.. code-block:: python</p>
-<pre><code>Yes: x == 1</code></pre><p>.. code-block:: python</p>
-<pre><code>No:  x&lt;1</code></pre><p>当’=’用于指示关键字参数或默认参数值时, 不要在其两侧使用空格. </p>
-<p>.. code-block:: python</p>
-<pre><code>Yes: def complex(real, imag=0.0): return magic(r=real, i=imag)</code></pre><p>.. code-block:: python</p>
-<pre><code>No:  def complex(real, imag = 0.0): return magic(r = real, i = imag)</code></pre><p>不要用空格来垂直对齐多行间的标记, 因为这会成为维护的负担(适用于:, #, =等):</p>
-<p>.. code-block:: python</p>
-<pre><code>Yes:
-     foo = 1000  # comment
-     long_name = 2  # comment that should not be aligned
-
-     dictionary = {
-         &quot;foo&quot;: 1,
-         &quot;long_name&quot;: 2,
-         }</code></pre><p>.. code-block:: python</p>
-<pre><code>No:
-     foo       = 1000  # comment
-     long_name = 2     # comment that should not be aligned
-
-     dictionary = {
-         &quot;foo&quot;      : 1,
-         &quot;long_name&quot;: 2,
-         }</code></pre><h2 id="Shebang"><a href="#Shebang" class="headerlink" title="Shebang"></a>Shebang</h2><p>.. tip::<br>    大部分.py文件不必以#!作为文件的开始. 根据 <code>PEP-394 &lt;http://www.python.org/dev/peps/pep-0394/&gt;</code>_ , 程序的main文件应该以 #!/usr/bin/python2或者 #!/usr/bin/python3开始.</p>
-<p>(译者注: 在计算机科学中, <code>Shebang &lt;http://en.wikipedia.org/wiki/Shebang_(Unix)&gt;</code>_ (也称为Hashbang)是一个由井号和叹号构成的字符串行(#!), 其出现在文本文件的第一行的前两个字符. 在文件中存在Shebang的情况下, 类Unix操作系统的程序载入器会分析Shebang后的内容, 将这些内容作为解释器指令, 并调用该指令, 并将载有Shebang的文件路径作为该解释器的参数. 例如, 以指令#!/bin/sh开头的文件在执行时会实际调用/bin/sh程序.)</p>
-<p>#!先用于帮助内核找到Python解释器, 但是在导入模块时, 将会被忽略. 因此只有被直接执行的文件中才有必要加入#!.</p>
-<p>.. _comments:  </p>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>.. tip::<br>    确保对模块, 函数, 方法和行内注释使用正确的风格    </p>
-<p><strong>文档字符串</strong></p>
-<pre><code>Python有一种独一无二的的注释方式: 使用文档字符串. 文档字符串是包, 模块, 类或函数里的第一个语句. 这些字符串可以通过对象的__doc__成员被自动提取, 并且被pydoc所用. (你可以在你的模块上运行pydoc试一把, 看看它长什么样). 我们对文档字符串的惯例是使用三重双引号&quot;&quot;&quot;( `PEP-257 &lt;http://www.python.org/dev/peps/pep-0257/&gt;`_ ). 一个文档字符串应该这样组织: 首先是一行以句号, 问号或惊叹号结尾的概述(或者该文档字符串单纯只有一行). 接着是一个空行. 接着是文档字符串剩下的部分, 它应该与文档字符串的第一行的第一个引号对齐. 下面有更多文档字符串的格式化规范. </code></pre><p><strong>模块</strong></p>
-<pre><code>每个文件应该包含一个许可样板. 根据项目使用的许可(例如, Apache 2.0, BSD, LGPL, GPL), 选择合适的样板.</code></pre><p><strong>函数和方法</strong></p>
-<pre><code>下文所指的函数,包括函数, 方法, 以及生成器.
-
-一个函数必须要有文档字符串, 除非它满足以下条件:
-
-#. 外部不可见
-#. 非常短小
-#. 简单明了
-
-文档字符串应该包含函数做什么, 以及输入和输出的详细描述. 通常, 不应该描述&quot;怎么做&quot;, 除非是一些复杂的算法. 文档字符串应该提供足够的信息, 当别人编写代码调用该函数时, 他不需要看一行代码, 只要看文档字符串就可以了. 对于复杂的代码, 在代码旁边加注释会比使用文档字符串更有意义.
-
-关于函数的几个方面应该在特定的小节中进行描述记录， 这几个方面如下文所述. 每节应该以一个标题行开始. 标题行以冒号结尾. 除标题行外, 节的其他内容应被缩进2个空格. 
-
-Args:
-    列出每个参数的名字, 并在名字后使用一个冒号和一个空格, 分隔对该参数的描述.如果描述太长超过了单行80字符,使用2或者4个空格的悬挂缩进(与文件其他部分保持一致).
-    描述应该包括所需的类型和含义.
-    如果一个函数接受*foo(可变长度参数列表)或者**bar (任意关键字参数), 应该详细列出*foo和**bar.
-
-Returns: (或者 Yields: 用于生成器)
-    描述返回值的类型和语义. 如果函数返回None, 这一部分可以省略.
-
-Raises:
-    列出与接口有关的所有异常.
-
-.. code-block:: python
-
-    def fetch_bigtable_rows(big_table, keys, other_silly_variable=None):
-        &quot;&quot;&quot;Fetches rows from a Bigtable.
-
-        Retrieves rows pertaining to the given keys from the Table instance
-        represented by big_table.  Silly things may happen if
-        other_silly_variable is not None.
-
-        Args:
-            big_table: An open Bigtable Table instance.
-            keys: A sequence of strings representing the key of each table row
-                to fetch.
-            other_silly_variable: Another optional variable, that has a much
-                longer name than the other args, and which does nothing.
-
-        Returns:
-            A dict mapping keys to the corresponding table row data
-            fetched. Each row is represented as a tuple of strings. For
-            example:
-
-            {&#39;Serak&#39;: (&#39;Rigel VII&#39;, &#39;Preparer&#39;),
-             &#39;Zim&#39;: (&#39;Irk&#39;, &#39;Invader&#39;),
-             &#39;Lrrr&#39;: (&#39;Omicron Persei 8&#39;, &#39;Emperor&#39;)}
-
-            If a key from the keys argument is missing from the dictionary,
-            then that row was not found in the table.
-
-        Raises:
-            IOError: An error occurred accessing the bigtable.Table object.
-        &quot;&quot;&quot;
-        pass</code></pre><p><strong>类</strong></p>
-<pre><code>类应该在其定义下有一个用于描述该类的文档字符串. 如果你的类有公共属性(Attributes), 那么文档中应该有一个属性(Attributes)段. 并且应该遵守和函数参数相同的格式.
-
-.. code-block:: python
-
-    class SampleClass(object):
-        &quot;&quot;&quot;Summary of class here.
-
-        Longer class information....
-        Longer class information....
-
-        Attributes:
-            likes_spam: A boolean indicating if we like SPAM or not.
-            eggs: An integer count of the eggs we have laid.
-        &quot;&quot;&quot;
-
-        def __init__(self, likes_spam=False):
-            &quot;&quot;&quot;Inits SampleClass with blah.&quot;&quot;&quot;
-            self.likes_spam = likes_spam
-            self.eggs = 0
-
-        def public_method(self):
-            &quot;&quot;&quot;Performs operation blah.&quot;&quot;&quot;</code></pre><p><strong>块注释和行注释</strong></p>
-<pre><code>最需要写注释的是代码中那些技巧性的部分. 如果你在下次 `代码审查 &lt;http://en.wikipedia.org/wiki/Code_review&gt;`_ 的时候必须解释一下, 那么你应该现在就给它写注释. 对于复杂的操作, 应该在其操作开始前写上若干行注释. 对于不是一目了然的代码, 应在其行尾添加注释. 
-
-.. code-block:: python
-
-    # We use a weighted dictionary search to find out where i is in
-    # the array.  We extrapolate position based on the largest num
-    # in the array and the array size and then do binary search to
-    # get the exact number.
-
-    if i &amp; (i-1) == 0:        # True if i is 0 or a power of 2.
-
-为了提高可读性, 注释应该至少离开代码2个空格. 
-
-另一方面, 绝不要描述代码. 假设阅读代码的人比你更懂Python, 他只是不知道你的代码要做什么. 
-
-.. code-block:: python
-
-    # BAD COMMENT: Now go through the b array and make sure whenever i occurs
-    # the next element is i+1</code></pre><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>.. tip::<br>    如果一个类不继承自其它类, 就显式的从object继承. 嵌套类也一样.</p>
-<p>.. code-block:: python</p>
-<pre><code>Yes: class SampleClass(object):
-         pass
-
-
-     class OuterClass(object):
-
-         class InnerClass(object):
-             pass
-
-
-     class ChildClass(ParentClass):
-         &quot;&quot;&quot;Explicitly inherits from another class already.&quot;&quot;&quot;</code></pre><p>.. code-block:: python</p>
-<pre><code>No: class SampleClass:
-        pass
-
-
-    class OuterClass:
-
-        class InnerClass:
-            pass</code></pre><p>继承自 <code>object</code> 是为了使属性(properties)正常工作, 并且这样可以保护你的代码, 使其不受 <code>PEP-3000 &lt;http://www.python.org/dev/peps/pep-3000/&gt;</code>_ 的一个特殊的潜在不兼容性影响. 这样做也定义了一些特殊的方法, 这些方法实现了对象的默认语义, 包括 <code>__new__, __init__, __delattr__, __getattribute__, __setattr__, __hash__, __repr__, and __str__</code> .</p>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>.. tip::<br>    即使参数都是字符串, 使用%操作符或者格式化方法格式化字符串. 不过也不能一概而论, 你需要在+和%之间好好判定.</p>
-<p>.. code-block:: python</p>
-<pre><code>Yes: x = a + b
-     x = &#39;%s, %s!&#39; % (imperative, expletive)
-     x = &#39;{}, {}!&#39;.format(imperative, expletive)
-     x = &#39;name: %s; score: %d&#39; % (name, n)
-     x = &#39;name: {}; score: {}&#39;.format(name, n)</code></pre><p>.. code-block:: python</p>
-<pre><code>No: x = &#39;%s%s&#39; % (a, b)  # use + in this case
-    x = &#39;{}{}&#39;.format(a, b)  # use + in this case
-    x = imperative + &#39;, &#39; + expletive + &#39;!&#39;
-    x = &#39;name: &#39; + name + &#39;; score: &#39; + str(n)</code></pre><p>避免在循环中用+和+=操作符来累加字符串. 由于字符串是不可变的, 这样做会创建不必要的临时对象, 并且导致二次方而不是线性的运行时间. 作为替代方案, 你可以将每个子串加入列表, 然后在循环结束后用 <code>.join</code> 连接列表. (也可以将每个子串写入一个 <code>cStringIO.StringIO</code> 缓存中.)</p>
-<p>.. code-block:: python</p>
-<pre><code>Yes: items = [&#39;&lt;table&gt;&#39;]
-     for last_name, first_name in employee_list:
-         items.append(&#39;&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;&#39; % (last_name, first_name))
-     items.append(&#39;&lt;/table&gt;&#39;)
-     employee_table = &#39;&#39;.join(items)</code></pre><p>.. code-block:: python</p>
-<pre><code>No: employee_table = &#39;&lt;table&gt;&#39;
-    for last_name, first_name in employee_list:
-        employee_table += &#39;&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;&#39; % (last_name, first_name)
-    employee_table += &#39;&lt;/table&gt;&#39;</code></pre><p>在同一个文件中, 保持使用字符串引号的一致性. 使用单引号’或者双引号”之一用以引用字符串, 并在同一文件中沿用. 在字符串内可以使用另外一种引号, 以避免在字符串中使用. GPyLint已经加入了这一检查.</p>
-<p>(译者注:GPyLint疑为笔误, 应为PyLint.)  </p>
-<p>.. code-block:: python</p>
-<p>   Yes:<br>        Python(‘Why are you hiding your eyes?’)<br>        Gollum(“I’m scared of lint errors.”)<br>        Narrator(‘“Good!” thought a happy Python reviewer.’)</p>
-<p>.. code-block:: python</p>
-<p>   No:<br>        Python(“Why are you hiding your eyes?”)<br>        Gollum(‘The lint. It burns. It burns us.’)<br>        Gollum(“Always the great lint. Watching. Watching.”)</p>
-<p>为多行字符串使用三重双引号”””而非三重单引号’’’. 当且仅当项目中使用单引号’来引用字符串时, 才可能会使用三重’’’为非文档字符串的多行字符串来标识引用. 文档字符串必须使用三重双引号”””. 不过要注意, 通常用隐式行连接更清晰, 因为多行字符串与程序其他部分的缩进方式不一致. </p>
-<p>.. code-block:: python</p>
-<pre><code>Yes:
-    print (&quot;This is much nicer.\n&quot;
-           &quot;Do it this way.\n&quot;)</code></pre><p>.. code-block:: python</p>
-<pre><code>No:
-      print &quot;&quot;&quot;This is pretty ugly.
-  Don&#39;t do this.
-  &quot;&quot;&quot;</code></pre><h2 id="文件和sockets"><a href="#文件和sockets" class="headerlink" title="文件和sockets"></a>文件和sockets</h2><p>.. tip::<br>    在文件和sockets结束时, 显式的关闭它.</p>
-<p>除文件外, sockets或其他类似文件的对象在没有必要的情况下打开, 会有许多副作用, 例如:</p>
-<p>#. 它们可能会消耗有限的系统资源, 如文件描述符. 如果这些资源在使用后没有及时归还系统, 那么用于处理这些对象的代码会将资源消耗殆尽.</p>
-<p>#. 持有文件将会阻止对于文件的其他诸如移动、删除之类的操作.</p>
-<p>#. 仅仅是从逻辑上关闭文件和sockets, 那么它们仍然可能会被其共享的程序在无意中进行读或者写操作. 只有当它们真正被关闭后, 对于它们尝试进行读或者写操作将会抛出异常, 并使得问题快速显现出来.</p>
-<p>而且, 幻想当文件对象析构时, 文件和sockets会自动关闭, 试图将文件对象的生命周期和文件的状态绑定在一起的想法, 都是不现实的. 因为有如下原因: </p>
-<p>#. 没有任何方法可以确保运行环境会真正的执行文件的析构. 不同的Python实现采用不同的内存管理技术, 比如延时垃圾处理机制. 延时垃圾处理机制可能会导致对象生命周期被任意无限制的延长.</p>
-<p>#. 对于文件意外的引用,会导致对于文件的持有时间超出预期(比如对于异常的跟踪, 包含有全局变量等).</p>
-<p>推荐使用 <code>&quot;with&quot;语句 &lt;http://docs.python.org/reference/compound_stmts.html#the-with-statement&gt;</code>_ 以管理文件:</p>
-<p>.. code-block:: python</p>
-<pre><code>  with open(&quot;hello.txt&quot;) as hello_file:
-      for line in hello_file:
-          print line</code></pre><p>对于不支持使用”with”语句的类似文件的对象,使用 contextlib.closing():</p>
-<p>.. code-block:: python</p>
-<pre><code>  import contextlib
-
-  with contextlib.closing(urllib.urlopen(&quot;http://www.python.org/&quot;)) as front_page:
-      for line in front_page:
-          print line</code></pre><p>Legacy AppEngine 中Python 2.5的代码如使用”with”语句, 需要添加 “from <strong>future</strong> import with_statement”.</p>
-<h2 id="TODO注释"><a href="#TODO注释" class="headerlink" title="TODO注释"></a>TODO注释</h2><p>.. tip::<br>    为临时代码使用TODO注释, 它是一种短期解决方案. 不算完美, 但够好了.</p>
-<p>TODO注释应该在所有开头处包含”TODO”字符串, 紧跟着是用括号括起来的你的名字, email地址或其它标识符. 然后是一个可选的冒号. 接着必须有一行注释, 解释要做什么. 主要目的是为了有一个统一的TODO格式, 这样添加注释的人就可以搜索到(并可以按需提供更多细节). 写了TODO注释并不保证写的人会亲自解决问题. 当你写了一个TODO, 请注上你的名字. </p>
-<p>.. code-block:: python    </p>
-<pre><code># TODO(kl@gmail.com): Use a &quot;*&quot; here for string repetition.
-# TODO(Zeke) Change this to use relations.</code></pre><p>如果你的TODO是”将来做某事”的形式, 那么请确保你包含了一个指定的日期(“2009年11月解决”)或者一个特定的事件(“等到所有的客户都可以处理XML请求就移除这些代码”). </p>
-<h2 id="导入格式"><a href="#导入格式" class="headerlink" title="导入格式"></a>导入格式</h2><p>.. tip::<br>    每个导入应该独占一行</p>
-<p>.. code-block:: python  </p>
-<pre><code>Yes: import os
-     import sys</code></pre><p>.. code-block:: python  </p>
-<pre><code>No:  import os, sys</code></pre><p>导入总应该放在文件顶部, 位于模块注释和文档字符串之后, 模块全局变量和常量之前.  导入应该按照从最通用到最不通用的顺序分组:</p>
-<p>#. 标准库导入</p>
-<p>#. 第三方库导入</p>
-<p>#. 应用程序指定导入</p>
-<p>每种分组中,  应该根据每个模块的完整包路径按字典序排序, 忽略大小写.</p>
-<p>.. code-block:: python</p>
-<pre><code>import foo
-from foo import bar
-from foo.bar import baz
-from foo.bar import Quux
-from Foob import ar</code></pre><h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>.. tip::<br>    通常每个语句应该独占一行   </p>
-<p>不过, 如果测试结果与测试语句在一行放得下, 你也可以将它们放在同一行.  如果是if语句, 只有在没有else时才能这样做. 特别地, 绝不要对 <code>try/except</code> 这样做, 因为try和except不能放在同一行. </p>
-<p>.. code-block:: python</p>
-<pre><code>Yes:
-
-  if foo: bar(foo)</code></pre><p>.. code-block:: python</p>
-<pre><code>No:
-
-  if foo: bar(foo)
-  else:   baz(foo)
-
-  try:               bar(foo)
-  except ValueError: baz(foo)
-
-  try:
-      bar(foo)
-  except ValueError: baz(foo)</code></pre><h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><p>.. tip::<br>    在Python中, 对于琐碎又不太重要的访问函数, 你应该直接使用公有变量来取代它们, 这样可以避免额外的函数调用开销. 当添加更多功能时, 你可以用属性(property)来保持语法的一致性. </p>
-<pre><code>(译者注: 重视封装的面向对象程序员看到这个可能会很反感, 因为他们一直被教育: 所有成员变量都必须是私有的! 其实, 那真的是有点麻烦啊. 试着去接受Pythonic哲学吧)</code></pre><p>另一方面, 如果访问更复杂, 或者变量的访问开销很显著, 那么你应该使用像 <code>get_foo()</code> 和 <code>set_foo()</code> 这样的函数调用. 如果之前的代码行为允许通过属性(property)访问 , 那么就不要将新的访问函数与属性绑定. 这样, 任何试图通过老方法访问变量的代码就没法运行, 使用者也就会意识到复杂性发生了变化. </p>
-<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><p>.. tip::<br>    module_name, package_name, ClassName, method_name, ExceptionName, function_name, GLOBAL_VAR_NAME, instance_var_name, function_parameter_name, local_var_name.   </p>
-<p><strong>应该避免的名称</strong></p>
-<pre><code>#. 单字符名称, 除了计数器和迭代器.
-#. 包/模块名中的连字符(-)
-#. 双下划线开头并结尾的名称(Python保留, 例如__init__)</code></pre><p><strong>命名约定</strong></p>
-<pre><code>#. 所谓&quot;内部(Internal)&quot;表示仅模块内可用, 或者, 在类内是保护或私有的.
-#. 用单下划线(_)开头表示模块变量或函数是protected的(使用from module import \*时不会包含).
-#. 用双下划线(__)开头的实例变量或方法表示类内私有.
-#. 将相关的类和顶级函数放在同一个模块里. 不像Java, 没必要限制一个类一个模块.
-#. 对类名使用大写字母开头的单词(如CapWords, 即Pascal风格), 但是模块名应该用小写加下划线的方式(如lower_with_under.py). 尽管已经有很多现存的模块使用类似于CapWords.py这样的命名, 但现在已经不鼓励这样做, 因为如果模块名碰巧和类名一致, 这会让人困扰. </code></pre><p><strong>Python之父Guido推荐的规范</strong>    </p>
-<p>===========================    ====================    ======================================================================<br>Type                           Public                  Internal<br>===========================    ====================    ======================================================================<br>Modules                        lower_with_under        _lower_with_under<br>Packages                       lower_with_under<br>Classes                        CapWords                _CapWords<br>Exceptions                     CapWords<br>Functions                      lower_with_under()      _lower_with_under()<br>Global/Class Constants         CAPS_WITH_UNDER         _CAPS_WITH_UNDER<br>Global/Class Variables         lower_with_under        _lower_with_under<br>Instance Variables             lower_with_under        _lower_with_under (protected) or __lower_with_under (private)<br>Method Names                   lower_with_under()      _lower_with_under() (protected) or __lower_with_under() (private)<br>Function/Method Parameters     lower_with_under<br>Local Variables                lower_with_under<br>===========================    ====================    ======================================================================</p>
-<p>.. _main:  </p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h2><p>.. tip::<br>    即使是一个打算被用作脚本的文件, 也应该是可导入的. 并且简单的导入不应该导致这个脚本的主功能(main functionality)被执行, 这是一种副作用. 主功能应该放在一个main()函数中. </p>
-<p>在Python中, pydoc以及单元测试要求模块必须是可导入的. 你的代码应该在执行主程序前总是检查 <code>if __name__ == &#39;__main__&#39;</code> , 这样当模块被导入时主程序就不会被执行. </p>
-<p>.. code-block:: python</p>
-<pre><code>def main():
-      ...
-
-if __name__ == &#39;__main__&#39;:
-    main()</code></pre><p>所有的顶级代码在模块导入时都会被执行. 要小心不要去调用函数, 创建对象, 或者执行那些不应该在使用pydoc时执行的操作.</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-27T06:56:13.000Z">2019-09-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 小时 读完 (大约 9479 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/27/Recommendation-System/">Recommendation System</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#1-什么是推荐系统">1. 什么是推荐系统</a></li>
-<li><a href="#2-总体架构">2. 总体架构</a><ul>
-<li><a href="#21-离线推荐">2.1 离线推荐</a></li>
-<li><a href="#22-在线训练">2.2 在线训练</a></li>
-</ul>
-</li>
-<li><a href="#3-特征数据">3. 特征数据</a></li>
-<li><a href="#4-协同过滤算法">4. 协同过滤算法</a><ul>
-<li><a href="#41-基于物品的协同过滤itemcf">4.1 基于物品的协同过滤(ItemCF)</a></li>
-<li><a href="#42-基于用户的协同过滤usercf">4.2 基于用户的协同过滤(UserCF)</a></li>
-<li><a href="#43-矩阵分解">4.3 矩阵分解</a></li>
-</ul>
-</li>
-<li><a href="#5-隐语义模型">5. 隐语义模型</a><ul>
-<li><a href="#51-基本思想">5.1 基本思想</a></li>
-<li><a href="#52-模型理解">5.2 模型理解</a></li>
-</ul>
-</li>
-<li><a href="#6-排序算法">6. 排序算法</a></li>
-<li><a href="#7-评估测试">7. 评估测试</a><ul>
-<li><a href="#71-ab测试">7.1 A/B测试</a></li>
-<li><a href="#72-其它评估方法">7.2 其它评估方法</a></li>
-</ul>
-</li>
-<li><a href="#8-推荐系统冷启动问题">8. 推荐系统冷启动问题</a><ul>
-<li><a href="#81-用户冷启动">8.1 用户冷启动</a></li>
-<li><a href="#82-物品冷启动">8.2 物品冷启动</a></li>
-<li><a href="#83-系统冷启动">8.3 系统冷启动</a></li>
-</ul>
-</li>
-<li><a href="#9-参考文献">9. 参考文献</a></li>
-</ul>
-<h2 id="1-什么是推荐系统"><a href="#1-什么是推荐系统" class="headerlink" title="1. 什么是推荐系统"></a>1. 什么是推荐系统</h2><p>推荐系统是利用电子商务网站向客户提供商品信息和建议，帮助用户决定应该购买什么产品，模拟销售人员帮助客户完成购买过程。个性化推荐是根据用户的兴趣特点和购买行为，向用户推荐用户感兴趣的信息和商品。</p>
-<p>随着电子商务规模的不断扩大，商品个数和种类快速增长，顾客需要花费大量的时间才能找到自己想买的商品。这种浏览大量无关的信息和产品过程无疑会使淹没在信息过载问题中的消费者不断流失。</p>
-<p>为了解决这些问题，个性化推荐系统应运而生。<strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
-<p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
-<p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
-<h2 id="2-总体架构"><a href="#2-总体架构" class="headerlink" title="2. 总体架构"></a>2. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思<br>考，从而设计出适合自身业务的系统。</p>
-<p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
-<h3 id="2-1-离线推荐"><a href="#2-1-离线推荐" class="headerlink" title="2.1 离线推荐"></a>2.1 离线推荐</h3><p>于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般 以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
-<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_10-22-0.png" alt></p>
-<ol>
-<li><p><strong>数据上报</strong>：据上报模块的作用是搜集业务数据组成训练样本。一般分为收集、验证、清洗和转换几个步骤。将收集的数据转化为训练所需要的样本格式，保存到离线存储模块。</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_10-33-46.png" alt></p>
-</li>
-<li><p><strong>离线训练</strong>：线训练模块又细分为离线存储和离线计算。实际业务中使用的推荐系统一般都需要处理海量的用户行为数据，所以离线存储模块需要有一个分布式的文件系统或者存储平台来存储这些数据。离线计算常见的操作有：样本抽样、特征工程、模型训练、相似度计算等。</p>
-</li>
-<li><p><strong>在线存储</strong>：因为线上的服务对于时延都有严格的要求。比如，某个用户打开手机 APP ，他肯定希望APP 能够快速响应，如果耗时过长，就会影响用户的体验。一般来说，这就要求推荐系统在几十毫秒以内处理完用户请求返回推荐结果，所以，针对线上的服务，需要有一个专门的在线存储模块，负责存储用于线上的模型和特征数据 。</p>
-</li>
-<li><p><strong>实时推荐</strong>：实时推荐模块的功能是对来自业务的新请求进行预测。1.获取用户特征；2.调用推荐模型；3.结果排序。</p>
-<p>在实际应用中，因为业务的物品列表太大，如果实时计算对每 个物品使用复杂的模型进行打分，就有可能耗时过长而影响用户满意度。所以，一种常见的做法是将推荐列表生成分为召回和排序两步。召回的作用是从大量的候选物品中（例如上百万）筛选出一批用户较可能喜欢的候选集 （一般是几百）。排序的作用是对召回得到的相对较小的候选集使用排序模型进行打分。更进一步，在排序得到推荐列表后，为了多样性和运<br>营的一些考虑，还会加上第三步重排过滤，用于对精排后的推荐列表进行处理。</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_10-40-23.png" alt></p>
-</li>
-<li><p><strong>A/B测试</strong>：对于互联网产品来说， A/B 测试基本上是一个必备的模块，对于推荐系统来说也不例外，它可以帮助开发人员评估新算法对客户行为的影响。除了 离线的指标外，一个新的推荐算法上线之前 般都会经过 A/B 测试来测试新算法的有效性。</p>
+<li><p>澳洲数字论文计划(包含澳洲40余所大学的15440篇硕博论文，涵盖各个学科）<br><a href="http://adt.caul.edu.au" target="_blank" rel="noopener">http://adt.caul.edu.au</a></p>
 </li>
 </ol>
-<p>下图是与之对应的实际系统中各个组件的流转过程。<strong>需要注意的是生成推荐列表就已经做完了召回和排序的操作，业务层直接调用API就可以得到这个推荐列表。</strong></p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_10-25-27.png" alt></p>
-<h3 id="2-2-在线训练"><a href="#2-2-在线训练" class="headerlink" title="2.2 在线训练"></a>2.2 在线训练</h3><p>对于业务来说，我们希望用户对于上 个广告的反馈 （喜欢或者不 欢，有没有点击 ，可以很快地用于下<br>一个广告的推荐中。这就要求我们用另 种方法来解决这个问题，这个方法就是在线训练。</p>
-<p>基于在线训练的推荐系统架构适合于广告和电商等高维度大数据量且对实时性要求很高的场景 相比较基于离线训练的推荐系统，基于在线训练的推荐系统不区分训练和测试阶段，每个回合都在学习，通过实时的反馈来调整策略。 方面，在线训练要求其样本、特征和模型的处理都是实时的，以便推荐的内容更快地反映用户实时的喜好；另一方面，因为在线训练井不需要将所有的训练数据都存储下来，所以不需要巨大的离线存储开销，使得系统具有很好的伸缩性，可以支持超大的数据量和模型。</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_11-11-11.png" alt></p>
-<ol>
-<li><strong>样本处理</strong>：和基于离线训练的推荐系统相比，在线训练在数据上报阶段的主要不同体现在样本处理上。，对于离线训练来说，上报后的数据先是被存储到一个分布式文件系统，然后等待离线计算任务来对样本进行处理；对于在线训练来说，对样本的去重、过滤和采样等计算都需要实时进行。</li>
-<li><strong>实时特性</strong>：实时特征模块通过实时处理样本数据拼接训练需要的特征构造训练样本，输入流式训练模块用于更新模型。该模块的主要的功能是特征拼接和特征工程。</li>
-<li><strong>流式训练</strong>：、流式训练模块的主要作用是使用实时训练样本来更新模型。推荐算法中增量更新部分的计算，通过流式计算的方式来进行更新。在线训练的优势之一，是可以支持模型的稀疏存储。训练方面，在线模型不一定都是从零开始训练，而是可以将离线训练得到的模型参数作为基础，在这个基础上进行增量训练。</li>
-<li><strong>模型存储和加载</strong>：模型一般存储在参数服务器中。模型更新后，将模型文件推送到线上存储，并由线上服务模块动态加载。</li>
+<ol start="19">
+<li>北卡罗来纳州州立大学(3937篇免费博硕论文，涵盖化学、物理学、电子电气、核能、机械、材料、食品、林业、土壤等学科）<br><a href="https://repository.lib.ncsu.edu/handle/1840.20/23" target="_blank" rel="noopener">https://repository.lib.ncsu.edu/handle/1840.20/23</a></li>
 </ol>
-<h2 id="3-特征数据"><a href="#3-特征数据" class="headerlink" title="3. 特征数据"></a>3. 特征数据</h2><p>要训练推荐模型，就需要先收集用户的行为数据生成特征向量以后才能进行训练，而一个特征向量由特征以及特征的权重组成，在利用用户行为计算特征向量时需要考虑以下因素。</p>
-<ol>
-<li><strong>用户行为的种类</strong>：在一个网站中，用户可以对物品产生很多不同种类的行为。用户可以浏览物品、单击物品的链接、收藏物品、给物品打分、购买物品、评论物品、给物品打上不同的标签、和好友分享物品、搜索不同的关键词等。这些行为都会对物品特征的权重产生影响，但不同行为的影响不同，大多时候很难确定什么行为更加重要，一般的标准就是用户付出代价越大的行为权重越高。</li>
-<li><strong>用户行为产生的时间</strong>：一般来说，用户近期的行为比较重要，而用户很久之前的行为相对比较次要。因此，如果用户最近购买过某一个物品，那么这个物品对应的特征将会具有比较高的权重。</li>
-<li><strong>用户行为的次数</strong>：有时用户对一个物品会产生很多次行为。比如用户会听一首歌很多次，看一部电视剧的很多集等。因此用户对同一个物品的同一种行为发生的次数也反映了用户对物品的兴趣，行为次数多的物品对应的特征权重越高。</li>
-<li><strong>物品的热门程度</strong>：如果用户对一个很热门的物品产生了行为，往往不能代表用户的个性，因为用户可能是在跟风，可能对该物品并没有太大兴趣，特别是在用户对一个热门物品产生了偶尔几次不重要的行为（比如浏览行为）时，就更说明用户对这个物品可能没有什么兴趣，可能只是因为这个物品的链接到处都是，很容易点到而已。反之，如果用户对一个不热门的物品产生了行为，就说明了用户的个性需求。因此，推荐引擎在生成用户特征时会加重不热门物品对应的特征的权重。</li>
-<li><strong>数据去燥</strong>：对样本做去噪。对于数据中混杂的刷单等类作弊行为的数据，要将其排除出训练数据,否则它会直接影响模型的效果；样本中的缺失值也要做处理。</li>
-<li><strong>正负样本均衡</strong>：一般我们收集用户的行为数据都是属于正样本，造成了严重的不平衡。所以对于一个用户，从他没有过行为的物品中采样出一些物品作为负样本，但采样时，保证每个用户的正负样本数目相当。</li>
-<li><strong>特征组合</strong>：我们需要考虑特征与特征之间的关系。例如在美团酒店搜索排序中，酒店的销量、价格、用户的消费水平等是强相关的因素，用户的年龄、位置可能是弱相关的因素，用户的ID是完全无关的因素。在确定了哪些因素可能与预测目标相关后，我们需要将此信息表示为数值类型,即为特征抽取的过程。除此之外，用户在App上的浏览、交易等行为记录中包含了大量的信息，特征抽取则主要是从这些信息抽取出相关因素，用数值变量进行表示。常用的统计特征有计数特征,如浏览次数、下单次数等;比率特征，如点击率、转化率等;统计量特征，如价格均值、标准差、分位数、偏度、峰度等。</li>
+<ol start="20">
+<li>加州大学学者文库(图书资源分对校内和校外两部分开放，著作新，制作质量高。普通读物、学术读物均有收录）<br><a href="http://publishing.cdlib.org/ucpressebooks/" target="_blank" rel="noopener">http://publishing.cdlib.org/ucpressebooks/</a></li>
 </ol>
-<h2 id="4-协同过滤算法"><a href="#4-协同过滤算法" class="headerlink" title="4. 协同过滤算法"></a>4. 协同过滤算法</h2><p>协同过滤算法起源于 1992 年，被 Xerox 公司用于个性化定制邮件系统。Xerox 司的用户需要在数十种主题中选择三到五种主题，协同过滤算法根据不同的主题过滤邮件，最终达到个性化的目的。</p>
-<p><strong>协同过滤算法分为基于物品的协同过滤和基于用户的协同过滤，输出结果为 TOPn 的推荐列表。</strong></p>
-<h3 id="4-1-基于物品的协同过滤-ItemCF"><a href="#4-1-基于物品的协同过滤-ItemCF" class="headerlink" title="4.1 基于物品的协同过滤(ItemCF)"></a>4.1 基于物品的协同过滤(ItemCF)</h3><p>基于物品的协同过滤算法的核心思想：给用户推荐那些和他们之前喜欢的物品相似的物品。</p>
-<p>基于物品的协同过滤算法首先计算物品之间的相似度， 计算相似度的方法有以下几种：</p>
-<ol>
-<li><p><strong>基于共同喜欢物品的用户列表计算</strong></p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-9_8-54-46.png" alt></p>
-<p>在此，分母中 N(i) 是购买物品 i 的用户数，N(j) 是购买物品 j 的用户数，而分子 <img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-9_8-56-1.png" alt>是同时购买物品i 和物品 j 的用户数。。可见上述的公式的核心是计算同时购买这件商品的人数比例 。当同时购买这两个物品人数越多，他们的相似度也就越高。另外值得注意的是，在分母中我们用了物品总购买人数做惩罚，也就是说某个物品可能很热门，导致它经常会被和其他物品一起购买，所以除以它的总购买人数，来降低它和其他物品的相似分数。</p>
-</li>
-<li><p><strong>基于余弦的相似度计算</strong></p>
-<p>上面的方法计算物品相似度是直接使同时购买这两个物品的人数。但是也有可能存在用户购买了但不喜欢的情况 所以如果数据集包含了具体的评分数据 我们可以进一步把用户评分引入到相似度计算中 。</p>
-<p><img src="https://latex.codecogs.com/gif.latex?w_%7Bij%7D=cos%5Ctheta=%5Cfrac%7BN_i*N_j%7D%7B%7C%7CN_i%7C%7C%7C%7CN_j%7C%7C%7D=%5Cfrac%7B%5Csum_%7Bk=1%7D%5E%7Blen%7D(n_%7Bki%7D*n_%7Bkj%7D)%7D%7B%5Csqrt%7B%5Csum_%7Bk=1%7D%5E%7Blen%7Dn_%7Bki%7D%5E2%7D*%5Csqrt%7B%5Csum_%7Bk=1%7D%5E%7Blen%7Dn_%7Bkj%7D%5E2%7D%7D" alt></p>
-<p>其中 <img src="https://latex.codecogs.com/gif.latex?n_%7Bki%7D" alt>是用户 k 对物品 i 的评分，如果没有评分则为 0。</p>
-</li>
-<li><p><strong>热门物品的惩罚</strong></p>
-<p>对于热门物品的问题，可以用如下公式解决：</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-9_8-58-9.png" alt></p>
-<p>当 <img src="https://latex.codecogs.com/gif.latex?%5Calpha%5Cin(0,0.5)" alt>时，N(i) 越小，惩罚得越厉害，从而会使热 物品相关性分数下降。</p>
-</li>
+<ol start="21">
+<li>Directory of Open Access Journals(免费的全文科技学术期刊。现有2752种期刊，其中830种可以全文搜索。）<br><a href="http://www.doaj.org/" target="_blank" rel="noopener">http://www.doaj.org/</a></li>
 </ol>
-<h3 id="4-2-基于用户的协同过滤-UserCF"><a href="#4-2-基于用户的协同过滤-UserCF" class="headerlink" title="4.2 基于用户的协同过滤(UserCF)"></a>4.2 基于用户的协同过滤(UserCF)</h3><p>基于用户的协同过滤（User CF ）的原理其实是和基于物品的协同过滤类似的。所不同的是，基于物品的协同过滤的原理是用户 U 购买了 A 物品，推荐给用户 U 和 A 相似的物品 B、C、D。而基于用户的协同过滤，是先计算用户 U 与其他的用户的相似度，然后取和 U 最相似的几个用户，把他们购买过的物品推荐给用户U。</p>
-<p>为了计算用户相似度，我们首先要把用户购买过物品的索引数据转化成物品被用户购买过的索引数据，即物品的倒排索引：</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_13-0-35.png" alt></p>
-<p>建立好物品的倒排索引后，就可以根据相似度公式计算用户之间的相似度：</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-9_8-59-5.png" alt></p>
-<p>其中 N(a) 表示用户 a 购买物品的数量，N(b) 表示用户 b 购买物品的数量，N(a)∩N(b) 表示用户 a 和 b 购买相同物品的数量。有了用户的相似数据，针对用户 U 挑选 K 个最相似的用户，把他们购买过的物品中，U 未购买过的物品推荐给用户 U 即可。</p>
-<h3 id="4-3-矩阵分解"><a href="#4-3-矩阵分解" class="headerlink" title="4.3 矩阵分解"></a>4.3 矩阵分解</h3><p>上述计算会得到一个相似度矩阵，而这个矩阵的大小和纬度都是很大的，需要进行降维处理，用到的是SVD的降维方法，具体可以参考我之前写的降维方法：<a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/8.%20ML%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E5%92%8C%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95#25-%E9%99%8D%E7%BB%B4%E6%96%B9%E6%B3%95" target="_blank" rel="noopener">2.5 降维方法</a></p>
-<p><strong>基于稀疏自编码的矩阵分解</strong></p>
-<p>矩阵分解技术在推荐领域的应用比较成熟，但是通过上一节的介绍，我们不难发现矩阵分解本质上只通过一次分解来对 原矩阵进行逼近，特征挖掘的层次不够深入。另外矩阵分解也没有运用到物品本身的内容特征，例如书本的类别分类、音乐的流派分类等。随着神经网络技术的兴起，笔者发现通过多层感知机，可以得到更加深度的特征表示，并且可以对内容分类特征加以应用。首先，我们介绍一下稀疏自编码神经网络的设计思路。</p>
-<ol>
-<li><p><strong>基础的自编码结构</strong></p>
-<p>最简单的自编码结构如下图，构造个三层的神经网络，我们让输出层等于输入层，且中间层的维度远低于输入层和输出层，这样就得到了第一层的特征压缩。</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_13-24-48.png" alt></p>
-<p>简单来说自编码神经网络尝试学习<strong>中间层约等于输入层</strong>的函数。换句话说，它尝试逼近一个恒等函数。如果网络的输入数据是完全随机的，比如每一个输入都是一个跟其他特征完全无关的独立同分布高斯随机变 ，那么这一压缩表示将会非常难于学习。但是如果输入数据中隐含着 些特定的结构，比如某些输入特征是彼此相关的，那么这一算法就可以发现输入数据中的这些相关性。</p>
-</li>
-<li><p><strong>多层结构</strong></p>
-<p>基于以上的单层隐藏层的网络结构，我们可以扩展至多层网络结构，学习到更高层次的抽象特征。</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_13-36-51.jpg" alt></p>
-</li>
+<ol start="22">
+<li>Upcoming Conference(国内外学术会议论文）<br><a href="http://www.ourglocal.com/" target="_blank" rel="noopener">http://www.ourglocal.com/</a></li>
 </ol>
-<h2 id="5-隐语义模型"><a href="#5-隐语义模型" class="headerlink" title="5. 隐语义模型"></a>5. 隐语义模型</h2><h3 id="5-1-基本思想"><a href="#5-1-基本思想" class="headerlink" title="5.1 基本思想"></a>5.1 基本思想</h3><p>推荐系统中一个重要的分支，隐语义建模。隐语义模型LFM：Latent Factor Model，其核心思想就是通过隐含特征联系用户兴趣和物品。</p>
-<p><strong>过程分为三个部分，将物品映射到隐含分类，确定用户对隐含分类的兴趣，然后选择用户感兴趣的分类中的物品推荐给用户。它是基于用户行为统计的自动聚类。</strong></p>
-<p>隐语义模型在Top-N推荐中的应用十分广泛。常用的隐语义模型，LSA(Latent Semantic Analysis)，LDA(Latent Dirichlet Allocation)，主题模型(Topic Model)，矩阵分解(Matrix Factorization)等等。</p>
-<p>首先通过一个例子来理解一下这个模型，比如说有两个用户A和B，目前有用户的阅读列表，用户A的兴趣涉及侦探小说，科普图书以及一些计算机技术书，而用户B的兴趣比较集中在数学和机器学习方面。那么如何给A和B推荐图书呢？</p>
-<p>对于UserCF，首先需要找到和他们看了同样书的其他用户(兴趣相似的用户)，然后在给他们推荐那些用户喜欢的其他书。<br>对于ItemCF,需要给他们推荐和他们已经看的书相似的书，比如用户B 看了很多数据挖掘方面的书，那么可以给他推荐机器学习或者模式识别方面的书。</p>
-<p>还有一种方法就是使用隐语义模型，可以对书和物品的兴趣进行分类。对于某个用户，首先得到他的兴趣分类，然后从分类中挑选他可能喜欢的物品。</p>
-<h3 id="5-2-模型理解"><a href="#5-2-模型理解" class="headerlink" title="5.2 模型理解"></a>5.2 模型理解</h3><ol>
-<li>如何给物品进行分类？</li>
-<li>如何确定用户对哪些类的物品感兴趣，以及感兴趣的程度？</li>
-<li>对于一个给定的类，选择哪些属于这个类的物品推荐给用户，以及如何确定这些物品在一个类中的权重？</li>
+<ol start="23">
+<li>俄亥俄州立大学电子学位论文(索引更新及时，可在线翻译成中文。涵盖机械、电子、管理、哲学、化学、环境学、材料、数学、物理等学科）<br><a href="http://www.ohiolink.edu/etd/search.cgi" target="_blank" rel="noopener">http://www.ohiolink.edu/etd/search.cgi</a></li>
 </ol>
-<p>为了解决上面的问题，研究人员提出：为什么我们不从数据出发，自动地找到那些类，然后进行个性化推荐，隐语义分析技术因为采取基于用户行为统计的自动聚类，较好地解决了上面的问题。隐语义分析技术从诞生到今天产生了很多著名的模型和方法，其中和推荐技术相关的有pLSA，LDA，隐含类别模型（latent class model）, 隐含主题模型（latent topic model）, 矩阵分解（matrix factorization）。</p>
-<p>LFM通过如下公式计算用户 u 对物品 i 的兴趣：</p>
-<p><img src="https://latex.codecogs.com/gif.latex?preference(u,i)=r_%7Bui%7D=p_u%5ETq_i=%5Csum_%7Bf=1%7D%5EFp_%7Bu,k%7Dq_%7Bi,k%7D" alt></p>
-<p>这个公式中 <img src="https://latex.codecogs.com/gif.latex?p_%7Bu,k%7D" alt>和 <img src="https://latex.codecogs.com/gif.latex?q_%7Bi,k%7D" alt>是模型的参数，其中 <img src="https://latex.codecogs.com/gif.latex?p_%7Bu,k%7D" alt>度量了用户 u 的兴趣和第 k 个隐类的关系，而 <img src="https://latex.codecogs.com/gif.latex?q_%7Bi,k%7D" alt>度量了第 k 个隐类和物品 i 之间的关系。那么，下面的问题就是如何计算这两个参数。</p>
-<p>对最优化理论或者机器学习有所了解的读者，可能对如何计算这两个参数都比较清楚。这两个参数是从数据集中计算出来的。要计算这两个参数，需要一个训练集，对于每个用户u，训练集里都包含了用户u喜欢的物品和不感兴趣的物品，通过学习这个数据集，就可以获得上面的模型参数。</p>
-<h2 id="6-排序算法"><a href="#6-排序算法" class="headerlink" title="6. 排序算法"></a>6. 排序算法</h2><p>在工业应用中，推荐系统通常可分为两部分，召回和排序。协同过滤属于召回的算法，从召回中得到一个比较小的推荐列表，然后经过排序之后才会输出到最终的推荐列表里，是一个有序的推荐列表。</p>
-<p>这个过程会从几千万 item 中筛选出几百或者上千的候选集，然后在排序阶段选出30个给到每位用户。这个排序可理解为一个函数，F(user, item, context)，输入为用户、物品、环境，输出一个0到1之间的分数，取分数最高的几首。这一过程通常称为 CTR 预估。那么 F 函数常见的运作形式有：</p>
-<ol>
-<li><p><strong>Logistic Regression</strong></p>
-<p>最简单的是逻辑回归(Logistic Regression)，一个广义线性模型。拿某 user 的用户画像(一个向量)比如<code>[3, 1]</code>，拼接上某 item 的物品画像比如<code>[4, 0]</code>，再加上代表 context 的向量<code>[0, 1, 1]</code>后得到<code>[3, 1, 4, 0, 0, 1, 1]</code>，若该 user 曾与该 item 发生过联系则 label 为1，这些加起来是一个正样本，同时可以将用户“跳过”的 item 或热门的却没有与用户产生过联系的 item 作为负样本，label 为0。按照这样的输入和输出就可以训练出排序算法了。详细模型见：<a href="https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/2.Logistics%20Regression/2.Logistics%20Regression.md" target="_blank" rel="noopener">2. 逻辑回归</a></p>
-</li>
-<li><p><strong>GBDT</strong></p>
-<p>使用梯度提升决策树(GBDT) 的方案也可以解决这个排序的问题，只是模型与 LR 不一样。GBDT作为集成模型，会使用多棵决策树，每棵树去拟合前一棵树的残差来得到很好的拟合效果。一个样本输入到一棵树中，会根据各节点的条件往下走到某个叶子节点，将此节点值置为1，其余置为0。详细模型算法见：<a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.2%20GBDT" target="_blank" rel="noopener">3.2 GBDT</a></p>
-</li>
-<li><p><strong>GBDT+LR</strong></p>
-<p>GBDT与LR的stacking模型相对于只用GBDT会有略微的提升，更大的好处是防止GBDT过拟合。升级为GBDT+LR后，线上效果提升了约5%，并且因为省去了对新特征进行人工转换的步骤，增加特征的迭代测试也更容易了。</p>
-</li>
-<li><p><strong>GBDT+FM</strong></p>
-<p>GBDT是不支持高维稀疏特征的，如果将高维特征加到LR中，一方面需要人工组合高维特征，另一方面模型维度和计算复杂度会是O（N^2）级别的增长。所以设计了GBDT+FM的模型如图所示，采用Factorization Machines模型替换LR。</p>
-<p><img src="https://julyedu-img.oss-cn-beijing.aliyuncs.com/quesbase6415480884894524319.png" alt></p>
-<p>Factorization Machines（FM）模型如下所示：</p>
-<p><img src="https://latex.codecogs.com/gif.latex?%5Chat%7By%7D(x)=w_0+%5Csum_%7Bi=1%7D%5Enw_ix_i+%5Csum_%7Bi=1%7D%5En%5Csum_%7Bj=i+1%7D%5Enx_ix_j" alt></p>
-<p>具有以下几个优点<br>①前两项为一个线性模型，相当于LR模型的作用<br>②第三项为一个二次交叉项，能够自动对特征进行交叉组合<br>③通过增加隐向量，模型训练和预测的计算复杂度降为了O(N)<br>④支持稀疏特征。</p>
-<p>几个优点，使的GBDT+FM具有了良好的稀疏特征支持，FM使用GBDT的叶子结点和稀疏特征（内容特征）作为输入，模型结构示意图如下，GBDT+FM模型上线后相比GBDT+LR在各项指标的效果提升在4%~6%之间。</p>
-</li>
-<li><p><strong>DNN+GBDT+FM</strong></p>
-<p>GBDT+FM模型，对embedding等具有结构信息的深度特征利用不充分，而深度学习（Deep Neural Network）能够对嵌入式（embedding）特征和普通稠密特征进行学习，抽取出深层信息，提高模型的准确性，并已经成功应用到众多机器学习领域。因此我们将DNN引入到排序模型中，提高排序整体质量。</p>
-<p>DNN+GBDT+FM的ensemble模型架构如图所示，FM层作为模型的最后一层，即融合层，其输入由三部分组成：DNN的最后一层隐藏层、GBDT的输出叶子节点、高维稀疏特征。DNN+GBDT+FM的ensemble模型架构介绍如下所示，该模型上线后相对于GBDT+FM有4%的效果提升。</p>
-<p><img src="https://julyedu-img.oss-cn-beijing.aliyuncs.com/quesbase64154808867345373562.png" alt></p>
-<p>使用分布式的TensorFlow进行训练，使用基于TensorFlow Serving的微服务进行在线预测，DNN+GBDT+FM的ensemble模型使用的是Adam优化器。Adam结合了The Adaptive Gradient Algorithm（AdaGrad）和Root Mean Square Propagation（RMSProp）算法。具有更优的收敛速率，每个变量有独自的下降步长，整体下降步长会根据当前梯度进行调节，能够适应带噪音的数据。实验测试了多种优化器，Adam的效果是最优的。</p>
-</li>
+<ol start="24">
+<li>美国密西根大学论文库(2万多篇期刊论文、技术报告、评论等文献全文）<br><a href="https://deepblue.lib.umich.edu/" target="_blank" rel="noopener">https://deepblue.lib.umich.edu/</a></li>
 </ol>
-<p><strong>工业界DNN ranking现状</strong></p>
-<ol>
-<li>Youtube于2016年推出DNN排序算法。</li>
-<li>上海交通大学和UCL于2016年推出Product-based Neural Network（PNN）网络进行用户点击预测。PNN相当于在DNN层做了特征交叉，我们的做法是把特征交叉交给FM去做，DNN专注于深层信息的提取。</li>
-<li>Google于2016年推出Wide And Deep Model，这个也是我们当前模型的基础，在此基础上使用FM替换了Cross Feature LR，简化了计算复杂度，提高交叉的泛化能力。</li>
-<li>阿里今年使用attention机制推出了Deep Interest Network（DIN）进行商品点击率预估，优化embedding向量的准确性，值得借鉴。</li>
+<ol start="25">
+<li>开放存取资源图书馆(提供400多万篇免费使用下载的英文期刊论文，涵盖所有学科〉<br><a href="http://www.oalib.com" target="_blank" rel="noopener">http://www.oalib.com</a></li>
 </ol>
-<h2 id="7-评估测试"><a href="#7-评估测试" class="headerlink" title="7. 评估测试"></a>7. 评估测试</h2><h3 id="7-1-A-B测试"><a href="#7-1-A-B测试" class="headerlink" title="7.1 A/B测试"></a>7.1 A/B测试</h3><p>新的推荐模型上线后要进行A/B测试，将它和旧的算法进行比较。</p>
-<p>AB测试是一种很常用的在线评测算法的实验方法。它通过一定的规则将用户随机分成几组，并对不同组的用户采用不同的算法，然后通过统计不同组用户的各种不同的评测指标比较不同算法，比如可以统计不同组用户的点击率，通过点击率比较不同算法的性能。对AB测试感兴趣的读者可以浏览一下网站<a href="http://www.abtests.com/" target="_blank" rel="noopener">http://www.abtests.com/</a> ，该网站给出了很多通过实际AB测试提高网站用户满意度的例子，从中我们可以学习到如何进行合理的AB测试。</p>
-<p>切分流量是AB测试中的关键，不同的层以及控制这些层的团队需要从一个统一的地方获得自己AB测试的流量，而不同层之间的流量应该是正交的。</p>
-<blockquote>
-<p>“正交性”是从几何中借来的术语。如果两条直线相交成直角，他们就是正交的。用向量术语来说，这两条直线互不依赖。</p>
-</blockquote>
-<p>下图是一个简单的AB测试系统。用户进入网站后，流量分配系统决定用户是否需要被进行AB测试，如果需要的话，流量分配系统会给用户打上在测试中属于什么分组的标签。然后用户浏览网页，而用户在浏览网页时的行为都会被通过日志系统发回后台的日志数据库。此时，如果用户有测试分组的标签，那么该标签也会被发回后台数据库。在后台，实验人员的工作首先是配置流量分配系统，决定满足什么条件的用户参加什么样的测试。其次，实验人员需要统计日志数据库中的数据，通过评测系统生成不同分组用户的实验报告，并比较和评测实验结果。</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_13-57-16.png" alt></p>
-<p>当完成了AB测试后，根据指标结果，如果优于之前的推荐算法，那么旧的算法就可以替换成新的了。</p>
-<h3 id="7-2-其它评估方法"><a href="#7-2-其它评估方法" class="headerlink" title="7.2 其它评估方法"></a>7.2 其它评估方法</h3><p>模型准备就绪后，一般会先通过离线指标来评估模型的好坏， 然后再决定能否上线测试。离线算法评估常见的指标包括准确率、覆盖度 、多样性、新颖性和 UC 等。在线测试一般通过 A/B 测试进行，常见的指标有点击率、用户停留时间、 广告收入等，需要注意分析统计显著性。同时，需要注意短期的指标和长期的指标相结合， 一些短期指标的提升有时候反而会导致长期指标下降 比如 ，经常推荐美女或者搞笑类的内容会带来短期的点击率提高，但是可能会引起长期的用户粘性下降。设计者需要从自己的产品角度出发，根据产品的需要制定评估指标，这样才能更好地指导推荐系统的优化方向。常见的评价指标如下：</p>
-<p><img src="https://gitee.com/kkweishe/images/raw/master/ML/2019-9-8_14-43-51.png" alt></p>
-<h2 id="8-推荐系统冷启动问题"><a href="#8-推荐系统冷启动问题" class="headerlink" title="8. 推荐系统冷启动问题"></a>8. 推荐系统冷启动问题</h2><p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
-<p>基本上，冷启动题可以分为以下三类。</p>
-<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
-<ol>
-<li>利用用户的账号信息。</li>
-<li>利用用户的手机 IMEI 号进行冷启动。</li>
-<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
+<ol start="26">
+<li>Bioline International(提供发展中国家出版的高质量期刊）<br><a href="http://www.bioline.org.br" target="_blank" rel="noopener">http://www.bioline.org.br</a></li>
 </ol>
-<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
-<ol>
-<li>利用物品的内容、分类信息。</li>
-<li>利用专家标注的数据。</li>
+<ol start="27">
+<li>诺丁汉大学论文库(提供诺丁汉大学博士、硕士的研究、会议论文）<br><a href="http://eprints.nottingham.ac.uk/" target="_blank" rel="noopener">http://eprints.nottingham.ac.uk/</a></li>
 </ol>
-<h3 id="8-3-系统冷启动"><a href="#8-3-系统冷启动" class="headerlink" title="8.3 系统冷启动"></a>8.3 系统冷启动</h3><p>系统冷启动主要解决如何在一个新开发的网站上（还没有用户，也没有用户行为，只有一些物品的信息）设计个性推荐系统，从而在产品刚上线时就让用户体验到个性 推荐服务这一问题。</p>
-<h2 id="9-参考文献"><a href="#9-参考文献" class="headerlink" title="9. 参考文献"></a>9. 参考文献</h2><ol>
-<li><a href="https://www.lanzous.com/i6362bi" target="_blank" rel="noopener">推荐系统实践–项亮</a></li>
-<li><a href="https://www.jianguoyun.com/p/DS32RkwQj4G5BxjCte4B" target="_blank" rel="noopener">推荐系统与深度学习</a></li>
-<li><a href="https://www.jianguoyun.com/p/DQYaGLAQj4G5BxjFte4B" target="_blank" rel="noopener">美团机器学习实践</a></li>
+<ol start="28">
+<li>HINARI(世界卫生组织建立，提供生物医学与卫生文献的项目，包括3280种期刊）<br><a href="http://www.who.int/hinari/en/" target="_blank" rel="noopener">http://www.who.int/hinari/en/</a></li>
 </ol>
-<hr>
-<blockquote>
-<p>作者:<a href="https://github.com/NLP-LOVE/ML-NLP" target="_blank" rel="noopener">@mantchs</a></p>
-<p>GitHub:<a href="https://github.com/NLP-LOVE/ML-NLP" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP</a></p>
-<p>欢迎大家加入讨论！共同完善此项目！群号:【541954936】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=863f915b9178560bd32ca07cd090a7d9e6f5f90fcff5667489697b1621cecdb3"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="NLP面试学习群" title="NLP面试学习群"></a></p>
-</blockquote>
+<ol start="29">
+<li>HighWire 出版社电子期刊(美国斯坦福大学著名的学术出版商，其中将近240万篇文章可免费获得全文）<br><a href="http://highwire.stanford.edu/lists/freeart.dtl" target="_blank" rel="noopener">http://highwire.stanford.edu/lists/freeart.dtl</a></li>
+</ol>
+<ol start="30">
+<li>美国科学院院报(世界上被引用次数最多的综合学科刊物之一，继Nature、Science之后，在SCI综合学科类排名第三位）<br><a href="http://www.pnas.org/" target="_blank" rel="noopener">http://www.pnas.org/</a></li>
+</ol>
+<ol start="31">
+<li>科研出版社 OA 资源(共有180多种期刊的电子版本，文章超过10000篇）<br><a href="http://www.scirp.org/journal/" target="_blank" rel="noopener">http://www.scirp.org/journal/</a></li>
+</ol>
+<ol start="32">
+<li>Science Direct(SCI论文检索，收录超过25万篇论文）<br><a href="https://www.sciencedirect.com/" target="_blank" rel="noopener">https://www.sciencedirect.com/</a></li>
+</ol>
+<p>33 .华盛顿大学学位论文库(提供免费的电子书籍、论文、期刊，全文免费下载）<br><a href="https://library.wustl.edu/" target="_blank" rel="noopener">https://library.wustl.edu/</a></p>
+<ol start="34">
+<li>加拿大国家研究委员会（ NRC) 0A 期刊(农业科学、生物信息学、生命科学、环境、纳米技术、分子科学、光电子科学等领域的学术性期刊）<br><a href="http://www.nrcresearchpress.com/" target="_blank" rel="noopener">http://www.nrcresearchpress.com/</a></li>
+</ol>
+<ol start="35">
+<li>Socolar(整理了世界上重要的0A期刊10000多种和1000多种0A仓贮资源）<br><a href="http://www.socolar.com/" target="_blank" rel="noopener">http://www.socolar.com/</a></li>
+</ol>
+<ol start="36">
+<li>加利福尼亚大学国际和区域数字馆藏(已出版的期刊论文、未出版的研究手稿、会议文献以及其他出版物上的文章1万多篇，均可免费阅读）<br><a href="http://repositories.cdlib.org/escholarship/" target="_blank" rel="noopener">http://repositories.cdlib.org/escholarship/</a></li>
+</ol>
+<ol start="37">
+<li>剑桥大学机构知识库(提供剑桥大学相关的期刊、学术论文、学位论文等电子资源）<br><a href="http://www.dspace.cam.ac.uk/" target="_blank" rel="noopener">http://www.dspace.cam.ac.uk/</a></li>
+</ol>
+<ol start="38">
+<li>Electronic library(提供超过270万本图书，超过5千万篇论文）<br><a href="http://b-ok.org/" target="_blank" rel="noopener">http://b-ok.org/</a></li>
+</ol>
+<p>39.Science  数据库(权威科研杂志《Science》官方网站，免费注册后可下载1997年以前的论文全文）<br><a href="http://www.sciencemag.org/" target="_blank" rel="noopener">http://www.sciencemag.org/</a></p>
+<ol start="40">
+<li>CERN Document Server(主要覆盖物理学及相关学科，提供36万多篇全文文献）<br><a href="http://cdsweb.cern.ch/" target="_blank" rel="noopener">http://cdsweb.cern.ch/</a></li>
+</ol>
+<ol start="41">
+<li>康奈尔大学ArXiv(面向物理学、数学、非线性科学、计算机科学和定量生物学等学科，提供16种免费电子期刊的访问）<br><a href="http://arxiv.org" target="_blank" rel="noopener">http://arxiv.org</a></li>
+</ol>
+<ol start="42">
+<li>Energy Citations Database(提供美国能源部的科技信息摘要）<br><a href="http://www.osti.gov/energycitations/" target="_blank" rel="noopener">http://www.osti.gov/energycitations/</a></li>
+</ol>
+<ol start="43">
+<li>约翰威立国际出版公司(收录了来自1500余种期刊、10000多本在线图书以及数百种多卷册的参考工具书、丛书系列、手册和辞典、实验室指南和数据库的400多万篇文章）<br><a href="http://onlinelibrary.wiley.com/" target="_blank" rel="noopener">http://onlinelibrary.wiley.com/</a></li>
+</ol>
+<ol start="44">
+<li>伍斯特工学院数据库(670余篇学位论文 ，其 中有550多篇全文。涵盖生物、电子、计算机、材料、物理、机械等学科）<br><a href="http://www.wpi.edu/Pubs/ETD/" target="_blank" rel="noopener">http://www.wpi.edu/Pubs/ETD/</a></li>
+</ol>
+<ol start="45">
+<li>nature官网网站(在《 nature 》上在线发表的论文可以免费查看）<br><a href="https://www.nature.com/" target="_blank" rel="noopener">https://www.nature.com/</a></li>
+</ol>
+<ol start="46">
+<li>Social Science Research Network(社会科学（经济类）研究论文数据库，部分提供全文）<br><a href="http://www.ssrn.com/" target="_blank" rel="noopener">http://www.ssrn.com/</a></li>
+</ol>
+<ol start="47">
+<li>美国医学学术资料网站(由美国国家医学图书馆和国立卫生研究院建立一个医学学术资料网站。生物医学文献超过2100万，包括<br>论文参考文献，生命科学期刊，在线图书）<br><a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pubmed</a></li>
+</ol>
+<ol start="48">
+<li>世界数字图书馆(以多语种形式免费提供源于世界各地各文化的重要原始材料）<br><a href="http://www.wdl.org/zh/" target="_blank" rel="noopener">http://www.wdl.org/zh/</a></li>
+</ol>
+<ol start="49">
+<li>Manybooks(国外大量免费电子图书，可下载）<br><a href="http://manybooks.net/" target="_blank" rel="noopener">http://manybooks.net/</a></li>
+</ol>
+<ol start="50">
+<li>Aminer(收集了300万篇论文信息、3700多万引用关系以及8000多个会议信息）<br><a href="https://cn.aminer.org/" target="_blank" rel="noopener">https://cn.aminer.org/</a></li>
+</ol>
+<p>以上内容来源人民日报，查尔斯沃思作者服务将图片转换文字，转载需注明原作者及整理者。</p>
 
         </div>
         
@@ -2007,7 +798,7 @@ if __name__ == &#39;__main__&#39;:
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
             
         </ul>
     </nav>
@@ -2057,7 +848,7 @@ if __name__ == &#39;__main__&#39;:
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -2069,7 +860,7 @@ if __name__ == &#39;__main__&#39;:
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -2081,7 +872,7 @@ if __name__ == &#39;__main__&#39;:
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -2182,6 +973,14 @@ if __name__ == &#39;__main__&#39;:
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -2240,6 +1039,25 @@ if __name__ == &#39;__main__&#39;:
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -2261,7 +1079,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -2280,7 +1098,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -2299,7 +1117,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -2307,25 +1125,6 @@ if __name__ == &#39;__main__&#39;:
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2350,7 +1149,7 @@ if __name__ == &#39;__main__&#39;:
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2972,6 +1771,13 @@ if __name__ == &#39;__main__&#39;:
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -3244,6 +2050,25 @@ if __name__ == &#39;__main__&#39;:
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -3265,7 +2090,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -3284,7 +2109,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -3303,7 +2128,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -3311,25 +2136,6 @@ if __name__ == &#39;__main__&#39;:
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -3354,7 +2160,7 @@ if __name__ == &#39;__main__&#39;:
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -3976,6 +2782,13 @@ if __name__ == &#39;__main__&#39;:
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

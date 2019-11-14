@@ -146,17 +146,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-16T01:56:47.000Z">2019-09-16</time>
+                <time class="level-item has-text-grey" datetime="2019-10-19T13:09:53.000Z">2019-10-19</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    16 分钟 读完 (大约 2440 个字)
+                    1 小时 读完 (大约 7099 个字)
                 </span>
                 
                 
@@ -165,81 +165,133 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/16/2019年度机器学习49个顶级工程汇总/">2019年度机器学习49个顶级工程汇总</a>
+                <a class="has-link-black-ter" href="/2019/10/19/operating-system-knowledge-summary/">operating-system-knowledge-summary</a>
             
         </h1>
         <div class="content">
-            <h1 id="2019年度机器学习49个顶级工程汇总"><a href="#2019年度机器学习49个顶级工程汇总" class="headerlink" title="2019年度机器学习49个顶级工程汇总"></a>2019年度机器学习49个顶级工程汇总</h1><blockquote>
-<p>过去一年中，我们比较了近22000个机器学习开源工程，并筛选了49个顶级项目（筛选率0.22%）。</p>
+            <h1 id="操作系统面试重难点总结"><a href="#操作系统面试重难点总结" class="headerlink" title="操作系统面试重难点总结"></a>操作系统面试重难点总结</h1><blockquote>
+<p>针对操作系统，根据面试重难点总结以及网络上的一些参考，对操作系统面试知识点的总结与学习。</p>
 </blockquote>
-<p>其中包括以下6个分类</p>
+<h2 id="一、操作系统知识点图谱"><a href="#一、操作系统知识点图谱" class="headerlink" title="一、操作系统知识点图谱"></a>一、操作系统知识点图谱</h2><p><img src="/images/2019/10/19/cb3f99c0-f271-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
+<h2 id="二、面试问题总结"><a href="#二、面试问题总结" class="headerlink" title="二、面试问题总结"></a>二、面试问题总结</h2><p>参考：面试复习重点——基础篇：操作系统、计算机网络、设计模式</p>
+<p>1.操作系统的四个特性。<br>2.操作系统的主要功能。<br>3.进程的有哪几种状态，状态转换图，及导致转换的事件。<br>4.进程与线程的区别。<br>5.进程通信的几种方式。<br>6.进程同步的几种方式<br>7.用户态和核心态的区别。<br>8.死锁的概念，导致死锁的原因.<br>9.导致死锁的四个必要条件。<br>10.处理死锁的四个方式。<br>11.预防死锁的方法、避免死锁的方法。<br>12.进程调度算法。<br>13.内存连续分配方式采用的几种算法及各自优劣。<br>14.基本分页储存管理方式。<br>15.基本分段储存管理方式。<br>16.分段分页方式的比较各自优缺点。<br>17.几种页面置换算法，会算所需换页数<br>18.虚拟内存的定义及实现方式。</p>
+<h2 id="三、重难点总结"><a href="#三、重难点总结" class="headerlink" title="三、重难点总结"></a>三、重难点总结</h2><ol>
+<li><p>操作系统的四个特性<br>并发：同一段时间内多个程序执行(注意区别并行和并发，前者是同一时刻的多个事件，后者是同一时间段内的多个事件)<br>共享：系统中的资源可以被内存中多个并发执行的进线程共同使用<br>虚拟：通过时分复用（如分时系统）以及空分复用（如虚拟内存）技术实现把一个物理实体虚拟为多个<br>异步：系统中的进程是以走走停停的方式执行的，且以一种不可预知的速度推进</p>
+</li>
+<li><p>操作系统的主要功能<br>处理机管理：处理机分配都是以进程为单位，所以处理机管理也被看做是进程管理。包括进程控制，进程同步，进程通信和进程调度<br>存储器管理（或者内存管理）：内存分配，内存保护，地址映射，内存扩充<br>设备管理：管理所有外围设备，包括完成用户的IO请求；为用户进程分配IO设备；提高IO设备利用率；提高IO速度；方便IO的使用<br>文件管理：管理用户文件和系统文件，方便使用同时保证安全性。包括：磁盘存储空间管理，目录管理，文件读写管理以及文件共享和保护<br>提供用户接口：程序接口（如API）和用户接口（如GUI）</p>
+</li>
+<li><p>进程的状态与转换</p>
+</li>
+</ol>
+<p><img src="/images/2019/10/19/3b0556f0-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
+<p>运行状态：进程正在处理机上运行。在单处理机环境下，每一时刻最多只有一个进程处于运行状态。</p>
+<p>就绪状态：进程已处于准备运行的状态，即进程获得了除处理机之外的一切所需资源，一旦得到处理机即可运行。</p>
+<p>阻塞状态，又称等待状态：进程正在等待某一事件而暂停运行，如等待某资源为可用（不包括处理机）或等待输入/输出完成。即使处理机空闲，该进程也不能运行。</p>
+<p>注意区别就绪状态和等待状态：就绪状态是指进程仅缺少处理机，只要获得处理机资源就立即执行；而等待状态是指进程需要其他资源（除了处理机）或等待某一事件。</p>
+<p>就绪状态 -&gt; 运行状态：处于就绪状态的进程被调度后，获得处理机资源（分派处理机时间片），于是进程由就绪状态转换为运行状态。</p>
+<p>运行状态 -&gt; 就绪状态：处于运行状态的进程在时间片用完后，不得不让出处理机，从而进程由运行状态转换为就绪状态。此外，在可剥夺的操作系统中，当有更高优先级的进程就 、 绪时，调度程度将正执行的进程转换为就绪状态，让更高优先级的进程执行。</p>
+<p>运行状态 -&gt; 阻塞状态：当进程请求某一资源（如外设）的使用和分配或等待某一事件的发生（如I/O操作的完成）时，它就从运行状态转换为阻塞状态。进程以系统调用的形式请求操作系统提供服务，这是一种特殊的、由运行用户态程序调用操作系统内核过程的形式。</p>
+<p>阻塞状态 -&gt; 就绪状态：当进程等待的事件到来时，如I/O操作结束或中断结束时，中断处理程序必须把相应进程的状态由阻塞状态转换为就绪状态。</p>
+<ol start="4">
+<li>进程与线程的区别<br>进程：进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位（具有动态、并发、独立、异步的特性，以及就绪、执行、阻塞3种状态）；引入进程是为了使多个程序可以并发的执行，以提高系统的资源利用率和吞吐量。</li>
+</ol>
+<p>线程：是比进程更小的可独立运行的基本单位，可以看做是轻量级的进程（具有轻型实体，独立调度分派单位，可并发执行，共享进程资源等属性）；引入目的是为了减少程序在并发执行过程中的开销，使OS的并发效率更高。</p>
+<p>两者的对比：</p>
 <ul>
-<li>计算机视觉（1~5）</li>
-<li>强化学习（6~13）</li>
-<li>NLP（14~20）</li>
-<li>GAN（21~26）</li>
-<li>Neural Network（27~35）</li>
-<li>Toolkit（36~49）</li>
+<li><p>调度方面：在引入线程的OS中，线程是独立的调度和分派单位，而进程作为资源的拥有单位(相当于把未引入线程的传统OS中的进程的两个属性分开了)。由于线程不拥有资源，因此可以显著的提高并发度以及减少切换开销。</p>
+</li>
+<li><p>并发性：引入了线程的OS中，进程间可以并发，而且一个进程内部的多个线程之间也是可以并发的，这就使OS具有更好的并发性，有效的提高了系统资源利用率和吞吐量。</p>
+</li>
+<li><p>拥有资源：无论OS是否支持线程，进程都是基本的资源拥有单位，线程只拥有很少的基本的资源，但是线程可以访问所隶属的进程的资源（进程的代码段，数据段和所拥有的系统资源如fd）</p>
+</li>
+<li><p>系统开销：创建或者撤销进程的时候，系统要为之创建或回收PCB，系统资源等，切换时也需要保存和恢复CPU环境。而线程的切换只需要保存和恢复少量的寄存器，不涉及存储器管理方面的工作，所以开销较小。此外，统一进程中的多个线程由于共享地址空间，所以通信同步等都比较方便。</p>
+</li>
 </ul>
-<blockquote>
-<p>我们花了很大的精力筛选这个list，并小心的选择出2018年1月到12月间最好的工程。为了保证名单质量，Mybridge AI协同考虑了流行度、参与度、发布时间等多重因素。</p>
-</blockquote>
-<p>计算机视觉<br>1、Detectron：facebook发布的目标检测工具【18913 star on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Detectron?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Detectron?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p><img src="/images/2019/09/16/34d7fab0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
-<p>2、Openpost：多人实时特征点检测工具【11052 stars on GitHub】<br>项目地址：<br><a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/CMU-Perceptual-Computing-Lab/openpose?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p><img src="/images/2019/09/16/490fc2b0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
-<p>3、DensePost：2维人体图片转3维的实时映射方法。【4165 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Densepose?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Densepose?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p><img src="/images/2019/09/16/5596da50-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
-<p>4、Maskrcnn-benchmark：（Pytorch）语义分割与目标检测工具包。【3888 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/maskrcnn-benchmark?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/maskrcnn-benchmark?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p><img src="/images/2019/09/16/62cf8eb0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
-<p>5、SNIPER：多尺度目标检测算法。【1963 stars on Github】<br>项目地址：<br><a href="https://github.com/mahyarnajibi/SNIPER?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mahyarnajibi/SNIPER?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p><img src="/images/2019/09/16/728c2ed0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
-<p>强化学习<br>6、Psychlab：Psychlab实验范例。【5595 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/lab/tree/master/game_scripts/levels/contributed/psychlab?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/lab/tree/master/game_scripts/levels/contributed/psychlab?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p><img src="/images/2019/09/16/7faf1140-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
-<p>7、ELF：一个灵活、轻量、可扩展的游戏研究平台。【2406 stars on Github】<br>项目地址：<br><a href="https://github.com/pytorch/elf?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/pytorch/elf?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>8、TRFL：（TensorFlow）强化学习agent工具包。【2312 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/trfl?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/trfl?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>9、Horizon：首个用于大规模需求的开源强化学习平台。【1703 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Horizon?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Horizon?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>10、Chess-alpha-zero：国际象棋强化学习项目（基于AlphaGo Zero方法）。【1307 stars on Github】<br>项目地址：<br><a href="https://github.com/Zeta36/chess-alpha-zero?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Zeta36/chess-alpha-zero?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>11、Dm_control：DeepMind工具包。【1231 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/dm_control?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/dm_control?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>12、MAMEToolkit：基于强化学习的电子游戏python库。【437 stars on Github】<br>项目地址：<br><a href="https://github.com/M-J-Murray/MAMEToolkit?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/M-J-Murray/MAMEToolkit?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>13、Reaver：模块化的深度强化学习框架（星际争霸2）。【355 stars on Github】<br>项目地址：<br><a href="https://github.com/inoryy/reaver?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/inoryy/reaver?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>NLP<br>14、Bert：BERT的TensorFlow代码，以及预训练模型。【11703 stars on Github】<br>项目地址：<br><a href="https://github.com/google-research/bert?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google-research/bert?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>15、Pytext：基于Pytorch的神经语言模型框架。【4466 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/pytext?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/pytext?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>16、Bert-as-service：BERT模型的网络服务版本<br>项目地址：<br><a href="https://github.com/hanxiao/bert-as-service?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/hanxiao/bert-as-service?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>17、UnsupervisedMT：基于Phrase的无监督机器翻译方法。【1068 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/UnsupervisedMT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/UnsupervisedMT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>18、DecaNLP：NLP十项全能工具，多任务模型。【1648 stars on Github】<br>项目地址：<br><a href="https://github.com/salesforce/decaNLP?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/salesforce/decaNLP?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>19、NLP-architect：来自英特尔AI实验室的python工具包，包含了当前NLP领域的多种最佳模型。【1751 stars on Github】<br>项目地址：<br><a href="https://github.com/NervanaSystems/nlp-architect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NervanaSystems/nlp-architect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>20、Gluon-nlp：NLP工具包。【1263 stars on Github】<br>项目地址：<br><a href="https://github.com/dmlc/gluon-nlp?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/dmlc/gluon-nlp?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>GAN<br>21、DeOldify：一个基于深度学习的图像补全工具包。【5060 stars on Github】<br>项目地址：<br><a href="https://github.com/jantic/DeOldify?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/jantic/DeOldify?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>22、Progressive_growing_of_gans：GAN的变种实现，提高生产质量、稳定性以及多样性。<br>项目地址：<br><a href="https://github.com/tkarras/progressive_growing_of_gans?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tkarras/progressive_growing_of_gans?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>23、MUNIT：多模态无监督图像翻译。【1339 stars on Github】<br>项目地址：<br><a href="https://github.com/NVlabs/MUNIT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NVlabs/MUNIT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>24、Transparent_latent_gan：使用监督学习来解释GAN的隐空间信息。【1337 stars on Github】<br>项目地址：<br><a href="https://github.com/SummitKwan/transparent_latent_gan?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/SummitKwan/transparent_latent_gan?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>25、Gandissect：基于Pytorch的可视化以及理解GAN的神经元信息。【1065 stars on Github】<br>项目地址：<br><a href="https://github.com/CSAILVision/gandissect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/CSAILVision/gandissect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>26、GANimation：单张图片的表情变换。【869 stars on Github】<br>项目地址：<br><a href="https://github.com/albertpumarola/GANimation?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/albertpumarola/GANimation?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a><br>神经网络<br>27、Fastai：加速神经网络训练过程，并提高准确率。【11597 stars on Github】<br>项目地址：<br><a href="https://github.com/fastai/fastai?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/fastai/fastai?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>28、DeepCreamPy：图像修复。【7046 stars on Github】<br>项目地址：<br><a href="https://github.com/deeppomf/DeepCreamPy?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deeppomf/DeepCreamPy?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>29、Augmentor v0.2、图像增强工具包。【2805 stars on Github】<br>项目地址：<br><a href="https://github.com/mdbloice/Augmentor?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mdbloice/Augmentor?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>30、Graph_nets：Tensorflow的图网络构建工具。【2723 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/graph_nets?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/graph_nets?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>31、Textgenrnn：使用预训练字符级RNN生成文本。【1900 stars on Github】<br>项目地址：<br><a href="https://github.com/minimaxir/textgenrnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/minimaxir/textgenrnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>32、Person-blocker：图像中自动删除人像。【1806 stars on Github】<br>项目地址：<br><a href="https://github.com/minimaxir/person-blocker?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/minimaxir/person-blocker?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>33、Deepvariant：DNA序列数据的分析工具<br>项目地址：<br><a href="https://github.com/google/deepvariant?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google/deepvariant?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>34、Video-nolocal-net：non-local神经网络的视频分类方法。【1049 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/video-nonlocal-net?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/video-nonlocal-net?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>35、Ann-visualizer：神经网络可视化工具。【922 stars on Github】<br>项目地址：<br><a href="https://github.com/Prodicode/ann-visualizer?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Prodicode/ann-visualizer?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>工具包<br>36、Tfjs：一个基于JS的ML模型训练部署工具包。【10268 stars on Github】<br>项目地址：<br><a href="https://github.com/tensorflow/tfjs?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tensorflow/tfjs?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>37：Dopamine：快速的强化学习研究框架。【7142 stars on Github】<br>项目地址：<br><a href="https://github.com/google/dopamine?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google/dopamine?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>38、Lime：分类器解释工具包。【5173 stars on Github】<br>项目地址：<br><a href="https://github.com/marcotcr/lime?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/marcotcr/lime?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>39、Autokeras：自动机器学习的开源软件库。【4520 stars on Github】<br>项目地址：<br><a href="https://github.com/jhfjhfj1/autokeras?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/jhfjhfj1/autokeras?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>40、Shap：神经网络解释工具。【3496 stars on Github】<br>项目地址：<br><a href="https://github.com/slundberg/shap?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/slundberg/shap?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>41、MMdnn：模型适配器。【3021 stars on Github】<br>项目地址：<br><a href="https://github.com/Microsoft/MMdnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Microsoft/MMdnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>42、Mlflow：机器学习生命周期管理。【3013 stars on Github】<br>项目地址：<br><a href="https://github.com/mlflow/mlflow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mlflow/mlflow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>43、Mace：面向移动计算平台的深度学习推断框架。【2979 stars on Github】<br>项目地址：<br><a href="https://github.com/XiaoMi/mace?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/XiaoMi/mace?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>44、PySyft：关注安全性的深度学习库。【2595 stars on Github】<br>项目地址：<br><a href="https://github.com/OpenMined/PySyft?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/OpenMined/PySyft?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>45、Adanet：AutoML计算库。【2293 stars on Github】<br>项目地址：<br><a href="https://github.com/tensorflow/adanet?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tensorflow/adanet?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>46、Tencent-ml-images：最大的多标签图像数据库。【2094 stars on Github】<br>项目地址：<br><a href="https://github.com/Tencent/tencent-ml-images?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Tencent/tencent-ml-images?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>47、Donkeycar、开源的软硬件自动驾驶平台。【1207 stars on Github】</p>
-<p>项目地址：<br><a href="https://github.com/autorope/donkeycar?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/autorope/donkeycar?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>48、PocketFlow：自动模型压缩框架。【1677 stars on Github】<br>项目地址：<br><a href="https://github.com/Tencent/PocketFlow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Tencent/PocketFlow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p>49、DALI：深度学习应用的优化工具包以及数据处理扩展引擎。【1013 stars on Github】<br>项目地址：<br><a href="https://github.com/NVIDIA/dali?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NVIDIA/dali?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzIyOTkyOTEzOQ==&mid=2247484033&idx=1&sn=fd58e5e58f50917809d6cf133b3f7476&chksm=e8ba7b5ddfcdf24bb77d9b6db0084733d9d2815d350a0fbfc8401191c3206b72db588e51c41c&sessionid=0&scene=126&clicktime=1568597193&enterid=1568597193&asce" target="_blank" rel="noopener">传送门</a></p>
+<ol start="5">
+<li>进程通信<br>进程通信是指进程之间的信息交换。PV操作是低级通信方式，髙级通信方式是指以较高的效率传输大量数据的通信方式。高级通信方法主要有以下三个类。</li>
+</ol>
+<p>共享存储</p>
+<p>在通信的进程之间存在一块可直接访问的共享空间，通过对这片共享空间进行写/读操作实现进程之间的信息交换。在对共享空间进行写/读操作时，需要使用同步互斥工具（如 P操作、V操作），对共享空间的写/读进行控制。共享存储又分为两种：低级方式的共享是基于数据结构的共享；高级方式则是基于存储区的共享。操作系统只负责为通信进程提供可共享使用的存储空间和同步互斥工具，而数据交换则由用户自己安排读/写指令完成。</p>
+<p>需要注意的是，用户进程空间一般都是独立的，要想让两个用户进程共享空间必须通过特殊的系统调用实现，而进程内的线程是自然共享进程空间的。</p>
+<p>消息传递</p>
+<p>在消息传递系统中，进程间的数据交换是以格式化的消息(Message)为单位的。若通信的进程之间不存在可直接访问的共享空间，则必须利用操作系统提供的消息传递方法实现进程通信。进程通过系统提供的发送消息和接收消息两个原语进行数据交换。</p>
+<p>1) 直接通信方式：发送进程直接把消息发送给接收进程，并将它挂在接收进程的消息缓冲队列上，接收进程从消息缓冲队列中取得消息。</p>
+<p>2) 间接通信方式：发送进程把消息发送到某个中间实体中，接收进程从中间实体中取得消息。这种中间实体一般称为信箱，这种通信方式又称为信箱通信方式。该通信方式广泛应用于计算机网络中，相应的通信系统称为电子邮件系统。</p>
+<p>管道通信</p>
+<p>管道通信是消息传递的一种特殊方式。所谓“管道”，是指用于连接一个读进程和一个写进程以实现它们之间通信的一个共享文件，又名pipe文件。向管道（共享文件）提供输入的发送进程（即写进程），以字符流形式将大量的数据送入（写）管道；而接收管道输出的接收进程（即读进程），则从管道中接收（读）数据。为了协调双方的通信，管道机制必须提供以下三方面的协调能力：互斥、同步和确定对方的存在。</p>
+<ol start="6">
+<li>进程同步<br>多进程虽然提高了系统资源利用率和吞吐量，但是由于进程的异步性可能造成系统的混乱。进程同步的任务就是对多个相关进程在执行顺序上进行协调，使并发执行的多个进程之间可以有效的共享资源和相互合作，保证程序执行的可再现性</li>
+</ol>
+<p>同步机制需要遵循的原则：</p>
+<p>空闲让进：当没有进程处于临界区的时候，应该许可其他进程进入临界区的申请<br>忙则等待：当前如果有进程处于临界区，如果有其他进程申请进入，则必须等待，保证对临界区的互斥访问<br>有限等待：对要求访问临界资源的进程，需要在有限时间内进入临界区，防止出现死等<br>让权等待：当进程无法进入临界区的时候，需要释放处理机，边陷入忙等<br>经典的进程同步问题：生产者-消费者问题；哲学家进餐问题；读者-写者问题</p>
+<p>同步的解决方案：管程，信号量。</p>
+<ol start="7">
+<li>用户态和核心态</li>
+</ol>
+<p><img src="/images/2019/10/19/572d7060-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
+<p>当程序运行在3级特权级上时，就可以称之为运行在用户态，因为这是最低特权级，是普通的用户进程运行的特权级，大部分用户直接面对的程序都是运行在用户态；</p>
+<p>反之，当程序运行在级特权级上时，就可以称之为运行在内核态。</p>
+<p>虽然用户态下和内核态下工作的程序有很多差别，但最重要的差别就在于特权级的不同，即权力的不同。运行在用户态下的程序不能直接访问操作系统内核数据结构和程序。</p>
+<p>当我们在系统中执行一个程序时，大部分时间是运行在用户态下的，在其需要操作系统帮助完成某些它没有权力和能力完成的工作时就会切换到内核态。</p>
+<p>用户态切换到内核态的3种方式</p>
+<p>1) 系统调用：这是用户态进程主动要求切换到内核态的一种方式，用户态进程通过系统调用申请使用操作系统提供的服务程序完成工作。而系统调用的机制其核心还是使用了操作系统为用户特别开放的一个中断来实现，例如Linux的int 80h中断。</p>
+<p>2) 异常：当CPU在执行运行在用户态下的程序时，发生了某些事先不可知的异常，这时会触发由当前运行进程切换到处理此异常的内核相关程序中，也就转到了内核态，比如缺页异常。</p>
+<p>3) 外围设备的中断：当外围设备完成用户请求的操作后，会向CPU发出相应的中断信号，这时CPU会暂停执行下一条即将要执行的指令转而去执行与中断信号对应的处理程序，如果先前执行的指令是用户态下的程序，那么这个转换的过程自然也就发生了由用户态到内核态的切换。比如硬盘读写操作完成，系统会切换到硬盘读写的中断处理程序中执行后续操作等。</p>
+<ol start="8">
+<li>死锁<br>死锁是指多个进程在运行过程中，因为争夺资源而造成的一种僵局，如果没有外力推进，处于僵局中的进程就无法继续执行。</li>
+</ol>
+<p>死锁原因：</p>
+<p>竞争资源：请求同一有限资源的进程数多于可用资源数<br>进程推进顺序非法：进程执行中，请求和释放资源顺序不合理，如资源等待链<br>死锁产生的必要条件：</p>
+<p>互斥条件:进程对所分配的资源进行排他性的使用<br>请求和保持条件：进程被阻塞的时候并不释放锁申请到的资源<br>不可剥夺条件：进程对于已经申请到的资源在使用完成之前不可以被剥夺<br>环路等待条件：发生死锁的时候存在的一个 进程-资源 环形等待链<br>死锁处理：</p>
+<p>预防死锁：破坏产生死锁的4个必要条件中的一个或者多个；实现起来比较简单，但是如果限制过于严格会降低系统资源利用率以及吞吐量</p>
+<p>避免死锁：在资源的动态分配中，防止系统进入不安全状态(可能产生死锁的状态)-如银行家算法</p>
+<p>检测死锁：允许系统运行过程中产生死锁，在死锁发生之后，采用一定的算法进行检测，并确定与死锁相关的资源和进程，采取相关方法清除检测到的死锁。实现难度大</p>
+<p>解除死锁：与死锁检测配合，将系统从死锁中解脱出来（撤销进程或者剥夺资源）。对检测到的和死锁相关的进程以及资源，通过撤销或者挂起的方式，释放一些资源并将其分配给处于阻塞状态的进程，使其转变为就绪态。实现难度大</p>
+<ol start="9">
+<li>进程调度算法<br>先来先服务调度算法FCFS：既可以作为作业调度算法也可以作为进程调度算法；按作业或者进程到达的先后顺序依次调度；因此对于长作业比较有利；</li>
+</ol>
+<p>短作业优先调度算法SJF：作业调度算法，算法从就绪队列中选择估计时间最短的作业进行处理，直到得出结果或者无法继续执行；缺点：不利于长作业；未考虑作业的重要性；运行时间是预估的，并不靠谱 ；</p>
+<p>高相应比算法HRN：响应比=(等待时间+要求服务时间)/要求服务时间；</p>
+<p>时间片轮转调度RR：按到达的先后对进程放入队列中，然后给队首进程分配CPU时间片，时间片用完之后计时器发出中断，暂停当前进程并将其放到队列尾部，循环 ;</p>
+<p>多级反馈队列调度算法：目前公认较好的调度算法；设置多个就绪队列并为每个队列设置不同的优先级，第一个队列优先级最高，其余依次递减。优先级越高的队列分配的时间片越短，进程到达之后按FCFS放入第一个队列，如果调度执行后没有完成，那么放到第二个队列尾部等待调度，如果第二次调度仍然没有完成，放入第三队列尾部…。只有当前一个队列为空的时候才会去调度下一个队列的进程。</p>
+<ol start="10">
+<li>内存连续分配<br>主要是指动态分区分配时所采用的几种算法。<br>动态分区分配又称为可变分区分配，是一种动态划分内存的分区方法。这种分区方法不预先将内存划分，而是在进程装入内存时，根据进程的大小动态地建立分区，并使分区的大小正好适合进程的需要。因此系统中分区的大小和数目是可变的。</li>
+</ol>
+<p><img src="/images/2019/10/19/5fe2bf80-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
+<p>首次适应(First Fit)算法：空闲分区以地址递增的次序链接。分配内存时顺序查找，找到大小能满足要求的第一个空闲分区。</p>
+<p>最佳适应(Best Fit)算法：空闲分区按容量递增形成分区链，找到第一个能满足要求的空闲分区。</p>
+<p>最坏适应(Worst Fit)算法：又称最大适应(Largest Fit)算法，空闲分区以容量递减的次序链接。找到第一个能满足要求的空闲分区，也就是挑选出最大的分区。</p>
+<ol start="11">
+<li>基本分页储存管理方式<br>把主存空间划分为大小相等且固定的块，块相对较小，作为主存的基本单位。每个进程也以块为单位进行划分，进程在执行时，以块为单位逐个申请主存中的块空间。</li>
+</ol>
+<p>因为程序数据存储在不同的页面中，而页面又离散的分布在内存中，因此需要一个页表来记录逻辑地址和实际存储地址之间的映射关系，以实现从页号到物理块号的映射。</p>
+<p>由于页表也是存储在内存中的，因此和不适用分页管理的存储方式相比，访问分页系统中内存数据需要两次的内存访问(一次是从内存中访问页表，从中找到指定的物理块号，加上页内偏移得到实际物理地址；第二次就是根据第一次得到的物理地址访问内存取出数据)。</p>
+<p><img src="/images/2019/10/19/66cf5c90-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
+<p>为了减少两次访问内存导致的效率影响，分页管理中引入了快表机制，包含快表机制的内存管理中，当要访问内存数据的时候，首先将页号在快表中查询，如果查找到说明要访问的页表项在快表中，那么直接从快表中读取相应的物理块号；如果没有找到，那么访问内存中的页表，从页表中得到物理地址，同时将页表中的该映射表项添加到快表中(可能存在快表换出算法)。</p>
+<p>在某些计算机中如果内存的逻辑地址很大，将会导致程序的页表项会很多，而页表在内存中是连续存放的，所以相应的就需要较大的连续内存空间。为了解决这个问题，可以采用两级页表或者多级页表的方法，其中外层页表一次性调入内存且连续存放，内层页表离散存放。相应的访问内存页表的时候需要一次地址变换，访问逻辑地址对应的物理地址的时候也需要一次地址变换，而且一共需要访问内存3次才可以读取一次数据。</p>
+<p>12.基本分段储存管理方式<br>分页是为了提高内存利用率，而分段是为了满足程序员在编写代码的时候的一些逻辑需求(比如数据共享，数据保护，动态链接等)。</p>
+<p>分段内存管理当中，地址是二维的，一维是段号，一维是段内地址；其中每个段的长度是不一样的，而且每个段内部都是从0开始编址的。由于分段管理中，每个段内部是连续内存分配，但是段和段之间是离散分配的，因此也存在一个逻辑地址到物理地址的映射关系，相应的就是段表机制。段表中的每一个表项记录了该段在内存中的起始地址和该段的长度。段表可以放在内存中也可以放在寄存器中。</p>
+<p><img src="/images/2019/10/19/6d0812f0-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
+<p>访问内存的时候根据段号和段表项的长度计算当前访问段在段表中的位置，然后访问段表，得到该段的物理地址，根据该物理地址以及段内偏移量就可以得到需要访问的内存。由于也是两次内存访问，所以分段管理中同样引入了联想寄存器。</p>
+<p>分段分页方式的比较<br>页是信息的物理单位，是出于系统内存利用率的角度提出的离散分配机制；段是信息的逻辑单位，每个段含有一组意义完整的信息，是出于用户角度提出的内存管理机制</p>
+<p>页的大小是固定的，由系统决定；段的大小是不确定的，由用户决定</p>
+<ol start="13">
+<li>虚拟内存<br>如果存在一个程序，所需内存空间超过了计算机可以提供的实际内存，那么由于该程序无法装入内存所以也就无法运行。单纯的增加物理内存只能解决一部分问题，但是仍然会出现无法装入单个或者无法同时装入多个程序的问题。但是可以从逻辑的角度扩充内存容量，即可解决上述两种问题。</li>
+</ol>
+<p>基于局部性原理，在程序装入时，可以将程序的一部分装入内存，而将其余部分留在外存，就可以启动程序执行。在程序执行过程中，当所访问的信息不在内存时，由操作系统将所需要的部分调入内存,然后继续执行程序。另一方面，操作系统将内存中暂时不使用的内容换出到外存上，从而腾出空间存放将要调入内存的信息。这样，系统好像为用户提供了一个比实际内存大得多的存储器，称为虚拟存储器。</p>
+<p>虚拟存储器的特征：</p>
+<p>多次性：一个作业可以分多次被调入内存。多次性是虚拟存储特有的属性<br>对换性：作业运行过程中存在换进换出的过程(换出暂时不用的数据换入需要的数据)<br>虚拟性：虚拟性体现在其从逻辑上扩充了内存的容量(可以运行实际内存需求比物理内存大的应用程序)。虚拟性是虚拟存储器的最重要特征也是其最终目标。虚拟性建立在多次性和对换性的基础上行，多次性和对换性又建立在离散分配的基础上</p>
+<ol start="14">
+<li>页面置换算法<br>最佳置换算法：只具有理论意义的算法，用来评价其他页面置换算法。置换策略是将当前页面中在未来最长时间内不会被访问的页置换出去。</li>
+</ol>
+<p>先进先出置换算法：简单粗暴的一种置换算法，没有考虑页面访问频率信息。每次淘汰最早调入的页面。</p>
+<p>最近最久未使用算法LRU：算法赋予每个页面一个访问字段，用来记录上次页面被访问到现在所经历的时间t，每次置换的时候把t值最大的页面置换出去(实现方面可以采用寄存器或者栈的方式实现)。</p>
+<p>时钟算法clock(也被称为是最近未使用算法NRU)：页面设置一个访问位，并将页面链接为一个环形队列，页面被访问的时候访问位设置为1。页面置换的时候，如果当前指针所指页面访问为为0，那么置换，否则将其置为0，循环直到遇到一个访问为位0的页面。</p>
+<p>改进型Clock算法：在Clock算法的基础上添加一个修改位，替换时根究访问位和修改位综合判断。优先替换访问位和修改位都是0的页面，其次是访问位为0修改位为1的页面。</p>
+<p>最少使用算法LFU：设置寄存器记录页面被访问次数，每次置换的时候置换当前访问次数最少的。</p>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p>以上只是针对操作系统重点知识点的总结，如果没有相应的操作系统基础的话，可能不太好理解，下面推荐自己学习操作系统过程中参考的一些资料。</p>
+<p>推荐课程：<a href="http://c.biancheng.net/cpp/u/xitong/" target="_blank" rel="noopener">操作系统</a></p>
+<p><a href="https://juejin.im/entry/592257b62f301e006b183b95" target="_blank" rel="noopener">传送门</a></p>
 
         </div>
         
@@ -262,7 +314,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-14T06:04:05.000Z">2019-09-14</time>
+                <time class="level-item has-text-grey" datetime="2019-10-18T11:44:57.000Z">2019-10-18</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -272,7 +324,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 70 个字)
+                    10 分钟 读完 (大约 1567 个字)
                 </span>
                 
                 
@@ -281,24 +333,34 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/14/OpenCV边缘检测/">OpenCV边缘检测</a>
+                <a class="has-link-black-ter" href="/2019/10/18/warplane/">warplane</a>
             
         </h1>
         <div class="content">
-            <h1 id="OpenCV边缘检测"><a href="#OpenCV边缘检测" class="headerlink" title="OpenCV边缘检测"></a>OpenCV边缘检测</h1><p><img src="/images/2019/09/14/54fef350-d6b5-11e9-ae59-4f17e83b2f0c.png" alt="image.png"></p>
-<pre><code class="python">import cv2
-import numpy as np
-from matplotlib import pyplot as plt
-
-img = cv2.imread(&#39;1024.jpg&#39;,0)
-edges = cv2.Canny(img,100,200)
-
-plt.subplot(121),plt.imshow(img,cmap=&#39;gray&#39;)
-plt.title(&#39;original&#39;),plt.xticks([]),plt.yticks([])
-plt.subplot(122),plt.imshow(edges,cmap=&#39;gray&#39;)
-plt.title(&#39;edge&#39;),plt.xticks([]),plt.yticks([])
-
-plt.show()</code></pre>
+            <h1 id="全世界十大顶级战机排行"><a href="#全世界十大顶级战机排行" class="headerlink" title="全世界十大顶级战机排行"></a>全世界十大顶级战机排行</h1><h2 id="第一名：F-22“猛禽”战机"><a href="#第一名：F-22“猛禽”战机" class="headerlink" title="第一名：F-22“猛禽”战机"></a>第一名：F-22“猛禽”战机</h2><p>F-22是世界上致命打击性能最好的战斗机，是美国空军的最重要机种，F-22“猛禽”是一款第五代战斗机，以其高机动性、传感器融合性、超音速巡航和致命攻击能力成为了世界上最顶级战机。F-22“猛禽”是一种由美国洛克希德·马丁、波音和通用动力等公司联合为美国空军设计的重型隐身战斗机，主要任务是取得并确保战区的制空权。目前唯一现役 的第五代战斗机。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/504ec7f9d72a60590583dd972134349b023bba68.jpg" alt="1"></p>
+<h2 id="第二名：俄罗斯第五代战机T-50"><a href="#第二名：俄罗斯第五代战机T-50" class="headerlink" title="第二名：俄罗斯第五代战机T-50"></a>第二名：俄罗斯第五代战机T-50</h2><p>俄罗斯第五代战机T-50为单座双发重型战机，具备隐身性能好、起降距离短、超机动性能、超音速巡航等特点。其超音速巡航速度可达每小时1450千米，作战半径1100千米，战斗负荷可达6吨，内置3个武器舱，能实现飞行性能和隐身性能的良好结合。</p>
+<p><img src="https://imgsa.baidu.com/exp/w=480/sign=a84f2ec2972f07085f052b08d925b865/9922720e0cf3d7ca545203fbfb1fbe096a63a992.jpg" alt="2"></p>
+<h2 id="第三名：F-35战机"><a href="#第三名：F-35战机" class="headerlink" title="第三名：F-35战机"></a>第三名：F-35战机</h2><p>F-35“闪电II”是一款由美国洛克希德·马丁公司设计生产的单座单发动机多用途战机，能够负担近空支援、F-35闪电II(19张)目标轰炸、防空截击等多种任务。</p>
+<p>美国的F-35“闪电2”有“史上最昂贵战斗机”之称。美军的“通用低成本轻型战斗机”和“联合先进攻击技术”的新战机理念在洛·马－诺·格公司联合研制 的X-35上初现，美军便选中它并命名为F-35联合打击战斗机（JSF）。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/346bd85c10385343c96bbbac9a13b07ecb808853.jpg" alt="3"></p>
+<h2 id="第四名：苏-30-35战机"><a href="#第四名：苏-30-35战机" class="headerlink" title="第四名：苏-30/35战机"></a>第四名：苏-30/35战机</h2><p>苏-35是第4.5代重型战机，具有远程，多用途，空优和打击等特性。</p>
+<p>和苏-30有同样血统设计，有相似性能特征和零件；也可说是苏-30的一种特制版。更助长了苏-35BM型的研发。目前苏-35只有少量的五架服役于俄罗斯空军。苏-35/苏恺35 (北约代号：Flanker-E)）是第4.5代重型战机，具有远程，多用途，空优和打击等特性。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/4e0b3ea4462309f79c9e919f7b0e0cf3d6cad60e.jpg" alt="4"></p>
+<h2 id="第五名：F-A-18“大黄蜂”战机"><a href="#第五名：F-A-18“大黄蜂”战机" class="headerlink" title="第五名：F/A-18“大黄蜂”战机"></a>第五名：F/A-18“大黄蜂”战机</h2><p>F/A-18“大黄蜂”战机是一种具备最好气动性能和大攻角能力的多用途战术飞机，被誉为“美国尊严守护者”。这架战机率先使用数字复用航空总线和多功能显示器，可使飞行员在瞬息万变的战斗环境中更加灵活的执行动作。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/11794d43fbf2b211a7bdb9c3c38065380dd78e68.jpg" alt="5"></p>
+<h2 id="第六名：“阵风”战机"><a href="#第六名：“阵风”战机" class="headerlink" title="第六名：“阵风”战机"></a>第六名：“阵风”战机</h2><p>“阵风”战机具备众所周知的空对空战斗能力，是一种占尽空中优势的战斗机。</p>
+<p>“阵风”战机由法国军机、商务机生产商达索(Dassault)飞机公司设计开发。</p>
+<p>这款飞机支持“光谱”电子战系统，可抵御地面和空中的威胁。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/a005b3345982b2b7ef3b054938adcbef77099b53.jpg" alt="6"></p>
+<h2 id="第七名：“鹰狮”战斗机"><a href="#第七名：“鹰狮”战斗机" class="headerlink" title="第七名：“鹰狮”战斗机"></a>第七名：“鹰狮”战斗机</h2><p>“鹰狮”战斗机具有八个可装载导弹和炸弹的挂载点，是一种轻型战机，以其鸭式三角翼设计和高机动性着称。这架战机支持一个复杂的PS-05A型脉冲多普勒X射线雷达，可以侦测120公里外的目标。“鹰狮”也可以通过发射空空导弹进行超视距攻击。JAS-39“鹰狮”是瑞典萨伯公司研制的单座全天候全高度战斗/攻击/侦察机，用以在90年代取代瑞典空军的Saab-37“雷”式战斗机。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/b13fd48065380cd7a88d9e60a844ad3458828168.jpg" alt="7"></p>
+<h2 id="第八名：台风战斗机"><a href="#第八名：台风战斗机" class="headerlink" title="第八名：台风战斗机"></a>第八名：台风战斗机</h2><p>台风战斗机是欧洲战斗机公司(英、德、意和西班牙4国合作)研制的新型单（双）座双发超音速战斗机，主要用于防空和空中优势任务，兼具对地攻击能力。1984年德、英、法、意和西班牙五团达成协议、提出“欧洲战斗机”计划(EFA)，中途法国退出。事过10年，1994年3月27日，英、德、意和西班牙四国联合研制的 EF2000战斗机原型机实现了第—次试—览。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/0b07ec1fbe096b63e0e862dd05338744eaf8ac0e.jpg" alt="8"></p>
+<h2 id="第九名：米格-35战机"><a href="#第九名：米格-35战机" class="headerlink" title="第九名：米格-35战机"></a>第九名：米格-35战机</h2><p>米格-35是一款4++代喷气式战斗机，因其独特的光学定位系统而着称；该系统可使飞机减少对地面控制截击系统(GCI)的依赖，可帮助其独立进行多角色任务。在飞机每个翼尖上都安装有激光发射探测器(LED)，可帮助战机侦测即将到来的危险，并且可通过红外线波段抵消危险。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/906289dda144ad34642cbb0ad9a20cf430ad8568.jpg" alt="9"></p>
+<h2 id="第十名：歼-10战机"><a href="#第十名：歼-10战机" class="headerlink" title="第十名：歼-10战机"></a>第十名：歼-10战机</h2><p>歼-10战机有一个更出名的名字叫“大力龙”，它由成都飞机工业公司为中国人民解放军空军设计研发，是一种全天候多用途战斗机。歼-10的11外部挂载点 至少能够携带6000千克武器，而且在进气口左舷下装备有23毫米双管机关炮。成飞设计的这款飞机用于执行空对地和空对空的双重任务。</p>
+<p><img src="https://imgsa.baidu.com/exp/pic/item/f76575600c338744f13413f1580fd9f9d62aa00e.jpg" alt="10"></p>
 
         </div>
         
@@ -321,279 +383,7 @@ plt.show()</code></pre>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-13T07:57:44.000Z">2019-09-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    38 分钟 读完 (大约 5627 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/13/Java面试题/">Java面试题</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><h2 id="String类能被继承吗，为什么"><a href="#String类能被继承吗，为什么" class="headerlink" title="String类能被继承吗，为什么?"></a>String类能被继承吗，为什么?</h2><blockquote>
-<p>不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。</p>
-</blockquote>
-<pre><code class="java">public final class String implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence </code></pre>
-<p>根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。你可能出于两种理解而需要阻止改变：设计或效率。<br>　　final类不能被继承，没有子类，final类中的方法默认是final的。<br>　　final方法不能被子类的方法覆盖，但可以被继承。<br>　　final成员变量表示常量，只能被赋值一次，赋值后值不再改变。<br>　　final不能用于修饰构造方法。<br>　　注意：父类的private成员方法是不能被子类方法覆盖的，因此private类型的方法默认是final类型的。</p>
-<p>如果一个类不允许其子类覆盖某个方法，则可以把这个方法声明为final方法。<br>　　使用final方法的原因有二：<br>　　第一、把方法锁定，防止任何继承类修改它的意义和实现。<br>　　第二、高效。编译器在遇到调用final方法时候会转入内嵌机制，大大提高执行效率。（这点有待商榷，《Java编程思想》中对于这点存疑）</p>
-<blockquote>
-<p>下面这段话摘自《Java编程思想》第四版第143页：<br>“使用final方法的原因有两个。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用。但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升。在最近的Java版本中，不需要使用final方法进行这些优化了。”</p>
-</blockquote>
-<p>关于String类，要了解常量池的概念</p>
-<pre><code class="java">String s = new String(“xyz”);  //创建了几个对象</code></pre>
-<p>答案： 1个或2个， 如果”xyz”已经存在于常量池中，则只在堆中创建”xyz”对象的一个拷贝，否则还要在常量池中在创建一份</p>
-<pre><code class="java">String s = &quot;a&quot;+&quot;b&quot;+&quot;c&quot;+&quot;d&quot;; //创建了几个对象</code></pre>
-<p>答案： 这个和JVM实现有关， 如果常量池为空，可能是1个也可能是7个等</p>
-<h2 id="String，Stringbuffer，StringBuilder的区别？"><a href="#String，Stringbuffer，StringBuilder的区别？" class="headerlink" title="String，Stringbuffer，StringBuilder的区别？"></a>String，Stringbuffer，StringBuilder的区别？</h2><p>1、用来处理字符串常用的类有3种：String、StringBuffer和StringBuilder<br>2、三者之间的区别：<br>都是final类，都不允许被继承；<br>String类长度是不可变的，StringBuffer和StringBuilder类长度是可以改变的；<br>StringBuffer类是线程安全的，StringBuilder不是线程安全的；</p>
-<p>String 和 StringBuffer：<br>1、String类型和StringBuffer类型的主要性能区别：String是不可变的对象，因此每次在对String类进行改变的时候都会生成一个新的string对象，然后将指针指向新的string对象，所以经常要改变字符串长度的话不要使用string，因为每次生成对象都会对系统性能产生影响，特别是当内存中引用的对象多了以后，JVM的GC就会开始工作，性能就会降低；</p>
-<p>2、使用StringBuffer类时，每次都会对StringBuffer对象本身进行操作，而不是生成新的对象并改变对象引用，所以多数情况下推荐使用StringBuffer，特别是字符串对象经常要改变的情况；</p>
-<p>3、在某些情况下，String对象的字符串拼接其实是被Java Compiler编译成了StringBuffer对象的拼接，所以这些时候String对象的速度并不会比StringBuffer对象慢，例如：</p>
-<pre><code class="java">String s1 = “This is only a” + “ simple” + “ test”;
-StringBuffer Sb = new StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</code></pre>
-<p>生成 String s1对象的速度并不比 StringBuffer慢。其实在Java Compiler里，自动做了如下转换：</p>
-<pre><code class="java">Java Compiler直接把上述第一条语句编译为：
-String s2 = “This is only a”;
-String s3 = “ simple”;
-String s4 = “ test”;
-String s1 = s2 + s3 + s4;</code></pre>
-<p><a href="https://www.jianshu.com/p/8c724dd28fa4" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="ArrayList和LinkedList有什么区别"><a href="#ArrayList和LinkedList有什么区别" class="headerlink" title="ArrayList和LinkedList有什么区别"></a>ArrayList和LinkedList有什么区别</h2><p>ArrayList是实现了基于动态数组的结构，LinkedList则是基于实现链表的数据结构。</p>
-<p><strong>数据的更新和查找</strong><br>ArrayList的所有数据是在同一个地址上,而LinkedList的每个数据都拥有自己的地址.所以在对数据进行查找的时候，由于LinkedList的每个数据地址不一样，get数据的时候ArrayList的速度会优于LinkedList，而更新数据的时候，虽然都是通过循环循环到指定节点修改数据，但LinkedList的查询速度已经是慢的，而且对于LinkedList而言，更新数据时不像ArrayList只需要找到对应下标更新就好，LinkedList需要修改指针，速率不言而喻</p>
-<p><strong>数据的增加和删除</strong><br>对于数据的增加元素，ArrayList是通过移动该元素之后的元素位置，其后元素位置全部+1，所以耗时较长，而LinkedList只需要将该元素前的后续指针指向该元素并将该元素的后续指针指向之后的元素即可。与增加相同，删除元素时ArrayList需要将被删除元素之后的元素位置-1，而LinkedList只需要将之后的元素前置指针指向前一元素，前一元素的指针指向后一元素即可。当然，事实上，若是单一元素的增删，尤其是在List末端增删一个元素，二者效率不相上下。</p>
-<p><a href="https://juejin.im/post/5adec492f265da0b9f3fea08#heading-2" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序"><a href="#类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序" class="headerlink" title="类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序"></a>类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</h2><blockquote>
-<p>此题考察的是类加载器实例化时进行的操作步骤（加载–&gt;连接-&gt;初始化）。<br>父类静态变量、<br>父类静态代码块、<br>子类静态变量、<br>子类静态代码块、<br>父类非静态变量（父类实例成员变量）、<br>父类构造函数、<br>子类非静态变量（子类实例成员变量）、<br>子类构造函数。 </p>
-</blockquote>
-<p><a href="https://segmentfault.com/a/1190000004527951#articleHeader0" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="用过哪些Map，都有什么区别，HashMap是线程安全的吗-并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等"><a href="#用过哪些Map，都有什么区别，HashMap是线程安全的吗-并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等" class="headerlink" title="用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等"></a>用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</h2><blockquote>
-<p>Hashtable,HashMap,ConcurrentHashMap</p>
-</blockquote>
-<p><strong>线程不安全的HashMap</strong><br>因为多线程环境下，使用Hashmap进行put操作会引起死循环，导致CPU利用率接近100%，所以在并发情况下不能使用HashMap。</p>
-<p><strong>HashMap</strong><br>HashMap内部实现是一个桶数组，每个桶中存放着一个单链表的头结点。其中每个结点存储的是一个键值对整体（Entry），HashMap采用拉链法解决哈希冲突</p>
-<p><a href="https://blog.csdn.net/u014532901/article/details/78936283" target="_blank" rel="noopener">传送门</a></p>
-<p><strong>效率低下的HashTable容器</strong><br>     HashTable容器使用synchronized来保证线程安全，但在线程竞争激烈的情况下HashTable的效率非常低下。因为当一个线程访问HashTable的同步方法时，其他线程访问HashTable的同步方法时，可能会进入阻塞或轮询状态。如线程1使用put进行添加元素，线程2不但不能使用put方法添加元素，并且也不能使用get方法来获取元素，所以竞争越激烈效率越低。</p>
-<p><strong>ConcurrentHashMap的锁分段技术</strong><br>     HashTable容器在竞争激烈的并发环境下表现出效率低下的原因，是因为所有访问HashTable的线程都必须竞争同一把锁，那假如容器里有多把锁，每一把锁用于锁容器其中一部分数据，那么当多线程访问容器里不同数据段的数据时，线程间就不会存在锁竞争，从而可以有效的提高并发访问效率，这就是ConcurrentHashMap所使用的锁分段技术，首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问。</p>
-<p><a href="https://blog.csdn.net/qq_27093465/article/details/52279473" target="_blank" rel="noopener">传送门</a></p>
-<blockquote>
-<p>hashcode() 方法，在object类中定义如下：</p>
-</blockquote>
-<pre><code class="java">public native int hashCode();</code></pre>
-<p>native说明是一个本地方法，它的实现是根据本地机器相关的。当然我们可以在自己写的类中覆盖hashcode()方法，比如String、Integer、Double。。。。等等这些类都是覆盖了hashcode()方法的<br>例如String类中:就是以31为权，每一位为字符的ASCII值进行运算，用自然溢出来等效取模。(为什么取31?主要是因为31是一个奇质数，所以31i=32i-i=(i&lt;&lt;5)-i，这种位移与减法结合的计算相比一般的运算快很多).</p>
-<pre><code class="java">public int hashCode() {
-    int h = hash;
-    if (h == 0 &amp;&amp; value.length &gt; 0) {
-        char val[] = value;
-
-        for (int i = 0; i &lt; value.length; i++) {
-            h = 31 * h + val[i];
-        }
-        hash = h;
-    }
-    return h;
-}</code></pre>
-<h2 id="HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"><a href="#HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发" class="headerlink" title="HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"></a>HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</h2><blockquote>
-<p>HashMap 底层是基于 数组 + 链表 组成的</p>
-</blockquote>
-<p><a href="https://juejin.im/post/5b551e8df265da0f84562403#heading-9" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么"><a href="#抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么" class="headerlink" title="抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么"></a>抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</h2><blockquote>
-<p>实现 抽象类使用extends关键字来继承抽象类。如果子类不是抽象类的话，它需要提供抽象类中所有声明的方法的实现。子类使用关键字implements来实现接口。它需要提供接口中所有声明的方法的实现。<br><a href="https://www.jianshu.com/p/038f0b356e9a" target="_blank" rel="noopener">抽象类和接口的区别</a></p>
-</blockquote>
-<blockquote>
-<p>由于Java不支持多继承，子类不能够继承多个类，但可以实现多个接口。因此你就可以使用接口来解决它。</p>
-</blockquote>
-<blockquote>
-<p>接口可以继承多个接口。<br>java类是单继承的。classB Extends classA<br>java接口可以多继承。Interface3 Extends Interface0, Interface1, interface……<br>不允许类多重继承的主要原因是，如果A同时继承B和C，而B和C同时有一个D方法，A如何决定该继承那一个呢？<br>但接口不存在这样的问题，接口全都是抽象方法继承谁都无所谓，所以接口可以继承多个接口。</p>
-</blockquote>
-<h2 id="什么情况下会发生栈内存溢出"><a href="#什么情况下会发生栈内存溢出" class="headerlink" title="什么情况下会发生栈内存溢出"></a>什么情况下会发生栈内存溢出</h2><p><strong>方法递归调用产生这种结果</strong></p>
-<blockquote>
-<p>栈是线程私有的，他的生命周期与线程相同，每个方法在执行的时候都会创建一个栈帧，用来存储局部变量表，操作数栈，动态链接，方法出口灯信息。局部变量表又包含基本数据类型，对象引用类型（局部变量表编译器完成，运行期间不会变化）</p>
-</blockquote>
-<p>所以我们可以理解为栈溢出就是方法执行是创建的栈帧超过了栈的深度。那么最有可能的就是方法递归调用产生这种结果。栈溢出(StackOverflowError)</p>
-<h2 id="什么是nio，原理"><a href="#什么是nio，原理" class="headerlink" title="什么是nio，原理"></a>什么是nio，原理</h2><blockquote>
-<p>NIO是为了弥补传统I/O工作模式的不足而研发的，NIO的工具包提出了基于Selector（选择器）、Buffer（缓冲区）、Channel（通道）的新模式；Selector（选择器）、可选择的Channel（通道）和SelectionKey（选择键）配合起来使用，可以实现并发的非阻塞型I/O能力。</p>
-</blockquote>
-<p>NIO的工作原理是什么？</p>
-<p>　　在并发型服务器程序中使用NIO，实际上是通过网络事件驱动模型实现的。我们应用Select机制，不用为每一个客户端连接新启线程处理，而是将其注册到特定的Selector对象上，这就可以在单线程中利用Selector对象管理大量并发的网络连接，更好的利用了系统资源；采用非阻塞I/O的通信方式，不要求阻塞等待I/O操作完成即可返回，从而减少了管理I/O连接导致的系统开销，大幅度提高了系统性能。</p>
-<p>　　当有读或写等注册事件发生时，可以从Selector中获得相应的SelectionKey，从SelectionKey中可以找到发生的事件和该事件所发生的具体的SelectableChannel，以获得客户端发送过来的数据。由于在非阻塞网络I/O中采用了事件触发机制，处理程序可以得到系统的主动通知，从而可以实现底层网络I/O无阻塞、流畅地读写，而不像在原来的阻塞模式下处理程序需要不断循环等待。使用NIO，可以编写出性能更好、更易扩展的并发型服务器程序。</p>
-<p>　　并发型服务器程序的实现代码：应用NIO工具包，基于非阻塞网络I/O设计的并发型服务器程序与以往基于阻塞I/O的实现程序有很大不同，在使用非阻塞网络I/O的情况下，程序读取数据和写入数据的时机不是由程序员控制的，而是Selector决定的。</p>
-<p>　　使用非阻塞型I/O进行并发型服务器程序设计分三个部分：1. 向Selector对象注册感兴趣的事件；2.从Selector中获取所感兴趣的事件；3. 根据不同的事件进行相应的处理。</p>
-<p>　　在进行并发型服务器程序设计时，通过合理地使用NIO工具包，就可以达到一个或者几个Socket线程就可以处理N多个Socket的连接，大大降低我们对服务器程序的预算压力。同时我们利用它更好地提高系统的性能，使我们的工作得到更加有效地开展。</p>
-<p><a href="https://www.cnblogs.com/johnvajicic/archive/2013/04/18/3028675.html" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="反射中，Class-forName和ClassLoader区别"><a href="#反射中，Class-forName和ClassLoader区别" class="headerlink" title="反射中，Class.forName和ClassLoader区别"></a>反射中，Class.forName和ClassLoader区别</h2><p>Java中Class.forName和classloader都可以用来对类进行加载。</p>
-<ul>
-<li><p>Class.forName(“className”);</p>
-<pre><code>  其实这种方法调运的是：Class.forName(className, true, ClassLoader.getCallerClassLoader())方法
-  参数一：className，需要加载的类的名称。
-  参数二：true，是否对class进行初始化（需要initialize）
-  参数三：classLoader，对应的类加载器</code></pre></li>
-<li><p>ClassLoader.laodClass(“className”);</p>
-<pre><code>  其实这种方法调运的是：ClassLoader.loadClass(name, false)方法
-  参数一：name,需要加载的类的名称
-  参数二：false，这个类加载以后是否需要去连接（不需要linking）</code></pre></li>
-</ul>
-<p>可见Class.forName除了将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块。</p>
-<p>而classloader只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容，只有在newInstance才会去执行static块。</p>
-<p><a href="https://blog.csdn.net/u013308490/article/details/87809824" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="tomcat结构，类加载器流程"><a href="#tomcat结构，类加载器流程" class="headerlink" title="tomcat结构，类加载器流程"></a>tomcat结构，类加载器流程</h2><blockquote>
-<p>Tomcat 的总体结构</p>
-</blockquote>
-<p><img src="/images/2019/09/13/12f00090-d605-11e9-a6a7-0b204ec53b69.png" alt="image.png"></p>
-<p>从上图中可以看出 Tomcat 的心脏是两个组件：Connector 和 Container，关于这两个组件将在后面详细介绍。Connector 组件是可以被替换，这样可以提供给服务器设计者更多的选择，因为这个组件是如此重要，不仅跟服务器的设计的本身，而且和不同的应用场景也十分相关，所以一个 Container 可以选择对应多个 Connector。多个 Connector 和一个 Container 就形成了一个 Service，Service 的概念大家都很熟悉了，有了 Service 就可以对外提供服务了，但是 Service 还要一个生存的环境，必须要有人能够给她生命、掌握其生死大权，那就非 Server 莫属了。所以整个 Tomcat 的生命周期由 Server 控制。</p>
-<p><strong>什么是类加载器？</strong><br>虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。</p>
-<p><a href="https://www.jianshu.com/p/69c4526b843d" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"><a href="#讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式" class="headerlink" title="讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"></a>讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</h2><h2 id="Spring的beanFactory和factoryBean的区别"><a href="#Spring的beanFactory和factoryBean的区别" class="headerlink" title="Spring的beanFactory和factoryBean的区别"></a>Spring的beanFactory和factoryBean的区别</h2><h2 id="Spring加载流程"><a href="#Spring加载流程" class="headerlink" title="Spring加载流程"></a>Spring加载流程</h2><h2 id="Spring如何管理事务的"><a href="#Spring如何管理事务的" class="headerlink" title="Spring如何管理事务的"></a>Spring如何管理事务的</h2><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="线城池的最大线程数目根据什么确定"><a href="#线城池的最大线程数目根据什么确定" class="headerlink" title="线城池的最大线程数目根据什么确定"></a>线城池的最大线程数目根据什么确定</h2><h2 id="多线程的几种实现方式，什么是线程安全，什么是重排序"><a href="#多线程的几种实现方式，什么是线程安全，什么是重排序" class="headerlink" title="多线程的几种实现方式，什么是线程安全，什么是重排序"></a>多线程的几种实现方式，什么是线程安全，什么是重排序</h2><h2 id="volatile的原理，作用，能代替锁么"><a href="#volatile的原理，作用，能代替锁么" class="headerlink" title="volatile的原理，作用，能代替锁么"></a>volatile的原理，作用，能代替锁么</h2><h2 id="sleep和wait的区别，以及wait的实现原理"><a href="#sleep和wait的区别，以及wait的实现原理" class="headerlink" title="sleep和wait的区别，以及wait的实现原理"></a>sleep和wait的区别，以及wait的实现原理</h2><h2 id="Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"><a href="#Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁" class="headerlink" title="Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"></a>Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</h2><h2 id="用过哪些原子类，他们的参数以及原理是什么"><a href="#用过哪些原子类，他们的参数以及原理是什么" class="headerlink" title="用过哪些原子类，他们的参数以及原理是什么"></a>用过哪些原子类，他们的参数以及原理是什么</h2><h2 id="用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"><a href="#用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等" class="headerlink" title="用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"></a>用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</h2><h2 id="有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"><a href="#有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。" class="headerlink" title="有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"></a>有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</h2><h2 id="spring的controller是单例还是多例，怎么保证并发的安全"><a href="#spring的controller是单例还是多例，怎么保证并发的安全" class="headerlink" title="spring的controller是单例还是多例，怎么保证并发的安全"></a>spring的controller是单例还是多例，怎么保证并发的安全</h2><h2 id="用三个线程按顺序循环打印abc三个字母，比如abcabcabc"><a href="#用三个线程按顺序循环打印abc三个字母，比如abcabcabc" class="headerlink" title="用三个线程按顺序循环打印abc三个字母，比如abcabcabc"></a>用三个线程按顺序循环打印abc三个字母，比如abcabcabc</h2><h2 id="ThreadLocal用过么，原理是什么，用的时候要注意什么"><a href="#ThreadLocal用过么，原理是什么，用的时候要注意什么" class="headerlink" title="ThreadLocal用过么，原理是什么，用的时候要注意什么"></a>ThreadLocal用过么，原理是什么，用的时候要注意什么</h2><h2 id="如果让你实现一个并发安全的链表，你会怎么做"><a href="#如果让你实现一个并发安全的链表，你会怎么做" class="headerlink" title="如果让你实现一个并发安全的链表，你会怎么做"></a>如果让你实现一个并发安全的链表，你会怎么做</h2><h1 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h1><h2 id="jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"><a href="#jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等" class="headerlink" title="jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"></a>jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</h2><h2 id="你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"><a href="#你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms" class="headerlink" title="你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"></a>你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</h2><h2 id="当出现了内存溢出，你怎么排错"><a href="#当出现了内存溢出，你怎么排错" class="headerlink" title="当出现了内存溢出，你怎么排错"></a>当出现了内存溢出，你怎么排错</h2><h2 id="JVM内存模型的相关知识了解多少"><a href="#JVM内存模型的相关知识了解多少" class="headerlink" title="JVM内存模型的相关知识了解多少"></a>JVM内存模型的相关知识了解多少</h2><h2 id="简单说说你了解的类加载器"><a href="#简单说说你了解的类加载器" class="headerlink" title="简单说说你了解的类加载器"></a>简单说说你了解的类加载器</h2><h2 id="JAVA的反射机制"><a href="#JAVA的反射机制" class="headerlink" title="JAVA的反射机制"></a>JAVA的反射机制</h2><h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="http1-0和http1-1有什么区别"><a href="#http1-0和http1-1有什么区别" class="headerlink" title="http1.0和http1.1有什么区别"></a>http1.0和http1.1有什么区别</h2><h2 id="TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么"><a href="#TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么" class="headerlink" title="TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么"></a>TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</h2><h2 id="TIME-WAIT和CLOSE-WAIT的区别"><a href="#TIME-WAIT和CLOSE-WAIT的区别" class="headerlink" title="TIME_WAIT和CLOSE_WAIT的区别"></a>TIME_WAIT和CLOSE_WAIT的区别</h2><h2 id="说说你知道的几种HTTP响应码"><a href="#说说你知道的几种HTTP响应码" class="headerlink" title="说说你知道的几种HTTP响应码"></a>说说你知道的几种HTTP响应码</h2><h2 id="当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"><a href="#当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤" class="headerlink" title="当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"></a>当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</h2><h2 id="Linux下IO模型有几种，各自的含义是什么"><a href="#Linux下IO模型有几种，各自的含义是什么" class="headerlink" title="Linux下IO模型有几种，各自的含义是什么"></a>Linux下IO模型有几种，各自的含义是什么</h2><h2 id="TCP-IP如何保证可靠性，数据包有哪些数据组成"><a href="#TCP-IP如何保证可靠性，数据包有哪些数据组成" class="headerlink" title="TCP/IP如何保证可靠性，数据包有哪些数据组成"></a>TCP/IP如何保证可靠性，数据包有哪些数据组成</h2><h2 id="架构设计与分布式："><a href="#架构设计与分布式：" class="headerlink" title="架构设计与分布式："></a>架构设计与分布式：</h2><h2 id="tomcat如何调优，各种参数的意义"><a href="#tomcat如何调优，各种参数的意义" class="headerlink" title="tomcat如何调优，各种参数的意义"></a>tomcat如何调优，各种参数的意义</h2><h2 id="常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"><a href="#常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等" class="headerlink" title="常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"></a>常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</h2><h2 id="如何防止缓存雪崩12-用java自己实现一个LRU"><a href="#如何防止缓存雪崩12-用java自己实现一个LRU" class="headerlink" title="如何防止缓存雪崩12.用java自己实现一个LRU"></a>如何防止缓存雪崩12.用java自己实现一个LRU</h2><h2 id="分布式集群下如何做到唯一序列号"><a href="#分布式集群下如何做到唯一序列号" class="headerlink" title="分布式集群下如何做到唯一序列号"></a>分布式集群下如何做到唯一序列号</h2><h2 id="设计一个秒杀系统，30分钟没付款就自动关闭交易"><a href="#设计一个秒杀系统，30分钟没付款就自动关闭交易" class="headerlink" title="设计一个秒杀系统，30分钟没付款就自动关闭交易"></a>设计一个秒杀系统，30分钟没付款就自动关闭交易</h2><h2 id="如何做一个分布式锁"><a href="#如何做一个分布式锁" class="headerlink" title="如何做一个分布式锁"></a>如何做一个分布式锁</h2><h2 id="用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"><a href="#用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗" class="headerlink" title="用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"></a>用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</h2><h2 id="MQ系统的数据如何保证不丢失"><a href="#MQ系统的数据如何保证不丢失" class="headerlink" title="MQ系统的数据如何保证不丢失"></a>MQ系统的数据如何保证不丢失</h2><h2 id="分布式事务的原理，如何使用分布式事务"><a href="#分布式事务的原理，如何使用分布式事务" class="headerlink" title="分布式事务的原理，如何使用分布式事务"></a>分布式事务的原理，如何使用分布式事务</h2><h2 id="什么是一致性hash"><a href="#什么是一致性hash" class="headerlink" title="什么是一致性hash"></a>什么是一致性hash</h2><h2 id="什么是restful，讲讲你理解的restful"><a href="#什么是restful，讲讲你理解的restful" class="headerlink" title="什么是restful，讲讲你理解的restful"></a>什么是restful，讲讲你理解的restful</h2><h2 id="如何设计建立和保持100w的长连接？"><a href="#如何设计建立和保持100w的长连接？" class="headerlink" title="如何设计建立和保持100w的长连接？"></a>如何设计建立和保持100w的长连接？</h2><h2 id="解释什么是MESI协议-缓存一致性"><a href="#解释什么是MESI协议-缓存一致性" class="headerlink" title="解释什么是MESI协议(缓存一致性)"></a>解释什么是MESI协议(缓存一致性)</h2><h2 id="说说你知道的几种HASH算法，简单的也可以"><a href="#说说你知道的几种HASH算法，简单的也可以" class="headerlink" title="说说你知道的几种HASH算法，简单的也可以"></a>说说你知道的几种HASH算法，简单的也可以</h2><h2 id="什么是paxos算法"><a href="#什么是paxos算法" class="headerlink" title="什么是paxos算法"></a>什么是paxos算法</h2><h2 id="redis和memcached-的内存管理的区别"><a href="#redis和memcached-的内存管理的区别" class="headerlink" title="redis和memcached 的内存管理的区别"></a>redis和memcached 的内存管理的区别</h2><h2 id="一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"><a href="#一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新" class="headerlink" title="一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"></a>一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</h2><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="10亿个数字里里面找最小的10个"><a href="#10亿个数字里里面找最小的10个" class="headerlink" title="10亿个数字里里面找最小的10个"></a>10亿个数字里里面找最小的10个</h2><h2 id="有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"><a href="#有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优" class="headerlink" title="有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"></a>有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优</h2><h2 id="2亿个随机生成的无序整数-找出中间大小的值"><a href="#2亿个随机生成的无序整数-找出中间大小的值" class="headerlink" title="2亿个随机生成的无序整数,找出中间大小的值"></a>2亿个随机生成的无序整数,找出中间大小的值</h2><h2 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a>遍历二叉树</h2><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"><a href="#数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点" class="headerlink" title="数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"></a>数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</h2><h2 id="高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"><a href="#高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义" class="headerlink" title="高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"></a>高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</h2><h2 id="SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"><a href="#SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？" class="headerlink" title="SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"></a>SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</h2><h2 id="数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"><a href="#数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁" class="headerlink" title="数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"></a>数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</h2><h2 id="MYsql的索引实现方式"><a href="#MYsql的索引实现方式" class="headerlink" title="MYsql的索引实现方式"></a>MYsql的索引实现方式</h2><h2 id="聚集索引和非聚集索引的区别"><a href="#聚集索引和非聚集索引的区别" class="headerlink" title="聚集索引和非聚集索引的区别"></a>聚集索引和非聚集索引的区别</h2><h2 id="数据库中-BTREE和B-tree区别"><a href="#数据库中-BTREE和B-tree区别" class="headerlink" title="数据库中 BTREE和B+tree区别"></a>数据库中 BTREE和B+tree区别</h2>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-12T13:41:44.000Z">2019-09-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 382 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/12/TensorFlow-2-0-RC-is-available/">TensorFlow 2.0 RC is available</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/09/12/fc47ee60-d560-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
-<h1 id="TensorFlow-2-0-RC"><a href="#TensorFlow-2-0-RC" class="headerlink" title="TensorFlow 2.0 RC"></a>TensorFlow 2.0 RC</h1><p>工具<br>探索可支持和加速 TensorFlow 工作流程的工具。</p>
-<p><img src="/images/2019/09/12/0d102030-d563-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
-<h2 id="CoLab"><a href="#CoLab" class="headerlink" title="CoLab"></a>CoLab</h2><p>Colaboratory 是一个免费的 Jupyter 笔记本环境，不需要进行任何设置就可以使用，并且完全在云端运行。借助 Colaboratory，您只需点击一下鼠标，即可在浏览器中执行 TensorFlow 代码。</p>
-<h2 id="TensorBoard"><a href="#TensorBoard" class="headerlink" title="TensorBoard"></a>TensorBoard</h2><p>一套可视化工具，用于理解、调试和优化TensorFlow程序。</p>
-<h2 id="What-If工具"><a href="#What-If工具" class="headerlink" title="What-If工具"></a>What-If工具</h2><p>一种无代码的方式探究机器学习模型的工具，对模型的理解、调试和公平性很有用。可在TensorFlow和Jupyter或CoLab笔记本中使用。</p>
-<h2 id="ML-Perf"><a href="#ML-Perf" class="headerlink" title="ML Perf"></a>ML Perf</h2><p>全面的机器学习基准测试套件，用于衡量机器学习软件框架、机器学习硬件加速器和机器学习云端平台的性能。</p>
-<h2 id="XLA"><a href="#XLA" class="headerlink" title="XLA"></a>XLA</h2><p>XLA(加速线性代数)是一种特定领域的线性代数编译器，能够优化TensorFlow计算，它可以提高服务器和移动平台的运行速度改进内存使用情况和可移植性。</p>
-<h2 id="TensorFlow-Playground"><a href="#TensorFlow-Playground" class="headerlink" title="TensorFlow Playground"></a>TensorFlow Playground</h2><p>在浏览器中设计神经网络。别担心，不会使浏览器崩溃。</p>
-<h2 id="TensorFlow-Research-Cloud"><a href="#TensorFlow-Research-Cloud" class="headerlink" title="TensorFlow Research Cloud"></a>TensorFlow Research Cloud</h2><p>加入TensorFlow Research Cloud（TFRC）计划后，研究人员可于申请访问Cloud TPU来加快实现下一波研究突破；我们免费提供1000个Cloud TPU.</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-12T13:15:04.000Z">2019-09-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 652 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/12/nohup-在linux后台运行程序/">nohup:在linux后台运行程序</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/09/12/0188c220-d55f-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
-<h1 id="nohup-在linux后台运行程序"><a href="#nohup-在linux后台运行程序" class="headerlink" title="nohup:在linux后台运行程序"></a>nohup:在linux后台运行程序</h1><p>今天在工作中，lz要在Linux系统上运行一个java程序，这个程序要在系统中持续运行。随后lz无意将ssh窗口关掉了，发现java程序停止了。原来，当使用ssh连接到系统运行程序的时候，该程序已经和你的ssh连接绑定了。如果你关闭连接，该程序就会停止。还有一个情景：如果要在后台运行多个java程序的时候，就需要启动多个ssh窗口，这样很麻烦。有没有方法来解决这个问题呢？答案是肯定的。</p>
-<p>1.使用nohup来执行命令，它会把命令自动调到linux后台运行，不锁定当前ssh窗口，也不会被ctrl + c，alt + F4之类打断程序的动行。</p>
-<pre><code>nohup java -jar test.jar &amp;</code></pre><p>执行完该命令后，终端会显示如下信息：</p>
-<pre><code>[1] 27945
-nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]：该后台任务的jobid<br>27945：是该进程的pid<br>nohup.out：是该任务的输出位置</p>
-<p>2.要指定重定向的文件，如下：</p>
-<pre><code>nohup java -jar test.jar &gt; test.log 2&gt;&amp;1 &amp;</code></pre><p>3.如果一个任务已经在前台执行，那就使用以下方法来将任务调整到后台：</p>
-<p>（1）首先，在正在执行任务的终端使用ctrl+z</p>
-<pre><code>[1]+  已停止               java -jar test.jar</code></pre><p>（2）使用bg命令将该任务调整至后台（fg与之相反，将后台任务调整至前台）</p>
-<pre><code>bg %1(1是jobid)</code></pre><p>如果不知道jobid，也可以使用jobs命令来查询。</p>
-<p>但是任务的输出还是会打印到终端上的（具体怎么将输出重定向到别的地方，lz也不造）。而且，这时该任务还是与当前终端相关联的，关闭终端还是会断掉该任务的。使用下面命令来解决：</p>
-<pre><code>disown -h %1</code></pre><p>这样再也不用担心关掉终端会停止掉任务喽！！！</p>
-<p>PS：再来说说nohup吧。nohup的意思是no hang up，就是说关掉终端是不会挂掉程序的。如果开始执行命令时只使用&amp;：</p>
-<pre><code>java -jar test.jar &amp;</code></pre><p>那么该任务也会在后台执行，但是一旦关掉终端该任务还是会挂掉，所以这就是nohup的用处了。</p>
-<p><a href="http://ee-dreamer.com/?p=327" target="_blank" rel="noopener">原文链接</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-12T11:49:16.000Z">2019-09-12</time>
+                <time class="level-item has-text-grey" datetime="2019-10-17T08:43:11.000Z">2019-10-17</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/生活/">生活</a>
@@ -603,7 +393,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 406 个字)
+                    1 分钟 读完 (大约 195 个字)
                 </span>
                 
                 
@@ -612,19 +402,16 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/12/骨传导/">骨传导</a>
+                <a class="has-link-black-ter" href="/2019/10/17/2019-games-xbox/">2019-games-xbox</a>
             
         </h1>
         <div class="content">
-            <h1 id="骨传导"><a href="#骨传导" class="headerlink" title="骨传导"></a>骨传导</h1><p><img src="/images/2019/09/12/3570d660-d553-11e9-b519-9f31cc87a9f9.png" alt="image.png"></p>
-<p>骨传导是一种声音传导方式，即通过将声音转化为不同频率的机械振动，通过人的颅骨、骨迷路、内耳淋巴液传递、螺旋器、听神经、听觉中枢来传递声波。相对于通过振膜产生声波的经典声音传导方式，骨传导省去了许多声波传递的步骤，能在嘈杂的环境中实现清晰的声音还原，而且声波也不会因为在空气中扩散而影响到他人。</p>
-<p>骨传导技术分为骨传导扬声器技术和骨传导麦克风技术：</p>
-<ol>
-<li>骨传导扬声器技术 用于受话，受话即听取声音。气导扬声器是把电信号转化为的声波（振动信号传至听神经。而骨传导扬声器则是电信号转化的声波（振动信号）直接通过骨头传至听神经。声波（振动信号）的传递介质不同。</li>
-<li>骨传导麦克风技术 用于送话，送话即收集声音。气导送话是声波通过空气传至麦克风，而骨传导送话则直接通过骨头传递。</li>
-</ol>
-<p>利用这些骨传导技术制造的耳机，称之为骨传导耳机，也被称作骨导耳机、骨感耳机、骨传耳机和骨传感耳机。</p>
-<p><a href="https://zh.wikipedia.org/wiki/%E9%AA%A8%E4%BC%A0%E5%AF%BC" target="_blank" rel="noopener">原文链接</a></p>
+            <h1 id="2019年最好的Xbox-One游戏推荐"><a href="#2019年最好的Xbox-One游戏推荐" class="headerlink" title="2019年最好的Xbox One游戏推荐"></a>2019年最好的Xbox One游戏推荐</h1><p><a href="https://www.microsoft.com/" target="_blank" rel="nofollow">微软</a>最近对Xbox产品线进行了重大更新，分别以<a href="https://www.10besty.com/best-video-game-consoles/#three" target="_blank">Xbox One X</a>和<a href="https://www.10besty.com/best-video-game-consoles/#four" target="_blank">Xbox One S</a>的形式推出两个新型号，其中前者是你现在可以买到的最强的家用游戏机。</p>
+
+<p>如果你正在考虑选择其中一台游戏机，但不确定到底要哪一个，请查看我们的<a href="https://www.10besty.com/best-video-game-consoles/" target="_blank">家用游戏机购买指南</a>。对于那些已经拥有Xbox的游戏玩家，我们精心制作了这份最好的游戏列表，随着未来伟大的新游戏发布，这份列表将会定期保持更新。</p>
+
+<p><img src="/images/2019/10/17/d9498c50-f0ba-11e9-b665-07392e3ffdf3.png" alt="image.png"></p>
+<p><a href="https://www.10besty.com/best-xbox-one-games" target="_blank" rel="noopener">传送门</a></p>
 
         </div>
         
@@ -647,85 +434,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-12T10:09:12.000Z">2019-09-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/生活/">生活</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    13 分钟 读完 (大约 1923 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/12/三阶魔方解法/">三阶魔方解法</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="三阶魔方解法"><a href="#三阶魔方解法" class="headerlink" title="三阶魔方解法"></a>三阶魔方解法</h1><p>预备篇：三阶魔方相关知识<br>在本教程中，统一使用官方配色（上黄、下白、左橙、右红、前蓝、后绿），并在还原的过程中，白色作为底色。</p>
-<p>下图中，A、B、C分别表示顶层、中层、底层；D为中心块，在还原的过程中以此作为参照色（即该面所最终还原的颜色）；E为棱块，每块有两个颜色；F为角块，每块有三个颜色。</p>
-<p>在本教程中，分别用Front、Back、Left、Right、Up、Down的首字母表示前面、后面、左面、右面、上面、下面的顺时针90度旋转，带撇号的为逆时针90度逆转，带数字2的为180度旋转。</p>
-<p><img src="/images/2019/09/12/15512550-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p><img src="/images/2019/09/12/196bddb0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第一步：完成底层四棱<br>子步骤一：拼成黄心白瓣小花<br>如下图①所示，我们只要在黄色中心块的四周的棱块都挨着白色即可。</p>
-<p>对于在中层的白色棱，如②所示，只需转一个90度即可将白色朝上；对于在顶层、底层朝外的白色棱，如③所示，先在白色所在面转动90度后变成②的情况再处理；而在底层朝下的白色棱，如④所示，则通过180度旋转即可将白色朝上。</p>
-<p>值得留意的是⑤之类的情况，如果直接转90度将中层白色块朝上，那么会破坏掉上方原先已有的白色块。此时要先转动顶层（此例为U’），将空位转到对应位置，方可使该白色块转上去。</p>
-<p><img src="/images/2019/09/12/2458a640-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>子步骤二：找到相应颜色并掉落花瓣<br>先随意选定一个白色棱（下图以白红棱为例），转动顶层（或扭转中底层），直到该棱侧面的颜色与中心块吻合时，以该中心块为轴转动180度，使其落到白色中心旁边。用同样的方法处理其他三个棱之后，在底层会形成白色的十字，棱的侧面也与中心块相连。</p>
-<p><img src="/images/2019/09/12/29f0fdf0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第二步：完成底层四角<br>这一步我们不仅要让白色的四角全都聚集在下面，还要留意其角块侧面的颜色也要吻合。</p>
-<p>如下图的上半部分所示，我们先在顶层寻找含白色的角块，同时观察该角块另外两种颜色，转动顶层（或扭转中底层），使之处在相应颜色的两个中心块之间。</p>
-<p>当角块转到相应位置后，观察白色的朝向，做相应的公式：</p>
-<p>①为白色朝右，做U’ F’ U F；<br>②为白色朝前，做U R U’ R’；<br>③为白色朝上，做三遍的公式①。<br>当顶层无任何白色角块时，此时再观察底层有无错误朝向或位置的白色角块：</p>
-<p>④在底层，白色朝右，做两遍的公式①；<br>⑤在底层，白色朝前，做两遍的公式②；<br>⑥在底层，错误位置角块，先做公式①将其赶回顶层，然后找到相应正确位置还原。<br>用同样的方法处理其他三个角之后，底面为全白色，侧面会形成倒T字。</p>
-<p><img src="/images/2019/09/12/32aa1da0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第三步：完成中层四棱<br>如下图的上半部分所示，我们先在顶层寻找不含黄色的棱块，同时观察该棱块另外两种颜色，转动顶层（或扭转中底层），使之朝外的颜色与中心块相吻合。</p>
-<p>当棱块转到相应位置后，观察最终所归的空位，并将空位置于右前方，做相应的公式（前面的公式①与②，在这里称为甲与乙）：</p>
-<p>①情况做U’ F’ U F U R U’ R’（先甲后乙）；<br>②情况做U R U’ R’ U’ F’ U F（先乙后甲）；<br>当顶层全为有黄色的棱块时，此时再观察中层有无错误朝向或位置的棱块：</p>
-<p>③与④情况，先做甲+乙将其赶回顶层，然后找到相应正确位置还原。<br>用同样的方法处理其他三个棱之后，第二层即完成。</p>
-<p><img src="/images/2019/09/12/3a6a1040-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第四步：完成顶面十字<br>现在观察顶面的棱与中心块所构成的图形（忽视角块黄色是否朝上与否）分为“点、线、拐、十字”四种情况。找到相应的情况并按图示朝向摆放后，按照下流程图每次做R’ U’ F’ U F R（R’+甲+R）直到变成十字为止。其中“线”的情况还有一条捷径，即F R U R’ U’ F’。</p>
-<p><img src="/images/2019/09/12/3e428f80-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 7a.png</p>
-<p>第五步：调整顶棱顺序<br>先转动顶层（或扭转中底层），直到至少有两个棱侧面的颜色与中心块吻合。</p>
-<p>现在观察另外两个错误的棱处于相邻还是相对位置，如果没有，则此步跳过；如果是相邻的，则将两个错误的置一前一右，做丙公式U’ F’ U’ F U’ F’ U2 F；如果是相对的，则将两个错误的置一左一后，先做丙公式，然后转下顶层变为相邻的，再置一前一右做丙公式完成。</p>
-<p><img src="/images/2019/09/12/42486050-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 8.png</p>
-<p>第六步：调整顶角顺序<br>观察顶角，找到在正确位置的一个角（朝向是否正确暂时不考虑）。如果四角都在正确位置，则此步跳过；如果只有一个，则将正确的角置于左前方，做丁公式U’ L’ U R U’ L U R’（做一遍仍未成功则再做第二遍）；如果没有一个角在正确位置，则先做丁公式然后变成有一个角在正确位置再相应处理。</p>
-<p><img src="/images/2019/09/12/48ad7de0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 9.png</p>
-<p>第七步：调整顶角朝向<br>此时我们统一将蓝色中心块保持前面放置，需要注意的是在操作的过程中魔方的底层会被暂时性打乱，不过不要紧，只要正确操作完后魔方会正常还原。</p>
-<p>观察顶层前右方的角块的黄色朝向，做戊公式F’ R F R’二或四遍使黄色朝上。完成一个角块的朝向处理之后，要转动顶层（U、U’、U2），并保持蓝色中心块在前面不动，再处理其他角块朝向。(在每一角落都要扭)</p>
-<p><img src="/images/2019/09/12/4cc8d280-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 10.png</p>
-<p><a href="https://zh.wikibooks.org/zh-hans/%E4%B8%89%E9%98%B6%E9%AD%94%E6%96%B9%E8%A7%A3%E6%B3%95" target="_blank" rel="noopener">维基百科</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-10T13:45:18.000Z">2019-09-10</time>
+                <time class="level-item has-text-grey" datetime="2019-10-16T13:48:00.000Z">2019-10-16</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -735,7 +444,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 968 个字)
+                    1 小时 读完 (大约 7392 个字)
                 </span>
                 
                 
@@ -744,54 +453,87 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/10/Git-Rebase-黄金法则问题/">Git Rebase 黄金法则问题</a>
+                <a class="has-link-black-ter" href="/2019/10/16/network-security-industry-analyze/">network-security-industry-analyze</a>
             
         </h1>
         <div class="content">
-            <h1 id="Git-Rebase-黄金法则问题"><a href="#Git-Rebase-黄金法则问题" class="headerlink" title="Git Rebase 黄金法则问题"></a>Git Rebase 黄金法则问题</h1><p>git 整合来自不同分支的修改主要有两种方法：merge 操作和rebase操作，<br>merge初学者可能很熟悉。我们今天来主要说一下 rebase 操作，文章结尾会简单说一下 merge 操作的 –no-ff 参数问题。</p>
-<p>rebase的简单定义：你可以把某一分支的所有修改都移至另外一个分支就像重新播放一样。<br>有点儿像金庸武侠小说里面的乾坤大挪移。<br>举个🌰<br>假设我们本地库的代码，如下所示</p>
-<pre><code>      A---B---C  remotes/origin/master
-     /
-D---E---F---G  master</code></pre><p>如果此时我们执行 git pull 操作，就会变成下面的样子，因为 pull 默认执行的是 merge 操作，多出来H这次没必要的提交。如下所示</p>
-<pre><code>     A---B---C  remotes/origin/master
-     /         \
-D---E---F---G---H master</code></pre><p>如果我们执行 git pull –rebase 操作，将会变成下面的样子，这里我们用rebase代替了默认的merge操作</p>
-<pre><code>            remotes/origin
-                |
-D---E---A---B---C---F---G
-                        |
-                        master</code></pre><p>rebase 作用就是变成线性了，这在多人协作的情况变得非常关键。因为多人合作是不允许随意制造分叉的。大家可以参考我这篇文章。</p>
-<p>这就引出了这篇博文要主要阐述的问题，rebase golden rule 问题。</p>
-<blockquote>
-<p>Rebase golden rule<br>“No one shall rebase a shared branch” — Everyone about rebase</p>
-</blockquote>
-<p>简单来说就是不要在你的公共分支上做任何rebase操作。<br>再举一个🌰。</p>
-<p>图一是我们做rebase操作前的样子</p>
-<p><img src="/images/2019/09/10/75e5c990-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
-<p>图二是我们正确rebase的结果，即在feature分支执行rebase develop命令</p>
-<p><img src="/images/2019/09/10/7a0f9d20-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
-<p>图三是我们错误rebase的结果，即违反黄金法则的结果，我们在develop分支上执行了rebase feature操作</p>
-<p><img src="/images/2019/09/10/7ce48f10-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
-<p>当我们在图三这种情况下对develop分支进行提交的话，会发现和远程分支冲突，然后我们手动或自动解决冲突，继续提交上去之后发现，我们修改的功能代码已经提交上去了，但是当我们看我们提交历史的记录的时候会发现有一部分重复的提交log。<br>这就是问题所在，你的项目组长是绝对不允许在他的项目里出现这种情况，因为会影响后续的代码追查，code review等问题。<br>说完了这个问题，这篇博文的主要任务基本完成了，最后在简单说一下 merge 的 –no-ff 参数，这也是我们在分支合并的时候经常遇到的问题。<br>–no-ff 的意思就是关闭 merge 的 fast-forwarded，merge 操作默认执行的是 fast-forwarded。<br>fast-forwarded 的意思就是在合并分支的时候，如果不涉及三方合并，git 只会简单的移动指针。<br>再再举一个🌰</p>
-<pre><code>        dev
-        |
-A---B---C
-         \
-          D---E
-              |
-              feature</code></pre><p>此时我们执行 merge –no-ff 操作，将会得到如下图</p>
-<pre><code>                dev
-                |
-A---B---C--------F
-         \      /
-          D---E</code></pre><p>执行 merge 之后得到的结果如下</p>
-<pre><code>               dev
-                |
-A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
-<p>简单来说就是 –no-ff 的作用就是保持分支的非线性。方便我们看到分支的变化。</p>
-<blockquote>
-<p>本文作者： Frank<br>本文链接： <a href="http://hellofrank.github.io/2018/04/27/Git-Rebase-黄金法则问题/" target="_blank" rel="noopener">http://hellofrank.github.io/2018/04/27/Git-Rebase-黄金法则问题/</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
-</blockquote>
+            <h1 id="2019中国信息安全自主可控行业政策盘点及网络安全行业分析"><a href="#2019中国信息安全自主可控行业政策盘点及网络安全行业分析" class="headerlink" title="2019中国信息安全自主可控行业政策盘点及网络安全行业分析"></a>2019中国信息安全自主可控行业政策盘点及网络安全行业分析</h1><p>中国作为一个崛起中的大国，国家安全至关重要。新一届中央高度重视信息安全自主可控的发展，重大会议以及演讲中多次强调网络安全问题。信息安全部署是国家重要战略，中兴、华为断供事件，无异于一场涅槃之火，互联网核心技术是我们最大的“命门”，核心技术受制于人是我们最大的隐患。棱镜门、信息泄露等安全事故的频发，网络安全环境日益复杂，没有网络安全就没有国家安全。</p>
+<p>近年来我国不断完善立法，坚定不移的按照“国家主导、体系筹划、自主可控、跨越发展”的方针，在维护国家网络空间安全方面解决关键技术和设备上受制于人的问题，保障网络信息安全机制。本文将从国家信息安全政策及法规、中国网络安全行业分类以及网络安全发展现状等方面介绍2019中国信息安全自主可控行业概况。</p>
+<p>一、盘点中国信息安全自主可控行业政策法规</p>
+<p><img src="/images/2019/10/16/9a771730-f01b-11e9-859c-bda29343d193.png" alt="image.png"></p>
+<p>2019年12月1日，等保2.0标准将正式实施，覆盖全社会各地区、各单位、各部门、各机构，涉及网络、信息系统、云平台、物联网、工控系统、大数据、移动互联等各类技术应用和场景。等保2.0控制措施对安全物理环境、安全通信网络、安全区域边界、安全计算环境、安全管理中心提出技术要求；对安全管理制度、安全管理机构、安全管理人员、安全建设管理、安全运维管理提出管理要求。对比等保1.0标准重点提出安全管理中心技术要求，具体包括系统管理、审计管理、集中管控、安全管理平台等，并明确要求对网络中的链路、安全设备、服务器、交换机等运营情况进行集中监测，对审计数据进行集中分析。</p>
+<p>2.0标准让很多机构对等级保护建设工作一筹莫展，怎样的网络信息安全建设方案是各机构最好选择？一方面，机构都面临业务不断扩展、安全设备持续增加、运维人员有限等困难，选择简单有效、扩展性强、可开发的等级保护建设方案很重要。另一方面，云环境中网络虚拟化已成为信息技术演进的重要方向，虚拟化条件下的网络既面临传统网络中已存在的安全问题，也有引入虚拟化特性之后出现的一系列新的安全威胁，包括物理网络威胁、虚拟局域网威胁和虚拟网络威胁等。采用统一的安全管理平台，管理各种安全功能组件，针对网络安全风险，及时响应安全防护对策，开展安全运维十分重要。而等保2.0合规仅仅是基础，选择有效地检测并阻止安全威胁、可扩展并降低IT业务创新过程中的各种风险的网络安全管理方案，才能满足机构后续业务发展的各种安全需求，具备相应的安全能力，实现安全资源的弹性扩展和灵活调度，这也是机构进行网络安全防护的前提和关键。</p>
+<p><img src="/images/2019/10/16/bef548c0-f01b-11e9-859c-bda29343d193.png" alt="image.png"></p>
+<p>随着等保2.0的正式发布，中国网络安全行业再次得到政策助推，进入快速上升轨道。当前网络安全的基础性、全局性问题已经充分呈现，未来五年，中国网络安全市场创新进入高峰阶段。</p>
+<p>中国网络安全行业整体可划分为产品与服务两方面，下文将为大家呈现网络安全行业产品划分。</p>
+<p>二、中国网络安全行业产品分类</p>
+<p><img src="/images/2019/10/16/b4bf2600-f01b-11e9-859c-bda29343d193.png" alt="image.png"></p>
+<p>数字经济迅猛发展，安全管理、网络管理、端点安全、安全开发、安全网关、应用安全、数据安全、身份与访问安全、安全业务是我国信息系统自主可控发展不可或缺的核心产品分类。</p>
+<p>据中国互联网络信息中心（CNNIC）发布第44次《中国互联网络发展状况统计报告》显示，截止2019年6月，中国网民规模达8.54亿，互联网普及率达61.2%，占全球网民总数的五分之一，中国已成为名副其实的网络大国，而西方利用其高新技术对我实施的打压从未停止，我国的信息安全自主可控事业的起步，伴随着西方发达国家的技术封锁，但中华民族为了实现国家富强民族复兴而进行的技术探索绝不会止步。</p>
+<p>三、国产化信息技术网络安全自主可控行业现状深度剖析<br>1、贸易战凸显我国信息技术网络安全自主可控核心问题关键点<br>在贸易摩擦纷争频现的大背景下，信息行业国产化及网络安全自主可控的需求鲜明凸显，自主可控是基础，是国产化信息技术网络安全的必要条件。自主可控的本质是打破国外公司在互联网架构上的垄断，防范软硬件设施存在影响我国网络安全的后门和漏洞。国与国之间都存在着不可逾越的“信任界线”，国家的高度重视必然推动国产化的信息技术和信息安全大幅增长和发展，这是机遇也是挑战。但我国信息技术产业核心软硬件产品受制于人的矛盾尖锐，棱镜门事件、中兴、华为断供事件影响恶劣且深远，扭转信息技术长期受制于人的格局，才能从根本解决国家信息安全的核心问题。</p>
+<p>国内众多企业积极探索自主可控、网络安全的国产化软硬件，自主可控是一项系统工程，必须要有系统的思维来引导和设计生态。以中国电子、中电通信、航天科工为代表的国内央企集团已经能够提供完整的生态体系，能够提供从芯片、整机、网络设备到操作系统和系统集成全套的产品与服务。其中，航天科工建设的商密网已有两万余人使用。作为自主可控系统集成单位，有大格局，在处理器、操作系统、数据库等品牌众多的情况下，能以合作共赢为重，综合考虑生态建设的系统性、全局性、完整性和竞争性，构建可持续发展的生态体系，才能真正推动国内国产化替代工程的实施。</p>
+<p>2、基于自主可控技术国产化替代框架进度及主流品牌分析<br>（1）自主可控基础硬件受益于国家重大专项资金推动，成果显著</p>
+<p>近年来，处理器、交换芯片、显示芯片等国产芯片产品已接近国外主流产品水平。中国CPU产品技术研发已进入多技术路线同步推进的高速发展阶段。国产处理器形成了以X86、MIPS、SPARC、ARM、ALPHA等架构为代表的系列化处理器产品，产品主频普遍为1.0GHz-1.5GHz。国产 CPU 技术正大步迈向新的阶段，美“芯”封喉的局面将得到极大扭转，为构建安全、自主、可控的国产化信息系统奠定了基础。基于国产CPU的整机及网络设备产品已经完全具备替代国外同类产品的能力，产品系列覆盖计算基础设施、信息安全、网络安全需求，具备系统性应用的条件。</p>
+<p><img src="/images/2019/10/16/dde36000-f01b-11e9-859c-bda29343d193.png" alt="image.png"></p>
+<p>（2）自主可控基础软件突破微软生态，基本已达国际水平</p>
+<p>国产操作系统技术趋于成熟，中标麒麟、红旗Linux系统具有较高的实用性、稳定性和安全可控性。已覆盖服务器、桌面、移动和嵌入式等领域，产品大多采用开源技术。在系统的功能、性能，以及对设备、应用软件的支持方面也能满足用户的使用要求，可支持多种国产化处理器（方舟、龙芯等）架构，满足当前国产化的应用需求。国内多家自主知识产权的国产数据库（人大金仓、神州通用等）与国产处理器、操作系统可深入融合适配，支持商业化部署、容灾工具使用。如华为与神州信息共同发布的金融行业联合解决方案，依托华为公司TaiShan服务器以及Gauss数据库，实现神州信息的核心业务系统、数据平台、支付平台向华为的基础设施迁移。这套高度国产化（至CPU、数据库层面）的系统在性能上已经具备替代现有非底层国产化方案的能力，该案例为金融业IT解决方案提供了一套具备强竞争能力的高度国产化解决方案，十分具有里程碑式意义。国产中间件也已具备替代国外产品的能力，基于Java国际标准支持，国产中间件（东方通、金蝶等）与国产操作系统、数据库的兼容适配成效显著，并可实现深度定制化开发与优化。国产基础办公软件也已实现与国产操作系统的适配，对嵌入浏览器的支持、开发接口、界面风格、与office的兼容方面表现优越。</p>
+<p><img src="/images/2019/10/16/e6c31a80-f01b-11e9-859c-bda29343d193.png" alt="image.png"></p>
+<p>（3）自主可控应用软件在高精尖技术及实时性高要求领域得到应用</p>
+<p>自主可控应用软件，已初步形成在国产化平台运行的办公自动化、企业管理、行业应用系统，部分产品在自主可控计算机示范应用工程中完成了迁移适配，可运行于主流自主可控平台，并已在通信、军事、航空、航天、政府等高精尖技术及实时性高要求的领域得到应用。</p>
+<p>（4）自主可控网络安全管理领域成长机遇最大</p>
+<p>国产基础软硬件迅速发展的过程中，也伴生了很多的问题，一方面，我国基础软硬件的体系复杂，相互之间的结合比较密切，含关键技术多；另一方面，国内现阶段处于去IOE过渡期，安全管理平台面临的重点问题在于既要适应所有的操作系统，如Windows、Linux、Unix、中标麒麟、红旗Linux等，还需同时监控众多网络设备生产厂商的产品和数据库、中间件应用服务等等。除此之外，我国网络设备部署越来越多，安全管理平台需求高速增长，安全管理平台要从整体上、系统化的帮助企业感知安全威胁，等保2.0控制措施对网络安全管理中心重点提出技术要求，赋能行业巨大的增长机遇。所以，对国内安全管理平台发展视角下的公司研究就非常有必要：</p>
+<p>全面型企业：启明星辰、绿盟科技、蓝盾股份、奇安信（原360ESG）、天融信（南洋股份子公司）等企业，具备较为齐全的安全产品线，可依靠自有品牌产品对客户进行解决方案层面的构建，满足用户的整体安全需求。这些企业具备多元化的核心能力，包括网关能力、攻防能力、安全态势感知能力、安全运维能力等。</p>
+<p>启明星辰：国内极具实力的网络安全综合解决方案提供商</p>
+<p>拥有完全自主知识产权的网络安全产品、可信安全管理平台、安全服务与解决方案的综合提供商。国内入侵检测/入侵防御、统一威胁管理、安全管理平台、运维安全审计、数据审计与防护市场占有率第一位。</p>
+<p>绿盟科技：强大自主开发防火墙</p>
+<p>基于多年的安全攻防研究，绿盟科技在检测防御类、安全评估类、安全平台类、远程安全运维服务、安全SaaS服务等领域，为客户提供入侵检测/防护、抗拒绝服务攻击、远程安全评估、Web安全防护等产品以及安全运营等专业安全服务。</p>
+<p>蓝盾股份：聚焦安全产品、安全运营、安全集成、安全服务</p>
+<p>蓝盾股份前身为广东天海威数码技术有限公司，聚焦安全产品、安全运营、安全集成、安全服务。</p>
+<p>奇安信：国内网络安全领域中成长最快的企业</p>
+<p>为政府、企业，教育、金融等机构和组织提供企业级网络安全技术、产品和服务的网络安全公司，相关产品和服务已覆盖90%以上的中央政府部门、中央企业和大型银行，已在印度尼西亚、新加坡、加拿大、中国香港等国家和地区开展了安全业务。</p>
+<p>天融信：中国领先的网络安全、大数据与安全云服务提供商</p>
+<p>基于创新的 “可信网络架构”以及业界领先的信息安全产品与服务，天融信致力于改善用户网络与应用的可视性、可用性、可控性和安全性，降低安全风险，创造业务价值。</p>
+<p>专精型企业：除网关外的细分市场优质企业，包括北信源、智和信通、可信华泰、安恒信息、东软、格尔软件、卫士通、数字认证、中孚信息、恒安嘉新、安博通等，这些企业在细分领域均有明确的优势。这其中又可细分为完全兼容国产处理器、服务器、操作系统、数据库的专精型产品，包括智和网管平台SugarNMS、景云网络防病毒系统、北信源主机审计与监控系统、北信源身份鉴别系统等。</p>
+<p>北信源：聚焦终端安全</p>
+<p>北信源布局国产自主可控，终端信息安全市场。北信源主机审计与监控系统、北信源身份鉴别系统以及北信源旗下景云网络防病毒系统分别入选第一期国产化信息产品《适配名录》，主机安全产品线已经覆盖国产化、虚拟化、移动、工控等终端类型。</p>
+<p>智和信通：首创开放式网管平台</p>
+<p>北京智和信通公司专注网络管理运维、IT综合监控、网络管理平台、国产化安全软件、安全管控平台，智和网管平台SugarNMS采用“监控+展示+安管+开发”四合一平台模式，支持国产化平台，支持二次开发定制，具有可持续的功能扩展和开发集成能力，在军工集团科研院所、党政军、电信、金融、教育、医疗及企业中广泛应用。</p>
+<p>可信华泰：计算产品整体解决方案提供商</p>
+<p>北京可信华泰公司专注应用安全前沿趋势的研究和分析，安全产品包括可信软件、可信安全管理中心、可信支撑平台、可信移动终端、“白细胞”操作系统免疫平台等，满足各类型重要信息系统的计算环境的安全需求。</p>
+<p>安恒信息：聚焦应用安全</p>
+<p>安恒信息提供应用安全、数据库安全、网站安全监测、安全管理平台等整体解决方案，公司的产品及服务涉及应用安全、大数据安全、云安全、物联网安全、工业控制安全、工业互联网安全等领域。</p>
+<p>东软：提供IT驱动的创新型解决方案与服务</p>
+<p>东软提供应用开发和维护、ERP实施与咨询服务、专业测试及性能工程服务、软件全球化与本地化服务、IT基础设施服务、业务流程外包（BPO）、IT教育培训等。其安全管理平台将目前信息系统中各类数据孤立分析的形态转变为智能的关联分析，并借助平台实现技术人员（维护人员、应急小组）、操作过程（相应的管理制度和事件处理流程）和技术三者的融合。</p>
+<p>格尔软件：加密认证全系列信息安全产品</p>
+<p>中国较早研制和推出公钥基础设施PKI平台的厂商之一，是国内首批商用密码产品定点生产与销售单位之一。拥有全系列信息安全产品、安全服务和解决方案的提供能力。产品包括安全认证网关、可信边界安全网关、无线安全网关、电子签章系统、安全电子邮件系统、安全即时通系统、网络保险箱、终端保密系统、签名验证服务系统、局域网接入认证系统、打印管控系统、移动安全管理平台、云安全服务平台系统、移动介质管理系统等产品。</p>
+<p>卫士通：聚焦加密及认证</p>
+<p>成都卫士通为党政军用户、企业级用户和消费者提供专业自主的网络信息安全解决方案、产品和服务。公司致力于信息安全领域的技术研究和产品开发，从密码技术应用持续拓展，已形成密码产品、信息安全产品、安全信息系统三大信息安全产品体系。</p>
+<p>数字认证：聚焦加密及认证</p>
+<p>数字认证为用户提供涵盖电子认证服务和电子认证产品的整体解决方案。建立起覆盖全国的电子认证服务网络和较完善的电子认证产品体系。应用领域覆盖政府、金融、医疗卫生、彩票、电信等市场，在电子政务领域的市场占有率位居行业前列，并已在医疗信息化、网上保险、互联网彩票等重点新兴应用领域建立了市场领先优势。</p>
+<p>中孚信息：聚焦加密和认证</p>
+<p>中孚信息专业从事信息安全技术与产品研发、销售并提供行业解决方案和安全服务的高新技术企业。是国家商用密码产品定点生产和销售单位。公司拥有国家保密局颁发的国家涉密集成甲级****，具有工信部办法的信息系统集成资质。</p>
+<p>恒安嘉新：聚焦网络空间安全综合治理</p>
+<p>恒安嘉新专注于网络空间安全综合治理领域。主要采取直销模式向电信运营商、安全主管部门等政企客户提供服务。产品包括网络空间安全综合管理产品、移动互联网增值产品、通信网网络优化产品等。</p>
+<p>安博通：网络安全系统平台和安全服务提供商</p>
+<p>北京安博通是国内领先的网络安全系统平台和安全服务提供商。依托自主开发的应用层可视化安全网络安全技术，围绕核心ABT SPOS网络安全系统平台，为业界众多安全产品提供操作系统、业务组件、分析引擎、关键算法、特征库升级等软件支撑及相关的技术服务。</p>
+<p>网关型企业：国产化进程阶段优先受益的分类，基础产品为主，产品线和技术能力聚焦边界防护、以各类网关为主体，包括华为、深信服、新华三、山石网科等。</p>
+<p>华为：民族品牌 国之骄傲</p>
+<p>全球领先的ICT（信息与通信）基础设施和智能终端提供商，在通信网络、IT、智能终端和云服务等领域为客户提供有竞争力、安全可信赖的产品、解决方案与服务，与生态伙伴开放合作。2018年销售收入7212亿RMB，净利润593亿RMB，经营活动现金流747亿RMB。</p>
+<p>深信服：让IT更简单、更安全、更有价值</p>
+<p>是一家专注于企业级安全、云计算及IT基础设施的产品和服务供应商，拥有智安全、云计算和新IT三大业务品牌，致力于让用户的IT更简单、更安全、更有价值。</p>
+<p>新华三：融绘数字未来,共享美好生活</p>
+<p>是业界领先的数字化解决方案领导者，致力于成为客户业务创新、产业升级可信赖的合作伙伴。拥有全系列服务器、存储、网络、安全、超融合系统和IT管理系统等产品，能够提供云计算、大数据、大互联、大安全和IT咨询与服务在内的数字化解决方案和产品的研发、生产、咨询、销售及服务。</p>
+<p>山石网科：创新网络安全</p>
+<p>专注于网络安全领域的前沿技术创新，为企业级和运营商用户提供智能化、高性能、高可靠、简单易用的网络安全解决方案。Hillstone以网络安全的需求变化为创新基点，立志为全球用户打造安全的网络环境，成为世界第一流的安全厂商。</p>
+<p>国家多重利好政策下，国产信息化品牌迎来黄金时代。党政军、金融、电信、能源等中国重点领域及企业重新选择软硬件合作伙伴。</p>
+<p>3、党政军领域国产化自主可控是必要条件<br>中央军委印发《关于进一步加强军队信息安全工作的意见》，要求必须把信息安全工作作为网络强军的重要任务和军事斗争准备的保底工程，推进信息安全集中统管，构建与国家信息安全体系相衔接、与军事斗争准备要求相适应的军队信息安全防护体系。要全面推开信息安全等级保护和风险评估，规范信息安全建设和管理；强力推进国产自主化建设应用，夯实信息安全根基；创新发展信息安全技术防护体系，有效提升信息安全综合防御能力；扎实抓好信息安全防护力量建设，为信息安全建设管理提供人才支撑；坚决维护网上意识形态安全，严厉打击网上涉军违法犯罪活动；严格实施信息安全综合管控，确保重要人员、核心数据和关键设备安全；建立健全信息安全工作机制，形成齐抓共管、健康有序的工作局面。</p>
+<p>综上所述，我国自主可控的发展，必将先从党政军领域开始。2017年-2020年，国家党政军队部门全面推行国产化方案，国产化信息安全自主可控行业年市场需求每年高达320亿元，如果实行党政军全替换国产化，需求将达每年504亿元。央企重点行业五年内替换比例将从早期的10%逐步增值到70%，自主可控整机将产生约300亿的市场需求，国产芯片市场空间近60亿元。金融领域5年内整机市场规模将达到185亿元，国产CPU市场空间近35亿元。</p>
+<p><img src="/images/2019/10/16/f5683020-f01b-11e9-859c-bda29343d193.png" alt="image.png"></p>
+<p>国产软硬件担负了“安全可控”的责任，让有网无防，有防不强的问题逐步解决。基础设施完成替换的同时，如智和网管平台SugarNMS、景云网络防病毒系统、北信源主机审计与监控系统、北信源身份鉴别系统等完全兼容国产处理器、服务器、操作系统、数据库的专精型产品也将迎来巨大的市场空间。</p>
+<p>4、国产化市场前景广阔 2020年国产化扩展至重点行业及民用领域<br>从市场角度看，国产自主可控软硬件并未有“市场可控”的生存条件。但国产化软硬件发展是大势所趋，如何布局是每个中国企业必须要考虑的现实问题。国产化软硬件成熟是本源，网络安全管理实现安全资源的弹性扩展和灵活调度是关键，满足企业后续业务长期发展的各类安全需求是发展之道。</p>
+<p>华为的胜利，究其根本是企业家精神的胜利。中兴通讯的战略风险，绝不是一时之事，为何没有及早调整？一方面是公司高层决策缺乏安全监管机制，只求业绩发展，缺乏国家高度企业安全的长久战略考量。另一方面，早期国家网络安全审查机制不完善，一年进口芯片达2000多亿美元，网络安全隐患如何预防。无论国企、民企，缺乏真正为企业负责、为国家负责、为民族负责的企业家精神都难以长久发展。</p>
+<p>我国加快核心技术攻研，推进网络安全自主可控，国产化采购是必然，2020年后国产化方案逐步向重点行业、民用领域扩展，国产自主可控系统市场空间可期。相信国家也会采取多种激励和支持措施加速去IOT进程。党政军民凝心聚力，共同攻坚克难，不忘初心，牢记使命，必将打赢网络强国之战，在新时代创造中华民族新的伟大奇迹！</p>
+<p>*本文作者：蔚颖willing，来自FreeBuf.COM</p>
 
         </div>
         
@@ -814,7 +556,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-09T00:39:17.000Z">2019-09-09</time>
+                <time class="level-item has-text-grey" datetime="2019-10-15T06:58:25.000Z">2019-10-15</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -824,7 +566,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                 <span class="level-item has-text-grey">
                     
                     
-                    28 分钟 读完 (大约 4164 个字)
+                    15 分钟 读完 (大约 2239 个字)
                 </span>
                 
                 
@@ -833,506 +575,233 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/09/Flutter-Http请求开源库-dio/">Flutter Http请求开源库-dio</a>
+                <a class="has-link-black-ter" href="/2019/10/15/Computer-network-books/">Computer-network-books</a>
             
         </h1>
         <div class="content">
-            <p>文档语言: <a href="README.md">English</a> | <a href="README-ZH.md">中文简体</a></p>
-<h1 id="dio"><a href="#dio" class="headerlink" title="dio"></a>dio</h1><p><img src="/images/2019/09/09/3ed7aff0-d29a-11e9-a25e-85ff34c3f186.png" alt="image.png"></p>
-<p>dio是一个强大的Dart Http请求库，支持Restful API、FormData、拦截器、请求取消、Cookie管理、文件上传/下载、超时等…</p>
-<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><pre><code class="yaml">dependencies:
-  dio: ^x.x.x  // 请使用pub上的最新版本</code></pre>
-<h2 id="一个极简的示例"><a href="#一个极简的示例" class="headerlink" title="一个极简的示例"></a>一个极简的示例</h2><pre><code class="dart">import &#39;package:dio/dio.dart&#39;;
-void getHttp() async {
-  try {
-    Response response;
-    response = await Dio().get(&quot;http://www.baidu.com&quot;);
-    return print(response);
-  } catch (e) {
-    return print(e);
-  }
-}</code></pre>
-<h2 id="内容列表"><a href="#内容列表" class="headerlink" title="内容列表"></a>内容列表</h2><ul>
-<li><a href="#示例">示例</a></li>
-<li><a href="#dio-apis">Dio APIs</a></li>
-<li><a href="#请求配置">请求配置</a></li>
-<li><a href="#响应数据">响应数据</a></li>
-<li><a href="#拦截器">拦截器</a></li>
-<li><a href="#错误处理">错误处理</a></li>
-<li><a href="#使用applicationx-www-form-urlencoded编码">使用application/x-www-form-urlencoded编码</a></li>
-<li><a href="#formdata">FormData</a></li>
-<li><a href="#转换器">转换器</a></li>
-<li><a href="#设置Http代理">设置Http代理</a></li>
-<li><a href="#Https证书校验">Https证书校验</a></li>
-<li><a href="#请求取消">请求取消</a></li>
-<li><a href="#cookie管理">Cookie管理</a></li>
-<li><a href="#features-and-bugs">Features and bugs</a></li>
-</ul>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>发起一个 <code>GET</code> 请求 :</p>
-<pre><code class="dart">  Response response;
-  Dio dio = new Dio();
-  response = await dio.get(&quot;/test?id=12&amp;name=wendu&quot;)
-  print(response.data.toString());
-// 请求参数也可以通过对象传递，上面的代码等同于：
-  response = await dio.get(&quot;/test&quot;, data: {&quot;id&quot;: 12, &quot;name&quot;: &quot;wendu&quot;});
-  print(response.data.toString());</code></pre>
-<p>发起一个 <code>POST</code> 请求:</p>
-<pre><code class="dart">  response = await dio.post(&quot;/test&quot;, data: {&quot;id&quot;: 12, &quot;name&quot;: &quot;wendu&quot;});</code></pre>
-<p>发起多个并发请求:</p>
-<pre><code class="dart">  response = await Future.wait([dio.post(&quot;/info&quot;), dio.get(&quot;/token&quot;)]);</code></pre>
-<p>下载文件:</p>
-<pre><code class="dart">  response = await dio.download(&quot;https://www.google.com/&quot;, &quot;./xx.html&quot;);</code></pre>
-<p>发送 FormData:</p>
-<pre><code class="dart">FormData formData = new FormData.from({
-    &quot;name&quot;: &quot;wendux&quot;,
-    &quot;age&quot;: 25,
-  });
-  response = await dio.post(&quot;/info&quot;, data: formData);</code></pre>
-<p>通过FormData上传多个文件:</p>
-<pre><code class="dart">  FormData formData = new FormData.from({
-    &quot;name&quot;: &quot;wendux&quot;,
-    &quot;age&quot;: 25,
-    &quot;file1&quot;: new UploadFileInfo(new File(&quot;./upload.txt&quot;), &quot;upload1.txt&quot;),
-    //支持直接上传字节数组 (List&lt;int&gt;) ，方便直接上传内存中的内容
-    &quot;file2&quot;: new UploadFileInfo.fromBytes(
-        utf8.encode(&quot;hello world&quot;), &quot;word.txt&quot;),
-    // 支持文件数组上传
-    &quot;files&quot;: [
-      new UploadFileInfo(new File(&quot;./example/upload.txt&quot;), &quot;upload.txt&quot;),
-      new UploadFileInfo(new File(&quot;./example/upload.txt&quot;), &quot;upload.txt&quot;)
-    ]
-  });
-  response = await dio.post(&quot;/info&quot;, data: formData);</code></pre>
-<p>监听发送(上传)数据进度:</p>
-<pre><code class="dart">response = await dio.post(
-  &quot;http://www.dtworkroom.com/doris/1/2.0.0/test&quot;,
-  data: {&quot;aa&quot;: &quot;bb&quot; * 22},
-  onUploadProgress: (int sent, int total) {
-    print(&quot;$sent $total&quot;);
-  },
-);</code></pre>
-<p>…你可以在这里获取所有<a href="https://github.com/flutterchina/dio/tree/flutter/example" target="_blank" rel="noopener">示例代码</a>.</p>
-<h2 id="Dio-APIs"><a href="#Dio-APIs" class="headerlink" title="Dio APIs"></a>Dio APIs</h2><h3 id="创建一个Dio实例，并配置它"><a href="#创建一个Dio实例，并配置它" class="headerlink" title="创建一个Dio实例，并配置它"></a>创建一个Dio实例，并配置它</h3><p>你可以使用默认配置或传递一个可选 <code>Options</code>参数来创建一个Dio实例 :</p>
-<pre><code class="dart">Dio dio = new Dio; // 使用默认配置
-
-// 配置dio实例
-  dio.options.baseUrl = &quot;https://www.xx.com/api&quot;;
-  dio.options.connectTimeout = 5000; //5s
-  dio.options.receiveTimeout = 3000;
-
-// 或者通过传递一个 `options`来创建dio实例
-  Options options = new Options(
-      baseUrl: &quot;https://www.xx.com/api&quot;,
-      connectTimeout: 5000,
-      receiveTimeout: 3000);
-  Dio dio = new Dio(options);</code></pre>
-<p>Dio实例的核心API是 :</p>
-<p><strong>Future<response> request(String path, {data, Options options,CancelToken cancelToken})</response></strong></p>
-<pre><code class="dart">  response = await request(
-      &quot;/test&quot;, data: {&quot;id&quot;: 12, &quot;name&quot;: &quot;xx&quot;}, new Options(method: &quot;GET&quot;));</code></pre>
-<h3 id="请求方法别名"><a href="#请求方法别名" class="headerlink" title="请求方法别名"></a>请求方法别名</h3><p>为了方便使用，Dio提供了一些其它的Restful API, 这些API都是<code>request</code>的别名。</p>
-<p><strong>Future<response> get(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
-<p><strong>Future<response> post(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
-<p><strong>Future<response> put(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
-<p><strong>Future<response> delete(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
-<p><strong>Future<response> head(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
-<p><strong>Future<response> put(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
-<p><strong>Future<response> path(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
-<p><strong>Future<response> download(String urlPath, savePath,</response></strong><br>​    <strong>{OnDownloadProgress onProgress, data, bool flush: false, Options options,CancelToken cancelToken})</strong></p>
-<h2 id="请求配置"><a href="#请求配置" class="headerlink" title="请求配置"></a>请求配置</h2><p>下面是所有的请求配置选项。 如果请求<code>method</code>没有指定，则默认为<code>GET</code> :</p>
-<pre><code class="dart">{
-  /// Http method.
-  String method;
-
-  /// 请求基地址,可以包含子路径，如: &quot;https://www.google.com/api/&quot;.
-  String baseUrl;
-
-  /// Http请求头.
-  Map&lt;String, dynamic&gt; headers;
-
-  /// 连接服务器超时时间，单位是毫秒.
-  int connectTimeout;
-
-  ///  响应流上前后两次接受到数据的间隔，单位为毫秒。如果两次间隔超过[receiveTimeout]，
-  ///  [Dio] 将会抛出一个[DioErrorType.RECEIVE_TIMEOUT]的异常.
-  ///  注意: 这并不是接收数据的总时限.
-  int receiveTimeout;
-
-  /// 请求数据,可以是任意类型.
-  var data;
-
-  /// 请求路径，如果 `path` 以 &quot;http(s)&quot;开始, 则 `baseURL` 会被忽略； 否则,
-  /// 将会和baseUrl拼接出完整的的url.
-  String path = &quot;&quot;;
-
-  /// 请求的Content-Type，默认值是[ContentType.JSON].
-  /// 如果您想以&quot;application/x-www-form-urlencoded&quot;格式编码请求数据,
-  /// 可以设置此选项为 `ContentType.parse(&quot;application/x-www-form-urlencoded&quot;)`,  这样[Dio]
-  /// 就会自动编码请求体.
-  ContentType contentType;
-
-  /// [responseType] 表示期望以那种格式(方式)接受响应数据。
-  /// 目前 [ResponseType] 接受三种类型 `JSON`, `STREAM`, `PLAIN`.
-  ///
-  /// 默认值是 `JSON`, 当响应头中content-type为&quot;application/json&quot;时，dio 会自动将响应内容转化为json对象。
-  /// 如果想以二进制方式接受响应数据，如下载一个二进制文件，那么可以使用 `STREAM`.
-  ///
-  /// 如果想以文本(字符串)格式接收响应数据，请使用 `PLAIN`.
-  ResponseType responseType;
-
-  /// `validateStatus` 决定http响应状态码是否被dio视为请求成功， 返回`validateStatus`
-  ///  返回`true` , 请求结果就会按成功处理，否则会按失败处理.
-  ValidateStatus validateStatus;
-
-  /// 用户自定义字段，可以在 [Interceptor]、[Transformer] 和 [Response] 中取到.
-  Map&lt;String, dynamic&gt; extra;
-}</code></pre>
-<p>这里有一个完成的<a href="https://github.com/flutterchina/dio/blob/flutter/example/options.dart" target="_blank" rel="noopener">示例</a>.</p>
-<h2 id="响应数据"><a href="#响应数据" class="headerlink" title="响应数据"></a>响应数据</h2><p>当请求成功时会返回一个Response对象，它包含如下字段：</p>
-<pre><code class="dart">{
-  /// 响应数据，可能已经被转换了类型, 详情请参考Options中的[ResponseType].
-  var data;
-  /// 响应头
-  HttpHeaders headers;
-  /// 本次请求信息
-  Options request;
-  /// Http status code.
-  int statusCode;
-  /// 响应对象的自定义字段（可以在拦截器中设置它），调用方可以在`then`中获取.
-  Map&lt;String, dynamic&gt; extra;
-}</code></pre>
-<p>示例如下:</p>
-<pre><code class="dart">  Response response = await dio.get(&quot;https://www.google.com&quot;);
-  print(response.data);
-  print(response.headers);
-  print(response.request);
-  print(response.statusCode);</code></pre>
-<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>每一个 Dio 实例都有一个请求拦截器  <code>RequestInterceptor</code> 和一个响应拦截器 <code>ResponseInterceptor</code>, 通过拦截器你可以在请求之前或响应之后(但还没有被 <code>then</code> 或 <code>catchError</code>处理)做一些统一的预处理操作。</p>
-<pre><code class="dart"> dio.interceptor.request.onSend = (Options options){
-     // 在请求被发送之前做一些事情
-     return options; //continue
-     // 如果你想完成请求并返回一些自定义数据，可以返回一个`Response`对象或返回`dio.resolve(data)`。
-     // 这样请求将会被终止，上层then会被调用，then中返回的数据将是你的自定义数据data.
-     //
-     // 如果你想终止请求并触发一个错误,你可以返回一个`DioError`对象，或返回`dio.reject(errMsg)`，
-     // 这样请求将被中止并触发异常，上层catchError会被调用。
- }
- dio.interceptor.response.onSuccess = (Response response) {
-     // 在返回响应数据之前做一些预处理
-     return response; // continue
- };
- dio.interceptor.response.onError = (DioError e){
-     // 当请求失败时做一些预处理
-     return e;//continue
- }</code></pre>
-<p>如果你想移除拦截器，你可以将它们置为null:</p>
-<pre><code class="dart">  dio.interceptor.request.onSend = null;
-  dio.interceptor.response.onSuccess = null;
-  dio.interceptor.response.onError = null;</code></pre>
-<h3 id="完成和终止请求-响应"><a href="#完成和终止请求-响应" class="headerlink" title="完成和终止请求/响应"></a>完成和终止请求/响应</h3><p>在所有拦截器中，你都可以改变请求执行流， 如果你想完成请求/响应并返回自定义数据，你可以返回一个 <code>Response</code> 对象或返回 <code>dio.resolve(data)</code>的结果。 如果你想终止(触发一个错误，上层<code>catchError</code>会被调用)一个请求/响应，那么可以返回一个<code>DioError</code> 对象或返回 <code>dio.reject(errMsg)</code> 的结果.</p>
-<pre><code class="dart">  dio.interceptor.request.onSend = (Options options) {
-    return dio.resolve(&quot;fake data&quot;)
-  }
-  Response response = await dio.get(&quot;/test&quot;);
-  print(response.data); //&quot;fake data&quot;</code></pre>
-<h3 id="拦截器中支持异步任务"><a href="#拦截器中支持异步任务" class="headerlink" title="拦截器中支持异步任务"></a>拦截器中支持异步任务</h3><p>拦截器中不仅支持同步任务，而且也支持异步任务, 下面是在请求拦截器中发起异步任务的一个实例:</p>
-<pre><code class="dart">  dio.interceptor.request.onSend = (Options options) async {
-     //...If no token, request token firstly.
-     Response response = await dio.get(&quot;/token&quot;);
-     //Set the token to headers
-     options.headers[&quot;token&quot;] = response.data[&quot;data&quot;][&quot;token&quot;];
-     return options; //continue
- }</code></pre>
-<h3 id="Lock-unlock-拦截器"><a href="#Lock-unlock-拦截器" class="headerlink" title="Lock/unlock 拦截器"></a>Lock/unlock 拦截器</h3><p>你可以通过调用拦截器的 <code>lock()</code>/<code>unlock</code> 方法来锁定/解锁拦截器。一旦请求/响应拦截器被锁定，接下来的请求/响应将会在进入请求/响应拦截器之前排队等待，直到解锁后，这些入队的请求才会继续执行(进入拦截器)。这在一些需要串行化请求/响应的场景中非常实用，后面我们将给出一个示例。</p>
-<pre><code class="dart">  tokenDio = new Dio(); //Create a new instance to request the token.
-  tokenDio.options = dio;
-  dio.interceptor.request.onSend = (Options options) async {
-    // If no token, request token firstly and lock this interceptor
-    // to prevent other request enter this interceptor.
-    dio.interceptor.request.lock();
-    // We use a new Dio(to avoid dead lock) instance to request token.
-    Response response = await tokenDio.get(&quot;/token&quot;);
-    //Set the token to headers
-    options.headers[&quot;token&quot;] = response.data[&quot;data&quot;][&quot;token&quot;];
-    dio.interceptor.request.unlock();
-    return options; //continue
-  }</code></pre>
-<p><strong>Clear()</strong></p>
-<p>你也可以调用拦截器的<code>clear()</code>方法来清空等待队列。</p>
-<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>当<strong>请求</strong>拦截器被锁定时，接下来的请求将会暂停，这等价于锁住了dio实例，因此，Dio示例上提供了<strong>请求</strong>拦截器<code>lock/unlock</code>的别名方法：</p>
-<p><strong>dio.lock() ==  dio.interceptor.request.lock()</strong></p>
-<p><strong>dio.unlock() ==  dio.interceptor.request.unlock()</strong></p>
-<p><strong>dio.clear() ==  dio.interceptor.request.clear()</strong></p>
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>假设这么一个场景：出于安全原因，我们需要给所有的请求头中添加一个csrfToken，如果csrfToken不存在，我们先去请求csrfToken，获取到csrfToken后，再发起后续请求。 由于请求csrfToken的过程是异步的，我们需要在请求过程中锁定后续请求（因为它们需要csrfToken), 直到csrfToken请求成功后，再解锁，代码如下：</p>
-<pre><code class="dart">dio.interceptor.request.onSend = (Options options) {
-    print(&#39;send request：path:${options.path}，baseURL:${options.baseUrl}&#39;);
-    if (csrfToken == null) {
-      print(&quot;no token，request token firstly...&quot;);
-      //lock the dio.
-      dio.lock();
-      return tokenDio.get(&quot;/token&quot;).then((d) {
-        options.headers[&quot;csrfToken&quot;] = csrfToken = d.data[&#39;data&#39;][&#39;token&#39;];
-        print(&quot;request token succeed, value: &quot; + d.data[&#39;data&#39;][&#39;token&#39;]);
-        print(&#39;continue to perform request：path:${options.path}，baseURL:${options.path}&#39;);
-        return options;
-      }).whenComplete(() =&gt; dio.unlock()); // unlock the dio
-    } else {
-      options.headers[&quot;csrfToken&quot;] = csrfToken;
-      return options;
-    }
-  };</code></pre>
-<p>完整的示例代码请点击 <a href="https://github.com/flutterchina/dio/blob/flutter/example/interceptorLock.dart" target="_blank" rel="noopener">这里</a>.</p>
-<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>当请求过程中发生错误时, Dio 会包装 <code>Error/Exception</code> 为一个 <code>DioError</code>:</p>
-<pre><code class="dart">  try {
-    //404
-    await dio.get(&quot;https://wendux.github.io/xsddddd&quot;);
-  } on DioError catch (e) {
-    // The request was made and the server responded with a status code
-    // that falls out of the range of 2xx and is also not 304.
-    if (e.response) {
-      print(e.response.data);
-      print(e.response.headers);
-      print(e.response.request);
-    } else {
-      // Something happened in setting up or sending the request that triggered an Error
-      print(e.request);
-      print(e.message);
-    }
-  }</code></pre>
-<h3 id="DioError-字段"><a href="#DioError-字段" class="headerlink" title="DioError 字段"></a>DioError 字段</h3><pre><code class="dart"> {
-  /// 响应信息, 如果错误发生在在服务器返回数据之前，它为 `null`
-  Response response;
-
-  /// 错误描述.
-  String message;
-
-  /// 错误类型，见下文
-  DioErrorType type;
-
-  /// 错误栈信息，可能为null
-  StackTrace stackTrace;
-}</code></pre>
-<h3 id="DioErrorType"><a href="#DioErrorType" class="headerlink" title="DioErrorType"></a>DioErrorType</h3><pre><code class="dart">enum DioErrorType {
-  /// Default error type, usually occurs before connecting the server.
-  DEFAULT,
-
-  /// When opening  url timeout, it occurs.
-  CONNECT_TIMEOUT,
-
-  ///  Whenever more than [receiveTimeout] (in milliseconds) passes between two events from response stream,
-  ///  [Dio] will throw the [DioError] with [DioErrorType.RECEIVE_TIMEOUT].
-  ///
-  ///  Note: This is not the receiving time limitation.
-  RECEIVE_TIMEOUT,
-
-  /// When the server response, but with a incorrect status, such as 404, 503...
-  RESPONSE,
-
-  /// When the request is cancelled, dio will throw a error with this type.
-  CANCEL
-}</code></pre>
-<h2 id="使用application-x-www-form-urlencoded编码"><a href="#使用application-x-www-form-urlencoded编码" class="headerlink" title="使用application/x-www-form-urlencoded编码"></a>使用application/x-www-form-urlencoded编码</h2><p>默认情况下, Dio 会将请求数据(除过String类型)序列化为 <code>JSON</code>. 如果想要以 <code>application/x-www-form-urlencoded</code>格式编码, 你可以显式设置<code>contentType</code> :</p>
-<pre><code class="dart">//Instance level
-dio.options.contentType=ContentType.parse(&quot;application/x-www-form-urlencoded&quot;);
-//or works once
-dio.post(&quot;/info&quot;,data:{&quot;id&quot;:5}, options: new Options(contentType:ContentType.parse(&quot;application/x-www-form-urlencoded&quot;)));</code></pre>
-<p>这里有一个<a href="https://github.com/flutterchina/dio/blob/flutter/example/options.dart" target="_blank" rel="noopener">示例</a>.</p>
-<h2 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h2><p>Dio支持发送 FormData, 请求数据将会以 <code>multipart/form-data</code>方式编码, FormData中可以一个或多个包含文件 .</p>
-<pre><code class="dart">FormData formData = new FormData.from({
-    &quot;name&quot;: &quot;wendux&quot;,
-    &quot;age&quot;: 25,
-    &quot;file&quot;: new UploadFileInfo(new File(&quot;./example/upload.txt&quot;), &quot;upload.txt&quot;)
-});
-response = await dio.post(&quot;/info&quot;, data: formData);</code></pre>
-<blockquote>
-<p>注意: 只有 post 方法支持发送 FormData.</p>
-</blockquote>
-<p>这里有一个完整的<a href="https://github.com/flutterchina/dio/blob/flutter/example/formdata.dart" target="_blank" rel="noopener">示例</a>.</p>
-<h2 id="转换器"><a href="#转换器" class="headerlink" title="转换器"></a>转换器</h2><p>转换器<code>Transformer</code> 用于对请求数据和响应数据进行编解码处理。Dio实现了一个默认转换器<code>DefaultTransformer</code>作为默认的 <code>Transformer</code>. 如果你想对请求/响应数据进行自定义编解码处理，可以提供自定义转换器，通过 <code>dio.transformer</code>设置。</p>
-<blockquote>
-<p>请求转换器  <code>Transformer.transformRequest(...)</code>   只会被用于 ‘PUT’、 ‘POST’、 ‘PATCH’方法，因为只有这些方法才可以携带请求体(request body)。但是响应转换器 <code>Transformer.transformResponse()</code> 会被用于所有请求方法的返回数据。</p>
-</blockquote>
-<h3 id="执行流"><a href="#执行流" class="headerlink" title="执行流"></a>执行流</h3><p>虽然在拦截器中也可以对数据进行预处理，但是转换器主要职责是对请求/响应数据进行编解码，之所以将转化器单独分离，一是为了和拦截器解耦，二是为了不修改原始请求数据(如果你在拦截器中修改请求数据(options.data)，会覆盖原始请求数据，而在某些时候您可能需要原始请求数据). Dio的请求流是：</p>
-<p><em>请求拦截器</em> &gt;&gt; <em>请求转换器</em> &gt;&gt; <em>发起请求</em>  &gt;&gt; <em>响应转换器</em>  &gt;&gt; <em>响应拦截器</em>  &gt;&gt; <em>最终结果</em>。</p>
-<p>这是一个自定义转换器的<a href="https://github.com/wendux/dio/blob/flutter/example/Transformer.dart" target="_blank" rel="noopener">示例</a>.</p>
-<h2 id="设置Http代理"><a href="#设置Http代理" class="headerlink" title="设置Http代理"></a>设置Http代理</h2><p>Dio 是使用 HttpClient发起的http请求，所以你可以通过配置 <code>httpClient</code>来支持代理，示例如下：</p>
-<pre><code class="dart">  dio.onHttpClientCreate = (HttpClient client) {
-    client.findProxy = (uri) {
-      //proxy all request to localhost:8888
-      return &quot;PROXY localhost:8888&quot;;
-    };
-    // 你也可以自己创建一个新的HttpClient实例返回。
-    // return new HttpClient(SecurityContext);
-  };</code></pre>
-<p>完整的示例请查看<a href="https://github.com/wendux/dio/tree/flutter/example/proxy.dart" target="_blank" rel="noopener">这里</a>.</p>
-<h2 id="Https证书校验"><a href="#Https证书校验" class="headerlink" title="Https证书校验"></a>Https证书校验</h2><p>有两种方法可以校验https证书，假设我们的后台服务使用的是自签名证书，证书格式是PEM格式，我们将证书的内容保存在本地字符串中，那么我们的校验逻辑如下：</p>
-<pre><code class="dart">  String PEM=&quot;XXXXX&quot;; //证书内容
-  dio.onHttpClientCreate = (HttpClient client) {
-    client.badCertificateCallback=(X509Certificate cert, String host, int port){
-      if(cert.pem==PEM){ // 证书一致，则放行
-        return true; 
-      }
-      return false;
-    };
-  };</code></pre>
-<p><code>X509Certificate</code>是证书的标准格式，包含了证书除私钥外所有信息，读者可以自行查阅文档。另外，上面的示例没有校验host，是因为只要服务器返回的证书内容和本地的保存一致就已经能证明是我们的服务器了（而不是中间人），host验证通常是为了防止证书和域名不匹配。</p>
-<p>对于自签名的证书，我们也可以将其添加到本地证书信任链中，这样证书验证时就会自动通过，而不会再走到<code>badCertificateCallback</code>回调中：</p>
-<pre><code class="dart">  dio.onHttpClientCreate = (HttpClient client) {
-    SecurityContext sc = new SecurityContext();
-    //file为证书路径
-    sc.setTrustedCertificates(file);
-    HttpClient httpClient = new HttpClient(context: sc);
-    return httpClient;
-  };</code></pre>
-<p>注意，通过<code>setTrustedCertificates()</code>设置的证书格式必须为PEM或PKCS12，如果证书格式为PKCS12，则需将证书密码传入，这样则会在代码中暴露证书密码，所以客户端证书校验不建议使用PKCS12格式的证书。</p>
-<h2 id="请求取消"><a href="#请求取消" class="headerlink" title="请求取消"></a>请求取消</h2><p>你可以通过 <em>cancel token</em> 来取消发起的请求：</p>
-<pre><code class="dart">CancelToken token = new CancelToken();
-dio.get(url, cancelToken: token)
-    .catchError((DioError err){
-        if (CancelToken.isCancel(err)) {
-            print(&#39;Request canceled! &#39;+ err.message)
-        }else{
-            // handle error.
-        }
-    });
-// cancel the requests with &quot;cancelled&quot; message.
-token.cancel(&quot;cancelled&quot;);</code></pre>
-<blockquote>
-<p>注意: 同一个cancel token 可以用于多个请求，当一个cancel token取消时，所有使用该cancel token的请求都会被取消。</p>
-</blockquote>
-<p>完整的示例请参考<a href="https://github.com/flutterchina/dio/blob/flutter/example/cancelRequest.dart" target="_blank" rel="noopener">取消示例</a>.</p>
-<h2 id="Cookie管理"><a href="#Cookie管理" class="headerlink" title="Cookie管理"></a>Cookie管理</h2><p>你可以通过 <code>cookieJar</code> 来自动管理请求/响应cookie.</p>
-<blockquote>
-<p> dio cookie 管理 API 是基于开源库 <a href="https://github.com/flutterchina/cookie_jar" target="_blank" rel="noopener">cookie_jar</a>.</p>
-</blockquote>
-<p>你可以创建一个<code>CookieJar</code> 或 <code>PersistCookieJar</code> 来帮您自动管理cookie,  dio 默认使用  <code>CookieJar</code> , 它会将cookie保存在内存中。 如果您想对cookie进行持久化,  请使用 <code>PersistCookieJar</code> ,  示例代码如下:</p>
-<pre><code class="dart">var dio = new Dio();
-dio.cookieJar = new PersistCookieJar(&quot;./cookies&quot;);</code></pre>
-<p><code>PersistCookieJar</code> 实现了RFC中标准的cookie策略.  <code>PersistCookieJar</code> 会将cookie保存在文件中，所以 cookies 会一直存在除非显式调用 <code>delete</code> 删除.</p>
-<p>更多关于 <a href="https://github.com/flutterchina/" target="_blank" rel="noopener">cookie_jar</a>  请参考 : <a href="https://github.com/flutterchina/cookie_jar" target="_blank" rel="noopener">https://github.com/flutterchina/cookie_jar</a> .</p>
-<h2 id="Copyright-amp-License"><a href="#Copyright-amp-License" class="headerlink" title="Copyright &amp; License"></a>Copyright &amp; License</h2><p>此开源项目为Flutter中文网(<a href="https://flutterchina.club" target="_blank" rel="noopener">https://flutterchina.club</a>) 授权 ，license 是 MIT.   如果您喜欢，欢迎star.</p>
-<p><strong>Flutter中文网开源项目计划</strong></p>
-<p>开发一系列Flutter SDK之外常用(实用)的Package、插件，丰富Flutter第三方库，为Flutter生态贡献来自中国开发者的力量。所有项目将发布在 <a href="https://github.com/flutterchina/" target="_blank" rel="noopener">Github Flutter中文网 Organization</a> ，所有源码贡献者将加入到我们的Organization，成为成员. 目前社区已有几个开源项目开始公测，欢迎您加入开发或测试，详情请查看: <a href="https://flutterchina.club/opensource.html" target="_blank" rel="noopener">Flutter中文网开源项目</a>。 如果您想加入到“开源项目计划”， 请发邮件到<a href="mailto:824783146@qq.com" target="_blank" rel="noopener">824783146@qq.com</a>， 并附上自我介绍(个人基本信息+擅长/关注技术)。</p>
-<h2 id="Features-and-bugs"><a href="#Features-and-bugs" class="headerlink" title="Features and bugs"></a>Features and bugs</h2><p>Please file feature requests and bugs at the <a href="https://github.com/flutterchina/dio" target="_blank" rel="noopener">issue tracker</a>.</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-08T23:56:41.000Z">2019-09-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 845 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/09/Github的webhooks网站自动化部署/">Github的webhooks网站自动化部署</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Github的webhooks进行网站自动化部署"><a href="#Github的webhooks进行网站自动化部署" class="headerlink" title="Github的webhooks进行网站自动化部署"></a>Github的webhooks进行网站自动化部署</h1><p><img src="/images/2019/09/09/bb535690-d292-11e9-9a4a-2f1c09bb03b0.png" alt="image.png"></p>
-<p>相信很多码农都玩过了Git，如果对Git只是一知半解，可以移步LV写的 GIT常用操作总结，下面介绍到的一些关于 Git 的概念就不再赘述。</p>
-<p>为啥想写这篇文章？主要是因为部门服务器因为安全性原因不允许SCP上传文件进行应用部署，然后有一些应用是放在Github上的，然后部署应用的步骤就变成：</p>
-<p>1.git clone github项目 本地目录<br>2.配置一下应用的pm2.json并reload<br>3.Nginx配置一下反向代理并restart</p>
-<p>当然如果只是一次性部署上去就不再修改的话并没啥问题，但是要是项目持续性修改迭代的话，就比较麻烦了，我们就在不断的重复着上面的步骤。作为一个码农，怎么允许不断的重复同样的工作，于是Github webhooks闪亮登场。</p>
-<h1 id="关于Github-webhooks"><a href="#关于Github-webhooks" class="headerlink" title="关于Github webhooks"></a>关于Github webhooks</h1><ul>
-<li>必须是Github上面的项目</li>
-<li>订阅了确定的事件（包括push/pull等命令）</li>
-<li>自动触发</li>
-</ul>
-<p>刚好符合了这几个条件，那接下来就看看如何进行网站自动化部署，主要会从下面几点来讲解：</p>
-<ol>
-<li>自动化shell脚本</li>
-<li>服务端实现</li>
-<li>配置github webhooks</li>
-</ol>
-<h1 id="自动化脚本"><a href="#自动化脚本" class="headerlink" title="自动化脚本"></a>自动化脚本</h1><p><code>auto_build.sh</code></p>
-<pre><code class="shell">#! /bin/bash
-SITE_PATH=&#39;/root/nginx/www&#39;
-cd $SITE_PATH
-git reset --hard origin/master
-git clean -f
-git pull
-git checkout master</code></pre>
-<p>Note: 在执行上面shell脚本之前我们必须第一次手动git clone项目进去</p>
-<h1 id="服务端实现"><a href="#服务端实现" class="headerlink" title="服务端实现"></a>服务端实现</h1><p>Github webhooks需要跟我们的服务器进行通信，确保是可以推送到我们的服务器，所以会发送一个带有X-Hub-Signature的POST请求，为了方便我们直接用第三方的库github-webhook-handler来接收参数并且做监听事件的处理等工作。</p>
-<pre><code class="shell">npm i github-webhook-handler -S</code></pre>
-<p><code>index.js</code></p>
-<pre><code class="js">var http = require(&#39;http&#39;);
-var spawn = require(&#39;child_process&#39;).spawn;
-var createHandler = require(&#39;github-webhook-handler&#39;);
-
-// 下面填写的myscrect跟github webhooks配置一样，下一步会说；path是我们访问的路径
-var handler = createHandler({ path: &#39;/auto_build&#39;, secret: &#39;&#39; });
-
-http.createServer(function (req, res) {
-  handler(req, res, function (err) {
-    res.statusCode = 404;
-    res.end(&#39;no such location&#39;);
-  })
-}).listen(6666);
-
-handler.on(&#39;error&#39;, function (err) {
-  console.error(&#39;Error:&#39;, err.message)
-});
-
-// 监听到push事件的时候执行我们的自动化脚本
-handler.on(&#39;push&#39;, function (event) {
-  console.log(&#39;Received a push event for %s to %s&#39;,
-    event.payload.repository.name,
-    event.payload.ref);
-
-  runCommand(&#39;sh&#39;, [&#39;auto_build.sh&#39;], function( txt ){
-    console.log(txt);
-  });
-});
-
-function runCommand( cmd, args, callback ){
-    var child = spawn( cmd, args );
-    var response = &#39;&#39;;
-    child.stdout.on(&#39;data&#39;, function( buffer ){ resp += buffer.toString(); });
-    child.stdout.on(&#39;end&#39;, function(){ callback( resp ) });
-}
-
-// 由于我们不需要监听issues，所以下面代码注释掉
-//  handler.on(&#39;issues&#39;, function (event) {
-//    console.log(&#39;Received an issue event for %s action=%s: #%d %s&#39;,
-//      event.payload.repository.name,
-//      event.payload.action,
-//      event.payload.issue.number,
-//      event.payload.issue.title)
-});</code></pre>
-<h1 id="配置github-webhooks"><a href="#配置github-webhooks" class="headerlink" title="配置github webhooks"></a>配置github webhooks</h1><p><img src="/images/2019/09/09/3f507120-d294-11e9-9a4a-2f1c09bb03b0.png" alt="image.png"></p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>上面就是利用Github webhooks进行网站自动化部署的全部内容了，不难发现其实这项技术还是有局限性的，那就是依赖于github，一般我们选择的都是免费github账号，所有项目都对外，一些敏感项目是不适合放置上去的。</p>
+            <h1 id="网络安全从业者书单推荐"><a href="#网络安全从业者书单推荐" class="headerlink" title="网络安全从业者书单推荐"></a>网络安全从业者书单推荐</h1><h2 id="一、计算机及系统原理"><a href="#一、计算机及系统原理" class="headerlink" title="一、计算机及系统原理"></a>一、计算机及系统原理</h2><p>《编码：隐匿在计算机软硬件背后的语言》</p>
+<p>作者：（美国）Charles Petzold  </p>
+<p>《深入理解计算机系统》</p>
+<p>作者：（美国）Randal E. Bryant</p>
+<p>《深入解析windows操作系统》</p>
+<p>作者：（美国）Mark E .Russinovich ，David A.Solomon</p>
+<p>《Linux内核设计与实现》</p>
+<p>作者：（美国）Robert Love</p>
+<p>《深入理解android内核设计思想》</p>
+<p>作者：林学森</p>
+<p>《Android系统源代码情景分析》</p>
+<p>作者：罗升阳</p>
+<p>《深入解析Mac OS X &amp; iOS操作系统》</p>
+<p>作者：（美国）Jonathan Levin</p>
+<p>《深入理解LINUX内核》</p>
+<p>作者：（美国）Daniel P.Bovet</p>
+<p>《代码揭秘：从C/C++的角度探秘计算机系统》</p>
+<p>作者：左飞</p>
+<p>《Android Dalvik虚拟机结构及机制剖析》（共2卷）</p>
+<p>作者：吴艳霞，张国印</p>
+<p>《最强Android书：架构大剖析》</p>
+<p>作者：（美国）Jonathan Levin</p>
+<h2 id="二、编程开发"><a href="#二、编程开发" class="headerlink" title="二、编程开发"></a>二、编程开发</h2><p>1、系统平台</p>
+<p>（1）Windows</p>
+<p>《Windows程序设计》</p>
+<p>作者：（美国）Charles Petzold </p>
+<p>《Windows核心编程》</p>
+<p>作者：（美国）Jeffrey Richter</p>
+<p>《Windows环境下32位汇编语言程序设计》</p>
+<p>作者：罗云彬</p>
+<p>《Windows驱动开发技术详解》</p>
+<p>作者：张帆，史彩成</p>
+<p>（2）Linux / Unix</p>
+<p>《UNIX环境高级编程》</p>
+<p>作者：（美国）W.Richard Stevens</p>
+<p>《Linux程序设计》</p>
+<p>作者：（美国）Nell Matthew，Richard Stones</p>
+<p>《鸟哥的Linux私房菜》</p>
+<p>作者：鸟哥（蔡德明）</p>
+<p>《Linux设备驱动程序》</p>
+<p>作者：（美国）Jonahan Corbet</p>
+<p>（3）Mac OS X / iOS</p>
+<p>《iOS编程》</p>
+<p>作者：（美国）Joe Conway，Aaron Hillegass</p>
+<p>《OS X与iOS内核编程》</p>
+<p>作者：（澳大利亚）Ole Henry Halvorsen，Douglas Clarke</p>
+<p>（4）Android</p>
+<p>《第一行代码 Android》</p>
+<p>作者：郭霖</p>
+<p>《Android编程权威指南》</p>
+<p>作者：（美国）Bill Phillips，Brian Hardy</p>
+<p>2、编程语言</p>
+<p>（1）C</p>
+<p>《C程序设计语言》</p>
+<p>作者：（美国）Brian W. Kernighan，Dennis M. Ritchie </p>
+<p>《C Primer Plus》</p>
+<p>作者：（美国）Stephen Prata</p>
+<p>《C和指针》</p>
+<p>作者：（美国）Kenneth A．Reek</p>
+<p>《C陷阱与缺陷》</p>
+<p>作者：（美国）Andrew Koenig</p>
+<p>《C专家编程》</p>
+<p>作者：（美国）Perter VanDer Linden</p>
+<p>（2）C++</p>
+<p>《C++ Primer Plus》</p>
+<p>作者：（美国）Stephen Prata</p>
+<p>《C++ Primer》</p>
+<p>作者：（美国）Stanley B. Lippman，Josée LaJoie，Barbara E. Moo</p>
+<p>（3）ASM</p>
+<p>《Intel 汇编语言程序设计》</p>
+<p>作者：（美国）Kip R.Irvine</p>
+<p>《Intel 开发手册》</p>
+<p>（4）JAVA</p>
+<p>《JAVA核心技术》</p>
+<p>作者：（美国）Cay S. Horstmann</p>
+<p>《Java编程思想》</p>
+<p>作者：（美国）Bruce Eckel</p>
+<p>（5）JavaScript</p>
+<p>《JavaScript DOM编程艺术》</p>
+<p>作者：（英国）Jeremy Keith，（加拿大）Jeffrey Sambells</p>
+<p>《JavaScript高级程序设计》</p>
+<p>作者：（美国）Nicholas C.Zakas</p>
+<p>（6）Python</p>
+<p>《Python核心编程》</p>
+<p>作者：（美国）Wesley Chun</p>
+<p>（7）Shell</p>
+<p>《Linux Shell脚本攻略》</p>
+<p>作者：（印度）Sarath Lakshman</p>
+<p>3、调试技术</p>
+<p>《软件调试》</p>
+<p>作者：张银奎</p>
+<p>《Debug Hacks》</p>
+<p>作者：（日本）吉冈弘隆，大和一洋，大岩尚宏，安部东洋，吉田俊辅</p>
+<p>《格蠹汇编：软件调试案例集锦》</p>
+<p>作者：张银奎</p>
+<p>4、数据结构与算法</p>
+<p>《数据结构与算法分析：C语言描述》</p>
+<p>作者：（美国）Mark Allen Weiss</p>
+<p>《算法导论》</p>
+<p>作者：（美国）Thomas H.Cormen，Charles E.Leiserson，Ronald L.Rivest</p>
+<p>5、编译原理</p>
+<p>《编译系统透视：图解编译原理》</p>
+<p>作者：新设计团队</p>
+<p>《编译原理》</p>
+<p>作者：（美国）Alfred V.Aho，Monica S.Lam，Ravi Sethi，Jeffrey D.Ullman</p>
+<p>6、其他</p>
+<p>《编程高手箴言》</p>
+<p>作者：梁肇新</p>
+<p>《代码整洁之道》</p>
+<p>作者：（美国）Robert C.Martin</p>
+<p>《代码大全》</p>
+<p>作者：（美国）Steve McConnell</p>
+<h2 id="三、网络技术"><a href="#三、网络技术" class="headerlink" title="三、网络技术"></a>三、网络技术</h2><p>《TCP/IP详解 卷1：协议》</p>
+<p>作者：（美国）Kevin R. Fall，W.Richard Stevens</p>
+<p>《Wireshark数据包分析实战》</p>
+<p>作者：（美国）Chris Sanders</p>
+<h2 id="四、安全技术"><a href="#四、安全技术" class="headerlink" title="四、安全技术"></a>四、安全技术</h2><p>1、安全开发</p>
+<p>《天书夜读：从汇编语言到Windows内核编程》</p>
+<p>作者：谭文，邵坚磊</p>
+<p>《Rootkit：系统灰色地带的潜伏者》</p>
+<p>作者：（美国）Bill Blunden</p>
+<p>《Rootkits——Windows内核的安全防护》</p>
+<p>作者：（美国）Greg Hoglund，James Butler</p>
+<p>《BSD ROOTKIT 设计–内核黑客指引书》</p>
+<p>作者：（美国）Joseph Kong</p>
+<p>《寒江独钓：Windows内核安全编程》</p>
+<p>作者：谭文，杨潇，邵坚磊</p>
+<p>2、逆向工程</p>
+<p>《加密与解密》</p>
+<p>作者：段钢</p>
+<p>《恶意软件分析诀窍与工具箱——对抗“流氓”软件的技术与利器》</p>
+<p>作者：（美国）Michael.Hale.Ligh，Steven Adair</p>
+<p>《C++反汇编与逆向分析技术揭秘》</p>
+<p>作者：钱林松，赵海旭</p>
+<p>《IDA Pro权威指南》</p>
+<p>作者：（美国）Chris Eagle</p>
+<p>《逆向工程权威指南》</p>
+<p>作者：（乌克兰）Dennis Yurichev</p>
+<p>《Android软件安全与逆向分析》</p>
+<p>作者：丰生强</p>
+<p>《macOS软件安全与逆向分析》</p>
+<p>作者：丰生强、 邢俊杰</p>
+<p>《iOS应用逆向工程（第2版）》</p>
+<p>作者：沙梓社，吴航</p>
+<p>3、Web安全</p>
+<p>《黑客攻防技术宝典：Web实战篇》</p>
+<p>作者：（美国）Dafydd Stuttard，Marcus Pinto</p>
+<p>《白帽子讲Web安全》</p>
+<p>作者：吴翰清</p>
+<p>《Web安全测试》</p>
+<p>作者：（美国）Paco Hope，Ben Waltller</p>
+<p>《Web前端黑客技术揭秘》</p>
+<p>作者：钟晨鸣，徐少培</p>
+<p>《精通脚本黑客》</p>
+<p>作者：曾云好</p>
+<p>4、软件 / 系统安全</p>
+<p>《0day安全：软件漏洞分析技术》</p>
+<p>作者：王清</p>
+<p>《漏洞战争：软件漏洞分析精要》</p>
+<p>作者：林桠泉</p>
+<p>《捉虫日记》</p>
+<p>作者：（德国）Tobias Klein</p>
+<p>《内核漏洞的利用与防范》</p>
+<p>作者：（美国）Enrico Perla，Massimiliano Oldani</p>
+<p>《Fuzzing for Software Security Testing and Quality Assurance（第二版）》</p>
+<p>作者：（美国）Charlie Miller</p>
+<p>《iOS Hacker’s Handbook》</p>
+<p>作者：（美国）Charlie Miller</p>
+<p>《The Mac Hacker’S Handbook》</p>
+<p>作者：（美国）Charlie Miller</p>
+<p>《Android安全攻防权威指南》</p>
+<p>作者：（美国）Joshua J.Drake，（西班牙）Pau Oliva Fora，（美国）Collin Mulliner</p>
+<p>《The Art of Software Security Assessment: Identifying and Preventing Software Vulnerabilities》</p>
+<p>作者：（美国）Mark Dowd</p>
+<p>《Android安全攻防实战》</p>
+<p>作者：（美国）Keith Makan，Scott Alexander-Bown</p>
+<p>《模糊测试：强制性安全漏洞发掘》</p>
+<p>作者：（美国）Michael Sutton</p>
+<p>《Exploit 编写系列教程》</p>
+<p>作者：（美国）Corelan Team</p>
+<p>《MacOS and iOS Internals, Volume III: Security &amp; Insecurity》</p>
+<p>作者：（美国）Jonathan Levin</p>
+<p>《灰帽黑客（第4版）：正义黑客的道德规范、渗透测试、攻击方法和漏洞分析技术》</p>
+<p>作者：（美国）Allen Harper，Shon Harris</p>
+<p>《威胁建模：设计和交付更安全的软件》</p>
+<p>作者：（美国）Adam Shostack</p>
+<p>5、无线电安全</p>
+<p>《无线电安全攻防大揭秘》</p>
+<p>作者：杨卿，黄琳</p>
+<p>6、硬件安全</p>
+<p>《硬件安全攻防大揭秘》</p>
+<p>作者：简云定，杨卿</p>
+<p>7、汽车安全</p>
+<p>《智能汽车安全攻防大揭秘》</p>
+<p>作者：李均，杨卿，曾颖涛，郑玉伟</p>
+<p>《汽车黑客大曝光》</p>
+<p>作者：（美国）Craig Smith</p>
+<h2 id="五、软技能"><a href="#五、软技能" class="headerlink" title="五、软技能"></a>五、软技能</h2><p>《软技能：代码之外的生存指南》</p>
+<p>作者：（美国）John Sonmez</p>
+<p>《程序员健康指南》</p>
+<p>作者：（美国）Joe Kutner</p>
+<p>《影响力》</p>
+<p>作者：（美国）Robert B.Cialdini</p>
+<p>《思考，快与慢》</p>
+<p>作者：（美国）Daniel Kahneman</p>
+<p>《写给大家看的设计书》</p>
+<p>作者：（美国）Robin Williams</p>
+<p>《听故事，学PPT设计》</p>
+<p>作者：杨雪</p>
+<p>《横向领导力》</p>
+<p>作者：（美国）Roger Fisher，Alan Sharp</p>
+<p>《职业情商》</p>
+<p>作者：张新越</p>
+<p>《程序员的成长课》</p>
+<p>作者：安晓辉，周鹏</p>
+<p>《高效演讲：斯坦福最受欢迎的沟通课》</p>
+<p>作者：（美国）Peter Meyers，Shann Nix</p>
+<p>《程序员的英语》</p>
+<p>作者：（韩国）朴栽浒，李海永</p>
+<p>《少有人走的路》</p>
+<p>作者：（美国）斯科特·派克</p>
+<p>《异类：不一样的成功启示录》</p>
+<p>作者：（加拿大）马尔科姆·格拉德威尔</p>
 
         </div>
         
@@ -1370,9 +839,9 @@ function runCommand( cmd, args, callback ){
             
             <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/9/">9</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
             
         </ul>
     </nav>
@@ -1422,7 +891,7 @@ function runCommand( cmd, args, callback ){
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -1434,7 +903,7 @@ function runCommand( cmd, args, callback ){
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -1446,7 +915,7 @@ function runCommand( cmd, args, callback ){
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -1547,6 +1016,14 @@ function runCommand( cmd, args, callback ){
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -1605,6 +1082,25 @@ function runCommand( cmd, args, callback ){
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1626,7 +1122,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1645,7 +1141,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1664,7 +1160,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1672,25 +1168,6 @@ function runCommand( cmd, args, callback ){
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1715,7 +1192,7 @@ function runCommand( cmd, args, callback ){
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2337,6 +1814,13 @@ function runCommand( cmd, args, callback ){
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -2609,6 +2093,25 @@ function runCommand( cmd, args, callback ){
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -2630,7 +2133,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -2649,7 +2152,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -2668,7 +2171,7 @@ function runCommand( cmd, args, callback ){
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -2676,25 +2179,6 @@ function runCommand( cmd, args, callback ){
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2719,7 +2203,7 @@ function runCommand( cmd, args, callback ){
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -3341,6 +2825,13 @@ function runCommand( cmd, args, callback ){
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -205,31 +205,10 @@
 <li>不能使用任何在第一个范围条件右边的列作为条件；</li>
 </ul>
 <p>因此 B-Tree 的列顺序非常重要，上述使用规则都和列顺序有关。对于实际的应用，一般要根据具体的需求，创建不同列和不同列顺序的索引。假设有索引 Index(A,B,C):</p>
-<pre><code># 使用索引
-A&gt;5 AND A&lt;10 - 最左前缀匹配
-A=5 AND B&gt;6 - 最左前缀匹配
-A=5 AND B=6 AND C=7 - 全列匹配
-A=5 AND B IN (2,3) AND C&gt;5 - 最左前缀匹配，填坑
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 使用索引</span><br><span class="line">A&gt;5 AND A&lt;10 - 最左前缀匹配</span><br><span class="line">A=5 AND B&gt;6 - 最左前缀匹配</span><br><span class="line">A=5 AND B=6 AND C=7 - 全列匹配</span><br><span class="line">A=5 AND B IN (2,3) AND C&gt;5 - 最左前缀匹配，填坑</span><br><span class="line"></span><br><span class="line"># 不能使用索引</span><br><span class="line">B&gt;5 - 没有包含最左前缀</span><br><span class="line">B=6 AND C=7 - 没有包含最左前缀</span><br><span class="line"></span><br><span class="line"># 使用部分索引</span><br><span class="line">A&gt;5 AND B=2 - 使用索引 A 列</span><br><span class="line">A=5 AND B&gt;6 AND C=2 - 使用索引的 A 和 B 列</span><br></pre></td></tr></table></figure>
 
-# 不能使用索引
-B&gt;5 - 没有包含最左前缀
-B=6 AND C=7 - 没有包含最左前缀
-
-# 使用部分索引
-A&gt;5 AND B=2 - 使用索引 A 列
-A=5 AND B&gt;6 AND C=2 - 使用索引的 A 和 B 列</code></pre><p>复制代码使用索引对结果进行排序，需要索引的顺序和 ORDER BY 子句中的顺序一致，并且所有列的升降序一致(ASC/DESC)。如果查询连接了多个表，只有在 ORDER BY 的列引用的是第一个表才可以(需要按序 JOIN)。</p>
-<pre><code># 使用索引排序
-ORDER BY A - 最左前缀匹配
-WHERE A=5 ORDER BY B,C - 最左前缀匹配
-WHERE A=5 ORDER BY B DESC - 最左前缀匹配
-WHERE A&gt;5 ORDER BY A,B - 最左前缀匹配
-
-# 不能使用索引排序
-WHERE A=5 ORDER BY B DESC,C ASC - 升降序不一致
-WHERE A=5 ORDER BY B,D - D 不在索引中
-WHERE A=5 ORDER BY C - 没有包含最左前缀
-WHERE A&gt;5 ORDER BY B,C - 第一列是范围条件，无法使用 BC 排序
-WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序</code></pre>
+<p>复制代码使用索引对结果进行排序，需要索引的顺序和 ORDER BY 子句中的顺序一致，并且所有列的升降序一致(ASC/DESC)。如果查询连接了多个表，只有在 ORDER BY 的列引用的是第一个表才可以(需要按序 JOIN)。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 使用索引排序</span><br><span class="line">ORDER BY A - 最左前缀匹配</span><br><span class="line">WHERE A=5 ORDER BY B,C - 最左前缀匹配</span><br><span class="line">WHERE A=5 ORDER BY B DESC - 最左前缀匹配</span><br><span class="line">WHERE A&gt;5 ORDER BY A,B - 最左前缀匹配</span><br><span class="line"></span><br><span class="line"># 不能使用索引排序</span><br><span class="line">WHERE A=5 ORDER BY B DESC,C ASC - 升降序不一致</span><br><span class="line">WHERE A=5 ORDER BY B,D - D 不在索引中</span><br><span class="line">WHERE A=5 ORDER BY C - 没有包含最左前缀</span><br><span class="line">WHERE A&gt;5 ORDER BY B,C - 第一列是范围条件，无法使用 BC 排序</span><br><span class="line">WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -381,49 +360,29 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
 <p>这个链接有Windows版和源码版最新版下载地址，可以满足Windows、LInux、Mac OS系统使用。</p>
 <h2 id="2、Windows系统安装OpenSSL"><a href="#2、Windows系统安装OpenSSL" class="headerlink" title="2、Windows系统安装OpenSSL"></a>2、Windows系统安装OpenSSL</h2><p>到上面的链接下载OpenSSL Windows版本，注意32位和64位是不同的安装包，</p>
 <p>下载之后是exe文件，双击按照提示一步步安装就可以了。</p>
-<h2 id="3、-Linux系统安装OpenSSL"><a href="#3、-Linux系统安装OpenSSL" class="headerlink" title="3、 Linux系统安装OpenSSL"></a>3、 Linux系统安装OpenSSL</h2><h3 id="3-1-安装OpenSSL"><a href="#3-1-安装OpenSSL" class="headerlink" title="3.1 安装OpenSSL:"></a>3.1 安装OpenSSL:</h3><pre><code># tar -xzf openssl-1.0.2f.tar.gz
+<h2 id="3、-Linux系统安装OpenSSL"><a href="#3、-Linux系统安装OpenSSL" class="headerlink" title="3、 Linux系统安装OpenSSL"></a>3、 Linux系统安装OpenSSL</h2><h3 id="3-1-安装OpenSSL"><a href="#3-1-安装OpenSSL" class="headerlink" title="3.1 安装OpenSSL:"></a>3.1 安装OpenSSL:</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># tar -xzf openssl-1.0.2f.tar.gz</span><br><span class="line"></span><br><span class="line"># cd openssl-1.0.2f</span><br><span class="line"></span><br><span class="line"># mkdir /usr/local/openssl</span><br><span class="line"></span><br><span class="line"># ./config --prefix=/usr/local/openssl</span><br><span class="line"></span><br><span class="line"># make</span><br><span class="line"></span><br><span class="line"># make install</span><br></pre></td></tr></table></figure>
 
-# cd openssl-1.0.2f
+<p>这样就安装完成了，接下来一些辅助步骤。</p>
+<h3 id="3-2-创建软连接"><a href="#3-2-创建软连接" class="headerlink" title="3.2 创建软连接"></a>3.2 创建软连接</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># which openssl</span><br><span class="line"></span><br><span class="line">/usr/local/openssl/bin/openssl</span><br></pre></td></tr></table></figure>
 
-# mkdir /usr/local/openssl
+<p>为了使用方便，以及以后版本更新方便，可以创建软连接，如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br></pre></td></tr></table></figure>
 
-# ./config --prefix=/usr/local/openssl
+<h3 id="3-3-执行以下命令"><a href="#3-3-执行以下命令" class="headerlink" title="3.3 执行以下命令"></a>3.3 执行以下命令</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># cd /usr/local/openssl</span><br><span class="line"></span><br><span class="line"># ldd /usr/local/openssl/bin/openssl</span><br><span class="line"></span><br><span class="line">    linux-vdso.so.1 =&gt;  (0x00007ffc63975000)</span><br><span class="line"></span><br><span class="line">    libssl.so.1.1 =&gt; not found</span><br><span class="line"></span><br><span class="line">    libcrypto.so.1.1 =&gt; not found</span><br><span class="line"></span><br><span class="line">    libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f8d9da0f000)</span><br><span class="line"></span><br><span class="line">    libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f8d9d7f3000)</span><br><span class="line"></span><br><span class="line">    libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f8d9d431000)</span><br><span class="line"></span><br><span class="line">    /lib64/ld-linux-x86-64.so.2 (0x00007f8d9dc28000)</span><br></pre></td></tr></table></figure>
 
-# make
+<p>安装OK</p>
+<h3 id="3-4-查看版本"><a href="#3-4-查看版本" class="headerlink" title="3.4 查看版本"></a>3.4 查看版本</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># openssl version</span><br><span class="line"></span><br><span class="line">/usr/local/openssl/bin/openssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
 
-# make install</code></pre><p>这样就安装完成了，接下来一些辅助步骤。</p>
-<h3 id="3-2-创建软连接"><a href="#3-2-创建软连接" class="headerlink" title="3.2 创建软连接"></a>3.2 创建软连接</h3><pre><code># which openssl
+<p>找不到动态库libssl.so.1.1，小问题，执行如下命令：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vim /etc/ld.so.conf</span><br></pre></td></tr></table></figure>
 
-/usr/local/openssl/bin/openssl</code></pre><p>为了使用方便，以及以后版本更新方便，可以创建软连接，如下：</p>
-<pre><code># ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl</code></pre><h3 id="3-3-执行以下命令"><a href="#3-3-执行以下命令" class="headerlink" title="3.3 执行以下命令"></a>3.3 执行以下命令</h3><pre><code># cd /usr/local/openssl
+<p>在最后追加一行：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/openssl/lib</span><br></pre></td></tr></table></figure>
 
-# ldd /usr/local/openssl/bin/openssl
+<p>然后执行：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># ldconfig /etc/ld.so.conf</span><br><span class="line"></span><br><span class="line"># openssl version</span><br><span class="line"></span><br><span class="line">OpenSSL 1.1.0f  25 May 2017</span><br><span class="line"></span><br><span class="line">Done.</span><br></pre></td></tr></table></figure>
 
-    linux-vdso.so.1 =&gt;  (0x00007ffc63975000)
 
-    libssl.so.1.1 =&gt; not found
-
-    libcrypto.so.1.1 =&gt; not found
-
-    libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f8d9da0f000)
-
-    libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f8d9d7f3000)
-
-    libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f8d9d431000)
-
-    /lib64/ld-linux-x86-64.so.2 (0x00007f8d9dc28000)</code></pre><p>安装OK</p>
-<h3 id="3-4-查看版本"><a href="#3-4-查看版本" class="headerlink" title="3.4 查看版本"></a>3.4 查看版本</h3><pre><code># openssl version
-
-/usr/local/openssl/bin/openssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory</code></pre><p>找不到动态库libssl.so.1.1，小问题，执行如下命令：</p>
-<pre><code># vim /etc/ld.so.conf</code></pre><p>在最后追加一行：</p>
-<pre><code>/usr/local/openssl/lib</code></pre><p>然后执行：</p>
-<pre><code># ldconfig /etc/ld.so.conf
-
-# openssl version
-
-OpenSSL 1.1.0f  25 May 2017
-
-Done.</code></pre>
         </div>
         
         
@@ -979,18 +938,21 @@ Done.</code></pre>
 </ul>
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><p>Normally <code>lazydocker</code> formula can be found in the Homebrew core but we suggest you to tap our formula to get frequently updated one. It works with Linux, too.</p>
 <p><strong>Tap</strong>:</p>
-<pre><code class="sh">brew install jesseduffield/lazydocker/lazydocker</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jesseduffield/lazydocker/lazydocker</span><br></pre></td></tr></table></figure>
+
 <p><strong>Core</strong>:</p>
-<pre><code class="sh">brew install lazydocker</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazydocker</span><br></pre></td></tr></table></figure>
+
 <h3 id="Binary-Release-Linux-OSX"><a href="#Binary-Release-Linux-OSX" class="headerlink" title="Binary Release (Linux/OSX)"></a>Binary Release (Linux/OSX)</h3><p>You can manually download a binary release from <a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener">the release page</a>.</p>
 <p>Automated install/update, don’t forget to always verify what you’re piping into bash:</p>
-<pre><code class="sh">curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash</span><br></pre></td></tr></table></figure>
+
 <h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><p>Required Go version &gt;= <strong>1.8</strong></p>
-<pre><code class="sh">go get github.com/jesseduffield/lazydocker</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/jesseduffield/lazydocker</span><br></pre></td></tr></table></figure>
+
 <h3 id="Arch-Linux-AUR"><a href="#Arch-Linux-AUR" class="headerlink" title="Arch Linux AUR"></a>Arch Linux AUR</h3><p>You can install lazydocker using your AUR package manager of choice or by running:</p>
-<pre><code class="sh">git clone https://aur.archlinux.org/lazydocker.git ~/lazydocker
-cd ~/lazydocker
-makepkg --install</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/lazydocker.git ~/lazydocker</span><br><span class="line"><span class="hljs-built_in">cd</span> ~/lazydocker</span><br><span class="line">makepkg --install</span><br></pre></td></tr></table></figure>
+
 <p>A development version of the AUR package is also <a href="https://aur.archlinux.org/lazydocker-git.git" target="_blank" rel="noopener">available</a></p>
 <h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/pulls/lazyteam/lazydocker.svg" alt="Docker Pulls"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/stars/lazyteam/lazydocker.svg" alt="Docker Stars"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/cloud/automated/lazyteam/lazydocker.svg" alt="Docker Automated"></a></p>
 <ol>
@@ -998,55 +960,41 @@ makepkg --install</code></pre>
 
 <ul>
 <li><p>If you have a ARM 32 bit v6 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm32v6/golang \
-  --build-arg GOARCH=arm \
-  --build-arg GOARM=6 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v6/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=6 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>If you have a ARM 32 bit v7 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm32v7/golang \
-  --build-arg GOARCH=arm \
-  --build-arg GOARM=7 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v7/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=7 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>If you have a ARM 64 bit v8 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm64v8/golang \
-  --build-arg GOARCH=arm64 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm64v8/golang \</span><br><span class="line">--build-arg GOARCH=arm64 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+
 </li></ul></p></details>
 </li>
 
 
 <li><p>Run the container</p>
-<pre><code class="sh"> docker run --rm -it -v \
- /var/run/docker.sock:/var/run/docker.sock \
- -v /yourpath:/.config/jesseduffield/lazydocker \
- lazyteam/lazydocker</code></pre>
+ <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v \</span><br><span class="line">/var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">-v /yourpath:/.config/jesseduffield/lazydocker \</span><br><span class="line">lazyteam/lazydocker</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>Don’t forget to change <code>/yourpath</code> to an actual path you created to store lazydocker’s config</p>
 </li>
 <li><p>You can also use this <a href="https://github.com/jesseduffield/lazydocker/blob/master/docker-compose.yml" target="_blank" rel="noopener">docker-compose.yml</a></p>
 </li>
 <li><p>You might want to create an alias, for example:</p>
-<pre><code class="sh">  echo &quot;alias lzd=&#39;docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker&#39;&quot; &gt;&gt; ~/.zshrc</code></pre>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'"</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 </li>
 </ol>
 <p>For development, you can build the image using:</p>
-<pre><code class="sh">git clone https://github.com/jesseduffield/lazydocker.git
-cd lazydocker
-docker build -t lazyteam/lazydocker \
-    --build-arg BUILD_DATE=`date -u +&quot;%Y-%m-%dT%H:%M:%SZ&quot;` \
-    --build-arg VCS_REF=`git rev-parse --short HEAD` \
-    --build-arg VERSION=`git describe --abbrev=0 --tag` \
-    .</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://github.com/jesseduffield/lazydocker.git</span><br><span class="line"><span class="hljs-built_in">cd</span> lazydocker</span><br><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">    --build-arg BUILD_DATE=`date -u +<span class="hljs-string">"%Y-%m-%dT%H:%M:%SZ"</span>` \</span><br><span class="line">    --build-arg VCS_REF=`git rev-parse --short HEAD` \</span><br><span class="line">    --build-arg VERSION=`git describe --abbrev=0 --tag` \</span><br><span class="line">    .</span><br></pre></td></tr></table></figure>
+
 <p>If you encounter a compatibility issue with Docker bundled binary, try rebuilding<br>the image with the build argument <code>--build-arg DOCKER_VERSION=&quot;v$(docker -v | cut -d&quot; &quot; -f3 | rev | cut -c 2- | rev)&quot;</code><br>so that the bundled docker binary matches your host docker binary version.</p>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Call <code>lazydocker</code> in your terminal. I personally use this a lot so I’ve made an alias for it like so:</p>
-<pre><code>echo &quot;alias lzd=&#39;lazydocker&#39;&quot; &gt;&gt; ~/.zshrc</code></pre><p>(you can substitute .zshrc for whatever rc file you’re using)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;alias lzd=&apos;lazydocker&apos;&quot; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>(you can substitute .zshrc for whatever rc file you’re using)</p>
 <ul>
 <li>Basic video tutorial <a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">here</a>.</li>
 <li>List of keybindings<br><a href="/docs/keybindings">here</a>.</li>
@@ -1372,7 +1320,8 @@ docker build -t lazyteam/lazydocker \
             <h1 id="【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘"><a href="#【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘" class="headerlink" title="【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘"></a>【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘</h1><blockquote>
 <p>先介绍Windows.edb是什么东东，很奇怪的后缀名哦。其实它就是Windows10为加快搜索速度而建立的索引文件，所以还是很有用的，但是看看它的体积，你就会觉得也太占系统盘的空间了。Windows.edb文件所在的路径为：</p>
 </blockquote>
-<pre><code class="bash">C:\ProgramData\Microsoft\Search\Data\Applications\Windows</code></pre>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\ProgramData\Microsoft\Search\Data\Applications\Windows</span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/2019/10/25/30949570-f702-11e9-84fc-111e5c1675c4.png" alt="image.png"></p>
 <blockquote>
 <p>虽然我们可以删除该文件，但正像前面说过的，它还是比较有用的（并且删除后，再次使用搜索功能后，它还会生成的），所以我们最好保留着它，但可以移动一下Windows.edb文件的位置，把它移动到非系统盘。方法如下：</p>
@@ -1467,7 +1416,7 @@ docker build -t lazyteam/lazydocker \
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -1479,7 +1428,7 @@ docker build -t lazyteam/lazydocker \
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -1491,7 +1440,7 @@ docker build -t lazyteam/lazydocker \
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -1592,6 +1541,14 @@ docker build -t lazyteam/lazydocker \
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -1650,6 +1607,25 @@ docker build -t lazyteam/lazydocker \
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1671,7 +1647,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1690,7 +1666,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1709,7 +1685,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1717,25 +1693,6 @@ docker build -t lazyteam/lazydocker \
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1760,7 +1717,7 @@ docker build -t lazyteam/lazydocker \
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2382,6 +2339,13 @@ docker build -t lazyteam/lazydocker \
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -2654,6 +2618,25 @@ docker build -t lazyteam/lazydocker \
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -2675,7 +2658,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -2694,7 +2677,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -2713,7 +2696,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -2721,25 +2704,6 @@ docker build -t lazyteam/lazydocker \
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2764,7 +2728,7 @@ docker build -t lazyteam/lazydocker \
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -3386,6 +3350,13 @@ docker build -t lazyteam/lazydocker \
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

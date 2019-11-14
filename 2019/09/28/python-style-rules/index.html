@@ -183,14 +183,14 @@
 <p>不要使用反斜杠连接行.</p>
 <p>Python会将 <code>圆括号, 中括号和花括号中的行隐式的连接起来 &lt;http://docs.python.org/2/reference/lexical_analysis.html#implicit-line-joining&gt;</code>_ , 你可以利用这个特点. 如果需要, 你可以在表达式外围增加一对额外的圆括号. </p>
 <p>.. code-block:: python</p>
-<pre><code>Yes: foo_bar(self, width, height, color=&#39;black&#39;, design=None, x=&#39;foo&#39;,
+<pre><code>Yes: foo_bar(self, width, height, color=&apos;black&apos;, design=None, x=&apos;foo&apos;,
              emphasis=None, highlight=0)
 
      if (width == 0 and height == 0 and
-         color == &#39;red&#39; and emphasis == &#39;strong&#39;):    </code></pre><p>如果一个文本字符串在一行放不下, 可以使用圆括号来实现隐式行连接:</p>
+         color == &apos;red&apos; and emphasis == &apos;strong&apos;):    </code></pre><p>如果一个文本字符串在一行放不下, 可以使用圆括号来实现隐式行连接:</p>
 <p>.. code-block:: python</p>
-<pre><code>x = (&#39;This will build a very long long &#39;
-     &#39;long long long long long long string&#39;)</code></pre><p>在注释中，如果必要，将长的URL放在一行上。</p>
+<pre><code>x = (&apos;This will build a very long long &apos;
+     &apos;long long long long long long string&apos;)</code></pre><p>在注释中，如果必要，将长的URL放在一行上。</p>
 <p>.. code-block:: python</p>
 <pre><code>Yes:  # See details at
       # http://www.example.com/us/developer/documentation/api/content/v2.0/csv_file_name_extension_full_specification.html</code></pre><p>.. code-block:: python</p>
@@ -219,24 +219,24 @@
 <p>绝对不要用tab, 也不要tab和空格混用. 对于行连接的情况, 你应该要么垂直对齐换行的元素(见 :ref:<code>行长度 &lt;line_length&gt;</code> 部分的示例), 或者使用4空格的悬挂式缩进(这时第一行不应该有参数):</p>
 <p>.. code-block:: python</p>
 <p>   Yes:   # Aligned with opening delimiter<br>          foo = long_function_name(var_one, var_two,<br>                                   var_three, var_four)</p>
-<pre><code>      # Aligned with opening delimiter in a dictionary
-      foo = {
-          long_dictionary_key: value1 +
-                               value2,
-          ...
-      }
+<pre><code># Aligned with opening delimiter in a dictionary
+foo = {
+    long_dictionary_key: value1 +
+                         value2,
+    ...
+}
 
-      # 4-space hanging indent; nothing on first line
-      foo = long_function_name(
-          var_one, var_two, var_three,
-          var_four)
+# 4-space hanging indent; nothing on first line
+foo = long_function_name(
+    var_one, var_two, var_three,
+    var_four)
 
-      # 4-space hanging indent in a dictionary
-      foo = {
-          long_dictionary_key:
-              long_dictionary_value,
-          ...
-      }</code></pre><p>.. code-block:: python</p>
+# 4-space hanging indent in a dictionary
+foo = {
+    long_dictionary_key:
+        long_dictionary_value,
+    ...
+}</code></pre><p>.. code-block:: python</p>
 <pre><code>No:    # Stuff on first line forbidden
       foo = long_function_name(var_one, var_two,
           var_three, var_four)
@@ -268,8 +268,8 @@
 <p>.. code-block:: python   </p>
 <pre><code>Yes: spam(1)</code></pre><p>.. code-block:: python</p>
 <pre><code>no: spam (1)</code></pre><p>.. code-block:: python  </p>
-<pre><code>Yes: dict[&#39;key&#39;] = list[index]</code></pre><p>.. code-block:: python  </p>
-<pre><code>No:  dict [&#39;key&#39;] = list [index]       </code></pre><p>在二元操作符两边都加上一个空格, 比如赋值(=), 比较(==, &lt;, &gt;, !=, &lt;&gt;, &lt;=, &gt;=, in, not in, is, is not), 布尔(and, or, not).  至于算术操作符两边的空格该如何使用, 需要你自己好好判断. 不过两侧务必要保持一致. </p>
+<pre><code>Yes: dict[&apos;key&apos;] = list[index]</code></pre><p>.. code-block:: python  </p>
+<pre><code>No:  dict [&apos;key&apos;] = list [index]       </code></pre><p>在二元操作符两边都加上一个空格, 比如赋值(=), 比较(==, &lt;, &gt;, !=, &lt;&gt;, &lt;=, &gt;=, in, not in, is, is not), 布尔(and, or, not).  至于算术操作符两边的空格该如何使用, 需要你自己好好判断. 不过两侧务必要保持一致. </p>
 <p>.. code-block:: python</p>
 <pre><code>Yes: x == 1</code></pre><p>.. code-block:: python</p>
 <pre><code>No:  x&lt;1</code></pre><p>当’=’用于指示关键字参数或默认参数值时, 不要在其两侧使用空格. </p>
@@ -344,9 +344,9 @@ Raises:
             fetched. Each row is represented as a tuple of strings. For
             example:
 
-            {&#39;Serak&#39;: (&#39;Rigel VII&#39;, &#39;Preparer&#39;),
-             &#39;Zim&#39;: (&#39;Irk&#39;, &#39;Invader&#39;),
-             &#39;Lrrr&#39;: (&#39;Omicron Persei 8&#39;, &#39;Emperor&#39;)}
+            {&apos;Serak&apos;: (&apos;Rigel VII&apos;, &apos;Preparer&apos;),
+             &apos;Zim&apos;: (&apos;Irk&apos;, &apos;Invader&apos;),
+             &apos;Lrrr&apos;: (&apos;Omicron Persei 8&apos;, &apos;Emperor&apos;)}
 
             If a key from the keys argument is missing from the dictionary,
             then that row was not found in the table.
@@ -420,24 +420,24 @@ Raises:
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>.. tip::<br>    即使参数都是字符串, 使用%操作符或者格式化方法格式化字符串. 不过也不能一概而论, 你需要在+和%之间好好判定.</p>
 <p>.. code-block:: python</p>
 <pre><code>Yes: x = a + b
-     x = &#39;%s, %s!&#39; % (imperative, expletive)
-     x = &#39;{}, {}!&#39;.format(imperative, expletive)
-     x = &#39;name: %s; score: %d&#39; % (name, n)
-     x = &#39;name: {}; score: {}&#39;.format(name, n)</code></pre><p>.. code-block:: python</p>
-<pre><code>No: x = &#39;%s%s&#39; % (a, b)  # use + in this case
-    x = &#39;{}{}&#39;.format(a, b)  # use + in this case
-    x = imperative + &#39;, &#39; + expletive + &#39;!&#39;
-    x = &#39;name: &#39; + name + &#39;; score: &#39; + str(n)</code></pre><p>避免在循环中用+和+=操作符来累加字符串. 由于字符串是不可变的, 这样做会创建不必要的临时对象, 并且导致二次方而不是线性的运行时间. 作为替代方案, 你可以将每个子串加入列表, 然后在循环结束后用 <code>.join</code> 连接列表. (也可以将每个子串写入一个 <code>cStringIO.StringIO</code> 缓存中.)</p>
+     x = &apos;%s, %s!&apos; % (imperative, expletive)
+     x = &apos;{}, {}!&apos;.format(imperative, expletive)
+     x = &apos;name: %s; score: %d&apos; % (name, n)
+     x = &apos;name: {}; score: {}&apos;.format(name, n)</code></pre><p>.. code-block:: python</p>
+<pre><code>No: x = &apos;%s%s&apos; % (a, b)  # use + in this case
+    x = &apos;{}{}&apos;.format(a, b)  # use + in this case
+    x = imperative + &apos;, &apos; + expletive + &apos;!&apos;
+    x = &apos;name: &apos; + name + &apos;; score: &apos; + str(n)</code></pre><p>避免在循环中用+和+=操作符来累加字符串. 由于字符串是不可变的, 这样做会创建不必要的临时对象, 并且导致二次方而不是线性的运行时间. 作为替代方案, 你可以将每个子串加入列表, 然后在循环结束后用 <code>.join</code> 连接列表. (也可以将每个子串写入一个 <code>cStringIO.StringIO</code> 缓存中.)</p>
 <p>.. code-block:: python</p>
-<pre><code>Yes: items = [&#39;&lt;table&gt;&#39;]
+<pre><code>Yes: items = [&apos;&lt;table&gt;&apos;]
      for last_name, first_name in employee_list:
-         items.append(&#39;&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;&#39; % (last_name, first_name))
-     items.append(&#39;&lt;/table&gt;&#39;)
-     employee_table = &#39;&#39;.join(items)</code></pre><p>.. code-block:: python</p>
-<pre><code>No: employee_table = &#39;&lt;table&gt;&#39;
+         items.append(&apos;&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;&apos; % (last_name, first_name))
+     items.append(&apos;&lt;/table&gt;&apos;)
+     employee_table = &apos;&apos;.join(items)</code></pre><p>.. code-block:: python</p>
+<pre><code>No: employee_table = &apos;&lt;table&gt;&apos;
     for last_name, first_name in employee_list:
-        employee_table += &#39;&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;&#39; % (last_name, first_name)
-    employee_table += &#39;&lt;/table&gt;&#39;</code></pre><p>在同一个文件中, 保持使用字符串引号的一致性. 使用单引号’或者双引号”之一用以引用字符串, 并在同一文件中沿用. 在字符串内可以使用另外一种引号, 以避免在字符串中使用. GPyLint已经加入了这一检查.</p>
+        employee_table += &apos;&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;&apos; % (last_name, first_name)
+    employee_table += &apos;&lt;/table&gt;&apos;</code></pre><p>在同一个文件中, 保持使用字符串引号的一致性. 使用单引号’或者双引号”之一用以引用字符串, 并在同一文件中沿用. 在字符串内可以使用另外一种引号, 以避免在字符串中使用. GPyLint已经加入了这一检查.</p>
 <p>(译者注:GPyLint疑为笔误, 应为PyLint.)  </p>
 <p>.. code-block:: python</p>
 <p>   Yes:<br>        Python(‘Why are you hiding your eyes?’)<br>        Gollum(“I’m scared of lint errors.”)<br>        Narrator(‘“Good!” thought a happy Python reviewer.’)</p>
@@ -450,7 +450,7 @@ Raises:
            &quot;Do it this way.\n&quot;)</code></pre><p>.. code-block:: python</p>
 <pre><code>No:
       print &quot;&quot;&quot;This is pretty ugly.
-  Don&#39;t do this.
+  Don&apos;t do this.
   &quot;&quot;&quot;</code></pre><h2 id="文件和sockets"><a href="#文件和sockets" class="headerlink" title="文件和sockets"></a>文件和sockets</h2><p>.. tip::<br>    在文件和sockets结束时, 显式的关闭它.</p>
 <p>除文件外, sockets或其他类似文件的对象在没有必要的情况下打开, 会有许多副作用, 例如:</p>
 <p>#. 它们可能会消耗有限的系统资源, 如文件描述符. 如果这些资源在使用后没有及时归还系统, 那么用于处理这些对象的代码会将资源消耗殆尽.</p>
@@ -461,15 +461,15 @@ Raises:
 <p>#. 对于文件意外的引用,会导致对于文件的持有时间超出预期(比如对于异常的跟踪, 包含有全局变量等).</p>
 <p>推荐使用 <code>&quot;with&quot;语句 &lt;http://docs.python.org/reference/compound_stmts.html#the-with-statement&gt;</code>_ 以管理文件:</p>
 <p>.. code-block:: python</p>
-<pre><code>  with open(&quot;hello.txt&quot;) as hello_file:
-      for line in hello_file:
-          print line</code></pre><p>对于不支持使用”with”语句的类似文件的对象,使用 contextlib.closing():</p>
+<pre><code>with open(&quot;hello.txt&quot;) as hello_file:
+    for line in hello_file:
+        print line</code></pre><p>对于不支持使用”with”语句的类似文件的对象,使用 contextlib.closing():</p>
 <p>.. code-block:: python</p>
-<pre><code>  import contextlib
+<pre><code>import contextlib
 
-  with contextlib.closing(urllib.urlopen(&quot;http://www.python.org/&quot;)) as front_page:
-      for line in front_page:
-          print line</code></pre><p>Legacy AppEngine 中Python 2.5的代码如使用”with”语句, 需要添加 “from <strong>future</strong> import with_statement”.</p>
+with contextlib.closing(urllib.urlopen(&quot;http://www.python.org/&quot;)) as front_page:
+    for line in front_page:
+        print line</code></pre><p>Legacy AppEngine 中Python 2.5的代码如使用”with”语句, 需要添加 “from <strong>future</strong> import with_statement”.</p>
 <h2 id="TODO注释"><a href="#TODO注释" class="headerlink" title="TODO注释"></a>TODO注释</h2><p>.. tip::<br>    为临时代码使用TODO注释, 它是一种短期解决方案. 不算完美, 但够好了.</p>
 <p>TODO注释应该在所有开头处包含”TODO”字符串, 紧跟着是用括号括起来的你的名字, email地址或其它标识符. 然后是一个可选的冒号. 接着必须有一行注释, 解释要做什么. 主要目的是为了有一个统一的TODO格式, 这样添加注释的人就可以搜索到(并可以按需提供更多细节). 写了TODO注释并不保证写的人会亲自解决问题. 当你写了一个TODO, 请注上你的名字. </p>
 <p>.. code-block:: python    </p>
@@ -525,7 +525,7 @@ from Foob import ar</code></pre><h2 id="语句"><a href="#语句" class="headerl
 <pre><code>def main():
       ...
 
-if __name__ == &#39;__main__&#39;:
+if __name__ == &apos;__main__&apos;:
     main()</code></pre><p>所有的顶级代码在模块导入时都会被执行. 要小心不要去调用函数, 创建对象, 或者执行那些不应该在使用pydoc时执行的操作.</p>
 
         </div>
@@ -691,7 +691,7 @@ if __name__ == &#39;__main__&#39;:
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -703,7 +703,7 @@ if __name__ == &#39;__main__&#39;:
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -715,7 +715,7 @@ if __name__ == &#39;__main__&#39;:
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -816,6 +816,14 @@ if __name__ == &#39;__main__&#39;:
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -874,6 +882,25 @@ if __name__ == &#39;__main__&#39;:
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -895,7 +922,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -914,7 +941,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -933,7 +960,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -941,25 +968,6 @@ if __name__ == &#39;__main__&#39;:
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -984,7 +992,7 @@ if __name__ == &#39;__main__&#39;:
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1606,6 +1614,13 @@ if __name__ == &#39;__main__&#39;:
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1878,6 +1893,25 @@ if __name__ == &#39;__main__&#39;:
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1899,7 +1933,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1918,7 +1952,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1937,7 +1971,7 @@ if __name__ == &#39;__main__&#39;:
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1945,25 +1979,6 @@ if __name__ == &#39;__main__&#39;:
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1988,7 +2003,7 @@ if __name__ == &#39;__main__&#39;:
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2610,6 +2625,13 @@ if __name__ == &#39;__main__&#39;:
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

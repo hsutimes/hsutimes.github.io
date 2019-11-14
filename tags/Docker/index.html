@@ -205,18 +205,21 @@
 </ul>
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><p>Normally <code>lazydocker</code> formula can be found in the Homebrew core but we suggest you to tap our formula to get frequently updated one. It works with Linux, too.</p>
 <p><strong>Tap</strong>:</p>
-<pre><code class="sh">brew install jesseduffield/lazydocker/lazydocker</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jesseduffield/lazydocker/lazydocker</span><br></pre></td></tr></table></figure>
+
 <p><strong>Core</strong>:</p>
-<pre><code class="sh">brew install lazydocker</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazydocker</span><br></pre></td></tr></table></figure>
+
 <h3 id="Binary-Release-Linux-OSX"><a href="#Binary-Release-Linux-OSX" class="headerlink" title="Binary Release (Linux/OSX)"></a>Binary Release (Linux/OSX)</h3><p>You can manually download a binary release from <a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener">the release page</a>.</p>
 <p>Automated install/update, don’t forget to always verify what you’re piping into bash:</p>
-<pre><code class="sh">curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash</span><br></pre></td></tr></table></figure>
+
 <h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><p>Required Go version &gt;= <strong>1.8</strong></p>
-<pre><code class="sh">go get github.com/jesseduffield/lazydocker</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/jesseduffield/lazydocker</span><br></pre></td></tr></table></figure>
+
 <h3 id="Arch-Linux-AUR"><a href="#Arch-Linux-AUR" class="headerlink" title="Arch Linux AUR"></a>Arch Linux AUR</h3><p>You can install lazydocker using your AUR package manager of choice or by running:</p>
-<pre><code class="sh">git clone https://aur.archlinux.org/lazydocker.git ~/lazydocker
-cd ~/lazydocker
-makepkg --install</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/lazydocker.git ~/lazydocker</span><br><span class="line"><span class="hljs-built_in">cd</span> ~/lazydocker</span><br><span class="line">makepkg --install</span><br></pre></td></tr></table></figure>
+
 <p>A development version of the AUR package is also <a href="https://aur.archlinux.org/lazydocker-git.git" target="_blank" rel="noopener">available</a></p>
 <h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/pulls/lazyteam/lazydocker.svg" alt="Docker Pulls"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/stars/lazyteam/lazydocker.svg" alt="Docker Stars"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/cloud/automated/lazyteam/lazydocker.svg" alt="Docker Automated"></a></p>
 <ol>
@@ -224,55 +227,41 @@ makepkg --install</code></pre>
 
 <ul>
 <li><p>If you have a ARM 32 bit v6 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm32v6/golang \
-  --build-arg GOARCH=arm \
-  --build-arg GOARM=6 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v6/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=6 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>If you have a ARM 32 bit v7 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm32v7/golang \
-  --build-arg GOARCH=arm \
-  --build-arg GOARM=7 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v7/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=7 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>If you have a ARM 64 bit v8 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm64v8/golang \
-  --build-arg GOARCH=arm64 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm64v8/golang \</span><br><span class="line">--build-arg GOARCH=arm64 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+
 </li></ul></p></details>
 </li>
 
 
 <li><p>Run the container</p>
-<pre><code class="sh"> docker run --rm -it -v \
- /var/run/docker.sock:/var/run/docker.sock \
- -v /yourpath:/.config/jesseduffield/lazydocker \
- lazyteam/lazydocker</code></pre>
+ <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v \</span><br><span class="line">/var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">-v /yourpath:/.config/jesseduffield/lazydocker \</span><br><span class="line">lazyteam/lazydocker</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>Don’t forget to change <code>/yourpath</code> to an actual path you created to store lazydocker’s config</p>
 </li>
 <li><p>You can also use this <a href="https://github.com/jesseduffield/lazydocker/blob/master/docker-compose.yml" target="_blank" rel="noopener">docker-compose.yml</a></p>
 </li>
 <li><p>You might want to create an alias, for example:</p>
-<pre><code class="sh">  echo &quot;alias lzd=&#39;docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker&#39;&quot; &gt;&gt; ~/.zshrc</code></pre>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'"</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 </li>
 </ol>
 <p>For development, you can build the image using:</p>
-<pre><code class="sh">git clone https://github.com/jesseduffield/lazydocker.git
-cd lazydocker
-docker build -t lazyteam/lazydocker \
-    --build-arg BUILD_DATE=`date -u +&quot;%Y-%m-%dT%H:%M:%SZ&quot;` \
-    --build-arg VCS_REF=`git rev-parse --short HEAD` \
-    --build-arg VERSION=`git describe --abbrev=0 --tag` \
-    .</code></pre>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://github.com/jesseduffield/lazydocker.git</span><br><span class="line"><span class="hljs-built_in">cd</span> lazydocker</span><br><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">    --build-arg BUILD_DATE=`date -u +<span class="hljs-string">"%Y-%m-%dT%H:%M:%SZ"</span>` \</span><br><span class="line">    --build-arg VCS_REF=`git rev-parse --short HEAD` \</span><br><span class="line">    --build-arg VERSION=`git describe --abbrev=0 --tag` \</span><br><span class="line">    .</span><br></pre></td></tr></table></figure>
+
 <p>If you encounter a compatibility issue with Docker bundled binary, try rebuilding<br>the image with the build argument <code>--build-arg DOCKER_VERSION=&quot;v$(docker -v | cut -d&quot; &quot; -f3 | rev | cut -c 2- | rev)&quot;</code><br>so that the bundled docker binary matches your host docker binary version.</p>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Call <code>lazydocker</code> in your terminal. I personally use this a lot so I’ve made an alias for it like so:</p>
-<pre><code>echo &quot;alias lzd=&#39;lazydocker&#39;&quot; &gt;&gt; ~/.zshrc</code></pre><p>(you can substitute .zshrc for whatever rc file you’re using)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;alias lzd=&apos;lazydocker&apos;&quot; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>(you can substitute .zshrc for whatever rc file you’re using)</p>
 <ul>
 <li>Basic video tutorial <a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">here</a>.</li>
 <li>List of keybindings<br><a href="/docs/keybindings">here</a>.</li>
@@ -427,7 +416,7 @@ docker build -t lazyteam/lazydocker \
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -439,7 +428,7 @@ docker build -t lazyteam/lazydocker \
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -451,7 +440,7 @@ docker build -t lazyteam/lazydocker \
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -552,6 +541,14 @@ docker build -t lazyteam/lazydocker \
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -610,6 +607,25 @@ docker build -t lazyteam/lazydocker \
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -631,7 +647,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -650,7 +666,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -669,7 +685,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -677,25 +693,6 @@ docker build -t lazyteam/lazydocker \
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -720,7 +717,7 @@ docker build -t lazyteam/lazydocker \
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1342,6 +1339,13 @@ docker build -t lazyteam/lazydocker \
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1614,6 +1618,25 @@ docker build -t lazyteam/lazydocker \
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1635,7 +1658,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1654,7 +1677,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1673,7 +1696,7 @@ docker build -t lazyteam/lazydocker \
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1681,25 +1704,6 @@ docker build -t lazyteam/lazydocker \
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1724,7 +1728,7 @@ docker build -t lazyteam/lazydocker \
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2346,6 +2350,13 @@ docker build -t lazyteam/lazydocker \
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

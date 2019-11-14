@@ -176,17 +176,15 @@
         <div class="content">
             <h1 id="Git-Rebase-黄金法则问题"><a href="#Git-Rebase-黄金法则问题" class="headerlink" title="Git Rebase 黄金法则问题"></a>Git Rebase 黄金法则问题</h1><p>git 整合来自不同分支的修改主要有两种方法：merge 操作和rebase操作，<br>merge初学者可能很熟悉。我们今天来主要说一下 rebase 操作，文章结尾会简单说一下 merge 操作的 –no-ff 参数问题。</p>
 <p>rebase的简单定义：你可以把某一分支的所有修改都移至另外一个分支就像重新播放一样。<br>有点儿像金庸武侠小说里面的乾坤大挪移。<br>举个🌰<br>假设我们本地库的代码，如下所示</p>
-<pre><code>      A---B---C  remotes/origin/master
-     /
-D---E---F---G  master</code></pre><p>如果此时我们执行 git pull 操作，就会变成下面的样子，因为 pull 默认执行的是 merge 操作，多出来H这次没必要的提交。如下所示</p>
-<pre><code>     A---B---C  remotes/origin/master
-     /         \
-D---E---F---G---H master</code></pre><p>如果我们执行 git pull –rebase 操作，将会变成下面的样子，这里我们用rebase代替了默认的merge操作</p>
-<pre><code>            remotes/origin
-                |
-D---E---A---B---C---F---G
-                        |
-                        master</code></pre><p>rebase 作用就是变成线性了，这在多人协作的情况变得非常关键。因为多人合作是不允许随意制造分叉的。大家可以参考我这篇文章。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      A---B---C  remotes/origin/master</span><br><span class="line">     /</span><br><span class="line">D---E---F---G  master</span><br></pre></td></tr></table></figure>
+
+<p>如果此时我们执行 git pull 操作，就会变成下面的样子，因为 pull 默认执行的是 merge 操作，多出来H这次没必要的提交。如下所示</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">     A---B---C  remotes/origin/master</span><br><span class="line">     /         \</span><br><span class="line">D---E---F---G---H master</span><br></pre></td></tr></table></figure>
+
+<p>如果我们执行 git pull –rebase 操作，将会变成下面的样子，这里我们用rebase代替了默认的merge操作</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">            remotes/origin</span><br><span class="line">                |</span><br><span class="line">D---E---A---B---C---F---G</span><br><span class="line">                        |</span><br><span class="line">                        master</span><br></pre></td></tr></table></figure>
+
+<p>rebase 作用就是变成线性了，这在多人协作的情况变得非常关键。因为多人合作是不允许随意制造分叉的。大家可以参考我这篇文章。</p>
 <p>这就引出了这篇博文要主要阐述的问题，rebase golden rule 问题。</p>
 <blockquote>
 <p>Rebase golden rule<br>“No one shall rebase a shared branch” — Everyone about rebase</p>
@@ -199,21 +197,15 @@ D---E---A---B---C---F---G
 <p>图三是我们错误rebase的结果，即违反黄金法则的结果，我们在develop分支上执行了rebase feature操作</p>
 <p><img src="/images/2019/09/10/7ce48f10-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
 <p>当我们在图三这种情况下对develop分支进行提交的话，会发现和远程分支冲突，然后我们手动或自动解决冲突，继续提交上去之后发现，我们修改的功能代码已经提交上去了，但是当我们看我们提交历史的记录的时候会发现有一部分重复的提交log。<br>这就是问题所在，你的项目组长是绝对不允许在他的项目里出现这种情况，因为会影响后续的代码追查，code review等问题。<br>说完了这个问题，这篇博文的主要任务基本完成了，最后在简单说一下 merge 的 –no-ff 参数，这也是我们在分支合并的时候经常遇到的问题。<br>–no-ff 的意思就是关闭 merge 的 fast-forwarded，merge 操作默认执行的是 fast-forwarded。<br>fast-forwarded 的意思就是在合并分支的时候，如果不涉及三方合并，git 只会简单的移动指针。<br>再再举一个🌰</p>
-<pre><code>        dev
-        |
-A---B---C
-         \
-          D---E
-              |
-              feature</code></pre><p>此时我们执行 merge –no-ff 操作，将会得到如下图</p>
-<pre><code>                dev
-                |
-A---B---C--------F
-         \      /
-          D---E</code></pre><p>执行 merge 之后得到的结果如下</p>
-<pre><code>               dev
-                |
-A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        dev</span><br><span class="line">        |</span><br><span class="line">A---B---C</span><br><span class="line">         \</span><br><span class="line">          D---E</span><br><span class="line">              |</span><br><span class="line">              feature</span><br></pre></td></tr></table></figure>
+
+<p>此时我们执行 merge –no-ff 操作，将会得到如下图</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">                dev</span><br><span class="line">                |</span><br><span class="line">A---B---C--------F</span><br><span class="line">         \      /</span><br><span class="line">          D---E</span><br></pre></td></tr></table></figure>
+
+<p>执行 merge 之后得到的结果如下</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">               dev</span><br><span class="line">                |</span><br><span class="line">A---B---C---D---E</span><br></pre></td></tr></table></figure>
+
+<p>如上git 将指针从C移到了E。</p>
 <p>简单来说就是 –no-ff 的作用就是保持分支的非线性。方便我们看到分支的变化。</p>
 <blockquote>
 <p>本文作者： Frank<br>本文链接： <a href="http://hellofrank.github.io/2018/04/27/Git-Rebase-黄金法则问题/" target="_blank" rel="noopener">http://hellofrank.github.io/2018/04/27/Git-Rebase-黄金法则问题/</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
@@ -382,7 +374,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -394,7 +386,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -406,7 +398,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -507,6 +499,14 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -565,6 +565,25 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -586,7 +605,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -605,7 +624,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -624,7 +643,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -632,25 +651,6 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -675,7 +675,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1297,6 +1297,13 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1569,6 +1576,25 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1590,7 +1616,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1609,7 +1635,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1628,7 +1654,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1636,25 +1662,6 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1679,7 +1686,7 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2301,6 +2308,13 @@ A---B---C---D---E</code></pre><p>如上git 将指针从C移到了E。</p>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

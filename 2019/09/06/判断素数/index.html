@@ -10,19 +10,19 @@
 <title>判断素数 - Time</title>
 
 
-    <meta name="description" content="素数 质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。 0和1既不是质数也不是合数，最小的质数是2   最直观，但效率最低的写法  这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。 然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。 public static boo">
+    <meta name="description" content="素数 质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。 0和1既不是质数也不是合数，最小的质数是2   最直观，但效率最低的写法  这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。 然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。 1234567891011publ">
 <meta name="keywords" content="编程,Java,素数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="判断素数">
 <meta property="og:url" content="https://blog.hsutimes.com/2019/09/06/判断素数/index.html">
 <meta property="og:site_name" content="Time">
-<meta property="og:description" content="素数 质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。 0和1既不是质数也不是合数，最小的质数是2   最直观，但效率最低的写法  这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。 然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。 public static boo">
+<meta property="og:description" content="素数 质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。 0和1既不是质数也不是合数，最小的质数是2   最直观，但效率最低的写法  这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。 然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。 1234567891011publ">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta property="og:updated_time" content="2019-09-06T08:53:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="判断素数">
-<meta name="twitter:description" content="素数 质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。 0和1既不是质数也不是合数，最小的质数是2   最直观，但效率最低的写法  这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。 然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。 public static boo">
+<meta name="twitter:description" content="素数 质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。 0和1既不是质数也不是合数，最小的质数是2   最直观，但效率最低的写法  这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。 然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。 1234567891011publ">
 <meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
@@ -184,95 +184,21 @@
 </ol>
 <p>这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。</p>
 <p>然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。</p>
-<pre><code class="java">public static boolean isPrime(int n){
-    if (n &lt;= 3) {
-        return n &gt; 1;
-    }
-    for(int i = 2; i &lt; n; i++){
-        if (n % i == 0) {
-            return false;
-        }
-    }
-    return true;
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>优化</li>
 </ol>
 <p>我们继续分析，其实质数还有一个特点，就是它总是等于 6x-1 或者 6x+1，其中 x 是大于等于1的自然数。</p>
 <p>如何论证这个结论呢，其实不难。首先 6x 肯定不是质数，因为它能被 6 整除；其次 6x+2 肯定也不是质数，因为它还能被2整除；依次类推，6x+3 肯定能被 3 整除；6x+4 肯定能被 2 整除。那么，就只有 6x+1 和 6x+5 (即等同于6x-1) 可能是质数了。所以循环的步长可以设为 6，然后每次只判断 6 两侧的数即可。</p>
-<pre><code class="java">public static boolean isPrime(int num) {
-    if (num &lt;= 3) {
-        return num &gt; 1;
-    }
-    // 不在6的倍数两侧的一定不是质数
-    if (num % 6 != 1 &amp;&amp; num % 6 != 5) {
-        return false;
-    }
-    int sqrt = (int) Math.sqrt(num);
-    for (int i = 5; i &lt;= sqrt; i += 6) {
-        if (num % i == 0 || num % (i + 2) == 0) {
-            return false;
-        }
-    }
-    return true;
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (num &lt;= <span class="hljs-number">3</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> num &gt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 不在6的倍数两侧的一定不是质数</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (num % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; num % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> sqrt = (<span class="hljs-keyword">int</span>) Math.sqrt(num);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= sqrt; i += <span class="hljs-number">6</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (num % i == <span class="hljs-number">0</span> || num % (i + <span class="hljs-number">2</span>) == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>性能对比</li>
 </ol>
-<pre><code class="java">import java.util.*;
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// Scanner in = new Scanner(System.in);</span></span><br><span class="line">        <span class="hljs-comment">// int n = in.nextInt();</span></span><br><span class="line">        <span class="hljs-comment">// in.close();</span></span><br><span class="line">        Stack&lt;Integer&gt; a = <span class="hljs-keyword">new</span> Stack&lt;&gt;(), b = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> n = <span class="hljs-number">100000</span>;</span><br><span class="line">        <span class="hljs-keyword">long</span> s = System.currentTimeMillis(), e;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (f(i))</span><br><span class="line">                a.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        e = System.currentTimeMillis();</span><br><span class="line">        System.out.println(e - s + <span class="hljs-string">" ms"</span>);</span><br><span class="line">        s = System.currentTimeMillis();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (func(i))</span><br><span class="line">                b.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        e = System.currentTimeMillis();</span><br><span class="line">        System.out.println(e - s + <span class="hljs-string">" ms"</span>);</span><br><span class="line">        System.gc();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; n % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span> tem = (<span class="hljs-keyword">int</span>) Math.sqrt(n);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= tem; i += <span class="hljs-number">6</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span> || n % (i + <span class="hljs-number">2</span>) == <span class="hljs-number">0</span>)</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-public class Main {
-
-    public static void main(String[] args) {
-        // Scanner in = new Scanner(System.in);
-        // int n = in.nextInt();
-        // in.close();
-        Stack&lt;Integer&gt; a = new Stack&lt;&gt;(), b = new Stack&lt;&gt;();
-        int n = 100000;
-        long s = System.currentTimeMillis(), e;
-        for (int i = 1; i &lt; n; i++) {
-            if (f(i))
-                a.push(i);
-        }
-        e = System.currentTimeMillis();
-        System.out.println(e - s + &quot; ms&quot;);
-        s = System.currentTimeMillis();
-        for (int i = 1; i &lt; n; i++) {
-            if (func(i))
-                b.push(i);
-        }
-        e = System.currentTimeMillis();
-        System.out.println(e - s + &quot; ms&quot;);
-        System.gc();
-    }
-
-    static boolean f(int n) {
-        if (n &lt;= 3)
-            return n &gt; 1;
-        for (int i = 2; i &lt; n; i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    static boolean func(int n) {
-        if (n &lt;= 3)
-            return n &gt; 1;
-        if (n % 6 != 1 &amp;&amp; n % 6 != 5) {
-            return false;
-        }
-        int tem = (int) Math.sqrt(n);
-        for (int i = 5; i &lt;= tem; i += 6) {
-            if (n % i == 0 || n % (i + 2) == 0)
-                return false;
-        }
-        return true;
-    }
-}</code></pre>
-<pre><code>1392 ms
-5 ms</code></pre>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1392 ms</span><br><span class="line">5 ms</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -436,7 +362,7 @@ public class Main {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -448,7 +374,7 @@ public class Main {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -460,7 +386,7 @@ public class Main {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -561,6 +487,14 @@ public class Main {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -619,6 +553,25 @@ public class Main {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -640,7 +593,7 @@ public class Main {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -659,7 +612,7 @@ public class Main {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -678,7 +631,7 @@ public class Main {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -686,25 +639,6 @@ public class Main {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -729,7 +663,7 @@ public class Main {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1351,6 +1285,13 @@ public class Main {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1623,6 +1564,25 @@ public class Main {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1644,7 +1604,7 @@ public class Main {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1663,7 +1623,7 @@ public class Main {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1682,7 +1642,7 @@ public class Main {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1690,25 +1650,6 @@ public class Main {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1733,7 +1674,7 @@ public class Main {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2355,6 +2296,13 @@ public class Main {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

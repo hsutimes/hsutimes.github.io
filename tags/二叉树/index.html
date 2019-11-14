@@ -189,76 +189,20 @@
 <p><strong>输出</strong></p>
 <p>输出树的高度，为一个整数</p>
 <p><strong>样例输入</strong></p>
-<pre><code>5
-0 1
-0 2
-1 3
-1 4</code></pre><p><strong>样例输出</strong></p>
-<pre><code>3</code></pre><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>java</p>
-<pre><code class="java">import java.util.Scanner;
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">0 1</span><br><span class="line">0 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br></pre></td></tr></table></figure>
 
-public class Main {
+<p><strong>样例输出</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] parent = new int[n];
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>java</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="hljs-keyword">int</span> n = sc.nextInt();</span><br><span class="line">        <span class="hljs-keyword">int</span>[] parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            parent[i] = -<span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a = sc.nextInt();</span><br><span class="line">            <span class="hljs-keyword">int</span> b = sc.nextInt();</span><br><span class="line">            parent[b] = a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">int</span> h = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> max = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> j = i;</span><br><span class="line">            <span class="hljs-keyword">while</span> (parent[j] != -<span class="hljs-number">1</span>) &#123;</span><br><span class="line">                j = parent[j];</span><br><span class="line">                max++;</span><br><span class="line">            &#125;</span><br><span class="line">            h = max &gt; h ? max : h;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        for (int i = 0; i &lt; n; i++) {
-            parent[i] = -1;
-        }
-
-        for (int i = 0; i &lt; n - 1; i++) {
-            int a = sc.nextInt();
-            int b = sc.nextInt();
-            parent[b] = a;
-        }
-
-        int h = 0;
-        for (int i = 0; i &lt; n; i++) {
-            int max = 1;
-            int j = i;
-            while (parent[j] != -1) {
-                j = parent[j];
-                max++;
-            }
-            h = max &gt; h ? max : h;
-        }
-        System.out.println(h);
-    }
-}</code></pre>
 <p>python</p>
-<pre><code class="python">import sys
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(x)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + get(dic_s[x])</span><br><span class="line">    <span class="hljs-keyword">except</span> KeyError:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">n = int(sys.stdin.readline().strip())</span><br><span class="line">dic_s = &#123;&#125;</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(int(n)<span class="hljs-number">-1</span>):</span><br><span class="line">    j_1,j_2 = sys.stdin.readline().strip().split()</span><br><span class="line">    dic_s[j_2] = j_1</span><br><span class="line"><span class="hljs-keyword">print</span> max([get(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> set(dic_s.keys()) - set(dic_s.values())]) <span class="hljs-keyword">if</span> n&gt;<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">1</span></span><br></pre></td></tr></table></figure>
 
-def get(x):
-    try:
-        return 1 + get(dic_s[x])
-    except KeyError:
-        return 1
-
-n = int(sys.stdin.readline().strip())
-dic_s = {}
-for i in range(int(n)-1):
-    j_1,j_2 = sys.stdin.readline().strip().split()
-    dic_s[j_2] = j_1
-print max([get(i) for i in set(dic_s.keys()) - set(dic_s.values())]) if n&gt;1 else 1</code></pre>
 <p>javascript</p>
-<pre><code class="javascript">var n=readInt(),rec={},dps={},rs=1
-while(n--&gt;1) {
-  var a=readInt(),b=readInt()
-  rec[a]=rec[a]||[]
-  rec[a].push(b)
-}
-for(var k in rec) rs=Math.max(rs,maxDps(k))
-print(rs)
-function maxDps(n){
-  if(!rec[n]) return 1
-  if(dps[n]) return dps[n]
-  var r=1
-  for(var x of rec[n]) r=Math.max(r,maxDps(x)+1)
-  dps[n]=r
-  return dps[n]
-}</code></pre>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> n=readInt(),rec=&#123;&#125;,dps=&#123;&#125;,rs=<span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-keyword">while</span>(n--&gt;<span class="hljs-number">1</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> a=readInt(),b=readInt()</span><br><span class="line">  rec[a]=rec[a]||[]</span><br><span class="line">  rec[a].push(b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> rec) rs=<span class="hljs-built_in">Math</span>.max(rs,maxDps(k))</span><br><span class="line">print(rs)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxDps</span>(<span class="hljs-params">n</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!rec[n]) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">if</span>(dps[n]) <span class="hljs-keyword">return</span> dps[n]</span><br><span class="line">  <span class="hljs-keyword">var</span> r=<span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> x <span class="hljs-keyword">of</span> rec[n]) r=<span class="hljs-built_in">Math</span>.max(r,maxDps(x)+<span class="hljs-number">1</span>)</span><br><span class="line">  dps[n]=r</span><br><span class="line">  <span class="hljs-keyword">return</span> dps[n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -319,7 +263,7 @@ function maxDps(n){
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -331,7 +275,7 @@ function maxDps(n){
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -343,7 +287,7 @@ function maxDps(n){
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -444,6 +388,14 @@ function maxDps(n){
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -502,6 +454,25 @@ function maxDps(n){
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -523,7 +494,7 @@ function maxDps(n){
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -542,7 +513,7 @@ function maxDps(n){
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -561,7 +532,7 @@ function maxDps(n){
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -569,25 +540,6 @@ function maxDps(n){
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -612,7 +564,7 @@ function maxDps(n){
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1234,6 +1186,13 @@ function maxDps(n){
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1506,6 +1465,25 @@ function maxDps(n){
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1527,7 +1505,7 @@ function maxDps(n){
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1546,7 +1524,7 @@ function maxDps(n){
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1565,7 +1543,7 @@ function maxDps(n){
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1573,25 +1551,6 @@ function maxDps(n){
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1616,7 +1575,7 @@ function maxDps(n){
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2238,6 +2197,13 @@ function maxDps(n){
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -10,19 +10,19 @@
 <title>decompilation - Time</title>
 
 
-    <meta name="description" content="可以执行程序反编译为汇编程序 #include &amp;lt;stdio.h&amp;gt;  int f(int a){     if(a==100) return 1;     return 0; }  int main() {     printf(&amp;quot;Enter a num: &amp;quot;);       int a;      scanf(&amp;quot;%d&amp;quot;,&amp;amp;a);">
+    <meta name="description" content="可以执行程序反编译为汇编程序 1234567891011121314151617181920212223#include &amp;lt;stdio.h&amp;gt;int f(int a)&amp;#123;	if(a==100) return 1;	return 0;&amp;#125; int main()&amp;#123;    printf(&quot;Enter a num: &quot;);  	int a; 	scanf(&quot;%d&quot;,&amp;a">
 <meta name="keywords" content="反编译">
 <meta property="og:type" content="article">
 <meta property="og:title" content="decompilation">
 <meta property="og:url" content="https://blog.hsutimes.com/2019/10/06/decompilation/index.html">
 <meta property="og:site_name" content="Time">
-<meta property="og:description" content="可以执行程序反编译为汇编程序 #include &amp;lt;stdio.h&amp;gt;  int f(int a){     if(a==100) return 1;     return 0; }  int main() {     printf(&amp;quot;Enter a num: &amp;quot;);       int a;      scanf(&amp;quot;%d&amp;quot;,&amp;amp;a);">
+<meta property="og:description" content="可以执行程序反编译为汇编程序 1234567891011121314151617181920212223#include &amp;lt;stdio.h&amp;gt;int f(int a)&amp;#123;	if(a==100) return 1;	return 0;&amp;#125; int main()&amp;#123;    printf(&quot;Enter a num: &quot;);  	int a; 	scanf(&quot;%d&quot;,&amp;a">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta property="og:updated_time" content="2019-11-14T11:50:13.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="decompilation">
-<meta name="twitter:description" content="可以执行程序反编译为汇编程序 #include &amp;lt;stdio.h&amp;gt;  int f(int a){     if(a==100) return 1;     return 0; }  int main() {     printf(&amp;quot;Enter a num: &amp;quot;);       int a;      scanf(&amp;quot;%d&amp;quot;,&amp;amp;a);">
+<meta name="twitter:description" content="可以执行程序反编译为汇编程序 1234567891011121314151617181920212223#include &amp;lt;stdio.h&amp;gt;int f(int a)&amp;#123;	if(a==100) return 1;	return 0;&amp;#125; int main()&amp;#123;    printf(&quot;Enter a num: &quot;);  	int a; 	scanf(&quot;%d&quot;,&amp;a">
 <meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
@@ -175,65 +175,10 @@
         </h1>
         <div class="content">
             <h1 id="可以执行程序反编译为汇编程序"><a href="#可以执行程序反编译为汇编程序" class="headerlink" title="可以执行程序反编译为汇编程序"></a>可以执行程序反编译为汇编程序</h1><p><img src="/images/2019/10/06/8f80cc70-e83e-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<pre><code class="c">#include &lt;stdio.h&gt;
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(a==<span class="hljs-number">100</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter a num: "</span>);</span><br><span class="line"> </span><br><span class="line"> 	<span class="hljs-keyword">int</span> a;</span><br><span class="line"> 	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a);</span><br><span class="line"> 	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"num is %d\n"</span>, a);</span><br><span class="line"> 	<span class="hljs-comment">// int code = 100;</span></span><br><span class="line"> 	<span class="hljs-keyword">if</span>(f(a))&#123;</span><br><span class="line"> 		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"code is true\n"</span>);</span><br><span class="line"> 	&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line"> 		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"code is false\n"</span>);</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,&amp;a);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-int f(int a){
-    if(a==100) return 1;
-    return 0;
-}
-
-int main()
-{
-    printf(&quot;Enter a num: &quot;);
-
-     int a;
-     scanf(&quot;%d&quot;,&amp;a);
-     printf(&quot;num is %d\n&quot;, a);
-     // int code = 100;
-     if(f(a)){
-         printf(&quot;code is true\n&quot;);
-     }else{
-         printf(&quot;code is false\n&quot;);
-     }
-     scanf(&quot;%s&quot;,&amp;a);
-    return 0;
-}</code></pre>
 <p>使用x64dbg加载 <code>main.exe</code></p>
-<pre><code class="armasm">push ebp
-mov ebp,esp
-and esp,FFFFFFF0
-sub esp,20
-call main.401A30
-mov dword ptr ss:[esp],main.405064
-call &lt;JMP.&amp;printf&gt;
-lea eax,dword ptr ss:[esp+1C]
-mov dword ptr ss:[esp+4],eax
-mov dword ptr ss:[esp],main.405072
-call &lt;JMP.&amp;scanf&gt;
-mov eax,dword ptr ss:[esp+1C]
-mov dword ptr ss:[esp+4],eax
-mov dword ptr ss:[esp],main.405075
-call &lt;JMP.&amp;printf&gt;
-mov eax,dword ptr ss:[esp+1C]
-mov dword ptr ss:[esp],eax
-call main.401460
-test eax,eax
-je main.4014D7
-mov dword ptr ss:[esp],main.405080
-call &lt;JMP.&amp;puts&gt;
-jmp main.4014E3
-mov dword ptr ss:[esp],main.40508D
-call &lt;JMP.&amp;puts&gt;
-lea eax,dword ptr ss:[esp+1C]
-mov dword ptr ss:[esp+4],eax
-mov dword ptr ss:[esp],main.40509B
-call &lt;JMP.&amp;scanf&gt;
-mov eax,0
-leave 
-ret 
-nop 
-nop </code></pre>
-
+<figure class="highlight armasm hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">push </span>ebp</span><br><span class="line"><span class="hljs-keyword">mov </span>ebp,esp</span><br><span class="line"><span class="hljs-keyword">and </span>esp,FFFFFFF0</span><br><span class="line"><span class="hljs-keyword">sub </span>esp,<span class="hljs-number">20</span></span><br><span class="line"><span class="hljs-symbol">call</span> main.<span class="hljs-number">401</span>A30</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405064</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;printf&gt;</span><br><span class="line"><span class="hljs-symbol">lea</span> eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405072</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;scanf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405075</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;printf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],eax</span><br><span class="line"><span class="hljs-symbol">call</span> main.<span class="hljs-number">401460</span></span><br><span class="line"><span class="hljs-symbol">test</span> eax,eax</span><br><span class="line"><span class="hljs-symbol">je</span> main.<span class="hljs-number">4014</span><span class="hljs-built_in">D7</span></span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405080</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;puts&gt;</span><br><span class="line"><span class="hljs-symbol">jmp</span> main.<span class="hljs-number">4014</span>E3</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">40508</span>D</span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;puts&gt;</span><br><span class="line"><span class="hljs-symbol">lea</span> eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">40509</span>B</span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;scanf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,<span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-symbol">leave</span> </span><br><span class="line"><span class="hljs-symbol">ret</span> </span><br><span class="line"><span class="hljs-keyword">nop </span></span><br><span class="line"><span class="hljs-keyword">nop</span></span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -397,7 +342,7 @@ nop </code></pre>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -409,7 +354,7 @@ nop </code></pre>
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -421,7 +366,7 @@ nop </code></pre>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -522,6 +467,14 @@ nop </code></pre>
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -580,6 +533,25 @@ nop </code></pre>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -601,7 +573,7 @@ nop </code></pre>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -620,7 +592,7 @@ nop </code></pre>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -639,7 +611,7 @@ nop </code></pre>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -647,25 +619,6 @@ nop </code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -690,7 +643,7 @@ nop </code></pre>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1312,6 +1265,13 @@ nop </code></pre>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1584,6 +1544,25 @@ nop </code></pre>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1605,7 +1584,7 @@ nop </code></pre>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1624,7 +1603,7 @@ nop </code></pre>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1643,7 +1622,7 @@ nop </code></pre>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1651,25 +1630,6 @@ nop </code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1694,7 +1654,7 @@ nop </code></pre>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2316,6 +2276,13 @@ nop </code></pre>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

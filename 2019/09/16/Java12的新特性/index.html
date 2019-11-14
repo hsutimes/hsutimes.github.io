@@ -10,19 +10,19 @@
 <title>Java12的新特性 - Time</title>
 
 
-    <meta name="description" content="Java12的新特性 Java5的新特性Java6的新特性Java7的新特性Java8的新特性Java9的新特性Java10的新特性Java11的新特性Java12的新特性Java13的新特性   版本号java -version openjdk version &amp;quot;12&amp;quot; 2019-03-19 OpenJDK Runtime Environment (build 12+33)">
+    <meta name="description" content="Java12的新特性 Java5的新特性Java6的新特性Java7的新特性Java8的新特性Java9的新特性Java10的新特性Java11的新特性Java12的新特性Java13的新特性   版本号1234java -versionopenjdk version &amp;quot;12&amp;quot; 2019-03-19OpenJDK Runtime Environment (build 12+33">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java12的新特性">
 <meta property="og:url" content="https://blog.hsutimes.com/2019/09/16/Java12的新特性/index.html">
 <meta property="og:site_name" content="Time">
-<meta property="og:description" content="Java12的新特性 Java5的新特性Java6的新特性Java7的新特性Java8的新特性Java9的新特性Java10的新特性Java11的新特性Java12的新特性Java13的新特性   版本号java -version openjdk version &amp;quot;12&amp;quot; 2019-03-19 OpenJDK Runtime Environment (build 12+33)">
+<meta property="og:description" content="Java12的新特性 Java5的新特性Java6的新特性Java7的新特性Java8的新特性Java9的新特性Java10的新特性Java11的新特性Java12的新特性Java13的新特性   版本号1234java -versionopenjdk version &amp;quot;12&amp;quot; 2019-03-19OpenJDK Runtime Environment (build 12+33">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta property="og:updated_time" content="2019-09-16T14:27:32.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java12的新特性">
-<meta name="twitter:description" content="Java12的新特性 Java5的新特性Java6的新特性Java7的新特性Java8的新特性Java9的新特性Java10的新特性Java11的新特性Java12的新特性Java13的新特性   版本号java -version openjdk version &amp;quot;12&amp;quot; 2019-03-19 OpenJDK Runtime Environment (build 12+33)">
+<meta name="twitter:description" content="Java12的新特性 Java5的新特性Java6的新特性Java7的新特性Java8的新特性Java9的新特性Java10的新特性Java11的新特性Java12的新特性Java13的新特性   版本号1234java -versionopenjdk version &amp;quot;12&amp;quot; 2019-03-19OpenJDK Runtime Environment (build 12+33">
 <meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
@@ -178,10 +178,9 @@
 <p>Java5的新特性<br>Java6的新特性<br>Java7的新特性<br>Java8的新特性<br>Java9的新特性<br>Java10的新特性<br>Java11的新特性<br>Java12的新特性<br>Java13的新特性</p>
 </blockquote>
 <p><img src="/images/2019/09/16/1c09f100-d88e-11e9-a339-273a38bbb2c9.png" alt="image.png"></p>
-<h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><pre><code>java -version
-openjdk version &quot;12&quot; 2019-03-19
-OpenJDK Runtime Environment (build 12+33)
-OpenJDK 64-Bit Server VM (build 12+33, mixed mode)</code></pre><blockquote>
+<h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">openjdk version &quot;12&quot; 2019-03-19</span><br><span class="line">OpenJDK Runtime Environment (build 12+33)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 12+33, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
 <p>从version信息可以看出是build 12+33</p>
 </blockquote>
 <h2 id="特性列表"><a href="#特性列表" class="headerlink" title="特性列表"></a>特性列表</h2><ul>
@@ -201,56 +200,21 @@ OpenJDK 64-Bit Server VM (build 12+33, mixed mode)</code></pre><blockquote>
 </ul>
 <blockquote>
 <p>对switch进行了增强，除了使用statement还可以使用expression，比如原来的写法如下：</p>
-<pre><code class="java">switch (day) {
-    case MONDAY:
-    case FRIDAY:
-    case SUNDAY:
-        System.out.println(6);
-        break;
-    case TUESDAY:
-        System.out.println(7);
-        break;
-    case THURSDAY:
-    case SATURDAY:
-        System.out.println(8);
-        break;
-    case WEDNESDAY:
-        System.out.println(9);
-        break;
-}</code></pre>
+</blockquote>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> FRIDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> SUNDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">6</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">7</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> SATURDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">8</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">9</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>现在可以改为如下写法：</p>
-<pre><code class="java">switch (day) {
-    case MONDAY, FRIDAY, SUNDAY -&gt; System.out.println(6);
-    case TUESDAY                -&gt; System.out.println(7);
-    case THURSDAY, SATURDAY     -&gt; System.out.println(8);
-    case WEDNESDAY              -&gt; System.out.println(9);
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, FRIDAY, SUNDAY -&gt; System.out.println(<span class="hljs-number">6</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY                -&gt; System.out.println(<span class="hljs-number">7</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY, SATURDAY     -&gt; System.out.println(<span class="hljs-number">8</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY              -&gt; System.out.println(<span class="hljs-number">9</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>以及在表达式返回值</p>
-<pre><code class="java">int numLetters = switch (day) {
-    case MONDAY, FRIDAY, SUNDAY -&gt; 6;
-    case TUESDAY                -&gt; 7;
-    case THURSDAY, SATURDAY     -&gt; 8;
-    case WEDNESDAY              -&gt; 9;
-};</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> numLetters = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, FRIDAY, SUNDAY -&gt; <span class="hljs-number">6</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY                -&gt; <span class="hljs-number">7</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY, SATURDAY     -&gt; <span class="hljs-number">8</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY              -&gt; <span class="hljs-number">9</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>对于需要返回值的switch expression要么正常返回值要么抛出异常，以下这两种写法都是错误的</p>
-<pre><code class="java">int i = switch (day) {
-    case MONDAY -&gt; {
-        System.out.println(&quot;Monday&quot;); 
-        // ERROR! Block doesn&#39;t contain a break with value
-    }
-    default -&gt; 1;
-};
-i = switch (day) {
-    case MONDAY, TUESDAY, WEDNESDAY: 
-        break 0;
-    default: 
-        System.out.println(&quot;Second half of the week&quot;);
-        // ERROR! Group doesn&#39;t contain a break with value
-};</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> i = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"Monday"</span>); </span><br><span class="line">        <span class="hljs-comment">// ERROR! Block doesn't contain a break with value</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">default</span> -&gt; <span class="hljs-number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line">i = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, TUESDAY, WEDNESDAY: </span><br><span class="line">        <span class="hljs-keyword">break</span> <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">default</span>: </span><br><span class="line">        System.out.println(<span class="hljs-string">"Second half of the week"</span>);</span><br><span class="line">        <span class="hljs-comment">// ERROR! Group doesn't contain a break with value</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F334" target="_blank" rel="noopener">334:    JVM Constants API</a></li>
 </ul>
-</blockquote>
 <blockquote>
 <p>新增了JVM Constants API，具体来说就是java.base模块新增了java.lang.constant包，引入了ConstantDesc接口(ClassDesc、MethodTypeDesc、MethodHandleDesc这几个接口直接继承了ConstantDesc接口)以及Constable接口；ConstantDesc接口定义了resolveConstantDesc方法，Constable接口定义了describeConstable方法；String、Integer、Long、Float、Double均实现了这两个接口，而EnumDesc实现了ConstantDesc接口</p>
 </blockquote>
@@ -285,88 +249,30 @@ i = switch (day) {
 </ul>
 <blockquote>
 <p>使用实例如下</p>
-<pre><code class="java">    @Test
-    public void testCompactNumberFormat(){
-        var cnf = NumberFormat.getCompactNumberInstance(Locale.CHINA, NumberFormat.Style.SHORT);
-        System.out.println(cnf.format(1_0000));
-        System.out.println(cnf.format(1_9200));
-        System.out.println(cnf.format(1_000_000));
-        System.out.println(cnf.format(1L &lt;&lt; 30));
-        System.out.println(cnf.format(1L &lt;&lt; 40));
-        System.out.println(cnf.format(1L &lt;&lt; 50));
-    }</code></pre>
 </blockquote>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCompactNumberFormat</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> cnf = NumberFormat.getCompactNumberInstance(Locale.CHINA, NumberFormat.Style.SHORT);</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_0000</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_9200</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_000_000</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">30</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">40</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">50</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>输出</p>
-<pre><code>1万
-2万
-100万
-11亿
-1兆
-1126兆</code></pre><ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1万</span><br><span class="line">2万</span><br><span class="line">100万</span><br><span class="line">11亿</span><br><span class="line">1兆</span><br><span class="line">1126兆</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>String支持transform、indent操作</li>
 </ul>
-<pre><code class="java">    @Test
-    public void testStringTransform(){
-        System.out.println(&quot;hello&quot;.transform(new Function&lt;String, Integer&gt;() {
-            @Override
-            public Integer apply(String s) {
-                return s.hashCode();
-            }
-        }));
-    }
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringTransform</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"hello"</span>.transform(<span class="hljs-keyword">new</span> Function&lt;String, Integer&gt;() &#123;</span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">apply</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> s.hashCode();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringIndent</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"hello"</span>.indent(<span class="hljs-number">3</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    @Test
-    public void testStringIndent(){
-        System.out.println(&quot;hello&quot;.indent(3));
-    }</code></pre>
 <p>Files新增mismatch方法</p>
-<pre><code class="java">    @Test
-    public void testFilesMismatch() throws IOException {
-        FileWriter fileWriter = new FileWriter(&quot;/tmp/a.txt&quot;);
-        fileWriter.write(&quot;a&quot;);
-        fileWriter.write(&quot;b&quot;);
-        fileWriter.write(&quot;c&quot;);
-        fileWriter.close();
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFilesMismatch</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    FileWriter fileWriter = <span class="hljs-keyword">new</span> FileWriter(<span class="hljs-string">"/tmp/a.txt"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"a"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"b"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"c"</span>);</span><br><span class="line">    fileWriter.close();</span><br><span class="line"></span><br><span class="line">    FileWriter fileWriterB = <span class="hljs-keyword">new</span> FileWriter(<span class="hljs-string">"/tmp/b.txt"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"a"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"1"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"c"</span>);</span><br><span class="line">    fileWriterB.close();</span><br><span class="line"></span><br><span class="line">    System.out.println(Files.mismatch(Path.of(<span class="hljs-string">"/tmp/a.txt"</span>),Path.of(<span class="hljs-string">"/tmp/b.txt"</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        FileWriter fileWriterB = new FileWriter(&quot;/tmp/b.txt&quot;);
-        fileWriterB.write(&quot;a&quot;);
-        fileWriterB.write(&quot;1&quot;);
-        fileWriterB.write(&quot;c&quot;);
-        fileWriterB.close();
-
-        System.out.println(Files.mismatch(Path.of(&quot;/tmp/a.txt&quot;),Path.of(&quot;/tmp/b.txt&quot;)));
-    }</code></pre>
 <ul>
 <li>Collectors新增teeing方法用于聚合两个downstream的结果</li>
 </ul>
-<pre><code class="java">    @Test
-    public void testCollectorTeeing(){
-        var result = Stream.of(&quot;Devoxx&quot;,&quot;Voxxed Days&quot;,&quot;Code One&quot;,&quot;Basel One&quot;)
-                .collect(Collectors.teeing(Collectors.filtering(n -&gt; n.contains(&quot;xx&quot;),Collectors.toList()),
-                                            Collectors.filtering(n -&gt; n.endsWith(&quot;One&quot;),Collectors.toList()),
-                        (List&lt;String&gt; list1, List&lt;String&gt; list2) -&gt; List.of(list1,list2)
-                                            ));
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCollectorTeeing</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> result = Stream.of(<span class="hljs-string">"Devoxx"</span>,<span class="hljs-string">"Voxxed Days"</span>,<span class="hljs-string">"Code One"</span>,<span class="hljs-string">"Basel One"</span>)</span><br><span class="line">            .collect(Collectors.teeing(Collectors.filtering(n -&gt; n.contains(<span class="hljs-string">"xx"</span>),Collectors.toList()),</span><br><span class="line">                                        Collectors.filtering(n -&gt; n.endsWith(<span class="hljs-string">"One"</span>),Collectors.toList()),</span><br><span class="line">                    (List&lt;String&gt; list1, List&lt;String&gt; list2) -&gt; List.of(list1,list2)</span><br><span class="line">                                        ));</span><br><span class="line"></span><br><span class="line">    System.out.println(result.get(<span class="hljs-number">0</span>));</span><br><span class="line">    System.out.println(result.get(<span class="hljs-number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        System.out.println(result.get(0));
-        System.out.println(result.get(1));
-    }</code></pre>
 <ul>
 <li>CompletionStage新增exceptionallyAsync、exceptionallyCompose、exceptionallyComposeAsync方法</li>
 </ul>
-<pre><code class="java">    @Test
-    public void testExceptionallyAsync() throws ExecutionException, InterruptedException {
-        LOGGER.info(&quot;begin&quot;);
-        int result = CompletableFuture.supplyAsync(() -&gt; {
-            LOGGER.info(&quot;calculate&quot;);
-            int i = 1/0;
-            return 100;
-        }).exceptionallyAsync((t) -&gt; {
-            LOGGER.info(&quot;error error:{}&quot;,t.getMessage());
-            return 0;
-        }).get();
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testExceptionallyAsync</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">    LOGGER.info(<span class="hljs-string">"begin"</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> result = CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        LOGGER.info(<span class="hljs-string">"calculate"</span>);</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>/<span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">100</span>;</span><br><span class="line">    &#125;).exceptionallyAsync((t) -&gt; &#123;</span><br><span class="line">        LOGGER.info(<span class="hljs-string">"error error:&#123;&#125;"</span>,t.getMessage());</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;).get();</span><br><span class="line"></span><br><span class="line">    LOGGER.info(<span class="hljs-string">"result:&#123;&#125;"</span>,result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        LOGGER.info(&quot;result:{}&quot;,result);
-    }</code></pre>
 <ul>
 <li><p>JDK12之前CompletionStage只有一个exceptionally，该方法体在主线程执行，JDK12新增了exceptionallyAsync、exceptionallyComposeAsync方法允许方法体在异步线程执行，同时新增了exceptionallyCompose方法支持在exceptionally的时候构建新的CompletionStage</p>
 </li>
@@ -592,7 +498,7 @@ i = switch (day) {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -604,7 +510,7 @@ i = switch (day) {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -616,7 +522,7 @@ i = switch (day) {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -717,6 +623,14 @@ i = switch (day) {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -775,6 +689,25 @@ i = switch (day) {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -796,7 +729,7 @@ i = switch (day) {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -815,7 +748,7 @@ i = switch (day) {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -834,7 +767,7 @@ i = switch (day) {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -842,25 +775,6 @@ i = switch (day) {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -885,7 +799,7 @@ i = switch (day) {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1507,6 +1421,13 @@ i = switch (day) {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1779,6 +1700,25 @@ i = switch (day) {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1800,7 +1740,7 @@ i = switch (day) {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1819,7 +1759,7 @@ i = switch (day) {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1838,7 +1778,7 @@ i = switch (day) {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1846,25 +1786,6 @@ i = switch (day) {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1889,7 +1810,7 @@ i = switch (day) {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2511,6 +2432,13 @@ i = switch (day) {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

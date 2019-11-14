@@ -182,18 +182,31 @@
             <p><img src="/images/2019/09/12/0188c220-d55f-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
 <h1 id="nohup-在linux后台运行程序"><a href="#nohup-在linux后台运行程序" class="headerlink" title="nohup:在linux后台运行程序"></a>nohup:在linux后台运行程序</h1><p>今天在工作中，lz要在Linux系统上运行一个java程序，这个程序要在系统中持续运行。随后lz无意将ssh窗口关掉了，发现java程序停止了。原来，当使用ssh连接到系统运行程序的时候，该程序已经和你的ssh连接绑定了。如果你关闭连接，该程序就会停止。还有一个情景：如果要在后台运行多个java程序的时候，就需要启动多个ssh窗口，这样很麻烦。有没有方法来解决这个问题呢？答案是肯定的。</p>
 <p>1.使用nohup来执行命令，它会把命令自动调到linux后台运行，不锁定当前ssh窗口，也不会被ctrl + c，alt + F4之类打断程序的动行。</p>
-<pre><code>nohup java -jar test.jar &amp;</code></pre><p>执行完该命令后，终端会显示如下信息：</p>
-<pre><code>[1] 27945
-nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]：该后台任务的jobid<br>27945：是该进程的pid<br>nohup.out：是该任务的输出位置</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar test.jar &amp;</span><br></pre></td></tr></table></figure>
+
+<p>执行完该命令后，终端会显示如下信息：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1] 27945</span><br><span class="line">nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</span><br></pre></td></tr></table></figure>
+
+<p>[1]：该后台任务的jobid<br>27945：是该进程的pid<br>nohup.out：是该任务的输出位置</p>
 <p>2.要指定重定向的文件，如下：</p>
-<pre><code>nohup java -jar test.jar &gt; test.log 2&gt;&amp;1 &amp;</code></pre><p>3.如果一个任务已经在前台执行，那就使用以下方法来将任务调整到后台：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar test.jar &gt; test.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<p>3.如果一个任务已经在前台执行，那就使用以下方法来将任务调整到后台：</p>
 <p>（1）首先，在正在执行任务的终端使用ctrl+z</p>
-<pre><code>[1]+  已停止               java -jar test.jar</code></pre><p>（2）使用bg命令将该任务调整至后台（fg与之相反，将后台任务调整至前台）</p>
-<pre><code>bg %1(1是jobid)</code></pre><p>如果不知道jobid，也可以使用jobs命令来查询。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1]+  已停止               java -jar test.jar</span><br></pre></td></tr></table></figure>
+
+<p>（2）使用bg命令将该任务调整至后台（fg与之相反，将后台任务调整至前台）</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bg %1(1是jobid)</span><br></pre></td></tr></table></figure>
+
+<p>如果不知道jobid，也可以使用jobs命令来查询。</p>
 <p>但是任务的输出还是会打印到终端上的（具体怎么将输出重定向到别的地方，lz也不造）。而且，这时该任务还是与当前终端相关联的，关闭终端还是会断掉该任务的。使用下面命令来解决：</p>
-<pre><code>disown -h %1</code></pre><p>这样再也不用担心关掉终端会停止掉任务喽！！！</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disown -h %1</span><br></pre></td></tr></table></figure>
+
+<p>这样再也不用担心关掉终端会停止掉任务喽！！！</p>
 <p>PS：再来说说nohup吧。nohup的意思是no hang up，就是说关掉终端是不会挂掉程序的。如果开始执行命令时只使用&amp;：</p>
-<pre><code>java -jar test.jar &amp;</code></pre><p>那么该任务也会在后台执行，但是一旦关掉终端该任务还是会挂掉，所以这就是nohup的用处了。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar test.jar &amp;</span><br></pre></td></tr></table></figure>
+
+<p>那么该任务也会在后台执行，但是一旦关掉终端该任务还是会挂掉，所以这就是nohup的用处了。</p>
 <p><a href="http://ee-dreamer.com/?p=327" target="_blank" rel="noopener">原文链接</a></p>
 
         </div>
@@ -255,7 +268,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -267,7 +280,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -279,7 +292,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -380,6 +393,14 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -438,6 +459,25 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -459,7 +499,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -478,7 +518,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -497,7 +537,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -505,25 +545,6 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -548,7 +569,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1170,6 +1191,13 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1442,6 +1470,25 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1463,7 +1510,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1482,7 +1529,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1501,7 +1548,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1509,25 +1556,6 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1552,7 +1580,7 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2174,6 +2202,13 @@ nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</code></pre><p>[1]
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

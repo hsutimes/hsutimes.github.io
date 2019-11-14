@@ -251,57 +251,8 @@
 <p>关于数据的处理部分，从服务器下载到的原始数据是 trn_gnt.zip 解压之后是 gnt.alz， 需要再次解压得到一个包含 gnt文件的文件夹。里面每一个gnt文件都包含了若干个汉字及其标注。直接处理比较麻烦，也不方便抽取出图片再进行操作，虽然转为图片存入文件夹比较直观，但是不适合批量读取和训练, 后面我们统一转为tfrecord进行训练。</p>
 <p>更新: 实际上，由于单个汉字图片其实很小，差不多也就最大80x80的大小，这个大小不适合转成图片保存到本地，因此我们将hwdb原始的二进制保存为tfrecord。同时也方便后面训练，可以直接从tfrecord读取图片进行训练。</p>
 <p><img src="/images/2019/09/06/dbb692f0-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
-<h1 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h1><pre><code class="python">def train():
-    all_characters = load_characters()
-    num_classes = len(all_characters)
-    logging.info(&#39;all characters: {}&#39;.format(num_classes))
-    train_dataset = load_ds()
-    train_dataset = train_dataset.shuffle(100).map(preprocess).batch(32).repeat()
+<h1 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h1><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    all_characters = load_characters()</span><br><span class="line">    num_classes = len(all_characters)</span><br><span class="line">    logging.info(<span class="hljs-string">'all characters: &#123;&#125;'</span>.format(num_classes))</span><br><span class="line">    train_dataset = load_ds()</span><br><span class="line">    train_dataset = train_dataset.shuffle(<span class="hljs-number">100</span>).map(preprocess).batch(<span class="hljs-number">32</span>).repeat()</span><br><span class="line"></span><br><span class="line">    val_ds = load_val_ds()</span><br><span class="line">    val_ds = val_ds.shuffle(<span class="hljs-number">100</span>).map(preprocess).batch(<span class="hljs-number">32</span>).repeat()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> data <span class="hljs-keyword">in</span> train_dataset.take(<span class="hljs-number">2</span>):</span><br><span class="line">        print(data)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># init model</span></span><br><span class="line">    model = build_net_003((<span class="hljs-number">64</span>, <span class="hljs-number">64</span>, <span class="hljs-number">1</span>), num_classes)</span><br><span class="line">    model.summary()</span><br><span class="line">    logging.info(<span class="hljs-string">'model loaded.'</span>)</span><br><span class="line"></span><br><span class="line">    start_epoch = <span class="hljs-number">0</span></span><br><span class="line">    latest_ckpt = tf.train.latest_checkpoint(os.path.dirname(ckpt_path))</span><br><span class="line">    <span class="hljs-keyword">if</span> latest_ckpt:</span><br><span class="line">        start_epoch = int(latest_ckpt.split(<span class="hljs-string">'-'</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">'.'</span>)[<span class="hljs-number">0</span>])</span><br><span class="line">        model.load_weights(latest_ckpt)</span><br><span class="line">        logging.info(<span class="hljs-string">'model resumed from: &#123;&#125;, start at epoch: &#123;&#125;'</span>.format(latest_ckpt, start_epoch))</span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        logging.info(<span class="hljs-string">'passing resume since weights not there. training from scratch'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> use_keras_fit:</span><br><span class="line">        model.compile(</span><br><span class="line">            optimizer=tf.keras.optimizers.Adam(),</span><br><span class="line">            loss=tf.keras.losses.SparseCategoricalCrossentropy(),</span><br><span class="line">            metrics=[<span class="hljs-string">'accuracy'</span>])</span><br><span class="line">        callbacks = [</span><br><span class="line">            tf.keras.callbacks.ModelCheckpoint(ckpt_path,</span><br><span class="line">                                               save_weights_only=<span class="hljs-literal">True</span>,</span><br><span class="line">                                               verbose=<span class="hljs-number">1</span>,</span><br><span class="line">                                               period=<span class="hljs-number">500</span>)</span><br><span class="line">        ]</span><br><span class="line">        <span class="hljs-keyword">try</span>:</span><br><span class="line">            model.fit(</span><br><span class="line">                train_dataset,</span><br><span class="line">                validation_data=val_ds,</span><br><span class="line">                validation_steps=<span class="hljs-number">1000</span>,</span><br><span class="line">                epochs=<span class="hljs-number">15000</span>,</span><br><span class="line">                steps_per_epoch=<span class="hljs-number">1024</span>,</span><br><span class="line">                callbacks=callbacks)</span><br><span class="line">        <span class="hljs-keyword">except</span> KeyboardInterrupt:</span><br><span class="line">            model.save_weights(ckpt_path.format(epoch=<span class="hljs-number">0</span>))</span><br><span class="line">            logging.info(<span class="hljs-string">'keras model saved.'</span>)</span><br><span class="line">        model.save_weights(ckpt_path.format(epoch=<span class="hljs-number">0</span>))</span><br><span class="line">        model.save(os.path.join(os.path.dirname(ckpt_path), <span class="hljs-string">'cn_ocr.h5'</span>))</span><br></pre></td></tr></table></figure>
 
-    val_ds = load_val_ds()
-    val_ds = val_ds.shuffle(100).map(preprocess).batch(32).repeat()
-
-    for data in train_dataset.take(2):
-        print(data)
-
-    # init model
-    model = build_net_003((64, 64, 1), num_classes)
-    model.summary()
-    logging.info(&#39;model loaded.&#39;)
-
-    start_epoch = 0
-    latest_ckpt = tf.train.latest_checkpoint(os.path.dirname(ckpt_path))
-    if latest_ckpt:
-        start_epoch = int(latest_ckpt.split(&#39;-&#39;)[1].split(&#39;.&#39;)[0])
-        model.load_weights(latest_ckpt)
-        logging.info(&#39;model resumed from: {}, start at epoch: {}&#39;.format(latest_ckpt, start_epoch))
-    else:
-        logging.info(&#39;passing resume since weights not there. training from scratch&#39;)
-
-    if use_keras_fit:
-        model.compile(
-            optimizer=tf.keras.optimizers.Adam(),
-            loss=tf.keras.losses.SparseCategoricalCrossentropy(),
-            metrics=[&#39;accuracy&#39;])
-        callbacks = [
-            tf.keras.callbacks.ModelCheckpoint(ckpt_path,
-                                               save_weights_only=True,
-                                               verbose=1,
-                                               period=500)
-        ]
-        try:
-            model.fit(
-                train_dataset,
-                validation_data=val_ds,
-                validation_steps=1000,
-                epochs=15000,
-                steps_per_epoch=1024,
-                callbacks=callbacks)
-        except KeyboardInterrupt:
-            model.save_weights(ckpt_path.format(epoch=0))
-            logging.info(&#39;keras model saved.&#39;)
-        model.save_weights(ckpt_path.format(epoch=0))
-        model.save(os.path.join(os.path.dirname(ckpt_path), &#39;cn_ocr.h5&#39;))</code></pre>
 <p>大家在以后编写训练代码的时候其实可以保持这个好的习惯。</p>
 <p>OK，整个模型训练起来之后，可以在短时间内达到95%的准确率：</p>
 <p><img src="/images/2019/09/06/faa28750-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
@@ -371,7 +322,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -383,7 +334,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -395,7 +346,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -496,6 +447,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -554,6 +513,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -575,7 +553,7 @@
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -594,7 +572,7 @@
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -613,7 +591,7 @@
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -621,25 +599,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -664,7 +623,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1286,6 +1245,13 @@
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1558,6 +1524,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1579,7 +1564,7 @@
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1598,7 +1583,7 @@
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1617,7 +1602,7 @@
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1625,25 +1610,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1668,7 +1634,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2290,6 +2256,13 @@
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

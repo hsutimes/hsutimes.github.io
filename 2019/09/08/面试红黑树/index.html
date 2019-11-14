@@ -204,42 +204,13 @@
 <p>比如 X 左旋(右图转成左图)的结果，是让在 Y 左子树的黑色节点跑到 X 右子树去。</p>
 <p>我们以 Java 集合框架中的 TreeMap 中的代码来看下左右旋的具体操作方法：</p>
 <p><strong>指定节点 x 的左旋 (右图转成左图)：</strong></p>
-<pre><code class="java"> //这里 p 代表 x
-private void rotateLeft(Entry p) {
-    if (p != null) {
-        Entry r = p.right; // p 是上图中的 x，r 就是 y
-        p.right = r.left;       // 左旋后，x 的右子树变成了 y 的左子树 β 
-        if (r.left != null)         
-            r.left.parent = p;  //β 确认父亲为 x
-        r.parent = p.parent;        //y 取代 x 的第一步：认 x 的父亲为爹
-        if (p.parent == null)       //要是 x 没有父亲，那 y 就是最老的根节点
-            root = r;
-        else if (p.parent.left == p) //如果 x 有父亲并且是它父亲的左孩子，x 的父亲现在认 y 为左孩子，不要 x 了
-            p.parent.left = r;
-        else                            //如果 x 是父亲的右孩子，父亲就认 y 为右孩子，抛弃 x
-            p.parent.right = r;
-        r.left = p;     //y 逆袭成功，以前的爸爸 x 现在成了它的左孩子
-        p.parent = r;
-    }
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-comment">//这里 p 代表 x</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotateLeft</span><span class="hljs-params">(Entry p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Entry r = p.right; <span class="hljs-comment">// p 是上图中的 x，r 就是 y</span></span><br><span class="line">        p.right = r.left;       <span class="hljs-comment">// 左旋后，x 的右子树变成了 y 的左子树 β </span></span><br><span class="line">        <span class="hljs-keyword">if</span> (r.left != <span class="hljs-keyword">null</span>)         </span><br><span class="line">            r.left.parent = p;  <span class="hljs-comment">//β 确认父亲为 x</span></span><br><span class="line">        r.parent = p.parent;        <span class="hljs-comment">//y 取代 x 的第一步：认 x 的父亲为爹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (p.parent == <span class="hljs-keyword">null</span>)       <span class="hljs-comment">//要是 x 没有父亲，那 y 就是最老的根节点</span></span><br><span class="line">            root = r;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p.parent.left == p) <span class="hljs-comment">//如果 x 有父亲并且是它父亲的左孩子，x 的父亲现在认 y 为左孩子，不要 x 了</span></span><br><span class="line">            p.parent.left = r;</span><br><span class="line">        <span class="hljs-keyword">else</span>                            <span class="hljs-comment">//如果 x 是父亲的右孩子，父亲就认 y 为右孩子，抛弃 x</span></span><br><span class="line">            p.parent.right = r;</span><br><span class="line">        r.left = p;     <span class="hljs-comment">//y 逆袭成功，以前的爸爸 x 现在成了它的左孩子</span></span><br><span class="line">        p.parent = r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>可以看到，x 节点的左旋就是把 x 变成 右孩子 y 的左孩子，同时把 y 的左孩子送给 x 当右子树。</p>
 <p>简单点记就是：左旋把右子树里的一个节点（上图 β）移动到了左子树。</p>
 <p><strong>指定节点 y 的右旋（左图转成右图）：</strong></p>
-<pre><code class="java">private void rotateRight(Entry p) {
-    if (p != null) {
-        Entry l = p.left;
-        p.left = l.right;
-        if (l.right != null) l.right.parent = p;
-        l.parent = p.parent;
-        if (p.parent == null)
-            root = l;
-        else if (p.parent.right == p)
-            p.parent.right = l;
-        else p.parent.left = l;
-        l.right = p;
-        p.parent = l;
-    }
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotateRight</span><span class="hljs-params">(Entry p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Entry l = p.left;</span><br><span class="line">        p.left = l.right;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l.right != <span class="hljs-keyword">null</span>) l.right.parent = p;</span><br><span class="line">        l.parent = p.parent;</span><br><span class="line">        <span class="hljs-keyword">if</span> (p.parent == <span class="hljs-keyword">null</span>)</span><br><span class="line">            root = l;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p.parent.right == p)</span><br><span class="line">            p.parent.right = l;</span><br><span class="line">        <span class="hljs-keyword">else</span> p.parent.left = l;</span><br><span class="line">        l.right = p;</span><br><span class="line">        p.parent = l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>同理，y 节点的右旋就是把 y 变成 左孩子 x 的右孩子，同时把 x 的右孩子送给 x 当左子树。</p>
 <p>简单点记就是：右旋把左子树里的一个节点（上图 β）移动到了右子树。</p>
 <p>了解左旋、右旋的方法及意义后，就可以了解红黑树的主要操作：插入、删除。</p>
@@ -413,7 +384,7 @@ private void rotateLeft(Entry p) {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -425,7 +396,7 @@ private void rotateLeft(Entry p) {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -437,7 +408,7 @@ private void rotateLeft(Entry p) {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -538,6 +509,14 @@ private void rotateLeft(Entry p) {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -596,6 +575,25 @@ private void rotateLeft(Entry p) {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -617,7 +615,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -636,7 +634,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -655,7 +653,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -663,25 +661,6 @@ private void rotateLeft(Entry p) {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -706,7 +685,7 @@ private void rotateLeft(Entry p) {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1328,6 +1307,13 @@ private void rotateLeft(Entry p) {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1600,6 +1586,25 @@ private void rotateLeft(Entry p) {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1621,7 +1626,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1640,7 +1645,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1659,7 +1664,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1667,25 +1672,6 @@ private void rotateLeft(Entry p) {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1710,7 +1696,7 @@ private void rotateLeft(Entry p) {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2332,6 +2318,13 @@ private void rotateLeft(Entry p) {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

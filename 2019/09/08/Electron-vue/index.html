@@ -187,60 +187,12 @@
 <li>Renderer进程主要通过Chromium来实现APP的图形界面——就是平时我们熟悉的前端开发的部分，不过得到了electron给予的加强，一些Node的模块（比如fs）和一些在3. Main进程里能用的东西（比如Clipboard）也能在Render进程里使用。<br>Main进程和Renderer进程通过<code>ipcMain</code>和<code>ipcRenderer</code>来进行通信。通过事件监听和事件派发来实现两个进程通信，从而实现Main或者Renderer进程里不能实现的某些功能。</li>
 </ol>
 <h1 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h1><p>该样板代码被构建为 vue-cli 的一个模板，并且包含多个选项，可以自定义你最终的脚手架程序。本项目需要使用 node@^7 或更高版本。electron-vue 官方推荐 yarn 作为软件包管理器，因为它可以更好地处理依赖关系，并可以使用 yarn clean 帮助减少最后构建文件的大小。</p>
-<pre><code class="shell"># 安装 vue-cli 和 脚手架样板代码
-npm install -g vue-cli
-vue init simulatedgreg/electron-vue my-project
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> 安装 vue-cli 和 脚手架样板代码</span><br><span class="line">npm install -g vue-cli</span><br><span class="line">vue init simulatedgreg/electron-vue my-project</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span> 安装依赖并运行你的程序</span><br><span class="line">cd my-project</span><br><span class="line">yarn # 或者 npm install</span><br><span class="line">yarn run dev # 或者 npm run dev</span><br></pre></td></tr></table></figure>
 
-# 安装依赖并运行你的程序
-cd my-project
-yarn # 或者 npm install
-yarn run dev # 或者 npm run dev</code></pre>
-<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><pre><code class="shell">my-project
-├─ .electron-vue
-│  └─ &lt;build/development&gt;.js files
-├─ build
-│  └─ icons/
-├─ dist
-│  ├─ electron/
-│  └─ web/
-├─ node_modules/
-├─ src
-│  ├─ main
-│  │  ├─ index.dev.js
-│  │  └─ index.js
-│  ├─ renderer
-│  │  ├─ components/
-│  │  ├─ router/
-│  │  ├─ store/
-│  │  ├─ App.vue
-│  │  └─ main.js
-│  └─ index.ejs
-├─ static/
-├─ test
-│  ├─ e2e
-│  │  ├─ specs/
-│  │  ├─ index.js
-│  │  └─ utils.js
-│  ├─ unit
-│  │  ├─ specs/
-│  │  ├─ index.js
-│  │  └─ karma.config.js
-│  └─ .eslintrc
-├─ .babelrc
-├─ .eslintignore
-├─ .eslintrc.js
-├─ .gitignore
-├─ package.json
-└─ README.md</code></pre>
-<h1 id="产品构建"><a href="#产品构建" class="headerlink" title="产品构建"></a>产品构建</h1><pre><code class="shell">app.asar
-├─ dist
-│  └─ electron
-│     ├─ static/
-│     ├─ index.html
-│     ├─ main.js
-│     └─ renderer.js
-├─ node_modules/
-└─ package.json</code></pre>
+<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">my-project</span><br><span class="line">├─ .electron-vue</span><br><span class="line">│  └─ &lt;build/development&gt;.js files</span><br><span class="line">├─ build</span><br><span class="line">│  └─ icons/</span><br><span class="line">├─ dist</span><br><span class="line">│  ├─ electron/</span><br><span class="line">│  └─ web/</span><br><span class="line">├─ node_modules/</span><br><span class="line">├─ src</span><br><span class="line">│  ├─ main</span><br><span class="line">│  │  ├─ index.dev.js</span><br><span class="line">│  │  └─ index.js</span><br><span class="line">│  ├─ renderer</span><br><span class="line">│  │  ├─ components/</span><br><span class="line">│  │  ├─ router/</span><br><span class="line">│  │  ├─ store/</span><br><span class="line">│  │  ├─ App.vue</span><br><span class="line">│  │  └─ main.js</span><br><span class="line">│  └─ index.ejs</span><br><span class="line">├─ static/</span><br><span class="line">├─ test</span><br><span class="line">│  ├─ e2e</span><br><span class="line">│  │  ├─ specs/</span><br><span class="line">│  │  ├─ index.js</span><br><span class="line">│  │  └─ utils.js</span><br><span class="line">│  ├─ unit</span><br><span class="line">│  │  ├─ specs/</span><br><span class="line">│  │  ├─ index.js</span><br><span class="line">│  │  └─ karma.config.js</span><br><span class="line">│  └─ .eslintrc</span><br><span class="line">├─ .babelrc</span><br><span class="line">├─ .eslintignore</span><br><span class="line">├─ .eslintrc.js</span><br><span class="line">├─ .gitignore</span><br><span class="line">├─ package.json</span><br><span class="line">└─ README.md</span><br></pre></td></tr></table></figure>
+
+<h1 id="产品构建"><a href="#产品构建" class="headerlink" title="产品构建"></a>产品构建</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.asar</span><br><span class="line">├─ dist</span><br><span class="line">│  └─ electron</span><br><span class="line">│     ├─ static/</span><br><span class="line">│     ├─ index.html</span><br><span class="line">│     ├─ main.js</span><br><span class="line">│     └─ renderer.js</span><br><span class="line">├─ node_modules/</span><br><span class="line">└─ package.json</span><br></pre></td></tr></table></figure>
+
 <h1 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h1><p><img src="/images/2019/09/08/092650a0-d1e6-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
 
         </div>
@@ -406,7 +358,7 @@ yarn run dev # 或者 npm run dev</code></pre>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -418,7 +370,7 @@ yarn run dev # 或者 npm run dev</code></pre>
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -430,7 +382,7 @@ yarn run dev # 或者 npm run dev</code></pre>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -531,6 +483,14 @@ yarn run dev # 或者 npm run dev</code></pre>
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -589,6 +549,25 @@ yarn run dev # 或者 npm run dev</code></pre>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -610,7 +589,7 @@ yarn run dev # 或者 npm run dev</code></pre>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -629,7 +608,7 @@ yarn run dev # 或者 npm run dev</code></pre>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -648,7 +627,7 @@ yarn run dev # 或者 npm run dev</code></pre>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -656,25 +635,6 @@ yarn run dev # 或者 npm run dev</code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -699,7 +659,7 @@ yarn run dev # 或者 npm run dev</code></pre>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1321,6 +1281,13 @@ yarn run dev # 或者 npm run dev</code></pre>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1593,6 +1560,25 @@ yarn run dev # 或者 npm run dev</code></pre>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1614,7 +1600,7 @@ yarn run dev # 或者 npm run dev</code></pre>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1633,7 +1619,7 @@ yarn run dev # 或者 npm run dev</code></pre>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1652,7 +1638,7 @@ yarn run dev # 或者 npm run dev</code></pre>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1660,25 +1646,6 @@ yarn run dev # 或者 npm run dev</code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1703,7 +1670,7 @@ yarn run dev # 或者 npm run dev</code></pre>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2325,6 +2292,13 @@ yarn run dev # 或者 npm run dev</code></pre>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -146,7 +146,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-05T13:31:23.000Z">2019-11-05</time>
+                <time class="level-item has-text-grey" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1031 个字)
+                    8 分钟 读完 (大约 1128 个字)
                 </span>
                 
                 
@@ -165,928 +165,34 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/11/05/Suffix-expression/">Suffix-expression</a>
+                <a class="has-link-black-ter" href="/2019/11/10/falling-stone/">falling-stone</a>
             
         </h1>
         <div class="content">
-            <h1 id="后缀表达式"><a href="#后缀表达式" class="headerlink" title="后缀表达式"></a>后缀表达式</h1><p>后缀表达式，又称逆波兰式，指的是不包含括号，运算符放在两个运算对象的后面，所有的计算按运算符出现的顺序，严格从左向右进行（不再考虑运算符的优先规则）。</p>
-<p>后缀表达式计算：<br>后缀表达式计算与前缀表达式类似，只是顺序是从左至右，具体过程如下：<br>从左至右扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算（次顶元素 op 栈顶元素），并将结果入栈；重复上述过程直到表达式最右端，最后运算得出的值即为表达式的结果</p>
-<p><img src="/images/2019/11/05/e7816c50-ffd0-11e9-81ea-938463e9957e.png" alt="image.png"></p>
-<p>例如：后缀表达式为“2 3 + 4 × 5 -”计算过程如下：<br>  （1）从左至右扫描，将 2 和 3 压入堆栈；<br>  （2）遇到 + 运算符，因此弹出 3 和 2（ 3 为栈顶元素，2 为次顶元素，注意与前缀表达式做比较），计算出 3+2 的值，得 5，再将 5 入栈；<br>  （3）将 4 入栈；<br>  （4）接下来是 × 运算符，因此弹出 4 和 5，计算出 4 × 5 = 20，将 20 入栈；<br>  （5）将 5 入栈；<br>  （6）最后是-运算符，计算出 20-5 的值，即 15，由此得出最终结果。</p>
-<p>中缀表达式转后缀表达式：<br>与转换为前缀表达式相似，步骤如下：<br>  （1）初始化两个栈：运算符栈s1和储存中间结果的栈s2；<br>  （2）从左至右扫描中缀表达式；<br>  （3）遇到操作数时，将其压s2；<br>  （4）遇到运算符时，比较其与 s1 栈顶运算符的优先级：<br>    a：如果 s1 为空，或栈顶运算符为左括号“(”，则直接将此运算符入栈；<br>    b：否则，若优先级比栈顶运算符的高，也将运算符压入 s1（注意转换为前缀表达式时是优先级较高或相同，而这里则不包括相同的情况）;<br>    c：否则，将 s1 栈顶的运算符弹出并压入到 s2 中，再次转到（4）-（1）与s1中新的栈顶运算符相比较；<br>  （5）遇到括号时：<br>    a：如果是左括号“(”，则直接压入 s1；<br>    b：如果是右括号“)”，则依次弹出 s1 栈顶的运算符，并压入 s2 ，直到遇到左括号为止，此时将这一对括号丢弃；<br>  （6）重复步骤（2）至（5），直到表达式的最右边；<br>  （7）将 s1 中剩余的运算符依次弹出并压入 s2；<br>  （8）依次弹出 s2 中的元素并输出，结果的逆序即为中缀表达式对应的后缀表达式（转换为前缀表达式时不用逆序）</p>
-<p>例如，将中缀表达式“1+((2+3)×4)-5”转换为后缀表达式的过程如下：</p>
-<table>
-<thead style="font-size: inherit;color: inherit;line-height: inherit;">
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="119">扫描到的元素</th>
-<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="142">s2(栈底-&gt;栈顶)</th>
-<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="117">s1 (栈底-&gt;栈顶)</th>
-<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="194">说明</th>
-</tr>
-</thead>
-<tbody style="font-size: inherit;color: inherit;line-height: inherit;border-width: 0px;border-style: initial;border-color: initial;">
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="137">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="110">空</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字，直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">+</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="138">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="111">+</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1为空，运算符直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">(</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="139">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="112">+ (</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">左括号，直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">(</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="140">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="113">+ ( (</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">同上</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">2</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="114">+ ( (</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">+</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ( +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1栈顶为左括号，运算符直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">3</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ( +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">)</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ (</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">右括号，弹出运算符直至遇到左括号</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">×</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ×</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1栈顶为左括号，运算符直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">4</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ×</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">)</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 ×</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">右括号，弹出运算符直至遇到左括号</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">–</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">–</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">-与+优先级相同，因此弹出+，再压入-</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">5</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × + 5</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">–</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">到达最右端</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × + 5 –</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">空</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1中剩余的运算符</td>
-</tr>
-</tbody>
-</table>
-
-<p>得到的最终结果为：“ 1 2 3 + 4 × + 5 – ”</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
+            <a id="more"></a>
 
 
 
 
 
 
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-05T12:54:02.000Z">2019-11-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 904 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/05/md5-info/">md5-info</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h1><blockquote>
-<p>MD5信息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。MD5由美国密码学家罗纳德·李维斯特（Ronald Linn Rivest）设计，于1992年公开，用以取代MD4算法。这套算法的程序在 RFC 1321 标准中被加以规范。1996年后该算法被证实存在弱点，可以被加以破解，对于需要高度安全性的数据，专家一般建议改用其他算法，如SHA-2。2004年，证实MD5算法无法防止碰撞（collision），因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途。</p>
+<h1 id="陨石"><a href="#陨石" class="headerlink" title="陨石"></a>陨石</h1><blockquote>
+<p>很多人都知道现在陨石的价格节节攀升，价值堪比黄金、钻石，有的甚至远远超过。但是为什么陨石价值这么高呢？恐怕很多人仅仅只是认为陨石非常稀少所以才能卖的那么高。</p>
 </blockquote>
-<p><img src="/images/2019/11/05/544b5d60-ffcb-11e9-9e2a-f35d177bbfa9.png" alt="image.png"></p>
-<p><strong>C++实现</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-#include&lt;string&gt;
-using namespace std;
-#define shift(x, n) (((x) &lt;&lt; (n)) | ((x) &gt;&gt; (32-(n))))//右移的时候，高位一定要补零，而不是补充符号位
-#define F(x, y, z) (((x) &amp; (y)) | ((~x) &amp; (z)))    
-#define G(x, y, z) (((x) &amp; (z)) | ((y) &amp; (~z)))
-#define H(x, y, z) ((x) ^ (y) ^ (z))
-#define I(x, y, z) ((y) ^ ((x) | (~z)))
-#define A 0x67452301
-#define B 0xefcdab89
-#define C 0x98badcfe
-#define D 0x10325476
-//strBaye的长度
-unsigned int strlength;
-//A,B,C,D的临时变量
-unsigned int atemp;
-unsigned int btemp;
-unsigned int ctemp;
-unsigned int dtemp;
-//常量ti unsigned int(abs(sin(i+1))*(2pow32))
-const unsigned int k[]={
-        0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,
-        0xf57c0faf,0x4787c62a,0xa8304613,0xfd469501,0x698098d8,
-        0x8b44f7af,0xffff5bb1,0x895cd7be,0x6b901122,0xfd987193,
-        0xa679438e,0x49b40821,0xf61e2562,0xc040b340,0x265e5a51,
-        0xe9b6c7aa,0xd62f105d,0x02441453,0xd8a1e681,0xe7d3fbc8,
-        0x21e1cde6,0xc33707d6,0xf4d50d87,0x455a14ed,0xa9e3e905,
-        0xfcefa3f8,0x676f02d9,0x8d2a4c8a,0xfffa3942,0x8771f681,
-        0x6d9d6122,0xfde5380c,0xa4beea44,0x4bdecfa9,0xf6bb4b60,
-        0xbebfbc70,0x289b7ec6,0xeaa127fa,0xd4ef3085,0x04881d05,
-        0xd9d4d039,0xe6db99e5,0x1fa27cf8,0xc4ac5665,0xf4292244,
-        0x432aff97,0xab9423a7,0xfc93a039,0x655b59c3,0x8f0ccc92,
-        0xffeff47d,0x85845dd1,0x6fa87e4f,0xfe2ce6e0,0xa3014314,
-        0x4e0811a1,0xf7537e82,0xbd3af235,0x2ad7d2bb,0xeb86d391};
-//向左位移数
-const unsigned int s[]={7,12,17,22,7,12,17,22,7,12,17,22,7,
-        12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,
-        4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,
-        15,21,6,10,15,21,6,10,15,21,6,10,15,21};
-const char str16[]=&quot;0123456789abcdef&quot;;
-void mainLoop(unsigned int M[])
-{
-    unsigned int f,g;
-    unsigned int a=atemp;
-    unsigned int b=btemp;
-    unsigned int c=ctemp;
-    unsigned int d=dtemp;
-    for (unsigned int i = 0; i &lt; 64; i++)
-    {
-        if(i&lt;16){
-            f=F(b,c,d);
-            g=i;
-        }else if (i&lt;32)
-        {
-            f=G(b,c,d);
-            g=(5*i+1)%16;
-        }else if(i&lt;48){
-            f=H(b,c,d);
-            g=(3*i+5)%16;
-        }else{
-            f=I(b,c,d);
-            g=(7*i)%16;
-        }
-        unsigned int tmp=d;
-        d=c;
-        c=b;
-        b=b+shift((a+f+k[i]+M[g]),s[i]);
-        a=tmp;
-    }
-    atemp=a+atemp;
-    btemp=b+btemp;
-    ctemp=c+ctemp;
-    dtemp=d+dtemp;
-}
-/*
-*填充函数
-*处理后应满足bits≡448(mod512),字节就是bytes≡56（mode64)
-*填充方式为先加一个1,其它位补零
-*最后加上64位的原来长度
-*/
-unsigned int* add(string str)
-{
-    unsigned int num=((str.length()+8)/64)+1;//以512位,64个字节为一组
-    unsigned int *strByte=new unsigned int[num*16];    //64/4=16,所以有16个整数
-    strlength=num*16;
-    for (unsigned int i = 0; i &lt; num*16; i++)
-        strByte[i]=0;
-    for (unsigned int i=0; i &lt;str.length(); i++)
-    {
-        strByte[i&gt;&gt;2]|=(str[i])&lt;&lt;((i%4)*8);//一个整数存储四个字节，i&gt;&gt;2表示i/4 一个unsigned int对应4个字节，保存4个字符信息
-    }
-    strByte[str.length()&gt;&gt;2]|=0x80&lt;&lt;(((str.length()%4))*8);//尾部添加1 一个unsigned int保存4个字符信息,所以用128左移
-    /*
-    *添加原长度，长度指位的长度，所以要乘8，然后是小端序，所以放在倒数第二个,这里长度只用了32位
-    */
-    strByte[num*16-2]=str.length()*8;
-    return strByte;
-}
-string changeHex(int a)
-{
-    int b;
-    string str1;
-    string str=&quot;&quot;;
-    for(int i=0;i&lt;4;i++)
-    {
-        str1=&quot;&quot;;
-        b=((a&gt;&gt;i*8)%(1&lt;&lt;8))&amp;0xff;   //逆序处理每个字节
-        for (int j = 0; j &lt; 2; j++)
-        {
-            str1.insert(0,1,str16[b%16]);
-            b=b/16;
-        }
-        str+=str1;
-    }
-    return str;
-}
-string getMD5(string source)
-{
-    atemp=A;    //初始化
-    btemp=B;
-    ctemp=C;
-    dtemp=D;
-    unsigned int *strByte=add(source);
-    for(unsigned int i=0;i&lt;strlength/16;i++)
-    {
-        unsigned int num[16];
-        for(unsigned int j=0;j&lt;16;j++)
-            num[j]=strByte[i*16+j];
-        mainLoop(num);
-    }
-    return changeHex(atemp).append(changeHex(btemp)).append(changeHex(ctemp)).append(changeHex(dtemp));
-}
-unsigned int main()
-{
-    string ss;
-//    cin&gt;&gt;ss;
-    string s=getMD5(&quot;abc&quot;);
-    cout&lt;&lt;s;
-    return 0;
-}</code></pre>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-04T15:39:00.000Z">2019-11-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1488 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/04/b-tree/">b-tree</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h1><h2 id="B-Tree-与-B-Tree"><a href="#B-Tree-与-B-Tree" class="headerlink" title="B-Tree 与 B+Tree"></a>B-Tree 与 B+Tree</h2><p>在数据结构与算法/查找树 <a href="https://url.wx-coder.cn/9PnzG" target="_blank" rel="noopener">https://url.wx-coder.cn/9PnzG</a> 一节中我们介绍了 B-Tree 的基本概念与实现，这里我们继续来分析下为何 B-Tree 相较于红黑树等二叉查找树会更适合于作为数据库索引的实现。一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘 I/O 消耗，相对于内存存取，I/O 存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘 I/O 操作次数的渐进复杂度。换句话说，索引的结构组织要尽量减少查找过程中磁盘 I/O 的存取次数。<br>根据 B-Tree 的定义，可知检索一次最多需要访问 h 个节点。数据库系统的设计者巧妙利用了磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次 I/O 就可以完全载入。每次新建节点时，直接申请一个页的空间，这样就保证一个节点物理上也存储在一个页里，加之计算机存储分配都是按页对齐的，就实现了一个节点只需一次 I/O。而检索的时候，一次检索最多需要 h-1 次 I/O（根节点常驻内存），其渐进复杂度为 ，实际应用中，出度 d 是非常大的数字，通常超过 100，因此 h 非常小（通常不超过 3）。而红黑树这种结构，h 明显要深的多。由于逻辑上很近的节点（父子）物理上可能很远，无法利用局部性，所以红黑树的 I/O 渐进复杂度也为 O(h)，效率明显比 B-Tree 差很多。</p>
-<p>B+Tree 是 的变种，有着比 B-Tree 更高的查询性能，其相较于 B-Tree 有了如下的变化：</p>
-<ul>
-<li>有 m 个子树的节点包含有 m 个元素（B-Tree 中是 m-1）。</li>
-</ul>
-<ul>
-<li>根节点和分支节点中不保存数据，只用于索引，所有数据都保存在叶子节点中。</li>
-</ul>
-<ul>
-<li>所有分支节点和根节点都同时存在于子节点中，在子节点元素中是最大或者最小的元素。</li>
-</ul>
-<ul>
-<li>叶子节点会包含所有的关键字，以及指向数据记录的指针，并且叶子节点本身是根据关键字的大小从小到大顺序链接。</li>
-</ul>
-<p><img src="/images/2019/11/04/e71a76c0-ff18-11e9-9ec1-4763a59e2ad9.png" alt="image.png"></p>
-<p>一般在数据库系统或文件系统中使用的 B+Tree 结构都在经典 B+Tree 的基础上进行了优化，增加了顺序访问指针：</p>
-<p>如上图所示，在 B+Tree 的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的 B+Tree。做这个优化的目的是为了提高区间访问的性能，例如下图中如果要查询 key 为从 3 到 8 的所有数据记录，当找到 3 后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。</p>
-<p><img src="/images/2019/11/04/f0c8f2f0-ff18-11e9-9ec1-4763a59e2ad9.png" alt="image.png"></p>
-<h2 id="索引顺序"><a href="#索引顺序" class="headerlink" title="索引顺序"></a>索引顺序</h2><p>B-Tree 索引可以很好地用于单行、范围或者前缀扫描，他们只有在查找使用了索引的最左前缀（Leftmost Prefix）的时候才有用。不过 B-Tree 索引存在一些限制：</p>
-<ul>
-<li>如果查找不从索引列的最左边开始，索引就无法使用；同样，不能查找字符串结尾；</li>
-<li>不能跳过索引中的列；</li>
-<li>不能使用任何在第一个范围条件右边的列作为条件；</li>
-</ul>
-<p>因此 B-Tree 的列顺序非常重要，上述使用规则都和列顺序有关。对于实际的应用，一般要根据具体的需求，创建不同列和不同列顺序的索引。假设有索引 Index(A,B,C):</p>
-<pre><code># 使用索引
-A&gt;5 AND A&lt;10 - 最左前缀匹配
-A=5 AND B&gt;6 - 最左前缀匹配
-A=5 AND B=6 AND C=7 - 全列匹配
-A=5 AND B IN (2,3) AND C&gt;5 - 最左前缀匹配，填坑
-
-# 不能使用索引
-B&gt;5 - 没有包含最左前缀
-B=6 AND C=7 - 没有包含最左前缀
-
-# 使用部分索引
-A&gt;5 AND B=2 - 使用索引 A 列
-A=5 AND B&gt;6 AND C=2 - 使用索引的 A 和 B 列</code></pre><p>复制代码使用索引对结果进行排序，需要索引的顺序和 ORDER BY 子句中的顺序一致，并且所有列的升降序一致(ASC/DESC)。如果查询连接了多个表，只有在 ORDER BY 的列引用的是第一个表才可以(需要按序 JOIN)。</p>
-<pre><code># 使用索引排序
-ORDER BY A - 最左前缀匹配
-WHERE A=5 ORDER BY B,C - 最左前缀匹配
-WHERE A=5 ORDER BY B DESC - 最左前缀匹配
-WHERE A&gt;5 ORDER BY A,B - 最左前缀匹配
-
-# 不能使用索引排序
-WHERE A=5 ORDER BY B DESC,C ASC - 升降序不一致
-WHERE A=5 ORDER BY B,D - D 不在索引中
-WHERE A=5 ORDER BY C - 没有包含最左前缀
-WHERE A&gt;5 ORDER BY B,C - 第一列是范围条件，无法使用 BC 排序
-WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序</code></pre>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-03T15:38:54.000Z">2019-11-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    14 分钟 读完 (大约 2032 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/03/rsa-info/">rsa-info</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="RSA算法详解"><a href="#RSA算法详解" class="headerlink" title="RSA算法详解"></a>RSA算法详解</h1><p><img src="/images/2019/11/03/3125f240-fe50-11e9-b8c9-2b2b905fb2db.png" alt="image.png"></p>
-<p>前言<br>总括： 本文详细讲述了RSA算法详解，包括内部使用数学原理以及产生的过程。</p>
-<p>原文博客地址：RSA算法详解</p>
-<p>知乎专栏&amp;&amp;简书专题：前端进击者（知乎）&amp;&amp;前端进击者（简书）</p>
-<p>博主博客地址：Damonare的个人博客</p>
-<p>相濡以沫。到底需要爱淡如水。</p>
-<p>正文<br>之前写过一篇文章SSL协议之数据加密过程，里面详细讲述了数据加密的过程以及需要的算法。SSL协议很巧妙的利用对称加密和非对称加密两种算法来对数据进行加密。这篇文章主要是针对一种最常见的非对称加密算法——RSA算法进行讲解。其实也就是对私钥和公钥产生的一种方式进行描述。首先先来了解下这个算法的历史：</p>
-<h2 id="RSA算法的历史"><a href="#RSA算法的历史" class="headerlink" title="RSA算法的历史"></a>RSA算法的历史</h2><p>RSA是1977年由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的。当时他们三人都在麻省理工学院工作。RSA就是他们三人姓氏开头字母拼在一起组成的。</p>
-<p>但实际上，在1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯（Clifford Cocks）在一个内部文件中提出了一个相同的算法，但他的发现被列入机密，一直到1997年才被发表。</p>
-<p>所以谁是RSA算法的发明人呢？不好说，就好像贝尔并不是第一个发明电话的人但大家都记住的是贝尔一样，这个地方我们作为旁观者倒不用较真，重要的是这个算法的内容：</p>
-<h2 id="RSA算法的过程"><a href="#RSA算法的过程" class="headerlink" title="RSA算法的过程"></a>RSA算法的过程</h2><p>RSA算法用到的数学知识特别多，所以在中间介绍这个算法生成私钥和公钥的过程中会穿插一些数学知识。生成步骤如下：</p>
-<ol>
-<li>寻找两个不相同的质数<br>随意选择两个大的质数p和q，p不等于q，计算N=p*q;</li>
-</ol>
-<p>什么是质数?我想可能会有一部分人已经忘记了，定义如下：</p>
-<p>除了1和该数自身外，无法被其他自然数整除的数（也可定义为只有1该数本身两个正因数]的数）。</p>
-<p>比如2，3，5，7这些都是质数，9就不是了，因为3*3=9了</p>
-<ol start="2">
-<li>根据欧拉函数获取r<br>r = φ(N) = φ(p)φ(q) = (p-1)(q-1)。</li>
-</ol>
-<p>这里的数学概念就是什么是欧拉函数了，什么是欧拉函数呢？</p>
-<p>欧拉函数的定义：</p>
-<p>欧拉函数 φ(n)是小于或等于n的正整数中与n互质的数的数目。</p>
-<p>互质的定义：</p>
-<p>如果两个或两个以上的整数的最大公约数是 1，则称它们为互质</p>
-<p>例如：φ(8) = 4，因为1,3,5,7均和8互质。</p>
-<p>推导欧拉函数:</p>
-<p>（1）如果n = 1, φ(1) = 1；(小于等于1的正整数中唯一和1互质的数就是1本身)；</p>
-<p>（2）如果n为质数，φ(n) = n - 1；因为质数和每一个比它小的数字都互质。比如5，比它小的正整数1,2,3,4都和他互质；</p>
-<p>(3) 如果n是a的k次幂，则 φ(n) = φ(a^k) = a^k - a^(k-1) = (a-1)a^(k-1)；</p>
-<p>(4) 若m,n互质，则φ(mn) = φ(m)φ(n)</p>
-<p><strong>证明：</strong>设A, B, C是跟m, n, mn互质的数的集，据中国剩余定理(经常看数学典故的童鞋应该了解，剩余定理又叫韩信点兵，也叫孙子定理)，A*B和C可建立双射一一对应)的关系。（或者也可以从初等代数角度给出欧拉函数积性的简单证明） 因此的φ(n)值使用算术基本定理便知。（来自维基百科）</p>
-<ol start="3">
-<li>选择一个小于r并与r互质的整数e<br>选择一个小于r并与r互质的整数e，求得e关于r的模反元素，命名为d（<em>ed = 1(mod r)</em>模反元素存在，当且仅当e与r互质），e我们通常取65537。</li>
-</ol>
-<p>模反元素：</p>
-<p>如果两个正整数a和n互质，那么一定可以找到整数b，使得 ab-1 被n整除，或者说ab被n除的余数是1。</p>
-<p>比如3和5互质，3关于5的模反元素就可能是2，因为3<em>2-1=5可以被5整除。所以很明显模反元素不止一个，2加减5的整数倍都是3关于5的模反元素</em>{…-3, 2,7,12…}* 放在公式里就是3*2 = 1 (mod 5)</p>
-<p>上面所提到的欧拉函数用处实际上在于欧拉定理：</p>
-<p>欧拉定理：</p>
-<p>如果两个正整数a和n互质，则n的欧拉函数 φ(n) 可以让下面的等式成立：</p>
-<p>a^φ(n) = 1(mod n)</p>
-<p>由此可得：a的φ(n - 1)次方肯定是a关于n的模反元素。</p>
-<p>欧拉定理就可以用来证明模反元素必然存在。</p>
-<p>由模反元素的定义和欧拉定理我们知道，a的φ(n)次方减去1，可以被n整除。比如，3和5互质，而5的欧拉函数φ(5)等于4，所以3的4次方<em>(81)减去1，可以被5</em>整除（80/5=16）。</p>
-<p>小费马定理：</p>
-<p>假设正整数a与质数p互质，因为质数p的φ(p)等于p-1，则欧拉定理可以写成</p>
-<p>a^(p-1) = 1 (mod p)</p>
-<p>这其实是欧拉定理的一个特例。</p>
-<ol start="4">
-<li>销毁p和q<br>此时我们的<em>(N , e)是公钥，(N, d)为私钥，爱丽丝会把公钥(N, e)传给鲍勃，然后将(N, d)</em>自己藏起来。一对公钥和私钥就产生了，然后具体的使用方法呢？请看：SSL协议之数据加密过程详解</li>
-</ol>
-<h2 id="RSA算法的安全性"><a href="#RSA算法的安全性" class="headerlink" title="RSA算法的安全性"></a>RSA算法的安全性</h2><p>我们知道像RSA这种非对称加密算法很安全，那么到底为啥子安全呢？ 我们来看看上面这几个过程产生的几个数字：</p>
-<p>p,q：我们随机挑选的两个大质数；<br>N：是由两个大质数p和q相乘得到的。N = p * q；<br>r：由欧拉函数得到的N的值，r = φ(N) = φ(p)φ(q) = (p-1)(q-1)。<br>e：随机选择和和r互质的数字，实际中通常选择65537；<br>d： d是以欧拉定理为基础求得的e关于r的模反元素，ed = 1 (mod r)；<br>N和e我们都会公开使用，最为重要的就是私钥中的d，d一旦泄露，加密也就失去了意义。那么得到d的过程是如何的呢？如下:</p>
-<p>比如知道e和r，因为d是e关于r的模反元素；r是φ(N) 的值<br>而φ(N)=(p-1)(q-1)，所以知道p和q我们就能得到d;<br>N = pq，从公开的数据中我们只知道N和e，所以问题的关键就是对N做因式分解能不能得出p和q<br>所以得出了在上篇博客说到的结论，非对称加密的原理：</p>
-<p>将a和b相乘得出乘积c很容易，但要是想要通过乘积c推导出a和b极难。即对一个大数进行因式分解极难</p>
-<p>目前公开破译的位数是768位，实际使用一般是1024位或是2048位，所以理论上特别的安全。</p>
-<p>后记<br>RSA算法的核心就是欧拉定理，根据它我们才能得到私钥，从而保证整个通信的安全。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-02T11:49:32.000Z">2019-11-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 364 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/02/openssl/">openssl</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="OpenSSL下载安装"><a href="#OpenSSL下载安装" class="headerlink" title="OpenSSL下载安装"></a>OpenSSL下载安装</h1><h2 id="1、下载OpenSSL"><a href="#1、下载OpenSSL" class="headerlink" title="1、下载OpenSSL"></a>1、下载OpenSSL</h2><p>OpenSSL下载地址：<a href="https://oomake.com/download/openssl" target="_blank" rel="noopener">https://oomake.com/download/openssl</a></p>
-<p>这个链接有Windows版和源码版最新版下载地址，可以满足Windows、LInux、Mac OS系统使用。</p>
-<h2 id="2、Windows系统安装OpenSSL"><a href="#2、Windows系统安装OpenSSL" class="headerlink" title="2、Windows系统安装OpenSSL"></a>2、Windows系统安装OpenSSL</h2><p>到上面的链接下载OpenSSL Windows版本，注意32位和64位是不同的安装包，</p>
-<p>下载之后是exe文件，双击按照提示一步步安装就可以了。</p>
-<h2 id="3、-Linux系统安装OpenSSL"><a href="#3、-Linux系统安装OpenSSL" class="headerlink" title="3、 Linux系统安装OpenSSL"></a>3、 Linux系统安装OpenSSL</h2><h3 id="3-1-安装OpenSSL"><a href="#3-1-安装OpenSSL" class="headerlink" title="3.1 安装OpenSSL:"></a>3.1 安装OpenSSL:</h3><pre><code># tar -xzf openssl-1.0.2f.tar.gz
-
-# cd openssl-1.0.2f
-
-# mkdir /usr/local/openssl
-
-# ./config --prefix=/usr/local/openssl
-
-# make
-
-# make install</code></pre><p>这样就安装完成了，接下来一些辅助步骤。</p>
-<h3 id="3-2-创建软连接"><a href="#3-2-创建软连接" class="headerlink" title="3.2 创建软连接"></a>3.2 创建软连接</h3><pre><code># which openssl
-
-/usr/local/openssl/bin/openssl</code></pre><p>为了使用方便，以及以后版本更新方便，可以创建软连接，如下：</p>
-<pre><code># ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl</code></pre><h3 id="3-3-执行以下命令"><a href="#3-3-执行以下命令" class="headerlink" title="3.3 执行以下命令"></a>3.3 执行以下命令</h3><pre><code># cd /usr/local/openssl
-
-# ldd /usr/local/openssl/bin/openssl
-
-    linux-vdso.so.1 =&gt;  (0x00007ffc63975000)
-
-    libssl.so.1.1 =&gt; not found
-
-    libcrypto.so.1.1 =&gt; not found
-
-    libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f8d9da0f000)
-
-    libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f8d9d7f3000)
-
-    libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f8d9d431000)
-
-    /lib64/ld-linux-x86-64.so.2 (0x00007f8d9dc28000)</code></pre><p>安装OK</p>
-<h3 id="3-4-查看版本"><a href="#3-4-查看版本" class="headerlink" title="3.4 查看版本"></a>3.4 查看版本</h3><pre><code># openssl version
-
-/usr/local/openssl/bin/openssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory</code></pre><p>找不到动态库libssl.so.1.1，小问题，执行如下命令：</p>
-<pre><code># vim /etc/ld.so.conf</code></pre><p>在最后追加一行：</p>
-<pre><code>/usr/local/openssl/lib</code></pre><p>然后执行：</p>
-<pre><code># ldconfig /etc/ld.so.conf
-
-# openssl version
-
-OpenSSL 1.1.0f  25 May 2017
-
-Done.</code></pre>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-01T15:12:05.000Z">2019-11-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1629 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/01/android-fingerprint-security/">android-fingerprint-security</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Android-Fingerprint-Security"><a href="#Android-Fingerprint-Security" class="headerlink" title="Android Fingerprint Security"></a>Android Fingerprint Security</h1><p>安全性一直是移动开发的关键部分，正确实现它绝非易事。智能手机最初使用4位PIN码进行破解，最多需要10,000次破解。然后是锁定模式，尽管基本的人性极大地降低了这个数字，但锁定模式却将标准提高到了惊人的389112种不同的模式。 与PIN和锁定模式不同，指纹身份验证要提前数年。一个人的指纹确实是独一无二的，无法猜测。这项技术在消费类设备上正变得越来越流行，并且使用棉花糖，比以往任何时候都更容易在您的应用程序中实现它。</p>
-<p><img src="/images/2019/11/01/0fe0fb30-fcba-11e9-bc34-ef83b1e8dc59.png" alt="多年来的Android安全性，PIN锁定，滑动锁定模式和指纹"></p>
-<h2 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h2><p>除了我们已经写过的 iOS Touch ID之外，Android上指纹扫描的早期实现还不够。每个供应商都有其独特的方法来确保流程的安全性和实施，最重要的是，如何存储用户的私有数据。</p>
-<h2 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h2><p>随着棉花糖的到来，人们期待已久的通过标准API对指纹认证的本机支持。最终，Android开发人员被允许对解锁设备，Play Store和Android Pay购买的产品实施基于指纹的身份验证，并在移动银行等安全性高的应用程序中提供自定义身份验证。</p>
-<p>Google首次在Nexus 5X和Nexus 6P上推出，并推出了快速安全的Nexus Imprint指纹传感器，该技术还带来了Android 6.0棉花糖指纹传感器API的首个实现。可以在不到600毫秒的时间内识别出指纹，从而提供快速舒适的用户体验。</p>
-<h2 id="指纹存储安全"><a href="#指纹存储安全" class="headerlink" title="指纹存储安全"></a>指纹存储安全</h2><p>Android上的大多数存储策略都是不安全的，尤其是考虑到root用户访问权限的可能性时。但是Google已通过将所有打印数据操作移至可信执行环境 （TEE）并为制造商必须遵循的指纹数据存储提供了严格的指导方针，朝着正确的方向迈出了显着的一步。</p>
-<h2 id="三通"><a href="#三通" class="headerlink" title="三通"></a>三通</h2><p>TEE是智能手机主处理器的安全区域。它保证了内部加载的代码和数据的机密性和完整性。这种分离可实现安全性和保护，免受黑客，恶意软件和root用户访问。</p>
-<p><img src="/images/2019/11/01/4d2d93e0-fcba-11e9-bc34-ef83b1e8dc59.png" alt="Android OS上的TEE通信过程"></p>
-<ul>
-<li>所有指纹数据操作均在TEE中执行</li>
-<li>必须将所有指纹数据保护在传感器硬件或受信任的内存中，以便无法访问指纹图像</li>
-<li>指纹数据只能以加密形式存储在文件系统上，而不管文件系统本身是否已加密</li>
-<li>删除用户必须导致删除用户现有的指纹数据</li>
-<li>根访问不得破坏指纹数据</li>
-</ul>
-<h2 id="指纹模板"><a href="#指纹模板" class="headerlink" title="指纹模板"></a>指纹模板</h2><p>指纹模板是原始指纹数据的已处理版本。为了遵守准则，必须对它们进行<strong>密码认证</strong>。这意味着必须使用专用于设备的私钥和足够的其他数据（绝对文件系统路径，finger ID和组）对它们进行签名，以明确定义它们的绑定关系。结果，如果将这些模板复制到另一个设备或另一个用户尝试使用它们，则这些模板将变得无用。</p>
-<p>最后，指纹数据不会备份到用户的计算机或Google的服务器上。它不会被设备上的任何其他应用程序同步，共享或使用，也不会离开设备。应用程序收到的唯一信息是指纹是否已<strong>通过验证</strong>。这也意味着用户必须在每个新设备上设置指纹认证。</p>
-<h2 id="听起来不错，该如何实施？"><a href="#听起来不错，该如何实施？" class="headerlink" title="听起来不错，该如何实施？"></a>听起来不错，该如何实施？</h2><p>指纹认证无非就是数据加密。它涉及一个密钥，一个执行加密的密码以及一个处理整个过程的指纹管理器。从开发人员的角度来看，该过程有些广泛，但它包含相对简单的步骤。</p>
-<ol>
-<li><p>在项目AndroidManifest文件中请求指纹身份验证权限。</p>
-</li>
-<li><p>启用任何锁定屏幕安全机制（PIN，图案或密码）。</p>
-</li>
-<li><p>在设备上注册至少一个指纹。</p>
-</li>
-<li><p>创建的实例FingerprintManager。</p>
-</li>
-<li><p>使用Keystore实例来访问Android Keystore容器。</p>
-</li>
-<li><p>使用KeyGenerator该类生成加密密钥，并将其存储在Keystore容器中。</p>
-</li>
-<li><p>Cipher使用先前生成的加密密钥初始化该类的实例。</p>
-</li>
-<li><p>使用Cipher实例创建一个CryptoObject并将其分配给实例化FingerprintManager。</p>
-</li>
-<li><p>调用实例的authenticate()方法FingerprintManager。</p>
-</li>
-<li><p>成功完成身份验证后处理回调，从而提供对受保护的内容或功能的访问。</p>
-</li>
-</ol>
-<p>Google提供了全面的指纹认证<strong>示例</strong>，并且在线提供了一些<strong>教程</strong>，可以助您一臂之力。</p>
-<p>Android的指纹认证和支持实现的设计和执行非常好。将其用作任何形式的多因素身份验证的<strong>拥有元素</strong>，已足以为您提供快速，可靠和安全的身份验证体验。</p>
-<p>您可以在科罗拉多州丹佛市举行的<strong>360andev</strong>会议上听到我们谈论指纹安全性和应<strong>用程序安全性最佳实践的信息</strong>。</p>
-<h2 id="那有什么收获呢？"><a href="#那有什么收获呢？" class="headerlink" title="那有什么收获呢？"></a>那有什么收获呢？</h2><p><img src="/images/2019/11/01/c74e39e0-fcba-11e9-bc34-ef83b1e8dc59.png" alt="各种物品上的指纹"></p>
-<p>只有一个，并且其他所有方法都具有相同的缺陷。指纹认证只有一个故障点。就像用手指来解锁设备一样吸引人，您到处都是手指。潜在的攻击者可以毫不费力地举起您的指纹，然后使用它来控制您的设备和应用程序。</p>
-<p>不幸的是，与密码不同，您的指纹显然是无法更改的。</p>
-<p><a href="https://infinum.com/the-capsized-eight/android-fingerprint-security" target="_blank" rel="noopener">传送门</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-31T14:50:47.000Z">2019-10-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 396 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/31/cutter/">cutter</a>
-            
-        </h1>
-        <div class="content">
-            <img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Cutter logo" src="/images/2019/10/31/e3eb2450-fbed-11e9-87a4-53cd159663ee.png">
-
-<h1 id="Cutter"><a href="#Cutter" class="headerlink" title="Cutter"></a>Cutter</h1><p>Cutter is a free and open-source reverse engineering framework powered by <a href="https://github.com/radareorg/radare2" target="_blank" rel="noopener">radare2</a> . Its goal is making an advanced, customizable and FOSS reverse-engineering platform while keeping the user experience at mind. Cutter is created by reverse engineers for reverse engineers.  </p>
-<p><a href="https://travis-ci.com/radareorg/cutter" target="_blank" rel="noopener"><img src="https://travis-ci.com/radareorg/cutter.svg?branch=master" alt="Build Status"></a><br><a href="https://ci.appveyor.com/project/radareorg/cutter/branch/master" target="_blank" rel="noopener"><img src="https://ci.appveyor.com/api/projects/status/s9rkx1dn3uy4bfdx/branch/master?svg=true" alt="Build status"></a><br><a href="https://lgtm.com/projects/g/radareorg/cutter/alerts/" target="_blank" rel="noopener"><img src="https://img.shields.io/lgtm/alerts/g/radareorg/cutter.svg?logo=lgtm&logoWidth=18" alt="Total alerts"></a></p>
-<p><img src="/images/2019/10/31/f53b35b0-fbed-11e9-87a4-53cd159663ee.png" alt="Screenshot"></p>
-<h2 id="Learn-more-at-https-cutter-re"><a href="#Learn-more-at-https-cutter-re" class="headerlink" title="Learn more at https://cutter.re."></a>Learn more at <a href="https://cutter.re" target="_blank" rel="noopener">https://cutter.re</a>.</h2><h2 id="Downloading-a-release"><a href="#Downloading-a-release" class="headerlink" title="Downloading a release"></a>Downloading a release</h2><p>Cutter is available for all platforms (Linux, macOS, Windows).<br>You can download the latest release <a href="https://github.com/radareorg/cutter/releases" target="_blank" rel="noopener">here</a>.</p>
-<ul>
-<li>macOS: Download the latest <code>.dmg</code> file or use <a href="https://github.com/Homebrew/homebrew-cask" target="_blank" rel="noopener">Homebrew Cask</a> <code>brew cask install cutter</code>.</li>
-<li>Windows: Download the latest Zip archive.</li>
-<li>Linux: Download the latest AppImage file. Then just make it executable and run it:<ul>
-<li><code>chmod +x &lt;appimage_file&gt;</code></li>
-<li><code>./&lt;appimage_file&gt;</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="Building-from-sources"><a href="#Building-from-sources" class="headerlink" title="Building from sources"></a>Building from sources</h2><p>To build Cutter on your local machine, please follow this guide: <a href="https://cutter.re/build/" target="_blank" rel="noopener">Building from source</a></p>
-<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>To deploy <em>cutter</em> using a pre-built <code>Dockerfile</code>, it’s possible to use the <a href="docker">provided configuration</a>. The corresponding <code>README.md</code> file also contains instructions on how to get started using the docker image with minimal effort.</p>
-<h2 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h2><p>You can find our documentation in our <a href="https://cutter.re/docs/" target="_blank" rel="noopener">website</a>.</p>
-<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>Cutter supports both Python and Native C++ plugins. Want to extend Cutter with Plugins? Read the <a href="https://cutter.re/docs/plugins" target="_blank" rel="noopener">Plugins</a> section on our documentation.</p>
-<h3 id="Official-and-Community-Plugins"><a href="#Official-and-Community-Plugins" class="headerlink" title="Official and Community Plugins"></a>Official and Community Plugins</h3><p>Our community built many plugins and useful scripts for Cutter such as the native integration of Ghidra decompiler or the plugin to visualize DynamoRIO code coverage. You can find more plugins in the <a href="https://github.com/radareorg/cutter-plugins" target="_blank" rel="noopener">following list</a>. Don’t hesitate to extend it with your own plugins and scripts for Cutter.</p>
-<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><p>The best place to obtain help from <em>Cutter</em> developers and community is to contact us on:</p>
-<ul>
-<li><strong>Telegram:</strong> <a href="https://t.me/r2cutter" target="_blank" rel="noopener">https://t.me/r2cutter</a></li>
-<li><strong>IRC:</strong> #cutter on irc.freenode.net</li>
-<li><strong>Twitter:</strong> <a href="https://twitter.com/r2gui" target="_blank" rel="noopener">@r2gui</a></li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-30T14:06:40.000Z">2019-10-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 943 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/30/tabnine/">tabnine</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="TabNine"><a href="#TabNine" class="headerlink" title="TabNine"></a>TabNine</h1><p>This is the repository for the backend of <a href="https://tabnine.com" target="_blank" rel="noopener">TabNine</a>, the all-language autocompleter.<br>There are no source files here because the backend is closed source.</p>
-<p>You can make feature requests by filing an issue. You are also welcome to make pull requests for changes to the configuration files.</p>
-<p><code>languages.yml</code> determines which file extensions are considered part of the same language. (For example, identifiers from <code>.c</code> files will be suggested in <code>.h</code> files.)</p>
-<p><code>language_tokenization.json</code> determines how languages are tokenized. For example, identifiers can contain dashes in Lisp, but not in Java.</p>
-<p>If your feature request is specific to a particular editor’s TabNine client, please file an issue in one of these repositories:</p>
-<ul>
-<li><a href="https://github.com/zxqfl/tabnine-vscode" target="_blank" rel="noopener">VS Code</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-sublime" target="_blank" rel="noopener">Sublime Text</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-vim" target="_blank" rel="noopener">Vim</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-atom" target="_blank" rel="noopener">Atom</a></li>
-</ul>
-<p>You may be interested in these TabNine clients written by third parties:</p>
-<ul>
-<li><a href="https://github.com/TommyX12/company-tabnine" target="_blank" rel="noopener">Emacs</a></li>
-<li><a href="https://github.com/tbodt/deoplete-tabnine" target="_blank" rel="noopener">Vim (Deoplete)</a></li>
-</ul>
-<h1 id="Changelogs"><a href="#Changelogs" class="headerlink" title="Changelogs"></a>Changelogs</h1><p>If new features don’t work for you, check that you have the most recent version by typing <code>TabNine::version</code> into your text editor. If you don’t have the most recent version, try restarting your editor.</p>
-<h2 id="2-0-11-August-24-2019"><a href="#2-0-11-August-24-2019" class="headerlink" title="2.0.11 (August 24, 2019)"></a>2.0.11 (August 24, 2019)</h2><ul>
-<li><a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> is now enabled by default</li>
-</ul>
-<h2 id="2-0-0-—-2-0-10-July-15-—-August-20-2019"><a href="#2-0-0-—-2-0-10-July-15-—-August-20-2019" class="headerlink" title="2.0.0 — 2.0.10 (July 15 — August 20, 2019)"></a>2.0.0 — 2.0.10 (July 15 — August 20, 2019)</h2><ul>
-<li><a href="https://tabnine.com/blog/deep" target="_blank" rel="noopener">Deep TabNine</a><ul>
-<li>Can download and run <a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> models</li>
-<li>Can connect to <a href="https://tabnine.com/subscribe#cloud" target="_blank" rel="noopener">TabNine Cloud</a></li>
-</ul>
-</li>
-<li>Simplified bracket pairing logic</li>
-<li>Simplified filesystem event handling</li>
-<li>Added a configuration panel for viewing settings and logs which can be accessed by typing <code>TabNine::config</code></li>
-</ul>
-<h2 id="1-0-14-May-16-2019"><a href="#1-0-14-May-16-2019" class="headerlink" title="1.0.14 (May 16, 2019)"></a>1.0.14 (May 16, 2019)</h2><ul>
-<li>TabNine no longer watches for filesystem events in ignored directories (closes <a href="https://github.com/zxqfl/TabNine/issues/43" target="_blank" rel="noopener">#43</a>).</li>
-<li>TabNine now waits until a completion is requested to start the language server (closes <a href="https://github.com/zxqfl/TabNine/issues/50" target="_blank" rel="noopener">#50</a>).</li>
-<li>Files with the <code>.d</code> extension are now recognized as D source files (closes <a href="https://github.com/zxqfl/TabNine/issues/56" target="_blank" rel="noopener">#56</a>).</li>
-<li>Added LSP default configuration for PureScript.</li>
-<li>Fixed a logic error that caused index size to be tracked incorrectly in some cases.</li>
-</ul>
-<h2 id="1-0-10-December-1-2018"><a href="#1-0-10-December-1-2018" class="headerlink" title="1.0.10 (December 1, 2018)"></a>1.0.10 (December 1, 2018)</h2><ul>
-<li>Fixed an internal logic error which could put indexing threads into a bad state, leading to an infinite loop (might close <a href="https://github.com/zxqfl/TabNine/issues/24" target="_blank" rel="noopener">#24</a>, we’ll see).</li>
-<li>TabNine now considers a wider range of possibilities when completing in a zero-char context (i.e. when there are no characters immediately before the cursor).</li>
-<li>TabNine now includes <code>-</code> in identifiers when parsing Racket code.</li>
-</ul>
-<h2 id="1-0-9-November-27-2018"><a href="#1-0-9-November-27-2018" class="headerlink" title="1.0.9 (November 27, 2018)"></a>1.0.9 (November 27, 2018)</h2><ul>
-<li>TabNine now uses the context after the cursor to filter its suggestions. For example, if there are tokens on the same line as the cursor, TabNine will not make a suggestion ending in a semicolon (unless there are already instances in the codebase of semicolons occurring in the middle of a line).</li>
-<li>TabNine removes tokens matching the regex <code>\d.*[a-zA-Z].*\d.*[a-zA-Z]</code> from the project index. This is supposed to prevent long keys or base64 literals from occurring in autocompletion suggestions. The tokens are <strong>not</strong> filtered from the directory index or the file index.</li>
-<li>TabNine now recognizes <code>.tsx</code> files as TypeScript rather than <code>.xml</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/21" target="_blank" rel="noopener">#21</a>).</li>
-<li>TabNine only checks its version directory, not its target directory, when auto-updating or writing registration keys. (This fixes an issue associated with DOS path shortening.)</li>
-</ul>
-<h2 id="1-0-7-November-20-2018"><a href="#1-0-7-November-20-2018" class="headerlink" title="1.0.7 (November 20, 2018)"></a>1.0.7 (November 20, 2018)</h2><ul>
-<li>Semantic completion is added! This allows TabNine to integrate with any language server that implements the <a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a>.<ul>
-<li>TabNine will integrate the language server’s suggestions with its own. For example, TabNine can suggest multi-token completions where the first token is provided by the language server.</li>
-<li>TabNine queries the language server asynchronously. So, if the language server is slow, you will see TabNine’s results only. Continue typing to see the language server’s results.</li>
-<li>TabNine passes along any type information or documentation provided by the language server. (The Sublime and VS Code clients are not yet updated to display the documentation; this is coming soon.)</li>
-<li>See the <a href="https://tabnine.com/semantic" target="_blank" rel="noopener">semantic completion guide</a> for configuration help.</li>
-</ul>
-</li>
-<li>Paid index size limit increased to 100 MB (from 15 MB).</li>
-<li>Free index size limit increased to 400 KB (from 200 KB).</li>
-<li>Improved indexing performance.</li>
-<li>Increased license price to $49/$99 personal/business (from $29/$89).</li>
-<li>TabNine now provides closing brackets for its suggestions (so if it suggests <code>foo(</code> it will additionally insert <code>)</code> to the right of the cursor once the suggestion is accepted). The editor clients do not support this yet as it requires an upgrade to the communication protocol with TabNine; this is coming soon. Closes <a href="https://github.com/zxqfl/TabNine/issues/11" target="_blank" rel="noopener">#11</a> as this is no longer an issue with the TabNine backend.</li>
-<li>TabNine now searches all parents to find the project root rather than stopping at the first <code>.git</code>. This permits nested Git repositories (closes <a href="https://github.com/zxqfl/TabNine/issues/5" target="_blank" rel="noopener">#5</a>).</li>
-<li>TabNine provides an API call to get the regex it uses to find identifiers (closes <a href="https://github.com/zxqfl/TabNine/issues/7" target="_blank" rel="noopener">#7</a>).</li>
-<li>TabNine no longer indexes files in <code>.git</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/8" target="_blank" rel="noopener">#8</a>).</li>
-<li>TabNine now respects <code>.tabnineignore</code> files (closes <a href="https://github.com/zxqfl/TabNine/issues/15" target="_blank" rel="noopener">#15</a>).</li>
-<li>TabNine allows disabling auto-update by typing <code>TabNine::disable_auto_update</code> into your text editor (closes <a href="https://github.com/zxqfl/TabNine/issues/14" target="_blank" rel="noopener">#14</a>).</li>
-<li>TabNine no longer stores registration keys and config in same directory where it is installed. This should prevent registration keys and config from being overwritten by client updates (closes <a href="https://github.com/zxqfl/TabNine/issues/10" target="_blank" rel="noopener">#10</a>). You can type <code>TabNine::config_dir</code> to see where config files are being stored.</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-29T06:25:27.000Z">2019-10-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 505 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/29/ace-combat7-skies-unknown/">ace-combat7-skies-unknown</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="ACE-COMBAT™-7-SKIES-UNKNOWN"><a href="#ACE-COMBAT™-7-SKIES-UNKNOWN" class="headerlink" title="ACE COMBAT™ 7: SKIES UNKNOWN"></a>ACE COMBAT™ 7: SKIES UNKNOWN</h1><blockquote>
-<p>《皇牌空战7》是由万代南梦宫开发的皇牌空战系列的正统续作，游戏回归皇牌空战系列的虚构世界观，游戏平台为PS4,Xbox one和PC，支持PSVR操作。</p>
+<blockquote>
+<p>是的，正是因为陨石的稀少才造成了它的天价，但那不是唯一的原因，陨石具有重要的研究价值，说陨石难得，因为每年落到地上来的陨石不多，被搜集到的就更少了。说它珍贵，因为它是我们能够接触到的、数量非常有限的天体实物标本，它可以为我们带来非常宝贵的情报和信息，而这些往往是用其他手段难以得到的，因此，尽管地上的实验室里已经有了从月球上取来的岩石，科学家们仍然十分重视研究这些自己“送上门来”的陨石标本。</p>
 </blockquote>
-<p>ACE COMBAT系列，是能让玩家能化身为王牌驾驶员，驾驶爱机在追求拟真天空的美丽空间内，享受360度自由飞行的爽快感、让玩家亲自判断状况并选择敌人来破坏的痛快感、享受克服难关达成感的飞行射击游戏。</p>
-<p>本作是系列最新作品，依然由「PROJECT ACES」来担任开发。本作的主题是「天空革新」，游戏内立体包覆天空的云层会扩散，气流与雷云等环境变化会晃动机体并扰乱HUD，能让玩家更加「体验天空」。在受环境影响的新缠斗世界中，体验系列作中最具魅力的空中战斗跟速度感吧。</p>
-<p><img src="/images/2019/10/29/e2813800-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/eb4a8450-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/f0d80690-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/f51b7ca0-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/f8911b60-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/fd586770-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/020e7570-fa15-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><strong>最低配置:</strong><br>需要 64 位处理器和操作系统<br>操作系统: Windows 7 / 8 / 8.1 / 10 (64-bit OS required)<br>处理器: Intel Core i3-7100<br>内存: 4 GB RAM<br>显卡: NVIDIA GeForce GTX 750Ti(2GB)<br>DirectX 版本: 11<br>网络: 宽带互联网连接<br>存储空间: 需要 50 GB 可用空间<br>声卡: DirectX 11 sound card</p>
-<p><strong>推荐配置:</strong><br>需要 64 位处理器和操作系统<br>操作系统: Windows 7 / 8 / 8.1 / 10 (64-bit OS required)<br>处理器: Intel Core i5-7500<br>内存: 8 GB RAM<br>显卡: NVIDIA GeForce GTX 1060 (3GB)<br>DirectX 版本: 11<br>网络: 宽带互联网连接<br>存储空间: 需要 50 GB 可用空间<br>声卡: DirectX 11 sound card</p>
-<p><a href="https://store.steampowered.com/app/502500/ACE_COMBAT_7_SKIES_UNKNOWN/" target="_blank" rel="noopener">传送门</a></p>
+<!-- more -->
+
+<p><img src="/images/2019/11/10/d63c9ae0-03c8-11ea-93fa-e7b44c3ba643.png" alt="image.png"></p>
+<p>陨石是起源于外太空，撞击到地球表面后残存的天然物体。当它还在陨石太空时称为流星体，当他进入大气层时，撞击压力使这个物体被加热和放射出光线，于是成为火球，即所谓的流星。火球这个名词显示这是来自地球之外并与地球碰撞的一个物体，或是极端明亮，类似火球这样的流星最终将撞击到地球的表面。</p>
+<p>更通俗的说，陨石是来自太空中任何地方，落在表面上的自然天体。月球和火星上也发现到了陨石。陨石因为撞击或经过大气层时发光成为流星时被观测到而被寻获的称为墬落陨石，所有其它的陨石都称为发现陨石。陨石是石头，也是星星。</p>
+<p><img src="/images/2019/11/10/e4c83510-03c8-11ea-93fa-e7b44c3ba643.png" alt="image.png"></p>
+<p>正是因为陨石的珍贵才造成了现在陨石的天价。早在1993年，苏富比拍卖行以44.25万美元拍成交一块0.33克的月球陨石，相当于每克100万美元;1998年5月，纽约菲利普斯拍卖行以7333美元拍过一块火星陨石，这个价钱相当于同样重量黄金的1000倍!2008年4月17日，巴黎佳士得以7.825万欧元成交一块43厘米、45千克的非洲纳米比亚陨石;2010年10月5日，巴黎苏富比拍卖的一块非洲纳米比亚陨石拍得2.235万欧元。2013年，在乌鲁木齐，一块“拳头大”的陨石，标出8千万的天价。陨石交易给收藏界带来的强大热流，简直令人震撼，这也暗示着陨石收藏走入人们的视线并荣升新宠。</p>
+<p><img src="/images/2019/11/10/eb63f300-03c8-11ea-93fa-e7b44c3ba643.png" alt="image.png"></p>
+<p>陨石是人类直接认识太阳系各星体珍贵稀有的实物标本，极具收藏价值。陨石多半带有地球上没有或不常见的矿物组合，以及经过大气层高速燃烧的痕迹。至于太空人登上外星球，如月球，所带回来的则不叫陨石。而会称为月球矿石。据加拿大科学家10年的观测，每年降落到地球上的陨石有20多吨，大概有两万多块。</p>
+<p>由于多数陨石落在海洋、荒草、森林和山地等人烟罕至地区，而被人发现并收集到手的陨石每年只有几十块，数量极少。 陨石是来自地球之外的“客人”。根据陨石本身所含的化学成分的不同，大致可分为三种类型： 1.铁陨石，也叫陨铁，它的主要成分是铁和镍； 2.石铁陨石，也叫陨铁石，这类陨石较少，其中 铁镍与硅酸盐大致各占一半； 3.石陨石，也叫陨石，主要成分是硅酸盐，这种陨石的数目最多。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1] <a href="https://zhuanlan.zhihu.com/p/36264322" target="_blank" rel="noopener">都说陨石价值过万，了解才知道原来真是这样</a> . 2019-11-10</p>
 
         </div>
         
@@ -1109,7 +215,7 @@ Done.</code></pre>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-28T15:20:52.000Z">2019-10-28</time>
+                <time class="level-item has-text-grey" datetime="2019-11-09T13:28:33.000Z">2019-11-09</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -1119,7 +225,7 @@ Done.</code></pre>
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 283 个字)
+                    3 分钟 读完 (大约 482 个字)
                 </span>
                 
                 
@@ -1128,114 +234,283 @@ Done.</code></pre>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/28/asmttpd/">asmttpd</a>
+                <a class="has-link-black-ter" href="/2019/11/09/forbes-global-ceo-conference/">forbes-global-ceo-conference</a>
             
         </h1>
         <div class="content">
-            <h1 id="asmttpd"><a href="#asmttpd" class="headerlink" title="asmttpd"></a>asmttpd</h1><p>Web server for Linux written in amd64 assembly.</p>
-<p>Features:</p>
+            <h1 id="Forbes-Global-CEO-Conference-Key-Insights-And-Highlights"><a href="#Forbes-Global-CEO-Conference-Key-Insights-And-Highlights" class="headerlink" title="Forbes Global CEO Conference: Key Insights And Highlights"></a>Forbes Global CEO Conference: Key Insights And Highlights</h1><p>The 19th annual Forbes Global CEO Conference took place in Singapore Oct. 15 and Oct. 16, providing an unparalleled forum for discussion and debate among the 500 global CEOs, tycoons, entrepreneurs, capitalists and thought leaders who attended.</p>
+<p>Notable speakers at the event included: Lee Hsien Loong, Prime Minister of Singapore; Jack Ma, Founder, Jack Ma Foundation, United Nations Sustainable Development Goals Advocate, Partner, Alibaba Group; Eduardo Saverin, Cofounder and Partner of B Capital; and Steve Forbes, Chairman and Editor-in-Chief of Forbes Media. For a full list of speakers, please visit the conference website. Key insights and highlights from the conference can be found below.</p>
+<p><strong>PROMOTED</strong></p>
 <ul>
-<li>Multi-threaded.</li>
-<li>No libraries required ( only 64-bit Linux ).</li>
-<li>Very small binary, roughly 6 KB.</li>
-<li>Quite fast.</li>
+<li>DBS Private Bank BRANDVOICE  | Paid Program<br>Why ESG Matters Among Wealthy Investors</li>
+<li>UNICEF USA BRANDVOICE  | Paid Program<br>Saving Newborn Lives Is A Priority For UNICEF</li>
+<li>Civic Nation BRANDVOICE  | Paid Program<br>Learning From The #RealCollege Movement</li>
 </ul>
-<p>What works:</p>
+<p><img src="/images/2019/11/09/5c9f21f0-02f4-11ea-9eef-6706967f7c01.png" alt="image.png"></p>
+<p>Singapore PM Warns Of Trade War’s Worldwide Impact At Forbes Global CEO Conference</p>
+<p><img src="/images/2019/11/09/6e5dd3a0-02f4-11ea-9eef-6706967f7c01.png" alt="image.png"></p>
+<p>The trade war means “fewer opportunities for our companies to invest in China and export to America, or to invest in America and do business with China,” said Lee. “And these are all win-win opportunities, which is the essence of what international trade is, and it is how the world has prospered for many decades.”</p>
+<p>Jack Ma In Conversation With Steve Forbes: Alibaba Founder Talks Tech, Business And Philanthropy</p>
+<p><img src="/images/2019/11/09/741d8970-02f4-11ea-9eef-6706967f7c01.png" alt="image.png"></p>
+<p>“The thing is that entrepreneurship in Africa is so different…Most entrepreneurs in other countries, they always want to [start an] enterprise, they want to go for IPO,” Ma said in Singapore. “ These people in Africa, they want to change Africa. They want to change their lives.”</p>
+<p>Capitalism 2.0: An Essay from Goh Hup Jin – Chairman, Nipsea Holdings International Ltd, Nipsea Pte Ltd</p>
+<p><img src="/images/2019/11/09/78ee9980-02f4-11ea-9eef-6706967f7c01.png" alt="image.png"></p>
+<p>We kind of think and say that the owners of capital have been “taking capital away from” society. That’s why we say “return it to society” when we engage in charity. The truth is capital never left the economic system.</p>
+<p>Buckle Up: Three Key Trends Driving Global Economic Turbulence</p>
+<p><img src="/images/2019/11/09/81707c90-02f4-11ea-9eef-6706967f7c01.png" alt="image.png"></p>
+<p>uncaptionedThe global economy is beset by storms, bumps and risk aversion. Trade wars and escalating U.S.-China tensions are to blame. But they aren’t the only storms. Three deep trends will drive turbulence – and opportunity – for many years to come.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] <a href="https://www.forbes.com/sites/forbesasia/2019/10/21/forbes-global-ceo-conference-key-insights-and-highlights/#2157fb36b2d5" target="_blank" rel="noopener">Forbes Global CEO Conference: Key Insights And Highlights</a> . 2019-11-9</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-09T11:10:55.000Z">2019-11-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 578 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/09/count-file-lines/">count-file-lines</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="命令行统计文件行数"><a href="#命令行统计文件行数" class="headerlink" title="命令行统计文件行数"></a>命令行统计文件行数</h1><h2 id="Linux-统计代码行数"><a href="#Linux-统计代码行数" class="headerlink" title="Linux 统计代码行数"></a>Linux 统计代码行数</h2><p>在 Linux 下这是一件很简单的事情：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name "*.py" | wc -l</span><br><span class="line"></span><br><span class="line">find ./ -name "*.py" |xargs cat|grep -v ^$|wc -l</span><br></pre></td></tr></table></figure>
+
+<p>这行语句就可以很简单地统计出当前目录下所有py后缀文件的行数了。</p>
+<h2 id="Windows-统计代码行数"><a href="#Windows-统计代码行数" class="headerlink" title="Windows 统计代码行数"></a>Windows 统计代码行数</h2><p>这时我们就不能用cmd而是应当用PowerShell啦。</p>
+<p>Powershell是Windows基于.NET开发的一个自动化配置框架。 （其实就是新版命令行）</p>
+<p>然后我们可以输入：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dir .\ -Recurse *.py | Get-Content | </span><br><span class="line">Measure-Object</span><br></pre></td></tr></table></figure>
+
+<p>我们就可以看到输出：</p>
+<p>Count : 577966<br>表示当前目录下py后缀文件一共有577966行。</p>
+<h2 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.*;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by 杨华彬 on 2016/12/19.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//输入路径,请在括号内输入路径。</span></span><br><span class="line">        File f = <span class="hljs-keyword">new</span> File(<span class="hljs-string">"D:\\程序文件\\IntelliJ IDEA\\Java\\JnaTest"</span>);</span><br><span class="line">        Map map = <span class="hljs-keyword">new</span> HashMap&lt;String, Integer&gt;();  <span class="hljs-comment">//用来存放统计出来的行数</span></span><br><span class="line">        Plus(f, map);</span><br><span class="line">        <span class="hljs-comment">//输出统计的结果</span></span><br><span class="line">        getResult(map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    遍历文件夹</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Plus</span><span class="hljs-params">(File f, Map map)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        File[] files = f.listFiles();<span class="hljs-comment">//获取传入路径的所有文件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//遍历这些文件,需求是CVS中的不统计，所以加判断</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (File a : files) &#123;</span><br><span class="line">            <span class="hljs-comment">//如果文件名是CVS的就跳过</span></span><br><span class="line">            <span class="hljs-keyword">if</span> (a.getName().equals(<span class="hljs-string">"CVS"</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-comment">//如果a是文件的话就进入下一级目录，否则就统计行数</span></span><br><span class="line">                <span class="hljs-keyword">if</span> (a.isDirectory()) &#123;</span><br><span class="line">                    Plus(a, map);</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line"><span class="hljs-comment">//                    if (a.getName().endsWith(".java"))</span></span><br><span class="line">                    map = lineNumber(a.getAbsolutePath(), map);  <span class="hljs-comment">//否者调方法统计行数</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    统计相应文件的行数</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Map&lt;String, Integer&gt; <span class="hljs-title">lineNumber</span><span class="hljs-params">(String f, Map map)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//定义字符流读取文件</span></span><br><span class="line">        FileReader fileReader = <span class="hljs-keyword">null</span>;</span><br><span class="line">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">            fileReader = <span class="hljs-keyword">new</span> FileReader(f);</span><br><span class="line">        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="hljs-string">"输入的路径不正确"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BufferedReader bufferedReader = <span class="hljs-keyword">new</span> BufferedReader(fileReader);          <span class="hljs-comment">//从字节流中升级为字符流，方便按行读取。</span></span><br><span class="line">        <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">while</span> (bufferedReader.readLine() != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(f, index);    <span class="hljs-comment">//将结果放到map中</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="hljs-string">"这个文件读不到！"</span>);</span><br><span class="line">        &#125; <span class="hljs-keyword">finally</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (fileReader != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">                    fileReader.close();</span><br><span class="line">                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    将文件的行数存放在一个map中，然后输出行数的和</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getResult</span><span class="hljs-params">(Map map)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-comment">//使用iterator遍历map集合</span></span><br><span class="line">        Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; entries =</span><br><span class="line">                map.entrySet().iterator();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (entries.hasNext()) &#123;</span><br><span class="line">            Map.Entry&lt;String, Integer&gt; entry = entries.next();</span><br><span class="line">            System.out.printf(<span class="hljs-string">"%5d - %s\n"</span>, entry.getValue(), entry.getKey());</span><br><span class="line">            sum += entry.getValue();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="hljs-string">"line num："</span> + sum);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-08T15:45:34.000Z">2019-11-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 477 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/08/javamelody/">javamelody</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="JavaMelody-monitoring-of-JavaEE-applications"><a href="#JavaMelody-monitoring-of-JavaEE-applications" class="headerlink" title="JavaMelody : monitoring of JavaEE applications"></a>JavaMelody : monitoring of JavaEE applications</h1><p><img src="/images/2019/11/08/bd4c8d00-023e-11ea-97a2-eb10e3960fff.png" alt="image.png"></p>
+<p>The goal of JavaMelody is to monitor Java or Java EE applications in QA and production environments. It is not a tool to simulate requests from users, it is a tool to measure and calculate statistics on real operation of an application depending on the usage of the application by users.</p>
+<p>JavaMelody is opensource (ASL) and production ready: in production in an application of 25 person years. JavaMelody is easy to integrate in most applications and is lightweight (no profiling and no database).</p>
+<p>JavaMelody is mainly based on statistics of requests and on evolution charts.</p>
+<p>It allows to improve applications in QA and production and helps to:</p>
 <ul>
-<li>Serving files from specified document root.</li>
-<li>HEAD requests.</li>
-<li>200, 206, 404, 400, 413, 416</li>
-<li>Content-types: xml, html, xhtml, gif, png, jpeg, css, js, svg, and octet-stream.</li>
+<li>give facts about the average response times and number of executions</li>
+<li>make decisions when trends are bad, before problems become too serious</li>
+<li>optimize based on the more limiting response times</li>
+<li>find the root causes of response times</li>
+<li>verify the real improvement after optimizations</li>
 </ul>
-<p>Planned Features:</p>
+<p>It includes summary charts showing the evolution over time of the following indicators:</p>
 <ul>
-<li>Directory listing.</li>
+<li>Number of executions, mean execution times and percentage of errors of http requests, sql requests, jsf actions, struts actions, jsp pages or methods of business façades (if EJB3, Spring or Guice)</li>
+<li>Java memory</li>
+<li>Java CPU</li>
+<li>Number of user sessions</li>
+<li>Number of jdbc connections</li>
 </ul>
-<h1 id="Current-Limitations-Known-Issues"><a href="#Current-Limitations-Known-Issues" class="headerlink" title="Current Limitations / Known Issues"></a>Current Limitations / Known Issues</h1><ul>
-<li>Sendfile can hang if GET is cancelled.</li>
-</ul>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>Run <code>make</code> or <code>make release</code> for non-debug version.</p>
-<p>You will need <code>yasm</code> installed.</p>
-<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p><code>./asmttpd /path/to/web_root port_number</code></p>
-<p>Example: <code>./asmttpd ./web_root 8080</code></p>
-<h1 id="Changes"><a href="#Changes" class="headerlink" title="Changes"></a>Changes</h1><p>2019-04-22 : asmttpd - 0.4.4</p>
+<p>These charts can be viewed on the current day, week, month, year or custom period.</p>
+<p>JavaMelody includes statistics of predefined counters (currently http requests, sql requests, jsf actions, struts actions, jsp pages and methods of business façades if EJB3, Spring or Guice) with, for each counter :</p>
 <ul>
-<li>Added SVG support.</li>
+<li>A summary indicating the overall number of executions, the average execution time, the cpu time and the percentage of errors.</li>
+<li>And the percentage of time spent in the requests for which the average time exceeds a configurable threshold.</li>
+<li>And the complete list of requests, aggregated without dynamic parameters with, for each, the number of executions, the mean execution time, the mean cpu time, the percentage of errors and an evolution chart of execution time over time.</li>
+<li>Furthermore, each http request indicates the size of the flow response, the mean number of sql executions and the mean sql time.<br>It also includes statistics on http errors, on warnings and errors in logs, on data caches if ehcache and on batch jobs if quartz.</li>
 </ul>
-<p>2019-01-24 : asmttpd - 0.4.3</p>
+<p>An optional and independent collect server may be used if necessary to unload the application of storage management, and of report generation and to centralize the data of clustered applications or of several applications.</p>
+<p>See the online demo.</p>
+<p>Read the User’s guide to install JavaMelody.</p>
+<p>JavaMelody users’ group is at <a href="http://groups.google.com/group/javamelody" target="_blank" rel="noopener">http://groups.google.com/group/javamelody</a> (email: <a href="mailto:javamelody@googlegroups.com" target="_blank" rel="noopener">javamelody@googlegroups.com</a>).</p>
+<p>There are a Jenkins plugin and a JIRA/Confluence/Bamboo/Bitbucket plugin and other plugins.</p>
+<p>Roots conference slides and video by David Karlsen</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-07T14:42:34.000Z">2019-11-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1630 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/07/spring-boot/">spring-boot</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h1><p>Spring Boot makes it easy to create Spring-powered, production-grade applications and<br>services with absolute minimum fuss. It takes an opinionated view of the Spring platform<br>so that new and existing users can quickly get to the bits they need.</p>
+<p>You can use Spring Boot to create stand-alone Java applications that can be started using<br><code>java -jar</code> or more traditional WAR deployments. We also provide a command line tool<br>that runs spring scripts.</p>
+<p>Our primary goals are:</p>
 <ul>
-<li>Added port number as parameter.</li>
+<li>Provide a radically faster and widely accessible getting started experience for all<br>Spring development</li>
+<li>Be opinionated out of the box, but get out of the way quickly as requirements start to<br>diverge from the defaults</li>
+<li>Provide a range of non-functional features that are common to large classes of projects<br>(e.g. embedded servers, security, metrics, health checks, externalized configuration)</li>
+<li>Absolutely no code generation and no requirement for XML configuration</li>
 </ul>
-<p>2017-10-18 : asmttpd - 0.4.2</p>
+<p>== Installation and Getting Started<br>The {docs}/html/[reference documentation] includes detailed<br>{docs}/html/getting-started.html#getting-started-installing-spring-boot[installation<br>instructions] as well as a comprehensive<br>{docs}/html/getting-started.html#getting-started-first-application[<code>getting started</code>]<br>guide.</p>
+<p>Here is a quick teaser of a complete Spring Boot application in Java:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> org.springframework.boot.*;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.*;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@RestController</span></span><br><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/"</span>)</span><br><span class="line">	<span class="hljs-function">String <span class="hljs-title">home</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-string">"Hello World!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(Example.class, args);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Getting-help"><a href="#Getting-help" class="headerlink" title="Getting help"></a>Getting help</h1><p>Having trouble with Spring Boot? We’d like to help!</p>
 <ul>
-<li>Set REUSEADDR.</li>
+<li>Check the {docs}/html/[reference documentation], especially the<br>{docs}/html/howto.html#howto[How-to’s] – they provide solutions to the most common<br>questions.</li>
+<li>Learn the Spring basics – Spring Boot builds on many other Spring projects, check<br>the <a href="https://spring.io[spring.io]" target="_blank" rel="noopener">https://spring.io[spring.io]</a> web-site for a wealth of reference documentation. If<br>you are just starting out with Spring, try one of the <a href="https://spring.io/guides[guides]" target="_blank" rel="noopener">https://spring.io/guides[guides]</a>.</li>
+<li>If you are upgrading, read the {github}/wiki[release notes] for upgrade instructions and<br>“new and noteworthy” features.</li>
+<li>Ask a question - we monitor <a href="https://stackoverflow.com[stackoverflow.com]" target="_blank" rel="noopener">https://stackoverflow.com[stackoverflow.com]</a> for questions<br>tagged with <a href="https://stackoverflow.com/tags/spring-boot[`spring-boot`]" target="_blank" rel="noopener">https://stackoverflow.com/tags/spring-boot[`spring-boot`]</a>. You can also chat<br>with the community on <a href="https://gitter.im/spring-projects/spring-boot[Gitter]" target="_blank" rel="noopener">https://gitter.im/spring-projects/spring-boot[Gitter]</a>.</li>
+<li>Report bugs with Spring Boot at {github}/issues[github.com/spring-projects/spring-boot/issues].</li>
 </ul>
-<p>2017-10-17 : asmttpd - 0.4.1</p>
+<h1 id="Reporting-Issues"><a href="#Reporting-Issues" class="headerlink" title="Reporting Issues"></a>Reporting Issues</h1><p>Spring Boot uses GitHub’s integrated issue tracking system to record bugs and feature<br>requests. If you want to raise an issue, please follow the recommendations below:</p>
 <ul>
-<li>Stack address bug fix.</li>
+<li>Before you log a bug, please search the {github}/issues[issue tracker] to see if someone<br>has already reported the problem.</li>
+<li>If the issue doesn’t already exist, {github}/issues/new[create a new issue].</li>
+<li>Please provide as much information as possible with the issue report, we like to know<br>the version of Spring Boot that you are using, as well as your Operating System and<br>JVM version.</li>
+<li>If you need to paste code, or include a stack trace use Markdown +++<figure class="highlight plain hljs"><figcaption><span>escapes</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  before and after your text.</span><br><span class="line">* If possible try to create a test-case or project that replicates the problem and attach</span><br><span class="line">  it to the issue.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Building from Source</span><br><span class="line">You don&apos;t need to build from source to use Spring Boot (binaries in</span><br><span class="line">https://repo.spring.io[repo.spring.io]), but if you want to try out the latest and</span><br><span class="line">greatest, Spring Boot can be easily built with the</span><br><span class="line">https://github.com/takari/maven-wrapper[maven wrapper]. You also need JDK 1.8.</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">	$ ./mvnw clean install</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>2016-10-31 : asmttpd - 0.4</p>
+<p>If you want to build with the regular <code>mvn</code> command, you will need<br><a href="https://maven.apache.org/run-maven/index.html[Maven" target="_blank" rel="noopener">https://maven.apache.org/run-maven/index.html[Maven</a> v3.5.0 or above].</p>
+<p>NOTE: You may need to increase the amount of memory available to Maven by setting<br>a <code>MAVEN_OPTS</code> environment variable with the value <code>-Xmx512m</code>. Remember<br>to set the corresponding property in your IDE as well if you are building and running<br>tests there (e.g. in Eclipse go to <code>Preferences-&gt;Java-&gt;Installed JREs</code> and edit the<br>JRE definition so that all processes are launched with those arguments). This property<br>is automatically set if you use the maven wrapper.</p>
+<p><em>Also see link:CONTRIBUTING.adoc[CONTRIBUTING.adoc] if you wish to submit pull requests,<br>and in particular please fill out the<br><a href="https://support.springsource.com/spring_committer_signup[Contributor&#39;s" target="_blank" rel="noopener">https://support.springsource.com/spring_committer_signup[Contributor&#39;s</a> Agreement]<br>before your first change, however trivial.</em></p>
+<p>=== Building reference documentation</p>
+<p>First of all, make sure you have built the project:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install</span><br></pre></td></tr></table></figure>
+
+<p>The reference documentation requires the documentation of the Maven plugin to be<br>available so you need to build that first since it’s not generated by default.</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install -pl spring-boot-project/spring-boot-tools/spring-boot-maven-plugin -Pdefault,full</span><br></pre></td></tr></table></figure>
+
+<p>The documentation also includes auto-generated information about the starters. You might<br>have that in your local repository already (per the first step) but if you want to refresh<br>it:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install -f spring-boot-project/spring-boot-starters</span><br></pre></td></tr></table></figure>
+
+<p>Once this is done, you can build the reference documentation with the command below:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean prepare-package -pl spring-boot-project/spring-boot-docs -Pdefault,full</span><br></pre></td></tr></table></figure>
+
+<p>TIP: The generated documentation is available from <code>spring-boot-project/spring-boot-docs/target/generated-docs/reference/html</code></p>
+<h1 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h1><p>There are a number of modules in Spring Boot, here is a quick overview:</p>
+<h2 id="spring-boot"><a href="#spring-boot" class="headerlink" title="spring-boot"></a>spring-boot</h2><p>The main library providing features that support the other parts of Spring Boot,<br>these include:</p>
 <ul>
-<li>HEAD support.</li>
+<li>The <code>SpringApplication</code> class, providing static convenience methods that make it easy<br>to write a stand-alone Spring Application. Its sole job is to create and refresh an<br>appropriate Spring <code>ApplicationContext</code></li>
+<li>Embedded web applications with a choice of container (Tomcat, Jetty or Undertow)</li>
+<li>First class externalized configuration support</li>
+<li>Convenience <code>ApplicationContext</code> initializers, including support for sensible logging<br>defaults</li>
 </ul>
-<p>2014-07-14 : asmttpd - 0.3</p>
+<h2 id="spring-boot-autoconfigure"><a href="#spring-boot-autoconfigure" class="headerlink" title="spring-boot-autoconfigure"></a>spring-boot-autoconfigure</h2><p>Spring Boot can configure large parts of common applications based on the content<br>of their classpath. A single <code>@EnableAutoConfiguration</code> annotation triggers<br>auto-configuration of the Spring context.</p>
+<p>Auto-configuration attempts to deduce which beans a user might need. For example, if<br><code>HSQLDB</code> is on the classpath, and the user has not configured any database connections,<br>then they probably want an in-memory database to be defined. Auto-configuration will<br>always back away as the user starts to define their own beans.</p>
+<h2 id="spring-boot-starters"><a href="#spring-boot-starters" class="headerlink" title="spring-boot-starters"></a>spring-boot-starters</h2><p>Starters are a set of convenient dependency descriptors that you can include in<br>your application. You get a one-stop-shop for all the Spring and related technology<br>that you need without having to hunt through sample code and copy paste loads of<br>dependency descriptors. For example, if you want to get started using Spring and JPA for<br>database access just include the <code>spring-boot-starter-data-jpa</code> dependency in your<br>project, and you are good to go.</p>
+<h2 id="spring-boot-cli"><a href="#spring-boot-cli" class="headerlink" title="spring-boot-cli"></a>spring-boot-cli</h2><p>The Spring command line application compiles and runs Groovy source, making it super<br>easy to write the absolute minimum of code to get an application running. Spring CLI<br>can also watch files, automatically recompiling and restarting when they change.</p>
+<h2 id="spring-boot-actuator"><a href="#spring-boot-actuator" class="headerlink" title="spring-boot-actuator"></a>spring-boot-actuator</h2><p>Actuator endpoints let you monitor and interact with your application.<br>Spring Boot Actuator provides the infrastructure required for actuator endpoints. It contains<br>annotation support for actuator endpoints. Out of the box, this module provides a number of endpoints<br>including the <code>HealthEndpoint</code>, <code>EnvironmentEndpoint</code>, <code>BeansEndpoint</code> and many more.</p>
+<h2 id="spring-boot-actuator-autoconfigure"><a href="#spring-boot-actuator-autoconfigure" class="headerlink" title="spring-boot-actuator-autoconfigure"></a>spring-boot-actuator-autoconfigure</h2><p>This provides auto-configuration for actuator endpoints based on the content of the classpath and a set of properties.<br>For instance, if Micrometer is on the classpath, it will auto-configure the <code>MetricsEndpoint</code>.<br>It contains configuration to expose endpoints over HTTP or JMX.<br>Just like Spring Boot AutoConfigure, this will back away as the user starts to define their own beans.</p>
+<h2 id="spring-boot-test"><a href="#spring-boot-test" class="headerlink" title="spring-boot-test"></a>spring-boot-test</h2><p>This module contains core items and annotations that can be helpful when testing your application.</p>
+<h2 id="spring-boot-test-autoconfigure"><a href="#spring-boot-test-autoconfigure" class="headerlink" title="spring-boot-test-autoconfigure"></a>spring-boot-test-autoconfigure</h2><p>Like other Spring Boot auto-configuration modules, spring-boot-test-autoconfigure, provides auto-configuration<br>for tests based on the classpath. It includes a number of annotations that can be used to automatically<br>configure a slice of your application that needs to be tested.</p>
+<h2 id="spring-boot-loader"><a href="#spring-boot-loader" class="headerlink" title="spring-boot-loader"></a>spring-boot-loader</h2><p>Spring Boot Loader provides the secret sauce that allows you to build a single jar file<br>that can be launched using <code>java -jar</code>. Generally you will not need to use<br><code>spring-boot-loader</code> directly, but instead work with the<br>link:spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin[Gradle] or<br>link:spring-boot-project/spring-boot-tools/spring-boot-maven-plugin[Maven] plugin.</p>
+<h2 id="spring-boot-devtools"><a href="#spring-boot-devtools" class="headerlink" title="spring-boot-devtools"></a>spring-boot-devtools</h2><p>The spring-boot-devtools module provides additional development-time features such as automatic restarts,<br>for a smoother application development experience. Developer tools are automatically disabled when<br>running a fully packaged application.</p>
+<h1 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h1><p>Groovy samples for use with the command line application are available in<br>link:spring-boot-project/spring-boot-cli/samples[spring-boot-cli/samples]. To run the CLI samples type<br><code>spring run &lt;sample&gt;.groovy</code> from samples directory.</p>
+<h1 id="Guides"><a href="#Guides" class="headerlink" title="Guides"></a>Guides</h1><p>The <a href="https://spring.io/[spring.io]" target="_blank" rel="noopener">https://spring.io/[spring.io]</a> site contains several guides that show how to use Spring<br>Boot step-by-step:</p>
 <ul>
-<li>Added default document support.</li>
+<li><a href="https://spring.io/guides/gs/spring-boot/[Building" target="_blank" rel="noopener">https://spring.io/guides/gs/spring-boot/[Building</a> an Application with Spring Boot] is a<br>very basic guide that shows you how to create a simple application, run it and add some<br>management services.</li>
+<li><a href="https://spring.io/guides/gs/actuator-service/[Building" target="_blank" rel="noopener">https://spring.io/guides/gs/actuator-service/[Building</a> a RESTful Web Service with Spring<br>Boot Actuator] is a guide to creating a REST web service and also shows how the server<br>can be configured.</li>
+<li><a href="https://spring.io/guides/gs/convert-jar-to-war/[Converting" target="_blank" rel="noopener">https://spring.io/guides/gs/convert-jar-to-war/[Converting</a> a Spring Boot JAR Application<br>to a WAR] shows you how to run applications in a web server as a WAR file.</li>
 </ul>
-<p>2014-02-10 : asmttpd - 0.2</p>
-<ul>
-<li>Added 400, 413, 416 responses.</li>
-<li>Fixed header processing bug.</li>
-</ul>
-<p>2014-02-07 : asmttpd - 0.1.1</p>
-<ul>
-<li>Fixed 206 max length bug.</li>
-<li>Commented out simple request logging, uncomment in main.asm to enable.</li>
-</ul>
-<p>2014-02-06 : asmttpd - 0.1</p>
-<ul>
-<li>Fixed SIGPIPE when transfer is cancelled.</li>
-<li>Added a more useful error on bind failure.</li>
-<li>Fixed 206 size calculation.</li>
-<li>Combined seek &amp; get file size system calls.</li>
-</ul>
-<p>2014-02-05 : asmttpd - 0.09</p>
-<ul>
-<li>Issue #8 fix. Crashes on long request paths.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.08</p>
-<ul>
-<li>Added TCP corking.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.07</p>
-<ul>
-<li>Removed thread pool after benchmarking, changed to an accept-per-thread model.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.06</p>
-<ul>
-<li>Worker thread stack corruption bug fix.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.05</p>
-<ul>
-<li>Changed 200 and 206 implementation to use sendfile system call.</li>
-<li>Got rid of read/write buffer, changed request read buffer to standard 8KB.</li>
-</ul>
-<p>2014-02-03 : asmttpd - 0.04</p>
-<ul>
-<li>200 now streams full amount</li>
-</ul>
-<p>2014-02-01 : asmttpd - 0.03</p>
-<ul>
-<li>Files are split if too large to fit into buffer. </li>
-<li>Added 206 responses with Content-Range handling</li>
-</ul>
-<p>2014-01-30 : asmttpd - 0.02</p>
-<ul>
-<li>Added xml, xhtml, gif, png, jpeg, css, and javascript content types.</li>
-<li>Changed thread memory size to something reasonable. You can tweak it according to available memory. See comments in main.asm</li>
-<li>Added simple request logging.</li>
-<li>Added removal of ‘../‘ in URL.</li>
-</ul>
+<h1 id="License"><a href="#License" class="headerlink" title="License"></a>License</h1><p>Spring Boot is Open Source software released under the<br><a href="https://www.apache.org/licenses/LICENSE-2.0.html[Apache" target="_blank" rel="noopener">https://www.apache.org/licenses/LICENSE-2.0.html[Apache</a> 2.0 license].</p>
 
         </div>
         
@@ -1271,7 +546,7 @@ Done.</code></pre>
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
             
         </ul>
     </nav>
@@ -1321,7 +596,7 @@ Done.</code></pre>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -1333,7 +608,7 @@ Done.</code></pre>
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -1345,7 +620,7 @@ Done.</code></pre>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -1446,6 +721,14 @@ Done.</code></pre>
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -1504,6 +787,25 @@ Done.</code></pre>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1525,7 +827,7 @@ Done.</code></pre>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1544,7 +846,7 @@ Done.</code></pre>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1563,7 +865,7 @@ Done.</code></pre>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1571,25 +873,6 @@ Done.</code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1614,7 +897,7 @@ Done.</code></pre>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2236,6 +1519,13 @@ Done.</code></pre>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -2508,6 +1798,25 @@ Done.</code></pre>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -2529,7 +1838,7 @@ Done.</code></pre>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -2548,7 +1857,7 @@ Done.</code></pre>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -2567,7 +1876,7 @@ Done.</code></pre>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -2575,25 +1884,6 @@ Done.</code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2618,7 +1908,7 @@ Done.</code></pre>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -3240,6 +2530,13 @@ Done.</code></pre>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

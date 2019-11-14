@@ -182,40 +182,20 @@
             <h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26. 删除排序数组中的重复项"></a>26. <a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">删除排序数组中的重复项</a></h1><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
 <p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
 <p>示例 1:</p>
-<pre><code>给定数组 nums = [1,1,2], 
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums = [1,1,2], </span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
 
-函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 
+<p>示例 2:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
 
-你不需要考虑数组中超出新长度后面的元素。</code></pre><p>示例 2:</p>
-<pre><code>给定 nums = [0,0,1,1,1,2,2,3,3,4],
-
-函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。
-
-你不需要考虑数组中超出新长度后面的元素。</code></pre><p>说明:</p>
+<p>说明:</p>
 <p>为什么返回数值是整数，但输出的答案是数组呢?</p>
 <p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
 <p>你可以想象内部操作如下:</p>
-<pre><code>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝
-int len = removeDuplicates(nums);
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-// 在函数里修改输入数组对于调用者是可见的。
-// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。
-for (int i = 0; i &lt; len; i++) {
-    print(nums[i]);
-}</code></pre><p>双指针法</p>
-<pre><code class="java">class Solution {
-    public int removeDuplicates(int[] nums) {
-        if (nums.length == 0) return 0;
-        int i = 0;
-        for (int j = 1; j &lt; nums.length; j++) {
-            if (nums[j] != nums[i]) {
-                i++;
-                nums[i] = nums[j];
-            }
-        }
-        return i + 1;
-    }
-}</code></pre>
+<p>双指针法</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (nums.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>复杂度分析</p>
 <ul>
 <li><p>时间复杂度：O(n)，假设数组的长度是 n，那么 i 和 j 分别最多遍历 n 步。</p>
@@ -275,14 +255,9 @@ for (int i = 0; i &lt; len; i++) {
 <p>注意：1 ≤ k ≤ n ≤ 109。</p>
 </blockquote>
 <p><strong>示例 :</strong></p>
-<pre><code>输入:
-n: 13   k: 2
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">n: 13   k: 2</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。</span><br></pre></td></tr></table></figure>
 
-输出:
-10
-
-解释:
-字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。</code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>乍一看这一题貌似毫无头绪，什么是字典序？如何定位这个数？没错，刚接触这个题目的时候，我的脑筋里也是一团乱麻。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>乍一看这一题貌似毫无头绪，什么是字典序？如何定位这个数？没错，刚接触这个题目的时候，我的脑筋里也是一团乱麻。</p>
 <p>但是我觉得作为一个拥有聪明才智的程序员来说，最重要的能力就是迅速抽象问题、拆解问题的能力。经过一段时间的思考，我的脑筋里还是没有答案。</p>
 <p>哈哈。</p>
 <p>言归正传，我们来分析一下这个问题。</p>
@@ -302,26 +277,12 @@ n: 13   k: 2
 <li>确定指定前缀下所有子节点数<br>现在的任务就是给定一个前缀，返回下面子节点总数。</li>
 </ol>
 <p>我们现在的思路就是用下一个前缀的起点减去当前前缀的起点，那么就是当前前缀下的所有子节点数总和啦。</p>
-<pre><code class="javascript">//prefix是前缀，n是上界
-var getCount = (prefix, n) =&gt; {
-    let cur = prefix;
-    let next = prefix + 1;//下一个前缀
-    let count = 0;
-    //当前的前缀当然不能大于上界
-    while(cur &lt;= n) {
-        count += next - cur;//下一个前缀的起点减去当前前缀的起点
-        cur *= 10; 
-        next *= 10;
-        // 如果说刚刚prefix是1，next是2，那么现在分别变成10和20
-        // 1为前缀的子节点增加10个，十叉树增加一层, 变成了两层
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//prefix是前缀，n是上界</span></span><br><span class="line"><span class="hljs-keyword">var</span> getCount = <span class="hljs-function">(<span class="hljs-params">prefix, n</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> cur = prefix;</span><br><span class="line">    <span class="hljs-keyword">let</span> next = prefix + <span class="hljs-number">1</span>;<span class="hljs-comment">//下一个前缀</span></span><br><span class="line">    <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-comment">//当前的前缀当然不能大于上界</span></span><br><span class="line">    <span class="hljs-keyword">while</span>(cur &lt;= n) &#123;</span><br><span class="line">        count += next - cur;<span class="hljs-comment">//下一个前缀的起点减去当前前缀的起点</span></span><br><span class="line">        cur *= <span class="hljs-number">10</span>; </span><br><span class="line">        next *= <span class="hljs-number">10</span>;</span><br><span class="line">        <span class="hljs-comment">// 如果说刚刚prefix是1，next是2，那么现在分别变成10和20</span></span><br><span class="line">        <span class="hljs-comment">// 1为前缀的子节点增加10个，十叉树增加一层, 变成了两层</span></span><br><span class="line">        </span><br><span class="line">        <span class="hljs-comment">// 如果说现在prefix是10，next是20，那么现在分别变成100和200，</span></span><br><span class="line">        <span class="hljs-comment">// 1为前缀的子节点增加100个，十叉树又增加了一层，变成了三层</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> count;<span class="hljs-comment">//把当前前缀下的子节点和返回去。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        // 如果说现在prefix是10，next是20，那么现在分别变成100和200，
-        // 1为前缀的子节点增加100个，十叉树又增加了一层，变成了三层
-    }
-    return count;//把当前前缀下的子节点和返回去。
-}</code></pre>
 <p>当然，不知道大家发现一个问题没有，当next的值大于上界的时候，那以这个前缀为根节点的十叉树就不是满十叉树了啊，应该到上界那里，后面都不再有子节点。因此，count += next - cur还是有些问题的，我们来修正这个问题:</p>
-<pre><code>count += Math.max(n+1, next) - cur;</code></pre><p>你可能会问:咦？怎么是n+1,而不是n呢？不是说好了n是上界吗？</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">count += Math.max(n+1, next) - cur;</span><br></pre></td></tr></table></figure>
+
+<p>你可能会问:咦？怎么是n+1,而不是n呢？不是说好了n是上界吗？</p>
 <p>我举个例子，假若现在上界n为12，算出以1为前缀的子节点数，首先1本身是一个节点，接下来要算下面10，11，12，一共有4个子节点。</p>
 <p>那么如果用Math.max(n, next) - cur会怎么样？</p>
 <p>这时候算出来会少一个，12 - 10加上根节点，最后只有3个。因此我们务必要写n+1。</p>
@@ -330,83 +291,19 @@ var getCount = (prefix, n) =&gt; {
 <li>第k个数在当前前缀下<br>现在无非就是往子树里面去看。</li>
 </ol>
 <p>prefix这样处理就可以了。</p>
-<pre><code>prefix *= 10</code></pre><p>3.第k个数不在当前前缀下<br>说白了，当前的前缀小了嘛，我们扩大前缀。</p>
-<pre><code>prefix ++;</code></pre><p>框架搭建<br>整合一下刚刚的思路。</p>
-<pre><code class="javascript">let findKthNumber = function(n, k) {
-  let p = 1;//作为一个指针，指向当前所在位置，当p==k时，也就是到了排位第k的数
-  let prefix = 1;//前缀
-  while(p &lt; k) {
-    let count = getNumber(prefix, n);//获得当前前缀下所有子节点的和
-    if(p + count &gt; k) { //第k个数在当前前缀下
-      prefix *= 10;
-      p++; //把指针指向了第一个子节点的位置，比如11乘10后变成110，指针从11指向了110
-    } else if(p + count &lt;= k) { //第k个数不在当前前缀下
-      prefix ++;
-      p += count;//注意这里的操作，把指针指向了下一前缀的起点
-    }
-  }
-  return prefix;
-};</code></pre>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefix *= 10</span><br></pre></td></tr></table></figure>
+
+<p>3.第k个数不在当前前缀下<br>说白了，当前的前缀小了嘛，我们扩大前缀。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefix ++;</span><br></pre></td></tr></table></figure>
+
+<p>框架搭建<br>整合一下刚刚的思路。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> findKthNumber = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> p = <span class="hljs-number">1</span>;<span class="hljs-comment">//作为一个指针，指向当前所在位置，当p==k时，也就是到了排位第k的数</span></span><br><span class="line">  <span class="hljs-keyword">let</span> prefix = <span class="hljs-number">1</span>;<span class="hljs-comment">//前缀</span></span><br><span class="line">  <span class="hljs-keyword">while</span>(p &lt; k) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> count = getNumber(prefix, n);<span class="hljs-comment">//获得当前前缀下所有子节点的和</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(p + count &gt; k) &#123; <span class="hljs-comment">//第k个数在当前前缀下</span></span><br><span class="line">      prefix *= <span class="hljs-number">10</span>;</span><br><span class="line">      p++; <span class="hljs-comment">//把指针指向了第一个子节点的位置，比如11乘10后变成110，指针从11指向了110</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(p + count &lt;= k) &#123; <span class="hljs-comment">//第k个数不在当前前缀下</span></span><br><span class="line">      prefix ++;</span><br><span class="line">      p += count;<span class="hljs-comment">//注意这里的操作，把指针指向了下一前缀的起点</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> prefix;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>完整代码展示</p>
-<pre><code class="javascript">/**
- * @param {number} n
- * @param {number} k
- * @return {number}
- */
-var findKthNumber = function(n, k) {
-  let getCount = (prefix, n) =&gt; {
-    let count =  0;
-    for(let cur = prefix, next = prefix + 1; cur &lt;= n; cur *= 10, next *= 10) 
-      count += Math.min(next, n+1) - cur;
-    return count;
-  }
-  let p = 1;
-  let prefix = 1;
-  while(p &lt; k) {
-    let count = getCount(prefix, n);
-    if(p + count &gt; k) {
-      prefix *= 10;
-      p++;
-    } else if(p + count &lt;= k) {
-      prefix ++;
-      p += count;
-    }
-  }
-  return prefix;
-};</code></pre>
-<pre><code class="java">public class Solution {
-    /**
-     * @param n: a integer
-     * @param k: a integer
-     * @return: return a integer
-     */
-    public int findKthNumber(int n, int k) {
-        int curr = 1;
-        k = k - 1;
-        while (k &gt; 0) {
-            int steps = calSteps(n, curr, curr + 1);
-            if (steps &lt;= k) {   //如果不在当前层，减去steps
-                curr += 1;      
-                k -= steps;  
-            } 
-            else {              //说明在当前层,curr*10缩小搜索范围继续查找
-                curr *= 10;
-                k -= 1;
-            }
-        }
-        return curr;
-    }
-    //use long in case of overflow
-    public int calSteps(int n, long n1, long n2) { //计算curr开头和curr+1开头之间的字符串数量
-        int steps = 0;
-        while (n1 &lt;= n) {
-            steps += Math.min(n + 1, n2) - n1;  //每次加上当前的字符串数量
-            n1 *= 10;       //每次均扩大10倍
-            n2 *= 10;
-        }
-        return steps;
-    }
-}</code></pre>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> findKthNumber = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> getCount = <span class="hljs-function">(<span class="hljs-params">prefix, n</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> count =  <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> cur = prefix, next = prefix + <span class="hljs-number">1</span>; cur &lt;= n; cur *= <span class="hljs-number">10</span>, next *= <span class="hljs-number">10</span>) </span><br><span class="line">      count += <span class="hljs-built_in">Math</span>.min(next, n+<span class="hljs-number">1</span>) - cur;</span><br><span class="line">    <span class="hljs-keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">let</span> p = <span class="hljs-number">1</span>;</span><br><span class="line">  <span class="hljs-keyword">let</span> prefix = <span class="hljs-number">1</span>;</span><br><span class="line">  <span class="hljs-keyword">while</span>(p &lt; k) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> count = getCount(prefix, n);</span><br><span class="line">    <span class="hljs-keyword">if</span>(p + count &gt; k) &#123;</span><br><span class="line">      prefix *= <span class="hljs-number">10</span>;</span><br><span class="line">      p++;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(p + count &lt;= k) &#123;</span><br><span class="line">      prefix ++;</span><br><span class="line">      p += count;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> prefix;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> n: a integer</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> k: a integer</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span>: return a integer</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findKthNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> curr = <span class="hljs-number">1</span>;</span><br><span class="line">        k = k - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (k &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> steps = calSteps(n, curr, curr + <span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span> (steps &lt;= k) &#123;   <span class="hljs-comment">//如果不在当前层，减去steps</span></span><br><span class="line">                curr += <span class="hljs-number">1</span>;      </span><br><span class="line">                k -= steps;  </span><br><span class="line">            &#125; </span><br><span class="line">            <span class="hljs-keyword">else</span> &#123;              <span class="hljs-comment">//说明在当前层,curr*10缩小搜索范围继续查找</span></span><br><span class="line">                curr *= <span class="hljs-number">10</span>;</span><br><span class="line">                k -= <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> curr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//use long in case of overflow</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">calSteps</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">long</span> n1, <span class="hljs-keyword">long</span> n2)</span> </span>&#123; <span class="hljs-comment">//计算curr开头和curr+1开头之间的字符串数量</span></span><br><span class="line">        <span class="hljs-keyword">int</span> steps = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (n1 &lt;= n) &#123;</span><br><span class="line">            steps += Math.min(n + <span class="hljs-number">1</span>, n2) - n1;  <span class="hljs-comment">//每次加上当前的字符串数量</span></span><br><span class="line">            n1 *= <span class="hljs-number">10</span>;       <span class="hljs-comment">//每次均扩大10倍</span></span><br><span class="line">            n2 *= <span class="hljs-number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> steps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -455,69 +352,20 @@ var findKthNumber = function(n, k) {
             <p><img src="/images/2019/09/07/1a65d090-d180-11e9-9875-2ff9eb2fd026.png" alt="image.png"></p>
 <h1 id="54-螺旋矩阵"><a href="#54-螺旋矩阵" class="headerlink" title="54. 螺旋矩阵"></a>54. <a href="https://leetcode-cn.com/problems/spiral-matrix/" target="_blank" rel="noopener">螺旋矩阵</a></h1><p>给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。</p>
 <p>示例 1:</p>
-<pre><code>输入:
-[
- [ 1, 2, 3 ],
- [ 4, 5, 6 ],
- [ 7, 8, 9 ]
-]
-输出: [1,2,3,6,9,8,7,4,5]</code></pre><p>示例 2:</p>
-<pre><code>输入:
-[
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9,10,11,12]
-]
-输出: [1,2,3,4,8,12,11,10,9,5,6,7]</code></pre><h2 id="方法-1：模拟"><a href="#方法-1：模拟" class="headerlink" title="方法 1：模拟"></a>方法 1：模拟</h2><p>直觉</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [1, 2, 3, 4],</span><br><span class="line">  [5, 6, 7, 8],</span><br><span class="line">  [9,10,11,12]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法-1：模拟"><a href="#方法-1：模拟" class="headerlink" title="方法 1：模拟"></a>方法 1：模拟</h2><p>直觉</p>
 <p>绘制螺旋轨迹路径，我们发现当路径超出界限或者进入之前访问过的单元格时，会顺时针旋转方向。</p>
 <p>算法</p>
 <p>假设数组有 R 行 C 列，seen[r][c] 表示第 r 行第 c 列的单元格之前已经被访问过了。当前所在位置为 (r, c)，前进方向是 di。我们希望访问所有 R x C 个单元格。</p>
 <p>当我们遍历整个矩阵，下一步候选移动位置是 (cr, cc)。如果这个候选位置在矩阵范围内并且没有被访问过，那么它将会变成下一步移动的位置；否则，我们将前进方向顺时针旋转之后再计算下一步的移动位置。</p>
-<pre><code class="java">class Solution {
-    public List&lt;Integer&gt; spiralOrder(int[][] matrix) {
-        List ans = new ArrayList();
-        if (matrix.length == 0) return ans;
-        int R = matrix.length, C = matrix[0].length;
-        boolean[][] seen = new boolean[R][C];
-        int[] dr = {0, 1, 0, -1};
-        int[] dc = {1, 0, -1, 0};
-        int r = 0, c = 0, di = 0;
-        for (int i = 0; i &lt; R * C; i++) {
-            ans.add(matrix[r][c]);
-            seen[r][c] = true;
-            int cr = r + dr[di];
-            int cc = c + dc[di];
-            if (0 &lt;= cr &amp;&amp; cr &lt; R &amp;&amp; 0 &lt;= cc &amp;&amp; cc &lt; C &amp;&amp; !seen[cr][cc]){
-                r = cr;
-                c = cc;
-            } else {
-                di = (di + 1) % 4;
-                r += dr[di];
-                c += dc[di];
-            }
-        }
-        return ans;
-    }
-}</code></pre>
-<pre><code class="python">class Solution(object):
-    def spiralOrder(self, matrix):
-        if not matrix: return []
-        R, C = len(matrix), len(matrix[0])
-        seen = [[False] * C for _ in matrix]
-        ans = []
-        dr = [0, 1, 0, -1]
-        dc = [1, 0, -1, 0]
-        r = c = di = 0
-        for _ in range(R * C):
-            ans.append(matrix[r][c])
-            seen[r][c] = True
-            cr, cc = r + dr[di], c + dc[di]
-            if 0 &lt;= cr &lt; R and 0 &lt;= cc &lt; C and not seen[cr][cc]:
-                r, c = cr, cc
-            else:
-                di = (di + 1) % 4
-                r, c = r + dr[di], c + dc[di]
-        return ans</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">spiralOrder</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        List ans = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">        <span class="hljs-keyword">if</span> (matrix.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        <span class="hljs-keyword">int</span> R = matrix.length, C = matrix[<span class="hljs-number">0</span>].length;</span><br><span class="line">        <span class="hljs-keyword">boolean</span>[][] seen = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[R][C];</span><br><span class="line">        <span class="hljs-keyword">int</span>[] dr = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>&#125;;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] dc = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;;</span><br><span class="line">        <span class="hljs-keyword">int</span> r = <span class="hljs-number">0</span>, c = <span class="hljs-number">0</span>, di = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; R * C; i++) &#123;</span><br><span class="line">            ans.add(matrix[r][c]);</span><br><span class="line">            seen[r][c] = <span class="hljs-keyword">true</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> cr = r + dr[di];</span><br><span class="line">            <span class="hljs-keyword">int</span> cc = c + dc[di];</span><br><span class="line">            <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt;= cr &amp;&amp; cr &lt; R &amp;&amp; <span class="hljs-number">0</span> &lt;= cc &amp;&amp; cc &lt; C &amp;&amp; !seen[cr][cc])&#123;</span><br><span class="line">                r = cr;</span><br><span class="line">                c = cc;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                di = (di + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>;</span><br><span class="line">                r += dr[di];</span><br><span class="line">                c += dc[di];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spiralOrder</span><span class="hljs-params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> matrix: <span class="hljs-keyword">return</span> []</span><br><span class="line">        R, C = len(matrix), len(matrix[<span class="hljs-number">0</span>])</span><br><span class="line">        seen = [[<span class="hljs-literal">False</span>] * C <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> matrix]</span><br><span class="line">        ans = []</span><br><span class="line">        dr = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>]</span><br><span class="line">        dc = [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>]</span><br><span class="line">        r = c = di = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(R * C):</span><br><span class="line">            ans.append(matrix[r][c])</span><br><span class="line">            seen[r][c] = <span class="hljs-literal">True</span></span><br><span class="line">            cr, cc = r + dr[di], c + dc[di]</span><br><span class="line">            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= cr &lt; R <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= cc &lt; C <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> seen[cr][cc]:</span><br><span class="line">                r, c = cr, cc</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">                di = (di + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span></span><br><span class="line">                r, c = r + dr[di], c + dc[di]</span><br><span class="line">        <span class="hljs-keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
 <p>复杂度分析</p>
 <ul>
 <li>时间复杂度： O(N)，其中 N 是输入矩阵所有元素的个数。因为我们将矩阵中的每个元素都添加进答案里。</li>
@@ -528,33 +376,11 @@ var findKthNumber = function(n, k) {
 <p>答案是最外层所有元素按照顺时针顺序输出，其次是次外层，以此类推。</p>
 <p>算法</p>
 <p>我们定义矩阵的第 k 层是到最近边界距离为 k 的所有顶点。例如，下图矩阵最外层元素都是第 1 层，次外层元素都是第 2 层，然后是第 3 层的。</p>
-<pre><code>[[1, 1, 1, 1, 1, 1, 1],
- [1, 2, 2, 2, 2, 2, 1],
- [1, 2, 3, 3, 3, 2, 1],
- [1, 2, 2, 2, 2, 2, 1],
- [1, 1, 1, 1, 1, 1, 1]]</code></pre><p><img src="/images/2019/09/07/c4547840-d180-11e9-9875-2ff9eb2fd026.png" alt="image.png"></p>
-<pre><code class="java">class Solution {
-    public List &lt; Integer &gt; spiralOrder(int[][] matrix) {
-        List ans = new ArrayList();
-        if (matrix.length == 0)
-            return ans;
-        int r1 = 0, r2 = matrix.length - 1;
-        int c1 = 0, c2 = matrix[0].length - 1;
-        while (r1 &lt;= r2 &amp;&amp; c1 &lt;= c2) {
-            for (int c = c1; c &lt;= c2; c++) ans.add(matrix[r1][c]);
-            for (int r = r1 + 1; r &lt;= r2; r++) ans.add(matrix[r][c2]);
-            if (r1 &lt; r2 &amp;&amp; c1 &lt; c2) {
-                for (int c = c2 - 1; c &gt; c1; c--) ans.add(matrix[r2][c]);
-                for (int r = r2; r &gt; r1; r--) ans.add(matrix[r][c1]);
-            }
-            r1++;
-            r2--;
-            c1++;
-            c2--;
-        }
-        return ans;
-    }
-}</code></pre>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[[1, 1, 1, 1, 1, 1, 1],</span><br><span class="line"> [1, 2, 2, 2, 2, 2, 1],</span><br><span class="line"> [1, 2, 3, 3, 3, 2, 1],</span><br><span class="line"> [1, 2, 2, 2, 2, 2, 1],</span><br><span class="line"> [1, 1, 1, 1, 1, 1, 1]]</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2019/09/07/c4547840-d180-11e9-9875-2ff9eb2fd026.png" alt="image.png"></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> List &lt; Integer &gt; spiralOrder(<span class="hljs-keyword">int</span>[][] matrix) &#123;</span><br><span class="line">        List ans = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">        <span class="hljs-keyword">if</span> (matrix.length == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        <span class="hljs-keyword">int</span> r1 = <span class="hljs-number">0</span>, r2 = matrix.length - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> c1 = <span class="hljs-number">0</span>, c2 = matrix[<span class="hljs-number">0</span>].length - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (r1 &lt;= r2 &amp;&amp; c1 &lt;= c2) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> c = c1; c &lt;= c2; c++) ans.add(matrix[r1][c]);</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> r = r1 + <span class="hljs-number">1</span>; r &lt;= r2; r++) ans.add(matrix[r][c2]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (r1 &lt; r2 &amp;&amp; c1 &lt; c2) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> c = c2 - <span class="hljs-number">1</span>; c &gt; c1; c--) ans.add(matrix[r2][c]);</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> r = r2; r &gt; r1; r--) ans.add(matrix[r][c1]);</span><br><span class="line">            &#125;</span><br><span class="line">            r1++;</span><br><span class="line">            r2--;</span><br><span class="line">            c1++;</span><br><span class="line">            c2--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>复杂度分析</p>
 <ul>
 <li>时间复杂度： O(N)，其中 N 是输入矩阵所有元素的个数。因为我们将矩阵中的每个元素都添加进答案里。</li>
@@ -569,74 +395,9 @@ var findKthNumber = function(n, k) {
 <li>若上下边界不交错，则遍历还未结束，接着向下向左向上移动，操作过程与第一，二步同理</li>
 <li>不断循环以上步骤，直到某两条边界交错，跳出循环，返回答案</li>
 </ol>
-<pre><code class="java">import java.util.*;
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// Scanner in = new Scanner(System.in);</span></span><br><span class="line">        <span class="hljs-comment">// int n = in.nextInt();</span></span><br><span class="line">        <span class="hljs-comment">// in.close();</span></span><br><span class="line">        <span class="hljs-keyword">int</span>[][] matrix = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[][] &#123; &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> &#125;, &#123; <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span> &#125;, &#123; <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span> &#125; &#125;;</span><br><span class="line">        List&lt;Integer&gt; list = spiralOrder(matrix);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> List&lt;Integer&gt; <span class="hljs-title">spiralOrder</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span> (matrix.length == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> list;</span><br><span class="line">        <span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>, d = matrix.length - <span class="hljs-number">1</span>, l = <span class="hljs-number">0</span>, r = matrix[<span class="hljs-number">0</span>].length - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123;</span><br><span class="line">            <span class="hljs-comment">// 向右</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = l; i &lt;= r; i++)</span><br><span class="line">                list.add(matrix[u][i]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (++u &gt; d)</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            <span class="hljs-comment">// 向下</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = u; i &lt;= d; i++)</span><br><span class="line">                list.add(matrix[i][r]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (--r &lt; l)</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            <span class="hljs-comment">// 向左</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = r; i &gt;= l; i--)</span><br><span class="line">                list.add(matrix[d][i]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (--d &lt; u)</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            <span class="hljs-comment">// 向上</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = d; i &gt;= u; i--)</span><br><span class="line">                list.add(matrix[i][l]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (++l &gt; r)</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-public class Main {
-
-    public static void main(String[] args) {
-        // Scanner in = new Scanner(System.in);
-        // int n = in.nextInt();
-        // in.close();
-        int[][] matrix = new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-        List&lt;Integer&gt; list = spiralOrder(matrix);
-        System.out.println(list);
-    }
-
-    static List&lt;Integer&gt; spiralOrder(int[][] matrix) {
-        List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
-        if (matrix.length == 0)
-            return list;
-        int u = 0, d = matrix.length - 1, l = 0, r = matrix[0].length - 1;
-        while (true) {
-            // 向右
-            for (int i = l; i &lt;= r; i++)
-                list.add(matrix[u][i]);
-            if (++u &gt; d)
-                break;
-            // 向下
-            for (int i = u; i &lt;= d; i++)
-                list.add(matrix[i][r]);
-            if (--r &lt; l)
-                break;
-            // 向左
-            for (int i = r; i &gt;= l; i--)
-                list.add(matrix[d][i]);
-            if (--d &lt; u)
-                break;
-            // 向上
-            for (int i = d; i &gt;= u; i--)
-                list.add(matrix[i][l]);
-            if (++l &gt; r)
-                break;
-        }
-        return list;
-    }
-
-}</code></pre>
-<pre><code class="c++">class Solution {
-public:
-    vector&lt;int&gt; spiralOrder(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) {
-        vector &lt;int&gt; ans;
-        if(matrix.empty()) return ans; //若数组为空，直接返回答案
-        int u = 0; //赋值上下左右边界
-        int d = matrix.size() - 1;
-        int l = 0;
-        int r = matrix[0].size() - 1;
-        while(true)
-        {
-            for(int i = l; i &lt;= r; ++i) ans.push_back(matrix[u][i]); //向右移动直到最右
-            if(++ u &gt; d) break; //重新设定上边界，若上边界大于下边界，则遍历遍历完成，下同
-            for(int i = u; i &lt;= d; ++i) ans.push_back(matrix[i][r]); //向下
-            if(-- r &lt; l) break; //重新设定有边界
-            for(int i = r; i &gt;= l; --i) ans.push_back(matrix[d][i]); //向左
-            if(-- d &lt; u) break; //重新设定下边界
-            for(int i = d; i &gt;= u; --i) ans.push_back(matrix[i][l]); //向上
-            if(++ l &gt; r) break; //重新设定左边界
-        }
-        return ans;
-    }
-};</code></pre>
-
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; spiralOrder(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        <span class="hljs-built_in">vector</span> &lt;<span class="hljs-keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="hljs-keyword">if</span>(matrix.empty()) <span class="hljs-keyword">return</span> ans; <span class="hljs-comment">//若数组为空，直接返回答案</span></span><br><span class="line">        <span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>; <span class="hljs-comment">//赋值上下左右边界</span></span><br><span class="line">        <span class="hljs-keyword">int</span> d = matrix.size() - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> r = matrix[<span class="hljs-number">0</span>].size() - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = l; i &lt;= r; ++i) ans.push_back(matrix[u][i]); <span class="hljs-comment">//向右移动直到最右</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(++ u &gt; d) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//重新设定上边界，若上边界大于下边界，则遍历遍历完成，下同</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = u; i &lt;= d; ++i) ans.push_back(matrix[i][r]); <span class="hljs-comment">//向下</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(-- r &lt; l) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//重新设定有边界</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = r; i &gt;= l; --i) ans.push_back(matrix[d][i]); <span class="hljs-comment">//向左</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(-- d &lt; u) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//重新设定下边界</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = d; i &gt;= u; --i) ans.push_back(matrix[i][l]); <span class="hljs-comment">//向上</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(++ l &gt; r) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//重新设定左边界</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -685,15 +446,9 @@ public:
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="杨辉三角"></p>
 <p>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
 <p>示例:</p>
-<pre><code>输入: 5
-输出:
-[
-     [1],
-    [1,1],
-   [1,2,1],
-  [1,3,3,1],
- [1,4,6,4,1]
-]</code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
 <li>动态规划</li>
 </ol>
 <p><strong>思路</strong></p>
@@ -701,42 +456,8 @@ public:
 <p><strong>算法</strong></p>
 <p>虽然这一算法非常简单，但用于构造杨辉三角的迭代方法可以归类为动态规划，因为我们需要基于前一行来构造每一行。</p>
 <p>首先，我们会生成整个 <code>triangle</code> 列表，三角形的每一行都以子列表的形式存储。然后，我们会检查行数为 0 的特殊情况，否则我们会返回 <code>[1]</code>。如果 <em>numRows</em> &gt; 0，那么我们用 <code>[1]</code> 作为第一行来初始化 <code>triangle</code> with <code>[1]</code>，并按如下方式继续填充：</p>
-<pre><code class="java">class Solution {
-    public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) {
-        List&lt;List&lt;Integer&gt;&gt; triangle = new ArrayList&lt;List&lt;Integer&gt;&gt;();
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="hljs-keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; triangle = <span class="hljs-keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// First base case; if user requests zero rows, they get zero rows.</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (numRows == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> triangle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// Second base case; first row is always [1].</span></span><br><span class="line">        triangle.add(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        triangle.get(<span class="hljs-number">0</span>).add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> rowNum = <span class="hljs-number">1</span>; rowNum &lt; numRows; rowNum++) &#123;</span><br><span class="line">            List&lt;Integer&gt; row = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            List&lt;Integer&gt; prevRow = triangle.get(rowNum-<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// The first row element is always 1.</span></span><br><span class="line">            row.add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// Each triangle element (other than the first and last of each row)</span></span><br><span class="line">            <span class="hljs-comment">// is equal to the sum of the elements above-and-to-the-left and</span></span><br><span class="line">            <span class="hljs-comment">// above-and-to-the-right.</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; rowNum; j++) &#123;</span><br><span class="line">                row.add(prevRow.get(j-<span class="hljs-number">1</span>) + prevRow.get(j));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// The last row element is always 1.</span></span><br><span class="line">            row.add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            triangle.add(row);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> triangle;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        // First base case; if user requests zero rows, they get zero rows.
-        if (numRows == 0) {
-            return triangle;
-        }
-
-        // Second base case; first row is always [1].
-        triangle.add(new ArrayList&lt;&gt;());
-        triangle.get(0).add(1);
-
-        for (int rowNum = 1; rowNum &lt; numRows; rowNum++) {
-            List&lt;Integer&gt; row = new ArrayList&lt;&gt;();
-            List&lt;Integer&gt; prevRow = triangle.get(rowNum-1);
-
-            // The first row element is always 1.
-            row.add(1);
-
-            // Each triangle element (other than the first and last of each row)
-            // is equal to the sum of the elements above-and-to-the-left and
-            // above-and-to-the-right.
-            for (int j = 1; j &lt; rowNum; j++) {
-                row.add(prevRow.get(j-1) + prevRow.get(j));
-            }
-
-            // The last row element is always 1.
-            row.add(1);
-
-            triangle.add(row);
-        }
-
-        return triangle;
-    }
-}</code></pre>
 <p><strong>复杂度分析</strong></p>
 <ul>
 <li>时间复杂度： <em>O(numRows²)</em></li>
@@ -750,53 +471,14 @@ public:
 <ol start="2">
 <li>Python解法</li>
 </ol>
-<pre><code class="python">class Solution:
-    def generate(self, num_rows):
-        triangle = []
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate</span><span class="hljs-params">(self, num_rows)</span>:</span></span><br><span class="line">        triangle = []</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> row_num <span class="hljs-keyword">in</span> range(num_rows):</span><br><span class="line">            <span class="hljs-comment"># The first and last row elements are always 1.</span></span><br><span class="line">            row = [<span class="hljs-literal">None</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(row_num+<span class="hljs-number">1</span>)]</span><br><span class="line">            row[<span class="hljs-number">0</span>], row[<span class="hljs-number">-1</span>] = <span class="hljs-number">1</span>, <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment"># Each triangle element is equal to the sum of the elements</span></span><br><span class="line">            <span class="hljs-comment"># above-and-to-the-left and above-and-to-the-right.</span></span><br><span class="line">            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(row)<span class="hljs-number">-1</span>):</span><br><span class="line">                row[j] = triangle[row_num<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + triangle[row_num<span class="hljs-number">-1</span>][j]</span><br><span class="line"></span><br><span class="line">            triangle.append(row)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> triangle</span><br></pre></td></tr></table></figure>
 
-        for row_num in range(num_rows):
-            # The first and last row elements are always 1.
-            row = [None for _ in range(row_num+1)]
-            row[0], row[-1] = 1, 1
-
-            # Each triangle element is equal to the sum of the elements
-            # above-and-to-the-left and above-and-to-the-right.
-            for j in range(1, len(row)-1):
-                row[j] = triangle[row_num-1][j-1] + triangle[row_num-1][j]
-
-            triangle.append(row)
-
-        return triangle</code></pre>
 <ol start="3">
 <li>递归解法</li>
 </ol>
 <p>通过<em>numRows</em>-1，求<em>numRows</em>行，递归求解</p>
-<pre><code class="java">class Solution {
-    List&lt;List&lt;Integer&gt;&gt; listw = new ArrayList&lt;List&lt;Integer&gt;&gt;();
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; listw = <span class="hljs-keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="hljs-keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;Integer&gt; listn = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span> (numRows == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> listw;</span><br><span class="line">        generate(numRows - <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                listn.add(<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i == numRows - <span class="hljs-number">1</span>) &#123;</span><br><span class="line">                listn.add(<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i == numRows - <span class="hljs-number">2</span>) &#123;</span><br><span class="line">                listn.add(listw.get(numRows - <span class="hljs-number">2</span>).get(i - <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                listn.add(listw.get(numRows - <span class="hljs-number">2</span>).get(i - <span class="hljs-number">1</span>) + listw.get(numRows - <span class="hljs-number">2</span>).get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        listw.add(listn);</span><br><span class="line">        <span class="hljs-keyword">return</span> listw;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) {
-        List&lt;Integer&gt; listn = new ArrayList&lt;Integer&gt;();
-        if (numRows == 0)
-            return listw;
-        generate(numRows - 1);
-        for (int i = 0; i &lt; numRows; i++) {
-            if (i == 0) {
-                listn.add(1);
-                continue;
-            } else if (i == numRows - 1) {
-                listn.add(1);
-                continue;
-            } else if (i == numRows - 2) {
-                listn.add(listw.get(numRows - 2).get(i - 1) + 1);
-                continue;
-            } else {
-                listn.add(listw.get(numRows - 2).get(i - 1) + listw.get(numRows - 2).get(i));
-            }
-        }
-        listw.add(listn);
-        return listw;
-    }
-}</code></pre>
 
         </div>
         
@@ -849,30 +531,8 @@ public:
 <pre><code>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
 <li>非递归</li>
 </ol>
-<pre><code class="java">/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode swapPairs(ListNode head) {
-        ListNode pre = new ListNode(0);
-        pre.next = head;
-        ListNode temp = pre;
-        while(temp.next != null &amp;&amp; temp.next.next != null) {
-            ListNode start = temp.next;
-            ListNode end = temp.next.next;
-            temp.next = end;
-            start.next = end.next;
-            end.next = start;
-            temp = start;
-        }
-        return pre.next;
-    }
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     int val;</span></span><br><span class="line"><span class="hljs-comment"> *     ListNode next;</span></span><br><span class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pre = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</span><br><span class="line">        pre.next = head;</span><br><span class="line">        ListNode temp = pre;</span><br><span class="line">        <span class="hljs-keyword">while</span>(temp.next != <span class="hljs-keyword">null</span> &amp;&amp; temp.next.next != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">            ListNode start = temp.next;</span><br><span class="line">            ListNode end = temp.next.next;</span><br><span class="line">            temp.next = end;</span><br><span class="line">            start.next = end.next;</span><br><span class="line">            end.next = start;</span><br><span class="line">            temp = start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> pre.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li><p>递归解法</p>
 <ol>
@@ -885,19 +545,7 @@ class Solution {
 </li>
 </ol>
 <p><img src="/images/2019/08/31/edb550e0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
-<pre><code class="java">class Solution {
-    public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null)
-            return head;
-
-        // 三个节点顺序:head, next, swapPairs(next.next)
-        ListNode next = head.next;
-        head.next = swapPairs(next.next);
-        next.next = head;
-        return next;
-    }
-}</code></pre>
-
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span> || head.next == <span class="hljs-keyword">null</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 三个节点顺序:head, next, swapPairs(next.next)</span></span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        head.next = swapPairs(next.next);</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="hljs-keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -953,58 +601,23 @@ class Solution {
 输出：[&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]    </code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
 <li>递归解法</li>
 </ol>
-<pre><code class="java">class Solution {
-    public void reverseString(char[] s) {
-        swap(0, s.length-1, s);
-    }
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        swap(<span class="hljs-number">0</span>, s.length-<span class="hljs-number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(start &gt;= end)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">char</span> temp = s[start];</span><br><span class="line">        s[start] = s[end];</span><br><span class="line">        s[end] = temp;</span><br><span class="line">        swap(start+<span class="hljs-number">1</span>, end-<span class="hljs-number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    public void swap(int start, int end, char[] s) {
-        if(start &gt;= end){
-            return;
-        }
-        char temp = s[start];
-        s[start] = s[end];
-        s[end] = temp;
-        swap(start+1, end-1, s);
-    }
-}</code></pre>
 <ol start="2">
 <li>循环解法</li>
 </ol>
-<pre><code class="java">class Solution {
-    public void reverseString(char[] s) {
-        int j=s.length-1;
-        for(int i=0;i&lt;s.length/2;i++){
-            char tmp = s[i];
-            s[i] = s[j];
-            s[j] = tmp;
-            j--;
-        }
-    }
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> j=s.length-<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length/<span class="hljs-number">2</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> tmp = s[i];</span><br><span class="line">            s[i] = s[j];</span><br><span class="line">            s[j] = tmp;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>Python解法</li>
 </ol>
-<pre><code class="Python">def reverseString(self, s: List[str]) -&gt; None:
-    s[0::]=s[::-1]</code></pre>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(self, s: List[str])</span> -&gt; <span class="hljs-keyword">None</span>:</span></span><br><span class="line">    s[<span class="hljs-number">0</span>::]=s[::<span class="hljs-number">-1</span>]</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>c++解法</li>
 </ol>
 <p>双指针，交换头尾两个指针所指的两个位置的值，指针向中间移动一个位置，重复以上操作，直到两个指针交错；</p>
-<pre><code class="c++">class Solution {
-public:
-    void reverseString(vector&lt;char&gt;&amp; s) {
-        int i = 0;
-        int j = s.size() - 1;
-        while(i&lt;j)
-        {
-            swap(s[i],s[j]);
-            ++ i;
-            -- j;
-        }
-    }
-};</code></pre>
-
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = s.size() - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(i&lt;j)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(s[i],s[j]);</span><br><span class="line">            ++ i;</span><br><span class="line">            -- j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -1064,7 +677,7 @@ public:
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -1076,7 +689,7 @@ public:
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -1088,7 +701,7 @@ public:
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -1189,6 +802,14 @@ public:
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -1247,6 +868,25 @@ public:
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1268,7 +908,7 @@ public:
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1287,7 +927,7 @@ public:
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1306,7 +946,7 @@ public:
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1314,25 +954,6 @@ public:
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1357,7 +978,7 @@ public:
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1979,6 +1600,13 @@ public:
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -2251,6 +1879,25 @@ public:
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -2272,7 +1919,7 @@ public:
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -2291,7 +1938,7 @@ public:
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -2310,7 +1957,7 @@ public:
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -2318,25 +1965,6 @@ public:
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2361,7 +1989,7 @@ public:
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2983,6 +2611,13 @@ public:
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

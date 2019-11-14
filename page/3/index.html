@@ -146,7 +146,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-27T15:15:00.000Z">2019-10-27</time>
+                <time class="level-item has-text-grey" datetime="2019-11-06T13:55:01.000Z">2019-11-06</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1624 个字)
+                    13 分钟 读完 (大约 1880 个字)
                 </span>
                 
                 
@@ -165,1040 +165,408 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/27/lazydocker/">lazydocker</a>
+                <a class="has-link-black-ter" href="/2019/11/06/country/">country</a>
             
         </h1>
         <div class="content">
-            <p><img src="/images/2019/10/27/57b9c500-f8cc-11e9-9156-23e5f2285253.png" alt="image.png"></p>
-<p>A simple terminal UI for both docker and docker-compose, written in Go with the <a href="https://github.com/jroimartin/gocui" title="gocui" target="_blank" rel="noopener">gocui</a> library.</p>
-<p><a href="https://circleci.com/gh/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://circleci.com/gh/jesseduffield/lazydocker.svg?style=svg" alt="CircleCI"></a><br><a href="https://goreportcard.com/report/github.com/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://goreportcard.com/badge/github.com/jesseduffield/lazydocker" alt="Go Report Card"></a><br><a href="https://golangci.com" target="_blank" rel="noopener"><img src="https://golangci.com/badges/github.com/jesseduffield/lazydocker.svg" alt="GolangCI"></a><br><a href="http://godoc.org/github.com/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://godoc.org/github.com/jesseduffield/lazydocker?status.svg" alt="GoDoc"></a><br><img src="https://img.shields.io/github/repo-size/jesseduffield/lazydocker" alt="GitHub repo size"><br><a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener"><img src="https://img.shields.io/github/downloads/jesseduffield/lazydocker/total" alt="GitHub Releases"></a><br><a href="https://github.com/jesseduffield/lazydocker/releases/latest" target="_blank" rel="noopener"><img src="https://img.shields.io/github/tag/jesseduffield/lazydocker.svg" alt="GitHub tag"></a><br><a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/lazydocker.rb" target="_blank" rel="noopener"><img src="https://img.shields.io/homebrew/v/lazydocker" alt="homebrew"></a></p>
-<p><img src="https://github.com/jesseduffield/lazydocker/raw/master/docs/resources/demo3.gif" alt="Gif"></p>
-<p><a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">Demo</a></p>
-<p>Minor rant incoming: Something’s not working? Maybe a service is down. <code>docker-compose ps</code>. Yep, it’s that microservice that’s still buggy. No issue, I’ll just restart it: <code>docker-compose restart</code>. Okay now let’s try again. Oh wait the issue is still there. Hmm. <code>docker-compose ps</code>. Right so the service must have just stopped immediately after starting. I probably would have known that if I was reading the log stream, but there is a lot of clutter in there from other services. I could get the logs for just that one service with <code>docker compose logs --follow myservice</code> but that dies everytime the service dies so I’d need to run that command every time I restart the service. I could alternatively run <code>docker-compose up myservice</code> and in that terminal window if the service is down I could just <code>up</code> it again, but now I’ve got one service hogging a terminal window even after I no longer care about its logs. I guess when I want to reclaim the terminal realestate I can do <code>ctrl+P,Q</code>, but… wait, that’s not working for some reason. Should I use ctrl+C instead? I can’t remember if that closes the foreground process or kills the actual service.</p>
-<p>What a headache!</p>
-<p>Memorising docker commands is hard. Memorising aliases is slightly less hard. Keeping track of your containers across multiple terminal windows is near impossible. What if you had all the information you needed in one terminal window with every common command living one keypress away (and the ability to add custom commands as well). Lazydocker’s goal is to make that dream a reality.</p>
+            <h1 id="国家和地区"><a href="#国家和地区" class="headerlink" title="国家和地区"></a>国家和地区</h1><blockquote>
+<p>国家是阶级统治的工具。</p>
+</blockquote>
+<blockquote>
+<p>国家（States、Countries）是由领土、人民（民族，居民）、文化和政府四个要素组成的，国家也是政治地理学名词。从广义的角度，国家是指拥有共同的语言、文化、种族、血统、领土、政府或者历史的社会群体。从狭义的角度，国家是一定范围内的人群所形成的共同体形式。</p>
+</blockquote>
+<blockquote>
+<p>在社会科学和人文地理范畴，国家是指被人民、文化、语言、地理区别出来的领土；被政治自治权区别出来的一块领地；一个领地或者邦国的人民；跟特定的人有关联的地区。</p>
+</blockquote>
+<blockquote>
+<p>一般国家行政管理当局是国家的象征，它是一种拥有治理一个社会的权力的国家机构，在一定的领土内拥有外部和内部的主权。<br>国家概念：区域划分，有行政合法性，也就是合法权力。一个国家合法性是指一个政权的理性标准。理性标准是指司法审核标准，法制建立标准，国家可以容纳多民族。</p>
+</blockquote>
+<blockquote>
+<p>民族概念：已形成独特的文化，包括语言、文字、信仰、崇尚、习俗、服饰、佩饰、建筑风格、饮食习惯、忌讳等等。民族也可以国家化。</p>
+</blockquote>
+<blockquote>
+<p>在外语中如英语或法语，国家一词有多种解释，例如地理层面，政治层面，民族层面，这三种层面各有代表国家的单词。</p>
+</blockquote>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br></pre></td><td class="code"><pre><span class="line">AD The Principality of Andorra 安道尔</span><br><span class="line">AE United Arab Emirates 阿拉伯联合酋长国</span><br><span class="line">AF Afghanistan 阿富汗</span><br><span class="line">AL Albania 阿尔巴尼亚</span><br><span class="line">AG ANtigua and Barbuda 安提瓜和巴布达</span><br><span class="line">AI 安圭拉 [1] </span><br><span class="line">AM Armenia 亚美尼亚</span><br><span class="line">AN 安的列斯群岛 [1] </span><br><span class="line">AO Angola安哥拉</span><br><span class="line">AQ Antarctica南极洲</span><br><span class="line">AR Argentina阿根廷</span><br><span class="line">AS 美属萨摩亚群岛</span><br><span class="line">AT Austria奥地利</span><br><span class="line">AU Australia 澳大利亚</span><br><span class="line">AZ Azerbaijan 阿塞拜疆</span><br><span class="line">BB 巴巴多斯</span><br><span class="line">BS Bahamas 巴哈马</span><br><span class="line">BH Bahrain 巴林</span><br><span class="line">BD Bangladesh 孟加拉国</span><br><span class="line">BB Barbados 巴巴多斯</span><br><span class="line">BY Belarus 白俄罗斯</span><br><span class="line">BZ Belize 伯利兹</span><br><span class="line">BE Belgium 比利时</span><br><span class="line">BJ Benin 贝宁</span><br><span class="line">BM Bermuda 百慕大</span><br><span class="line">BT Bhutan 不丹</span><br><span class="line">BO Bolivia 玻利维亚</span><br><span class="line">BA Bosnia and Herzegovina 波斯尼亚和黑塞哥维那</span><br><span class="line">BW Botswana 博茨瓦纳</span><br><span class="line">BV Bouvet Island 布维岛</span><br><span class="line">BR Brazil 巴西</span><br><span class="line">BN Brunei Darussalam 文莱</span><br><span class="line">BG Bulgaria 保加利亚</span><br><span class="line">BF Burkina Faso 布基纳法索</span><br><span class="line">BI Burundi 布隆迪</span><br><span class="line">CM Cameroon 喀麦隆</span><br><span class="line">CA Canada 加拿大</span><br><span class="line">CV Cape Verde 佛得角</span><br><span class="line">CF The Central African Republic 中非共和国</span><br><span class="line">CL Chile 智利</span><br><span class="line">CN The People's Republic of China 中华人民共和国</span><br><span class="line">CX Christmas Island 圣诞岛</span><br><span class="line">CO Colombia 哥伦比亚</span><br><span class="line">CH Switzerland 瑞士</span><br><span class="line">CG Congo 刚果共和国</span><br><span class="line">Democratic Republic of the Congo 刚果民主共和国</span><br><span class="line">CK Cook Island 库克群岛</span><br><span class="line">CR Costa rica 哥斯达黎加</span><br><span class="line">CI Coate d'Ivorie 科特迪瓦</span><br><span class="line">CU Cuba 古巴</span><br><span class="line">CV 维德岛</span><br><span class="line">CY Cyprus塞浦路斯</span><br><span class="line">CZ Czech捷克</span><br><span class="line">DK Denmark丹麦</span><br><span class="line">DJ Djibouti吉布提</span><br><span class="line">DM The Commonwealth of Dominica多米尼克</span><br><span class="line">DE Germany德国</span><br><span class="line">DO The Dominican Republic多米尼加</span><br><span class="line">DZ Algeria阿尔及利亚</span><br><span class="line">EC Ecuador厄瓜多尔</span><br><span class="line">EG Egypt埃及</span><br><span class="line">EH West Sahara西撒哈拉</span><br><span class="line">ES Spain西班牙</span><br><span class="line">EE Estonia爱沙尼亚</span><br><span class="line">ET Ethiopia埃塞俄比亚</span><br><span class="line">ER Eritrea厄立特里亚</span><br><span class="line">FJ Fiji斐济</span><br><span class="line">FI Finland芬兰</span><br><span class="line">FR France法国</span><br><span class="line">FM Micronesia密克罗尼西亚联邦</span><br><span class="line">FO法罗群岛</span><br><span class="line">GA Gabon加蓬</span><br><span class="line">GQ Equatorial Guinea赤道几内亚</span><br><span class="line">GF French Guiana法属圭亚那</span><br><span class="line">GM Gambia冈比亚</span><br><span class="line">GE Georgia格鲁吉亚</span><br><span class="line">GH Ghana加纳</span><br><span class="line">GI Gibraltar直布罗陀</span><br><span class="line">GR Greece希腊</span><br><span class="line">GL Greenland格陵兰</span><br><span class="line">GD Grenada格林纳达</span><br><span class="line">GU Guam关岛</span><br><span class="line">GT Guatemala危地马拉</span><br><span class="line">GN Guinea几内亚</span><br><span class="line">GW Guinea-Bissau几内亚比绍</span><br><span class="line">GY Guyana圭亚那</span><br><span class="line">HR Croatia克罗地亚</span><br><span class="line">HT Haiti海地</span><br><span class="line">HN Honduras洪都拉斯</span><br><span class="line">HU Hungary匈牙利</span><br><span class="line">IS Iceland冰岛</span><br><span class="line">IN India印度</span><br><span class="line">ID Indonesia印度尼西亚</span><br><span class="line">IR Iran伊朗</span><br><span class="line">IQ Iraq伊拉克</span><br><span class="line">IE Ireland爱尔兰</span><br><span class="line">IL Israel以色列</span><br><span class="line">IT Italy意大利</span><br><span class="line">JM Jamaica牙买加</span><br><span class="line">JP Japan日本</span><br><span class="line">JO Jordan约旦</span><br><span class="line">KZ Kazakhstan哈萨克斯坦</span><br><span class="line">KE Kenya肯尼亚</span><br><span class="line">KI Kiribati基里巴斯</span><br><span class="line">KP North Korea朝鲜</span><br><span class="line">KR South Korea韩国</span><br><span class="line">KH Cambodia柬埔寨</span><br><span class="line">KM Comoros科摩罗</span><br><span class="line">KN Saint Kitts and Nevis圣基茨和尼维斯</span><br><span class="line">KG Kyrgyzstan吉尔吉斯斯坦</span><br><span class="line">KW Kuwait科威特</span><br><span class="line">KY Cayman Islands开曼群岛</span><br><span class="line">LA Laos老挝</span><br><span class="line">LK Sri Lanka斯里兰卡</span><br><span class="line">LV Latvia拉托维亚</span><br><span class="line">LB Lebanon黎巴嫩</span><br><span class="line">LS Lesotho莱索托</span><br><span class="line">LR Liberia利比里亚</span><br><span class="line">LY Libya利比亚</span><br><span class="line">LI Liechtenstein列支敦士登</span><br><span class="line">LT Lithuania立陶宛</span><br><span class="line">LU Luxembourg卢森堡</span><br><span class="line">LC St. Lucia圣卢西亚</span><br><span class="line">MG Madagascar马达加斯加</span><br><span class="line">MN Montenegro黑山</span><br><span class="line">MW Malawi马拉维</span><br><span class="line">MY Malaysia马来西亚</span><br><span class="line">MV Maldives马尔代夫</span><br><span class="line">ML Mali马里</span><br><span class="line">MK Macedonia马其顿</span><br><span class="line">MT Malta马耳他</span><br><span class="line">MH Marshall Islands马绍尔群岛</span><br><span class="line">MR Mauritania毛里塔尼亚</span><br><span class="line">MU Mauritius毛里求斯</span><br><span class="line">MX Mexico墨西哥</span><br><span class="line">MD Moldova摩尔多瓦</span><br><span class="line">MC Monaco摩纳哥</span><br><span class="line">MN Mongolia蒙古</span><br><span class="line">MS Montserrat蒙特塞拉特</span><br><span class="line">MA Morocco摩洛哥</span><br><span class="line">MZ Mozambique莫桑比克</span><br><span class="line">MM Burma缅甸</span><br><span class="line">MP Northern Mariana Islands北马里亚那群岛</span><br><span class="line">NA Namibia纳米比亚</span><br><span class="line">NR Nauru瑙鲁</span><br><span class="line">NP Nepal尼泊尔</span><br><span class="line">NL Netherlands荷兰</span><br><span class="line">NC New Caledonia新喀里多尼亚</span><br><span class="line">NZ New Zealand新西兰</span><br><span class="line">NI Nicaragua尼加拉瓜</span><br><span class="line">NE Niger尼日尔</span><br><span class="line">NG Nigeria尼日利亚</span><br><span class="line">NU Niue纽埃</span><br><span class="line">NF Norfolk Island诺福克岛</span><br><span class="line">NO Norway挪威</span><br><span class="line">OM Oman阿曼</span><br><span class="line">PK Pakistan巴基斯坦</span><br><span class="line">PF French Polynesia法属波利尼西亚</span><br><span class="line">PW Palau帕劳</span><br><span class="line">PA Panama巴拿马</span><br><span class="line">PG Papua New Guinea巴布亚新几内亚</span><br><span class="line">PY Paraguay巴拉圭</span><br><span class="line">PE Peru秘鲁</span><br><span class="line">PH Philippines菲律宾</span><br><span class="line">PM 圣皮埃尔和密克罗</span><br><span class="line">PN Pitcairn Islands皮特开恩群岛</span><br><span class="line">PL Poland波兰</span><br><span class="line">PT Portugal葡萄牙</span><br><span class="line">PS 巴勒斯坦</span><br><span class="line">PR Puerto Rico波多黎各（美）</span><br><span class="line">QA Qatar卡塔尔</span><br><span class="line">RO Romania罗马尼亚</span><br><span class="line">RU Russia俄罗斯联邦</span><br><span class="line">RW Rwanda卢旺达</span><br><span class="line">SV El Salvador萨尔瓦多</span><br><span class="line">SH St.Helena圣赫勒拿</span><br><span class="line">SM San Marino圣马力诺</span><br><span class="line">ST Sao Tome and Principe圣多美和普林西比</span><br><span class="line">SA Saudi Arabia沙特阿拉伯</span><br><span class="line">SN Senegal塞内加尔</span><br><span class="line">SC Seychelles塞舌尔</span><br><span class="line">SL Sierra leone塞拉利昂</span><br><span class="line">SR Serbia塞尔维亚</span><br><span class="line">SG Singapore新加坡</span><br><span class="line">SK Slovakia斯洛伐克</span><br><span class="line">SI Slovene斯洛文尼亚</span><br><span class="line">SB Solomon Islands所罗门群岛</span><br><span class="line">SO Somali索马里</span><br><span class="line">SD Sudan苏丹</span><br><span class="line">South Sudan 南苏丹</span><br><span class="line">SU Surinam苏里南</span><br><span class="line">SZ Swaziland斯威士兰</span><br><span class="line">SE Sweden瑞典</span><br><span class="line">SY Syria叙利亚</span><br><span class="line">TD Chad乍得</span><br><span class="line">TJ Tajikistan塔吉克斯坦</span><br><span class="line">TZ Tanzania坦桑尼亚</span><br><span class="line">TH Thailand泰国</span><br><span class="line">TG Togo多哥</span><br><span class="line">TK Tokela托克劳</span><br><span class="line">TO Tonga汤加</span><br><span class="line">TT Trinidad and Tobago特立尼达和多巴哥</span><br><span class="line">TN Tunisia突尼斯</span><br><span class="line">TR Turkey土耳其</span><br><span class="line">TP East Timor东帝汶</span><br><span class="line">TM Turkmenistan土库曼斯坦</span><br><span class="line">TC Turks and Caicos Islands特克斯和凯科斯群岛</span><br><span class="line">TV Tuvalu图瓦卢</span><br><span class="line">UG Uganda乌干达</span><br><span class="line">UA Ukraine乌克兰</span><br><span class="line">UK United Kingdom英国</span><br><span class="line">US United States of America美国</span><br><span class="line">UY Uruguay乌拉圭</span><br><span class="line">UZ Uzbekistan乌兹别克斯坦</span><br><span class="line">VA Vatican City梵蒂冈</span><br><span class="line">VC Saint Vincent and the Grenadines圣文森特和格林纳丁斯</span><br><span class="line">VE Venezuela [1]  委内瑞拉</span><br><span class="line">VN Vietnam [1]  越南</span><br><span class="line">VG Virgin Islands(British) [1]  英属维尔京群岛</span><br><span class="line">VI Vigin Islands(U.S.) [1]  美属维尔京群岛</span><br><span class="line">VU Republic of Vanuatu瓦努阿图共和国</span><br><span class="line">WS Western Samoa [1]  西萨摩亚</span><br><span class="line">YE Yemen [1]  也门</span><br><span class="line">ZA South Africa南非</span><br><span class="line">ZM Zambia赞比亚 [1] </span><br><span class="line">ZW Zimbabwe津巴布韦 [1]</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1] 245个国家和地区英文缩写对照 <a href="http://shortof.com/content/245%E4%B8%AA%E5%9B%BD%E5%AE%B6%E5%92%8C%E5%9C%B0%E5%8C%BA%E8%8B%B1%E6%96%87%E7%BC%A9%E5%86%99%E5%AF%B9%E7%85%A7" target="_blank" rel="noopener">&gt;_</a> . [引用日期2019-11-6]</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-05T13:31:23.000Z">2019-11-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1031 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/05/Suffix-expression/">Suffix-expression</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="后缀表达式"><a href="#后缀表达式" class="headerlink" title="后缀表达式"></a>后缀表达式</h1><p>后缀表达式，又称逆波兰式，指的是不包含括号，运算符放在两个运算对象的后面，所有的计算按运算符出现的顺序，严格从左向右进行（不再考虑运算符的优先规则）。</p>
+<p>后缀表达式计算：<br>后缀表达式计算与前缀表达式类似，只是顺序是从左至右，具体过程如下：<br>从左至右扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算（次顶元素 op 栈顶元素），并将结果入栈；重复上述过程直到表达式最右端，最后运算得出的值即为表达式的结果</p>
+<p><img src="/images/2019/11/05/e7816c50-ffd0-11e9-81ea-938463e9957e.png" alt="image.png"></p>
+<p>例如：后缀表达式为“2 3 + 4 × 5 -”计算过程如下：<br>  （1）从左至右扫描，将 2 和 3 压入堆栈；<br>  （2）遇到 + 运算符，因此弹出 3 和 2（ 3 为栈顶元素，2 为次顶元素，注意与前缀表达式做比较），计算出 3+2 的值，得 5，再将 5 入栈；<br>  （3）将 4 入栈；<br>  （4）接下来是 × 运算符，因此弹出 4 和 5，计算出 4 × 5 = 20，将 20 入栈；<br>  （5）将 5 入栈；<br>  （6）最后是-运算符，计算出 20-5 的值，即 15，由此得出最终结果。</p>
+<p>中缀表达式转后缀表达式：<br>与转换为前缀表达式相似，步骤如下：<br>  （1）初始化两个栈：运算符栈s1和储存中间结果的栈s2；<br>  （2）从左至右扫描中缀表达式；<br>  （3）遇到操作数时，将其压s2；<br>  （4）遇到运算符时，比较其与 s1 栈顶运算符的优先级：<br>    a：如果 s1 为空，或栈顶运算符为左括号“(”，则直接将此运算符入栈；<br>    b：否则，若优先级比栈顶运算符的高，也将运算符压入 s1（注意转换为前缀表达式时是优先级较高或相同，而这里则不包括相同的情况）;<br>    c：否则，将 s1 栈顶的运算符弹出并压入到 s2 中，再次转到（4）-（1）与s1中新的栈顶运算符相比较；<br>  （5）遇到括号时：<br>    a：如果是左括号“(”，则直接压入 s1；<br>    b：如果是右括号“)”，则依次弹出 s1 栈顶的运算符，并压入 s2 ，直到遇到左括号为止，此时将这一对括号丢弃；<br>  （6）重复步骤（2）至（5），直到表达式的最右边；<br>  （7）将 s1 中剩余的运算符依次弹出并压入 s2；<br>  （8）依次弹出 s2 中的元素并输出，结果的逆序即为中缀表达式对应的后缀表达式（转换为前缀表达式时不用逆序）</p>
+<p>例如，将中缀表达式“1+((2+3)×4)-5”转换为后缀表达式的过程如下：</p>
+<table>
+<thead style="font-size: inherit;color: inherit;line-height: inherit;">
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
+<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="119">扫描到的元素</th>
+<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="142">s2(栈底-&gt;栈顶)</th>
+<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="117">s1 (栈底-&gt;栈顶)</th>
+<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="194">说明</th>
+</tr>
+</thead>
+<tbody style="font-size: inherit;color: inherit;line-height: inherit;border-width: 0px;border-style: initial;border-color: initial;">
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">1</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="137">1</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="110">空</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字，直接入栈</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">+</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="138">1</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="111">+</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1为空，运算符直接入栈</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">(</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="139">1</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="112">+ (</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">左括号，直接入栈</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">(</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="140">1</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="113">+ ( (</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">同上</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">2</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="114">+ ( (</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">+</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ( +</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1栈顶为左括号，运算符直接入栈</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">3</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ( +</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">)</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 +</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ (</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">右括号，弹出运算符直至遇到左括号</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">×</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 +</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ×</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1栈顶为左括号，运算符直接入栈</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">4</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ×</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">)</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 ×</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">右括号，弹出运算符直至遇到左括号</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">–</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × +</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">–</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">-与+优先级相同，因此弹出+，再压入-</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">5</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × + 5</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">–</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
+</tr>
+<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">到达最右端</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × + 5 –</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">空</td>
+<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1中剩余的运算符</td>
+</tr>
+</tbody>
+</table>
+
+<p>得到的最终结果为：“ 1 2 3 + 4 × + 5 – ”</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-05T12:54:02.000Z">2019-11-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 904 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/05/md5-info/">md5-info</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h1><blockquote>
+<p>MD5信息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。MD5由美国密码学家罗纳德·李维斯特（Ronald Linn Rivest）设计，于1992年公开，用以取代MD4算法。这套算法的程序在 RFC 1321 标准中被加以规范。1996年后该算法被证实存在弱点，可以被加以破解，对于需要高度安全性的数据，专家一般建议改用其他算法，如SHA-2。2004年，证实MD5算法无法防止碰撞（collision），因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途。</p>
+</blockquote>
+<p><img src="/images/2019/11/05/544b5d60-ffcb-11e9-9e2a-f35d177bbfa9.png" alt="image.png"></p>
+<p><strong>C++实现</strong></p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> shift(x, n) (((x) <span class="hljs-meta-string">&lt;&lt; (n)) | ((x) &gt;&gt; (32-(n))))//右移的时候，高位一定要补零，而不是补充符号位</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> F(x, y, z) (((x) &amp; (y)) | ((~x) &amp; (z)))    </span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> G(x, y, z) (((x) &amp; (z)) | ((y) &amp; (~z)))</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> H(x, y, z) ((x) ^ (y) ^ (z))</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> I(x, y, z) ((y) ^ ((x) | (~z)))</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> A 0x67452301</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> B 0xefcdab89</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> C 0x98badcfe</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> D 0x10325476</span></span><br><span class="line"><span class="hljs-comment">//strBaye的长度</span></span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> strlength;</span><br><span class="line"><span class="hljs-comment">//A,B,C,D的临时变量</span></span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> atemp;</span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> btemp;</span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ctemp;</span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> dtemp;</span><br><span class="line"><span class="hljs-comment">//常量ti unsigned int(abs(sin(i+1))*(2pow32))</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> k[]=&#123;</span><br><span class="line">        <span class="hljs-number">0xd76aa478</span>,<span class="hljs-number">0xe8c7b756</span>,<span class="hljs-number">0x242070db</span>,<span class="hljs-number">0xc1bdceee</span>,</span><br><span class="line">        <span class="hljs-number">0xf57c0faf</span>,<span class="hljs-number">0x4787c62a</span>,<span class="hljs-number">0xa8304613</span>,<span class="hljs-number">0xfd469501</span>,<span class="hljs-number">0x698098d8</span>,</span><br><span class="line">        <span class="hljs-number">0x8b44f7af</span>,<span class="hljs-number">0xffff5bb1</span>,<span class="hljs-number">0x895cd7be</span>,<span class="hljs-number">0x6b901122</span>,<span class="hljs-number">0xfd987193</span>,</span><br><span class="line">        <span class="hljs-number">0xa679438e</span>,<span class="hljs-number">0x49b40821</span>,<span class="hljs-number">0xf61e2562</span>,<span class="hljs-number">0xc040b340</span>,<span class="hljs-number">0x265e5a51</span>,</span><br><span class="line">        <span class="hljs-number">0xe9b6c7aa</span>,<span class="hljs-number">0xd62f105d</span>,<span class="hljs-number">0x02441453</span>,<span class="hljs-number">0xd8a1e681</span>,<span class="hljs-number">0xe7d3fbc8</span>,</span><br><span class="line">        <span class="hljs-number">0x21e1cde6</span>,<span class="hljs-number">0xc33707d6</span>,<span class="hljs-number">0xf4d50d87</span>,<span class="hljs-number">0x455a14ed</span>,<span class="hljs-number">0xa9e3e905</span>,</span><br><span class="line">        <span class="hljs-number">0xfcefa3f8</span>,<span class="hljs-number">0x676f02d9</span>,<span class="hljs-number">0x8d2a4c8a</span>,<span class="hljs-number">0xfffa3942</span>,<span class="hljs-number">0x8771f681</span>,</span><br><span class="line">        <span class="hljs-number">0x6d9d6122</span>,<span class="hljs-number">0xfde5380c</span>,<span class="hljs-number">0xa4beea44</span>,<span class="hljs-number">0x4bdecfa9</span>,<span class="hljs-number">0xf6bb4b60</span>,</span><br><span class="line">        <span class="hljs-number">0xbebfbc70</span>,<span class="hljs-number">0x289b7ec6</span>,<span class="hljs-number">0xeaa127fa</span>,<span class="hljs-number">0xd4ef3085</span>,<span class="hljs-number">0x04881d05</span>,</span><br><span class="line">        <span class="hljs-number">0xd9d4d039</span>,<span class="hljs-number">0xe6db99e5</span>,<span class="hljs-number">0x1fa27cf8</span>,<span class="hljs-number">0xc4ac5665</span>,<span class="hljs-number">0xf4292244</span>,</span><br><span class="line">        <span class="hljs-number">0x432aff97</span>,<span class="hljs-number">0xab9423a7</span>,<span class="hljs-number">0xfc93a039</span>,<span class="hljs-number">0x655b59c3</span>,<span class="hljs-number">0x8f0ccc92</span>,</span><br><span class="line">        <span class="hljs-number">0xffeff47d</span>,<span class="hljs-number">0x85845dd1</span>,<span class="hljs-number">0x6fa87e4f</span>,<span class="hljs-number">0xfe2ce6e0</span>,<span class="hljs-number">0xa3014314</span>,</span><br><span class="line">        <span class="hljs-number">0x4e0811a1</span>,<span class="hljs-number">0xf7537e82</span>,<span class="hljs-number">0xbd3af235</span>,<span class="hljs-number">0x2ad7d2bb</span>,<span class="hljs-number">0xeb86d391</span>&#125;;</span><br><span class="line"><span class="hljs-comment">//向左位移数</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> s[]=&#123;<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,</span><br><span class="line">        <span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,</span><br><span class="line">        <span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,</span><br><span class="line">        <span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>&#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> str16[]=<span class="hljs-string">"0123456789abcdef"</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mainLoop</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> M[])</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> f,g;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> a=atemp;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b=btemp;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c=ctemp;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d=dtemp;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">64</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">16</span>)&#123;</span><br><span class="line">            f=F(b,c,d);</span><br><span class="line">            g=i;</span><br><span class="line">        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i&lt;<span class="hljs-number">32</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            f=G(b,c,d);</span><br><span class="line">            g=(<span class="hljs-number">5</span>*i+<span class="hljs-number">1</span>)%<span class="hljs-number">16</span>;</span><br><span class="line">        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">48</span>)&#123;</span><br><span class="line">            f=H(b,c,d);</span><br><span class="line">            g=(<span class="hljs-number">3</span>*i+<span class="hljs-number">5</span>)%<span class="hljs-number">16</span>;</span><br><span class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            f=I(b,c,d);</span><br><span class="line">            g=(<span class="hljs-number">7</span>*i)%<span class="hljs-number">16</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> tmp=d;</span><br><span class="line">        d=c;</span><br><span class="line">        c=b;</span><br><span class="line">        b=b+shift((a+f+k[i]+M[g]),s[i]);</span><br><span class="line">        a=tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    atemp=a+atemp;</span><br><span class="line">    btemp=b+btemp;</span><br><span class="line">    ctemp=c+ctemp;</span><br><span class="line">    dtemp=d+dtemp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">*填充函数</span></span><br><span class="line"><span class="hljs-comment">*处理后应满足bits≡448(mod512),字节就是bytes≡56（mode64)</span></span><br><span class="line"><span class="hljs-comment">*填充方式为先加一个1,其它位补零</span></span><br><span class="line"><span class="hljs-comment">*最后加上64位的原来长度</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>* <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-built_in">string</span> str)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num=((str.length()+<span class="hljs-number">8</span>)/<span class="hljs-number">64</span>)+<span class="hljs-number">1</span>;<span class="hljs-comment">//以512位,64个字节为一组</span></span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *strByte=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[num*<span class="hljs-number">16</span>];    <span class="hljs-comment">//64/4=16,所以有16个整数</span></span><br><span class="line">    strlength=num*<span class="hljs-number">16</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; num*<span class="hljs-number">16</span>; i++)</span><br><span class="line">        strByte[i]=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i &lt;str.length(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        strByte[i&gt;&gt;<span class="hljs-number">2</span>]|=(str[i])&lt;&lt;((i%<span class="hljs-number">4</span>)*<span class="hljs-number">8</span>);<span class="hljs-comment">//一个整数存储四个字节，i&gt;&gt;2表示i/4 一个unsigned int对应4个字节，保存4个字符信息</span></span><br><span class="line">    &#125;</span><br><span class="line">    strByte[str.length()&gt;&gt;<span class="hljs-number">2</span>]|=<span class="hljs-number">0x80</span>&lt;&lt;(((str.length()%<span class="hljs-number">4</span>))*<span class="hljs-number">8</span>);<span class="hljs-comment">//尾部添加1 一个unsigned int保存4个字符信息,所以用128左移</span></span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    *添加原长度，长度指位的长度，所以要乘8，然后是小端序，所以放在倒数第二个,这里长度只用了32位</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    strByte[num*<span class="hljs-number">16</span><span class="hljs-number">-2</span>]=str.length()*<span class="hljs-number">8</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> strByte;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">changeHex</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> b;</span><br><span class="line">    <span class="hljs-built_in">string</span> str1;</span><br><span class="line">    <span class="hljs-built_in">string</span> str=<span class="hljs-string">""</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        str1=<span class="hljs-string">""</span>;</span><br><span class="line">        b=((a&gt;&gt;i*<span class="hljs-number">8</span>)%(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">8</span>))&amp;<span class="hljs-number">0xff</span>;   <span class="hljs-comment">//逆序处理每个字节</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">2</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            str1.insert(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,str16[b%<span class="hljs-number">16</span>]);</span><br><span class="line">            b=b/<span class="hljs-number">16</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        str+=str1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">getMD5</span><span class="hljs-params">(<span class="hljs-built_in">string</span> source)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    atemp=A;    <span class="hljs-comment">//初始化</span></span><br><span class="line">    btemp=B;</span><br><span class="line">    ctemp=C;</span><br><span class="line">    dtemp=D;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *strByte=add(source);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;strlength/<span class="hljs-number">16</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num[<span class="hljs-number">16</span>];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">16</span>;j++)</span><br><span class="line">            num[j]=strByte[i*<span class="hljs-number">16</span>+j];</span><br><span class="line">        mainLoop(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> changeHex(atemp).append(changeHex(btemp)).append(changeHex(ctemp)).append(changeHex(dtemp));</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">string</span> ss;</span><br><span class="line"><span class="hljs-comment">//    cin&gt;&gt;ss;</span></span><br><span class="line">    <span class="hljs-built_in">string</span> s=getMD5(<span class="hljs-string">"abc"</span>);</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;s;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-04T15:39:00.000Z">2019-11-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1488 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/04/b-tree/">b-tree</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h1><h2 id="B-Tree-与-B-Tree"><a href="#B-Tree-与-B-Tree" class="headerlink" title="B-Tree 与 B+Tree"></a>B-Tree 与 B+Tree</h2><p>在数据结构与算法/查找树 <a href="https://url.wx-coder.cn/9PnzG" target="_blank" rel="noopener">https://url.wx-coder.cn/9PnzG</a> 一节中我们介绍了 B-Tree 的基本概念与实现，这里我们继续来分析下为何 B-Tree 相较于红黑树等二叉查找树会更适合于作为数据库索引的实现。一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘 I/O 消耗，相对于内存存取，I/O 存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘 I/O 操作次数的渐进复杂度。换句话说，索引的结构组织要尽量减少查找过程中磁盘 I/O 的存取次数。<br>根据 B-Tree 的定义，可知检索一次最多需要访问 h 个节点。数据库系统的设计者巧妙利用了磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次 I/O 就可以完全载入。每次新建节点时，直接申请一个页的空间，这样就保证一个节点物理上也存储在一个页里，加之计算机存储分配都是按页对齐的，就实现了一个节点只需一次 I/O。而检索的时候，一次检索最多需要 h-1 次 I/O（根节点常驻内存），其渐进复杂度为 ，实际应用中，出度 d 是非常大的数字，通常超过 100，因此 h 非常小（通常不超过 3）。而红黑树这种结构，h 明显要深的多。由于逻辑上很近的节点（父子）物理上可能很远，无法利用局部性，所以红黑树的 I/O 渐进复杂度也为 O(h)，效率明显比 B-Tree 差很多。</p>
+<p>B+Tree 是 的变种，有着比 B-Tree 更高的查询性能，其相较于 B-Tree 有了如下的变化：</p>
 <ul>
-<li><a href="https://github.com/jesseduffield/lazydocker#requirements" target="_blank" rel="noopener">Requirements</a></li>
-<li><a href="https://github.com/jesseduffield/lazydocker#installation" target="_blank" rel="noopener">Installation</a></li>
-<li><a href="https://github.com/jesseduffield/lazydocker#usage" target="_blank" rel="noopener">Usage</a></li>
-<li><a href="/docs/keybindings">Keybindings</a></li>
-<li><a href="https://github.com/jesseduffield/lazydocker#cool-features" target="_blank" rel="noopener">Cool Features</a></li>
-<li><a href="https://github.com/jesseduffield/lazydocker#contributing" target="_blank" rel="noopener">Contributing</a></li>
-<li><a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">Video Tutorial</a></li>
-<li><a href="/docs/Config.md">Config Docs</a></li>
-<li><a href="https://www.twitch.tv/jesseduffield" target="_blank" rel="noopener">Twitch Stream</a></li>
-<li><a href="https://github.com/jesseduffield/lazydocker#faq" target="_blank" rel="noopener">FAQ</a></li>
+<li>有 m 个子树的节点包含有 m 个元素（B-Tree 中是 m-1）。</li>
 </ul>
-<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
-<li>Docker &gt;= <strong>1.13</strong> (API &gt;= <strong>1.25</strong>)</li>
-<li>Docker-Compose &gt;= <strong>1.23.2</strong> (optional)</li>
+<ul>
+<li>根节点和分支节点中不保存数据，只用于索引，所有数据都保存在叶子节点中。</li>
 </ul>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><p>Normally <code>lazydocker</code> formula can be found in the Homebrew core but we suggest you to tap our formula to get frequently updated one. It works with Linux, too.</p>
-<p><strong>Tap</strong>:</p>
-<pre><code class="sh">brew install jesseduffield/lazydocker/lazydocker</code></pre>
-<p><strong>Core</strong>:</p>
-<pre><code class="sh">brew install lazydocker</code></pre>
-<h3 id="Binary-Release-Linux-OSX"><a href="#Binary-Release-Linux-OSX" class="headerlink" title="Binary Release (Linux/OSX)"></a>Binary Release (Linux/OSX)</h3><p>You can manually download a binary release from <a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener">the release page</a>.</p>
-<p>Automated install/update, don’t forget to always verify what you’re piping into bash:</p>
-<pre><code class="sh">curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash</code></pre>
-<h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><p>Required Go version &gt;= <strong>1.8</strong></p>
-<pre><code class="sh">go get github.com/jesseduffield/lazydocker</code></pre>
-<h3 id="Arch-Linux-AUR"><a href="#Arch-Linux-AUR" class="headerlink" title="Arch Linux AUR"></a>Arch Linux AUR</h3><p>You can install lazydocker using your AUR package manager of choice or by running:</p>
-<pre><code class="sh">git clone https://aur.archlinux.org/lazydocker.git ~/lazydocker
-cd ~/lazydocker
-makepkg --install</code></pre>
-<p>A development version of the AUR package is also <a href="https://aur.archlinux.org/lazydocker-git.git" target="_blank" rel="noopener">available</a></p>
-<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/pulls/lazyteam/lazydocker.svg" alt="Docker Pulls"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/stars/lazyteam/lazydocker.svg" alt="Docker Stars"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/cloud/automated/lazyteam/lazydocker.svg" alt="Docker Automated"></a></p>
+<ul>
+<li>所有分支节点和根节点都同时存在于子节点中，在子节点元素中是最大或者最小的元素。</li>
+</ul>
+<ul>
+<li>叶子节点会包含所有的关键字，以及指向数据记录的指针，并且叶子节点本身是根据关键字的大小从小到大顺序链接。</li>
+</ul>
+<p><img src="/images/2019/11/04/e71a76c0-ff18-11e9-9ec1-4763a59e2ad9.png" alt="image.png"></p>
+<p>一般在数据库系统或文件系统中使用的 B+Tree 结构都在经典 B+Tree 的基础上进行了优化，增加了顺序访问指针：</p>
+<p>如上图所示，在 B+Tree 的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的 B+Tree。做这个优化的目的是为了提高区间访问的性能，例如下图中如果要查询 key 为从 3 到 8 的所有数据记录，当找到 3 后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。</p>
+<p><img src="/images/2019/11/04/f0c8f2f0-ff18-11e9-9ec1-4763a59e2ad9.png" alt="image.png"></p>
+<h2 id="索引顺序"><a href="#索引顺序" class="headerlink" title="索引顺序"></a>索引顺序</h2><p>B-Tree 索引可以很好地用于单行、范围或者前缀扫描，他们只有在查找使用了索引的最左前缀（Leftmost Prefix）的时候才有用。不过 B-Tree 索引存在一些限制：</p>
+<ul>
+<li>如果查找不从索引列的最左边开始，索引就无法使用；同样，不能查找字符串结尾；</li>
+<li>不能跳过索引中的列；</li>
+<li>不能使用任何在第一个范围条件右边的列作为条件；</li>
+</ul>
+<p>因此 B-Tree 的列顺序非常重要，上述使用规则都和列顺序有关。对于实际的应用，一般要根据具体的需求，创建不同列和不同列顺序的索引。假设有索引 Index(A,B,C):</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 使用索引</span><br><span class="line">A&gt;5 AND A&lt;10 - 最左前缀匹配</span><br><span class="line">A=5 AND B&gt;6 - 最左前缀匹配</span><br><span class="line">A=5 AND B=6 AND C=7 - 全列匹配</span><br><span class="line">A=5 AND B IN (2,3) AND C&gt;5 - 最左前缀匹配，填坑</span><br><span class="line"></span><br><span class="line"># 不能使用索引</span><br><span class="line">B&gt;5 - 没有包含最左前缀</span><br><span class="line">B=6 AND C=7 - 没有包含最左前缀</span><br><span class="line"></span><br><span class="line"># 使用部分索引</span><br><span class="line">A&gt;5 AND B=2 - 使用索引 A 列</span><br><span class="line">A=5 AND B&gt;6 AND C=2 - 使用索引的 A 和 B 列</span><br></pre></td></tr></table></figure>
+
+<p>复制代码使用索引对结果进行排序，需要索引的顺序和 ORDER BY 子句中的顺序一致，并且所有列的升降序一致(ASC/DESC)。如果查询连接了多个表，只有在 ORDER BY 的列引用的是第一个表才可以(需要按序 JOIN)。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 使用索引排序</span><br><span class="line">ORDER BY A - 最左前缀匹配</span><br><span class="line">WHERE A=5 ORDER BY B,C - 最左前缀匹配</span><br><span class="line">WHERE A=5 ORDER BY B DESC - 最左前缀匹配</span><br><span class="line">WHERE A&gt;5 ORDER BY A,B - 最左前缀匹配</span><br><span class="line"></span><br><span class="line"># 不能使用索引排序</span><br><span class="line">WHERE A=5 ORDER BY B DESC,C ASC - 升降序不一致</span><br><span class="line">WHERE A=5 ORDER BY B,D - D 不在索引中</span><br><span class="line">WHERE A=5 ORDER BY C - 没有包含最左前缀</span><br><span class="line">WHERE A&gt;5 ORDER BY B,C - 第一列是范围条件，无法使用 BC 排序</span><br><span class="line">WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-03T15:38:54.000Z">2019-11-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2032 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/03/rsa-info/">rsa-info</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="RSA算法详解"><a href="#RSA算法详解" class="headerlink" title="RSA算法详解"></a>RSA算法详解</h1><p><img src="/images/2019/11/03/3125f240-fe50-11e9-b8c9-2b2b905fb2db.png" alt="image.png"></p>
+<p>前言<br>总括： 本文详细讲述了RSA算法详解，包括内部使用数学原理以及产生的过程。</p>
+<p>原文博客地址：RSA算法详解</p>
+<p>知乎专栏&amp;&amp;简书专题：前端进击者（知乎）&amp;&amp;前端进击者（简书）</p>
+<p>博主博客地址：Damonare的个人博客</p>
+<p>相濡以沫。到底需要爱淡如水。</p>
+<p>正文<br>之前写过一篇文章SSL协议之数据加密过程，里面详细讲述了数据加密的过程以及需要的算法。SSL协议很巧妙的利用对称加密和非对称加密两种算法来对数据进行加密。这篇文章主要是针对一种最常见的非对称加密算法——RSA算法进行讲解。其实也就是对私钥和公钥产生的一种方式进行描述。首先先来了解下这个算法的历史：</p>
+<h2 id="RSA算法的历史"><a href="#RSA算法的历史" class="headerlink" title="RSA算法的历史"></a>RSA算法的历史</h2><p>RSA是1977年由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的。当时他们三人都在麻省理工学院工作。RSA就是他们三人姓氏开头字母拼在一起组成的。</p>
+<p>但实际上，在1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯（Clifford Cocks）在一个内部文件中提出了一个相同的算法，但他的发现被列入机密，一直到1997年才被发表。</p>
+<p>所以谁是RSA算法的发明人呢？不好说，就好像贝尔并不是第一个发明电话的人但大家都记住的是贝尔一样，这个地方我们作为旁观者倒不用较真，重要的是这个算法的内容：</p>
+<h2 id="RSA算法的过程"><a href="#RSA算法的过程" class="headerlink" title="RSA算法的过程"></a>RSA算法的过程</h2><p>RSA算法用到的数学知识特别多，所以在中间介绍这个算法生成私钥和公钥的过程中会穿插一些数学知识。生成步骤如下：</p>
 <ol>
-<li><details><summary>Click if you have an ARM device</summary><p>
-
-<ul>
-<li><p>If you have a ARM 32 bit v6 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm32v6/golang \
-  --build-arg GOARCH=arm \
-  --build-arg GOARM=6 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
-</li>
-<li><p>If you have a ARM 32 bit v7 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm32v7/golang \
-  --build-arg GOARCH=arm \
-  --build-arg GOARM=7 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
-</li>
-<li><p>If you have a ARM 64 bit v8 architecture</p>
-<pre><code class="sh">  docker build -t lazyteam/lazydocker \
-  --build-arg BASE_IMAGE_BUILDER=arm64v8/golang \
-  --build-arg GOARCH=arm64 \
-  https://github.com/jesseduffield/lazydocker.git</code></pre>
-</li></ul></p></details>
-</li>
-
-
-<li><p>Run the container</p>
-<pre><code class="sh"> docker run --rm -it -v \
- /var/run/docker.sock:/var/run/docker.sock \
- -v /yourpath:/.config/jesseduffield/lazydocker \
- lazyteam/lazydocker</code></pre>
-<ul>
-<li><p>Don’t forget to change <code>/yourpath</code> to an actual path you created to store lazydocker’s config</p>
-</li>
-<li><p>You can also use this <a href="https://github.com/jesseduffield/lazydocker/blob/master/docker-compose.yml" target="_blank" rel="noopener">docker-compose.yml</a></p>
-</li>
-<li><p>You might want to create an alias, for example:</p>
-<pre><code class="sh">  echo &quot;alias lzd=&#39;docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker&#39;&quot; &gt;&gt; ~/.zshrc</code></pre>
-</li>
-</ul>
-</li>
+<li>寻找两个不相同的质数<br>随意选择两个大的质数p和q，p不等于q，计算N=p*q;</li>
 </ol>
-<p>For development, you can build the image using:</p>
-<pre><code class="sh">git clone https://github.com/jesseduffield/lazydocker.git
-cd lazydocker
-docker build -t lazyteam/lazydocker \
-    --build-arg BUILD_DATE=`date -u +&quot;%Y-%m-%dT%H:%M:%SZ&quot;` \
-    --build-arg VCS_REF=`git rev-parse --short HEAD` \
-    --build-arg VERSION=`git describe --abbrev=0 --tag` \
-    .</code></pre>
-<p>If you encounter a compatibility issue with Docker bundled binary, try rebuilding<br>the image with the build argument <code>--build-arg DOCKER_VERSION=&quot;v$(docker -v | cut -d&quot; &quot; -f3 | rev | cut -c 2- | rev)&quot;</code><br>so that the bundled docker binary matches your host docker binary version.</p>
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Call <code>lazydocker</code> in your terminal. I personally use this a lot so I’ve made an alias for it like so:</p>
-<pre><code>echo &quot;alias lzd=&#39;lazydocker&#39;&quot; &gt;&gt; ~/.zshrc</code></pre><p>(you can substitute .zshrc for whatever rc file you’re using)</p>
-<ul>
-<li>Basic video tutorial <a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">here</a>.</li>
-<li>List of keybindings<br><a href="/docs/keybindings">here</a>.</li>
-</ul>
-<h2 id="Cool-features"><a href="#Cool-features" class="headerlink" title="Cool features"></a>Cool features</h2><p>everything is one keypress away (or one click away! Mouse support FTW):</p>
-<ul>
-<li>viewing the state of your docker or docker-compose container environment at a glance</li>
-<li>viewing logs for a container/service</li>
-<li>viewing ascii graphs of your containers’ metrics so that you can not only feel but also look like a developer</li>
-<li>customising those graphs to measure nearly any metric you want</li>
-<li>attaching to a container/service</li>
-<li>restarting/removing/rebuilding containers/services</li>
-<li>viewing the ancestor layers of a given image</li>
-<li>pruning containers, images, or volumes that are hogging up disk space</li>
-</ul>
-<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>There is still a lot of work to go! Please check out the <a href="CONTRIBUTING.md">contributing guide</a>.<br>For contributor discussion about things not better discussed here in the repo, join the slack channel</p>
-<p><a href="https://join.slack.com/t/lazydocker/shared_invite/enQtNjgwMjc0Njk3MzgwLTM0NThlMTZiZmNkNWJkY2VlYWYwZmY1NWYyYWViZmE0ZTcxMWZjMTFjNTU1ZTEwMDBiNWIxZTIxYzkwNDgyY2M" target="_blank" rel="noopener"><img src="/docs/resources/slack_rgb.png" alt="Slack"></a></p>
-<h2 id="Donate"><a href="#Donate" class="headerlink" title="Donate"></a>Donate</h2><p>If you would like to support the development of lazydocker, please donate</p>
-<p><a href="https://donorbox.org/lazydocker" target="_blank" rel="noopener"><img src="https://d1iczxrky3cnb2.cloudfront.net/button-medium-blue.png" alt="Donate"></a></p>
-<h2 id="Social"><a href="#Social" class="headerlink" title="Social"></a>Social</h2><p>If you want to see what I (Jesse) am up to in terms of development, follow me on<br><a href="https://twitter.com/DuffieldJesse" target="_blank" rel="noopener">twitter</a> or watch me program on<br><a href="https://www.twitch.tv/jesseduffield" target="_blank" rel="noopener">twitch</a></p>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="How-do-I-edit-my-config"><a href="#How-do-I-edit-my-config" class="headerlink" title="How do I edit my config?"></a>How do I edit my config?</h3><p>By opening lazydocker, clicking on the ‘project’ panel in the top left, and pressing ‘o’ (or ‘e’ if your editor is vim). See <a href="/docs/Config.md">Config Docs</a></p>
-<h3 id="How-do-I-get-text-to-wrap-in-my-main-panel"><a href="#How-do-I-get-text-to-wrap-in-my-main-panel" class="headerlink" title="How do I get text to wrap in my main panel?"></a>How do I get text to wrap in my main panel?</h3><p>In the future I want to make this the default, but for now there are some CPU issues that arise with wrapping. If you want to enable wrapping, use <code>gui.wrapMainPanel: true</code></p>
-<h3 id="How-do-you-select-text"><a href="#How-do-you-select-text" class="headerlink" title="How do you select text?"></a>How do you select text?</h3><p>Because we support mouse events, you will need to hold option while dragging the mouse to indicate you’re trying to select text rather than click on something. Alternatively you can disable mouse events via the <code>gui.ignoreMouseEvents</code> config value</p>
-<h3 id="Does-this-work-with-Windows"><a href="#Does-this-work-with-Windows" class="headerlink" title="Does this work with Windows?"></a>Does this work with Windows?</h3><p>Currently not unless you use WSL. Instructions for setting up docker for WSL can be found here <a href="https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly" target="_blank" rel="noopener">here</a></p>
-<h3 id="Why-can’t-I-see-my-container’s-logs"><a href="#Why-can’t-I-see-my-container’s-logs" class="headerlink" title="Why can’t I see my container’s logs?"></a>Why can’t I see my container’s logs?</h3><p>By default we only show logs from the last hour, so that we’re not putting too much strain on the machine. This may be why you can’t see logs when you first start lazydocker. This can be overwritten in the config’s <code>commandTemplates</code></p>
-<p>If you are running lazydocker in Docker container, it is a know bug, that you can’t see logs or CPU usage.</p>
-<h2 id="Alternatives"><a href="#Alternatives" class="headerlink" title="Alternatives"></a>Alternatives</h2><ul>
-<li><a href="https://github.com/skanehira/docui" target="_blank" rel="noopener">docui</a> - Skanehira beat me to the punch on making a docker terminal UI, so definitely check out that repo as well! I think the two repos can live in harmony though: lazydocker is more about managing existing containers/services, and docui is more about creating and configuring them.</li>
-<li><a href="https://github.com/portainer/portainer" target="_blank" rel="noopener">Portainer</a> - Portainer tries to solve the same problem but it’s accessed via your browser rather than your terminal. It also supports docker swarm.</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-27T14:11:36.000Z">2019-10-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 295 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/27/copying-codes-from-stack-overflow/">copying-codes-from-stack-overflow</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="从-Stack-Overflow-复制代码导致-GitHub-项目漏洞多"><a href="#从-Stack-Overflow-复制代码导致-GitHub-项目漏洞多" class="headerlink" title="从 Stack Overflow 复制代码导致 GitHub 项目漏洞多"></a>从 Stack Overflow 复制代码导致 GitHub 项目漏洞多</h1><p>现在从网上找代码直接复制到项目中的做法成为程序员的一种常规操作，Stack Overflow 更是其中主要的代码来源。但是最近有研究显示，从 Stack Overflow 上复制代码凑到项目中会使出现漏洞的概率大大增加。</p>
-<p><img src="/images/2019/10/27/a9e99700-f8c3-11e9-ba7d-05accc771851.png" alt="image.png"></p>
-<p>研究人员分析了 1325 个 Stack Overflow 帖子，并获取了其中 72 000 多段 C++ 代码，发现了其中包含有 29 种类型的 69 个漏洞。</p>
-<p>这些漏洞出现在 2589 个 GitHub 仓库中，研究人员通知了受影响的 GitHub 项目作者，但只有少数人选择修复已知这些危险情况。</p>
-<p>研究人员展示了含有漏洞的代码主要是以什么方式从 Stack Overflow 进入到 GitHub 中的，包括最经常发现的输入验证不正确、异常或异常情况的不正确检查与错误编码，比如复制代码不完整。</p>
-<p>详情查看：</p>
-<p><a href="https://fossbytes.com/copying-codes-from-stack-overflow-leads-to-vulnerable-github-project" target="_blank" rel="noopener">https://fossbytes.com/copying-codes-from-stack-overflow-leads-to-vulnerable-github-project</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-26T06:33:24.000Z">2019-10-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/生活/">生活</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 828 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/26/DCS-World-Steam-Edition/">DCS-World-Steam-Edition</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="DCS-World-Steam-Edition"><a href="#DCS-World-Steam-Edition" class="headerlink" title="DCS World Steam Edition"></a>DCS World Steam Edition</h1><blockquote>
-<p>Feel the excitement of flying the Su-25T “Frogfoot” attack jet and the TF-51D “Mustang” in the free-to-play Digital Combat Simulator World!</p>
-</blockquote>
-<p><img src="/images/2019/10/26/517c0ca0-f7bb-11e9-963e-2bb23907e692.png" alt="image.png"></p>
-<p>The Open Beta version of Digital Combat Simulator World (DCS World) 2.5 is a free-to-play digital battlefield game and simulation environment. The “release” version will be available shortly after Open Beta testing is complete. The Open Beta is an optional version of DCS World that we use to first test new content and technologies before moving them to our release version.</p>
-<p>Our dream is to offer the most authentic and realistic simulation of military aircraft, tanks, ground vehicles and ships possible. This free download includes a vast mission area of the Caucasus region and Black Sea that encompasses much of Georgia. It also includes a flyable Russian Sukhoi Su-25T ground attack aircraft and the famous WWII North American TF-51D fighter. An additional 25 aircraft are available for purchase.</p>
-<p>The download comes with one of the most powerful mission editor ever designed, full network play and more than 156 AI weapons systems, 105 ground vehicles and trains, 50 air defense systems, 19 ships and 84 AI aircraft permitting you to plan and play highly sophisticated missions. DCS World is massively extensible through additional DCS modules as well as user-made add-ons and mods which you can purchase and download from our site.</p>
-<p>DCS is a true “sandbox” simulation that is also designed to cover multiple time periods of interest such as WWII, Korean War, Vietnam, Gulf War and others. Current regions to battle include the Caucasus, Nevada Test and Training Range, and Normandy 1944. New maps in development include the Persian, Syria, Afghanistan, and others.</p>
-<p>DCS World is fundamentally a deep, authentic and realistic simulation designed also to offer a more relaxed gameplay to suit the user and his particular level of experience and training. The ambition is to hand hold users from novice pilot all the way to the most advanced and sophisticated operator of such complex weapons systems as the A-10C Warthog or the F/A-18C Hornet. The only next step is the real thing!</p>
-<p>Key features of DCS World 2.5:</p>
-<ul>
-<li>The most realistic Free-to-Play digital battlefield ever.</li>
-<li>One-of-a-kind, internally developed graphics engine that looks amazing from 0 to 80,000 feet.</li>
-<li>Includes a beautiful, free, and highly detailed map of the Caucasus region that includes south western Russia and Georgia.</li>
-<li>Includes millions of buildings, millions of km of usable roads and railways, more than 50 million trees, and 20 fully– - - equipped operational airbases.</li>
-<li>Includes 156 free and fully operational weapons systems, 105 ground vehicles, 19 ships and 84 AI-controlled aircraft.</li>
-<li>Fly the TF-51 Mustang and Su-25T attack jet for free!</li>
-<li>Play all DCS World modules from one DCS World version.</li>
-<li>State-of-the-art graphics with amazing lighting, shadows, and performance.</li>
-<li>New breathtaking effects for explosions, clouds, fog, fire, and smoke.</li>
-<li>Hundreds of land, air and seaborne AI vehicles. The world is your sandbox.</li>
-<li>Create your own missions and campaigns for unlimited gameplay!</li>
-<li>Mission generator included allowing rapid mission creation.</li>
-<li>Enjoy multiplayer with friends, and even fly together in the same aircraft for multi-crew missions!</li>
-<li>Purchase and fly the most iconic airplanes and helicopters from WWII up to the modern day.</li>
-<li>Mouse interactive 6 degrees of freedom cockpits for most aircraft and the most accurate flight models, cockpit systems, sensors, targeting systems and sounds available.</li>
-<li>Purchase and fly the most authentic simulations of the A-10C Warthog, UH-1H Huey, F-86F Sabre, Spitfire, and many others now.</li>
-<li>Exciting new aircraft coming to DCS World like the F-14 Tomcat, F/A-18C Hornet, F-4E Phantom II, Mi-24P Hind, P-47D Thunderbolt, and many more!</li>
-<li>Purchase additional high-quality maps such as Normandy 1944, the Nevada Test and Training Range, and the Persian Gulf.</li>
-<li>Play hundreds of missions and campaigns with new campaigns continually created.</li>
-<li>Both hardcore realistic and casual gameplay modes and options available.</li>
-</ul>
-<p><strong>MINIMUM SYSTEM REQUIREMENTS (LOW GRAPHICS SETTINGS):</strong><br>OS 64-bit Windows 7/8/10; DirectX11; CPU: Intel Core i3 at 2.8 GHz or AMD FX; RAM: 8 GB (16 GB for heavy missions); Free hard disk space: 60 GB; Discrete video card NVIDIA GeForce GTX 760 / AMD R9 280X or better; requires internet activation.</p>
-<p><strong>RECOMMENDED SYSTEM REQUIREMENTS (HIGH GRAPHICS SETTINGS):</strong><br>OS 64-bit Windows 8/10; DirectX11; CPU: Core i5+ at 3+ GHz or AMD FX / Ryzen; RAM: 16 GB (32 GB for heavy missions); Free hard disk space: 120 GB on Solid State Drive (SSD); Discrete video card NVIDIA GeForce GTX 1070 / AMD Radeon RX VEGA 56 with 8GB VRAM or better; Joystick; requires internet activation.</p>
-<p><strong>RECOMMENDED VR SYSTEMS REQUIREMENTS (VR GRAPHICS SETTINGS):</strong><br>OS 64-bit Windows 8/10; DirectX11; CPU: Core i5+ at 3+ GHz or AMD FX / Ryzen; RAM: 16 GB (32 GB for heavy missions); Free hard disk space: 120 GB on Solid State Drive (SSD); Discrete video card NVIDIA GeForce GTX 1080 / AMD Radeon RX VEGA 64 or better; Joystick; requires internet activation.</p>
-<p><a href="https://store.steampowered.com/app/223750/DCS_World_Steam_Edition/" target="_blank" rel="noopener">传送门</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-25T10:37:29.000Z">2019-10-25</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    14 分钟 读完 (大约 2065 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/25/paper-e-database/">paper-e-database</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="写论文不用愁，50个全球免费电子数据库了解下（纯文字版）"><a href="#写论文不用愁，50个全球免费电子数据库了解下（纯文字版）" class="headerlink" title="写论文不用愁，50个全球免费电子数据库了解下（纯文字版）"></a>写论文不用愁，50个全球免费电子数据库了解下（纯文字版）</h1><blockquote>
-<p>最近人民日报小编很给力，整理了50个找文献资料的中外全球电子数据库，无论你是写毕业论文还是学术论文，总有一款适合你，快先收藏起来，查尔斯沃思小编将其整理成纯文字，方便作者检索，码字不易，多行点赞鼓励下吧！</p>
-</blockquote>
-<h2 id="中文数据库"><a href="#中文数据库" class="headerlink" title="中文数据库"></a>中文数据库</h2><ol>
-<li>国家哲学社会科学文献中心(上线文献数据超过1000万条）<br><a href="http://www.ncpssd.org" target="_blank" rel="noopener">http://www.ncpssd.org</a></li>
-</ol>
+<p>什么是质数?我想可能会有一部分人已经忘记了，定义如下：</p>
+<p>除了1和该数自身外，无法被其他自然数整除的数（也可定义为只有1该数本身两个正因数]的数）。</p>
+<p>比如2，3，5，7这些都是质数，9就不是了，因为3*3=9了</p>
 <ol start="2">
-<li>中西文科技文献服务平台<br><a href="http://lib.sstir.cn/" target="_blank" rel="noopener">http://lib.sstir.cn/</a></li>
+<li>根据欧拉函数获取r<br>r = φ(N) = φ(p)φ(q) = (p-1)(q-1)。</li>
 </ol>
+<p>这里的数学概念就是什么是欧拉函数了，什么是欧拉函数呢？</p>
+<p>欧拉函数的定义：</p>
+<p>欧拉函数 φ(n)是小于或等于n的正整数中与n互质的数的数目。</p>
+<p>互质的定义：</p>
+<p>如果两个或两个以上的整数的最大公约数是 1，则称它们为互质</p>
+<p>例如：φ(8) = 4，因为1,3,5,7均和8互质。</p>
+<p>推导欧拉函数:</p>
+<p>（1）如果n = 1, φ(1) = 1；(小于等于1的正整数中唯一和1互质的数就是1本身)；</p>
+<p>（2）如果n为质数，φ(n) = n - 1；因为质数和每一个比它小的数字都互质。比如5，比它小的正整数1,2,3,4都和他互质；</p>
+<p>(3) 如果n是a的k次幂，则 φ(n) = φ(a^k) = a^k - a^(k-1) = (a-1)a^(k-1)；</p>
+<p>(4) 若m,n互质，则φ(mn) = φ(m)φ(n)</p>
+<p><strong>证明：</strong>设A, B, C是跟m, n, mn互质的数的集，据中国剩余定理(经常看数学典故的童鞋应该了解，剩余定理又叫韩信点兵，也叫孙子定理)，A*B和C可建立双射一一对应)的关系。（或者也可以从初等代数角度给出欧拉函数积性的简单证明） 因此的φ(n)值使用算术基本定理便知。（来自维基百科）</p>
 <ol start="3">
-<li>中国科技论文在线精品论文(自然科学领域的论文成果）<br><a href="http://highlights.paper.edu.cn/" target="_blank" rel="noopener">http://highlights.paper.edu.cn/</a></li>
+<li>选择一个小于r并与r互质的整数e<br>选择一个小于r并与r互质的整数e，求得e关于r的模反元素，命名为d（<em>ed = 1(mod r)</em>模反元素存在，当且仅当e与r互质），e我们通常取65537。</li>
 </ol>
+<p>模反元素：</p>
+<p>如果两个正整数a和n互质，那么一定可以找到整数b，使得 ab-1 被n整除，或者说ab被n除的余数是1。</p>
+<p>比如3和5互质，3关于5的模反元素就可能是2，因为3<em>2-1=5可以被5整除。所以很明显模反元素不止一个，2加减5的整数倍都是3关于5的模反元素</em>{…-3, 2,7,12…}* 放在公式里就是3*2 = 1 (mod 5)</p>
+<p>上面所提到的欧拉函数用处实际上在于欧拉定理：</p>
+<p>欧拉定理：</p>
+<p>如果两个正整数a和n互质，则n的欧拉函数 φ(n) 可以让下面的等式成立：</p>
+<p>a^φ(n) = 1(mod n)</p>
+<p>由此可得：a的φ(n - 1)次方肯定是a关于n的模反元素。</p>
+<p>欧拉定理就可以用来证明模反元素必然存在。</p>
+<p>由模反元素的定义和欧拉定理我们知道，a的φ(n)次方减去1，可以被n整除。比如，3和5互质，而5的欧拉函数φ(5)等于4，所以3的4次方<em>(81)减去1，可以被5</em>整除（80/5=16）。</p>
+<p>小费马定理：</p>
+<p>假设正整数a与质数p互质，因为质数p的φ(p)等于p-1，则欧拉定理可以写成</p>
+<p>a^(p-1) = 1 (mod p)</p>
+<p>这其实是欧拉定理的一个特例。</p>
 <ol start="4">
-<li>中国国家图书馆馆藏中文图书数字化资源库（提供17万多种各学科的图书，可在线阅读）<br><a href="http://mylib.nlc.cn/web/guest/zhongwentushu" target="_blank" rel="noopener">http://mylib.nlc.cn/web/guest/zhongwentushu</a></li>
+<li>销毁p和q<br>此时我们的<em>(N , e)是公钥，(N, d)为私钥，爱丽丝会把公钥(N, e)传给鲍勃，然后将(N, d)</em>自己藏起来。一对公钥和私钥就产生了，然后具体的使用方法呢？请看：SSL协议之数据加密过程详解</li>
 </ol>
-<ol start="5">
-<li>汉斯出版社中文学术期刊(提供125本国际开源中文期刊的免费下载阅读）<br><a href="http://www.hanspub.org" target="_blank" rel="noopener">http://www.hanspub.org</a></li>
-</ol>
-<ol start="6">
-<li>全国图书馆参考咨询联盟(绝大多数文献需要用邮箱传递）<br><a href="http://www.ucdrs.superlib.net/" target="_blank" rel="noopener">http://www.ucdrs.superlib.net/</a></li>
-</ol>
-<ol start="7">
-<li>国家科技图书文献中心(现有期刊资源6908本，会议资源1506个）<br><a href="http://www.nstl.gov.cn/" target="_blank" rel="noopener">http://www.nstl.gov.cn/</a></li>
-</ol>
-<ol start="8">
-<li>国家哲学社会科学学术期刊数据库(国内最大的公益性社科精品期刊数据库，收录精品学术期刊600多种，论文近300万篇）<br><a href="http://www.nssd.org/articles/articlesearch.aspx" target="_blank" rel="noopener">http://www.nssd.org/articles/articlesearch.aspx</a></li>
-</ol>
-<ol start="9">
-<li>中国科学院文献情报中心(国家科学图书馆）<br><a href="http://www.las.ac.cn/" target="_blank" rel="noopener">http://www.las.ac.cn/</a></li>
-</ol>
-<ol start="10">
-<li>CALIS 高校学位论文库(免费文摘）<br><a href="http://opac.calis.edu.cn" target="_blank" rel="noopener">http://opac.calis.edu.cn</a></li>
-</ol>
-<ol start="11">
-<li>中国国家数据(中国国家统计局提供的海量数据查询和下载的数据库，内容包含各个地区和国家的数据）<br><a href="http://data.stats.gov.cn/index.htm" target="_blank" rel="noopener">http://data.stats.gov.cn/index.htm</a></li>
-</ol>
-<ol start="12">
-<li>中国国家图书馆(中国国家图书馆数字平台）<br><a href="http://www.nlc.gov.cn/" target="_blank" rel="noopener">http://www.nlc.gov.cn/</a></li>
-</ol>
-<h2 id="外文数据库"><a href="#外文数据库" class="headerlink" title="外文数据库"></a>外文数据库</h2><ol start="13">
-<li>ERIC 教育资源信息中心(教育资源数据库，部分资源可查找到全文）<br><a href="http://www.eric.ed.gov/" target="_blank" rel="noopener">http://www.eric.ed.gov/</a></li>
-</ol>
-<ol start="14">
-<li>Blackwell电子期刊(国际性期刊800余种，涵盖十多个学科，部分期刊提供全文）<br><a href="http://www.blackwell-synergy.com/" target="_blank" rel="noopener">http://www.blackwell-synergy.com/</a></li>
-</ol>
-<ol start="15">
-<li>加拿大 AMICUS 学位论文(收录加拿大1300多个图书馆的学位论文信息）<br><a href="http://www.collectionscanada.gc.ca/theses-canada/index-e.html" target="_blank" rel="noopener">http://www.collectionscanada.gc.ca/theses-canada/index-e.html</a></li>
-</ol>
-<ol start="16">
-<li>欧洲学位论文库(收录来自欧洲28个国家的563所大学的开放学术资源）<br><a href="http://www.dart-europe.eu/basic-search.php" target="_blank" rel="noopener">http://www.dart-europe.eu/basic-search.php</a></li>
-</ol>
-<ol start="17">
-<li><p>Project Gutenberg(提供超过5万本免费电子书籍）<br><a href="http://www.gutenberg.org/" target="_blank" rel="noopener">http://www.gutenberg.org/</a></p>
-</li>
-<li><p>澳洲数字论文计划(包含澳洲40余所大学的15440篇硕博论文，涵盖各个学科）<br><a href="http://adt.caul.edu.au" target="_blank" rel="noopener">http://adt.caul.edu.au</a></p>
-</li>
-</ol>
-<ol start="19">
-<li>北卡罗来纳州州立大学(3937篇免费博硕论文，涵盖化学、物理学、电子电气、核能、机械、材料、食品、林业、土壤等学科）<br><a href="https://repository.lib.ncsu.edu/handle/1840.20/23" target="_blank" rel="noopener">https://repository.lib.ncsu.edu/handle/1840.20/23</a></li>
-</ol>
-<ol start="20">
-<li>加州大学学者文库(图书资源分对校内和校外两部分开放，著作新，制作质量高。普通读物、学术读物均有收录）<br><a href="http://publishing.cdlib.org/ucpressebooks/" target="_blank" rel="noopener">http://publishing.cdlib.org/ucpressebooks/</a></li>
-</ol>
-<ol start="21">
-<li>Directory of Open Access Journals(免费的全文科技学术期刊。现有2752种期刊，其中830种可以全文搜索。）<br><a href="http://www.doaj.org/" target="_blank" rel="noopener">http://www.doaj.org/</a></li>
-</ol>
-<ol start="22">
-<li>Upcoming Conference(国内外学术会议论文）<br><a href="http://www.ourglocal.com/" target="_blank" rel="noopener">http://www.ourglocal.com/</a></li>
-</ol>
-<ol start="23">
-<li>俄亥俄州立大学电子学位论文(索引更新及时，可在线翻译成中文。涵盖机械、电子、管理、哲学、化学、环境学、材料、数学、物理等学科）<br><a href="http://www.ohiolink.edu/etd/search.cgi" target="_blank" rel="noopener">http://www.ohiolink.edu/etd/search.cgi</a></li>
-</ol>
-<ol start="24">
-<li>美国密西根大学论文库(2万多篇期刊论文、技术报告、评论等文献全文）<br><a href="https://deepblue.lib.umich.edu/" target="_blank" rel="noopener">https://deepblue.lib.umich.edu/</a></li>
-</ol>
-<ol start="25">
-<li>开放存取资源图书馆(提供400多万篇免费使用下载的英文期刊论文，涵盖所有学科〉<br><a href="http://www.oalib.com" target="_blank" rel="noopener">http://www.oalib.com</a></li>
-</ol>
-<ol start="26">
-<li>Bioline International(提供发展中国家出版的高质量期刊）<br><a href="http://www.bioline.org.br" target="_blank" rel="noopener">http://www.bioline.org.br</a></li>
-</ol>
-<ol start="27">
-<li>诺丁汉大学论文库(提供诺丁汉大学博士、硕士的研究、会议论文）<br><a href="http://eprints.nottingham.ac.uk/" target="_blank" rel="noopener">http://eprints.nottingham.ac.uk/</a></li>
-</ol>
-<ol start="28">
-<li>HINARI(世界卫生组织建立，提供生物医学与卫生文献的项目，包括3280种期刊）<br><a href="http://www.who.int/hinari/en/" target="_blank" rel="noopener">http://www.who.int/hinari/en/</a></li>
-</ol>
-<ol start="29">
-<li>HighWire 出版社电子期刊(美国斯坦福大学著名的学术出版商，其中将近240万篇文章可免费获得全文）<br><a href="http://highwire.stanford.edu/lists/freeart.dtl" target="_blank" rel="noopener">http://highwire.stanford.edu/lists/freeart.dtl</a></li>
-</ol>
-<ol start="30">
-<li>美国科学院院报(世界上被引用次数最多的综合学科刊物之一，继Nature、Science之后，在SCI综合学科类排名第三位）<br><a href="http://www.pnas.org/" target="_blank" rel="noopener">http://www.pnas.org/</a></li>
-</ol>
-<ol start="31">
-<li>科研出版社 OA 资源(共有180多种期刊的电子版本，文章超过10000篇）<br><a href="http://www.scirp.org/journal/" target="_blank" rel="noopener">http://www.scirp.org/journal/</a></li>
-</ol>
-<ol start="32">
-<li>Science Direct(SCI论文检索，收录超过25万篇论文）<br><a href="https://www.sciencedirect.com/" target="_blank" rel="noopener">https://www.sciencedirect.com/</a></li>
-</ol>
-<p>33 .华盛顿大学学位论文库(提供免费的电子书籍、论文、期刊，全文免费下载）<br><a href="https://library.wustl.edu/" target="_blank" rel="noopener">https://library.wustl.edu/</a></p>
-<ol start="34">
-<li>加拿大国家研究委员会（ NRC) 0A 期刊(农业科学、生物信息学、生命科学、环境、纳米技术、分子科学、光电子科学等领域的学术性期刊）<br><a href="http://www.nrcresearchpress.com/" target="_blank" rel="noopener">http://www.nrcresearchpress.com/</a></li>
-</ol>
-<ol start="35">
-<li>Socolar(整理了世界上重要的0A期刊10000多种和1000多种0A仓贮资源）<br><a href="http://www.socolar.com/" target="_blank" rel="noopener">http://www.socolar.com/</a></li>
-</ol>
-<ol start="36">
-<li>加利福尼亚大学国际和区域数字馆藏(已出版的期刊论文、未出版的研究手稿、会议文献以及其他出版物上的文章1万多篇，均可免费阅读）<br><a href="http://repositories.cdlib.org/escholarship/" target="_blank" rel="noopener">http://repositories.cdlib.org/escholarship/</a></li>
-</ol>
-<ol start="37">
-<li>剑桥大学机构知识库(提供剑桥大学相关的期刊、学术论文、学位论文等电子资源）<br><a href="http://www.dspace.cam.ac.uk/" target="_blank" rel="noopener">http://www.dspace.cam.ac.uk/</a></li>
-</ol>
-<ol start="38">
-<li>Electronic library(提供超过270万本图书，超过5千万篇论文）<br><a href="http://b-ok.org/" target="_blank" rel="noopener">http://b-ok.org/</a></li>
-</ol>
-<p>39.Science  数据库(权威科研杂志《Science》官方网站，免费注册后可下载1997年以前的论文全文）<br><a href="http://www.sciencemag.org/" target="_blank" rel="noopener">http://www.sciencemag.org/</a></p>
-<ol start="40">
-<li>CERN Document Server(主要覆盖物理学及相关学科，提供36万多篇全文文献）<br><a href="http://cdsweb.cern.ch/" target="_blank" rel="noopener">http://cdsweb.cern.ch/</a></li>
-</ol>
-<ol start="41">
-<li>康奈尔大学ArXiv(面向物理学、数学、非线性科学、计算机科学和定量生物学等学科，提供16种免费电子期刊的访问）<br><a href="http://arxiv.org" target="_blank" rel="noopener">http://arxiv.org</a></li>
-</ol>
-<ol start="42">
-<li>Energy Citations Database(提供美国能源部的科技信息摘要）<br><a href="http://www.osti.gov/energycitations/" target="_blank" rel="noopener">http://www.osti.gov/energycitations/</a></li>
-</ol>
-<ol start="43">
-<li>约翰威立国际出版公司(收录了来自1500余种期刊、10000多本在线图书以及数百种多卷册的参考工具书、丛书系列、手册和辞典、实验室指南和数据库的400多万篇文章）<br><a href="http://onlinelibrary.wiley.com/" target="_blank" rel="noopener">http://onlinelibrary.wiley.com/</a></li>
-</ol>
-<ol start="44">
-<li>伍斯特工学院数据库(670余篇学位论文 ，其 中有550多篇全文。涵盖生物、电子、计算机、材料、物理、机械等学科）<br><a href="http://www.wpi.edu/Pubs/ETD/" target="_blank" rel="noopener">http://www.wpi.edu/Pubs/ETD/</a></li>
-</ol>
-<ol start="45">
-<li>nature官网网站(在《 nature 》上在线发表的论文可以免费查看）<br><a href="https://www.nature.com/" target="_blank" rel="noopener">https://www.nature.com/</a></li>
-</ol>
-<ol start="46">
-<li>Social Science Research Network(社会科学（经济类）研究论文数据库，部分提供全文）<br><a href="http://www.ssrn.com/" target="_blank" rel="noopener">http://www.ssrn.com/</a></li>
-</ol>
-<ol start="47">
-<li>美国医学学术资料网站(由美国国家医学图书馆和国立卫生研究院建立一个医学学术资料网站。生物医学文献超过2100万，包括<br>论文参考文献，生命科学期刊，在线图书）<br><a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pubmed</a></li>
-</ol>
-<ol start="48">
-<li>世界数字图书馆(以多语种形式免费提供源于世界各地各文化的重要原始材料）<br><a href="http://www.wdl.org/zh/" target="_blank" rel="noopener">http://www.wdl.org/zh/</a></li>
-</ol>
-<ol start="49">
-<li>Manybooks(国外大量免费电子图书，可下载）<br><a href="http://manybooks.net/" target="_blank" rel="noopener">http://manybooks.net/</a></li>
-</ol>
-<ol start="50">
-<li>Aminer(收集了300万篇论文信息、3700多万引用关系以及8000多个会议信息）<br><a href="https://cn.aminer.org/" target="_blank" rel="noopener">https://cn.aminer.org/</a></li>
-</ol>
-<p>以上内容来源人民日报，查尔斯沃思作者服务将图片转换文字，转载需注明原作者及整理者。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-25T08:34:54.000Z">2019-10-25</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 354 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/25/windows-edb-mv/">windows.edb_mv</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘"><a href="#【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘" class="headerlink" title="【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘"></a>【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘</h1><blockquote>
-<p>先介绍Windows.edb是什么东东，很奇怪的后缀名哦。其实它就是Windows10为加快搜索速度而建立的索引文件，所以还是很有用的，但是看看它的体积，你就会觉得也太占系统盘的空间了。Windows.edb文件所在的路径为：</p>
-</blockquote>
-<pre><code class="bash">C:\ProgramData\Microsoft\Search\Data\Applications\Windows</code></pre>
-<p><img src="/images/2019/10/25/30949570-f702-11e9-84fc-111e5c1675c4.png" alt="image.png"></p>
-<blockquote>
-<p>虽然我们可以删除该文件，但正像前面说过的，它还是比较有用的（并且删除后，再次使用搜索功能后，它还会生成的），所以我们最好保留着它，但可以移动一下Windows.edb文件的位置，把它移动到非系统盘。方法如下：</p>
-</blockquote>
-<ol>
-<li>在Win10任务栏的Cortana搜索框中输入“索引选项”，点击搜索结果中的“索引选项（控制面板）”打开“索引选项”窗口。</li>
-<li>点击窗口底部的“高级”按钮，打开“高级选项”窗口。</li>
-<li>在“索引位置”区域点击右下角的“选择新位置”按钮，为Windows.edb选择非系统盘的路径即可。最后点击“确定”，重启电脑后生效。</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-24T13:19:23.000Z">2019-10-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 448 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/24/lianhuafeng/">lianhuafeng</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="莲花峰（安徽境内山峰）"><a href="#莲花峰（安徽境内山峰）" class="headerlink" title="莲花峰（安徽境内山峰）"></a>莲花峰（安徽境内山峰）</h1><blockquote>
-<p>莲花峰，是黄山风景区境内第一高峰，为36大峰之首，海拔1864.8米。位于登山步道玉屏楼到鳌鱼峰之间。莲花峰登峰盘道5里，相对高度110米。1997年，莲花沟开辟500米登山新道，由蹬道、栈桥、观景台等组成。</p>
-</blockquote>
-<blockquote>
-<p>莲花峰峻峭高耸，气势雄伟。因主峰突兀，小峰簇拥，俨若新莲初开，仰天怒放，故名“莲花峰”。“登峰起步缓坡称“莲梗”，中间穿过四个石洞，古人称“莲孔”。洞穴陡立，游人叠级而上，如在莲孔中穿行，恰似“倾曲作蚁旋出花萼中”。沿途风光奇绝，峰壁间有“真好造化”、“非人间也”、“名不虚传”、“天海奇观”等摩崖题刻。峰下有莲花洞、莲花源。</p>
-</blockquote>
-<blockquote>
-<p>明代吴怅曾有诗赞曰：“一种青莲吐绛霞，亭亭玉立净无瑕。遥看天际浮云卷，露出峰顶十丈花。”清代吴梦印亦有诗云：“莲峰秀拔迥称尊，凡欲高呼达帝阍。举目江山如带砺，低头峦蚰似儿孙。风生绝献应回雁，日落悬岩不度猿。翠影岚光千万状，我虽能到未能言。”连接莲花岭和莲花峰的是一条长达一公里半的蜿蜒小道，在到达峰顶前要过四个洞穴。<br>莲花峰上既有许多或似飞龙或似双龙的松树，也有著名的黄山杜鹃花 [1]  。</p>
-</blockquote>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-22T13:17:32.000Z">2019-10-22</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 688 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/22/weilibipei/">weilibipei</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="违例匹配"><a href="#违例匹配" class="headerlink" title="违例匹配"></a>违例匹配</h1><p>“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。</p>
-<p>在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示：</p>
-<pre><code>//: Human.java
-// Catching Exception Hierarchies
-
-class Annoyance extends Exception {}
-class Sneeze extends Annoyance {}
-
-public class Human {
-  public static void main(String[] args) {
-    try {
-      throw new Sneeze();
-    } catch(Sneeze s) {
-      System.out.println(&quot;Caught Sneeze&quot;);
-    } catch(Annoyance a) {
-      System.out.println(&quot;Caught Annoyance&quot;);
-    }
-  }
-} ///:~</code></pre><p>Sneeze违例会被相符的第一个catch从句捕获。当然，这只是第一个。然而，假如我们删除第一个catch从句：</p>
-<pre><code>    try {
-      throw new Sneeze();
-    } catch(Annoyance a) {
-      System.out.println(&quot;Caught Annoyance&quot;);
-    }</code></pre><p>那么剩下的catch从句依然能够工作，因为它捕获的是Sneeze的基础类。换言之，catch(Annoyance e)能捕获一个Annoyance以及从它衍生的任何类。这一点非常重要，因为一旦我们决定为一个方法添加更多的违例，而且它们都是从相同的基础类继承的，那么客户程序员的代码就不需要更改。至少能够假定它们捕获的是基础类。</p>
-<p>若将基础类捕获从句置于第一位，试图“屏蔽”衍生类违例，就象下面这样：</p>
-<pre><code>    try {
-      throw new Sneeze();
-    } catch(Annoyance a) {
-      System.out.println(&quot;Caught Annoyance&quot;);
-    } catch(Sneeze s) {
-      System.out.println(&quot;Caught Sneeze&quot;);
-    }</code></pre><p>则编译器会产生一条出错消息，因为它发现永远不可能抵达Sneeze捕获从句。</p>
-<p>9.8.1 违例准则</p>
-<p>用违例做下面这些事情：</p>
-<p>(1) 解决问题并再次调用造成违例的方法。</p>
-<p>(2) 平息事态的发展，并在不重新尝试方法的前提下继续。</p>
-<p>(3) 计算另一些结果，而不是希望方法产生的结果。</p>
-<p>(4) 在当前环境中尽可能解决问题，以及将相同的违例重新“掷”出一个更高级的环境。</p>
-<p>(5) 在当前环境中尽可能解决问题，以及将不同的违例重新“掷”出一个更高级的环境。</p>
-<p>(6) 中止程序执行。</p>
-<p>(7) 简化编码。若违例方案使事情变得更加复杂，那就会令人非常烦恼，不如不用。</p>
-<p>(8) 使自己的库和程序变得更加安全。这既是一种“短期投资”（便于调试），也是一种“长期投资”（改善应用程序的健壮性）</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-21T14:32:22.000Z">2019-10-21</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1095 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/21/computer-vision-weekly-news-20191003/">computer-vision-weekly-news-20191003</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="计算机视觉开源周报20191003期"><a href="#计算机视觉开源周报20191003期" class="headerlink" title="计算机视觉开源周报20191003期"></a>计算机视觉开源周报20191003期</h1><blockquote>
-<p>总结了过去一周CV领域的最新开源代码，发现本周出现多份很有价值的高质量、重量级工作，比如致力于使得图卷积网络更深的DeepGCNs、Mask引导的注意力网络大大改进了遮挡行人重识别、格灵深瞳轻量级人脸识别比赛冠军模型VarGFaceNet、比LSTM更优的新RNN模型IndRNN、还有异常强大的字符级文本识别CharNet。</p>
-</blockquote>
-<p><img src="/images/2019/10/21/f3b59040-f40f-11e9-89e6-e714074eda99.png" alt="image.png"></p>
-<ul>
-<li><p>一种web运行的半自动图像标注的灵活框架LOST（Label Objects and Save Time）<br>LOST: A flexible framework for semi-automatic image annotation<br>Jonas Jäger, Gereon Reus, Joachim Denzler, Viviane Wolff, Klaus Fricke-Neuderth<br><a href="https://arxiv.org/abs/1910.07486v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07486v1</a><br><a href="https://github.com/l3p-cv/lost" target="_blank" rel="noopener">https://github.com/l3p-cv/lost</a></p>
-</li>
-<li><p>对抗表示学习中的全局最优化问题<br>On the Global Optima of Kernelized Adversarial Representation Learning<br>Bashir Sadeghi, Runyi Yu, Vishnu Naresh Boddeti<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.07423v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07423v1</a><br><a href="https://github.com/human-analysis/Kernel-ARL" target="_blank" rel="noopener">https://github.com/human-analysis/Kernel-ARL</a></p>
-</li>
-<li><p>学习泛化的全尺度表示，用于人员重识别，模型更小，精度更优<br>Learning Generalisable Omni-Scale Representations for Person Re-Identification<br>Kaiyang Zhou, Xiatian Zhu, Yongxin Yang, Andrea Cavallaro, Tao Xiang<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06827v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06827v1</a><br><a href="https://github.com/KaiyangZhou/deep-person-reid" target="_blank" rel="noopener">https://github.com/KaiyangZhou/deep-person-reid</a></p>
-</li>
-<li><p>将ResNet和DenseNet引入到图卷积网络中，可以训练更深（达112层）的GCN，在多个任务中达到了更高的精度。<br>DeepGCNs: Making GCNs Go as Deep as CNNs<br>Guohao Li, Matthias Müller, Guocheng Qian, Itzel C. Delgadillo, Abdulellah Abualshour, Ali Thabet, Bernard Ghanem<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06849v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06849v1</a><br><a href="https://github.com/lightaime/deep_gcns_torch" target="_blank" rel="noopener">https://github.com/lightaime/deep_gcns_torch</a><br><a href="https://github.com/lightaime/deep_gcns" target="_blank" rel="noopener">https://github.com/lightaime/deep_gcns</a></p>
-</li>
-<li><p>训练智能体玩“躲猫猫”游戏<br>Visual Hide and Seek<br>Boyuan Chen, Shuran Song, Hod Lipson, Carl Vondrick<br><a href="https://arxiv.org/abs/1910.07882v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07882v1</a><br><a href="http://www.cs.columbia.edu/~bchen/visualhideseek/" target="_blank" rel="noopener">http://www.cs.columbia.edu/~bchen/visualhideseek/</a></p>
-</li>
-<li><p>掩膜引导的注意力网络，用于遮挡严重的行人检测，在多个数据集实现了更高的最好精度。CityPersons提升9.5%，Caltech提升5.0%。<br>Mask-Guided Attention Network for Occluded Pedestrian Detection<br>Yanwei Pang, Jin Xie, Muhammad Haris Khan, Rao Muhammad Anwer, Fahad Shahbaz Khan, Ling Shao<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06160v2" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06160v2</a><br><a href="https://github.com/Leotju/MGAN" target="_blank" rel="noopener">https://github.com/Leotju/MGAN</a></p>
-</li>
-<li><p>一种几何启发的卷积操作，有效提升了消失点检测<br>NeurVPS: Neural Vanishing Point Scanning via Conic Convolution<br>Yichao Zhou, Haozhi Qi, Jingwei Huang, Yi Ma<br><a href="https://arxiv.org/abs/1910.06316v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06316v1</a><br><a href="https://github.com/zhou13/neurvps" target="_blank" rel="noopener">https://github.com/zhou13/neurvps</a></p>
-</li>
-<li><p>单次神经架构搜索，基于自我评估模版网络，在CIFAR和ImageNet数据集达到最先进的性能<br>One-Shot Neural Architecture Search via Self-Evaluated Template Network<br>Xuanyi Dong, Yi Yang<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.05733v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.05733v1</a><br><a href="https://github.com/D-X-Y/NAS-Projects" target="_blank" rel="noopener">https://github.com/D-X-Y/NAS-Projects</a></p>
-</li>
-<li><p>学习鉴别特征，用于非监督域适应<br>Drop to Adapt: Learning Discriminative Features for Unsupervised Domain Adaptation<br>Seungmin Lee, Dongwan Kim, Namil Kim, Seong-Gyun Jeong<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.05562v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.05562v1</a><br><a href="https://github.com/postBG/DTA.pytorch" target="_blank" rel="noopener">https://github.com/postBG/DTA.pytorch</a></p>
-</li>
-<li><p>可变组卷积神经网络，可以支持大规模人脸识别，同时减少计算成本和参数。获得格灵深瞳轻量级人脸识别挑战赛冠军！<br>VarGFaceNet: An Efficient Variable Group Convolutional Neural Network for Lightweight Face Recognition<br>Mengjia Yan, Mengao Zhao, Zining Xu, Qian Zhang, Guoli Wang, Zhizhong Su<br>ICCV 2019 Workshop<br><a href="https://arxiv.org/abs/1910.04985v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.04985v1</a><br><a href="https://github.com/zma-c-137/VarGFaceNet" target="_blank" rel="noopener">https://github.com/zma-c-137/VarGFaceNet</a></p>
-</li>
-<li><p>发明一种称为Hadamard乘积的递归连接，构建了独立递归神经网络（IndRNN），其中同一层中的神经元彼此独立并且跨层连接。<br>IndRNN可有效替代LSTM，精度更高的同时，速度是其10倍！<br>Deep Independently Recurrent Neural Network (IndRNN)<br>Shuai Li, Wanqing Li, Chris Cook, Yanbo Gao, Ce Zhu<br><a href="https://arxiv.org/abs/1910.06251v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06251v1</a><br><a href="https://github.com/Sunnydreamrain/IndRNN_pytorch" target="_blank" rel="noopener">https://github.com/Sunnydreamrain/IndRNN_pytorch</a></p>
-</li>
-<li><p>一种以字符为基本单元的单阶段文本检测识别网络，在三个标准基准上对CharNet结果显示，其结果以最先进的结果大大领先之前的算法，比如ICDAR 2015上从65.33％改进到71.08％，TotalText上从54.0％跃升至69.23％。<br>Convolutional Character Networks<br>Linjie Xing, Zhi Tian, Weilin Huang, Matthew R. Scott<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.07954v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07954v1</a><br><a href="https://github.com/MalongTech/research-charnet" target="_blank" rel="noopener">https://github.com/MalongTech/research-charnet</a></p>
-</li>
-<li><p>基于语音指令实现的自动驾驶<br>Conditional Driving from Natural Language Instructions<br>Junha Roh, Chris Paxton, Andrzej Pronobis, Ali Farhadi, Dieter Fox<br>CoRL 2019<br><a href="https://arxiv.org/abs/1910.07615v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07615v1</a><br><a href="https://sites.google.com/view/language-grounded-driving" target="_blank" rel="noopener">https://sites.google.com/view/language-grounded-driving</a></p>
-</li>
-<li><p>医学图像域适应 | 提出了一种新型的无监督域自适应框架，称为协作特征集合自适应（CFEA），改进了眼底图像分割的精度<br>CFEA: Collaborative Feature Ensembling Adaptation for Domain Adaptation in Unsupervised Optic Disc and Cup Segmentation<br>Peng Liu, Bin Kong, Zhongyu Li, Shaoting Zhang, Ruogu Fang<br>MICCAI 2019<br><a href="https://arxiv.org/abs/1910.07638v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07638v1</a><br><a href="https://github.com/cswin/AWC" target="_blank" rel="noopener">https://github.com/cswin/AWC</a></p>
-</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-20T08:48:58.000Z">2019-10-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    16 分钟 读完 (大约 2446 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/20/PLMpapers/">PLMpapers</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="PLMpapers"><a href="#PLMpapers" class="headerlink" title="PLMpapers"></a>PLMpapers</h1><p>Contributed by <a href="https://bakser.github.io/" target="_blank" rel="noopener">Xiaozhi Wang</a> and <a href="https://github.com/zzy14" target="_blank" rel="noopener">Zhengyan Zhang</a>.</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Pre-trained Languge Model (PLM) is a very popular topic in NLP. In this repo, we list some representative work on PLM and show their relationship with a diagram. Feel free to distribute or use it! <a href="https://github.com/thunlp/PLMpapers/blob/master/PLMfamily.pptx" target="_blank" rel="noopener">Here</a> you can get the source PPT file of the diagram if you want to use it in your presentation.</p>
-<p><img src="/images/2019/10/20/3f634050-f316-11e9-b017-0b2638cf8a9a.png" alt="image.png"></p>
-<p>Corrections and suggestions are welcomed. </p>
-<p>We also released <a href="https://github.com/thunlp/OpenCLaP" target="_blank" rel="noopener">OpenCLap</a>, an open-source Chinese language pre-trained model zoo. Welcome to try it.</p>
-<h2 id="Papers"><a href="#Papers" class="headerlink" title="Papers"></a>Papers</h2><h3 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h3><ol>
-<li><strong>Semi-supervised Sequence Learning</strong>. <em>Andrew M. Dai, Quoc V. Le</em>. NIPS 2015. [<a href="https://arxiv.org/pdf/1511.01432.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>context2vec: Learning Generic Context Embedding with Bidirectional LSTM</strong>. <em>Oren Melamud, Jacob Goldberger, Ido Dagan</em>. CoNLL 2016. [<a href="https://www.aclweb.org/anthology/K16-1006.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="http://u.cs.biu.ac.il/~nlp/resources/downloads/context2vec/" target="_blank" rel="noopener">project</a>] (<strong>context2vec</strong>)</li>
-<li><strong>Unsupervised Pretraining for Sequence to Sequence Learning</strong>. <em>Prajit Ramachandran, Peter J. Liu, Quoc V. Le</em>. EMNLP 2017. [<a href="https://arxiv.org/pdf/1611.02683.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>Pre-trained seq2seq</strong>)`</li>
-<li><strong>Deep contextualized word representations</strong>. <em>Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee and Luke Zettlemoyer</em>. NAACL 2018. [<a href="https://arxiv.org/pdf/1802.05365.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://allennlp.org/elmo" target="_blank" rel="noopener">project</a>] (<strong>ELMo</strong>)</li>
-<li><strong>Universal Language Model Fine-tuning for Text Classification</strong>. <em>Jeremy Howard and Sebastian Ruder</em>. ACL 2018. [<a href="https://www.aclweb.org/anthology/P18-1031" target="_blank" rel="noopener">pdf</a>] [<a href="http://nlp.fast.ai/category/classification.html" target="_blank" rel="noopener">project</a>] (<strong>ULMFiT</strong>)</li>
-<li><strong>Improving Language Understanding by Generative Pre-Training</strong>. <em>Alec Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever</em>. Preprint. [<a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://openai.com/blog/language-unsupervised/" target="_blank" rel="noopener">project</a>] (<strong>GPT</strong>)</li>
-<li><strong>BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</strong>. <em>Jacob Devlin, Ming-Wei Chang, Kenton Lee and Kristina Toutanova</em>. NAACL 2019. [<a href="https://arxiv.org/pdf/1810.04805.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/google-research/bert" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>Language Models are Unsupervised Multitask Learners</strong>. <em>Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskever</em>. Preprint. [<a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/openai/gpt-2" target="_blank" rel="noopener">code</a>] (<strong>GPT-2</strong>)</li>
-<li><strong>ERNIE: Enhanced Language Representation with Informative Entities</strong>. <em>Zhengyan Zhang, Xu Han, Zhiyuan Liu, Xin Jiang, Maosong Sun and Qun Liu</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1139" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/thunlp/ERNIE" target="_blank" rel="noopener">code &amp; model</a>] (<strong>ERNIE (Tsinghua)</strong> )</li>
-<li><strong>ERNIE: Enhanced Representation through Knowledge Integration</strong>. <em>Yu Sun, Shuohuan Wang, Yukun Li, Shikun Feng, Xuyi Chen, Han Zhang, Xin Tian, Danxiang Zhu, Hao Tian and Hua Wu</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09223.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/PaddlePaddle/ERNIE/tree/develop/ERNIE" target="_blank" rel="noopener">code</a>] (<strong>ERNIE (Baidu)</strong> )</li>
-<li><strong>Defending Against Neural Fake News</strong>. <em>Rowan Zellers, Ari Holtzman, Hannah Rashkin, Yonatan Bisk, Ali Farhadi, Franziska Roesner, Yejin Choi</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1905.12616.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://rowanzellers.com/grover/" target="_blank" rel="noopener">project</a>] (<strong>Grover</strong>)</li>
-<li><strong>Cross-lingual Language Model Pretraining</strong>. <em>Guillaume Lample, Alexis Conneau</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1901.07291.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/XLM" target="_blank" rel="noopener">code &amp; model</a>] (<strong>XLM</strong>)</li>
-<li><strong>Multi-Task Deep Neural Networks for Natural Language Understanding</strong>. <em>Xiaodong Liu, Pengcheng He, Weizhu Chen, Jianfeng Gao</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1441" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/namisan/mt-dnn" target="_blank" rel="noopener">code &amp; model</a>] (<strong>MT-DNN</strong>)</li>
-<li><strong>MASS: Masked Sequence to Sequence Pre-training for Language Generation</strong>. <em>Kaitao Song, Xu Tan, Tao Qin, Jianfeng Lu, Tie-Yan Liu</em>. ICML 2019. [<a href="https://arxiv.org/pdf/1905.02450.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/microsoft/MASS" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>Unified Language Model Pre-training for Natural Language Understanding and Generation</strong>. <em>Li Dong, Nan Yang, Wenhui Wang, Furu Wei, Xiaodong Liu, Yu Wang, Jianfeng Gao, Ming Zhou, Hsiao-Wuen Hon</em>. Preprint. [<a href="https://arxiv.org/pdf/1905.03197.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>UniLM</strong>)</li>
-<li><strong>XLNet: Generalized Autoregressive Pretraining for Language Understanding</strong>. <em>Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1906.08237.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/zihangdai/xlnet" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>RoBERTa: A Robustly Optimized BERT Pretraining Approach</strong>. <em>Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, Veselin Stoyanov</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.11692.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/pytorch/fairseq" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>SpanBERT: Improving Pre-training by Representing and Predicting Spans</strong>. <em>Mandar Joshi, Danqi Chen, Yinhan Liu, Daniel S. Weld, Luke Zettlemoyer, Omer Levy</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.10529.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/SpanBERT" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>Knowledge Enhanced Contextual Word Representations</strong>. <em>Matthew E. Peters, Mark Neumann, Robert L. Logan IV, Roy Schwartz, Vidur Joshi, Sameer Singh, Noah A. Smith</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.04164.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>KnowBert</strong>) </li>
-<li><strong>VisualBERT: A Simple and Performant Baseline for Vision and Language</strong>. <em>Liunian Harold Li, Mark Yatskar, Da Yin, Cho-Jui Hsieh, Kai-Wei Chang</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.03557.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/uclanlp/visualbert" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks</strong>. <em>Jiasen Lu, Dhruv Batra, Devi Parikh, Stefan Lee</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1908.02265.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/jiasenlu/vilbert_beta" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>VideoBERT: A Joint Model for Video and Language Representation Learning</strong>. <em>Chen Sun, Austin Myers, Carl Vondrick, Kevin Murphy, Cordelia Schmid</em>. ICCV 2019. [<a href="https://arxiv.org/pdf/1904.01766.pdf" target="_blank" rel="noopener">pdf</a>] </li>
-<li><strong>LXMERT: Learning Cross-Modality Encoder Representations from Transformers</strong>. <em>Hao Tan, Mohit Bansal</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.07490.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/airsplay/lxmert" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>VL-BERT: Pre-training of Generic Visual-Linguistic Representations</strong>. <em>Weijie Su, Xizhou Zhu, Yue Cao, Bin Li, Lewei Lu, Furu Wei, Jifeng Dai</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.08530.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Unicoder-VL: A Universal Encoder for Vision and Language by Cross-modal Pre-training</strong>. <em>Gen Li, Nan Duan, Yuejian Fang, Ming Gong, Daxin Jiang, Ming Zhou</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.06066.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>K-BERT: Enabling Language Representation with Knowledge Graph</strong>. <em>Weijie Liu, Peng Zhou, Zhe Zhao, Zhiruo Wang, Qi Ju, Haotang Deng, Ping Wang</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.07606.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Fusion of Detected Objects in Text for Visual Question Answering</strong>. <em>Chris Alberti, Jeffrey Ling, Michael Collins, David Reitter</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.05054.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>B2T2</strong>)</li>
-<li><strong>Contrastive Bidirectional Transformer for Temporal Representation Learning</strong>. <em>Chen Sun, Fabien Baradel, Kevin Murphy, Cordelia Schmid</em>. Preprint. [<a href="https://arxiv.org/pdf/1906.05743.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>CBT</strong>)</li>
-<li><strong>ERNIE 2.0: A Continual Pre-training Framework for Language Understanding</strong>. <em>Yu Sun, Shuohuan Wang, Yukun Li, Shikun Feng, Hao Tian, Hua Wu, Haifeng Wang</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.12412v1.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/PaddlePaddle/ERNIE/blob/develop/README.md" target="_blank" rel="noopener">code</a>] </li>
-<li><strong>75 Languages, 1 Model: Parsing Universal Dependencies Universally</strong>. <em>Dan Kondratyuk, Milan Straka</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1904.02099.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/hyperparticle/udify" target="_blank" rel="noopener">code &amp; model</a>] (<strong>UDify</strong>)</li>
-<li><strong>Pre-Training with Whole Word Masking for Chinese BERT</strong>. <em>Yiming Cui, Wanxiang Che, Ting Liu, Bing Qin, Ziqing Yang, Shijin Wang, Guoping Hu</em>. Preprint. [<a href="https://arxiv.org/pdf/1906.08101.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/ymcui/Chinese-BERT-wwm/blob/master/README_EN.md" target="_blank" rel="noopener">code &amp; model</a>] (<strong>Chinese-BERT-wwm</strong>)</li>
-<li><strong>UNITER: Learning UNiversal Image-TExt Representations</strong>. <em>Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, Jingjing Liu</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.11740.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>HUBERT Untangles BERT to Improve Transfer across NLP Tasks</strong>. <em>Anonymous authors</em>. ICLR 2020 under review. [<a href="https://openreview.net/pdf?id=HJxnM1rFvr" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>MultiFiT: Efficient Multi-lingual Language Model Fine-tuning</strong>.  <em>Julian Eisenschlos, Sebastian Ruder, Piotr Czapla, Marcin Kardas, Sylvain Gugger, Jeremy Howard</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.04761.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="http://nlp.fast.ai/classification/2019/09/10/multifit.html" target="_blank" rel="noopener">code &amp; model</a>]</li>
-</ol>
-<h3 id="Knowledge-Distillation-amp-Model-Compression"><a href="#Knowledge-Distillation-amp-Model-Compression" class="headerlink" title="Knowledge Distillation &amp; Model Compression"></a>Knowledge Distillation &amp; Model Compression</h3><ol>
-<li><strong>TinyBERT: Distilling BERT for Natural Language Understanding</strong>. <em>Xiaoqi Jiao, Yichun Yin, Lifeng Shang, Xin Jiang, Xiao Chen, Linlin Li, Fang Wang, Qun Liu</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.10351v2.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Distilling Task-Specific Knowledge from BERT into Simple Neural Networks</strong>. <em>Raphael Tang, Yao Lu, Linqing Liu, Lili Mou, Olga Vechtomova, Jimmy Lin</em>. Preprint. [<a href="https://arxiv.org/pdf/1903.12136.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Patient Knowledge Distillation for BERT Model Compression</strong>. <em>Siqi Sun, Yu Cheng, Zhe Gan, Jingjing Liu</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.09355.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/intersun/PKD-for-BERT-Model-Compression" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Model Compression with Multi-Task Knowledge Distillation for Web-scale Question Answering System</strong>. <em>Ze Yang, Linjun Shou, Ming Gong, Wutao Lin, Daxin Jiang</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09636.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>PANLP at MEDIQA 2019: Pre-trained Language Models, Transfer Learning and Knowledge Distillation</strong>. <em>Wei Zhu, Xiaofeng Zhou, Keqiang Wang, Xun Luo, Xiepeng Li, Yuan Ni, Guotong Xie</em>. The 18th BioNLP workshop. [<a href="https://www.aclweb.org/anthology/W19-5040" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Improving Multi-Task Deep Neural Networks via Knowledge Distillation for Natural Language Understanding</strong>. <em>Xiaodong Liu, Pengcheng He, Weizhu Chen, Jianfeng Gao</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09482.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/namisan/mt-dnn" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>Well-Read Students Learn Better: The Impact of Student Initialization on Knowledge Distillation</strong>. <em>Iulia Turc, Ming-Wei Chang, Kenton Lee, Kristina Toutanova</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.08962.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Small and Practical BERT Models for Sequence Labeling</strong>. <em>Henry Tsai, Jason Riesa, Melvin Johnson, Naveen Arivazhagan, Xin Li, Amelia Archer</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.00100.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Q-BERT: Hessian Based Ultra Low Precision Quantization of BERT</strong>. <em>Sheng Shen, Zhen Dong, Jiayu Ye, Linjian Ma, Zhewei Yao, Amir Gholami, Michael W. Mahoney, Kurt Keutzer</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.05840.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>ALBERT: A Lite BERT for Self-supervised Learning of Language Representations</strong>.  <em>Anonymous authors</em>. ICLR 2020 under review. [<a href="https://openreview.net/pdf?id=H1eA7AEtvS" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Extreme Language Model Compression with Optimal Subwords and Shared Projections</strong>. <em>Sanqiang Zhao, Raghav Gupta, Yang Song, Denny Zhou</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.11687" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter</strong>. <em>Victor Sanh, Lysandre Debut, Julien Chaumond, Thomas Wolf</em>. Preprint. [<a href="https://arxiv.org/pdf/1910.01108" target="_blank" rel="noopener">pdf</a>]</li>
-</ol>
-<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><ol>
-<li><strong>Revealing the Dark Secrets of BERT</strong>. <em>Olga Kovaleva, Alexey Romanov, Anna Rogers, Anna Rumshisky</em>. EMNLP 2019. [<a href="https://arxiv.org/abs/1908.08593" target="_blank" rel="noopener">pdf</a>] </li>
-<li><strong>How Does BERT Answer Questions? A Layer-Wise Analysis of Transformer Representations</strong>. <em>Betty van Aken, Benjamin Winter, Alexander Löser, Felix A. Gers</em>. CIKM 2019. [<a href="https://arxiv.org/pdf/1909.04925.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Are Sixteen Heads Really Better than One?</strong>. <em>Paul Michel, Omer Levy, Graham Neubig</em>. Preprint. [<a href="https://arxiv.org/pdf/1905.10650.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/pmichel31415/are-16-heads-really-better-than-1" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Is BERT Really Robust? A Strong Baseline for Natural Language Attack on Text Classification and Entailment</strong>. <em>Di Jin, Zhijing Jin, Joey Tianyi Zhou, Peter Szolovits</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.11932.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/jind11/TextFooler" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>BERT has a Mouth, and It Must Speak: BERT as a Markov Random Field Language Model</strong>. <em>Alex Wang, Kyunghyun Cho</em>. NeuralGen 2019. [<a href="https://arxiv.org/pdf/1902.04094.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/nyu-dl/bert-gen" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Linguistic Knowledge and Transferability of Contextual Representations</strong>. <em>Nelson F. Liu, Matt Gardner, Yonatan Belinkov, Matthew E. Peters, Noah A. Smith</em>. NAACL 2019. [<a href="https://www.aclweb.org/anthology/N19-1112" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>What Does BERT Look At? An Analysis of BERT’s Attention</strong>. <em>Kevin Clark, Urvashi Khandelwal, Omer Levy, Christopher D. Manning</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.04341.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/clarkkev/attention-analysis" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Open Sesame: Getting Inside BERT’s Linguistic Knowledge</strong>. <em>Yongjie Lin, Yi Chern Tan, Robert Frank</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.01698.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/yongjie-lin/bert-opensesame" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Analyzing the Structure of Attention in a Transformer Language Model</strong>. <em>Jesse Vig, Yonatan Belinkov</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.04284.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains</strong>. <em>Samira Abnar, Lisa Beinborn, Rochelle Choenni, Willem Zuidema</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.01539.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>BERT Rediscovers the Classical NLP Pipeline</strong>. <em>Ian Tenney, Dipanjan Das, Ellie Pavlick</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1452" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>How multilingual is Multilingual BERT?</strong>. <em>Telmo Pires, Eva Schlinger, Dan Garrette</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1493" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>What Does BERT Learn about the Structure of Language?</strong>. <em>Ganesh Jawahar, Benoît Sagot, Djamé Seddah</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1356" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT</strong>. <em>Shijie Wu, Mark Dredze</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1904.09077.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>How Contextual are Contextualized Word Representations? Comparing the Geometry of BERT, ELMo, and GPT-2 Embeddings</strong>. <em>Kawin Ethayarajh</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.00512.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Probing Neural Network Comprehension of Natural Language Arguments</strong>. <em>Timothy Niven, Hung-Yu Kao</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1459" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/IKMLab/arct2" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Universal Adversarial Triggers for Attacking and Analyzing NLP</strong>. <em>Eric Wallace, Shi Feng, Nikhil Kandpal, Matt Gardner, Sameer Singh</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.07125.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/Eric-Wallace/universal-triggers" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>The Bottom-up Evolution of Representations in the Transformer: A Study with Machine Translation and Language Modeling Objectives</strong>. <em>Elena Voita, Rico Sennrich, Ivan Titov</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.01380.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Do NLP Models Know Numbers? Probing Numeracy in Embeddings</strong>. <em>Eric Wallace, Yizhong Wang, Sujian Li, Sameer Singh, Matt Gardner</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.07940.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Investigating BERT’s Knowledge of Language: Five Analysis Methods with NPIs</strong>. <em>Alex Warstadt, Yu Cao, Ioana Grosu, Wei Peng, Hagen Blix, Yining Nie, Anna Alsop, Shikha Bordia, Haokun Liu, Alicia Parrish, Sheng-Fu Wang, Jason Phang, Anhad Mohananey, Phu Mon Htut, Paloma Jeretič, Samuel R. Bowman</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.02597.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/alexwarstadt/data_generation" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Visualizing and Understanding the Effectiveness of BERT</strong>. <em>Yaru Hao, Li Dong, Furu Wei, Ke Xu</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.05620.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Visualizing and Measuring the Geometry of BERT</strong>. <em>Andy Coenen, Emily Reif, Ann Yuan, Been Kim, Adam Pearce, Fernanda Viégas, Martin Wattenberg</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1906.02715.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>On the Validity of Self-Attention as Explanation in Transformer Models</strong>. <em>Gino Brunner, Yang Liu, Damián Pascual, Oliver Richter, Roger Wattenhofer</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.04211.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Transformer Dissection: An Unified Understanding for Transformer’s Attention via the Lens of Kernel</strong>. <em>Yao-Hung Hubert Tsai, Shaojie Bai, Makoto Yamada, Louis-Philippe Morency, Ruslan Salakhutdinov</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.11775.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Language Models as Knowledge Bases?</strong> <em>Fabio Petroni, Tim Rocktäschel, Patrick Lewis, Anton Bakhtin, Yuxiang Wu, Alexander H. Miller, Sebastian Riedel</em>. EMNLP 2019, [<a href="https://arxiv.org/pdf/1909.01066.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/LAMA" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>To Tune or Not to Tune? Adapting Pretrained Representations to Diverse Tasks</strong>. <em>Matthew E. Peters, Sebastian Ruder, Noah A. Smith</em>. RepL4NLP 2019, [<a href="https://www.aclweb.org/anthology/W19-4302.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-</ol>
-<h2 id="Tutorial-amp-Resource"><a href="#Tutorial-amp-Resource" class="headerlink" title="Tutorial &amp; Resource"></a>Tutorial &amp; Resource</h2><ol>
-<li><strong>Transfer Learning in Natural Language Processing</strong>. <em>Sebastian Ruder, Matthew E. Peters, Swabha Swayamdipta, Thomas Wolf</em>. NAACL 2019. [<a href="https://docs.google.com/presentation/d/1fIhGikFPnb7G5kr58OvYC3GN4io7MznnM0aAgadvJfc/edit?usp=sharing" target="_blank" rel="noopener">slides</a>] </li>
-<li><strong>Transformers: State-of-the-art Natural Language Processing</strong>. <em>Thomas Wolf, Lysandre Debut, Victor Sanh, Julien Chaumond, Clement Delangue, Anthony Moi, Pierric Cistac, Tim Rault, Rémi Louf, Morgan Funtowicz, Jamie Brew</em>. Preprint. [<a href="https://arxiv.org/pdf/1910.03771.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">code</a>]</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-19T13:09:53.000Z">2019-10-19</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 小时 读完 (大约 7099 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/19/operating-system-knowledge-summary/">operating-system-knowledge-summary</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="操作系统面试重难点总结"><a href="#操作系统面试重难点总结" class="headerlink" title="操作系统面试重难点总结"></a>操作系统面试重难点总结</h1><blockquote>
-<p>针对操作系统，根据面试重难点总结以及网络上的一些参考，对操作系统面试知识点的总结与学习。</p>
-</blockquote>
-<h2 id="一、操作系统知识点图谱"><a href="#一、操作系统知识点图谱" class="headerlink" title="一、操作系统知识点图谱"></a>一、操作系统知识点图谱</h2><p><img src="/images/2019/10/19/cb3f99c0-f271-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
-<h2 id="二、面试问题总结"><a href="#二、面试问题总结" class="headerlink" title="二、面试问题总结"></a>二、面试问题总结</h2><p>参考：面试复习重点——基础篇：操作系统、计算机网络、设计模式</p>
-<p>1.操作系统的四个特性。<br>2.操作系统的主要功能。<br>3.进程的有哪几种状态，状态转换图，及导致转换的事件。<br>4.进程与线程的区别。<br>5.进程通信的几种方式。<br>6.进程同步的几种方式<br>7.用户态和核心态的区别。<br>8.死锁的概念，导致死锁的原因.<br>9.导致死锁的四个必要条件。<br>10.处理死锁的四个方式。<br>11.预防死锁的方法、避免死锁的方法。<br>12.进程调度算法。<br>13.内存连续分配方式采用的几种算法及各自优劣。<br>14.基本分页储存管理方式。<br>15.基本分段储存管理方式。<br>16.分段分页方式的比较各自优缺点。<br>17.几种页面置换算法，会算所需换页数<br>18.虚拟内存的定义及实现方式。</p>
-<h2 id="三、重难点总结"><a href="#三、重难点总结" class="headerlink" title="三、重难点总结"></a>三、重难点总结</h2><ol>
-<li><p>操作系统的四个特性<br>并发：同一段时间内多个程序执行(注意区别并行和并发，前者是同一时刻的多个事件，后者是同一时间段内的多个事件)<br>共享：系统中的资源可以被内存中多个并发执行的进线程共同使用<br>虚拟：通过时分复用（如分时系统）以及空分复用（如虚拟内存）技术实现把一个物理实体虚拟为多个<br>异步：系统中的进程是以走走停停的方式执行的，且以一种不可预知的速度推进</p>
-</li>
-<li><p>操作系统的主要功能<br>处理机管理：处理机分配都是以进程为单位，所以处理机管理也被看做是进程管理。包括进程控制，进程同步，进程通信和进程调度<br>存储器管理（或者内存管理）：内存分配，内存保护，地址映射，内存扩充<br>设备管理：管理所有外围设备，包括完成用户的IO请求；为用户进程分配IO设备；提高IO设备利用率；提高IO速度；方便IO的使用<br>文件管理：管理用户文件和系统文件，方便使用同时保证安全性。包括：磁盘存储空间管理，目录管理，文件读写管理以及文件共享和保护<br>提供用户接口：程序接口（如API）和用户接口（如GUI）</p>
-</li>
-<li><p>进程的状态与转换</p>
-</li>
-</ol>
-<p><img src="/images/2019/10/19/3b0556f0-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
-<p>运行状态：进程正在处理机上运行。在单处理机环境下，每一时刻最多只有一个进程处于运行状态。</p>
-<p>就绪状态：进程已处于准备运行的状态，即进程获得了除处理机之外的一切所需资源，一旦得到处理机即可运行。</p>
-<p>阻塞状态，又称等待状态：进程正在等待某一事件而暂停运行，如等待某资源为可用（不包括处理机）或等待输入/输出完成。即使处理机空闲，该进程也不能运行。</p>
-<p>注意区别就绪状态和等待状态：就绪状态是指进程仅缺少处理机，只要获得处理机资源就立即执行；而等待状态是指进程需要其他资源（除了处理机）或等待某一事件。</p>
-<p>就绪状态 -&gt; 运行状态：处于就绪状态的进程被调度后，获得处理机资源（分派处理机时间片），于是进程由就绪状态转换为运行状态。</p>
-<p>运行状态 -&gt; 就绪状态：处于运行状态的进程在时间片用完后，不得不让出处理机，从而进程由运行状态转换为就绪状态。此外，在可剥夺的操作系统中，当有更高优先级的进程就 、 绪时，调度程度将正执行的进程转换为就绪状态，让更高优先级的进程执行。</p>
-<p>运行状态 -&gt; 阻塞状态：当进程请求某一资源（如外设）的使用和分配或等待某一事件的发生（如I/O操作的完成）时，它就从运行状态转换为阻塞状态。进程以系统调用的形式请求操作系统提供服务，这是一种特殊的、由运行用户态程序调用操作系统内核过程的形式。</p>
-<p>阻塞状态 -&gt; 就绪状态：当进程等待的事件到来时，如I/O操作结束或中断结束时，中断处理程序必须把相应进程的状态由阻塞状态转换为就绪状态。</p>
-<ol start="4">
-<li>进程与线程的区别<br>进程：进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位（具有动态、并发、独立、异步的特性，以及就绪、执行、阻塞3种状态）；引入进程是为了使多个程序可以并发的执行，以提高系统的资源利用率和吞吐量。</li>
-</ol>
-<p>线程：是比进程更小的可独立运行的基本单位，可以看做是轻量级的进程（具有轻型实体，独立调度分派单位，可并发执行，共享进程资源等属性）；引入目的是为了减少程序在并发执行过程中的开销，使OS的并发效率更高。</p>
-<p>两者的对比：</p>
-<ul>
-<li><p>调度方面：在引入线程的OS中，线程是独立的调度和分派单位，而进程作为资源的拥有单位(相当于把未引入线程的传统OS中的进程的两个属性分开了)。由于线程不拥有资源，因此可以显著的提高并发度以及减少切换开销。</p>
-</li>
-<li><p>并发性：引入了线程的OS中，进程间可以并发，而且一个进程内部的多个线程之间也是可以并发的，这就使OS具有更好的并发性，有效的提高了系统资源利用率和吞吐量。</p>
-</li>
-<li><p>拥有资源：无论OS是否支持线程，进程都是基本的资源拥有单位，线程只拥有很少的基本的资源，但是线程可以访问所隶属的进程的资源（进程的代码段，数据段和所拥有的系统资源如fd）</p>
-</li>
-<li><p>系统开销：创建或者撤销进程的时候，系统要为之创建或回收PCB，系统资源等，切换时也需要保存和恢复CPU环境。而线程的切换只需要保存和恢复少量的寄存器，不涉及存储器管理方面的工作，所以开销较小。此外，统一进程中的多个线程由于共享地址空间，所以通信同步等都比较方便。</p>
-</li>
-</ul>
-<ol start="5">
-<li>进程通信<br>进程通信是指进程之间的信息交换。PV操作是低级通信方式，髙级通信方式是指以较高的效率传输大量数据的通信方式。高级通信方法主要有以下三个类。</li>
-</ol>
-<p>共享存储</p>
-<p>在通信的进程之间存在一块可直接访问的共享空间，通过对这片共享空间进行写/读操作实现进程之间的信息交换。在对共享空间进行写/读操作时，需要使用同步互斥工具（如 P操作、V操作），对共享空间的写/读进行控制。共享存储又分为两种：低级方式的共享是基于数据结构的共享；高级方式则是基于存储区的共享。操作系统只负责为通信进程提供可共享使用的存储空间和同步互斥工具，而数据交换则由用户自己安排读/写指令完成。</p>
-<p>需要注意的是，用户进程空间一般都是独立的，要想让两个用户进程共享空间必须通过特殊的系统调用实现，而进程内的线程是自然共享进程空间的。</p>
-<p>消息传递</p>
-<p>在消息传递系统中，进程间的数据交换是以格式化的消息(Message)为单位的。若通信的进程之间不存在可直接访问的共享空间，则必须利用操作系统提供的消息传递方法实现进程通信。进程通过系统提供的发送消息和接收消息两个原语进行数据交换。</p>
-<p>1) 直接通信方式：发送进程直接把消息发送给接收进程，并将它挂在接收进程的消息缓冲队列上，接收进程从消息缓冲队列中取得消息。</p>
-<p>2) 间接通信方式：发送进程把消息发送到某个中间实体中，接收进程从中间实体中取得消息。这种中间实体一般称为信箱，这种通信方式又称为信箱通信方式。该通信方式广泛应用于计算机网络中，相应的通信系统称为电子邮件系统。</p>
-<p>管道通信</p>
-<p>管道通信是消息传递的一种特殊方式。所谓“管道”，是指用于连接一个读进程和一个写进程以实现它们之间通信的一个共享文件，又名pipe文件。向管道（共享文件）提供输入的发送进程（即写进程），以字符流形式将大量的数据送入（写）管道；而接收管道输出的接收进程（即读进程），则从管道中接收（读）数据。为了协调双方的通信，管道机制必须提供以下三方面的协调能力：互斥、同步和确定对方的存在。</p>
-<ol start="6">
-<li>进程同步<br>多进程虽然提高了系统资源利用率和吞吐量，但是由于进程的异步性可能造成系统的混乱。进程同步的任务就是对多个相关进程在执行顺序上进行协调，使并发执行的多个进程之间可以有效的共享资源和相互合作，保证程序执行的可再现性</li>
-</ol>
-<p>同步机制需要遵循的原则：</p>
-<p>空闲让进：当没有进程处于临界区的时候，应该许可其他进程进入临界区的申请<br>忙则等待：当前如果有进程处于临界区，如果有其他进程申请进入，则必须等待，保证对临界区的互斥访问<br>有限等待：对要求访问临界资源的进程，需要在有限时间内进入临界区，防止出现死等<br>让权等待：当进程无法进入临界区的时候，需要释放处理机，边陷入忙等<br>经典的进程同步问题：生产者-消费者问题；哲学家进餐问题；读者-写者问题</p>
-<p>同步的解决方案：管程，信号量。</p>
-<ol start="7">
-<li>用户态和核心态</li>
-</ol>
-<p><img src="/images/2019/10/19/572d7060-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
-<p>当程序运行在3级特权级上时，就可以称之为运行在用户态，因为这是最低特权级，是普通的用户进程运行的特权级，大部分用户直接面对的程序都是运行在用户态；</p>
-<p>反之，当程序运行在级特权级上时，就可以称之为运行在内核态。</p>
-<p>虽然用户态下和内核态下工作的程序有很多差别，但最重要的差别就在于特权级的不同，即权力的不同。运行在用户态下的程序不能直接访问操作系统内核数据结构和程序。</p>
-<p>当我们在系统中执行一个程序时，大部分时间是运行在用户态下的，在其需要操作系统帮助完成某些它没有权力和能力完成的工作时就会切换到内核态。</p>
-<p>用户态切换到内核态的3种方式</p>
-<p>1) 系统调用：这是用户态进程主动要求切换到内核态的一种方式，用户态进程通过系统调用申请使用操作系统提供的服务程序完成工作。而系统调用的机制其核心还是使用了操作系统为用户特别开放的一个中断来实现，例如Linux的int 80h中断。</p>
-<p>2) 异常：当CPU在执行运行在用户态下的程序时，发生了某些事先不可知的异常，这时会触发由当前运行进程切换到处理此异常的内核相关程序中，也就转到了内核态，比如缺页异常。</p>
-<p>3) 外围设备的中断：当外围设备完成用户请求的操作后，会向CPU发出相应的中断信号，这时CPU会暂停执行下一条即将要执行的指令转而去执行与中断信号对应的处理程序，如果先前执行的指令是用户态下的程序，那么这个转换的过程自然也就发生了由用户态到内核态的切换。比如硬盘读写操作完成，系统会切换到硬盘读写的中断处理程序中执行后续操作等。</p>
-<ol start="8">
-<li>死锁<br>死锁是指多个进程在运行过程中，因为争夺资源而造成的一种僵局，如果没有外力推进，处于僵局中的进程就无法继续执行。</li>
-</ol>
-<p>死锁原因：</p>
-<p>竞争资源：请求同一有限资源的进程数多于可用资源数<br>进程推进顺序非法：进程执行中，请求和释放资源顺序不合理，如资源等待链<br>死锁产生的必要条件：</p>
-<p>互斥条件:进程对所分配的资源进行排他性的使用<br>请求和保持条件：进程被阻塞的时候并不释放锁申请到的资源<br>不可剥夺条件：进程对于已经申请到的资源在使用完成之前不可以被剥夺<br>环路等待条件：发生死锁的时候存在的一个 进程-资源 环形等待链<br>死锁处理：</p>
-<p>预防死锁：破坏产生死锁的4个必要条件中的一个或者多个；实现起来比较简单，但是如果限制过于严格会降低系统资源利用率以及吞吐量</p>
-<p>避免死锁：在资源的动态分配中，防止系统进入不安全状态(可能产生死锁的状态)-如银行家算法</p>
-<p>检测死锁：允许系统运行过程中产生死锁，在死锁发生之后，采用一定的算法进行检测，并确定与死锁相关的资源和进程，采取相关方法清除检测到的死锁。实现难度大</p>
-<p>解除死锁：与死锁检测配合，将系统从死锁中解脱出来（撤销进程或者剥夺资源）。对检测到的和死锁相关的进程以及资源，通过撤销或者挂起的方式，释放一些资源并将其分配给处于阻塞状态的进程，使其转变为就绪态。实现难度大</p>
-<ol start="9">
-<li>进程调度算法<br>先来先服务调度算法FCFS：既可以作为作业调度算法也可以作为进程调度算法；按作业或者进程到达的先后顺序依次调度；因此对于长作业比较有利；</li>
-</ol>
-<p>短作业优先调度算法SJF：作业调度算法，算法从就绪队列中选择估计时间最短的作业进行处理，直到得出结果或者无法继续执行；缺点：不利于长作业；未考虑作业的重要性；运行时间是预估的，并不靠谱 ；</p>
-<p>高相应比算法HRN：响应比=(等待时间+要求服务时间)/要求服务时间；</p>
-<p>时间片轮转调度RR：按到达的先后对进程放入队列中，然后给队首进程分配CPU时间片，时间片用完之后计时器发出中断，暂停当前进程并将其放到队列尾部，循环 ;</p>
-<p>多级反馈队列调度算法：目前公认较好的调度算法；设置多个就绪队列并为每个队列设置不同的优先级，第一个队列优先级最高，其余依次递减。优先级越高的队列分配的时间片越短，进程到达之后按FCFS放入第一个队列，如果调度执行后没有完成，那么放到第二个队列尾部等待调度，如果第二次调度仍然没有完成，放入第三队列尾部…。只有当前一个队列为空的时候才会去调度下一个队列的进程。</p>
-<ol start="10">
-<li>内存连续分配<br>主要是指动态分区分配时所采用的几种算法。<br>动态分区分配又称为可变分区分配，是一种动态划分内存的分区方法。这种分区方法不预先将内存划分，而是在进程装入内存时，根据进程的大小动态地建立分区，并使分区的大小正好适合进程的需要。因此系统中分区的大小和数目是可变的。</li>
-</ol>
-<p><img src="/images/2019/10/19/5fe2bf80-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
-<p>首次适应(First Fit)算法：空闲分区以地址递增的次序链接。分配内存时顺序查找，找到大小能满足要求的第一个空闲分区。</p>
-<p>最佳适应(Best Fit)算法：空闲分区按容量递增形成分区链，找到第一个能满足要求的空闲分区。</p>
-<p>最坏适应(Worst Fit)算法：又称最大适应(Largest Fit)算法，空闲分区以容量递减的次序链接。找到第一个能满足要求的空闲分区，也就是挑选出最大的分区。</p>
-<ol start="11">
-<li>基本分页储存管理方式<br>把主存空间划分为大小相等且固定的块，块相对较小，作为主存的基本单位。每个进程也以块为单位进行划分，进程在执行时，以块为单位逐个申请主存中的块空间。</li>
-</ol>
-<p>因为程序数据存储在不同的页面中，而页面又离散的分布在内存中，因此需要一个页表来记录逻辑地址和实际存储地址之间的映射关系，以实现从页号到物理块号的映射。</p>
-<p>由于页表也是存储在内存中的，因此和不适用分页管理的存储方式相比，访问分页系统中内存数据需要两次的内存访问(一次是从内存中访问页表，从中找到指定的物理块号，加上页内偏移得到实际物理地址；第二次就是根据第一次得到的物理地址访问内存取出数据)。</p>
-<p><img src="/images/2019/10/19/66cf5c90-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
-<p>为了减少两次访问内存导致的效率影响，分页管理中引入了快表机制，包含快表机制的内存管理中，当要访问内存数据的时候，首先将页号在快表中查询，如果查找到说明要访问的页表项在快表中，那么直接从快表中读取相应的物理块号；如果没有找到，那么访问内存中的页表，从页表中得到物理地址，同时将页表中的该映射表项添加到快表中(可能存在快表换出算法)。</p>
-<p>在某些计算机中如果内存的逻辑地址很大，将会导致程序的页表项会很多，而页表在内存中是连续存放的，所以相应的就需要较大的连续内存空间。为了解决这个问题，可以采用两级页表或者多级页表的方法，其中外层页表一次性调入内存且连续存放，内层页表离散存放。相应的访问内存页表的时候需要一次地址变换，访问逻辑地址对应的物理地址的时候也需要一次地址变换，而且一共需要访问内存3次才可以读取一次数据。</p>
-<p>12.基本分段储存管理方式<br>分页是为了提高内存利用率，而分段是为了满足程序员在编写代码的时候的一些逻辑需求(比如数据共享，数据保护，动态链接等)。</p>
-<p>分段内存管理当中，地址是二维的，一维是段号，一维是段内地址；其中每个段的长度是不一样的，而且每个段内部都是从0开始编址的。由于分段管理中，每个段内部是连续内存分配，但是段和段之间是离散分配的，因此也存在一个逻辑地址到物理地址的映射关系，相应的就是段表机制。段表中的每一个表项记录了该段在内存中的起始地址和该段的长度。段表可以放在内存中也可以放在寄存器中。</p>
-<p><img src="/images/2019/10/19/6d0812f0-f272-11e9-a1f9-d3aad8743a68.png" alt="image.png"></p>
-<p>访问内存的时候根据段号和段表项的长度计算当前访问段在段表中的位置，然后访问段表，得到该段的物理地址，根据该物理地址以及段内偏移量就可以得到需要访问的内存。由于也是两次内存访问，所以分段管理中同样引入了联想寄存器。</p>
-<p>分段分页方式的比较<br>页是信息的物理单位，是出于系统内存利用率的角度提出的离散分配机制；段是信息的逻辑单位，每个段含有一组意义完整的信息，是出于用户角度提出的内存管理机制</p>
-<p>页的大小是固定的，由系统决定；段的大小是不确定的，由用户决定</p>
-<ol start="13">
-<li>虚拟内存<br>如果存在一个程序，所需内存空间超过了计算机可以提供的实际内存，那么由于该程序无法装入内存所以也就无法运行。单纯的增加物理内存只能解决一部分问题，但是仍然会出现无法装入单个或者无法同时装入多个程序的问题。但是可以从逻辑的角度扩充内存容量，即可解决上述两种问题。</li>
-</ol>
-<p>基于局部性原理，在程序装入时，可以将程序的一部分装入内存，而将其余部分留在外存，就可以启动程序执行。在程序执行过程中，当所访问的信息不在内存时，由操作系统将所需要的部分调入内存,然后继续执行程序。另一方面，操作系统将内存中暂时不使用的内容换出到外存上，从而腾出空间存放将要调入内存的信息。这样，系统好像为用户提供了一个比实际内存大得多的存储器，称为虚拟存储器。</p>
-<p>虚拟存储器的特征：</p>
-<p>多次性：一个作业可以分多次被调入内存。多次性是虚拟存储特有的属性<br>对换性：作业运行过程中存在换进换出的过程(换出暂时不用的数据换入需要的数据)<br>虚拟性：虚拟性体现在其从逻辑上扩充了内存的容量(可以运行实际内存需求比物理内存大的应用程序)。虚拟性是虚拟存储器的最重要特征也是其最终目标。虚拟性建立在多次性和对换性的基础上行，多次性和对换性又建立在离散分配的基础上</p>
-<ol start="14">
-<li>页面置换算法<br>最佳置换算法：只具有理论意义的算法，用来评价其他页面置换算法。置换策略是将当前页面中在未来最长时间内不会被访问的页置换出去。</li>
-</ol>
-<p>先进先出置换算法：简单粗暴的一种置换算法，没有考虑页面访问频率信息。每次淘汰最早调入的页面。</p>
-<p>最近最久未使用算法LRU：算法赋予每个页面一个访问字段，用来记录上次页面被访问到现在所经历的时间t，每次置换的时候把t值最大的页面置换出去(实现方面可以采用寄存器或者栈的方式实现)。</p>
-<p>时钟算法clock(也被称为是最近未使用算法NRU)：页面设置一个访问位，并将页面链接为一个环形队列，页面被访问的时候访问位设置为1。页面置换的时候，如果当前指针所指页面访问为为0，那么置换，否则将其置为0，循环直到遇到一个访问为位0的页面。</p>
-<p>改进型Clock算法：在Clock算法的基础上添加一个修改位，替换时根究访问位和修改位综合判断。优先替换访问位和修改位都是0的页面，其次是访问位为0修改位为1的页面。</p>
-<p>最少使用算法LFU：设置寄存器记录页面被访问次数，每次置换的时候置换当前访问次数最少的。</p>
-<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p>以上只是针对操作系统重点知识点的总结，如果没有相应的操作系统基础的话，可能不太好理解，下面推荐自己学习操作系统过程中参考的一些资料。</p>
-<p>推荐课程：<a href="http://c.biancheng.net/cpp/u/xitong/" target="_blank" rel="noopener">操作系统</a></p>
-<p><a href="https://juejin.im/entry/592257b62f301e006b183b95" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="RSA算法的安全性"><a href="#RSA算法的安全性" class="headerlink" title="RSA算法的安全性"></a>RSA算法的安全性</h2><p>我们知道像RSA这种非对称加密算法很安全，那么到底为啥子安全呢？ 我们来看看上面这几个过程产生的几个数字：</p>
+<p>p,q：我们随机挑选的两个大质数；<br>N：是由两个大质数p和q相乘得到的。N = p * q；<br>r：由欧拉函数得到的N的值，r = φ(N) = φ(p)φ(q) = (p-1)(q-1)。<br>e：随机选择和和r互质的数字，实际中通常选择65537；<br>d： d是以欧拉定理为基础求得的e关于r的模反元素，ed = 1 (mod r)；<br>N和e我们都会公开使用，最为重要的就是私钥中的d，d一旦泄露，加密也就失去了意义。那么得到d的过程是如何的呢？如下:</p>
+<p>比如知道e和r，因为d是e关于r的模反元素；r是φ(N) 的值<br>而φ(N)=(p-1)(q-1)，所以知道p和q我们就能得到d;<br>N = pq，从公开的数据中我们只知道N和e，所以问题的关键就是对N做因式分解能不能得出p和q<br>所以得出了在上篇博客说到的结论，非对称加密的原理：</p>
+<p>将a和b相乘得出乘积c很容易，但要是想要通过乘积c推导出a和b极难。即对一个大数进行因式分解极难</p>
+<p>目前公开破译的位数是768位，实际使用一般是1024位或是2048位，所以理论上特别的安全。</p>
+<p>后记<br>RSA算法的核心就是欧拉定理，根据它我们才能得到私钥，从而保证整个通信的安全。</p>
 
         </div>
         
@@ -1236,7 +604,7 @@ public class Human {
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
             
         </ul>
     </nav>
@@ -1286,7 +654,7 @@ public class Human {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -1298,7 +666,7 @@ public class Human {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -1310,7 +678,7 @@ public class Human {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -1411,6 +779,14 @@ public class Human {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -1469,6 +845,25 @@ public class Human {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1490,7 +885,7 @@ public class Human {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1509,7 +904,7 @@ public class Human {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1528,7 +923,7 @@ public class Human {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1536,25 +931,6 @@ public class Human {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1579,7 +955,7 @@ public class Human {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2201,6 +1577,13 @@ public class Human {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -2473,6 +1856,25 @@ public class Human {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -2494,7 +1896,7 @@ public class Human {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -2513,7 +1915,7 @@ public class Human {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -2532,7 +1934,7 @@ public class Human {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -2540,25 +1942,6 @@ public class Human {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2583,7 +1966,7 @@ public class Human {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -3205,6 +2588,13 @@ public class Human {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -178,49 +178,29 @@
 <p>这个链接有Windows版和源码版最新版下载地址，可以满足Windows、LInux、Mac OS系统使用。</p>
 <h2 id="2、Windows系统安装OpenSSL"><a href="#2、Windows系统安装OpenSSL" class="headerlink" title="2、Windows系统安装OpenSSL"></a>2、Windows系统安装OpenSSL</h2><p>到上面的链接下载OpenSSL Windows版本，注意32位和64位是不同的安装包，</p>
 <p>下载之后是exe文件，双击按照提示一步步安装就可以了。</p>
-<h2 id="3、-Linux系统安装OpenSSL"><a href="#3、-Linux系统安装OpenSSL" class="headerlink" title="3、 Linux系统安装OpenSSL"></a>3、 Linux系统安装OpenSSL</h2><h3 id="3-1-安装OpenSSL"><a href="#3-1-安装OpenSSL" class="headerlink" title="3.1 安装OpenSSL:"></a>3.1 安装OpenSSL:</h3><pre><code># tar -xzf openssl-1.0.2f.tar.gz
+<h2 id="3、-Linux系统安装OpenSSL"><a href="#3、-Linux系统安装OpenSSL" class="headerlink" title="3、 Linux系统安装OpenSSL"></a>3、 Linux系统安装OpenSSL</h2><h3 id="3-1-安装OpenSSL"><a href="#3-1-安装OpenSSL" class="headerlink" title="3.1 安装OpenSSL:"></a>3.1 安装OpenSSL:</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># tar -xzf openssl-1.0.2f.tar.gz</span><br><span class="line"></span><br><span class="line"># cd openssl-1.0.2f</span><br><span class="line"></span><br><span class="line"># mkdir /usr/local/openssl</span><br><span class="line"></span><br><span class="line"># ./config --prefix=/usr/local/openssl</span><br><span class="line"></span><br><span class="line"># make</span><br><span class="line"></span><br><span class="line"># make install</span><br></pre></td></tr></table></figure>
 
-# cd openssl-1.0.2f
+<p>这样就安装完成了，接下来一些辅助步骤。</p>
+<h3 id="3-2-创建软连接"><a href="#3-2-创建软连接" class="headerlink" title="3.2 创建软连接"></a>3.2 创建软连接</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># which openssl</span><br><span class="line"></span><br><span class="line">/usr/local/openssl/bin/openssl</span><br></pre></td></tr></table></figure>
 
-# mkdir /usr/local/openssl
+<p>为了使用方便，以及以后版本更新方便，可以创建软连接，如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br></pre></td></tr></table></figure>
 
-# ./config --prefix=/usr/local/openssl
+<h3 id="3-3-执行以下命令"><a href="#3-3-执行以下命令" class="headerlink" title="3.3 执行以下命令"></a>3.3 执行以下命令</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># cd /usr/local/openssl</span><br><span class="line"></span><br><span class="line"># ldd /usr/local/openssl/bin/openssl</span><br><span class="line"></span><br><span class="line">    linux-vdso.so.1 =&gt;  (0x00007ffc63975000)</span><br><span class="line"></span><br><span class="line">    libssl.so.1.1 =&gt; not found</span><br><span class="line"></span><br><span class="line">    libcrypto.so.1.1 =&gt; not found</span><br><span class="line"></span><br><span class="line">    libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f8d9da0f000)</span><br><span class="line"></span><br><span class="line">    libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f8d9d7f3000)</span><br><span class="line"></span><br><span class="line">    libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f8d9d431000)</span><br><span class="line"></span><br><span class="line">    /lib64/ld-linux-x86-64.so.2 (0x00007f8d9dc28000)</span><br></pre></td></tr></table></figure>
 
-# make
+<p>安装OK</p>
+<h3 id="3-4-查看版本"><a href="#3-4-查看版本" class="headerlink" title="3.4 查看版本"></a>3.4 查看版本</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># openssl version</span><br><span class="line"></span><br><span class="line">/usr/local/openssl/bin/openssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
 
-# make install</code></pre><p>这样就安装完成了，接下来一些辅助步骤。</p>
-<h3 id="3-2-创建软连接"><a href="#3-2-创建软连接" class="headerlink" title="3.2 创建软连接"></a>3.2 创建软连接</h3><pre><code># which openssl
+<p>找不到动态库libssl.so.1.1，小问题，执行如下命令：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vim /etc/ld.so.conf</span><br></pre></td></tr></table></figure>
 
-/usr/local/openssl/bin/openssl</code></pre><p>为了使用方便，以及以后版本更新方便，可以创建软连接，如下：</p>
-<pre><code># ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl</code></pre><h3 id="3-3-执行以下命令"><a href="#3-3-执行以下命令" class="headerlink" title="3.3 执行以下命令"></a>3.3 执行以下命令</h3><pre><code># cd /usr/local/openssl
+<p>在最后追加一行：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/openssl/lib</span><br></pre></td></tr></table></figure>
 
-# ldd /usr/local/openssl/bin/openssl
+<p>然后执行：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># ldconfig /etc/ld.so.conf</span><br><span class="line"></span><br><span class="line"># openssl version</span><br><span class="line"></span><br><span class="line">OpenSSL 1.1.0f  25 May 2017</span><br><span class="line"></span><br><span class="line">Done.</span><br></pre></td></tr></table></figure>
 
-    linux-vdso.so.1 =&gt;  (0x00007ffc63975000)
 
-    libssl.so.1.1 =&gt; not found
-
-    libcrypto.so.1.1 =&gt; not found
-
-    libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f8d9da0f000)
-
-    libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f8d9d7f3000)
-
-    libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f8d9d431000)
-
-    /lib64/ld-linux-x86-64.so.2 (0x00007f8d9dc28000)</code></pre><p>安装OK</p>
-<h3 id="3-4-查看版本"><a href="#3-4-查看版本" class="headerlink" title="3.4 查看版本"></a>3.4 查看版本</h3><pre><code># openssl version
-
-/usr/local/openssl/bin/openssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory</code></pre><p>找不到动态库libssl.so.1.1，小问题，执行如下命令：</p>
-<pre><code># vim /etc/ld.so.conf</code></pre><p>在最后追加一行：</p>
-<pre><code>/usr/local/openssl/lib</code></pre><p>然后执行：</p>
-<pre><code># ldconfig /etc/ld.so.conf
-
-# openssl version
-
-OpenSSL 1.1.0f  25 May 2017
-
-Done.</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -384,7 +364,7 @@ Done.</code></pre>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -396,7 +376,7 @@ Done.</code></pre>
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -408,7 +388,7 @@ Done.</code></pre>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -509,6 +489,14 @@ Done.</code></pre>
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -567,6 +555,25 @@ Done.</code></pre>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -588,7 +595,7 @@ Done.</code></pre>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -607,7 +614,7 @@ Done.</code></pre>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -626,7 +633,7 @@ Done.</code></pre>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -634,25 +641,6 @@ Done.</code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -677,7 +665,7 @@ Done.</code></pre>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1299,6 +1287,13 @@ Done.</code></pre>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1571,6 +1566,25 @@ Done.</code></pre>
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1592,7 +1606,7 @@ Done.</code></pre>
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1611,7 +1625,7 @@ Done.</code></pre>
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1630,7 +1644,7 @@ Done.</code></pre>
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1638,25 +1652,6 @@ Done.</code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1681,7 +1676,7 @@ Done.</code></pre>
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2303,6 +2298,13 @@ Done.</code></pre>
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

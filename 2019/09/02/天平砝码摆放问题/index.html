@@ -10,19 +10,19 @@
 <title>天平砝码摆放问题 - Time</title>
 
 
-    <meta name="description" content="题目一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。要使天平平衡，有多少种方法？（对称摆放算作一种方法）   题解暴力求解 #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;algorithm&amp;gt; using namespace std; int main() {     int t">
+    <meta name="description" content="题目一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。要使天平平衡，有多少种方法？（对称摆放算作一种方法）   题解暴力求解 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include &amp;lt;iostream&amp;gt;#i">
 <meta name="keywords" content="算法,天平,暴力破解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="天平砝码摆放问题">
 <meta property="og:url" content="https://blog.hsutimes.com/2019/09/02/天平砝码摆放问题/index.html">
 <meta property="og:site_name" content="Time">
-<meta property="og:description" content="题目一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。要使天平平衡，有多少种方法？（对称摆放算作一种方法）   题解暴力求解 #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;algorithm&amp;gt; using namespace std; int main() {     int t">
+<meta property="og:description" content="题目一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。要使天平平衡，有多少种方法？（对称摆放算作一种方法）   题解暴力求解 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include &amp;lt;iostream&amp;gt;#i">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta property="og:updated_time" content="2019-09-03T05:53:23.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天平砝码摆放问题">
-<meta name="twitter:description" content="题目一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。要使天平平衡，有多少种方法？（对称摆放算作一种方法）   题解暴力求解 #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;algorithm&amp;gt; using namespace std; int main() {     int t">
+<meta name="twitter:description" content="题目一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。要使天平平衡，有多少种方法？（对称摆放算作一种方法）   题解暴力求解 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include &amp;lt;iostream&amp;gt;#i">
 <meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
@@ -177,75 +177,9 @@
             <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。<br>要使天平平衡，有多少种方法？（对称摆放算作一种方法） </p>
 <p><img src="/images/2019/09/02/a2a70490-cd3b-11e9-afc7-971719428f58.png" alt="image.png"></p>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>暴力求解</p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-int main() {
-    int t = 6;
-    int count = 0;
-    vector&lt;string&gt; v;
-    for (int i = 1; i &lt;= t; ++i) {
-        for (int j = 1; j &lt;= t; ++j) {
-            for (int k = 1; k &lt;= t; ++k) {
-                for (int l = 1; l &lt;= t; ++l) {
-                    for (int m = 1; m &lt;= t; ++m) {
-                        for (int n = 1; n &lt;= t; ++n) {
-                            if (i == j ||
-                                i == k || j == k ||
-                                i == l || j == l || k == l ||
-                                i == m || j == m || k == m || l == m ||
-                                i == n || j == n || k == n || l == n || m == n)
-                                continue;
-                            if ((3 * i + 2 * j + k) == (l + 2 * m + 3 * n)) {
-                                string s = to_string(i) + to_string(j) + to_string(k) + to_string(l) + to_string(m) +
-                                           to_string(n);
-                                int te = 0;
-                                if (v.size() &gt; 0) {
-                                    string tem = s;
-                                    reverse(tem.begin(), tem.end());
-                                    vector&lt;string&gt;::iterator it;
-                                    for (it = v.begin(); it != v.end(); it++) {
-                                        if (*it == tem) {
-                                            //cout&lt;&lt;tem&lt;&lt;endl;
-                                            te = 1;
-                                            break;
-                                        }
-                                    }
-                                }
-                                if (te == 0) {
-                                    v.push_back(s);
-                                    count++;
-                                    printf(&quot; %d %d %d | %d %d %d\n&quot;, i, j, k, l, m, n);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    cout &lt;&lt; count &lt;&lt; endl;
-    return 0;
-}</code></pre>
-<pre><code> 1 4 6 | 5 3 2
- 1 5 6 | 2 4 3
- 1 5 6 | 3 2 4
- 1 6 4 | 3 5 2
- 1 6 5 | 2 3 4
- 2 4 6 | 1 5 3
- 2 4 6 | 3 1 5
- 2 6 3 | 4 1 5
- 2 6 4 | 1 3 5
- 3 2 6 | 5 1 4
- 3 4 5 | 2 1 6
- 3 5 4 | 1 2 6
- 3 6 2 | 1 5 4
- 4 2 6 | 1 3 5
- 4 3 5 | 1 2 6
- 5 2 4 | 3 1 6
- 5 4 2 | 1 3 6
- 17</code></pre>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t = <span class="hljs-number">6</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= t; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= t; ++j) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= t; ++k) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>; l &lt;= t; ++l) &#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> m = <span class="hljs-number">1</span>; m &lt;= t; ++m) &#123;</span><br><span class="line">                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n = <span class="hljs-number">1</span>; n &lt;= t; ++n) &#123;</span><br><span class="line">                            <span class="hljs-keyword">if</span> (i == j ||</span><br><span class="line">                                i == k || j == k ||</span><br><span class="line">                                i == l || j == l || k == l ||</span><br><span class="line">                                i == m || j == m || k == m || l == m ||</span><br><span class="line">                                i == n || j == n || k == n || l == n || m == n)</span><br><span class="line">                                <span class="hljs-keyword">continue</span>;</span><br><span class="line">                            <span class="hljs-keyword">if</span> ((<span class="hljs-number">3</span> * i + <span class="hljs-number">2</span> * j + k) == (l + <span class="hljs-number">2</span> * m + <span class="hljs-number">3</span> * n)) &#123;</span><br><span class="line">                                <span class="hljs-built_in">string</span> s = to_string(i) + to_string(j) + to_string(k) + to_string(l) + to_string(m) +</span><br><span class="line">                                           to_string(n);</span><br><span class="line">                                <span class="hljs-keyword">int</span> te = <span class="hljs-number">0</span>;</span><br><span class="line">                                <span class="hljs-keyword">if</span> (v.size() &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                                    <span class="hljs-built_in">string</span> tem = s;</span><br><span class="line">                                    reverse(tem.begin(), tem.end());</span><br><span class="line">                                    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;::iterator it;</span><br><span class="line">                                    <span class="hljs-keyword">for</span> (it = v.begin(); it != v.end(); it++) &#123;</span><br><span class="line">                                        <span class="hljs-keyword">if</span> (*it == tem) &#123;</span><br><span class="line">                                            <span class="hljs-comment">//cout&lt;&lt;tem&lt;&lt;endl;</span></span><br><span class="line">                                            te = <span class="hljs-number">1</span>;</span><br><span class="line">                                            <span class="hljs-keyword">break</span>;</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="hljs-keyword">if</span> (te == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                                    v.push_back(s);</span><br><span class="line">                                    count++;</span><br><span class="line">                                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d %d %d | %d %d %d\n"</span>, i, j, k, l, m, n);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; count &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1 4 6 | 5 3 2</span><br><span class="line">1 5 6 | 2 4 3</span><br><span class="line">1 5 6 | 3 2 4</span><br><span class="line">1 6 4 | 3 5 2</span><br><span class="line">1 6 5 | 2 3 4</span><br><span class="line">2 4 6 | 1 5 3</span><br><span class="line">2 4 6 | 3 1 5</span><br><span class="line">2 6 3 | 4 1 5</span><br><span class="line">2 6 4 | 1 3 5</span><br><span class="line">3 2 6 | 5 1 4</span><br><span class="line">3 4 5 | 2 1 6</span><br><span class="line">3 5 4 | 1 2 6</span><br><span class="line">3 6 2 | 1 5 4</span><br><span class="line">4 2 6 | 1 3 5</span><br><span class="line">4 3 5 | 1 2 6</span><br><span class="line">5 2 4 | 3 1 6</span><br><span class="line">5 4 2 | 1 3 6</span><br><span class="line">17</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -409,7 +343,7 @@ int main() {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -421,7 +355,7 @@ int main() {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -433,7 +367,7 @@ int main() {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -534,6 +468,14 @@ int main() {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -592,6 +534,25 @@ int main() {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -613,7 +574,7 @@ int main() {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -632,7 +593,7 @@ int main() {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -651,7 +612,7 @@ int main() {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -659,25 +620,6 @@ int main() {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -702,7 +644,7 @@ int main() {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1324,6 +1266,13 @@ int main() {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1596,6 +1545,25 @@ int main() {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1617,7 +1585,7 @@ int main() {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1636,7 +1604,7 @@ int main() {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1655,7 +1623,7 @@ int main() {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1663,25 +1631,6 @@ int main() {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1706,7 +1655,7 @@ int main() {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2328,6 +2277,13 @@ int main() {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

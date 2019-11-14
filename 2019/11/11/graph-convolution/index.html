@@ -18,12 +18,12 @@
 <meta property="og:site_name" content="Time">
 <meta property="og:description" content="图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型笔者最近看了一些图与图卷积神经网络的论文，深感其强大，但一些Survey或教程默认了读者对图神经网络背景知识的了解，对未学过信号处理的读者不太友好。同时，很多教程只讲是什么，不讲为什么，也没有梳理清楚不同网络结构的区别与设计初衷(Motivation)。 因此，本文试图沿着图神经网络的历史脉络，从最早基于">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-11T15:33:06.539Z">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png">
+<meta property="og:updated_time" content="2019-11-14T15:20:36.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="graph-convolution">
 <meta name="twitter:description" content="图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型笔者最近看了一些图与图卷积神经网络的论文，深感其强大，但一些Survey或教程默认了读者对图神经网络背景知识的了解，对未学过信号处理的读者不太友好。同时，很多教程只讲是什么，不讲为什么，也没有梳理清楚不同网络结构的区别与设计初衷(Motivation)。 因此，本文试图沿着图神经网络的历史脉络，从最早基于">
-<meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
 
@@ -126,6 +126,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -142,6 +146,12 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -156,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2291 个字)
+                    15 分钟 读完 (大约 2292 个字)
                 </span>
                 
                 
@@ -176,6 +186,8 @@
         <div class="content">
             <h1 id="图系列-从图-Graph-到图卷积-Graph-Convolution-漫谈图神经网络模型"><a href="#图系列-从图-Graph-到图卷积-Graph-Convolution-漫谈图神经网络模型" class="headerlink" title="图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型"></a>图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型</h1><p>笔者最近看了一些图与图卷积神经网络的论文，深感其强大，但一些Survey或教程默认了读者对图神经网络背景知识的了解，对未学过信号处理的读者不太友好。同时，很多教程只讲是什么，不讲为什么，也没有梳理清楚不同网络结构的区别与设计初衷(Motivation)。</p>
 <p>因此，本文试图沿着图神经网络的历史脉络，从最早基于不动点理论的图神经网络(Graph Neural Network， GNN)一步步讲到当前用得最火的图卷积神经网络(Graph Convolutional Neural Network， GCN)， 期望通过本文带给读者一些灵感与启示。</p>
+<a id="more"></a>
+
 <ul>
 <li>本文的提纲与叙述要点主要参考了2篇图神经网络的Survey，分别是来自IEEE Fellow的A Comprehensive Survey on Graph Neural Networks[1] 以及来自清华大学朱文武老师组的Deep Learning on Graphs: A Survey[7]， 在这里向两篇Survey的作者表示敬意。</li>
 <li>同时，本文关于部分图卷积神经网络的理解很多都是受到知乎问题[8]高赞答案的启发，非常感谢他们的无私分享！</li>
@@ -192,10 +204,14 @@
 <h1 id="图神经网络-Graph-Neural-Network"><a href="#图神经网络-Graph-Neural-Network" class="headerlink" title="图神经网络(Graph Neural Network)"></a>图神经网络(Graph Neural Network)</h1><p>首先要澄清一点，除非特别指明，本文中所提到的图均指图论中的图(Graph)。它是一种由若干个结点(Node)及连接两个结点的边(Edge)所构成的图形，用于刻画不同结点之间的关系。下面是一个生动的例子，图片来自论文[7]:</p>
 <p><img src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
 <h1 id="状态更新与输出"><a href="#状态更新与输出" class="headerlink" title="状态更新与输出"></a>状态更新与输出</h1><p>最早的图神经网络起源于Franco博士的论文[2], 它的理论基础是不动点理论。给定一张图 G，每个结点都有其自己的特征(feature), 本文中用xv表示结点v的特征；连接两个结点的边也有自己的特征，本文中用x(v,u)表示结点v与结点u之间边的特征；GNN的学习目标是获得每个结点的图感知的隐藏状态 hv(state embedding)，这就意味着：对于每个节点，它的隐藏状态包含了来自邻居节点的信息。那么，如何让每个结点都感知到图上其他的结点呢？GNN通过迭代式更新所有结点的隐藏状态来实现，在t+1时刻，结点v的隐藏状态按照如下方式更新：</p>
-<pre><code>𝐡^{t+1}_𝑣=𝑓(𝐱_𝑣,𝐱_𝑐𝑜[𝑣],𝐡^{t}_𝑛𝑒[𝑣] ,𝐱_𝑛𝑒[𝑣]),</code></pre><p>上面这个公式中的 f 就是隐藏状态的状态更新函数，在论文中也被称为局部转移函数(local transaction function)。公式中的xco[v]指的是与结点v相邻的边的特征，xne[v]指的是结点v的邻居结点的特征，htne[v]则指邻居结点在t时刻的隐藏状态。注意 f 是对所有结点都成立的，是一个全局共享的函数。那么怎么把它跟深度学习结合在一起呢？聪明的读者应该想到了，那就是利用神经网络(Neural Network)来拟合这个复杂函数 f。值得一提的是，虽然看起来 f 的输入是不定长参数，但在 f 内部我们可以先将不定长的参数通过一定操作变成一个固定的参数，比如说用所有隐藏状态的加和来代表所有隐藏状态。我们举个例子来说明一下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">𝐡^&#123;t+1&#125;_𝑣=𝑓(𝐱_𝑣,𝐱_𝑐𝑜[𝑣],𝐡^&#123;t&#125;_𝑛𝑒[𝑣] ,𝐱_𝑛𝑒[𝑣]),</span><br></pre></td></tr></table></figure>
+
+<p>上面这个公式中的 f 就是隐藏状态的状态更新函数，在论文中也被称为局部转移函数(local transaction function)。公式中的xco[v]指的是与结点v相邻的边的特征，xne[v]指的是结点v的邻居结点的特征，htne[v]则指邻居结点在t时刻的隐藏状态。注意 f 是对所有结点都成立的，是一个全局共享的函数。那么怎么把它跟深度学习结合在一起呢？聪明的读者应该想到了，那就是利用神经网络(Neural Network)来拟合这个复杂函数 f。值得一提的是，虽然看起来 f 的输入是不定长参数，但在 f 内部我们可以先将不定长的参数通过一定操作变成一个固定的参数，比如说用所有隐藏状态的加和来代表所有隐藏状态。我们举个例子来说明一下：</p>
 <p><img src="/images/2019/11/11/f5d6a880-0497-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
 <p>假设结点5为中心结点，其隐藏状态的更新函数如图所示。这个更新公式表达的思想自然又贴切：不断地利用当前时刻邻居结点的隐藏状态作为部分输入来生成下一时刻中心结点的隐藏状态，直到每个结点的隐藏状态变化幅度很小，整个图的信息流动趋于平稳。至此，每个结点都“知晓”了其邻居的信息。状态更新公式仅描述了如何获取每个结点的隐藏状态，除它以外，我们还需要另外一个函数 g 来描述如何适应下游任务。举个例子，给定一个社交网络，一个可能的下游任务是判断各个结点是否为水军账号。</p>
-<pre><code>𝐨_𝑣=𝑔(𝐡_𝑣,𝐱_𝑣)</code></pre><p>在原论文中，g 又被称为局部输出函数(local output function)，与 f 类似，g 也可以由一个神经网络来表达，它也是一个全局共享的函数。那么，整个流程可以用下面这张图表达：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">𝐨_𝑣=𝑔(𝐡_𝑣,𝐱_𝑣)</span><br></pre></td></tr></table></figure>
+
+<p>在原论文中，g 又被称为局部输出函数(local output function)，与 f 类似，g 也可以由一个神经网络来表达，它也是一个全局共享的函数。那么，整个流程可以用下面这张图表达：</p>
 <p><img src="/images/2019/11/11/11946760-0498-11ea-80dc-3ba86d67aae3.png" alt="image.png"></p>
 <p>仔细观察两个时刻之间的连线，它与图的连线密切相关。比如说在 T1 时刻，结点 1 的状态接受来自结点 3 的上一时刻的隐藏状态，因为结点 1 与结点 3相邻。直到 Tn 时刻，各个结点隐藏状态收敛，每个结点后面接一个 g 即可得到该结点的输出 o。</p>
 <p>对于不同的图来说，收敛的时刻可能不同，因为收敛是通过两个时刻p-范数的差值是否小于某个阈值 ϵ来判定的，比如：</p>
@@ -381,7 +397,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -393,7 +409,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -405,7 +421,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -506,6 +522,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -552,6 +576,38 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#图系列-从图-Graph-到图卷积-Graph-Convolution-漫谈图神经网络模型">
+        <span class="has-mr-6">1</span>
+        <span>图系列|从图(Graph)到图卷积(Graph Convolution): 漫谈图神经网络模型</span>
+        </a></li><li>
+        <a class="is-flex" href="#历史脉络">
+        <span class="has-mr-6">2</span>
+        <span>历史脉络</span>
+        </a></li><li>
+        <a class="is-flex" href="#图神经网络-Graph-Neural-Network">
+        <span class="has-mr-6">3</span>
+        <span>图神经网络(Graph Neural Network)</span>
+        </a></li><li>
+        <a class="is-flex" href="#状态更新与输出">
+        <span class="has-mr-6">4</span>
+        <span>状态更新与输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考文献">
+        <span class="has-mr-6">5</span>
+        <span>参考文献</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -561,6 +617,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -585,7 +660,7 @@
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -604,7 +679,7 @@
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -623,7 +698,7 @@
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -631,25 +706,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -674,7 +730,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1296,6 +1352,13 @@
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1568,6 +1631,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1589,7 +1671,7 @@
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1608,7 +1690,7 @@
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1627,7 +1709,7 @@
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1635,25 +1717,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1678,7 +1741,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2300,6 +2363,13 @@
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

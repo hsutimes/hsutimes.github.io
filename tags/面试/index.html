@@ -190,25 +190,8 @@
 <blockquote>
 <p>不用编程，估算</p>
 </blockquote>
-<pre><code class="java">import java.math.BigInteger;
-public class Main {
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n = <span class="hljs-number">200</span>;</span><br><span class="line">        BigInteger a = BigInteger.ONE;</span><br><span class="line">        BigInteger b = BigInteger.ONE;</span><br><span class="line">        BigInteger res = BigInteger.ZERO;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            res = a.add(b);</span><br><span class="line">            a = b;</span><br><span class="line">            b = res;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(res);</span><br><span class="line">        System.out.println(res.toString().length());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    public static void main(String[] args) {
-        int n = 200;
-        BigInteger a = BigInteger.ONE;
-        BigInteger b = BigInteger.ONE;
-        BigInteger res = BigInteger.ZERO;
-        for (int i = 2; i &lt;= n; i++) {
-            res = a.add(b);
-            a = b;
-            b = res;
-        }
-        System.out.println(res);
-        System.out.println(res.toString().length());
-
-    }
-}
-</code></pre>
 <ul>
 <li><p>给出一个数组，找出两个数[a,b]和为n，不存在则返回[-1,-1]。写出两种解法，不能暴力穷举。</p>
 </li>
@@ -306,7 +289,7 @@ public class Main {
             
         </h1>
         <div class="content">
-            <p>牛客许愿的小米一面，贡献面经<del>~<br>许愿能挺进二面，加油，向着目标冲呀</del></p>
+            <p>牛客许愿的小米一面，贡献面经<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">许愿能挺进二面，加油，向着目标冲呀~~~~</span><br></pre></td></tr></table></figure></p>
 <p>——java集合相关</p>
 <p>object类中的hashCode（）方法是做什么的，以及其中的hash（）方法是做什么的， 为什么有hash（）方法还有hashCode（）</p>
 <p>hashmap的put过程 主要就是根据自己看过的源码说一下流程<br>ArrayList LinkList的特点</p>
@@ -337,9 +320,8 @@ public class Main {
 <p>面试官蛮年轻，真的很好，一直在引导我回答问题，不会的也没有揪着不放很喜欢说，我们接下来问一个简单的问题，哈哈哈，简单简单着就变得不简单了</p>
 <p>是自己比较满意的一次面试</p>
 <p>既展示了自己所掌握的知识，也暴露了掌握知识中的问题，给自己后面的复习有了一定的指引</p>
-<p>感谢CYC大佬的秘籍<del>~</del></p>
-<p>最后，重要的话再来几次</p>
-<p>许愿能挺进二面，加油，向着目标冲呀<del>~<br>许愿能挺进二面，加油，向着目标冲呀</del><br>许愿能挺进二面，加油，向着目标冲呀<del>~</del></p>
+<p>感谢CYC大佬的秘籍<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最后，重要的话再来几次</span><br><span class="line"></span><br><span class="line">许愿能挺进二面，加油，向着目标冲呀~~~~</span><br></pre></td></tr></table></figure></p>
+<p>许愿能挺进二面，加油，向着目标冲呀<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">许愿能挺进二面，加油，向着目标冲呀</span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -388,29 +370,29 @@ public class Main {
             <h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><h2 id="String类能被继承吗，为什么"><a href="#String类能被继承吗，为什么" class="headerlink" title="String类能被继承吗，为什么?"></a>String类能被继承吗，为什么?</h2><blockquote>
 <p>不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。</p>
 </blockquote>
-<pre><code class="java">public final class String implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence </code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">String</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span>, <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">String</span>&gt;, <span class="hljs-title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
+
 <p>根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。你可能出于两种理解而需要阻止改变：设计或效率。<br>　　final类不能被继承，没有子类，final类中的方法默认是final的。<br>　　final方法不能被子类的方法覆盖，但可以被继承。<br>　　final成员变量表示常量，只能被赋值一次，赋值后值不再改变。<br>　　final不能用于修饰构造方法。<br>　　注意：父类的private成员方法是不能被子类方法覆盖的，因此private类型的方法默认是final类型的。</p>
 <p>如果一个类不允许其子类覆盖某个方法，则可以把这个方法声明为final方法。<br>　　使用final方法的原因有二：<br>　　第一、把方法锁定，防止任何继承类修改它的意义和实现。<br>　　第二、高效。编译器在遇到调用final方法时候会转入内嵌机制，大大提高执行效率。（这点有待商榷，《Java编程思想》中对于这点存疑）</p>
 <blockquote>
 <p>下面这段话摘自《Java编程思想》第四版第143页：<br>“使用final方法的原因有两个。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用。但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升。在最近的Java版本中，不需要使用final方法进行这些优化了。”</p>
 </blockquote>
 <p>关于String类，要了解常量池的概念</p>
-<pre><code class="java">String s = new String(“xyz”);  //创建了几个对象</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="hljs-keyword">new</span> String(“xyz”);  <span class="hljs-comment">//创建了几个对象</span></span><br></pre></td></tr></table></figure>
+
 <p>答案： 1个或2个， 如果”xyz”已经存在于常量池中，则只在堆中创建”xyz”对象的一个拷贝，否则还要在常量池中在创建一份</p>
-<pre><code class="java">String s = &quot;a&quot;+&quot;b&quot;+&quot;c&quot;+&quot;d&quot;; //创建了几个对象</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="hljs-string">"a"</span>+<span class="hljs-string">"b"</span>+<span class="hljs-string">"c"</span>+<span class="hljs-string">"d"</span>; <span class="hljs-comment">//创建了几个对象</span></span><br></pre></td></tr></table></figure>
+
 <p>答案： 这个和JVM实现有关， 如果常量池为空，可能是1个也可能是7个等</p>
 <h2 id="String，Stringbuffer，StringBuilder的区别？"><a href="#String，Stringbuffer，StringBuilder的区别？" class="headerlink" title="String，Stringbuffer，StringBuilder的区别？"></a>String，Stringbuffer，StringBuilder的区别？</h2><p>1、用来处理字符串常用的类有3种：String、StringBuffer和StringBuilder<br>2、三者之间的区别：<br>都是final类，都不允许被继承；<br>String类长度是不可变的，StringBuffer和StringBuilder类长度是可以改变的；<br>StringBuffer类是线程安全的，StringBuilder不是线程安全的；</p>
 <p>String 和 StringBuffer：<br>1、String类型和StringBuffer类型的主要性能区别：String是不可变的对象，因此每次在对String类进行改变的时候都会生成一个新的string对象，然后将指针指向新的string对象，所以经常要改变字符串长度的话不要使用string，因为每次生成对象都会对系统性能产生影响，特别是当内存中引用的对象多了以后，JVM的GC就会开始工作，性能就会降低；</p>
 <p>2、使用StringBuffer类时，每次都会对StringBuffer对象本身进行操作，而不是生成新的对象并改变对象引用，所以多数情况下推荐使用StringBuffer，特别是字符串对象经常要改变的情况；</p>
 <p>3、在某些情况下，String对象的字符串拼接其实是被Java Compiler编译成了StringBuffer对象的拼接，所以这些时候String对象的速度并不会比StringBuffer对象慢，例如：</p>
-<pre><code class="java">String s1 = “This is only a” + “ simple” + “ test”;
-StringBuffer Sb = new StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “This is only a” + “ simple” + “ test”;</span><br><span class="line">StringBuffer Sb = <span class="hljs-keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</span><br></pre></td></tr></table></figure>
+
 <p>生成 String s1对象的速度并不比 StringBuffer慢。其实在Java Compiler里，自动做了如下转换：</p>
-<pre><code class="java">Java Compiler直接把上述第一条语句编译为：
-String s2 = “This is only a”;
-String s3 = “ simple”;
-String s4 = “ test”;
-String s1 = s2 + s3 + s4;</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Java Compiler直接把上述第一条语句编译为：</span><br><span class="line">String s2 = “This is only a”;</span><br><span class="line">String s3 = “ simple”;</span><br><span class="line">String s4 = “ test”;</span><br><span class="line">String s1 = s2 + s3 + s4;</span><br></pre></td></tr></table></figure>
+
 <p><a href="https://www.jianshu.com/p/8c724dd28fa4" target="_blank" rel="noopener">传送门</a></p>
 <h2 id="ArrayList和LinkedList有什么区别"><a href="#ArrayList和LinkedList有什么区别" class="headerlink" title="ArrayList和LinkedList有什么区别"></a>ArrayList和LinkedList有什么区别</h2><p>ArrayList是实现了基于动态数组的结构，LinkedList则是基于实现链表的数据结构。</p>
 <p><strong>数据的更新和查找</strong><br>ArrayList的所有数据是在同一个地址上,而LinkedList的每个数据都拥有自己的地址.所以在对数据进行查找的时候，由于LinkedList的每个数据地址不一样，get数据的时候ArrayList的速度会优于LinkedList，而更新数据的时候，虽然都是通过循环循环到指定节点修改数据，但LinkedList的查询速度已经是慢的，而且对于LinkedList而言，更新数据时不像ArrayList只需要找到对应下标更新就好，LinkedList需要修改指针，速率不言而喻</p>
@@ -432,20 +414,11 @@ String s1 = s2 + s3 + s4;</code></pre>
 <blockquote>
 <p>hashcode() 方法，在object类中定义如下：</p>
 </blockquote>
-<pre><code class="java">public native int hashCode();</code></pre>
-<p>native说明是一个本地方法，它的实现是根据本地机器相关的。当然我们可以在自己写的类中覆盖hashcode()方法，比如String、Integer、Double。。。。等等这些类都是覆盖了hashcode()方法的<br>例如String类中:就是以31为权，每一位为字符的ASCII值进行运算，用自然溢出来等效取模。(为什么取31?主要是因为31是一个奇质数，所以31i=32i-i=(i&lt;&lt;5)-i，这种位移与减法结合的计算相比一般的运算快很多).</p>
-<pre><code class="java">public int hashCode() {
-    int h = hash;
-    if (h == 0 &amp;&amp; value.length &gt; 0) {
-        char val[] = value;
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span></span>;</span><br></pre></td></tr></table></figure>
 
-        for (int i = 0; i &lt; value.length; i++) {
-            h = 31 * h + val[i];
-        }
-        hash = h;
-    }
-    return h;
-}</code></pre>
+<p>native说明是一个本地方法，它的实现是根据本地机器相关的。当然我们可以在自己写的类中覆盖hashcode()方法，比如String、Integer、Double。。。。等等这些类都是覆盖了hashcode()方法的<br>例如String类中:就是以31为权，每一位为字符的ASCII值进行运算，用自然溢出来等效取模。(为什么取31?主要是因为31是一个奇质数，所以31i=32i-i=(i&lt;&lt;5)-i，这种位移与减法结合的计算相比一般的运算快很多).</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> h = hash;</span><br><span class="line">    <span class="hljs-keyword">if</span> (h == <span class="hljs-number">0</span> &amp;&amp; value.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">char</span> val[] = value;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; value.length; i++) &#123;</span><br><span class="line">            h = <span class="hljs-number">31</span> * h + val[i];</span><br><span class="line">        &#125;</span><br><span class="line">        hash = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"><a href="#HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发" class="headerlink" title="HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"></a>HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</h2><blockquote>
 <p>HashMap 底层是基于 数组 + 链表 组成的</p>
 </blockquote>
@@ -477,14 +450,14 @@ String s1 = s2 + s3 + s4;</code></pre>
 <h2 id="反射中，Class-forName和ClassLoader区别"><a href="#反射中，Class-forName和ClassLoader区别" class="headerlink" title="反射中，Class.forName和ClassLoader区别"></a>反射中，Class.forName和ClassLoader区别</h2><p>Java中Class.forName和classloader都可以用来对类进行加载。</p>
 <ul>
 <li><p>Class.forName(“className”);</p>
-<pre><code>  其实这种方法调运的是：Class.forName(className, true, ClassLoader.getCallerClassLoader())方法
-  参数一：className，需要加载的类的名称。
-  参数二：true，是否对class进行初始化（需要initialize）
-  参数三：classLoader，对应的类加载器</code></pre></li>
+<pre><code>其实这种方法调运的是：Class.forName(className, true, ClassLoader.getCallerClassLoader())方法
+参数一：className，需要加载的类的名称。
+参数二：true，是否对class进行初始化（需要initialize）
+参数三：classLoader，对应的类加载器</code></pre></li>
 <li><p>ClassLoader.laodClass(“className”);</p>
-<pre><code>  其实这种方法调运的是：ClassLoader.loadClass(name, false)方法
-  参数一：name,需要加载的类的名称
-  参数二：false，这个类加载以后是否需要去连接（不需要linking）</code></pre></li>
+<pre><code>其实这种方法调运的是：ClassLoader.loadClass(name, false)方法
+参数一：name,需要加载的类的名称
+参数二：false，这个类加载以后是否需要去连接（不需要linking）</code></pre></li>
 </ul>
 <p>可见Class.forName除了将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块。</p>
 <p>而classloader只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容，只有在newInstance才会去执行static块。</p>
@@ -571,42 +544,13 @@ String s1 = s2 + s3 + s4;</code></pre>
 <p>比如 X 左旋(右图转成左图)的结果，是让在 Y 左子树的黑色节点跑到 X 右子树去。</p>
 <p>我们以 Java 集合框架中的 TreeMap 中的代码来看下左右旋的具体操作方法：</p>
 <p><strong>指定节点 x 的左旋 (右图转成左图)：</strong></p>
-<pre><code class="java"> //这里 p 代表 x
-private void rotateLeft(Entry p) {
-    if (p != null) {
-        Entry r = p.right; // p 是上图中的 x，r 就是 y
-        p.right = r.left;       // 左旋后，x 的右子树变成了 y 的左子树 β 
-        if (r.left != null)         
-            r.left.parent = p;  //β 确认父亲为 x
-        r.parent = p.parent;        //y 取代 x 的第一步：认 x 的父亲为爹
-        if (p.parent == null)       //要是 x 没有父亲，那 y 就是最老的根节点
-            root = r;
-        else if (p.parent.left == p) //如果 x 有父亲并且是它父亲的左孩子，x 的父亲现在认 y 为左孩子，不要 x 了
-            p.parent.left = r;
-        else                            //如果 x 是父亲的右孩子，父亲就认 y 为右孩子，抛弃 x
-            p.parent.right = r;
-        r.left = p;     //y 逆袭成功，以前的爸爸 x 现在成了它的左孩子
-        p.parent = r;
-    }
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-comment">//这里 p 代表 x</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotateLeft</span><span class="hljs-params">(Entry p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Entry r = p.right; <span class="hljs-comment">// p 是上图中的 x，r 就是 y</span></span><br><span class="line">        p.right = r.left;       <span class="hljs-comment">// 左旋后，x 的右子树变成了 y 的左子树 β </span></span><br><span class="line">        <span class="hljs-keyword">if</span> (r.left != <span class="hljs-keyword">null</span>)         </span><br><span class="line">            r.left.parent = p;  <span class="hljs-comment">//β 确认父亲为 x</span></span><br><span class="line">        r.parent = p.parent;        <span class="hljs-comment">//y 取代 x 的第一步：认 x 的父亲为爹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (p.parent == <span class="hljs-keyword">null</span>)       <span class="hljs-comment">//要是 x 没有父亲，那 y 就是最老的根节点</span></span><br><span class="line">            root = r;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p.parent.left == p) <span class="hljs-comment">//如果 x 有父亲并且是它父亲的左孩子，x 的父亲现在认 y 为左孩子，不要 x 了</span></span><br><span class="line">            p.parent.left = r;</span><br><span class="line">        <span class="hljs-keyword">else</span>                            <span class="hljs-comment">//如果 x 是父亲的右孩子，父亲就认 y 为右孩子，抛弃 x</span></span><br><span class="line">            p.parent.right = r;</span><br><span class="line">        r.left = p;     <span class="hljs-comment">//y 逆袭成功，以前的爸爸 x 现在成了它的左孩子</span></span><br><span class="line">        p.parent = r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>可以看到，x 节点的左旋就是把 x 变成 右孩子 y 的左孩子，同时把 y 的左孩子送给 x 当右子树。</p>
 <p>简单点记就是：左旋把右子树里的一个节点（上图 β）移动到了左子树。</p>
 <p><strong>指定节点 y 的右旋（左图转成右图）：</strong></p>
-<pre><code class="java">private void rotateRight(Entry p) {
-    if (p != null) {
-        Entry l = p.left;
-        p.left = l.right;
-        if (l.right != null) l.right.parent = p;
-        l.parent = p.parent;
-        if (p.parent == null)
-            root = l;
-        else if (p.parent.right == p)
-            p.parent.right = l;
-        else p.parent.left = l;
-        l.right = p;
-        p.parent = l;
-    }
-}</code></pre>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotateRight</span><span class="hljs-params">(Entry p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Entry l = p.left;</span><br><span class="line">        p.left = l.right;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l.right != <span class="hljs-keyword">null</span>) l.right.parent = p;</span><br><span class="line">        l.parent = p.parent;</span><br><span class="line">        <span class="hljs-keyword">if</span> (p.parent == <span class="hljs-keyword">null</span>)</span><br><span class="line">            root = l;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p.parent.right == p)</span><br><span class="line">            p.parent.right = l;</span><br><span class="line">        <span class="hljs-keyword">else</span> p.parent.left = l;</span><br><span class="line">        l.right = p;</span><br><span class="line">        p.parent = l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>同理，y 节点的右旋就是把 y 变成 左孩子 x 的右孩子，同时把 x 的右孩子送给 x 当左子树。</p>
 <p>简单点记就是：右旋把左子树里的一个节点（上图 β）移动到了右子树。</p>
 <p>了解左旋、右旋的方法及意义后，就可以了解红黑树的主要操作：插入、删除。</p>
@@ -912,7 +856,7 @@ private void rotateLeft(Entry p) {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -924,7 +868,7 @@ private void rotateLeft(Entry p) {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -936,7 +880,7 @@ private void rotateLeft(Entry p) {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -1037,6 +981,14 @@ private void rotateLeft(Entry p) {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -1095,6 +1047,25 @@ private void rotateLeft(Entry p) {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1116,7 +1087,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1135,7 +1106,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1154,7 +1125,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1162,25 +1133,6 @@ private void rotateLeft(Entry p) {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1205,7 +1157,7 @@ private void rotateLeft(Entry p) {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1827,6 +1779,13 @@ private void rotateLeft(Entry p) {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -2099,6 +2058,25 @@ private void rotateLeft(Entry p) {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -2120,7 +2098,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -2139,7 +2117,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -2158,7 +2136,7 @@ private void rotateLeft(Entry p) {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -2166,25 +2144,6 @@ private void rotateLeft(Entry p) {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2209,7 +2168,7 @@ private void rotateLeft(Entry p) {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2831,6 +2790,13 @@ private void rotateLeft(Entry p) {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -10,19 +10,19 @@
 <title>weilibipei - Time</title>
 
 
-    <meta name="description" content="违例匹配“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。 在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示： //: Human.java // Catching Exception Hierarchies  class Annoyance extend">
+    <meta name="description" content="违例匹配“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。 在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示： 1234567891011121314151617//: Human.java// Catching Exception Hierarchies">
 <meta name="keywords" content="Java,编程思想">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weilibipei">
 <meta property="og:url" content="https://blog.hsutimes.com/2019/10/22/weilibipei/index.html">
 <meta property="og:site_name" content="Time">
-<meta property="og:description" content="违例匹配“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。 在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示： //: Human.java // Catching Exception Hierarchies  class Annoyance extend">
+<meta property="og:description" content="违例匹配“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。 在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示： 1234567891011121314151617//: Human.java// Catching Exception Hierarchies">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta property="og:updated_time" content="2019-10-22T13:17:32.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weilibipei">
-<meta name="twitter:description" content="违例匹配“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。 在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示： //: Human.java // Catching Exception Hierarchies  class Annoyance extend">
+<meta name="twitter:description" content="违例匹配“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。 在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示： 1234567891011121314151617//: Human.java// Catching Exception Hierarchies">
 <meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
@@ -176,36 +176,16 @@
         <div class="content">
             <h1 id="违例匹配"><a href="#违例匹配" class="headerlink" title="违例匹配"></a>违例匹配</h1><p>“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。</p>
 <p>在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示：</p>
-<pre><code>//: Human.java
-// Catching Exception Hierarchies
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//: Human.java</span><br><span class="line">// Catching Exception Hierarchies</span><br><span class="line"></span><br><span class="line">class Annoyance extends Exception &#123;&#125;</span><br><span class="line">class Sneeze extends Annoyance &#123;&#125;</span><br><span class="line"></span><br><span class="line">public class Human &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      throw new Sneeze();</span><br><span class="line">    &#125; catch(Sneeze s) &#123;</span><br><span class="line">      System.out.println(&quot;Caught Sneeze&quot;);</span><br><span class="line">    &#125; catch(Annoyance a) &#123;</span><br><span class="line">      System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; ///:~</span><br></pre></td></tr></table></figure>
 
-class Annoyance extends Exception {}
-class Sneeze extends Annoyance {}
+<p>Sneeze违例会被相符的第一个catch从句捕获。当然，这只是第一个。然而，假如我们删除第一个catch从句：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw new Sneeze();</span><br><span class="line">&#125; catch(Annoyance a) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-public class Human {
-  public static void main(String[] args) {
-    try {
-      throw new Sneeze();
-    } catch(Sneeze s) {
-      System.out.println(&quot;Caught Sneeze&quot;);
-    } catch(Annoyance a) {
-      System.out.println(&quot;Caught Annoyance&quot;);
-    }
-  }
-} ///:~</code></pre><p>Sneeze违例会被相符的第一个catch从句捕获。当然，这只是第一个。然而，假如我们删除第一个catch从句：</p>
-<pre><code>    try {
-      throw new Sneeze();
-    } catch(Annoyance a) {
-      System.out.println(&quot;Caught Annoyance&quot;);
-    }</code></pre><p>那么剩下的catch从句依然能够工作，因为它捕获的是Sneeze的基础类。换言之，catch(Annoyance e)能捕获一个Annoyance以及从它衍生的任何类。这一点非常重要，因为一旦我们决定为一个方法添加更多的违例，而且它们都是从相同的基础类继承的，那么客户程序员的代码就不需要更改。至少能够假定它们捕获的是基础类。</p>
+<p>那么剩下的catch从句依然能够工作，因为它捕获的是Sneeze的基础类。换言之，catch(Annoyance e)能捕获一个Annoyance以及从它衍生的任何类。这一点非常重要，因为一旦我们决定为一个方法添加更多的违例，而且它们都是从相同的基础类继承的，那么客户程序员的代码就不需要更改。至少能够假定它们捕获的是基础类。</p>
 <p>若将基础类捕获从句置于第一位，试图“屏蔽”衍生类违例，就象下面这样：</p>
-<pre><code>    try {
-      throw new Sneeze();
-    } catch(Annoyance a) {
-      System.out.println(&quot;Caught Annoyance&quot;);
-    } catch(Sneeze s) {
-      System.out.println(&quot;Caught Sneeze&quot;);
-    }</code></pre><p>则编译器会产生一条出错消息，因为它发现永远不可能抵达Sneeze捕获从句。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw new Sneeze();</span><br><span class="line">&#125; catch(Annoyance a) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">&#125; catch(Sneeze s) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Sneeze&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则编译器会产生一条出错消息，因为它发现永远不可能抵达Sneeze捕获从句。</p>
 <p>9.8.1 违例准则</p>
 <p>用违例做下面这些事情：</p>
 <p>(1) 解决问题并再次调用造成违例的方法。</p>
@@ -380,7 +360,7 @@ public class Human {
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -392,7 +372,7 @@ public class Human {
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -404,7 +384,7 @@ public class Human {
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -505,6 +485,14 @@ public class Human {
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -563,6 +551,25 @@ public class Human {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -584,7 +591,7 @@ public class Human {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -603,7 +610,7 @@ public class Human {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -622,7 +629,7 @@ public class Human {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -630,25 +637,6 @@ public class Human {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -673,7 +661,7 @@ public class Human {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1295,6 +1283,13 @@ public class Human {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1567,6 +1562,25 @@ public class Human {
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1588,7 +1602,7 @@ public class Human {
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1607,7 +1621,7 @@ public class Human {
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1626,7 +1640,7 @@ public class Human {
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1634,25 +1648,6 @@ public class Human {
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1677,7 +1672,7 @@ public class Human {
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2299,6 +2294,13 @@ public class Human {
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

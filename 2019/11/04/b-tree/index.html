@@ -199,31 +199,10 @@
 <li>不能使用任何在第一个范围条件右边的列作为条件；</li>
 </ul>
 <p>因此 B-Tree 的列顺序非常重要，上述使用规则都和列顺序有关。对于实际的应用，一般要根据具体的需求，创建不同列和不同列顺序的索引。假设有索引 Index(A,B,C):</p>
-<pre><code># 使用索引
-A&gt;5 AND A&lt;10 - 最左前缀匹配
-A=5 AND B&gt;6 - 最左前缀匹配
-A=5 AND B=6 AND C=7 - 全列匹配
-A=5 AND B IN (2,3) AND C&gt;5 - 最左前缀匹配，填坑
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 使用索引</span><br><span class="line">A&gt;5 AND A&lt;10 - 最左前缀匹配</span><br><span class="line">A=5 AND B&gt;6 - 最左前缀匹配</span><br><span class="line">A=5 AND B=6 AND C=7 - 全列匹配</span><br><span class="line">A=5 AND B IN (2,3) AND C&gt;5 - 最左前缀匹配，填坑</span><br><span class="line"></span><br><span class="line"># 不能使用索引</span><br><span class="line">B&gt;5 - 没有包含最左前缀</span><br><span class="line">B=6 AND C=7 - 没有包含最左前缀</span><br><span class="line"></span><br><span class="line"># 使用部分索引</span><br><span class="line">A&gt;5 AND B=2 - 使用索引 A 列</span><br><span class="line">A=5 AND B&gt;6 AND C=2 - 使用索引的 A 和 B 列</span><br></pre></td></tr></table></figure>
 
-# 不能使用索引
-B&gt;5 - 没有包含最左前缀
-B=6 AND C=7 - 没有包含最左前缀
-
-# 使用部分索引
-A&gt;5 AND B=2 - 使用索引 A 列
-A=5 AND B&gt;6 AND C=2 - 使用索引的 A 和 B 列</code></pre><p>复制代码使用索引对结果进行排序，需要索引的顺序和 ORDER BY 子句中的顺序一致，并且所有列的升降序一致(ASC/DESC)。如果查询连接了多个表，只有在 ORDER BY 的列引用的是第一个表才可以(需要按序 JOIN)。</p>
-<pre><code># 使用索引排序
-ORDER BY A - 最左前缀匹配
-WHERE A=5 ORDER BY B,C - 最左前缀匹配
-WHERE A=5 ORDER BY B DESC - 最左前缀匹配
-WHERE A&gt;5 ORDER BY A,B - 最左前缀匹配
-
-# 不能使用索引排序
-WHERE A=5 ORDER BY B DESC,C ASC - 升降序不一致
-WHERE A=5 ORDER BY B,D - D 不在索引中
-WHERE A=5 ORDER BY C - 没有包含最左前缀
-WHERE A&gt;5 ORDER BY B,C - 第一列是范围条件，无法使用 BC 排序
-WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序</code></pre>
+<p>复制代码使用索引对结果进行排序，需要索引的顺序和 ORDER BY 子句中的顺序一致，并且所有列的升降序一致(ASC/DESC)。如果查询连接了多个表，只有在 ORDER BY 的列引用的是第一个表才可以(需要按序 JOIN)。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 使用索引排序</span><br><span class="line">ORDER BY A - 最左前缀匹配</span><br><span class="line">WHERE A=5 ORDER BY B,C - 最左前缀匹配</span><br><span class="line">WHERE A=5 ORDER BY B DESC - 最左前缀匹配</span><br><span class="line">WHERE A&gt;5 ORDER BY A,B - 最左前缀匹配</span><br><span class="line"></span><br><span class="line"># 不能使用索引排序</span><br><span class="line">WHERE A=5 ORDER BY B DESC,C ASC - 升降序不一致</span><br><span class="line">WHERE A=5 ORDER BY B,D - D 不在索引中</span><br><span class="line">WHERE A=5 ORDER BY C - 没有包含最左前缀</span><br><span class="line">WHERE A&gt;5 ORDER BY B,C - 第一列是范围条件，无法使用 BC 排序</span><br><span class="line">WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -387,7 +366,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            92
+                            93
                         </p>
                     </a>
                 </div>
@@ -399,7 +378,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -411,7 +390,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            117
+                            118
                         </p>
                     </a>
                 </div>
@@ -512,6 +491,14 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/人工智能/">
             <span class="level-start">
                 <span class="level-item">人工智能</span>
@@ -570,6 +557,25 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -591,7 +597,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -610,7 +616,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -629,7 +635,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -637,25 +643,6 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -680,7 +667,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1302,6 +1289,13 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1574,6 +1568,25 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
         
         <article class="media">
             
+            <a href="/2019/11/14/晨间日记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
+                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
@@ -1595,7 +1608,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
             
             <a href="/2019/11/13/3sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3sum">
+                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
                 </p>
             </a>
             
@@ -1614,7 +1627,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
             
             <a href="/2019/11/12/minio/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="minio">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
                 </p>
             </a>
             
@@ -1633,7 +1646,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
             
             <a href="/2019/11/11/graph-convolution/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="graph-convolution">
+                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
                 </p>
             </a>
             
@@ -1641,25 +1654,6 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
                     <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/10/falling-stone/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="falling-stone">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T14:49:09.000Z">2019-11-10</time></div>
-                    <a href="/2019/11/10/falling-stone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">falling-stone</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1684,7 +1678,7 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -2306,6 +2300,13 @@ WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序<
                     <a class="tags has-addons" href="/tags/文章/">
                         <span class="tag">文章</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/晨间日记/">
+                        <span class="tag">晨间日记</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
