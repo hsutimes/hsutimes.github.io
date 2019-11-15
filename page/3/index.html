@@ -146,6 +146,122 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-07T14:42:34.000Z">2019-11-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1630 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/07/spring-boot/">spring-boot</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h1><p>Spring Boot makes it easy to create Spring-powered, production-grade applications and<br>services with absolute minimum fuss. It takes an opinionated view of the Spring platform<br>so that new and existing users can quickly get to the bits they need.</p>
+<p>You can use Spring Boot to create stand-alone Java applications that can be started using<br><code>java -jar</code> or more traditional WAR deployments. We also provide a command line tool<br>that runs spring scripts.</p>
+<p>Our primary goals are:</p>
+<ul>
+<li>Provide a radically faster and widely accessible getting started experience for all<br>Spring development</li>
+<li>Be opinionated out of the box, but get out of the way quickly as requirements start to<br>diverge from the defaults</li>
+<li>Provide a range of non-functional features that are common to large classes of projects<br>(e.g. embedded servers, security, metrics, health checks, externalized configuration)</li>
+<li>Absolutely no code generation and no requirement for XML configuration</li>
+</ul>
+<p>== Installation and Getting Started<br>The {docs}/html/[reference documentation] includes detailed<br>{docs}/html/getting-started.html#getting-started-installing-spring-boot[installation<br>instructions] as well as a comprehensive<br>{docs}/html/getting-started.html#getting-started-first-application[<code>getting started</code>]<br>guide.</p>
+<p>Here is a quick teaser of a complete Spring Boot application in Java:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> org.springframework.boot.*;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.*;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@RestController</span></span><br><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/"</span>)</span><br><span class="line">	<span class="hljs-function">String <span class="hljs-title">home</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-string">"Hello World!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(Example.class, args);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Getting-help"><a href="#Getting-help" class="headerlink" title="Getting help"></a>Getting help</h1><p>Having trouble with Spring Boot? We’d like to help!</p>
+<ul>
+<li>Check the {docs}/html/[reference documentation], especially the<br>{docs}/html/howto.html#howto[How-to’s] – they provide solutions to the most common<br>questions.</li>
+<li>Learn the Spring basics – Spring Boot builds on many other Spring projects, check<br>the <a href="https://spring.io[spring.io]" target="_blank" rel="noopener">https://spring.io[spring.io]</a> web-site for a wealth of reference documentation. If<br>you are just starting out with Spring, try one of the <a href="https://spring.io/guides[guides]" target="_blank" rel="noopener">https://spring.io/guides[guides]</a>.</li>
+<li>If you are upgrading, read the {github}/wiki[release notes] for upgrade instructions and<br>“new and noteworthy” features.</li>
+<li>Ask a question - we monitor <a href="https://stackoverflow.com[stackoverflow.com]" target="_blank" rel="noopener">https://stackoverflow.com[stackoverflow.com]</a> for questions<br>tagged with <a href="https://stackoverflow.com/tags/spring-boot[`spring-boot`]" target="_blank" rel="noopener">https://stackoverflow.com/tags/spring-boot[`spring-boot`]</a>. You can also chat<br>with the community on <a href="https://gitter.im/spring-projects/spring-boot[Gitter]" target="_blank" rel="noopener">https://gitter.im/spring-projects/spring-boot[Gitter]</a>.</li>
+<li>Report bugs with Spring Boot at {github}/issues[github.com/spring-projects/spring-boot/issues].</li>
+</ul>
+<h1 id="Reporting-Issues"><a href="#Reporting-Issues" class="headerlink" title="Reporting Issues"></a>Reporting Issues</h1><p>Spring Boot uses GitHub’s integrated issue tracking system to record bugs and feature<br>requests. If you want to raise an issue, please follow the recommendations below:</p>
+<ul>
+<li>Before you log a bug, please search the {github}/issues[issue tracker] to see if someone<br>has already reported the problem.</li>
+<li>If the issue doesn’t already exist, {github}/issues/new[create a new issue].</li>
+<li>Please provide as much information as possible with the issue report, we like to know<br>the version of Spring Boot that you are using, as well as your Operating System and<br>JVM version.</li>
+<li>If you need to paste code, or include a stack trace use Markdown +++<figure class="highlight plain hljs"><figcaption><span>escapes</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  before and after your text.</span><br><span class="line">* If possible try to create a test-case or project that replicates the problem and attach</span><br><span class="line">  it to the issue.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Building from Source</span><br><span class="line">You don&apos;t need to build from source to use Spring Boot (binaries in</span><br><span class="line">https://repo.spring.io[repo.spring.io]), but if you want to try out the latest and</span><br><span class="line">greatest, Spring Boot can be easily built with the</span><br><span class="line">https://github.com/takari/maven-wrapper[maven wrapper]. You also need JDK 1.8.</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">	$ ./mvnw clean install</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>If you want to build with the regular <code>mvn</code> command, you will need<br><a href="https://maven.apache.org/run-maven/index.html[Maven" target="_blank" rel="noopener">https://maven.apache.org/run-maven/index.html[Maven</a> v3.5.0 or above].</p>
+<p>NOTE: You may need to increase the amount of memory available to Maven by setting<br>a <code>MAVEN_OPTS</code> environment variable with the value <code>-Xmx512m</code>. Remember<br>to set the corresponding property in your IDE as well if you are building and running<br>tests there (e.g. in Eclipse go to <code>Preferences-&gt;Java-&gt;Installed JREs</code> and edit the<br>JRE definition so that all processes are launched with those arguments). This property<br>is automatically set if you use the maven wrapper.</p>
+<p><em>Also see link:CONTRIBUTING.adoc[CONTRIBUTING.adoc] if you wish to submit pull requests,<br>and in particular please fill out the<br><a href="https://support.springsource.com/spring_committer_signup[Contributor&#39;s" target="_blank" rel="noopener">https://support.springsource.com/spring_committer_signup[Contributor&#39;s</a> Agreement]<br>before your first change, however trivial.</em></p>
+<p>=== Building reference documentation</p>
+<p>First of all, make sure you have built the project:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install</span><br></pre></td></tr></table></figure>
+
+<p>The reference documentation requires the documentation of the Maven plugin to be<br>available so you need to build that first since it’s not generated by default.</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install -pl spring-boot-project/spring-boot-tools/spring-boot-maven-plugin -Pdefault,full</span><br></pre></td></tr></table></figure>
+
+<p>The documentation also includes auto-generated information about the starters. You might<br>have that in your local repository already (per the first step) but if you want to refresh<br>it:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean install -f spring-boot-project/spring-boot-starters</span><br></pre></td></tr></table></figure>
+
+<p>Once this is done, you can build the reference documentation with the command below:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./mvnw clean prepare-package -pl spring-boot-project/spring-boot-docs -Pdefault,full</span><br></pre></td></tr></table></figure>
+
+<p>TIP: The generated documentation is available from <code>spring-boot-project/spring-boot-docs/target/generated-docs/reference/html</code></p>
+<h1 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h1><p>There are a number of modules in Spring Boot, here is a quick overview:</p>
+<h2 id="spring-boot"><a href="#spring-boot" class="headerlink" title="spring-boot"></a>spring-boot</h2><p>The main library providing features that support the other parts of Spring Boot,<br>these include:</p>
+<ul>
+<li>The <code>SpringApplication</code> class, providing static convenience methods that make it easy<br>to write a stand-alone Spring Application. Its sole job is to create and refresh an<br>appropriate Spring <code>ApplicationContext</code></li>
+<li>Embedded web applications with a choice of container (Tomcat, Jetty or Undertow)</li>
+<li>First class externalized configuration support</li>
+<li>Convenience <code>ApplicationContext</code> initializers, including support for sensible logging<br>defaults</li>
+</ul>
+<h2 id="spring-boot-autoconfigure"><a href="#spring-boot-autoconfigure" class="headerlink" title="spring-boot-autoconfigure"></a>spring-boot-autoconfigure</h2><p>Spring Boot can configure large parts of common applications based on the content<br>of their classpath. A single <code>@EnableAutoConfiguration</code> annotation triggers<br>auto-configuration of the Spring context.</p>
+<p>Auto-configuration attempts to deduce which beans a user might need. For example, if<br><code>HSQLDB</code> is on the classpath, and the user has not configured any database connections,<br>then they probably want an in-memory database to be defined. Auto-configuration will<br>always back away as the user starts to define their own beans.</p>
+<h2 id="spring-boot-starters"><a href="#spring-boot-starters" class="headerlink" title="spring-boot-starters"></a>spring-boot-starters</h2><p>Starters are a set of convenient dependency descriptors that you can include in<br>your application. You get a one-stop-shop for all the Spring and related technology<br>that you need without having to hunt through sample code and copy paste loads of<br>dependency descriptors. For example, if you want to get started using Spring and JPA for<br>database access just include the <code>spring-boot-starter-data-jpa</code> dependency in your<br>project, and you are good to go.</p>
+<h2 id="spring-boot-cli"><a href="#spring-boot-cli" class="headerlink" title="spring-boot-cli"></a>spring-boot-cli</h2><p>The Spring command line application compiles and runs Groovy source, making it super<br>easy to write the absolute minimum of code to get an application running. Spring CLI<br>can also watch files, automatically recompiling and restarting when they change.</p>
+<h2 id="spring-boot-actuator"><a href="#spring-boot-actuator" class="headerlink" title="spring-boot-actuator"></a>spring-boot-actuator</h2><p>Actuator endpoints let you monitor and interact with your application.<br>Spring Boot Actuator provides the infrastructure required for actuator endpoints. It contains<br>annotation support for actuator endpoints. Out of the box, this module provides a number of endpoints<br>including the <code>HealthEndpoint</code>, <code>EnvironmentEndpoint</code>, <code>BeansEndpoint</code> and many more.</p>
+<h2 id="spring-boot-actuator-autoconfigure"><a href="#spring-boot-actuator-autoconfigure" class="headerlink" title="spring-boot-actuator-autoconfigure"></a>spring-boot-actuator-autoconfigure</h2><p>This provides auto-configuration for actuator endpoints based on the content of the classpath and a set of properties.<br>For instance, if Micrometer is on the classpath, it will auto-configure the <code>MetricsEndpoint</code>.<br>It contains configuration to expose endpoints over HTTP or JMX.<br>Just like Spring Boot AutoConfigure, this will back away as the user starts to define their own beans.</p>
+<h2 id="spring-boot-test"><a href="#spring-boot-test" class="headerlink" title="spring-boot-test"></a>spring-boot-test</h2><p>This module contains core items and annotations that can be helpful when testing your application.</p>
+<h2 id="spring-boot-test-autoconfigure"><a href="#spring-boot-test-autoconfigure" class="headerlink" title="spring-boot-test-autoconfigure"></a>spring-boot-test-autoconfigure</h2><p>Like other Spring Boot auto-configuration modules, spring-boot-test-autoconfigure, provides auto-configuration<br>for tests based on the classpath. It includes a number of annotations that can be used to automatically<br>configure a slice of your application that needs to be tested.</p>
+<h2 id="spring-boot-loader"><a href="#spring-boot-loader" class="headerlink" title="spring-boot-loader"></a>spring-boot-loader</h2><p>Spring Boot Loader provides the secret sauce that allows you to build a single jar file<br>that can be launched using <code>java -jar</code>. Generally you will not need to use<br><code>spring-boot-loader</code> directly, but instead work with the<br>link:spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin[Gradle] or<br>link:spring-boot-project/spring-boot-tools/spring-boot-maven-plugin[Maven] plugin.</p>
+<h2 id="spring-boot-devtools"><a href="#spring-boot-devtools" class="headerlink" title="spring-boot-devtools"></a>spring-boot-devtools</h2><p>The spring-boot-devtools module provides additional development-time features such as automatic restarts,<br>for a smoother application development experience. Developer tools are automatically disabled when<br>running a fully packaged application.</p>
+<h1 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h1><p>Groovy samples for use with the command line application are available in<br>link:spring-boot-project/spring-boot-cli/samples[spring-boot-cli/samples]. To run the CLI samples type<br><code>spring run &lt;sample&gt;.groovy</code> from samples directory.</p>
+<h1 id="Guides"><a href="#Guides" class="headerlink" title="Guides"></a>Guides</h1><p>The <a href="https://spring.io/[spring.io]" target="_blank" rel="noopener">https://spring.io/[spring.io]</a> site contains several guides that show how to use Spring<br>Boot step-by-step:</p>
+<ul>
+<li><a href="https://spring.io/guides/gs/spring-boot/[Building" target="_blank" rel="noopener">https://spring.io/guides/gs/spring-boot/[Building</a> an Application with Spring Boot] is a<br>very basic guide that shows you how to create a simple application, run it and add some<br>management services.</li>
+<li><a href="https://spring.io/guides/gs/actuator-service/[Building" target="_blank" rel="noopener">https://spring.io/guides/gs/actuator-service/[Building</a> a RESTful Web Service with Spring<br>Boot Actuator] is a guide to creating a REST web service and also shows how the server<br>can be configured.</li>
+<li><a href="https://spring.io/guides/gs/convert-jar-to-war/[Converting" target="_blank" rel="noopener">https://spring.io/guides/gs/convert-jar-to-war/[Converting</a> a Spring Boot JAR Application<br>to a WAR] shows you how to run applications in a web server as a WAR file.</li>
+</ul>
+<h1 id="License"><a href="#License" class="headerlink" title="License"></a>License</h1><p>Spring Boot is Open Source software released under the<br><a href="https://www.apache.org/licenses/LICENSE-2.0.html[Apache" target="_blank" rel="noopener">https://www.apache.org/licenses/LICENSE-2.0.html[Apache</a> 2.0 license].</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-06T13:55:01.000Z">2019-11-06</time>
                 
                 <div class="level-item">
@@ -479,109 +595,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-03T15:38:54.000Z">2019-11-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    14 分钟 读完 (大约 2032 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/03/rsa-info/">rsa-info</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="RSA算法详解"><a href="#RSA算法详解" class="headerlink" title="RSA算法详解"></a>RSA算法详解</h1><p><img src="/images/2019/11/03/3125f240-fe50-11e9-b8c9-2b2b905fb2db.png" alt="image.png"></p>
-<p>前言<br>总括： 本文详细讲述了RSA算法详解，包括内部使用数学原理以及产生的过程。</p>
-<p>原文博客地址：RSA算法详解</p>
-<p>知乎专栏&amp;&amp;简书专题：前端进击者（知乎）&amp;&amp;前端进击者（简书）</p>
-<p>博主博客地址：Damonare的个人博客</p>
-<p>相濡以沫。到底需要爱淡如水。</p>
-<p>正文<br>之前写过一篇文章SSL协议之数据加密过程，里面详细讲述了数据加密的过程以及需要的算法。SSL协议很巧妙的利用对称加密和非对称加密两种算法来对数据进行加密。这篇文章主要是针对一种最常见的非对称加密算法——RSA算法进行讲解。其实也就是对私钥和公钥产生的一种方式进行描述。首先先来了解下这个算法的历史：</p>
-<h2 id="RSA算法的历史"><a href="#RSA算法的历史" class="headerlink" title="RSA算法的历史"></a>RSA算法的历史</h2><p>RSA是1977年由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的。当时他们三人都在麻省理工学院工作。RSA就是他们三人姓氏开头字母拼在一起组成的。</p>
-<p>但实际上，在1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯（Clifford Cocks）在一个内部文件中提出了一个相同的算法，但他的发现被列入机密，一直到1997年才被发表。</p>
-<p>所以谁是RSA算法的发明人呢？不好说，就好像贝尔并不是第一个发明电话的人但大家都记住的是贝尔一样，这个地方我们作为旁观者倒不用较真，重要的是这个算法的内容：</p>
-<h2 id="RSA算法的过程"><a href="#RSA算法的过程" class="headerlink" title="RSA算法的过程"></a>RSA算法的过程</h2><p>RSA算法用到的数学知识特别多，所以在中间介绍这个算法生成私钥和公钥的过程中会穿插一些数学知识。生成步骤如下：</p>
-<ol>
-<li>寻找两个不相同的质数<br>随意选择两个大的质数p和q，p不等于q，计算N=p*q;</li>
-</ol>
-<p>什么是质数?我想可能会有一部分人已经忘记了，定义如下：</p>
-<p>除了1和该数自身外，无法被其他自然数整除的数（也可定义为只有1该数本身两个正因数]的数）。</p>
-<p>比如2，3，5，7这些都是质数，9就不是了，因为3*3=9了</p>
-<ol start="2">
-<li>根据欧拉函数获取r<br>r = φ(N) = φ(p)φ(q) = (p-1)(q-1)。</li>
-</ol>
-<p>这里的数学概念就是什么是欧拉函数了，什么是欧拉函数呢？</p>
-<p>欧拉函数的定义：</p>
-<p>欧拉函数 φ(n)是小于或等于n的正整数中与n互质的数的数目。</p>
-<p>互质的定义：</p>
-<p>如果两个或两个以上的整数的最大公约数是 1，则称它们为互质</p>
-<p>例如：φ(8) = 4，因为1,3,5,7均和8互质。</p>
-<p>推导欧拉函数:</p>
-<p>（1）如果n = 1, φ(1) = 1；(小于等于1的正整数中唯一和1互质的数就是1本身)；</p>
-<p>（2）如果n为质数，φ(n) = n - 1；因为质数和每一个比它小的数字都互质。比如5，比它小的正整数1,2,3,4都和他互质；</p>
-<p>(3) 如果n是a的k次幂，则 φ(n) = φ(a^k) = a^k - a^(k-1) = (a-1)a^(k-1)；</p>
-<p>(4) 若m,n互质，则φ(mn) = φ(m)φ(n)</p>
-<p><strong>证明：</strong>设A, B, C是跟m, n, mn互质的数的集，据中国剩余定理(经常看数学典故的童鞋应该了解，剩余定理又叫韩信点兵，也叫孙子定理)，A*B和C可建立双射一一对应)的关系。（或者也可以从初等代数角度给出欧拉函数积性的简单证明） 因此的φ(n)值使用算术基本定理便知。（来自维基百科）</p>
-<ol start="3">
-<li>选择一个小于r并与r互质的整数e<br>选择一个小于r并与r互质的整数e，求得e关于r的模反元素，命名为d（<em>ed = 1(mod r)</em>模反元素存在，当且仅当e与r互质），e我们通常取65537。</li>
-</ol>
-<p>模反元素：</p>
-<p>如果两个正整数a和n互质，那么一定可以找到整数b，使得 ab-1 被n整除，或者说ab被n除的余数是1。</p>
-<p>比如3和5互质，3关于5的模反元素就可能是2，因为3<em>2-1=5可以被5整除。所以很明显模反元素不止一个，2加减5的整数倍都是3关于5的模反元素</em>{…-3, 2,7,12…}* 放在公式里就是3*2 = 1 (mod 5)</p>
-<p>上面所提到的欧拉函数用处实际上在于欧拉定理：</p>
-<p>欧拉定理：</p>
-<p>如果两个正整数a和n互质，则n的欧拉函数 φ(n) 可以让下面的等式成立：</p>
-<p>a^φ(n) = 1(mod n)</p>
-<p>由此可得：a的φ(n - 1)次方肯定是a关于n的模反元素。</p>
-<p>欧拉定理就可以用来证明模反元素必然存在。</p>
-<p>由模反元素的定义和欧拉定理我们知道，a的φ(n)次方减去1，可以被n整除。比如，3和5互质，而5的欧拉函数φ(5)等于4，所以3的4次方<em>(81)减去1，可以被5</em>整除（80/5=16）。</p>
-<p>小费马定理：</p>
-<p>假设正整数a与质数p互质，因为质数p的φ(p)等于p-1，则欧拉定理可以写成</p>
-<p>a^(p-1) = 1 (mod p)</p>
-<p>这其实是欧拉定理的一个特例。</p>
-<ol start="4">
-<li>销毁p和q<br>此时我们的<em>(N , e)是公钥，(N, d)为私钥，爱丽丝会把公钥(N, e)传给鲍勃，然后将(N, d)</em>自己藏起来。一对公钥和私钥就产生了，然后具体的使用方法呢？请看：SSL协议之数据加密过程详解</li>
-</ol>
-<h2 id="RSA算法的安全性"><a href="#RSA算法的安全性" class="headerlink" title="RSA算法的安全性"></a>RSA算法的安全性</h2><p>我们知道像RSA这种非对称加密算法很安全，那么到底为啥子安全呢？ 我们来看看上面这几个过程产生的几个数字：</p>
-<p>p,q：我们随机挑选的两个大质数；<br>N：是由两个大质数p和q相乘得到的。N = p * q；<br>r：由欧拉函数得到的N的值，r = φ(N) = φ(p)φ(q) = (p-1)(q-1)。<br>e：随机选择和和r互质的数字，实际中通常选择65537；<br>d： d是以欧拉定理为基础求得的e关于r的模反元素，ed = 1 (mod r)；<br>N和e我们都会公开使用，最为重要的就是私钥中的d，d一旦泄露，加密也就失去了意义。那么得到d的过程是如何的呢？如下:</p>
-<p>比如知道e和r，因为d是e关于r的模反元素；r是φ(N) 的值<br>而φ(N)=(p-1)(q-1)，所以知道p和q我们就能得到d;<br>N = pq，从公开的数据中我们只知道N和e，所以问题的关键就是对N做因式分解能不能得出p和q<br>所以得出了在上篇博客说到的结论，非对称加密的原理：</p>
-<p>将a和b相乘得出乘积c很容易，但要是想要通过乘积c推导出a和b极难。即对一个大数进行因式分解极难</p>
-<p>目前公开破译的位数是768位，实际使用一般是1024位或是2048位，所以理论上特别的安全。</p>
-<p>后记<br>RSA算法的核心就是欧拉定理，根据它我们才能得到私钥，从而保证整个通信的安全。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -654,7 +667,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            93
+                            94
                         </p>
                     </a>
                 </div>
@@ -792,7 +805,7 @@
                 <span class="level-item">人工智能</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/文章/">
@@ -842,6 +855,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/15/peak-labs/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/15/d0f04a90-079d-11ea-9bed-614a3ec3e924.png" alt="Peak Labs">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-15T11:43:37.000Z">2019-11-15</time></div>
+                    <a href="/2019/11/15/peak-labs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Peak Labs</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -919,25 +951,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/11/graph-convolution/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
-                    <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -955,7 +968,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">18</span>
                 </span>
             </a>
         </li>
@@ -1548,7 +1561,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/搜索引擎/">
                         <span class="tag">搜索引擎</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1856,6 +1869,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/15/peak-labs/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/15/d0f04a90-079d-11ea-9bed-614a3ec3e924.png" alt="Peak Labs">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-15T11:43:37.000Z">2019-11-15</time></div>
+                    <a href="/2019/11/15/peak-labs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Peak Labs</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/14/晨间日记/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
@@ -1930,25 +1962,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/11/graph-convolution/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/11/5cf319f0-0497-11ea-80dc-3ba86d67aae3.png" alt="graph-convolution">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-11T15:22:46.000Z">2019-11-11</time></div>
-                    <a href="/2019/11/11/graph-convolution/" class="title has-link-black-ter is-size-6 has-text-weight-normal">graph-convolution</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1966,7 +1979,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">18</span>
                 </span>
             </a>
         </li>
@@ -2559,7 +2572,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/搜索引擎/">
                         <span class="tag">搜索引擎</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
