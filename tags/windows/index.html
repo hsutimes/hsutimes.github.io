@@ -7,14 +7,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: Windows - Time</title>
+<title>标签: windows - Time</title>
 
 
     <meta name="description" content="blog">
 <meta name="keywords" content="hsutimes">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Time">
-<meta property="og:url" content="https://blog.hsutimes.com/tags/Windows/index.html">
+<meta property="og:url" content="https://blog.hsutimes.com/tags/windows/index.html">
 <meta property="og:site_name" content="Time">
 <meta property="og:description" content="blog">
 <meta property="og:locale" content="zh-CN">
@@ -143,7 +143,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Windows</a></li>
+            <li class="is-active"><a href="#" aria-current="page">windows</a></li>
         </ul>
         </nav>
     </div>
@@ -156,7 +156,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-09T11:10:55.000Z">2019-11-09</time>
+                <time class="level-item has-text-grey" datetime="2019-10-25T08:34:54.000Z">2019-10-25</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -166,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 579 个字)
+                    2 分钟 读完 (大约 354 个字)
                 </span>
                 
                 
@@ -175,24 +175,27 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/11/09/count-file-lines/">count-file-lines</a>
+                <a class="has-link-black-ter" href="/2019/10/25/windows-edb-mv/">windows.edb_mv</a>
             
         </h1>
         <div class="content">
-            <h1 id="命令行统计文件行数"><a href="#命令行统计文件行数" class="headerlink" title="命令行统计文件行数"></a>命令行统计文件行数</h1><h2 id="Linux-统计代码行数"><a href="#Linux-统计代码行数" class="headerlink" title="Linux 统计代码行数"></a>Linux 统计代码行数</h2><p>在 Linux 下这是一件很简单的事情：</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name "*.py" | wc -l</span><br><span class="line"></span><br><span class="line">find ./ -name "*.py" |xargs cat|grep -v ^$|wc -l</span><br></pre></td></tr></table></figure>
+            <h1 id="【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘"><a href="#【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘" class="headerlink" title="【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘"></a>【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘</h1><blockquote>
+<p>先介绍Windows.edb是什么东东，很奇怪的后缀名哦。其实它就是Windows10为加快搜索速度而建立的索引文件，所以还是很有用的，但是看看它的体积，你就会觉得也太占系统盘的空间了。Windows.edb文件所在的路径为：</p>
+</blockquote>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\ProgramData\Microsoft\Search\Data\Applications\Windows</span><br></pre></td></tr></table></figure>
 
-<p>这行语句就可以很简单地统计出当前目录下所有py后缀文件的行数了。</p>
+<p><img src="/images/2019/10/25/30949570-f702-11e9-84fc-111e5c1675c4.png" alt="image.png"></p>
+<blockquote>
+<p>虽然我们可以删除该文件，但正像前面说过的，它还是比较有用的（并且删除后，再次使用搜索功能后，它还会生成的），所以我们最好保留着它，但可以移动一下Windows.edb文件的位置，把它移动到非系统盘。方法如下：</p>
+</blockquote>
+<ol>
+<li>在Win10任务栏的Cortana搜索框中输入“索引选项”，点击搜索结果中的“索引选项（控制面板）”打开“索引选项”窗口。</li>
+<li>点击窗口底部的“高级”按钮，打开“高级选项”窗口。</li>
+<li>在“索引位置”区域点击右下角的“选择新位置”按钮，为Windows.edb选择非系统盘的路径即可。最后点击“确定”，重启电脑后生效。</li>
+</ol>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/09/count-file-lines/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
@@ -250,7 +253,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            94
+                            95
                         </p>
                     </a>
                 </div>
@@ -388,7 +391,7 @@
                 <span class="level-item">人工智能</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/文章/">
@@ -438,6 +441,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/15/PaddlePaddle/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/15/4f36ef60-07a5-11ea-9869-b1d580c824bf.png" alt="PaddlePaddle Models">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-15T12:42:23.000Z">2019-11-15</time></div>
+                    <a href="/2019/11/15/PaddlePaddle/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PaddlePaddle Models</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -515,25 +537,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/12/minio/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T14:22:14.000Z">2019-11-12</time></div>
-                    <a href="/2019/11/12/minio/" class="title has-link-black-ter is-size-6 has-text-weight-normal">minio</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -551,7 +554,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">19</span>
                 </span>
             </a>
         </li>
@@ -738,7 +741,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/NLP/">
                         <span class="tag">NLP</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -955,7 +958,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1193,7 +1196,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/机器学习/">
                         <span class="tag">机器学习</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1277,7 +1280,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/算法/">
                         <span class="tag">算法</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
@@ -1452,6 +1455,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/15/PaddlePaddle/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/15/4f36ef60-07a5-11ea-9869-b1d580c824bf.png" alt="PaddlePaddle Models">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-15T12:42:23.000Z">2019-11-15</time></div>
+                    <a href="/2019/11/15/PaddlePaddle/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PaddlePaddle Models</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/15/peak-labs/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/15/d0f04a90-079d-11ea-9bed-614a3ec3e924.png" alt="Peak Labs">
@@ -1526,25 +1548,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/12/minio/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://raw.githubusercontent.com/minio/minio/master/.github/logo.svg?sanitize=true" alt="minio">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T14:22:14.000Z">2019-11-12</time></div>
-                    <a href="/2019/11/12/minio/" class="title has-link-black-ter is-size-6 has-text-weight-normal">minio</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1562,7 +1565,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">19</span>
                 </span>
             </a>
         </li>
@@ -1749,7 +1752,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/NLP/">
                         <span class="tag">NLP</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1966,7 +1969,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -2204,7 +2207,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/机器学习/">
                         <span class="tag">机器学习</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -2288,7 +2291,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/算法/">
                         <span class="tag">算法</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
