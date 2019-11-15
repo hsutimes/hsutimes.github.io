@@ -166,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1031 个字)
+                    7 分钟 读完 (大约 1032 个字)
                 </span>
                 
                 
@@ -181,111 +181,16 @@
         <div class="content">
             <h1 id="后缀表达式"><a href="#后缀表达式" class="headerlink" title="后缀表达式"></a>后缀表达式</h1><p>后缀表达式，又称逆波兰式，指的是不包含括号，运算符放在两个运算对象的后面，所有的计算按运算符出现的顺序，严格从左向右进行（不再考虑运算符的优先规则）。</p>
 <p>后缀表达式计算：<br>后缀表达式计算与前缀表达式类似，只是顺序是从左至右，具体过程如下：<br>从左至右扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算（次顶元素 op 栈顶元素），并将结果入栈；重复上述过程直到表达式最右端，最后运算得出的值即为表达式的结果</p>
-<p><img src="/images/2019/11/05/e7816c50-ffd0-11e9-81ea-938463e9957e.png" alt="image.png"></p>
-<p>例如：后缀表达式为“2 3 + 4 × 5 -”计算过程如下：<br>  （1）从左至右扫描，将 2 和 3 压入堆栈；<br>  （2）遇到 + 运算符，因此弹出 3 和 2（ 3 为栈顶元素，2 为次顶元素，注意与前缀表达式做比较），计算出 3+2 的值，得 5，再将 5 入栈；<br>  （3）将 4 入栈；<br>  （4）接下来是 × 运算符，因此弹出 4 和 5，计算出 4 × 5 = 20，将 20 入栈；<br>  （5）将 5 入栈；<br>  （6）最后是-运算符，计算出 20-5 的值，即 15，由此得出最终结果。</p>
-<p>中缀表达式转后缀表达式：<br>与转换为前缀表达式相似，步骤如下：<br>  （1）初始化两个栈：运算符栈s1和储存中间结果的栈s2；<br>  （2）从左至右扫描中缀表达式；<br>  （3）遇到操作数时，将其压s2；<br>  （4）遇到运算符时，比较其与 s1 栈顶运算符的优先级：<br>    a：如果 s1 为空，或栈顶运算符为左括号“(”，则直接将此运算符入栈；<br>    b：否则，若优先级比栈顶运算符的高，也将运算符压入 s1（注意转换为前缀表达式时是优先级较高或相同，而这里则不包括相同的情况）;<br>    c：否则，将 s1 栈顶的运算符弹出并压入到 s2 中，再次转到（4）-（1）与s1中新的栈顶运算符相比较；<br>  （5）遇到括号时：<br>    a：如果是左括号“(”，则直接压入 s1；<br>    b：如果是右括号“)”，则依次弹出 s1 栈顶的运算符，并压入 s2 ，直到遇到左括号为止，此时将这一对括号丢弃；<br>  （6）重复步骤（2）至（5），直到表达式的最右边；<br>  （7）将 s1 中剩余的运算符依次弹出并压入 s2；<br>  （8）依次弹出 s2 中的元素并输出，结果的逆序即为中缀表达式对应的后缀表达式（转换为前缀表达式时不用逆序）</p>
-<p>例如，将中缀表达式“1+((2+3)×4)-5”转换为后缀表达式的过程如下：</p>
-<table>
-<thead style="font-size: inherit;color: inherit;line-height: inherit;">
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="119">扫描到的元素</th>
-<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="142">s2(栈底-&gt;栈顶)</th>
-<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="117">s1 (栈底-&gt;栈顶)</th>
-<th style="color: inherit;line-height: inherit;font-size: 1em;border-top-width: 1px;border-color: rgb(204, 204, 204);padding: 0.5em 1em;text-align: left;background-color: rgb(240, 240, 240);" width="194">说明</th>
-</tr>
-</thead>
-<tbody style="font-size: inherit;color: inherit;line-height: inherit;border-width: 0px;border-style: initial;border-color: initial;">
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="137">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="110">空</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字，直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">+</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="138">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="111">+</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1为空，运算符直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">(</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="139">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="112">+ (</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">左括号，直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">(</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="140">1</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="113">+ ( (</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">同上</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">2</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="114">+ ( (</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">+</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ( +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1栈顶为左括号，运算符直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">3</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ( +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">)</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ (</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">右括号，弹出运算符直至遇到左括号</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">×</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ×</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1栈顶为左括号，运算符直接入栈</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">4</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+ ( ×</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">)</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 ×</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">+</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">右括号，弹出运算符直至遇到左括号</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">–</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × +</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">–</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">-与+优先级相同，因此弹出+，再压入-</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: white;">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">5</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × + 5</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">–</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">数字</td>
-</tr>
-<tr style="font-size: inherit;color: inherit;line-height: inherit;border-width: 1px 0px 0px;border-right-style: initial;border-bottom-style: initial;border-left-style: initial;border-right-color: initial;border-bottom-color: initial;border-left-color: initial;border-top-style: solid;border-top-color: rgb(204, 204, 204);background-color: rgb(248, 248, 248);">
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="88">到达最右端</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="141">1 2 3 + 4 × + 5 –</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="115">空</td>
-<td style="color: inherit;line-height: inherit;font-size: 1em;border-color: rgb(204, 204, 204);padding: 0.5em 1em;" width="194">s1中剩余的运算符</td>
-</tr>
-</tbody>
-</table>
-
-<p>得到的最终结果为：“ 1 2 3 + 4 × + 5 – ”</p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/11/05/Suffix-expression/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
