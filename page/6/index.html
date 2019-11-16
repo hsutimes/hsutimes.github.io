@@ -146,6 +146,58 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-27T14:11:36.000Z">2019-10-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 295 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/27/copying-codes-from-stack-overflow/">copying-codes-from-stack-overflow</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="从-Stack-Overflow-复制代码导致-GitHub-项目漏洞多"><a href="#从-Stack-Overflow-复制代码导致-GitHub-项目漏洞多" class="headerlink" title="从 Stack Overflow 复制代码导致 GitHub 项目漏洞多"></a>从 Stack Overflow 复制代码导致 GitHub 项目漏洞多</h1><p>现在从网上找代码直接复制到项目中的做法成为程序员的一种常规操作，Stack Overflow 更是其中主要的代码来源。但是最近有研究显示，从 Stack Overflow 上复制代码凑到项目中会使出现漏洞的概率大大增加。</p>
+<p><img src="/images/2019/10/27/a9e99700-f8c3-11e9-ba7d-05accc771851.png" alt="image.png"></p>
+<p>研究人员分析了 1325 个 Stack Overflow 帖子，并获取了其中 72 000 多段 C++ 代码，发现了其中包含有 29 种类型的 69 个漏洞。</p>
+<p>这些漏洞出现在 2589 个 GitHub 仓库中，研究人员通知了受影响的 GitHub 项目作者，但只有少数人选择修复已知这些危险情况。</p>
+<p>研究人员展示了含有漏洞的代码主要是以什么方式从 Stack Overflow 进入到 GitHub 中的，包括最经常发现的输入验证不正确、异常或异常情况的不正确检查与错误编码，比如复制代码不完整。</p>
+<p>详情查看：</p>
+<p><a href="https://fossbytes.com/copying-codes-from-stack-overflow-leads-to-vulnerable-github-project" target="_blank" rel="noopener">https://fossbytes.com/copying-codes-from-stack-overflow-leads-to-vulnerable-github-project</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-26T06:33:24.000Z">2019-10-26</time>
                 
                 <div class="level-item">
@@ -528,73 +580,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-22T13:17:32.000Z">2019-10-22</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 688 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/22/weilibipei/">weilibipei</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="违例匹配"><a href="#违例匹配" class="headerlink" title="违例匹配"></a>违例匹配</h1><p>“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。</p>
-<p>在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//: Human.java</span><br><span class="line">// Catching Exception Hierarchies</span><br><span class="line"></span><br><span class="line">class Annoyance extends Exception &#123;&#125;</span><br><span class="line">class Sneeze extends Annoyance &#123;&#125;</span><br><span class="line"></span><br><span class="line">public class Human &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      throw new Sneeze();</span><br><span class="line">    &#125; catch(Sneeze s) &#123;</span><br><span class="line">      System.out.println(&quot;Caught Sneeze&quot;);</span><br><span class="line">    &#125; catch(Annoyance a) &#123;</span><br><span class="line">      System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; ///:~</span><br></pre></td></tr></table></figure>
-
-<p>Sneeze违例会被相符的第一个catch从句捕获。当然，这只是第一个。然而，假如我们删除第一个catch从句：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw new Sneeze();</span><br><span class="line">&#125; catch(Annoyance a) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>那么剩下的catch从句依然能够工作，因为它捕获的是Sneeze的基础类。换言之，catch(Annoyance e)能捕获一个Annoyance以及从它衍生的任何类。这一点非常重要，因为一旦我们决定为一个方法添加更多的违例，而且它们都是从相同的基础类继承的，那么客户程序员的代码就不需要更改。至少能够假定它们捕获的是基础类。</p>
-<p>若将基础类捕获从句置于第一位，试图“屏蔽”衍生类违例，就象下面这样：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw new Sneeze();</span><br><span class="line">&#125; catch(Annoyance a) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">&#125; catch(Sneeze s) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Sneeze&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>则编译器会产生一条出错消息，因为它发现永远不可能抵达Sneeze捕获从句。</p>
-<p>9.8.1 违例准则</p>
-<p>用违例做下面这些事情：</p>
-<p>(1) 解决问题并再次调用造成违例的方法。</p>
-<p>(2) 平息事态的发展，并在不重新尝试方法的前提下继续。</p>
-<p>(3) 计算另一些结果，而不是希望方法产生的结果。</p>
-<p>(4) 在当前环境中尽可能解决问题，以及将相同的违例重新“掷”出一个更高级的环境。</p>
-<p>(5) 在当前环境中尽可能解决问题，以及将不同的违例重新“掷”出一个更高级的环境。</p>
-<p>(6) 中止程序执行。</p>
-<p>(7) 简化编码。若违例方案使事情变得更加复杂，那就会令人非常烦恼，不如不用。</p>
-<p>(8) 使自己的库和程序变得更加安全。这既是一种“短期投资”（便于调试），也是一种“长期投资”（改善应用程序的健壮性）</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -619,7 +604,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
             
         </ul>
     </nav>
@@ -669,7 +654,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            95
+                            96
                         </p>
                     </a>
                 </div>
@@ -693,7 +678,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            118
+                            119
                         </p>
                     </a>
                 </div>
@@ -815,7 +800,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">74</span>
+                <span class="level-item tag">75</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -857,6 +842,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-16T05:05:50.000Z">2019-11-16</time></div>
+                    <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -934,25 +938,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/13/3sum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-13T13:12:37.000Z">2019-11-13</time></div>
-                    <a href="/2019/11/13/3sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3sum</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -970,7 +955,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1528,6 +1513,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/工具/">
                         <span class="tag">工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/思考/">
+                        <span class="tag">思考</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1871,6 +1863,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-16T05:05:50.000Z">2019-11-16</time></div>
+                    <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/15/PaddlePaddle/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/15/4f36ef60-07a5-11ea-9869-b1d580c824bf.png" alt="PaddlePaddle Models">
@@ -1945,25 +1956,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/13/3sum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/13/5cb32440-0617-11ea-bd19-b51ff81e6a84.png" alt="3sum">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-13T13:12:37.000Z">2019-11-13</time></div>
-                    <a href="/2019/11/13/3sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3sum</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1981,7 +1973,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -2539,6 +2531,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/工具/">
                         <span class="tag">工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/思考/">
+                        <span class="tag">思考</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
