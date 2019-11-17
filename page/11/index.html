@@ -146,6 +146,75 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-04T02:50:35.000Z">2019-10-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 468 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/04/26-remove-duplicates-from-sorted-array/">26 remove-duplicates-from-sorted-array</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26. 删除排序数组中的重复项"></a>26. <a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">删除排序数组中的重复项</a></h1><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例 1:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums = [1,1,2], </span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<p>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>双指针法</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (nums.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>复杂度分析</p>
+<ul>
+<li><p>时间复杂度：O(n)，假设数组的长度是 n，那么 i 和 j 分别最多遍历 n 步。</p>
+</li>
+<li><p>空间复杂度：O(1)。</p>
+</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-30T09:41:21.000Z">2019-09-30</time>
                 
                 <div class="level-item">
@@ -675,6 +744,12 @@ if __name__ == &apos;__main__&apos;:
     
 <div class="card">
     
+    <div class="card-image">
+        <a href="/2019/09/27/Recommendation-System/" class="image is-7by1">
+            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="Recommendation System">
+        </a>
+    </div>
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -922,162 +997,6 @@ if __name__ == &apos;__main__&apos;:
 
 
 
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/27/Desition-Tree/" class="image is-7by1">
-            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="Desition Tree">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-27T06:52:07.000Z">2019-09-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    23 分钟 读完 (大约 3425 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/27/Desition-Tree/">Desition Tree</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#1-什么是决策树" target="_blank" rel="noopener">1. 什么是决策树</a><ul>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#11-决策树的基本思想" target="_blank" rel="noopener">1.1 决策树的基本思想</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#12-树的成长过程" target="_blank" rel="noopener">1.2 “树”的成长过程</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#13-树怎么长" target="_blank" rel="noopener">1.3 “树”怎么长</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#131-id3算法" target="_blank" rel="noopener">1.3.1 ID3算法</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#132-c45" target="_blank" rel="noopener">1.3.2 C4.5</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#133-cart算法" target="_blank" rel="noopener">1.3.3 CART算法</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#134-三种不同的决策树" target="_blank" rel="noopener">1.3.4 三种不同的决策树</a></li>
-</ul>
-</li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#2-树形结构为什么不需要归一化" target="_blank" rel="noopener">2. 树形结构为什么不需要归一化?</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#3-分类决策树和回归决策树的区别" target="_blank" rel="noopener">3. 分类决策树和回归决策树的区别</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/3.Desition%20Tree#4-决策树如何剪枝" target="_blank" rel="noopener">4. 决策树如何剪枝</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.Desition%20Tree/DecisionTree.ipynb" target="_blank" rel="noopener">5. 代码实现</a></li>
-</ul>
-<h2 id="1-什么是决策树"><a href="#1-什么是决策树" class="headerlink" title="1. 什么是决策树"></a>1. 什么是决策树</h2><h3 id="1-1-决策树的基本思想"><a href="#1-1-决策树的基本思想" class="headerlink" title="1.1 决策树的基本思想"></a>1.1 决策树的基本思想</h3><p>其实用一下图片能更好的理解LR模型和决策树模型算法的根本区别，我们可以思考一下一个决策问题：是否去相亲，一个女孩的母亲要给这个女海介绍对象。</p>
-<p><img src="https://wx2.sinaimg.cn/large/00630Defly1g4q286viibj30pk0pfk09.jpg" alt="image"></p>
-<p>大家都看得很明白了吧！LR模型是一股脑儿的把所有特征塞入学习，而决策树更像是编程语言中的if-else一样，去做条件判断，这就是根本性的区别。</p>
-<h3 id="1-2-“树”的成长过程"><a href="#1-2-“树”的成长过程" class="headerlink" title="1.2 “树”的成长过程"></a>1.2 “树”的成长过程</h3><p>决策树基于“树”结构进行决策的，这时我们就要面临两个问题 ：</p>
-<ul>
-<li>“树”怎么长。</li>
-<li>这颗“树”长到什么时候停。</li>
-</ul>
-<p>弄懂了这两个问题，那么这个模型就已经建立起来了，决策树的总体流程是“分而治之”的思想，一是自根至叶的递归过程，一是在每个中间节点寻找一个“划分”属性，相当于就是一个特征属性了。接下来我们来逐个解决以上两个问题。</p>
-<h4 id="这颗“树”长到什么时候停"><a href="#这颗“树”长到什么时候停" class="headerlink" title="这颗“树”长到什么时候停"></a>这颗“树”长到什么时候停</h4><ul>
-<li>当前结点包含的样本全属于同一类别，无需划分；例如：样本当中都是决定去相亲的，属于同一类别，就是不管特征如何改变都不会影响结果，这种就不需要划分了。</li>
-<li>当前属性集为空，或是所有样本在所有属性上取值相同，无法划分；例如：所有的样本特征都是一样的，就造成无法划分了，训练集太单一。</li>
-<li>当前结点包含的样本集合为空，不能划分。</li>
-</ul>
-<h3 id="1-3-“树”怎么长"><a href="#1-3-“树”怎么长" class="headerlink" title="1.3 “树”怎么长"></a>1.3 “树”怎么长</h3><p>在生活当中，我们都会碰到很多需要做出决策的地方，例如：吃饭地点、数码产品购买、旅游地区等，你会发现在这些选择当中都是依赖于大部分人做出的选择，也就是跟随大众的选择。其实在决策树当中也是一样的，当大部分的样本都是同一类的时候，那么就已经做出了决策。</p>
-<p>我们可以把大众的选择抽象化，这就引入了一个概念就是纯度，想想也是如此，大众选择就意味着纯度越高。好，在深入一点，就涉及到一句话：<strong>信息熵越低，纯度越高</strong>。我相信大家或多或少都听说过“熵”这个概念，信息熵通俗来说就是用来度量包含的“信息量”，如果样本的属性都是一样的，就会让人觉得这包含的信息很单一，没有差异化，相反样本的属性都不一样，那么包含的信息量就很多了。</p>
-<p>一到这里就头疼了，因为马上要引入信息熵的公式，其实也很简单：</p>
-<p><img src="https://latex.codecogs.com/gif.latex?Ent(D)=-%5Csum_%7Bk=1%7D%5E%7B%7Cy%7C%7Dp_klog_2p_k" alt></p>
-<p>Pk表示的是：当前样本集合D中第k类样本所占的比例为Pk。</p>
-<p><strong>信息增益</strong></p>
-<p>废话不多说直接上公式：</p>
-<p><img src="https://wx3.sinaimg.cn/large/00630Defly1g4q5h6oby7j30he08tdh5.jpg" alt="image"></p>
-<p>看不懂的先不管，简单一句话就是：划分前的信息熵–划分后的信息熵。表示的是向纯度方向迈出的“步长”。</p>
-<p>好了，有了前面的知识，我们就可以开始“树”的生长了。</p>
-<h4 id="1-3-1-ID3算法"><a href="#1-3-1-ID3算法" class="headerlink" title="1.3.1 ID3算法"></a>1.3.1 ID3算法</h4><p>解释：在根节点处计算信息熵，然后根据属性依次划分并计算其节点的信息熵，用根节点信息熵–属性节点的信息熵=信息增益，根据信息增益进行降序排列，排在前面的就是第一个划分属性，其后依次类推，这就得到了决策树的形状，也就是怎么“长”了。</p>
-<p>如果不理解的，可以查看我分享的图片示例，结合我说的，包你看懂：</p>
-<ol>
-<li><a href="https://www.wailian.work/images/2018/12/11/image39e7b.png" target="_blank" rel="noopener">第一张图.jpg</a></li>
-<li><a href="https://www.wailian.work/images/2018/12/11/image61cdc.png" target="_blank" rel="noopener">第二张图.jpg</a></li>
-<li><a href="https://www.wailian.work/images/2018/12/11/image9e194.png" target="_blank" rel="noopener">第三张图.jpg</a></li>
-<li><a href="https://www.wailian.work/images/2018/12/11/image09288.png" target="_blank" rel="noopener">第四张图.jpg</a></li>
-</ol>
-<p>不过，信息增益有一个问题：对可取值数目较多的属性有所偏好，例如：考虑将“编号”作为一个属性。为了解决这个问题，引出了另一个 算法C4.5。</p>
-<h4 id="1-3-2-C4-5"><a href="#1-3-2-C4-5" class="headerlink" title="1.3.2 C4.5"></a>1.3.2 C4.5</h4><p>为了解决信息增益的问题，引入一个信息增益率：</p>
-<p><img src="https://latex.codecogs.com/gif.latex?Gain_ratio(D,a)=%5Cfrac%7BGain(D,a)%7D%7BIV(a)%7D" alt></p>
-<p>其中：</p>
-<p><img src="https://latex.codecogs.com/gif.latex?IV(a)=-%5Csum_%7Bv=1%7D%5E%7BV%7D%5Cfrac%7B%7CD%5Ev%7C%7D%7B%7CD%7C%7Dlog_2%5Cfrac%7B%7CD%5Ev%7C%7D%7B%7CD%7C%7D" alt></p>
-<p>属性a的可能取值数目越多(即V越大)，则IV(a)的值通常就越大。<strong>信息增益比本质： 是在信息增益的基础之上乘上一个惩罚参数。特征个数较多时，惩罚参数较小；特征个数较少时，惩罚参数较大。</strong>不过有一个缺点：</p>
-<ul>
-<li>缺点：信息增益率偏向取值较少的特征。</li>
-</ul>
-<p>使用信息增益率：基于以上缺点，并不是直接选择信息增益率最大的特征，而是现在候选特征中找出信息增益高于平均水平的特征，然后在这些特征中再选择信息增益率最高的特征。</p>
-<h4 id="1-3-3-CART算法"><a href="#1-3-3-CART算法" class="headerlink" title="1.3.3 CART算法"></a>1.3.3 CART算法</h4><p>数学家真实聪明，想到了另外一个表示纯度的方法，叫做基尼指数(讨厌的公式)：</p>
-<p><img src="https://wx1.sinaimg.cn/large/00630Defly1g4q5dmvyykj30eb01edfs.jpg" alt="image"></p>
-<p>表示在样本集合中一个随机选中的样本被分错的概率。举例来说，现在一个袋子里有3种颜色的球若干个，伸手进去掏出2个球，颜色不一样的概率，这下明白了吧。<strong>Gini(D)越小，数据集D的纯度越高。</strong></p>
-<h5 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h5><p>假设现在有特征 “学历”，此特征有三个特征取值： “本科”，“硕士”， “博士”，</p>
-<p>当使用“学历”这个特征对样本集合D进行划分时，划分值分别有三个，因而有三种划分的可能集合，划分后的子集如下：</p>
-<p>1.划分点： “本科”，划分后的子集合 ： {本科}，{硕士，博士}</p>
-<p>2.划分点： “硕士”，划分后的子集合 ： {硕士}，{本科，博士}</p>
-<p>3.划分点： “硕士”，划分后的子集合 ： {博士}，{本科，硕士}}</p>
-<p>对于上述的每一种划分，都可以计算出基于 <strong>划分特征= 某个特征值</strong> 将样本集合D划分为两个子集的纯度：</p>
-<p><img src="https://latex.codecogs.com/gif.latex?Gini(D,A)=%5Cfrac%7B%7CD_1%7C%7D%7B%7CD%7C%7DGini(D_1)+%5Cfrac%7B%7CD_2%7C%7D%7B%7CD%7C%7DGini(D_2)" alt></p>
-<p>因而<strong>对于一个具有多个取值（超过2个）的特征，需要计算以每一个取值作为划分点，对样本D划分之后子集的纯度Gini(D,Ai)，(其中Ai 表示特征A的可能取值)</strong></p>
-<p>然后从所有的可能划分的Gini(D,Ai)中找出Gini指数最小的划分，这个划分的划分点，便是使用特征A对样本集合D进行划分的最佳划分点。到此就可以长成一棵“大树”了。</p>
-<h4 id="1-3-4-三种不同的决策树"><a href="#1-3-4-三种不同的决策树" class="headerlink" title="1.3.4 三种不同的决策树"></a>1.3.4 三种不同的决策树</h4><ul>
-<li><p><strong>ID3</strong>：取值多的属性，更容易使数据更纯，其信息增益更大。</p>
-<p>训练得到的是一棵庞大且深度浅的树：不合理。</p>
-</li>
-<li><p><strong>C4.5</strong>：采用信息增益率替代信息增益。</p>
-</li>
-<li><p><strong>CART</strong>：以基尼系数替代熵，最小化不纯度，而不是最大化信息增益。</p>
-</li>
-</ul>
-<h2 id="2-树形结构为什么不需要归一化"><a href="#2-树形结构为什么不需要归一化" class="headerlink" title="2. 树形结构为什么不需要归一化?"></a>2. 树形结构为什么不需要归一化?</h2><p>因为数值缩放不影响分裂点位置，对树模型的结构不造成影响。<br>按照特征值进行排序的，排序的顺序不变，那么所属的分支以及分裂点就不会有不同。而且，树模型是不能进行梯度下降的，因为构建树模型（回归树）寻找最优点时是通过寻找最优分裂点完成的，因此树模型是阶跃的，阶跃点是不可导的，并且求导没意义，也就不需要归一化。</p>
-<p>既然树形结构（如决策树、RF）不需要归一化，那为何非树形结构比如Adaboost、SVM、LR、Knn、KMeans之类则需要归一化。</p>
-<p>对于线性模型，特征值差别很大时，运用梯度下降的时候，损失等高线是椭圆形，需要进行多次迭代才能到达最优点。<br>但是如果进行了归一化，那么等高线就是圆形的，促使SGD往原点迭代，从而导致需要的迭代次数较少。</p>
-<h2 id="3-分类决策树和回归决策树的区别"><a href="#3-分类决策树和回归决策树的区别" class="headerlink" title="3. 分类决策树和回归决策树的区别"></a>3. 分类决策树和回归决策树的区别</h2><p>Classification And Regression Tree(CART)是决策树的一种，CART算法既可以用于创建分类树（Classification Tree），也可以用于创建回归树（Regression Tree），两者在建树的过程稍有差异。</p>
-<p><strong>回归树</strong>：</p>
-<p>CART回归树是假设树为二叉树，通过不断将特征进行分裂。比如当前树结点是基于第j个特征值进行分裂的，设该特征值小于s的样本划分为左子树，大于s的样本划分为右子树。 </p>
-<p><img src="https://julyedu-img.oss-cn-beijing.aliyuncs.com/quesbase6415343854853617715.png" alt></p>
-<p>而CART回归树实质上就是在该特征维度对样本空间进行划分，而这种空间划分的优化是一种NP难问题，因此，在决策树模型中是使用启发式方法解决。典型CART回归树产生的目标函数为：</p>
-<p><img src="https://julyedu-img.oss-cn-beijing.aliyuncs.com/quesbase64153438551488112806.png" alt></p>
-<p>因此，当我们为了求解最优的切分特征j和最优的切分点s，就转化为求解这么一个目标函数：</p>
-<p><img src="https://julyedu-img.oss-cn-beijing.aliyuncs.com/quesbase6415343855213970444.png" alt></p>
-<p>所以我们只要遍历所有特征的的所有切分点，就能找到最优的切分特征和切分点。最终得到一棵回归树。</p>
-<p>参考文章：<a href="https://blog.csdn.net/jiede1/article/details/76034328" target="_blank" rel="noopener">经典算法详解–CART分类决策树、回归树和模型树</a></p>
-<h2 id="4-决策树如何剪枝"><a href="#4-决策树如何剪枝" class="headerlink" title="4. 决策树如何剪枝"></a>4. 决策树如何剪枝</h2><p>决策树的剪枝基本策略有 预剪枝 (Pre-Pruning) 和 后剪枝 (Post-Pruning)。</p>
-<ul>
-<li><strong>预剪枝</strong>：其中的核心思想就是，在每一次实际对结点进行进一步划分之前，先采用验证集的数据来验证如果划分是否能提高划分的准确性。如果不能，就把结点标记为叶结点并退出进一步划分；如果可以就继续递归生成节点。</li>
-<li><strong>后剪枝</strong>：后剪枝则是先从训练集生成一颗完整的决策树，然后自底向上地对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来泛化性能提升，则将该子树替换为叶结点。</li>
-</ul>
-<p>参考文章：<a href="https://blog.csdn.net/am290333566/article/details/81187562" target="_blank" rel="noopener">决策树及决策树生成与剪枝</a></p>
-<h2 id="5-代码实现"><a href="#5-代码实现" class="headerlink" title="5. 代码实现"></a>5. 代码实现</h2><p>GitHub：<a href="https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.Desition%20Tree/DecisionTree.ipynb" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.Desition%20Tree/DecisionTree.ipynb</a></p>
-<hr>
-<blockquote>
-<p>作者：<a href="https://github.com/NLP-LOVE/ML-NLP" target="_blank" rel="noopener">@mantchs</a></p>
-<p>GitHub：<a href="https://github.com/NLP-LOVE/ML-NLP" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP</a></p>
-<p>欢迎大家加入讨论！共同完善此项目！群号：【541954936】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=863f915b9178560bd32ca07cd090a7d9e6f5f90fcff5667489697b1621cecdb3"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="NLP面试学习群" title="NLP面试学习群"></a></p>
-</blockquote>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1152,7 +1071,7 @@ if __name__ == &apos;__main__&apos;:
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            96
+                            97
                         </p>
                     </a>
                 </div>
@@ -1176,7 +1095,7 @@ if __name__ == &apos;__main__&apos;:
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            119
+                            121
                         </p>
                     </a>
                 </div>
@@ -1298,7 +1217,7 @@ if __name__ == &apos;__main__&apos;:
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">75</span>
+                <span class="level-item tag">76</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1343,6 +1262,25 @@ if __name__ == &apos;__main__&apos;:
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -1412,25 +1350,6 @@ if __name__ == &apos;__main__&apos;:
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -1460,6 +1379,25 @@ if __name__ == &apos;__main__&apos;:
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -1529,25 +1467,6 @@ if __name__ == &apos;__main__&apos;:
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>

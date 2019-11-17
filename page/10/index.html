@@ -146,6 +146,55 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-06T13:41:43.000Z">2019-10-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 208 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/06/decompilation/">decompilation</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="可以执行程序反编译为汇编程序"><a href="#可以执行程序反编译为汇编程序" class="headerlink" title="可以执行程序反编译为汇编程序"></a>可以执行程序反编译为汇编程序</h1><p><img src="/images/2019/10/06/8f80cc70-e83e-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(a==<span class="hljs-number">100</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter a num: "</span>);</span><br><span class="line"> </span><br><span class="line"> 	<span class="hljs-keyword">int</span> a;</span><br><span class="line"> 	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a);</span><br><span class="line"> 	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"num is %d\n"</span>, a);</span><br><span class="line"> 	<span class="hljs-comment">// int code = 100;</span></span><br><span class="line"> 	<span class="hljs-keyword">if</span>(f(a))&#123;</span><br><span class="line"> 		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"code is true\n"</span>);</span><br><span class="line"> 	&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line"> 		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"code is false\n"</span>);</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,&amp;a);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用x64dbg加载 <code>main.exe</code></p>
+<figure class="highlight armasm hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">push </span>ebp</span><br><span class="line"><span class="hljs-keyword">mov </span>ebp,esp</span><br><span class="line"><span class="hljs-keyword">and </span>esp,FFFFFFF0</span><br><span class="line"><span class="hljs-keyword">sub </span>esp,<span class="hljs-number">20</span></span><br><span class="line"><span class="hljs-symbol">call</span> main.<span class="hljs-number">401</span>A30</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405064</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;printf&gt;</span><br><span class="line"><span class="hljs-symbol">lea</span> eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405072</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;scanf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405075</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;printf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],eax</span><br><span class="line"><span class="hljs-symbol">call</span> main.<span class="hljs-number">401460</span></span><br><span class="line"><span class="hljs-symbol">test</span> eax,eax</span><br><span class="line"><span class="hljs-symbol">je</span> main.<span class="hljs-number">4014</span><span class="hljs-built_in">D7</span></span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405080</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;puts&gt;</span><br><span class="line"><span class="hljs-symbol">jmp</span> main.<span class="hljs-number">4014</span>E3</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">40508</span>D</span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;puts&gt;</span><br><span class="line"><span class="hljs-symbol">lea</span> eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">40509</span>B</span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;scanf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,<span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-symbol">leave</span> </span><br><span class="line"><span class="hljs-symbol">ret</span> </span><br><span class="line"><span class="hljs-keyword">nop </span></span><br><span class="line"><span class="hljs-keyword">nop</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-06T13:25:30.000Z">2019-10-06</time>
                 
                 <div class="level-item">
@@ -457,75 +506,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-04T02:50:35.000Z">2019-10-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 468 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/04/26-remove-duplicates-from-sorted-array/">26 remove-duplicates-from-sorted-array</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26. 删除排序数组中的重复项"></a>26. <a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">删除排序数组中的重复项</a></h1><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p>示例 1:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums = [1,1,2], </span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-
-<p>示例 2:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-
-<p>说明:</p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>双指针法</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (nums.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>复杂度分析</p>
-<ul>
-<li><p>时间复杂度：O(n)，假设数组的长度是 n，那么 i 和 j 分别最多遍历 n 步。</p>
-</li>
-<li><p>空间复杂度：O(1)。</p>
-</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -600,7 +580,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            96
+                            97
                         </p>
                     </a>
                 </div>
@@ -624,7 +604,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            119
+                            121
                         </p>
                     </a>
                 </div>
@@ -746,7 +726,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">75</span>
+                <span class="level-item tag">76</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -791,6 +771,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -860,25 +859,6 @@
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -908,6 +888,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -977,25 +976,6 @@
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>

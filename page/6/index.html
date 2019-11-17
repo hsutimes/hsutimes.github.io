@@ -146,6 +146,164 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-27T15:15:00.000Z">2019-10-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1624 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/27/lazydocker/">lazydocker</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/10/27/57b9c500-f8cc-11e9-9156-23e5f2285253.png" alt="image.png"></p>
+<p>A simple terminal UI for both docker and docker-compose, written in Go with the <a href="https://github.com/jroimartin/gocui" title="gocui" target="_blank" rel="noopener">gocui</a> library.</p>
+<p><a href="https://circleci.com/gh/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://circleci.com/gh/jesseduffield/lazydocker.svg?style=svg" alt="CircleCI"></a><br><a href="https://goreportcard.com/report/github.com/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://goreportcard.com/badge/github.com/jesseduffield/lazydocker" alt="Go Report Card"></a><br><a href="https://golangci.com" target="_blank" rel="noopener"><img src="https://golangci.com/badges/github.com/jesseduffield/lazydocker.svg" alt="GolangCI"></a><br><a href="http://godoc.org/github.com/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://godoc.org/github.com/jesseduffield/lazydocker?status.svg" alt="GoDoc"></a><br><img src="https://img.shields.io/github/repo-size/jesseduffield/lazydocker" alt="GitHub repo size"><br><a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener"><img src="https://img.shields.io/github/downloads/jesseduffield/lazydocker/total" alt="GitHub Releases"></a><br><a href="https://github.com/jesseduffield/lazydocker/releases/latest" target="_blank" rel="noopener"><img src="https://img.shields.io/github/tag/jesseduffield/lazydocker.svg" alt="GitHub tag"></a><br><a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/lazydocker.rb" target="_blank" rel="noopener"><img src="https://img.shields.io/homebrew/v/lazydocker" alt="homebrew"></a></p>
+<p><img src="https://github.com/jesseduffield/lazydocker/raw/master/docs/resources/demo3.gif" alt="Gif"></p>
+<p><a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">Demo</a></p>
+<p>Minor rant incoming: Something’s not working? Maybe a service is down. <code>docker-compose ps</code>. Yep, it’s that microservice that’s still buggy. No issue, I’ll just restart it: <code>docker-compose restart</code>. Okay now let’s try again. Oh wait the issue is still there. Hmm. <code>docker-compose ps</code>. Right so the service must have just stopped immediately after starting. I probably would have known that if I was reading the log stream, but there is a lot of clutter in there from other services. I could get the logs for just that one service with <code>docker compose logs --follow myservice</code> but that dies everytime the service dies so I’d need to run that command every time I restart the service. I could alternatively run <code>docker-compose up myservice</code> and in that terminal window if the service is down I could just <code>up</code> it again, but now I’ve got one service hogging a terminal window even after I no longer care about its logs. I guess when I want to reclaim the terminal realestate I can do <code>ctrl+P,Q</code>, but… wait, that’s not working for some reason. Should I use ctrl+C instead? I can’t remember if that closes the foreground process or kills the actual service.</p>
+<p>What a headache!</p>
+<p>Memorising docker commands is hard. Memorising aliases is slightly less hard. Keeping track of your containers across multiple terminal windows is near impossible. What if you had all the information you needed in one terminal window with every common command living one keypress away (and the ability to add custom commands as well). Lazydocker’s goal is to make that dream a reality.</p>
+<ul>
+<li><a href="https://github.com/jesseduffield/lazydocker#requirements" target="_blank" rel="noopener">Requirements</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#installation" target="_blank" rel="noopener">Installation</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#usage" target="_blank" rel="noopener">Usage</a></li>
+<li><a href="/docs/keybindings">Keybindings</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#cool-features" target="_blank" rel="noopener">Cool Features</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#contributing" target="_blank" rel="noopener">Contributing</a></li>
+<li><a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">Video Tutorial</a></li>
+<li><a href="/docs/Config.md">Config Docs</a></li>
+<li><a href="https://www.twitch.tv/jesseduffield" target="_blank" rel="noopener">Twitch Stream</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#faq" target="_blank" rel="noopener">FAQ</a></li>
+</ul>
+<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
+<li>Docker &gt;= <strong>1.13</strong> (API &gt;= <strong>1.25</strong>)</li>
+<li>Docker-Compose &gt;= <strong>1.23.2</strong> (optional)</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><p>Normally <code>lazydocker</code> formula can be found in the Homebrew core but we suggest you to tap our formula to get frequently updated one. It works with Linux, too.</p>
+<p><strong>Tap</strong>:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jesseduffield/lazydocker/lazydocker</span><br></pre></td></tr></table></figure>
+
+<p><strong>Core</strong>:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazydocker</span><br></pre></td></tr></table></figure>
+
+<h3 id="Binary-Release-Linux-OSX"><a href="#Binary-Release-Linux-OSX" class="headerlink" title="Binary Release (Linux/OSX)"></a>Binary Release (Linux/OSX)</h3><p>You can manually download a binary release from <a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener">the release page</a>.</p>
+<p>Automated install/update, don’t forget to always verify what you’re piping into bash:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><p>Required Go version &gt;= <strong>1.8</strong></p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/jesseduffield/lazydocker</span><br></pre></td></tr></table></figure>
+
+<h3 id="Arch-Linux-AUR"><a href="#Arch-Linux-AUR" class="headerlink" title="Arch Linux AUR"></a>Arch Linux AUR</h3><p>You can install lazydocker using your AUR package manager of choice or by running:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/lazydocker.git ~/lazydocker</span><br><span class="line"><span class="hljs-built_in">cd</span> ~/lazydocker</span><br><span class="line">makepkg --install</span><br></pre></td></tr></table></figure>
+
+<p>A development version of the AUR package is also <a href="https://aur.archlinux.org/lazydocker-git.git" target="_blank" rel="noopener">available</a></p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/pulls/lazyteam/lazydocker.svg" alt="Docker Pulls"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/stars/lazyteam/lazydocker.svg" alt="Docker Stars"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/cloud/automated/lazyteam/lazydocker.svg" alt="Docker Automated"></a></p>
+<ol>
+<li><details><summary>Click if you have an ARM device</summary><p>
+
+<ul>
+<li><p>If you have a ARM 32 bit v6 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v6/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=6 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If you have a ARM 32 bit v7 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v7/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=7 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If you have a ARM 64 bit v8 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm64v8/golang \</span><br><span class="line">--build-arg GOARCH=arm64 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+
+</li></ul></p></details>
+</li>
+
+
+<li><p>Run the container</p>
+ <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v \</span><br><span class="line">/var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">-v /yourpath:/.config/jesseduffield/lazydocker \</span><br><span class="line">lazyteam/lazydocker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Don’t forget to change <code>/yourpath</code> to an actual path you created to store lazydocker’s config</p>
+</li>
+<li><p>You can also use this <a href="https://github.com/jesseduffield/lazydocker/blob/master/docker-compose.yml" target="_blank" rel="noopener">docker-compose.yml</a></p>
+</li>
+<li><p>You might want to create an alias, for example:</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'"</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p>For development, you can build the image using:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://github.com/jesseduffield/lazydocker.git</span><br><span class="line"><span class="hljs-built_in">cd</span> lazydocker</span><br><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">    --build-arg BUILD_DATE=`date -u +<span class="hljs-string">"%Y-%m-%dT%H:%M:%SZ"</span>` \</span><br><span class="line">    --build-arg VCS_REF=`git rev-parse --short HEAD` \</span><br><span class="line">    --build-arg VERSION=`git describe --abbrev=0 --tag` \</span><br><span class="line">    .</span><br></pre></td></tr></table></figure>
+
+<p>If you encounter a compatibility issue with Docker bundled binary, try rebuilding<br>the image with the build argument <code>--build-arg DOCKER_VERSION=&quot;v$(docker -v | cut -d&quot; &quot; -f3 | rev | cut -c 2- | rev)&quot;</code><br>so that the bundled docker binary matches your host docker binary version.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Call <code>lazydocker</code> in your terminal. I personally use this a lot so I’ve made an alias for it like so:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;alias lzd=&apos;lazydocker&apos;&quot; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>(you can substitute .zshrc for whatever rc file you’re using)</p>
+<ul>
+<li>Basic video tutorial <a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">here</a>.</li>
+<li>List of keybindings<br><a href="/docs/keybindings">here</a>.</li>
+</ul>
+<h2 id="Cool-features"><a href="#Cool-features" class="headerlink" title="Cool features"></a>Cool features</h2><p>everything is one keypress away (or one click away! Mouse support FTW):</p>
+<ul>
+<li>viewing the state of your docker or docker-compose container environment at a glance</li>
+<li>viewing logs for a container/service</li>
+<li>viewing ascii graphs of your containers’ metrics so that you can not only feel but also look like a developer</li>
+<li>customising those graphs to measure nearly any metric you want</li>
+<li>attaching to a container/service</li>
+<li>restarting/removing/rebuilding containers/services</li>
+<li>viewing the ancestor layers of a given image</li>
+<li>pruning containers, images, or volumes that are hogging up disk space</li>
+</ul>
+<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>There is still a lot of work to go! Please check out the <a href="CONTRIBUTING.md">contributing guide</a>.<br>For contributor discussion about things not better discussed here in the repo, join the slack channel</p>
+<p><a href="https://join.slack.com/t/lazydocker/shared_invite/enQtNjgwMjc0Njk3MzgwLTM0NThlMTZiZmNkNWJkY2VlYWYwZmY1NWYyYWViZmE0ZTcxMWZjMTFjNTU1ZTEwMDBiNWIxZTIxYzkwNDgyY2M" target="_blank" rel="noopener"><img src="/docs/resources/slack_rgb.png" alt="Slack"></a></p>
+<h2 id="Donate"><a href="#Donate" class="headerlink" title="Donate"></a>Donate</h2><p>If you would like to support the development of lazydocker, please donate</p>
+<p><a href="https://donorbox.org/lazydocker" target="_blank" rel="noopener"><img src="https://d1iczxrky3cnb2.cloudfront.net/button-medium-blue.png" alt="Donate"></a></p>
+<h2 id="Social"><a href="#Social" class="headerlink" title="Social"></a>Social</h2><p>If you want to see what I (Jesse) am up to in terms of development, follow me on<br><a href="https://twitter.com/DuffieldJesse" target="_blank" rel="noopener">twitter</a> or watch me program on<br><a href="https://www.twitch.tv/jesseduffield" target="_blank" rel="noopener">twitch</a></p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="How-do-I-edit-my-config"><a href="#How-do-I-edit-my-config" class="headerlink" title="How do I edit my config?"></a>How do I edit my config?</h3><p>By opening lazydocker, clicking on the ‘project’ panel in the top left, and pressing ‘o’ (or ‘e’ if your editor is vim). See <a href="/docs/Config.md">Config Docs</a></p>
+<h3 id="How-do-I-get-text-to-wrap-in-my-main-panel"><a href="#How-do-I-get-text-to-wrap-in-my-main-panel" class="headerlink" title="How do I get text to wrap in my main panel?"></a>How do I get text to wrap in my main panel?</h3><p>In the future I want to make this the default, but for now there are some CPU issues that arise with wrapping. If you want to enable wrapping, use <code>gui.wrapMainPanel: true</code></p>
+<h3 id="How-do-you-select-text"><a href="#How-do-you-select-text" class="headerlink" title="How do you select text?"></a>How do you select text?</h3><p>Because we support mouse events, you will need to hold option while dragging the mouse to indicate you’re trying to select text rather than click on something. Alternatively you can disable mouse events via the <code>gui.ignoreMouseEvents</code> config value</p>
+<h3 id="Does-this-work-with-Windows"><a href="#Does-this-work-with-Windows" class="headerlink" title="Does this work with Windows?"></a>Does this work with Windows?</h3><p>Currently not unless you use WSL. Instructions for setting up docker for WSL can be found here <a href="https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly" target="_blank" rel="noopener">here</a></p>
+<h3 id="Why-can’t-I-see-my-container’s-logs"><a href="#Why-can’t-I-see-my-container’s-logs" class="headerlink" title="Why can’t I see my container’s logs?"></a>Why can’t I see my container’s logs?</h3><p>By default we only show logs from the last hour, so that we’re not putting too much strain on the machine. This may be why you can’t see logs when you first start lazydocker. This can be overwritten in the config’s <code>commandTemplates</code></p>
+<p>If you are running lazydocker in Docker container, it is a know bug, that you can’t see logs or CPU usage.</p>
+<h2 id="Alternatives"><a href="#Alternatives" class="headerlink" title="Alternatives"></a>Alternatives</h2><ul>
+<li><a href="https://github.com/skanehira/docui" target="_blank" rel="noopener">docui</a> - Skanehira beat me to the punch on making a docker terminal UI, so definitely check out that repo as well! I think the two repos can live in harmony though: lazydocker is more about managing existing containers/services, and docui is more about creating and configuring them.</li>
+<li><a href="https://github.com/portainer/portainer" target="_blank" rel="noopener">Portainer</a> - Portainer tries to solve the same problem but it’s accessed via your browser rather than your terminal. It also supports docker swarm.</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-27T14:11:36.000Z">2019-10-27</time>
                 
                 <div class="level-item">
@@ -526,60 +684,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-24T13:19:23.000Z">2019-10-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 448 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/24/lianhuafeng/">lianhuafeng</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="莲花峰（安徽境内山峰）"><a href="#莲花峰（安徽境内山峰）" class="headerlink" title="莲花峰（安徽境内山峰）"></a>莲花峰（安徽境内山峰）</h1><blockquote>
-<p>莲花峰，是黄山风景区境内第一高峰，为36大峰之首，海拔1864.8米。位于登山步道玉屏楼到鳌鱼峰之间。莲花峰登峰盘道5里，相对高度110米。1997年，莲花沟开辟500米登山新道，由蹬道、栈桥、观景台等组成。</p>
-</blockquote>
-<blockquote>
-<p>莲花峰峻峭高耸，气势雄伟。因主峰突兀，小峰簇拥，俨若新莲初开，仰天怒放，故名“莲花峰”。“登峰起步缓坡称“莲梗”，中间穿过四个石洞，古人称“莲孔”。洞穴陡立，游人叠级而上，如在莲孔中穿行，恰似“倾曲作蚁旋出花萼中”。沿途风光奇绝，峰壁间有“真好造化”、“非人间也”、“名不虚传”、“天海奇观”等摩崖题刻。峰下有莲花洞、莲花源。</p>
-</blockquote>
-<blockquote>
-<p>明代吴怅曾有诗赞曰：“一种青莲吐绛霞，亭亭玉立净无瑕。遥看天际浮云卷，露出峰顶十丈花。”清代吴梦印亦有诗云：“莲峰秀拔迥称尊，凡欲高呼达帝阍。举目江山如带砺，低头峦蚰似儿孙。风生绝献应回雁，日落悬岩不度猿。翠影岚光千万状，我虽能到未能言。”连接莲花岭和莲花峰的是一条长达一公里半的蜿蜒小道，在到达峰顶前要过四个洞穴。<br>莲花峰上既有许多或似飞龙或似双龙的松树，也有著名的黄山杜鹃花 [1]  。</p>
-</blockquote>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -654,7 +758,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            96
+                            97
                         </p>
                     </a>
                 </div>
@@ -678,7 +782,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            119
+                            121
                         </p>
                     </a>
                 </div>
@@ -800,7 +904,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">75</span>
+                <span class="level-item tag">76</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -845,6 +949,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -914,25 +1037,6 @@
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -962,6 +1066,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -1031,25 +1154,6 @@
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>

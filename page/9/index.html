@@ -146,6 +146,162 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-13T05:06:51.000Z">2019-10-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1846 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/13/jna/">jna</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="https://github.com/java-native-access/jna/raw/master/www/images/jnalogo.jpg" alt="Java Native Access - JNA" title="Java Native Access - JNA"></p>
+<p><a href="https://travis-ci.org/java-native-access/jna" target="_blank" rel="noopener"><img src="https://travis-ci.org/java-native-access/jna.svg?branch=master" alt="Build Status"></a><br><a href="https://ci.appveyor.com/project/dblock/jna-gsxuq/branch/master" target="_blank" rel="noopener"><img src="https://ci.appveyor.com/api/projects/status/j6vmpjrw5iktb8iu/branch/master?svg=true" alt="Build status"></a></p>
+<h1 id="Java-Native-Access-JNA"><a href="#Java-Native-Access-JNA" class="headerlink" title="Java Native Access (JNA)"></a>Java Native Access (JNA)</h1><p>The definitive JNA reference (including an overview and usage details) is in the <a href="http://java-native-access.github.io/jna/5.4.0/javadoc/" target="_blank" rel="noopener">JavaDoc</a>.  Please read the <a href="http://java-native-access.github.io/jna/5.4.0/javadoc/overview-summary.html#overview_description" target="_blank" rel="noopener">overview</a>.  Questions, comments, or exploratory conversations should begin on the <a href="http://groups.google.com/group/jna-users" target="_blank" rel="noopener">mailing list</a>, although you may find it easier to find answers to already-solved problems on <a href="http://stackoverflow.com/questions/tagged/jna" target="_blank" rel="noopener">StackOverflow</a>.</p>
+<p>JNA provides Java programs easy access to native shared libraries without writing anything but Java code - no JNI or native code is required. This functionality is comparable to Windows’ Platform/Invoke and Python’s ctypes.</p>
+<p>JNA allows you to call directly into native functions using natural Java method invocation. The Java call looks just like the call does in native code. Most calls require no special handling or configuration; no boilerplate or generated code is required.</p>
+<p>JNA uses a small JNI library stub to dynamically invoke native code. The developer uses a Java interface to describe functions and structures in the target native library. This makes it quite easy to take advantage of native platform features without incurring the high overhead of configuring and building JNI code for multiple platforms.  Read this <a href="https://github.com/java-native-access/jna/blob/master/www/FunctionalDescription.md" target="_blank" rel="noopener">more in-depth description</a>.</p>
+<p>While significant attention has been paid to performance, correctness and ease of use take priority.</p>
+<p>In addition, JNA includes a platform library with many native functions already mapped as well as a set of utility interfaces that simplify native access.</p>
+<h1 id="Projects-Using-JNA"><a href="#Projects-Using-JNA" class="headerlink" title="Projects Using JNA"></a>Projects Using JNA</h1><p>JNA is a mature library with dozens of contributors and hundreds of commercial and non-commercial projects that use it.  If you’re using JNA, feel free to <a href="http://groups.google.com/group/jna-users" target="_blank" rel="noopener">tell us about it</a>.  Include some details about your company, project name, purpose and size and tell us how you use the library.</p>
+<ul>
+<li><a href="http://cassandra.apache.org" target="_blank" rel="noopener">Apache Cassandra</a>: Large-scale NoSQL data store.</li>
+<li><a href="https://github.com/iterate-ch/rococoa" target="_blank" rel="noopener">Rococoa</a>: Java bindings to the Mac OS X Cocoa framework, by Duncan McGregor.</li>
+<li><a href="http://kenai.com/projects/jna-posix" target="_blank" rel="noopener">jna-posix</a>: Common POSIX Functions for Java.</li>
+<li><a href="https://github.com/nativelibs4java/JNAerator" target="_blank" rel="noopener">JNAerator</a>: Pronounced “generator”, auto-generates JNA mappings from C headers, by Olivier Chafik.</li>
+<li><a href="http://fmj.sf.net" target="_blank" rel="noopener">Freedom for Media in Java</a> by Ken Larson/Dieter Krachtus.</li>
+<li><a href="http://code.google.com/p/gstreamer-java" target="_blank" rel="noopener">gstreamer for Java</a> by Wayne Meissner.</li>
+<li><a href="http://trac.videolan.org/jvlc/" target="_blank" rel="noopener">Videolan</a>: JVLC Java Multimedia Library.</li>
+<li><a href="http://svnkit.com" target="_blank" rel="noopener">SVNKit</a>: Pure Java Subversion client library.</li>
+<li><a href="http://omegat.sf.net" target="_blank" rel="noopener">OmegaT Computer-Aided Translation</a>.</li>
+<li><a href="http://jetbrains.com" target="_blank" rel="noopener">IntelliJ IDEA</a> by JetBrains.</li>
+<li><a href="http://netbeans.org" target="_blank" rel="noopener">NetBeans IDE</a>.</li>
+<li><a href="http://www.athenabackup.com" target="_blank" rel="noopener">Athena Backup</a> by Doug Patriarche.</li>
+<li><a href="http://www.filebot.net" target="_blank" rel="noopener">FileBot Media Renamer</a> by Reinhard Pointner.</li>
+<li><a href="https://launchpad.net/libusb4j" target="_blank" rel="noopener">USB for Java</a> by Mario Boikov.</li>
+<li><a href="https://github.com/dblock/waffle" target="_blank" rel="noopener">Waffle</a>: Enables SSO on Windows in Java applications, by Daniel Doubrovkine.</li>
+<li><a href="https://github.com/protonail/leveldb-jna" target="_blank" rel="noopener">leveldb-jna</a>: Cross-platform JNA based adapter for <a href="https://github.com/google/leveldb" target="_blank" rel="noopener">LevelDB</a> (used in <a href="http://protonail.com" target="_blank" rel="noopener">Keylord</a>).</li>
+<li><a href="https://github.com/protonail/bolt-jna" target="_blank" rel="noopener">bolt-jna</a>: Cross-platform JNA based adapter for <a href="https://github.com/boltdb/bolt" target="_blank" rel="noopener">Bolt</a> (used in <a href="http://protonail.com" target="_blank" rel="noopener">Keylord</a>). It is show how to use JNA for binding to Go library.</li>
+<li><a href="https://github.com/kotlin-graphics/openvr" target="_blank" rel="noopener">JVM OpenVR Bindings</a>.</li>
+<li><a href="https://ignite.apache.org/" target="_blank" rel="noopener">Apache Ignite</a>: Direct IO plugin</li>
+<li><a href="https://github.com/klehmann/domino-jna" target="_blank" rel="noopener">Domino JNA</a>: Cross-platform access to HCL Notes/Domino C API methods from Java</li>
+</ul>
+<p><em>Interesting Investigations/Experiments</em></p>
+<ul>
+<li><a href="http://epirsch.blogspot.com/2008/02/jna-love-nxt.html" target="_blank" rel="noopener">Drive Lego Mindstorm NXT</a> by Emmanuel Pirsch.</li>
+<li><a href="http://ochafik.free.fr/blog/?p=98" target="_blank" rel="noopener">Detect User Inactivity</a> by Olivier Chafik.</li>
+<li><a href="http://callino.cc/jiaxcapplet/" target="_blank" rel="noopener">IAXClient Applet</a> provides VOIP for Java, by Wolfgang Pichler.</li>
+</ul>
+<p>There are also a number of examples and projects within the <code>contrib</code> directory of the JNA project itself.</p>
+<h1 id="Supported-Platforms"><a href="#Supported-Platforms" class="headerlink" title="Supported Platforms"></a>Supported Platforms</h1><p>JNA will build on most linux-like platforms with a reasonable set of GNU tools and a JDK.  See the native <a href="https://raw.githubusercontent.com/java-native-access/jna/master/native/Makefile" target="_blank" rel="noopener">Makefile</a> for native configurations that have been built and tested.  If your platform is supported by <a href="http://en.wikipedia.org/wiki/Libffi" target="_blank" rel="noopener">libffi</a>, then chances are you can build JNA for it.</p>
+<p>Pre-built platform support may be found <a href="https://github.com/java-native-access/jna/tree/master/lib/native" target="_blank" rel="noopener">here</a>.</p>
+<h1 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h1><p>Version 5.4.0</p>
+<h2 id="JNA"><a href="#JNA" class="headerlink" title="JNA"></a>JNA</h2><p><a href="https://search.maven.org/artifact/net.java.dev.jna/jna/5.4.0/jar" target="_blank" rel="noopener"><img src="https://img.shields.io/maven-central/v/net.java.dev.jna/jna.svg?label=Maven%20Central" alt="Maven Central"></a>&nbsp;<a href="http://repo1.maven.org/maven2/net/java/dev/jna/jna/5.4.0/jna-5.4.0.jar" target="_blank" rel="noopener">jna-5.4.0.jar</a></p>
+<p>This is the core artifact of JNA and contains only the binding library and the<br>core helper classes.</p>
+<h2 id="JNA-Platform"><a href="#JNA-Platform" class="headerlink" title="JNA Platform"></a>JNA Platform</h2><p><a href="https://search.maven.org/artifact/net.java.dev.jna/jna-platform/5.4.0/jar" target="_blank" rel="noopener"><img src="https://img.shields.io/maven-central/v/net.java.dev.jna/jna-platform.svg?label=Maven%20Central" alt="Maven Central"></a>&nbsp;<a href="http://repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.4.0/jna-platform-5.4.0.jar" target="_blank" rel="noopener">jna-platform-5.4.0.jar</a></p>
+<p>This artifact holds cross-platform mappings and mappings for a number of commonly used platform<br>functions, including a large number of Win32 mappings as well as a set of utility classes<br>that simplify native access. The code is tested and the utility interfaces ensure that<br>native memory management is taken care of correctly.</p>
+<p>See <a href="https://github.com/java-native-access/jna/blob/master/www/PlatformLibrary.md" target="_blank" rel="noopener">PlatformLibrary.md</a> for details.</p>
+<h1 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h1><ul>
+<li>Automatic mapping from Java to native functions, with simple mappings for all primitive data types</li>
+<li>Runs on most platforms which support Java</li>
+<li>Automatic conversion between C and Java strings, with customizable encoding/decoding</li>
+<li>Structure and Union arguments/return values, by reference and by value</li>
+<li>Function Pointers, (callbacks from native code to Java) as arguments and/or members of a struct</li>
+<li>Auto-generated Java proxies for native function pointers</li>
+<li>By-reference (pointer-to-type) arguments</li>
+<li>Java array and NIO Buffer arguments (primitive types and pointers) as pointer-to-buffer</li>
+<li>Nested structures and arrays</li>
+<li>Wide (wchar_t-based) strings</li>
+<li>Native long support (32- or 64-bit as appropriate)</li>
+<li><a href="https://github.com/java-native-access/jna/tree/master/contrib" target="_blank" rel="noopener">Demo applications/examples</a></li>
+<li>Supported on 1.4 or later JVMs, including JavaME (earlier VMs may work with stubbed NIO support)</li>
+<li>Customizable marshalling/unmarshalling (argument and return value conversions)</li>
+<li>Customizable mapping from Java method to native function name, and customizable invocation to simulate C preprocessor function macros</li>
+<li>Support for automatic Windows ASCII/UNICODE function mappings</li>
+<li>Varargs support</li>
+<li>Type-safety for native pointers</li>
+<li>VM crash protection (optional)</li>
+<li>Optimized direct mapping for high-performance applications.</li>
+<li>COM support for early and late binding.</li>
+<li>COM/Typelib java code generator.</li>
+</ul>
+<h1 id="Community-and-Support"><a href="#Community-and-Support" class="headerlink" title="Community and Support"></a>Community and Support</h1><p>All questions should be posted to the <a href="http://groups.google.com/group/jna-users" target="_blank" rel="noopener">jna-users Google group</a>. Issues can be submitted <a href="https://github.com/java-native-access/jna/issues" target="_blank" rel="noopener">here on Github</a>.</p>
+<p>When posting to the mailing list, please include the following:</p>
+<ul>
+<li>What OS/CPU/architecture you’re using (e.g. Windows 7 64-bit)</li>
+<li>Reference to your native interface definitions (i.e. C headers), if available</li>
+<li>The JNA mapping you’re trying to use</li>
+<li>VM crash logs, if any</li>
+<li>Example native usage, and your attempted Java usage</li>
+</ul>
+<p>It’s nearly impossible to indicate proper Java usage when there’s no native<br>reference to work from.</p>
+<p>For commercial support, please contact twalljava [at] java [dot] net.</p>
+<h1 id="Using-the-Library"><a href="#Using-the-Library" class="headerlink" title="Using the Library"></a>Using the Library</h1><ul>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/GettingStarted.md" target="_blank" rel="noopener">Getting Started</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/FunctionalDescription.md" target="_blank" rel="noopener">Functional Description</a>.</li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/Mappings.md" target="_blank" rel="noopener">Mapping between Java and Native</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/PointersAndArrays.md" target="_blank" rel="noopener">Using Pointers and Arrays</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/StructuresAndUnions.md" target="_blank" rel="noopener">Using Structures and Unions</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/ByRefArguments.md" target="_blank" rel="noopener">Using By-Reference Arguments</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/CustomMappings.md" target="_blank" rel="noopener">Customization of Type Mapping</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/CallbacksAndClosures.md" target="_blank" rel="noopener">Callbacks/Function Pointers/Closures</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/DynamicallyTypedLanguages.md" target="_blank" rel="noopener">Dynamically Typed Languages (JRuby/Jython)</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/PlatformLibrary.md" target="_blank" rel="noopener">Platform Library</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/DirectMapping.md" target="_blank" rel="noopener">Direct Method Mapping</a> (Optimization)</li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/FrequentlyAskedQuestions.md" target="_blank" rel="noopener">Frequently Asked Questions (FAQ)</a></li>
+<li><a href="http://java-native-access.github.io/jna/5.4.0/javadoc/overview-summary.html#crash-protection" target="_blank" rel="noopener">Avoiding Crashes</a></li>
+</ul>
+<h1 id="Primary-Documentation-JavaDoc"><a href="#Primary-Documentation-JavaDoc" class="headerlink" title="Primary Documentation (JavaDoc)"></a>Primary Documentation (JavaDoc)</h1><p>The definitive JNA reference is in the <a href="http://java-native-access.github.io/jna/5.4.0/javadoc/" target="_blank" rel="noopener">JavaDoc</a>.</p>
+<h1 id="Developers"><a href="#Developers" class="headerlink" title="Developers"></a>Developers</h1><ul>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/Contributing.md" target="_blank" rel="noopener">Contributing to JNA</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/WindowsDevelopmentEnvironment.md" target="_blank" rel="noopener">Setting up a Windows Development Environment</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/AndroidDevelopmentEnvironment.md" target="_blank" rel="noopener">Setting up an Android Development Environment</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/RaspberryPiDevelopmentEnvironment.md" target="_blank" rel="noopener">Setting up a RaspberryPi Development Environment</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/MacDevelopmentEnvironment.md" target="_blank" rel="noopener">Setting up a Mac Development Environment</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/ReleasingJNA.md" target="_blank" rel="noopener">Releasing JNA</a></li>
+<li><a href="https://github.com/java-native-access/jna/blob/master/www/PublishingToMavenCentral.md" target="_blank" rel="noopener">Publishing to Maven Central</a></li>
+</ul>
+<h1 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h1><p>You’re encouraged to contribute to JNA. Fork the code from <a href="https://github.com/java-native-access/jna" target="_blank" rel="noopener">https://github.com/java-native-access/jna</a> and submit pull requests.</p>
+<p>For more information on setting up a development environment see <a href="https://github.com/java-native-access/jna/blob/master/www/Contributing.md" target="_blank" rel="noopener">Contributing to JNA</a>.</p>
+<p>If you are interested in paid support, feel free to say so on the <a href="http://groups.google.com/group/jna-users" target="_blank" rel="noopener">jna-users mailing list</a>. Most simple questions will be answered on the list, but more complicated work, new features or target platforms can be negotiated with any of the JNA developers (this is how several of JNA’s features came into being). You may even encounter other users with the same need and be able to cost share the new development.</p>
+<h1 id="License"><a href="#License" class="headerlink" title="License"></a>License</h1><p>This library is licensed under the LGPL, version 2.1 or later, and (from version 4.0 onward) the Apache Software License, version 2.0. Commercial license arrangements are negotiable.</p>
+<p><em>NOTE: Oracle is not sponsoring this project, even though the package name (com.sun.jna) might imply otherwise.</em></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-12T01:24:10.000Z">2019-10-12</time>
                 
                 
@@ -594,55 +750,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-06T13:41:43.000Z">2019-10-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 208 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/06/decompilation/">decompilation</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="可以执行程序反编译为汇编程序"><a href="#可以执行程序反编译为汇编程序" class="headerlink" title="可以执行程序反编译为汇编程序"></a>可以执行程序反编译为汇编程序</h1><p><img src="/images/2019/10/06/8f80cc70-e83e-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(a==<span class="hljs-number">100</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter a num: "</span>);</span><br><span class="line"> </span><br><span class="line"> 	<span class="hljs-keyword">int</span> a;</span><br><span class="line"> 	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a);</span><br><span class="line"> 	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"num is %d\n"</span>, a);</span><br><span class="line"> 	<span class="hljs-comment">// int code = 100;</span></span><br><span class="line"> 	<span class="hljs-keyword">if</span>(f(a))&#123;</span><br><span class="line"> 		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"code is true\n"</span>);</span><br><span class="line"> 	&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line"> 		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"code is false\n"</span>);</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,&amp;a);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用x64dbg加载 <code>main.exe</code></p>
-<figure class="highlight armasm hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">push </span>ebp</span><br><span class="line"><span class="hljs-keyword">mov </span>ebp,esp</span><br><span class="line"><span class="hljs-keyword">and </span>esp,FFFFFFF0</span><br><span class="line"><span class="hljs-keyword">sub </span>esp,<span class="hljs-number">20</span></span><br><span class="line"><span class="hljs-symbol">call</span> main.<span class="hljs-number">401</span>A30</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405064</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;printf&gt;</span><br><span class="line"><span class="hljs-symbol">lea</span> eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405072</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;scanf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405075</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;printf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],eax</span><br><span class="line"><span class="hljs-symbol">call</span> main.<span class="hljs-number">401460</span></span><br><span class="line"><span class="hljs-symbol">test</span> eax,eax</span><br><span class="line"><span class="hljs-symbol">je</span> main.<span class="hljs-number">4014</span><span class="hljs-built_in">D7</span></span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">405080</span></span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;puts&gt;</span><br><span class="line"><span class="hljs-symbol">jmp</span> main.<span class="hljs-number">4014</span>E3</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">40508</span>D</span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;puts&gt;</span><br><span class="line"><span class="hljs-symbol">lea</span> eax,dword ptr ss:[esp+<span class="hljs-number">1</span>C]</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp+<span class="hljs-number">4</span>],eax</span><br><span class="line"><span class="hljs-keyword">mov </span>dword ptr ss:[esp],main.<span class="hljs-number">40509</span>B</span><br><span class="line"><span class="hljs-symbol">call</span> &lt;JMP.&amp;scanf&gt;</span><br><span class="line"><span class="hljs-keyword">mov </span>eax,<span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-symbol">leave</span> </span><br><span class="line"><span class="hljs-symbol">ret</span> </span><br><span class="line"><span class="hljs-keyword">nop </span></span><br><span class="line"><span class="hljs-keyword">nop</span></span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -717,7 +824,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            96
+                            97
                         </p>
                     </a>
                 </div>
@@ -741,7 +848,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            119
+                            121
                         </p>
                     </a>
                 </div>
@@ -863,7 +970,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">75</span>
+                <span class="level-item tag">76</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -908,6 +1015,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -977,25 +1103,6 @@
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -1025,6 +1132,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -1094,25 +1220,6 @@
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>

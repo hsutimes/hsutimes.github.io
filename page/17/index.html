@@ -146,6 +146,97 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-08T02:43:14.000Z">2019-09-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1687 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/08/面试红黑树/">面试红黑树</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="什么是红黑树"><a href="#什么是红黑树" class="headerlink" title="什么是红黑树"></a>什么是红黑树</h1><p>红黑树本质上是一种二叉查找树，但它在二叉查找树的基础上额外添加了一个标记（颜色），同时具有一定的规则。这些规则使红黑树保证了一种平衡，插入、删除、查找的最坏时间复杂度都为 O(logn)。</p>
+<p>它的统计性能要好于平衡二叉树（AVL树），因此，红黑树在很多地方都有应用。比如在 Java 集合框架中，很多部分(HashMap, TreeMap, TreeSet 等)都有红黑树的应用，这些集合均提供了很好的性能。</p>
+<p>由于 TreeMap 就是由红黑树实现的，因此本文将使用 TreeMap 的相关操作的代码进行分析、论证。</p>
+<p>黑色高度<br>从根节点到叶节点的路径上黑色节点的个数，叫做树的黑色高度。</p>
+<h1 id="红黑树的-5-个特性"><a href="#红黑树的-5-个特性" class="headerlink" title="红黑树的 5 个特性"></a>红黑树的 5 个特性</h1><p><img src="/images/2019/09/08/9f0e92d0-d1e1-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+<p>红黑树在原有的二叉查找树基础上增加了如下几个要求：</p>
+<ol>
+<li>Every node is either red or black.</li>
+<li>The root is black.</li>
+<li>Every leaf (NIL) is black.</li>
+<li>If a node is red, then both its children are black.</li>
+<li>For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.</li>
+</ol>
+<p>中文意思是：</p>
+<ol>
+<li>每个节点要么是红色，要么是黑色；</li>
+<li>根节点永远是黑色的；</li>
+<li>所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；</li>
+<li>每个红色节点的两个子节点一定都是黑色；</li>
+<li>从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；</li>
+</ol>
+<p><strong>注意：</strong><br>性质 3 中指定红黑树的每个叶子节点都是空节点，而且并叶子节点都是黑色。但 Java 实现的红黑树将使用 null 来代表空节点，因此遍历红黑树时将看不到黑色的叶子节点，反而看到每个叶子节点都是红色的。</p>
+<p>性质 4 的意思是：从每个根到节点的路径上不会有两个连续的红色节点，但黑色节点是可以连续的。<br>因此若给定黑色节点的个数 N，最短路径的情况是连续的 N 个黑色，树的高度为 N - 1;最长路径的情况为节点红黑相间，树的高度为 2(N - 1) 。</p>
+<p>性质 5 是成为红黑树最主要的条件，后序的插入、删除操作都是为了遵守这个规定。</p>
+<p>红黑树并不是标准平衡二叉树，它以性质 5 作为一种平衡方法，使自己的性能得到了提升。</p>
+<h1 id="红黑树的左旋右旋"><a href="#红黑树的左旋右旋" class="headerlink" title="红黑树的左旋右旋"></a>红黑树的左旋右旋</h1><p><img src="/images/2019/09/08/e9d7edc0-d1e1-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+<p>红黑树的左右旋是比较重要的操作，左右旋的目的是调整红黑节点结构，转移黑色节点位置，使其在进行插入、删除后仍能保持红黑树的 5 条性质。</p>
+<p>比如 X 左旋(右图转成左图)的结果，是让在 Y 左子树的黑色节点跑到 X 右子树去。</p>
+<p>我们以 Java 集合框架中的 TreeMap 中的代码来看下左右旋的具体操作方法：</p>
+<p><strong>指定节点 x 的左旋 (右图转成左图)：</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-comment">//这里 p 代表 x</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotateLeft</span><span class="hljs-params">(Entry p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Entry r = p.right; <span class="hljs-comment">// p 是上图中的 x，r 就是 y</span></span><br><span class="line">        p.right = r.left;       <span class="hljs-comment">// 左旋后，x 的右子树变成了 y 的左子树 β </span></span><br><span class="line">        <span class="hljs-keyword">if</span> (r.left != <span class="hljs-keyword">null</span>)         </span><br><span class="line">            r.left.parent = p;  <span class="hljs-comment">//β 确认父亲为 x</span></span><br><span class="line">        r.parent = p.parent;        <span class="hljs-comment">//y 取代 x 的第一步：认 x 的父亲为爹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (p.parent == <span class="hljs-keyword">null</span>)       <span class="hljs-comment">//要是 x 没有父亲，那 y 就是最老的根节点</span></span><br><span class="line">            root = r;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p.parent.left == p) <span class="hljs-comment">//如果 x 有父亲并且是它父亲的左孩子，x 的父亲现在认 y 为左孩子，不要 x 了</span></span><br><span class="line">            p.parent.left = r;</span><br><span class="line">        <span class="hljs-keyword">else</span>                            <span class="hljs-comment">//如果 x 是父亲的右孩子，父亲就认 y 为右孩子，抛弃 x</span></span><br><span class="line">            p.parent.right = r;</span><br><span class="line">        r.left = p;     <span class="hljs-comment">//y 逆袭成功，以前的爸爸 x 现在成了它的左孩子</span></span><br><span class="line">        p.parent = r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，x 节点的左旋就是把 x 变成 右孩子 y 的左孩子，同时把 y 的左孩子送给 x 当右子树。</p>
+<p>简单点记就是：左旋把右子树里的一个节点（上图 β）移动到了左子树。</p>
+<p><strong>指定节点 y 的右旋（左图转成右图）：</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotateRight</span><span class="hljs-params">(Entry p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Entry l = p.left;</span><br><span class="line">        p.left = l.right;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l.right != <span class="hljs-keyword">null</span>) l.right.parent = p;</span><br><span class="line">        l.parent = p.parent;</span><br><span class="line">        <span class="hljs-keyword">if</span> (p.parent == <span class="hljs-keyword">null</span>)</span><br><span class="line">            root = l;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p.parent.right == p)</span><br><span class="line">            p.parent.right = l;</span><br><span class="line">        <span class="hljs-keyword">else</span> p.parent.left = l;</span><br><span class="line">        l.right = p;</span><br><span class="line">        p.parent = l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同理，y 节点的右旋就是把 y 变成 左孩子 x 的右孩子，同时把 x 的右孩子送给 x 当左子树。</p>
+<p>简单点记就是：右旋把左子树里的一个节点（上图 β）移动到了右子树。</p>
+<p>了解左旋、右旋的方法及意义后，就可以了解红黑树的主要操作：插入、删除。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>红黑树并不是真正的平衡二叉树，但在实际应用中，红黑树的统计性能要高于平衡二叉树，但极端性能略差。</p>
+<p>红黑树的插入、删除调整逻辑比较复杂，但最终目的是满足红黑树的 5 个特性，尤其是 4 和 5。</p>
+<p>在插入调整时为了简化操作我们直接把插入的节点涂成红色，这样只要保证插入节点的父节点不是红色就可以了。</p>
+<p>而在删除后的调整中，针对删除黑色节点，所在子树缺少一个节点，需要进行弥补或者对别人造成一个黑色节点的伤害。具体调整方法取决于兄弟节点所在子树的情况。</p>
+<p>红黑树的插入、删除在树形数据结构中算比较复杂的，理解起来比较难，但只要记住，红黑树有其特殊的平衡规则，而我们为了维持平衡，根据邻树的状况进行旋转或者涂色。</p>
+<p>红黑树这么难理解，必定有其过人之处。它的有序、快速特性在很多场景下都有用到，比如 Java 集合框架的 TreeMap, TreeSet 等。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-07T03:08:58.000Z">2019-09-07</time>
                 
                 <div class="level-item">
@@ -427,75 +518,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-05T18:53:05.000Z">2019-09-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 564 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/06/判断素数/">判断素数</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/09/06/033e9e90-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
-<h1 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h1><ul>
-<li>质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。</li>
-<li>0和1既不是质数也不是合数，最小的质数是2</li>
-</ul>
-<ol>
-<li>最直观，但效率最低的写法</li>
-</ol>
-<p>这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。</p>
-<p>然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>优化</li>
-</ol>
-<p>我们继续分析，其实质数还有一个特点，就是它总是等于 6x-1 或者 6x+1，其中 x 是大于等于1的自然数。</p>
-<p>如何论证这个结论呢，其实不难。首先 6x 肯定不是质数，因为它能被 6 整除；其次 6x+2 肯定也不是质数，因为它还能被2整除；依次类推，6x+3 肯定能被 3 整除；6x+4 肯定能被 2 整除。那么，就只有 6x+1 和 6x+5 (即等同于6x-1) 可能是质数了。所以循环的步长可以设为 6，然后每次只判断 6 两侧的数即可。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (num &lt;= <span class="hljs-number">3</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> num &gt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 不在6的倍数两侧的一定不是质数</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (num % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; num % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> sqrt = (<span class="hljs-keyword">int</span>) Math.sqrt(num);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= sqrt; i += <span class="hljs-number">6</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (num % i == <span class="hljs-number">0</span> || num % (i + <span class="hljs-number">2</span>) == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>性能对比</li>
-</ol>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// Scanner in = new Scanner(System.in);</span></span><br><span class="line">        <span class="hljs-comment">// int n = in.nextInt();</span></span><br><span class="line">        <span class="hljs-comment">// in.close();</span></span><br><span class="line">        Stack&lt;Integer&gt; a = <span class="hljs-keyword">new</span> Stack&lt;&gt;(), b = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> n = <span class="hljs-number">100000</span>;</span><br><span class="line">        <span class="hljs-keyword">long</span> s = System.currentTimeMillis(), e;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (f(i))</span><br><span class="line">                a.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        e = System.currentTimeMillis();</span><br><span class="line">        System.out.println(e - s + <span class="hljs-string">" ms"</span>);</span><br><span class="line">        s = System.currentTimeMillis();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (func(i))</span><br><span class="line">                b.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        e = System.currentTimeMillis();</span><br><span class="line">        System.out.println(e - s + <span class="hljs-string">" ms"</span>);</span><br><span class="line">        System.gc();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; n % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span> tem = (<span class="hljs-keyword">int</span>) Math.sqrt(n);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= tem; i += <span class="hljs-number">6</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span> || n % (i + <span class="hljs-number">2</span>) == <span class="hljs-number">0</span>)</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1392 ms</span><br><span class="line">5 ms</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -570,7 +592,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            96
+                            97
                         </p>
                     </a>
                 </div>
@@ -594,7 +616,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            119
+                            121
                         </p>
                     </a>
                 </div>
@@ -716,7 +738,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">75</span>
+                <span class="level-item tag">76</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -761,6 +783,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -830,25 +871,6 @@
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -878,6 +900,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="哈佛大学教授问与答：解析量子计算浪潮">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
@@ -947,25 +988,6 @@
                     <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Others/">Others</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/hexo-theme-icarus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/desert.jpg" alt="ICRUS">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:09:12.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/hexo-theme-icarus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ICRUS</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
