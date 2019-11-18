@@ -146,6 +146,155 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-28T15:20:52.000Z">2019-10-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 283 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/28/asmttpd/">asmttpd</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="asmttpd"><a href="#asmttpd" class="headerlink" title="asmttpd"></a>asmttpd</h1><p>Web server for Linux written in amd64 assembly.</p>
+<p>Features:</p>
+<ul>
+<li>Multi-threaded.</li>
+<li>No libraries required ( only 64-bit Linux ).</li>
+<li>Very small binary, roughly 6 KB.</li>
+<li>Quite fast.</li>
+</ul>
+<p>What works:</p>
+<ul>
+<li>Serving files from specified document root.</li>
+<li>HEAD requests.</li>
+<li>200, 206, 404, 400, 413, 416</li>
+<li>Content-types: xml, html, xhtml, gif, png, jpeg, css, js, svg, and octet-stream.</li>
+</ul>
+<p>Planned Features:</p>
+<ul>
+<li>Directory listing.</li>
+</ul>
+<h1 id="Current-Limitations-Known-Issues"><a href="#Current-Limitations-Known-Issues" class="headerlink" title="Current Limitations / Known Issues"></a>Current Limitations / Known Issues</h1><ul>
+<li>Sendfile can hang if GET is cancelled.</li>
+</ul>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>Run <code>make</code> or <code>make release</code> for non-debug version.</p>
+<p>You will need <code>yasm</code> installed.</p>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p><code>./asmttpd /path/to/web_root port_number</code></p>
+<p>Example: <code>./asmttpd ./web_root 8080</code></p>
+<h1 id="Changes"><a href="#Changes" class="headerlink" title="Changes"></a>Changes</h1><p>2019-04-22 : asmttpd - 0.4.4</p>
+<ul>
+<li>Added SVG support.</li>
+</ul>
+<p>2019-01-24 : asmttpd - 0.4.3</p>
+<ul>
+<li>Added port number as parameter.</li>
+</ul>
+<p>2017-10-18 : asmttpd - 0.4.2</p>
+<ul>
+<li>Set REUSEADDR.</li>
+</ul>
+<p>2017-10-17 : asmttpd - 0.4.1</p>
+<ul>
+<li>Stack address bug fix.</li>
+</ul>
+<p>2016-10-31 : asmttpd - 0.4</p>
+<ul>
+<li>HEAD support.</li>
+</ul>
+<p>2014-07-14 : asmttpd - 0.3</p>
+<ul>
+<li>Added default document support.</li>
+</ul>
+<p>2014-02-10 : asmttpd - 0.2</p>
+<ul>
+<li>Added 400, 413, 416 responses.</li>
+<li>Fixed header processing bug.</li>
+</ul>
+<p>2014-02-07 : asmttpd - 0.1.1</p>
+<ul>
+<li>Fixed 206 max length bug.</li>
+<li>Commented out simple request logging, uncomment in main.asm to enable.</li>
+</ul>
+<p>2014-02-06 : asmttpd - 0.1</p>
+<ul>
+<li>Fixed SIGPIPE when transfer is cancelled.</li>
+<li>Added a more useful error on bind failure.</li>
+<li>Fixed 206 size calculation.</li>
+<li>Combined seek &amp; get file size system calls.</li>
+</ul>
+<p>2014-02-05 : asmttpd - 0.09</p>
+<ul>
+<li>Issue #8 fix. Crashes on long request paths.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.08</p>
+<ul>
+<li>Added TCP corking.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.07</p>
+<ul>
+<li>Removed thread pool after benchmarking, changed to an accept-per-thread model.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.06</p>
+<ul>
+<li>Worker thread stack corruption bug fix.</li>
+</ul>
+<p>2014-02-04 : asmttpd - 0.05</p>
+<ul>
+<li>Changed 200 and 206 implementation to use sendfile system call.</li>
+<li>Got rid of read/write buffer, changed request read buffer to standard 8KB.</li>
+</ul>
+<p>2014-02-03 : asmttpd - 0.04</p>
+<ul>
+<li>200 now streams full amount</li>
+</ul>
+<p>2014-02-01 : asmttpd - 0.03</p>
+<ul>
+<li>Files are split if too large to fit into buffer. </li>
+<li>Added 206 responses with Content-Range handling</li>
+</ul>
+<p>2014-01-30 : asmttpd - 0.02</p>
+<ul>
+<li>Added xml, xhtml, gif, png, jpeg, css, and javascript content types.</li>
+<li>Changed thread memory size to something reasonable. You can tweak it according to available memory. See comments in main.asm</li>
+<li>Added simple request logging.</li>
+<li>Added removal of ‘../‘ in URL.</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-27T15:15:00.000Z">2019-10-27</time>
                 
                 <div class="level-item">
@@ -625,65 +774,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-25T08:34:54.000Z">2019-10-25</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 354 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/25/windows-edb-mv/">windows.edb_mv</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘"><a href="#【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘" class="headerlink" title="【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘"></a>【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘</h1><blockquote>
-<p>先介绍Windows.edb是什么东东，很奇怪的后缀名哦。其实它就是Windows10为加快搜索速度而建立的索引文件，所以还是很有用的，但是看看它的体积，你就会觉得也太占系统盘的空间了。Windows.edb文件所在的路径为：</p>
-</blockquote>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\ProgramData\Microsoft\Search\Data\Applications\Windows</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/2019/10/25/30949570-f702-11e9-84fc-111e5c1675c4.png" alt="image.png"></p>
-<blockquote>
-<p>虽然我们可以删除该文件，但正像前面说过的，它还是比较有用的（并且删除后，再次使用搜索功能后，它还会生成的），所以我们最好保留着它，但可以移动一下Windows.edb文件的位置，把它移动到非系统盘。方法如下：</p>
-</blockquote>
-<ol>
-<li>在Win10任务栏的Cortana搜索框中输入“索引选项”，点击搜索结果中的“索引选项（控制面板）”打开“索引选项”窗口。</li>
-<li>点击窗口底部的“高级”按钮，打开“高级选项”窗口。</li>
-<li>在“索引位置”区域点击右下角的“选择新位置”按钮，为Windows.edb选择非系统盘的路径即可。最后点击“确定”，重启电脑后生效。</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -758,7 +848,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            97
+                            98
                         </p>
                     </a>
                 </div>
@@ -782,7 +872,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            121
+                            122
                         </p>
                     </a>
                 </div>
@@ -896,7 +986,7 @@
                 <span class="level-item">人工智能</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/文章/">
@@ -949,6 +1039,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/18/target-detection-yolo/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/18/cc0d9a30-0a01-11ea-b8d5-416bf8aed005.png" alt="目标检测YOLOv3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T12:26:24.000Z">2019-11-18</time></div>
+                    <a href="/2019/11/18/target-detection-yolo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">目标检测YOLOv3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://www.qtumist.com/wp-content/uploads/2019/11/102419_Quantum_008_2500.jpg" alt="哈佛大学教授问与答：解析量子计算浪潮">
@@ -1018,25 +1127,6 @@
                     <a href="/2019/11/15/peak-labs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Peak Labs</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/晨间日记/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
                     </p>
                 </div>
             </div>
@@ -1066,6 +1156,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/18/target-detection-yolo/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/18/cc0d9a30-0a01-11ea-b8d5-416bf8aed005.png" alt="目标检测YOLOv3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T12:26:24.000Z">2019-11-18</time></div>
+                    <a href="/2019/11/18/target-detection-yolo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">目标检测YOLOv3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://www.qtumist.com/wp-content/uploads/2019/11/102419_Quantum_008_2500.jpg" alt="哈佛大学教授问与答：解析量子计算浪潮">
@@ -1135,25 +1244,6 @@
                     <a href="/2019/11/15/peak-labs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Peak Labs</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/晨间日记/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
                     </p>
                 </div>
             </div>

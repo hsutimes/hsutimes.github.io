@@ -146,6 +146,107 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-14T12:46:29.000Z">2019-10-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1298 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/14/linux-so/">linux_so</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Linux下的静态库、动态库和动态加载库"><a href="#Linux下的静态库、动态库和动态加载库" class="headerlink" title="Linux下的静态库、动态库和动态加载库"></a>Linux下的静态库、动态库和动态加载库</h1><h2 id="Linux库类型"><a href="#Linux库类型" class="headerlink" title="Linux库类型"></a>Linux库类型</h2><p>Linux下可以创建两种类型的库:</p>
+<ol>
+<li><p>静态库(.a): 在链接期间被应用程序直接链接进可执行文件</p>
+</li>
+<li><p>动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明动态库的存在，也就是说这种动态库必须在编译时对编译器可见，但编译器却不将此种库编译进可执行文件; b) 在运行期间，动态加载和卸载的库，使用动态加载方法加载。这种库的形式跟动态链接没有本质区别，区别是在调用时，是由用户程序决定何时链接的，而不是由系统链接器自动链接</p>
+</li>
+</ol>
+<h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><p>库需要以<code>lib</code>作为开头，而在指定链接命令行参数时，却无需包含开头和扩展名，例如：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc src-file.c -lm -lpthread</span><br></pre></td></tr></table></figure>
+
+<p>这个例子中，链接了<code>libmath.a</code>和<code>libpthread.a</code></p>
+<h2 id="静态库-a"><a href="#静态库-a" class="headerlink" title="静态库(.a)"></a>静态库(.a)</h2><p>生成静态库的方法如下：</p>
+<ul>
+<li><p>编译object文件。例如：cc -Wall -c ctest1.c ctest2.c，该命令会生成ctest1.o和ctest2.o(其中-Wall表示编译时输出警告)。</p>
+</li>
+<li><p>创建库文件。例如：ar -cvq libctest.a ctest1.o ctest2.o。该命令会得到一个libctest.a文件</p>
+</li>
+<li><p>可以通过ar -t查看.a文件中包含哪些.o。所以，实际上ar就是一个打包命令，类似tar</p>
+</li>
+<li><p>构建符号表。ranlib libctest.a用于为.a创建符号表。有些ar命令实际上已经集成了ranlib的功能</p>
+</li>
+</ul>
+<p><code>.a</code>文件与windows下的<code>.lib</code>是相同的概念。</p>
+<h2 id="动态库-so"><a href="#动态库-so" class="headerlink" title="动态库(.so)"></a>动态库(.so)</h2><p>生成动态库的方法如下：</p>
+<ul>
+<li>编译object文件时使用-fPIC选项：</li>
+</ul>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -fPIC -c *.c</span><br></pre></td></tr></table></figure>
+
+<p>这个选项的目的是让编译器生成地址无关(position independent)的代码，这是因为，动态库是在运行期间链接的，变量和函数的偏移量是事先不知道的，需要链接以后根据offset进行地址重定向。</p>
+<ul>
+<li>使用-shared链接<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 *.o</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><code>-shared</code>选项是让动态库得以在运行期间被动态链接;<code>-Wl,options</code>是设置传递给<code>ld(链接器)</code>的参数，在上面的例子中，当链接器在链接<code>.o</code>时会执行<code>ld -soname ibctest.so.1</code></p>
+<ul>
+<li>创建软链</li>
+</ul>
+<p>上面的命令将最终输出一个动态库libctest.so.1.0，而出于习惯，会创建两个软链:</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv libctest.so.1.0 /opt/lib</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so</span><br></pre></td></tr></table></figure>
+
+<p><code>libctest.so</code>用于在编译期间使用<code>-lctest</code>让编译器找到动态库，而<code>libctest.so.1</code>用于在运行期间链接</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -I/path/to/include-files -L/path/to/libraries prog.c -lctest -o prog</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h3><p>使用ldd命令来查看程序对动态库的依赖。例如：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ldd prog</span><br><span class="line"></span><br><span class="line">libctest.so.1 =&gt; /opt/lib/libctest.so.1 (0x00002aaaaaaac000)</span><br><span class="line">libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)</span><br><span class="line">/lib64/ld-linux-x86-64.so.2 (0x0000003aa4c00000)</span><br></pre></td></tr></table></figure>
+
+<h3 id="obj文件"><a href="#obj文件" class="headerlink" title="obj文件"></a>obj文件</h3><p>obj文件的格式和组成可能是系统差异性的一大体现，比如windows下的PE、linux和一些unix下的elf、macos的mach-o、aix下的xcoff。</p>
+<p>查看obj文件的符号表信息，可以通过nm objdump readelf等方法。</p>
+<h3 id="运行期间查找动态库"><a href="#运行期间查找动态库" class="headerlink" title="运行期间查找动态库"></a>运行期间查找动态库</h3><p>运行期间，系统需要知道到哪里去查找动态库，这是通过/etc/ld.so.conf配置的。ldconfig用于配置运行时动态库查找路径，实际是更新/etc/ld.so.cache。另外一些环境变量也可以影响查找：(Linux/Solaris: LD_LIBRARY_PATH, SGI: LD_LIBRARYN32_PATH, AIX: LIBPATH, Mac OS X: DYLD_LIBRARY_PATH, HP-UX: SHLIB_PATH)</p>
+<h2 id="动态加载和卸载的库"><a href="#动态加载和卸载的库" class="headerlink" title="动态加载和卸载的库"></a>动态加载和卸载的库</h2><p>需要应用程序希望设计成插件化的架构，这就需要可以动态加载和卸载库的机制。与动态链接不同的是，动态加载的意思是，编译期间可以对动态库的存在一无所知，而是在运行期间通过用户程序尝试加载进来的。</p>
+<p>通过<code>dlfcn.h</code>中的<code>dlopen</code>、<code>dlsym</code>和<code>dlclose</code>等函数实现此种功能。</p>
+<p>另外，使用到dlfcn机制的可执行文件需要使用-rdynamic选项，它将指示连接器把所有符号（而不仅仅只是程序已使用到的外部符号，但不包括静态符号，比如被static修饰的函数）都添加到动态符号表（即.dynsym表）里。</p>
+<h2 id="GNU-Libtool"><a href="#GNU-Libtool" class="headerlink" title="GNU Libtool"></a>GNU Libtool</h2><p>如今许多软件的编译都采用libtool工具，libtool是一个编译链接包装工具，实际只是一个脚本，用libtool编译和链接会产生类似.la的文件，.la这种文件其实是个文本文件，指向.a文件，并声明一些版本信息。</p>
+<p><a href="https://segmentfault.com/a/1190000005988462" target="_blank" rel="noopener">传送门</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-13T05:06:51.000Z">2019-10-13</time>
                 
                 <div class="level-item">
@@ -674,82 +775,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-07T07:47:18.000Z">2019-10-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1565 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/07/nlp/">nlp</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="自语言处理然"><a href="#自语言处理然" class="headerlink" title="自语言处理然"></a>自语言处理然</h1><blockquote>
-<p>自语言处理然（英语：Natural Language Processing，缩写作 NLP）是人工智能和语言学领域的分支学科。此领域探讨如何处理及运用自然语言；自然语言处理包括多方面和步骤，基本有认知、理解、生成等部分。</p>
-</blockquote>
-<p>自然语言认知和理解是让计算机把输入的语言变成有意思的符号和关系，然后根据目的再处理。自然语言生成系统则是把计算机数据转化为自然语言。</p>
-<h1 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h1><p>自然语言处理大体是从1950年代开始，虽然更早期也有作为。1950年，图灵发表论文“计算机器与智能”，提出现在所谓的“图灵测试”作为判断智能的条件。</p>
-<p>1954年的乔治城实验涉及全部自动翻译超过60句俄文成为英文。研究人员声称三到五年之内即可解决机器翻译的问题。[1]不过实际进展远低于预期，1966年的ALPAC报告发现十年研究未达预期目标，机器翻译的研究经费遭到大幅削减。一直到1980年代末期，统计机器翻译系统发展出来，机器翻译的研究才得以更上一层楼。</p>
-<p>1960年代发展特别成功的NLP系统包括SHRDLU——一个词汇设限、运作于受限如“积木世界”的一种自然语言系统，以及1964-1966年约瑟夫·维森鲍姆模拟“个人中心治疗”而设计的ELIZA——几乎未运用人类思想和感情的消息，有时候却能呈现令人讶异地类似人之间的交互。“病人”提出的问题超出ELIZA 极小的知识范围之时，可能会得到空泛的回答。例如问题是“我的头痛”，回答是“为什么说你头痛？”</p>
-<p>1970年代，程序员开始设计“概念本体论”（conceptual ontologies）的程序，将现实世界的信息，架构成计算机能够理解的数据。实例有MARGIE、SAM、PAM、TaleSpin、QUALM、Politics以及Plot Unit。许多聊天机器人在这一时期写成，包括PARRY 、Racter 以及Jabberwacky 。</p>
-<p>一直到1980年代，多数自然语言处理系统是以一套复杂、人工订定的规则为基础。不过从1980年代末期开始，语言处理引进了机器学习的算法，NLP产生革新。成因有两个：运算能力稳定增加（参见摩尔定律）；以及乔姆斯基 语言学理论渐渐丧失主导（例如转换-生成文法）。该理论的架构不倾向于语料库——机器学习处理语言所用方法的基础。有些最早期使用的机器学习算法，例如决策树，是硬性的、“如果-则”规则组成的系统，类似当时既有的人工订定的规则。不过词性标记将隐马尔可夫模型引入NLP，并且研究日益聚焦于软性的、以几率做决定的统计模型，基础是将输入数据里每一个特性赋予代表其分量的数值。许多语音识别现今依赖的缓存语言模型即是一种统计模型的例子。这种模型通常足以处理非预期的输入数据，尤其是输入有错误（真实世界的数据总免不了），并且在集成到包含多个子任务的较大系统时，结果比较可靠。</p>
-<p>许多早期的成功属于机器翻译领域，尤其归功IBM的研究，渐次发展出更复杂的统计模型。这些系统得以利用加拿大和欧盟现有的语料库，因为其法律规定政府的会议必须翻译成所有的官方语言。不过，其他大部分系统必须特别打造自己的语料库，一直到现在这都是限制其成功的一个主要因素，于是大量的研究致力于从有限的数据更有效地学习。</p>
-<p>近来的研究更加聚焦于非监督式学习和半监督学习的算法。这种算法，能够从没有人工注解理想答案的数据里学习。大体而言，这种学习比监督学习困难，并且在同量的数据下，通常产生的结果较不准确。不过没有注解的数据量极巨（包含了万维网），弥补了较不准确的缺点。</p>
-<p>近年来, 深度学习技巧纷纷出炉[2][3] 在自然语言处理方面获得最尖端的成果，例如语言模型[4]、语法分析[5][6]等等。</p>
-<h1 id="自然语言处理的主要范畴"><a href="#自然语言处理的主要范畴" class="headerlink" title="自然语言处理的主要范畴"></a>自然语言处理的主要范畴</h1><ul>
-<li>文本朗读（Text to speech）/语音合成（Speech synthesis）</li>
-<li>语音识别（Speech recognition）</li>
-<li>中文自动分词（Chinese word segmentation）</li>
-<li>词性标注（Part-of-speech tagging）</li>
-<li>句法分析（Parsing）</li>
-<li>自然语言生成（Natural language generation）</li>
-<li>文本分类（Text categorization）</li>
-<li>信息检索（Information retrieval）</li>
-<li>信息抽取（Information extraction）</li>
-<li>文字校对（Text-proofing）</li>
-<li>问答系统（Question answering）</li>
-<li>给一句人类语言的问句，决定其答案。 典型问题有特定答案 (像是加拿大的首都- 叫什么?)，但也考虑些开放式问句(像是人生的意义是是什么?)</li>
-<li>机器翻译（Machine translation）</li>
-<li>将某种人类语言自动翻译至另一种语言</li>
-<li>自动摘要（Automatic summarization）<br>产生一段文字的大意，通常用于提供已知领域的文章摘要，例如产生报纸上某篇- - 文章之摘要</li>
-<li>文字蕴涵（Textual entailment）</li>
-<li>命名实体识别（Named entity recognition）</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -824,7 +849,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            97
+                            98
                         </p>
                     </a>
                 </div>
@@ -848,7 +873,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            121
+                            122
                         </p>
                     </a>
                 </div>
@@ -962,7 +987,7 @@
                 <span class="level-item">人工智能</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/文章/">
@@ -1015,6 +1040,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/18/target-detection-yolo/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/18/cc0d9a30-0a01-11ea-b8d5-416bf8aed005.png" alt="目标检测YOLOv3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T12:26:24.000Z">2019-11-18</time></div>
+                    <a href="/2019/11/18/target-detection-yolo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">目标检测YOLOv3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://www.qtumist.com/wp-content/uploads/2019/11/102419_Quantum_008_2500.jpg" alt="哈佛大学教授问与答：解析量子计算浪潮">
@@ -1084,25 +1128,6 @@
                     <a href="/2019/11/15/peak-labs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Peak Labs</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/晨间日记/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
                     </p>
                 </div>
             </div>
@@ -1132,6 +1157,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/18/target-detection-yolo/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/18/cc0d9a30-0a01-11ea-b8d5-416bf8aed005.png" alt="目标检测YOLOv3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T12:26:24.000Z">2019-11-18</time></div>
+                    <a href="/2019/11/18/target-detection-yolo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">目标检测YOLOv3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/17/quantum-computing-wave/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://www.qtumist.com/wp-content/uploads/2019/11/102419_Quantum_008_2500.jpg" alt="哈佛大学教授问与答：解析量子计算浪潮">
@@ -1201,25 +1245,6 @@
                     <a href="/2019/11/15/peak-labs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Peak Labs</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/14/晨间日记/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://img007.hc360.cn/y1/M03/D5/FA/wKhQc1TLGYmEcbHmAAAAAODp6Jg943.jpg" alt="晨间日记">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-14T14:58:00.000Z">2019-11-14</time></div>
-                    <a href="/2019/11/14/晨间日记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">晨间日记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Others/">Others</a>
                     </p>
                 </div>
             </div>
