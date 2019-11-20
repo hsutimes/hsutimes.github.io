@@ -146,6 +146,75 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-05T08:08:46.000Z">2019-09-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/笔试/">笔试</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 413 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/05/树的高度（小米2017秋招真题）/">树的高度（小米2017秋招真题）</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/05/39375020-cfb4-11e9-9c01-f368b6d24837.png" alt="image.png"></p>
+<h1 id="树的高度（小米2017秋招真题）"><a href="#树的高度（小米2017秋招真题）" class="headerlink" title="树的高度（小米2017秋招真题）"></a>树的高度（小米2017秋招真题）</h1><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><strong>题目描述</strong></p>
+<p>现在有一棵合法的二叉树，树的节点都是用数字表示，现在给定这棵树上所有的父子关系，求这棵树的高度</p>
+<p><strong>时间限制</strong><br><code>C/C++</code>语言：<code>1000MS</code> 其它语言：<code>3000MS</code></p>
+<p><strong>内存限制</strong><br><code>C/C++</code>语言：<code>65536KB</code> 其它语言：<code>589824KB</code></p>
+<p><strong>输入</strong></p>
+<p>输入的第一行表示节点的个数n（1&lt;=n&lt;=1000，节点的编号为0到n-1）组成，下面是n-1行，每行有两个整数，第一个数表示父节点的编号，第二个数表示子节点的编号</p>
+<p><strong>输出</strong></p>
+<p>输出树的高度，为一个整数</p>
+<p><strong>样例输入</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">0 1</span><br><span class="line">0 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>样例输出</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>java</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="hljs-keyword">int</span> n = sc.nextInt();</span><br><span class="line">        <span class="hljs-keyword">int</span>[] parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            parent[i] = -<span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a = sc.nextInt();</span><br><span class="line">            <span class="hljs-keyword">int</span> b = sc.nextInt();</span><br><span class="line">            parent[b] = a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">int</span> h = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> max = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> j = i;</span><br><span class="line">            <span class="hljs-keyword">while</span> (parent[j] != -<span class="hljs-number">1</span>) &#123;</span><br><span class="line">                j = parent[j];</span><br><span class="line">                max++;</span><br><span class="line">            &#125;</span><br><span class="line">            h = max &gt; h ? max : h;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>python</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(x)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + get(dic_s[x])</span><br><span class="line">    <span class="hljs-keyword">except</span> KeyError:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">n = int(sys.stdin.readline().strip())</span><br><span class="line">dic_s = &#123;&#125;</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(int(n)<span class="hljs-number">-1</span>):</span><br><span class="line">    j_1,j_2 = sys.stdin.readline().strip().split()</span><br><span class="line">    dic_s[j_2] = j_1</span><br><span class="line"><span class="hljs-keyword">print</span> max([get(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> set(dic_s.keys()) - set(dic_s.values())]) <span class="hljs-keyword">if</span> n&gt;<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>javascript</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> n=readInt(),rec=&#123;&#125;,dps=&#123;&#125;,rs=<span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-keyword">while</span>(n--&gt;<span class="hljs-number">1</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> a=readInt(),b=readInt()</span><br><span class="line">  rec[a]=rec[a]||[]</span><br><span class="line">  rec[a].push(b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> rec) rs=<span class="hljs-built_in">Math</span>.max(rs,maxDps(k))</span><br><span class="line">print(rs)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxDps</span>(<span class="hljs-params">n</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!rec[n]) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">if</span>(dps[n]) <span class="hljs-keyword">return</span> dps[n]</span><br><span class="line">  <span class="hljs-keyword">var</span> r=<span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> x <span class="hljs-keyword">of</span> rec[n]) r=<span class="hljs-built_in">Math</span>.max(r,maxDps(x)+<span class="hljs-number">1</span>)</span><br><span class="line">  dps[n]=r</span><br><span class="line">  <span class="hljs-keyword">return</span> dps[n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-04T18:19:56.000Z">2019-09-05</time>
                 
                 <div class="level-item">
@@ -437,72 +506,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-31T14:57:20.000Z">2019-08-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 385 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/08/31/24-两两交换链表中的节点/">24. 两两交换链表中的节点</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/08/31/230aafc0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
-<h1 id="24-两两交换链表中的节点"><a href="#24-两两交换链表中的节点" class="headerlink" title="24. 两两交换链表中的节点"></a>24. <a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">两两交换链表中的节点</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
-<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
-<p>示例:</p>
-<pre><code>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
-<li>非递归</li>
-</ol>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     int val;</span></span><br><span class="line"><span class="hljs-comment"> *     ListNode next;</span></span><br><span class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pre = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</span><br><span class="line">        pre.next = head;</span><br><span class="line">        ListNode temp = pre;</span><br><span class="line">        <span class="hljs-keyword">while</span>(temp.next != <span class="hljs-keyword">null</span> &amp;&amp; temp.next.next != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">            ListNode start = temp.next;</span><br><span class="line">            ListNode end = temp.next.next;</span><br><span class="line">            temp.next = end;</span><br><span class="line">            start.next = end.next;</span><br><span class="line">            end.next = start;</span><br><span class="line">            temp = start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> pre.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>递归解法</p>
-<ol>
-<li>详细介绍一下递归的思路;</li>
-<li>递归和栈处理问题类似,先把问题从前往后收集起来,然后再从后往前处理每一个问题;</li>
-<li>两两交换链表结点,先处理最后两个或一个节点,然后再从后往前处理每一对节点;</li>
-<li>先创建一个next临时结点保存head的下一个结点,然后让head指向下下一个节点,最后让 next节点指向head结点;</li>
-<li>此题只有处理完后面的结点才可处理前面的结点,画图更容易理解;</li>
-</ol>
-</li>
-</ol>
-<p><img src="/images/2019/08/31/edb550e0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span> || head.next == <span class="hljs-keyword">null</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 三个节点顺序:head, next, swapPairs(next.next)</span></span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        head.next = swapPairs(next.next);</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="hljs-keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -573,7 +576,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            99
+                            100
                         </p>
                     </a>
                 </div>
@@ -719,7 +722,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">76</span>
+                <span class="level-item tag">77</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -764,6 +767,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/20/PythonRobotics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
+                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/19/sqlflow/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/19/6052aa40-0ada-11ea-888e-f9f900c5a0f9.png" alt="赋予 SQL AI 能力 SQLFlow">
@@ -833,25 +855,6 @@
                     <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/15/PaddlePaddle/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/15/4f36ef60-07a5-11ea-9869-b1d580c824bf.png" alt="PaddlePaddle Models">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-15T12:42:23.000Z">2019-11-15</time></div>
-                    <a href="/2019/11/15/PaddlePaddle/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PaddlePaddle Models</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                     </p>
                 </div>
             </div>
@@ -881,6 +884,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/20/PythonRobotics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
+                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/19/sqlflow/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/19/6052aa40-0ada-11ea-888e-f9f900c5a0f9.png" alt="赋予 SQL AI 能力 SQLFlow">
@@ -950,25 +972,6 @@
                     <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/15/PaddlePaddle/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/15/4f36ef60-07a5-11ea-9869-b1d580c824bf.png" alt="PaddlePaddle Models">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-15T12:42:23.000Z">2019-11-15</time></div>
-                    <a href="/2019/11/15/PaddlePaddle/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PaddlePaddle Models</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                     </p>
                 </div>
             </div>
