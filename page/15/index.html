@@ -146,6 +146,54 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-14T06:04:05.000Z">2019-09-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    几秒 读完 (大约 70 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/14/OpenCV边缘检测/">OpenCV边缘检测</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="OpenCV边缘检测"><a href="#OpenCV边缘检测" class="headerlink" title="OpenCV边缘检测"></a>OpenCV边缘检测</h1><p><img src="/images/2019/09/14/54fef350-d6b5-11e9-ae59-4f17e83b2f0c.png" alt="image.png"></p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> cv2</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="hljs-string">'1024.jpg'</span>,<span class="hljs-number">0</span>)</span><br><span class="line">edges = cv2.Canny(img,<span class="hljs-number">100</span>,<span class="hljs-number">200</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="hljs-number">121</span>),plt.imshow(img,cmap=<span class="hljs-string">'gray'</span>)</span><br><span class="line">plt.title(<span class="hljs-string">'original'</span>),plt.xticks([]),plt.yticks([])</span><br><span class="line">plt.subplot(<span class="hljs-number">122</span>),plt.imshow(edges,cmap=<span class="hljs-string">'gray'</span>)</span><br><span class="line">plt.title(<span class="hljs-string">'edge'</span>),plt.xticks([]),plt.yticks([])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-13T07:57:44.000Z">2019-09-13</time>
                 
                 <div class="level-item">
@@ -475,84 +523,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-12T10:09:12.000Z">2019-09-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/生活/">生活</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    13 分钟 读完 (大约 1923 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/12/三阶魔方解法/">三阶魔方解法</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="三阶魔方解法"><a href="#三阶魔方解法" class="headerlink" title="三阶魔方解法"></a>三阶魔方解法</h1><p>预备篇：三阶魔方相关知识<br>在本教程中，统一使用官方配色（上黄、下白、左橙、右红、前蓝、后绿），并在还原的过程中，白色作为底色。</p>
-<p>下图中，A、B、C分别表示顶层、中层、底层；D为中心块，在还原的过程中以此作为参照色（即该面所最终还原的颜色）；E为棱块，每块有两个颜色；F为角块，每块有三个颜色。</p>
-<p>在本教程中，分别用Front、Back、Left、Right、Up、Down的首字母表示前面、后面、左面、右面、上面、下面的顺时针90度旋转，带撇号的为逆时针90度逆转，带数字2的为180度旋转。</p>
-<p><img src="/images/2019/09/12/15512550-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p><img src="/images/2019/09/12/196bddb0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第一步：完成底层四棱<br>子步骤一：拼成黄心白瓣小花<br>如下图①所示，我们只要在黄色中心块的四周的棱块都挨着白色即可。</p>
-<p>对于在中层的白色棱，如②所示，只需转一个90度即可将白色朝上；对于在顶层、底层朝外的白色棱，如③所示，先在白色所在面转动90度后变成②的情况再处理；而在底层朝下的白色棱，如④所示，则通过180度旋转即可将白色朝上。</p>
-<p>值得留意的是⑤之类的情况，如果直接转90度将中层白色块朝上，那么会破坏掉上方原先已有的白色块。此时要先转动顶层（此例为U’），将空位转到对应位置，方可使该白色块转上去。</p>
-<p><img src="/images/2019/09/12/2458a640-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>子步骤二：找到相应颜色并掉落花瓣<br>先随意选定一个白色棱（下图以白红棱为例），转动顶层（或扭转中底层），直到该棱侧面的颜色与中心块吻合时，以该中心块为轴转动180度，使其落到白色中心旁边。用同样的方法处理其他三个棱之后，在底层会形成白色的十字，棱的侧面也与中心块相连。</p>
-<p><img src="/images/2019/09/12/29f0fdf0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第二步：完成底层四角<br>这一步我们不仅要让白色的四角全都聚集在下面，还要留意其角块侧面的颜色也要吻合。</p>
-<p>如下图的上半部分所示，我们先在顶层寻找含白色的角块，同时观察该角块另外两种颜色，转动顶层（或扭转中底层），使之处在相应颜色的两个中心块之间。</p>
-<p>当角块转到相应位置后，观察白色的朝向，做相应的公式：</p>
-<p>①为白色朝右，做U’ F’ U F；<br>②为白色朝前，做U R U’ R’；<br>③为白色朝上，做三遍的公式①。<br>当顶层无任何白色角块时，此时再观察底层有无错误朝向或位置的白色角块：</p>
-<p>④在底层，白色朝右，做两遍的公式①；<br>⑤在底层，白色朝前，做两遍的公式②；<br>⑥在底层，错误位置角块，先做公式①将其赶回顶层，然后找到相应正确位置还原。<br>用同样的方法处理其他三个角之后，底面为全白色，侧面会形成倒T字。</p>
-<p><img src="/images/2019/09/12/32aa1da0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第三步：完成中层四棱<br>如下图的上半部分所示，我们先在顶层寻找不含黄色的棱块，同时观察该棱块另外两种颜色，转动顶层（或扭转中底层），使之朝外的颜色与中心块相吻合。</p>
-<p>当棱块转到相应位置后，观察最终所归的空位，并将空位置于右前方，做相应的公式（前面的公式①与②，在这里称为甲与乙）：</p>
-<p>①情况做U’ F’ U F U R U’ R’（先甲后乙）；<br>②情况做U R U’ R’ U’ F’ U F（先乙后甲）；<br>当顶层全为有黄色的棱块时，此时再观察中层有无错误朝向或位置的棱块：</p>
-<p>③与④情况，先做甲+乙将其赶回顶层，然后找到相应正确位置还原。<br>用同样的方法处理其他三个棱之后，第二层即完成。</p>
-<p><img src="/images/2019/09/12/3a6a1040-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
-<p>第四步：完成顶面十字<br>现在观察顶面的棱与中心块所构成的图形（忽视角块黄色是否朝上与否）分为“点、线、拐、十字”四种情况。找到相应的情况并按图示朝向摆放后，按照下流程图每次做R’ U’ F’ U F R（R’+甲+R）直到变成十字为止。其中“线”的情况还有一条捷径，即F R U R’ U’ F’。</p>
-<p><img src="/images/2019/09/12/3e428f80-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 7a.png</p>
-<p>第五步：调整顶棱顺序<br>先转动顶层（或扭转中底层），直到至少有两个棱侧面的颜色与中心块吻合。</p>
-<p>现在观察另外两个错误的棱处于相邻还是相对位置，如果没有，则此步跳过；如果是相邻的，则将两个错误的置一前一右，做丙公式U’ F’ U’ F U’ F’ U2 F；如果是相对的，则将两个错误的置一左一后，先做丙公式，然后转下顶层变为相邻的，再置一前一右做丙公式完成。</p>
-<p><img src="/images/2019/09/12/42486050-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 8.png</p>
-<p>第六步：调整顶角顺序<br>观察顶角，找到在正确位置的一个角（朝向是否正确暂时不考虑）。如果四角都在正确位置，则此步跳过；如果只有一个，则将正确的角置于左前方，做丁公式U’ L’ U R U’ L U R’（做一遍仍未成功则再做第二遍）；如果没有一个角在正确位置，则先做丁公式然后变成有一个角在正确位置再相应处理。</p>
-<p><img src="/images/2019/09/12/48ad7de0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 9.png</p>
-<p>第七步：调整顶角朝向<br>此时我们统一将蓝色中心块保持前面放置，需要注意的是在操作的过程中魔方的底层会被暂时性打乱，不过不要紧，只要正确操作完后魔方会正常还原。</p>
-<p>观察顶层前右方的角块的黄色朝向，做戊公式F’ R F R’二或四遍使黄色朝上。完成一个角块的朝向处理之后，要转动顶层（U、U’、U2），并保持蓝色中心块在前面不动，再处理其他角块朝向。(在每一角落都要扭)</p>
-<p><img src="/images/2019/09/12/4cc8d280-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 10.png</p>
-<p><a href="https://zh.wikibooks.org/zh-hans/%E4%B8%89%E9%98%B6%E9%AD%94%E6%96%B9%E8%A7%A3%E6%B3%95" target="_blank" rel="noopener">维基百科</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -577,7 +547,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/21/">21</a></li>
             
         </ul>
     </nav>
@@ -627,7 +597,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            100
+                            101
                         </p>
                     </a>
                 </div>
@@ -651,7 +621,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            123
+                            124
                         </p>
                     </a>
                 </div>
@@ -773,7 +743,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">77</span>
+                <span class="level-item tag">78</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -818,6 +788,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/20/PythonRobotics/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
@@ -885,25 +874,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
                     <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-16T05:05:50.000Z">2019-11-16</time></div>
-                    <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -935,6 +905,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/20/PythonRobotics/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
@@ -1002,25 +991,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
                     <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-16T05:05:50.000Z">2019-11-16</time></div>
-                    <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>

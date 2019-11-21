@@ -146,6 +146,70 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-08T13:35:18.000Z">2019-09-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 分钟 读完 (大约 2279 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/08/数据库备份恢复容器化项目实践经验总结/">数据库备份恢复容器化项目实践经验总结</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="数据库备份恢复容器化项目实践经验总结"><a href="#数据库备份恢复容器化项目实践经验总结" class="headerlink" title="数据库备份恢复容器化项目实践经验总结"></a>数据库备份恢复容器化项目实践经验总结</h1><blockquote>
+<p>本文分享了唯品会数据库Docker的异地容灾项目实践经验，项目中针对用户数据库的异地恢复场景的需求进行开发和测试，整合了网络，存储、调度、监控，镜像等多个模块。在实施完成后，从技术上总结关于选型、开发、踩坑、测试等方面的经验。</p>
+</blockquote>
+<h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>数据库Docker的异地备份恢复容灾项目，针对用户数据库的异地备份恢复场景的需求进行开发和测试，整合了容器网络、存储、调度、监控、镜像等多个模块。同时针对数据库的日常运维工作开发了监控、资源调度、日志、Puppet自动推送等工具。</p>
+<p>通过Docker天生隔离性和快速部署等特点，实现在单台物理机上运行多个数据库备份/恢复实例，大大提高服务器使用率，节省大量成本。通过对Docker本身和相关组件的研究和改造，从普通开源产品落地到公司内部生产环境，积累宝贵的开发经验。通过对Docker已经在其上层运行的数据库日常运维和监控，也积累宝贵的Docker运维经验，为更大规模推广容器提供基础。</p>
+<p><img src="/images/2019/09/08/9adb4490-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
+<h1 id="关于容器技术"><a href="#关于容器技术" class="headerlink" title="关于容器技术"></a>关于容器技术</h1><p>通过实践，证明容器技术在易用性，可管理性，快速部署具备天然的优势。在资源利用率方面，容器部署在上百个物理节点上，提供约500多个数据库灾备实例，提升了硬件资源的利用率，节约了约400台物理机的采购成本。这些是容器技术带来的实实在在收益。在资源分配与隔离方面，又不输于虚拟机。CPU、内存、磁盘IO、网络IO限流等技术的应用，保证了资源的合理使用，从机制上阻止了单一实例的资源过分消耗的问题。</p>
+<p>稳定性是使用容器技术非常关注的一个点，也是基石。MySQL备份/恢复属于CPU密集 + 磁盘IO密集 + 网络IO密集型业务，对于Docker daemon是个较大的考验。就目前来看，限制每台宿主机的容器数量（5个左右）的情况下，集群跑了三个多月没有出现因为容器负载过大导致的crash现象，还是值得信赖的。遇到的唯一相关问题是Docker daemon挂死，具体现象是docker info、docker ps没有响应，docker volume、docker images 正常，下面的容器运行正常。这是偶发事件，无法重现，以后需要继续观察。</p>
+<p>由于容器以进程方式存在，体现出几乎与物理机上相当的性能，Overheads极低（低于10%）。从数据抽取任务的结果来看，与物理机相比，使用容器对成功率没有影响，效率也差不多。这也很符合最初预想，不管跑容器还是外部服务从物理机角度来说它们之间是没有什么区别的，都是一个进程，唯一不同是父进程不一样而已。</p>
+<p>以上是容器“RUN”带来的好处，通过统一开发流程，应用微服务化，CI/CD等方面的改进，能够进一步利用容器“BUILD”、“SHIP” 优势，容器技术还来的潜力是巨大的。要说容器技术的缺点，还真的不明显。硬要提的话一个是需要一定的学习成本，改变开发流程与方式，一个是开发人员对容器技术的接受程度。这个项目仅用了不到二百人/天，对于一个采用新技术的项目来说，真的是很低的了。一开始我们也担心因为采用新技术导致开发推广有困难，后来实际能通过技术上解决问题，打消了大部分用户对使用Docker的疑虑，反而有助于该技术的普遍应用。</p>
+<p>关于Docker daemon版本的选择，我们之前是有过一些讨论的。现在Docker社区非常活跃，当时我们用1.10.3， 到现在已经出了两个新版本了。在功能满足的前提下，稳定性是第一考量。Docker自1.9.0引入CNM网络模型，1.10算是比较成熟。CNM是我们希望在这个项目尝试的一部分。网络与Volume插件功能与稳定性的提升，开始支持磁盘IO读写限速，Device Mapper的支持，等等，都是选择了这个版本的原因。另外，Docker插件的引入，很好地解耦了Docker与底层模块的关系，使我们可以专注于底层（网络、存储）实现而不需要修改Docker daemon本身，同时避免产生升级依赖。</p>
+<h1 id="关于容器存储"><a href="#关于容器存储" class="headerlink" title="关于容器存储"></a>关于容器存储</h1><p>容器外部卷使用Convoy，以插件的形式支持容器持久化数据。容器本身与外部卷均使用Device Mapper作为底层。没有选择分布式存储原因，主要是为了简化实现，更稳定。通过限制每个容器的BlkioDeviceReadBps、BlkioDeviceWriteBps、BlkioDeviceReadIOps、BlkioDeviceWriteIOps，使磁盘IO稳定地达到相当于95%物理机性能。</p>
+<p><img src="/images/2019/09/08/b8684530-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
+<p>对于Device Mapper，因为是红帽推荐的，而OS又是用的CentOS7.2, 所以就用了它。测试过程中发现Device Mapper健壮性不是很好，仅仅在低并发下，也会出现容器删除失败的情况，容器并发启停偶尔出现找不到设备的情况。这种使用映射关系的设备，功能是丰富，实现上过于复杂，每次对设备的修改都需要额外去更新Metadata，并发场景出错的机会就大了。让我再选的话我会考虑Overlay这种更简单的driver。</p>
+<p>对于Convoy，是来自Rancher的产品，Go语言，仍然处于未成熟阶段，版本号0.5, 并没有完全实现Volume Plugin接口。相比其它模块它的问题也是最多的，例如Volume创建失败，无法删除，UNIX Socket泄漏，重名冲突，异常自动退出等。属于能用，但未完善的状态，你自己得有一定开发调试能力去解决发现的问题。其它几个存储插件情况也差不多，Flocker、Blockbridge、Horcrux等等，有的连第一个正式发布版都还没有，Convoy反而相对好点，有点烂柿子堆里挑的感觉。</p>
+<h1 id="关于容器监控"><a href="#关于容器监控" class="headerlink" title="关于容器监控"></a>关于容器监控</h1><p>容器监控在这个项目里还可以有很大的空间可以改进。项目里用的是cAdvisor，容器内top、free、iostat命令劫持，基于已有的Zabbix体系作数据收集与展示。结论是Zabbix完全不合适做容器监控，数据收集密度，展示质量，灵活度都没能满足需求。</p>
+<p>后来在测试中尝试使用Telegraf + InfluxDB + Grafana。 只需要Grafana简单的配置，能够帮忙我们清晰地展示容器及服务进程CPU、内存、网络、磁盘等情况。Grafana上SQL查询语句的调试与开发，确实需要不少的时间，但这个工作量是一次性的。因为是Go写的，Telegraf CPU占用属于比较低的水平（0.4 – 5%）。功能上比较丰富，同时支持外部进程与容器的数据收集，多达55种数据源插件，有它就不需要布cAdvisor了，个人比较推荐。需要告警的同学，可以考虑把influxDB改成Prometheus。它包含Alertmanager实现Email、PagerDuty等消息通知。数据Backend可以选择自带的DB，也可以外接influxDB、Graphite、OpenTSDB等流行方案。</p>
+<p><img src="/images/2019/09/08/cd4a2fe0-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
+<p>监控领域业界已经有很多开源方案可以参考，以下是要衡量的标准：易扩展、开销低、入侵小、大集中、易部署、实时性、展现清晰灵活。这方面希望与各位有更多的交流。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-08T11:25:53.000Z">2019-09-08</time>
                 
                 <div class="level-item">
@@ -1686,99 +1750,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-07T03:08:58.000Z">2019-09-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1333 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/07/54-螺旋矩阵/">54. 螺旋矩阵</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/09/07/1a65d090-d180-11e9-9875-2ff9eb2fd026.png" alt="image.png"></p>
-<h1 id="54-螺旋矩阵"><a href="#54-螺旋矩阵" class="headerlink" title="54. 螺旋矩阵"></a>54. <a href="https://leetcode-cn.com/problems/spiral-matrix/" target="_blank" rel="noopener">螺旋矩阵</a></h1><p>给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。</p>
-<p>示例 1:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
-
-<p>示例 2:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [1, 2, 3, 4],</span><br><span class="line">  [5, 6, 7, 8],</span><br><span class="line">  [9,10,11,12]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法-1：模拟"><a href="#方法-1：模拟" class="headerlink" title="方法 1：模拟"></a>方法 1：模拟</h2><p>直觉</p>
-<p>绘制螺旋轨迹路径，我们发现当路径超出界限或者进入之前访问过的单元格时，会顺时针旋转方向。</p>
-<p>算法</p>
-<p>假设数组有 R 行 C 列，seen[r][c] 表示第 r 行第 c 列的单元格之前已经被访问过了。当前所在位置为 (r, c)，前进方向是 di。我们希望访问所有 R x C 个单元格。</p>
-<p>当我们遍历整个矩阵，下一步候选移动位置是 (cr, cc)。如果这个候选位置在矩阵范围内并且没有被访问过，那么它将会变成下一步移动的位置；否则，我们将前进方向顺时针旋转之后再计算下一步的移动位置。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">spiralOrder</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        List ans = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">        <span class="hljs-keyword">if</span> (matrix.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        <span class="hljs-keyword">int</span> R = matrix.length, C = matrix[<span class="hljs-number">0</span>].length;</span><br><span class="line">        <span class="hljs-keyword">boolean</span>[][] seen = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[R][C];</span><br><span class="line">        <span class="hljs-keyword">int</span>[] dr = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>&#125;;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] dc = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;;</span><br><span class="line">        <span class="hljs-keyword">int</span> r = <span class="hljs-number">0</span>, c = <span class="hljs-number">0</span>, di = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; R * C; i++) &#123;</span><br><span class="line">            ans.add(matrix[r][c]);</span><br><span class="line">            seen[r][c] = <span class="hljs-keyword">true</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> cr = r + dr[di];</span><br><span class="line">            <span class="hljs-keyword">int</span> cc = c + dc[di];</span><br><span class="line">            <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt;= cr &amp;&amp; cr &lt; R &amp;&amp; <span class="hljs-number">0</span> &lt;= cc &amp;&amp; cc &lt; C &amp;&amp; !seen[cr][cc])&#123;</span><br><span class="line">                r = cr;</span><br><span class="line">                c = cc;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                di = (di + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>;</span><br><span class="line">                r += dr[di];</span><br><span class="line">                c += dc[di];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spiralOrder</span><span class="hljs-params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> matrix: <span class="hljs-keyword">return</span> []</span><br><span class="line">        R, C = len(matrix), len(matrix[<span class="hljs-number">0</span>])</span><br><span class="line">        seen = [[<span class="hljs-literal">False</span>] * C <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> matrix]</span><br><span class="line">        ans = []</span><br><span class="line">        dr = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>]</span><br><span class="line">        dc = [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>]</span><br><span class="line">        r = c = di = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(R * C):</span><br><span class="line">            ans.append(matrix[r][c])</span><br><span class="line">            seen[r][c] = <span class="hljs-literal">True</span></span><br><span class="line">            cr, cc = r + dr[di], c + dc[di]</span><br><span class="line">            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= cr &lt; R <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= cc &lt; C <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> seen[cr][cc]:</span><br><span class="line">                r, c = cr, cc</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">                di = (di + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span></span><br><span class="line">                r, c = r + dr[di], c + dc[di]</span><br><span class="line">        <span class="hljs-keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p>复杂度分析</p>
-<ul>
-<li>时间复杂度： O(N)，其中 N 是输入矩阵所有元素的个数。因为我们将矩阵中的每个元素都添加进答案里。</li>
-<li>空间复杂度： O(N)，需要两个矩阵 seen 和 ans 存储所需信息。</li>
-</ul>
-<p>方法 2：按层模拟</p>
-<p>直觉</p>
-<p>答案是最外层所有元素按照顺时针顺序输出，其次是次外层，以此类推。</p>
-<p>算法</p>
-<p>我们定义矩阵的第 k 层是到最近边界距离为 k 的所有顶点。例如，下图矩阵最外层元素都是第 1 层，次外层元素都是第 2 层，然后是第 3 层的。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[[1, 1, 1, 1, 1, 1, 1],</span><br><span class="line"> [1, 2, 2, 2, 2, 2, 1],</span><br><span class="line"> [1, 2, 3, 3, 3, 2, 1],</span><br><span class="line"> [1, 2, 2, 2, 2, 2, 1],</span><br><span class="line"> [1, 1, 1, 1, 1, 1, 1]]</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/2019/09/07/c4547840-d180-11e9-9875-2ff9eb2fd026.png" alt="image.png"></p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> List &lt; Integer &gt; spiralOrder(<span class="hljs-keyword">int</span>[][] matrix) &#123;</span><br><span class="line">        List ans = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">        <span class="hljs-keyword">if</span> (matrix.length == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        <span class="hljs-keyword">int</span> r1 = <span class="hljs-number">0</span>, r2 = matrix.length - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> c1 = <span class="hljs-number">0</span>, c2 = matrix[<span class="hljs-number">0</span>].length - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (r1 &lt;= r2 &amp;&amp; c1 &lt;= c2) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> c = c1; c &lt;= c2; c++) ans.add(matrix[r1][c]);</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> r = r1 + <span class="hljs-number">1</span>; r &lt;= r2; r++) ans.add(matrix[r][c2]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (r1 &lt; r2 &amp;&amp; c1 &lt; c2) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> c = c2 - <span class="hljs-number">1</span>; c &gt; c1; c--) ans.add(matrix[r2][c]);</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> r = r2; r &gt; r1; r--) ans.add(matrix[r][c1]);</span><br><span class="line">            &#125;</span><br><span class="line">            r1++;</span><br><span class="line">            r2--;</span><br><span class="line">            c1++;</span><br><span class="line">            c2--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>复杂度分析</p>
-<ul>
-<li>时间复杂度： O(N)，其中 N 是输入矩阵所有元素的个数。因为我们将矩阵中的每个元素都添加进答案里。</li>
-<li>空间复杂度： O(N)，需要矩阵 ans 存储信息。</li>
-</ul>
-<p>方法 3：顺时针旋转</p>
-<p>这里的方法不需要记录已经走过的路径，所以执行用时和内存消耗都相对较小</p>
-<ol>
-<li>首先设定上下左右边界</li>
-<li>其次向右移动到最右，此时第一行因为已经使用过了，可以将其从图中删去，体现在代码中就是重新定义上边界</li>
-<li>判断若重新定义后，上下边界交错，表明螺旋矩阵遍历结束，跳出循环，返回答案</li>
-<li>若上下边界不交错，则遍历还未结束，接着向下向左向上移动，操作过程与第一，二步同理</li>
-<li>不断循环以上步骤，直到某两条边界交错，跳出循环，返回答案</li>
-</ol>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// Scanner in = new Scanner(System.in);</span></span><br><span class="line">        <span class="hljs-comment">// int n = in.nextInt();</span></span><br><span class="line">        <span class="hljs-comment">// in.close();</span></span><br><span class="line">        <span class="hljs-keyword">int</span>[][] matrix = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[][] &#123; &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> &#125;, &#123; <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span> &#125;, &#123; <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span> &#125; &#125;;</span><br><span class="line">        List&lt;Integer&gt; list = spiralOrder(matrix);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> List&lt;Integer&gt; <span class="hljs-title">spiralOrder</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span> (matrix.length == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> list;</span><br><span class="line">        <span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>, d = matrix.length - <span class="hljs-number">1</span>, l = <span class="hljs-number">0</span>, r = matrix[<span class="hljs-number">0</span>].length - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123;</span><br><span class="line">            <span class="hljs-comment">// 向右</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = l; i &lt;= r; i++)</span><br><span class="line">                list.add(matrix[u][i]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (++u &gt; d)</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            <span class="hljs-comment">// 向下</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = u; i &lt;= d; i++)</span><br><span class="line">                list.add(matrix[i][r]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (--r &lt; l)</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            <span class="hljs-comment">// 向左</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = r; i &gt;= l; i--)</span><br><span class="line">                list.add(matrix[d][i]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (--d &lt; u)</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            <span class="hljs-comment">// 向上</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = d; i &gt;= u; i--)</span><br><span class="line">                list.add(matrix[i][l]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (++l &gt; r)</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; spiralOrder(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        <span class="hljs-built_in">vector</span> &lt;<span class="hljs-keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="hljs-keyword">if</span>(matrix.empty()) <span class="hljs-keyword">return</span> ans; <span class="hljs-comment">//若数组为空，直接返回答案</span></span><br><span class="line">        <span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>; <span class="hljs-comment">//赋值上下左右边界</span></span><br><span class="line">        <span class="hljs-keyword">int</span> d = matrix.size() - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> r = matrix[<span class="hljs-number">0</span>].size() - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = l; i &lt;= r; ++i) ans.push_back(matrix[u][i]); <span class="hljs-comment">//向右移动直到最右</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(++ u &gt; d) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//重新设定上边界，若上边界大于下边界，则遍历遍历完成，下同</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = u; i &lt;= d; ++i) ans.push_back(matrix[i][r]); <span class="hljs-comment">//向下</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(-- r &lt; l) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//重新设定有边界</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = r; i &gt;= l; --i) ans.push_back(matrix[d][i]); <span class="hljs-comment">//向左</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(-- d &lt; u) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//重新设定下边界</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = d; i &gt;= u; --i) ans.push_back(matrix[i][l]); <span class="hljs-comment">//向上</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(++ l &gt; r) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//重新设定左边界</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1801,9 +1772,9 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/page/18/">18</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/21/">21</a></li>
             
         </ul>
     </nav>
@@ -1853,7 +1824,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            100
+                            101
                         </p>
                     </a>
                 </div>
@@ -1877,7 +1848,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            123
+                            124
                         </p>
                     </a>
                 </div>
@@ -1999,7 +1970,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">77</span>
+                <span class="level-item tag">78</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -2044,6 +2015,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/20/PythonRobotics/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
@@ -2111,25 +2101,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
                     <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-16T05:05:50.000Z">2019-11-16</time></div>
-                    <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2161,6 +2132,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/20/PythonRobotics/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
@@ -2228,25 +2218,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
                     <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-16T05:05:50.000Z">2019-11-16</time></div>
-                    <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>

@@ -146,6 +146,88 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-05T13:26:58.000Z">2019-09-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1196 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/05/深入理解Node-js-中的进程与线程/">深入理解Node.js 中的进程与线程</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/05/0d781bf0-cfe0-11e9-a152-33ef044f5d50.png" alt="image.png"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>进程与线程是一个程序员的必知概念，面试经常被问及，但是一些文章内容只是讲讲理论知识，可能一些小伙伴并没有真的理解，在实际开发中应用也比较少。本篇文章除了介绍概念，通过Node.js 的角度讲解进程与线程，并且讲解一些在项目中的实战的应用，让你不仅能迎战面试官还可以在实战中完美应用。</p>
+<h1 id="面试会问"><a href="#面试会问" class="headerlink" title="面试会问"></a>面试会问</h1><blockquote>
+<p>Node.js是单线程吗？</p>
+</blockquote>
+<blockquote>
+<p>Node.js 做耗时的计算时候，如何避免阻塞？</p>
+</blockquote>
+<blockquote>
+<p>Node.js如何实现多进程的开启和关闭？</p>
+</blockquote>
+<blockquote>
+<p>Node.js可以创建线程吗？</p>
+</blockquote>
+<blockquote>
+<p>你们开发过程中如何实现进程守护的？</p>
+</blockquote>
+<blockquote>
+<p>除了使用第三方模块，你们自己是否封装过一个多进程架构?</p>
+</blockquote>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>进程Process是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础，进程是线程的容器（来自百科）。进程是资源分配的最小单位。我们启动一个服务、运行一个实例，就是开一个服务进程，例如 Java 里的 JVM 本身就是一个进程，Node.js 里通过 node app.js 开启一个服务进程，多进程就是进程的复制（fork），fork 出来的每个进程都拥有自己的独立空间地址、数据栈，一个进程无法访问另外一个进程里定义的变量、数据结构，只有建立了 IPC 通信，进程之间才可数据共享。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> server = http.createServer();</span><br><span class="line">server.listen(<span class="hljs-number">3000</span>,()=&gt;&#123;</span><br><span class="line">    process.title=<span class="hljs-string">'程序员成长指北测试进程'</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'进程id'</span>,process.pid)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>运行上面代码后，以下为 Mac 系统自带的监控工具 “活动监视器” 所展示的效果，可以看到我们刚开启的 Nodejs 进程 7663<br><img src="/images/2019/09/05/827bb4c0-cfe0-11e9-a152-33ef044f5d50.png" alt="image.png"></p>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>线程是操作系统能够进行运算调度的最小单位，首先我们要清楚线程是隶属于进程的，被包含于进程之中。一个线程只能隶属于一个进程，但是一个进程是可以拥有多个线程的。</p>
+<h2 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h2><p><strong>单线程就是一个进程只开一个线程</strong></p>
+<p>Javascript 就是属于单线程，程序顺序执行(这里暂且不提JS异步)，可以想象一下队列，前面一个执行完之后，后面才可以执行，当你在使用单线程语言编码时切勿有过多耗时的同步操作，否则线程会造成阻塞，导致后续响应无法处理。你如果采用 Javascript 进行编码时候，请尽可能的利用Javascript异步操作的特性。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> longComputation = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1e10</span>; i++) &#123;</span><br><span class="line">    sum += i;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="hljs-keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> server = http.createServer();</span><br><span class="line">server.on(<span class="hljs-string">'request'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (req.url === <span class="hljs-string">'/compute'</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">'计算开始'</span>,<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>());</span><br><span class="line">    <span class="hljs-keyword">const</span> sum = longComputation();</span><br><span class="line">    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">'计算结束'</span>,<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>());</span><br><span class="line">    <span class="hljs-keyword">return</span> res.end(<span class="hljs-string">`Sum is <span class="hljs-subst">$&#123;sum&#125;</span>`</span>);</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    res.end(<span class="hljs-string">'Ok'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="hljs-number">3000</span>);</span><br><span class="line"><span class="hljs-comment">//打印结果</span></span><br><span class="line"><span class="hljs-comment">//计算开始 2019-07-28T07:08:49.849Z</span></span><br><span class="line"><span class="hljs-comment">//计算结束 2019-07-28T07:09:04.522Z</span></span><br></pre></td></tr></table></figure>
+
+<p>查看打印结果，当我们调用127.0.0.1:3000/compute<br>的时候，如果想要调用其他的路由地址比如127.0.0.1/大约需要15秒时间，也可以说一个用户请求完第一个compute接口后需要等待15秒，这对于用户来说是极其不友好的。下文我会通过创建多进程的方式child_process.fork 和cluster 来解决解决这个问题。</p>
+<p>单线程的一些说明</p>
+<ul>
+<li>Node.js 虽然是单线程模型，但是其基于事件驱动、异步非阻塞模式，可以应用于高并发场景，避免了线程创建、线程之间上下文切换所产生的资源开销。</li>
+<li>当你的项目中需要有大量计算，CPU 耗时的操作时候，要注意考虑开启多进程来完成了。</li>
+<li>Node.js 开发过程中，错误会引起整个应用退出，应用的健壮性值得考验，尤其是错误的异常抛出，以及进程守护是必须要做的。</li>
+<li>单线程无法利用多核CPU，但是后来Node.js 提供的API以及一些第三方工具相应都得到了解决，文章后面都会讲到。</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-05T08:08:46.000Z">2019-09-05</time>
                 
                 <div class="level-item">
@@ -424,88 +506,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-31T15:25:17.000Z">2019-08-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 738 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/08/31/118-杨辉三角/">118. 杨辉三角</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">杨辉三角</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em>行。</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="杨辉三角"></p>
-<p>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
-<p>示例:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
-<li>动态规划</li>
-</ol>
-<p><strong>思路</strong></p>
-<p>如果能够知道一行杨辉三角，我们就可以根据每对相邻的值轻松地计算出它的下一行。</p>
-<p><strong>算法</strong></p>
-<p>虽然这一算法非常简单，但用于构造杨辉三角的迭代方法可以归类为动态规划，因为我们需要基于前一行来构造每一行。</p>
-<p>首先，我们会生成整个 <code>triangle</code> 列表，三角形的每一行都以子列表的形式存储。然后，我们会检查行数为 0 的特殊情况，否则我们会返回 <code>[1]</code>。如果 <em>numRows</em> &gt; 0，那么我们用 <code>[1]</code> 作为第一行来初始化 <code>triangle</code> with <code>[1]</code>，并按如下方式继续填充：</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="hljs-keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; triangle = <span class="hljs-keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// First base case; if user requests zero rows, they get zero rows.</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (numRows == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> triangle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// Second base case; first row is always [1].</span></span><br><span class="line">        triangle.add(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        triangle.get(<span class="hljs-number">0</span>).add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> rowNum = <span class="hljs-number">1</span>; rowNum &lt; numRows; rowNum++) &#123;</span><br><span class="line">            List&lt;Integer&gt; row = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            List&lt;Integer&gt; prevRow = triangle.get(rowNum-<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// The first row element is always 1.</span></span><br><span class="line">            row.add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// Each triangle element (other than the first and last of each row)</span></span><br><span class="line">            <span class="hljs-comment">// is equal to the sum of the elements above-and-to-the-left and</span></span><br><span class="line">            <span class="hljs-comment">// above-and-to-the-right.</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; rowNum; j++) &#123;</span><br><span class="line">                row.add(prevRow.get(j-<span class="hljs-number">1</span>) + prevRow.get(j));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// The last row element is always 1.</span></span><br><span class="line">            row.add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            triangle.add(row);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> triangle;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析</strong></p>
-<ul>
-<li>时间复杂度： <em>O(numRows²)</em></li>
-</ul>
-<p>虽然更新 triangle 中的每个值都是在常量时间内发生的，<br>但它会被执行 <em>O(numRows²)</em> 次。想要了解原因，就需要考虑总共有多少次循环迭代。很明显外层循环需要运行 numRows 次，但在外层循环的每次迭代中，内层循环要运行 rowNumrowNum 次。因此，<code>triangle</code> 发生的更新总数为<br><code>1 + 2 + 3 + ... + *numRows*</code>，根据高斯公式有</p>
-<p><img src="/images/2019/08/31/06b93500-cc03-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
-<ul>
-<li>空间复杂度：<em>O(numRows²)</em></li>
-</ul>
-<p>因为我们需要存储我们在 <code>triangle</code> 中更新的每个数字，<br>所以空间需求与时间复杂度相同。</p>
-<ol start="2">
-<li>Python解法</li>
-</ol>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate</span><span class="hljs-params">(self, num_rows)</span>:</span></span><br><span class="line">        triangle = []</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> row_num <span class="hljs-keyword">in</span> range(num_rows):</span><br><span class="line">            <span class="hljs-comment"># The first and last row elements are always 1.</span></span><br><span class="line">            row = [<span class="hljs-literal">None</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(row_num+<span class="hljs-number">1</span>)]</span><br><span class="line">            row[<span class="hljs-number">0</span>], row[<span class="hljs-number">-1</span>] = <span class="hljs-number">1</span>, <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment"># Each triangle element is equal to the sum of the elements</span></span><br><span class="line">            <span class="hljs-comment"># above-and-to-the-left and above-and-to-the-right.</span></span><br><span class="line">            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(row)<span class="hljs-number">-1</span>):</span><br><span class="line">                row[j] = triangle[row_num<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + triangle[row_num<span class="hljs-number">-1</span>][j]</span><br><span class="line"></span><br><span class="line">            triangle.append(row)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> triangle</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>递归解法</li>
-</ol>
-<p>通过<em>numRows</em>-1，求<em>numRows</em>行，递归求解</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; listw = <span class="hljs-keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="hljs-keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;Integer&gt; listn = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span> (numRows == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> listw;</span><br><span class="line">        generate(numRows - <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                listn.add(<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i == numRows - <span class="hljs-number">1</span>) &#123;</span><br><span class="line">                listn.add(<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i == numRows - <span class="hljs-number">2</span>) &#123;</span><br><span class="line">                listn.add(listw.get(numRows - <span class="hljs-number">2</span>).get(i - <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                listn.add(listw.get(numRows - <span class="hljs-number">2</span>).get(i - <span class="hljs-number">1</span>) + listw.get(numRows - <span class="hljs-number">2</span>).get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        listw.add(listn);</span><br><span class="line">        <span class="hljs-keyword">return</span> listw;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -527,6 +527,8 @@
             <li><a class="pagination-link is-current" href="/page/19/">19</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/21/">21</a></li>
             
         </ul>
     </nav>
@@ -576,7 +578,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            100
+                            101
                         </p>
                     </a>
                 </div>
@@ -600,7 +602,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            123
+                            124
                         </p>
                     </a>
                 </div>
@@ -722,7 +724,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">77</span>
+                <span class="level-item tag">78</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -767,6 +769,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/20/PythonRobotics/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
@@ -834,25 +855,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
                     <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-16T05:05:50.000Z">2019-11-16</time></div>
-                    <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -884,6 +886,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/20/PythonRobotics/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
@@ -951,25 +972,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T14:39:05.000Z">2019-11-17</time></div>
                     <a href="/2019/11/17/quantum-computing-wave/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈佛大学教授问与答：解析量子计算浪潮</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/16/There are no technology-driven companies in the world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/16/553b0d80-082f-11ea-90c6-4101d673f67d.png" alt="世界上没有技术驱动型公司">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-16T05:05:50.000Z">2019-11-16</time></div>
-                    <a href="/2019/11/16/There are no technology-driven companies in the world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">世界上没有技术驱动型公司</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
