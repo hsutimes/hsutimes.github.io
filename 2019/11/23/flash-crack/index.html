@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Flash的破解与加密(附flash破解工具) - Time</title>
+
+
+    <meta name="description" content="简述　　在一些名门论坛，谈论破解之术被明文禁止甚至会招来不尽的鄙视。笔者一直都对这个观点有种很异样的感觉。诚然，尊重原创是一种美德。然而对于不会说话的工具而言，其本身又岂会有善恶之分？有善恶之分的，是使用这些工具的人。">
+<meta name="keywords" content="Flash,破解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flash的破解与加密(附flash破解工具)">
+<meta property="og:url" content="https://blog.hsutimes.com/2019/11/23/flash-crack/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:description" content="简述　　在一些名门论坛，谈论破解之术被明文禁止甚至会招来不尽的鄙视。笔者一直都对这个观点有种很异样的感觉。诚然，尊重原创是一种美德。然而对于不会说话的工具而言，其本身又岂会有善恶之分？有善恶之分的，是使用这些工具的人。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png">
+<meta property="og:updated_time" content="2019-11-23T15:20:42.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flash的破解与加密(附flash破解工具)">
+<meta name="twitter:description" content="简述　　在一些名门论坛，谈论破解之术被明文禁止甚至会招来不尽的鄙视。笔者一直都对这个观点有种很异样的感觉。诚然，尊重原创是一种美德。然而对于不会说话的工具而言，其本身又岂会有善恶之分？有善恶之分的，是使用这些工具的人。">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png">
+<meta name="twitter:site" content="https://twitter.com/times26740863">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134224598-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Flash的破解与加密(附flash破解工具)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2061 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Flash的破解与加密(附flash破解工具)
+            
+        </h1>
+        <div class="content">
+            <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>　　在一些名门论坛，谈论破解之术被明文禁止甚至会招来不尽的鄙视。笔者一直都对这个观点有种很异样的感觉。诚然，尊重原创是一种美德。然而对于不会说话的工具而言，其本身又岂会有善恶之分？有善恶之分的，是使用这些工具的人。</p>
+<a id="more"></a>
+
+<p>　　因为无法控制其中的尺度，只好一尽排斥，这是中国官方乃至国际官方一惯的作风。言论自由成为人人崇尚却又时时为其所害的一面幌子。自由，也有度。</p>
+<p>　　破解和防破解是必将同时存在的对立体。如同制造病毒和防范病毒一样。因为制造病毒的言论从不会公开出现在一些名门场合，所以每当病毒来袭，防范的一方总是措不及防。这是当然，世上有几名黑客会自报家门？</p>
+<p>　　幸运的是，Flash 破解是一种公开的技术。然而不幸的是，这种公开的技术却被鄙视为一种下流手段。说句公道话，这里面确实有一些正人君子，可是更有一些人前一套人后一套的道貌岸然之士。这让笔者想起一句话：“宁做真小心，不做伪君子。”</p>
+<p>　　既然如此，对于这种神奇的技术，为什么不能堂堂正正的来讨论？我们更希望看到的，不是这种偷偷摸摸，而是从破解中汲取，从防范中得到。</p>
+<blockquote>
+<p>下载地址：<a href="http://dotnet.5d6d.com/thread-470-1-1.html" target="_blank" rel="noopener">http://dotnet.5d6d.com/thread-470-1-1.html</a><br>包括：SSD4,换衣.zip,flash.zip</p>
+</blockquote>
+<h1 id="破解篇"><a href="#破解篇" class="headerlink" title="破解篇"></a>破解篇</h1><p>　　这里所谈的破解，包括提取swf、破解已加密及未加密的swf，即通常所说的“swf to fla”。</p>
+<p>　　获取swf的工具：</p>
+<ul>
+<li>Flash Saver - 保存网页中的swf</li>
+<li>Flash文件格式转换器(FlashChanger) - 转换未加壳的exe为swf</li>
+<li>Flash吸血鬼 - 不得已时用之。</li>
+</ul>
+<p>提取范围很广，只要能看到Flash的窗口，包括加壳及未加壳的exe、网页等等。在使用 Flash吸血鬼提取swf的过程中建议不要进行其他操作，否则速度会变得极其缓慢，配置不好的机器有可能死机。这也是这款软件目前版本(v2.2)最大的一个不足之处。如果想中止程序，可以在任务管理器中结束。</p>
+<p>   使用Temporary Internet Files(IE缓存)下载MV、SWF等资源</p>
+<p>　　偶尔会有网友问笔者关于网上 MV 如何下载，其实方法很简单，只要到 Temporary Internet Files 文件夹下就能找到想找的大部分网络资源。</p>
+<p>　　Temporary Internet Files 是 IE 的临时文件夹。目录一般在C:\Documents and Settings\你的用户名\Local Settings\Temporary Internet Files</p>
+<p>　　使用 Temporary Internet Files 查找资源的技巧：先清空 Temporary Internet Files，然后用 IE 打开或刷新你要找的资源 (比如 MV) 所在的网页。再刷新 Temporary Internet Files 就能看到了，如果资源比较大，需要过一会，等下载完后再刷新才能看到。</p>
+<p>　　有时，部分资源会被隐藏。查看 Temporary Internet Files 的属性可以断定里面有文件，可是里面的内容却看不到。此时，用 WinRAR 压缩一下 Temporary Internet Files 就能看到了。为了不浪费时间，压缩的时候，压缩方式请选择“存储”。为了便于搜索查找，可以把压缩后的 Temporary Internet Files 解压到另一个目录下，里面的东西此时已经一目了然，分别分布在 Content.IE5 文件夹下的四个子文件夹中。</p>
+<p>　　可以将 Temporary Internet Files 移动到其他分区下，一方面可以给系统分区减负，另一方面也便于查找。移动方法如下：<br>Internet 选项 → 常规选项卡 → 在“Internet 临时文件”区点击“设置” → 移动文件夹 → 选择一个分区，例如选择 D，就把 Temporary Internet Files 移到了 D 盘的根目录下。最后会提示重启，其实不是重启，是注销。记得保存当前的其他工作，按确定注销。</p>
+<h1 id="从Word中提取Flash"><a href="#从Word中提取Flash" class="headerlink" title="从Word中提取Flash"></a>从Word中提取Flash</h1><p>测试环境：Windows10 / Office2016</p>
+<ol>
+<li>需要一款16进制编辑工具WinHex</li>
+<li>打开含有Flash的Word文档，点击“控件工具箱”的“设计模式”按钮进入设计模式，选择Word中的Flash，复制粘贴到任意文件夹，会看到一个“片段”文件。</li>
+<li>打开WinHex，将该“片段”文件拉到WinHex中，单击下拉菜单“搜索”→“查找16进制值”，搜索“465753”，在搜索到的“465753”中的“4”位置上单击右键，选择“选块开始”。</li>
+<li>继续“搜索”→“查找16进制值”，搜索“3A5C”，然后按住F3，直到出现“3A5C未找到”，点击“是”，在最后搜索到的“3A5C”中 “C”位置上单击右键，选择“选块结尾”。（注：少数情况可能会搜索不到“3A5C”，则改为搜索“3A”或“5C”，方法相同）。</li>
+<li>在选块内任意处点击右键→编辑→复制选块→进入新文件→输入文件名 (如test.swf) →保存。</li>
+</ol>
+<h1 id="常用破解工具"><a href="#常用破解工具" class="headerlink" title="常用破解工具"></a>常用破解工具</h1><p>　　谈到破解，很多朋友都会想到时下流行的闪客精灵。以下为常用的破解工具，按笔者使用的频繁程度，分别有：</p>
+<ul>
+<li>硕思闪客精灵(Sothink SWF Decompiler)</li>
+<li>Action Script Viewer(ASV)</li>
+<li>Imperator FLA(有使用者译为“罗马统治者”)<br>（这是笔者最早认识的用来还原swf的工具，可惜一直在关注也没有发现2.0以上的破解版，只有1.6.9.8的破解版，这已经是3年前的版本了，只对Flash6.0以下有效。）</li>
+<li>硕思闪客之锤(Sothink SWF Quicker)</li>
+</ul>
+<p>　　以上四款，以Decompiler最为常用。ASV虽然强大，但在实用性方面却不如Decompiler，这应当也是为什么数年来 Decompiler能够长久风靡的原因。而ASV对付Flashincrypt加密过的swf却是轻而易举，这大大弥补了Decompiler的不足。不少网友知道用ASV来查看swf，但是不知道如何使用它来将swf还原成fla，以5.01版本为例，只需两步：</p>
+<ol>
+<li>打开等待破解的swf文件(支持拖放打开)，输出重建数据(File → Export Rebuild Data (JSFL)…)到某一目录下，例如：桌面\新建文件夹。</li>
+<li>双击目录下的“rebuildcommand.jsfl”，系统将启动Flash重建fla文件。根据原swf文件的复杂程度，重建fla所需的时间将有所区别。</li>
+</ol>
+<p><strong>破解附言</strong><br>　　破解swf，依赖的主要是现成工具，多款工具综合使用，一款不行试另一款，如果作者有意加密，视破解者自身水平，在获取 swf时将遇到规模可大可小的困难，在破解时亦将不可避免的多花些许心思。如果遇到 SWF Encrypt 加密过的作品，只能对其中的AS无奈了。前几天听闻闪客互联的猎人兄对 SWF Encrypt 有破解之法，然而似有卖关之嫌，未见其实。</p>
+<h1 id="打包成加壳exe"><a href="#打包成加壳exe" class="headerlink" title="打包成加壳exe"></a>打包成加壳exe</h1><p>用Flash的默认程序打包的exe很容易转成swf，SWFKit是一款很不错的加壳打包软件，不易被还原。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Flash/">Flash</a>, <a class="has-link-grey -link" href="/tags/破解/">破解</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/3754260851.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/1592984278.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="7KBW7U6X2ZYK6" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/user/creators?u=26939987" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/22/inspire-2/">
+                <span class="level-item">INSPIRE 2</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://hsutimes.github.io/js/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'a5aa6090fea848179cb5f7d604cd8258',
+		owner: 'hsutimes',
+		repo: 'gitment_blog',
+		oauth: {
+			client_id: 'd73d768ea9e3bd69ab54',
+			client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://hsutimes.github.io/images/16530d7f26a413c2.png" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            103
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            128
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/hsutimes" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://hsutimes.club" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Time</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hsutimes.club</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">79</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#简述">
+        <span class="has-mr-6">1</span>
+        <span>简述</span>
+        </a></li><li>
+        <a class="is-flex" href="#破解篇">
+        <span class="has-mr-6">2</span>
+        <span>破解篇</span>
+        </a></li><li>
+        <a class="is-flex" href="#从Word中提取Flash">
+        <span class="has-mr-6">3</span>
+        <span>从Word中提取Flash</span>
+        </a></li><li>
+        <a class="is-flex" href="#常用破解工具">
+        <span class="has-mr-6">4</span>
+        <span>常用破解工具</span>
+        </a></li><li>
+        <a class="is-flex" href="#打包成加壳exe">
+        <span class="has-mr-6">5</span>
+        <span>打包成加壳exe</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/flash-crack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/22/inspire-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/22/55e1b850-0d12-11ea-bfb0-97cf8ad096e4.png" alt="INSPIRE 2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-22T10:24:48.000Z">2019-11-22</time></div>
+                    <a href="/2019/11/22/inspire-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">INSPIRE 2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/20/PythonRobotics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
+                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/19/sqlflow/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/19/6052aa40-0ada-11ea-888e-f9f900c5a0f9.png" alt="赋予 SQL AI 能力 SQLFlow">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T14:07:53.000Z">2019-11-19</time></div>
+                    <a href="/2019/11/19/sqlflow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">赋予 SQL AI 能力 SQLFlow</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#简述">
+        <span class="has-mr-6">1</span>
+        <span>简述</span>
+        </a></li><li>
+        <a class="is-flex" href="#破解篇">
+        <span class="has-mr-6">2</span>
+        <span>破解篇</span>
+        </a></li><li>
+        <a class="is-flex" href="#从Word中提取Flash">
+        <span class="has-mr-6">3</span>
+        <span>从Word中提取Flash</span>
+        </a></li><li>
+        <a class="is-flex" href="#常用破解工具">
+        <span class="has-mr-6">4</span>
+        <span>常用破解工具</span>
+        </a></li><li>
+        <a class="is-flex" href="#打包成加壳exe">
+        <span class="has-mr-6">5</span>
+        <span>打包成加壳exe</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/flash-crack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/22/inspire-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/22/55e1b850-0d12-11ea-bfb0-97cf8ad096e4.png" alt="INSPIRE 2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-22T10:24:48.000Z">2019-11-22</time></div>
+                    <a href="/2019/11/22/inspire-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">INSPIRE 2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/20/PythonRobotics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
+                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/19/sqlflow/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/19/6052aa40-0ada-11ea-888e-f9f900c5a0f9.png" alt="赋予 SQL AI 能力 SQLFlow">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T14:07:53.000Z">2019-11-19</time></div>
+                    <a href="/2019/11/19/sqlflow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">赋予 SQL AI 能力 SQLFlow</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Flash的破解与加密(附flash破解工具)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -157,6 +157,74 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-06T05:21:38.000Z">2019-09-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 710 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/06/Java反编译工具jad/">Java反编译工具jad</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/06/c8ac68c0-d064-11e9-baaa-a18a2b353fbb.png" alt="image.png"></p>
+<h1 id="Jad-JAva-Decompiler"><a href="#Jad-JAva-Decompiler" class="headerlink" title="Jad(JAva Decompiler)"></a>Jad(JAva Decompiler)</h1><p>Jad(JAva Decompiler)是一个Java的反编译器，可以通过命令行把Java的class文件反编译成源代码。下载<a href="https://varaneckas.com/jad/" target="_blank" rel="noopener">点击</a></p>
+<p>使用方法：</p>
+<p>[1] 反编译一个class文件：jad example.class，会生成example.jad，用文本编辑器打开就是java源代码</p>
+<p>[2] 指定生成源代码的后缀名：jad -sjava example.class，生成example.java</p>
+<p>[3] 改变生成的源代码的名称，可以先使用-p将反编译后的源代码输出到控制台窗口，然后使用重定向，输出到文件：jad -p example.class &gt; myexample.java</p>
+<p>[4] 把源代码文件输出到指定的目录：jad -dnewdir -sjava example.class，在newdir目录下生成example.java</p>
+<p>[5] 把packages目录下的class文件全部反编译：jad -sjava packages/*.class</p>
+<p>[6] 把packages目录以及子目录下的文件全部反编译：jad -sjava packages/<em>*/</em>.class，不过你仍然会发现所有的源代码文件被放到了同一个文件中，没有按照class文件的包路径建立起路径</p>
+<p>[7] 把packages目录以及子目录下的文件全部反编译并建立和java包一致的文件夹路径，可以使用-r命令：jad -r -sjava packages/<em>*/</em>.class</p>
+<p>[8] 当重复使用命令反编译时，Jad会提示“whether you want to overwrite it or not”，使用-o可以强制覆盖旧文件</p>
+<p>[9] 还有其他的参数可以设置生成的源代码的格式，可以输入jad命令查看帮助，这里有个人做了简单的翻译：jad命令总结</p>
+<p>[10] 当然，你会发现有些源文件头部有些注释信息，不用找了，jad没有参数可以去掉它，用别的办法吧。</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>Main.java</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n = <span class="hljs-number">100</span>;</span><br><span class="line">        Thread[] threads = <span class="hljs-keyword">new</span> Thread[n];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            threads[i] = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() &#123;</span><br><span class="line"></span><br><span class="line">                <span class="hljs-meta">@Override</span></span><br><span class="line">                <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;</span><br><span class="line">                        add();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            threads[i].start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (Thread.activeCount() &gt; <span class="hljs-number">1</span>)</span><br><span class="line">            Thread.yield();</span><br><span class="line"></span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        t++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Main.class</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cafe babe 0000 0034 0037 0a00 0d00 1d07</span><br><span class="line">001e 0700 1f0a 0003 001d 0a00 0200 200a</span><br><span class="line">0002 0021 0a00 0200 220a 0002 0023 0900</span><br><span class="line">2400 2509 000c 0026 0a00 2700 2807 0029</span><br><span class="line">0700 2a01 000c 496e 6e65 7243 6c61 7373</span><br><span class="line">6573 0100 0174 0100 0149 0100 063c 696e</span><br><span class="line">6974 3e01 0003 2829 5601 0004 436f 6465</span><br><span class="line">0100 0f4c 696e 654e 756d 6265 7254 6162</span><br><span class="line">6c65 0100 046d 6169 6e01 0016 285b 4c6a</span><br><span class="line">6176 612f 6c61 6e67 2f53 7472 696e 673b</span><br><span class="line">2956 0100 0d53 7461 636b 4d61 7054 6162</span><br><span class="line">6c65 0700 2b01 0003 6164 6401 0008 3c63</span><br><span class="line">6c69 6e69 743e 0100 0a53 6f75 7263 6546</span><br><span class="line">696c 6501 0009 4d61 696e 2e6a 6176 610c</span><br><span class="line">0011 0012 0100 106a 6176 612f 6c61 6e67</span><br><span class="line">2f54 6872 6561 6401 0006 4d61 696e 2431</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2019/09/06/fcb05680-d065-11e9-baaa-a18a2b353fbb.png" alt="image.png"></p>
+<p>反编译后的结果</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.</span></span><br><span class="line"><span class="hljs-comment">// Jad home page: http://www.kpdus.com/jad.html</span></span><br><span class="line"><span class="hljs-comment">// Decompiler options: packimports(3) </span></span><br><span class="line"><span class="hljs-comment">// Source File Name:   Main.java</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.io.PrintStream;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span></span></span><br><span class="line"><span class="hljs-class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">byte</span> byte0 = <span class="hljs-number">100</span>;</span><br><span class="line">        Thread athread[] = <span class="hljs-keyword">new</span> Thread[byte0];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; byte0; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            athread[i] = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() &#123;</span><br><span class="line"></span><br><span class="line">                <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function">                </span>&#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10000</span>; j++)</span><br><span class="line">                        Main.add();</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">);</span><br><span class="line">            athread[i].start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span>(; Thread.activeCount() &gt; <span class="hljs-number">1</span>; Thread.yield());</span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        t++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-05T18:53:05.000Z">2019-09-06</time>
                 
                 <div class="level-item">
@@ -850,7 +918,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            102
+                            103
                         </p>
                     </a>
                 </div>
@@ -874,7 +942,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            126
+                            128
                         </p>
                     </a>
                 </div>
@@ -996,7 +1064,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">78</span>
+                <span class="level-item tag">79</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1041,6 +1109,25 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
         
         <article class="media">
             
+            <a href="/2019/11/23/flash-crack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/22/inspire-2/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/22/55e1b850-0d12-11ea-bfb0-97cf8ad096e4.png" alt="INSPIRE 2">
@@ -1108,25 +1195,6 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T14:07:53.000Z">2019-11-19</time></div>
                     <a href="/2019/11/19/sqlflow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">赋予 SQL AI 能力 SQLFlow</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/18/target-detection-yolo/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/18/cc0d9a30-0a01-11ea-b8d5-416bf8aed005.png" alt="目标检测YOLOv3">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T12:26:24.000Z">2019-11-18</time></div>
-                    <a href="/2019/11/18/target-detection-yolo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">目标检测YOLOv3</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                     </p>
@@ -1158,6 +1226,25 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
         
         <article class="media">
             
+            <a href="/2019/11/23/flash-crack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/22/inspire-2/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/22/55e1b850-0d12-11ea-bfb0-97cf8ad096e4.png" alt="INSPIRE 2">
@@ -1225,25 +1312,6 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T14:07:53.000Z">2019-11-19</time></div>
                     <a href="/2019/11/19/sqlflow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">赋予 SQL AI 能力 SQLFlow</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/18/target-detection-yolo/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/18/cc0d9a30-0a01-11ea-b8d5-416bf8aed005.png" alt="目标检测YOLOv3">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T12:26:24.000Z">2019-11-18</time></div>
-                    <a href="/2019/11/18/target-detection-yolo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">目标检测YOLOv3</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                     </p>
