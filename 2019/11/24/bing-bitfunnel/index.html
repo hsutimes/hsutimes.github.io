@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Bing搜索核心技术BitFunnel原理 - Time</title>
+
+
+    <meta name="description" content="导语 从90年代中期开始，人们普遍认识，对于内容索引来说，文件签名技术比反向链接效果更差。最近几年必应搜索引擎开发与部署了一套基于位分割的标签索引。这种索引（也称BitFunnel）替代了之前的基于反向索引的生产系统。这项转移背后驱动的因素是反向链接需要运转存储代价。本篇内容将讲述这项算法上的创新发明，改变传统上在云计算框架上被认为无法使用的技术。BitFunnel算法直接解决四项基础位分割块签">
+<meta name="keywords" content="Bing,搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bing搜索核心技术BitFunnel原理">
+<meta property="og:url" content="https://blog.hsutimes.com/2019/11/24/bing-bitfunnel/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:description" content="导语 从90年代中期开始，人们普遍认识，对于内容索引来说，文件签名技术比反向链接效果更差。最近几年必应搜索引擎开发与部署了一套基于位分割的标签索引。这种索引（也称BitFunnel）替代了之前的基于反向索引的生产系统。这项转移背后驱动的因素是反向链接需要运转存储代价。本篇内容将讲述这项算法上的创新发明，改变传统上在云计算框架上被认为无法使用的技术。BitFunnel算法直接解决四项基础位分割块签">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png">
+<meta property="og:updated_time" content="2019-11-24T12:48:02.488Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bing搜索核心技术BitFunnel原理">
+<meta name="twitter:description" content="导语 从90年代中期开始，人们普遍认识，对于内容索引来说，文件签名技术比反向链接效果更差。最近几年必应搜索引擎开发与部署了一套基于位分割的标签索引。这种索引（也称BitFunnel）替代了之前的基于反向索引的生产系统。这项转移背后驱动的因素是反向链接需要运转存储代价。本篇内容将讲述这项算法上的创新发明，改变传统上在云计算框架上被认为无法使用的技术。BitFunnel算法直接解决四项基础位分割块签">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png">
+<meta name="twitter:site" content="https://twitter.com/times26740863">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134224598-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Bing搜索核心技术BitFunnel原理" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    18 分钟 读完 (大约 2646 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Bing搜索核心技术BitFunnel原理
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>导语 从90年代中期开始，人们普遍认识，对于内容索引来说，文件签名技术比反向链接效果更差。最近几年必应搜索引擎开发与部署了一套基于位分割的标签索引。这种索引（也称BitFunnel）替代了之前的基于反向索引的生产系统。这项转移背后驱动的因素是反向链接需要运转存储代价。本篇内容将讲述这项算法上的创新发明，改变传统上在云计算框架上被认为无法使用的技术。BitFunnel算法直接解决四项基础位分割块签名的限制。同时，算法的映射进入集群提供了避免和其他签名联系的代价。这里会先展示这些创新产生了比传统位分割签名的更显著的效率提升，然后将会进行BitFunnel与分块化Elias-Fano索引,MG4J,和Lucene等的对比。本文根据论文《BitFunnel: Revisiting Signatures for Search》和Bing团队实践分享视频，对BitFunnel原理进行分析解读。</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>假设我们一篇非常短的文档：内容仅仅“big brown dog”这三个单词，我们可以用固定长度的位向量对这组单词进行编码，也称固定长度的位向量为文档签名或者布隆过滤器。简单样例这里采取了十六位长度的位向量来进行操作，当然，在Bing系统上不会用这么短的位向量，往往使用五千个以上的来进行表示。一开始，位向量全都是空的，因为还没有进行数据的加载操作。</p>
+<p><img src="/images/2019/11/24/a8fc9130-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>布隆过滤器初始化会设置哈稀函数的种数，哈稀函数是为了让文档单词对应到位向量的固定位置上。这里我使用了三种不同的哈稀函数来映射。映射结果如下：</p>
+<p><img src="/images/2019/11/24/b1023f60-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>从上图可知，每个单词都对应着位向量上面的三个位置上置1，然后我们得到了这份简易文档的文档签名，假如我们要搜索“cat”单词在不在这份文档里面，我们只需要查询“cat”单词经过哈稀函数映射出来的三个位置上是否都为1就可以进行判定了，很明显，有一个不为1，所以“cat”单词并不在这份文档里面。</p>
+<p><img src="/images/2019/11/24/be6b2b80-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>当我们搜索”big“单词时，我们会发现三个位置均置为1，那么我们可以判定“big”是这份文档的可能成员。如下图所示：</p>
+<p><img src="/images/2019/11/24/c63a3950-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>细心的你肯定注意到这里用了可能两个字，为什么是可能成员呢？下图是我们搜索的是“house”单词的结果：</p>
+<p><img src="/images/2019/11/24/ce724220-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>我们会发现这个单词的所有映射位置也都是1，但实际上我们知道文档里并没有“house”单词，这个存在的原因是因为有哈稀函数映射碰撞的存在，导致其他的位置也有相对应的1在文档里面补充了没有为1的情况，这也是我们为什么要用多种哈稀映射函数的原因，能够降低这种错误率。</p>
+<p>基于这样的结构我们，假设我们存储有十六篇文档：A－P，依次建立了签名，那么有搜索需求：Query文档（包含多个单词）进来，通过下列查询就可以得到可能匹配文档：</p>
+<p><img src="/images/2019/11/24/d6b2d670-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>这样的思路无疑是非常直观简单且容易实现的，但是在网络中存储的那些网页，基本需要几千位长度的位向量去表示，如果我们每一篇文档都这样去查询匹配，假设我们有N篇文章，用了P个位的文档签名标记，我们的计算机CPU每次处理的位数为64位，那么查询一篇文章需要花费的代价就是 N＊（P/64）单位时间。</p>
+<p>这样的代价无疑是非常高昂的，因为现在文章的数量和长度乘积无疑是一个天文数字。一个非常巧妙的办法就是将这个矩阵反转过来，行列倒置，那么我们的存储由N＊P行列矩阵就变成了P＊N，很显然，P远远小于N。那么，我们的查询文档Query对应的只需要去匹配其中位为1的对应的文档的行向量即可，过程如下：</p>
+<p><img src="/images/2019/11/24/de507400-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>从上图流程可以看出，对应的只需要查询对应为1的位向量行数的文章的情况就可以了，假设真实中查询的文档Query的为1位数是W位，在现实查询中，W往往是少数几个单词去查询，W远远小于P，对应列进行并运算，结果为1则该篇位置可能匹配，这样查询速度就大大提升。但是，还有一个问题就是现实中 N 的数量也非常庞大。</p>
+<p>那么这点如何处理呢？这就引进了今天要讲的重点算法：BitFunnel。</p>
+<h1 id="BitFunnel发明"><a href="#BitFunnel发明" class="headerlink" title="BitFunnel发明"></a>BitFunnel发明</h1><p><strong>等级行</strong></p>
+<p>等级行是原始行的简单压缩版本，能够提高过滤速度，但同时也带来了更高的错误率，让我们看看等级行是怎么运行的。我们将原始行称为0-等级行，假设原始行是32位长度，那么1-等级行就是由0－等级行对等截成两半进行或运算获得，那么长度就降低了一半，更高等级行依此进行计算获得，如下图举例所示：</p>
+<p><img src="/images/2019/11/24/f4511520-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>那么现在我们怎么使用我们获取的等级行呢？假设我们有3行32列需要匹配处理，那么我们可以考虑将第一行压缩成2－等级行，第二行压缩成1－等级行，第三行保持不变。如果我们没有这样做，我们需要将3*32＝96位全部放进内存进行查询处理才可以完成。而现在，（8+16+32）＝56位，详细如下图所示：</p>
+<p><img src="/images/2019/11/24/fbd33b70-0eb7-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>那么查询的时候，我们先将得出第一行和第二行的并运算结果，仅两列需要去与第三行在进行处理，然后平移到第三行另一边处理，再将第一行移动到第二行的另外一边，这时候也是两列均为1出现，然后与第三行处理，再转移回去处理最后一次即可得出结果，四次处理计算流程如下：</p>
+<p><img src="/images/2019/11/24/06a68890-0eb8-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p><img src="/images/2019/11/24/0b3e6030-0eb8-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p><img src="/images/2019/11/24/113ea170-0eb8-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p><img src="/images/2019/11/24/14fdcc50-0eb8-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>以上这样的处理我们可以大量地利用中间结果加快计算。</p>
+<p><strong>频率布隆过滤器</strong></p>
+<p>传统的布隆过滤器需要花费超长度的位向量才能做到满足较低的错误率，而BitFunnel则使用频率布隆过滤器来降低内存总量。什么是频率布隆过滤器？当我们在布隆过滤器中查询仅仅查询一个项目时，假设整个布隆过滤器为1的密度为10%，那么当我们只使用一个哈稀函数（假设哈稀函数是完全随机哈稀函数），那么对应的碰撞率为10％，那么随着我们哈稀函数种类的增加，我们可以计算出错误率,d为布隆过滤器的概率密度，但这里我们可以进一步提出新的概念信噪比：</p>
+<p><img src="/images/2019/11/24/26c27170-0eb8-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>noise是我们经常用的错误概率（假阳率: Fasle Positive Rate, FPR），然而很少人去关注信噪比概念。让我们举例一些实际查询项目下的信噪比值：</p>
+<p><img src="/images/2019/11/24/305ec530-0eb8-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<p>信噪比给我们的启示是：假设我们查询的是”with”单词，出现的频次约为50%，如果只有一种哈稀函数，那么它对应的信噪比分数为(0.5/((1-0.5)*${0.1}^1$)约为10.2，那么，当“info”单词，频率约为10%时，那么错误率与频率相等下，信噪比下降，随着频率的下降，布隆过滤器密度会突出，提高了这些稀少单词的错误率，因此就需要为这些稀少单词增加更多的哈稀函数从而才能保持与高频词一致的信噪比，举例只是到了“sawmill”单词，但现实互联网情况下，更小频率出现的单词非常多，往往需要10个以上的哈稀函数才能保持可接受的错误率。</p>
+<p>就像查询DNA里面的特定稀少片段，传统的布隆过滤器做法是默认设置许多的哈稀函数和占用大量位数空间才能保障准确率。因此BitFunnel使用 Frequency Conscious Bloom Filter , 不同频次的单词使用不同种数的哈稀函数搜索匹配。</p>
+<p>那么等级行在这种应用下怎么使用从而降低搜寻时间？BitFunnel结合了搜寻单词的频率和错误率的概念，提出了一种新的处理方案。</p>
+<p><img src="/images/2019/11/24/39481ca0-0eb8-11ea-9945-274fd6ed7da1.png" alt="image.png"></p>
+<blockquote>
+<p>腾讯技术工程原创   2019/11/20 16:43<br><a href="https://www.jiqizhixin.com/articles/2019-11-20-15" target="_blank" rel="noopener">传送门</a></p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Bing/">Bing</a>, <a class="has-link-grey -link" href="/tags/搜索/">搜索</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/3754260851.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/1592984278.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="7KBW7U6X2ZYK6" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/user/creators?u=26939987" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/23/flash-crack/">
+                <span class="level-item">Flash的破解与加密(附flash破解工具)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://hsutimes.github.io/js/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '1014088cca2d3d5be1ac2a7da0b1e257',
+		owner: 'hsutimes',
+		repo: 'gitment_blog',
+		oauth: {
+			client_id: 'd73d768ea9e3bd69ab54',
+			client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://hsutimes.github.io/images/16530d7f26a413c2.png" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            104
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            130
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/hsutimes" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://hsutimes.club" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Time</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hsutimes.club</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">80</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#问题背景">
+        <span class="has-mr-6">1</span>
+        <span>问题背景</span>
+        </a></li><li>
+        <a class="is-flex" href="#BitFunnel发明">
+        <span class="has-mr-6">2</span>
+        <span>BitFunnel发明</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/bing-bitfunnel/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/flash-crack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/22/inspire-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/22/55e1b850-0d12-11ea-bfb0-97cf8ad096e4.png" alt="INSPIRE 2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-22T10:24:48.000Z">2019-11-22</time></div>
+                    <a href="/2019/11/22/inspire-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">INSPIRE 2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/20/PythonRobotics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
+                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#问题背景">
+        <span class="has-mr-6">1</span>
+        <span>问题背景</span>
+        </a></li><li>
+        <a class="is-flex" href="#BitFunnel发明">
+        <span class="has-mr-6">2</span>
+        <span>BitFunnel发明</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/bing-bitfunnel/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/flash-crack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/22/inspire-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/22/55e1b850-0d12-11ea-bfb0-97cf8ad096e4.png" alt="INSPIRE 2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-22T10:24:48.000Z">2019-11-22</time></div>
+                    <a href="/2019/11/22/inspire-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">INSPIRE 2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/21/gitpod/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/21/1fa463f0-0c22-11ea-b732-8394f2c36e81.png" alt="Gitpod">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/20/PythonRobotics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
+                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Bing搜索核心技术BitFunnel原理" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
