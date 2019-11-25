@@ -142,6 +142,85 @@
     
 <div class="card">
     
+    <div class="card-image">
+        <a href="/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/" class="image is-7by1">
+            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="TensorFlow 2.0 中文手写字识别（汉字OCR）">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-06T07:08:56.000Z">2019-09-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1435 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/">TensorFlow 2.0 中文手写字识别（汉字OCR）</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/06/7b3ed590-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="TensorFlow-2-0-中文手写字识别（汉字OCR）"><a href="#TensorFlow-2-0-中文手写字识别（汉字OCR）" class="headerlink" title="TensorFlow 2.0 中文手写字识别（汉字OCR）"></a>TensorFlow 2.0 中文手写字识别（汉字OCR）</h1><ul>
+<li>搜索空间空前巨大，我们使用的数据集1.0版本汉字就多大3755个，如果加上1.1版本一起，总共汉字可以分为多达7599+个类别！这比10个阿拉伯字母识别难度大很多！</li>
+<li>数据集处理挑战更大，相比于mnist和fasionmnist来说，汉字手写字体识别数据集非常少，而且仅有的数据集数据预处理难度非常大，非常不直观，但是，千万别吓到，相信你看完本教程一定会收货满满!</li>
+<li>汉字识别更考验选手的建模能力，还在分类花？分类猫和狗？随便搭建的几层在搜索空间巨大的汉字手写识别里根本不work！你现在是不是想用很深的网络跃跃欲试？更深的网络在这个任务上可能根本不可行！！看完本教程我们就可以一探究竟！总之一句话，模型太简单和太复杂都不好，甚至会发散！（想亲身体验模型训练发散抓狂的可以来尝试一下！）。</li>
+</ul>
+<h1 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h1><p>在开始之前，先介绍一下本项目所采用的数据信息。我们的数据全部来自于CASIA的开源中文手写字数据集，该数据集分为两部分：</p>
+<ul>
+<li>CASIA-HWDB：离线的HWDB，我们仅仅使用1.0-1.2，这是单字的数据集，2.0-2.2是整张文本的数据集，我们暂时不用，单字里面包含了约7185个汉字以及171个英文字母、数字、标点符号等；</li>
+<li>CASIA-OLHWDB：在线的HWDB，格式一样，包含了约7185个汉字以及171个英文字母、数字、标点符号等，我们不用。</li>
+</ul>
+<p>其实你下载1.0的train和test差不多已经够了，可以直接运行 dataset/get_hwdb_1.0_1.1.sh 下载。原始数据下载链接点击这里. 由于原始数据过于复杂，我们使用一个类来封装数据读取过程，这是我们展示的效果：<br><img src="/images/2019/09/06/c3295380-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p>看到这么密密麻麻的文字相信连人类都…. 开始头疼了，这些复杂的文字能够通过一个神经网络来识别出来？？答案是肯定的…. 不有得感叹一下神经网络的强大。。上面的部分文字识别出来的结果是这样的：</p>
+<p><img src="/images/2019/09/06/ce981d50-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p>关于数据的处理部分，从服务器下载到的原始数据是 trn_gnt.zip 解压之后是 gnt.alz， 需要再次解压得到一个包含 gnt文件的文件夹。里面每一个gnt文件都包含了若干个汉字及其标注。直接处理比较麻烦，也不方便抽取出图片再进行操作，虽然转为图片存入文件夹比较直观，但是不适合批量读取和训练, 后面我们统一转为tfrecord进行训练。</p>
+<p>更新: 实际上，由于单个汉字图片其实很小，差不多也就最大80x80的大小，这个大小不适合转成图片保存到本地，因此我们将hwdb原始的二进制保存为tfrecord。同时也方便后面训练，可以直接从tfrecord读取图片进行训练。</p>
+<p><img src="/images/2019/09/06/dbb692f0-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h1><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    all_characters = load_characters()</span><br><span class="line">    num_classes = len(all_characters)</span><br><span class="line">    logging.info(<span class="hljs-string">'all characters: &#123;&#125;'</span>.format(num_classes))</span><br><span class="line">    train_dataset = load_ds()</span><br><span class="line">    train_dataset = train_dataset.shuffle(<span class="hljs-number">100</span>).map(preprocess).batch(<span class="hljs-number">32</span>).repeat()</span><br><span class="line"></span><br><span class="line">    val_ds = load_val_ds()</span><br><span class="line">    val_ds = val_ds.shuffle(<span class="hljs-number">100</span>).map(preprocess).batch(<span class="hljs-number">32</span>).repeat()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> data <span class="hljs-keyword">in</span> train_dataset.take(<span class="hljs-number">2</span>):</span><br><span class="line">        print(data)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># init model</span></span><br><span class="line">    model = build_net_003((<span class="hljs-number">64</span>, <span class="hljs-number">64</span>, <span class="hljs-number">1</span>), num_classes)</span><br><span class="line">    model.summary()</span><br><span class="line">    logging.info(<span class="hljs-string">'model loaded.'</span>)</span><br><span class="line"></span><br><span class="line">    start_epoch = <span class="hljs-number">0</span></span><br><span class="line">    latest_ckpt = tf.train.latest_checkpoint(os.path.dirname(ckpt_path))</span><br><span class="line">    <span class="hljs-keyword">if</span> latest_ckpt:</span><br><span class="line">        start_epoch = int(latest_ckpt.split(<span class="hljs-string">'-'</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">'.'</span>)[<span class="hljs-number">0</span>])</span><br><span class="line">        model.load_weights(latest_ckpt)</span><br><span class="line">        logging.info(<span class="hljs-string">'model resumed from: &#123;&#125;, start at epoch: &#123;&#125;'</span>.format(latest_ckpt, start_epoch))</span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        logging.info(<span class="hljs-string">'passing resume since weights not there. training from scratch'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> use_keras_fit:</span><br><span class="line">        model.compile(</span><br><span class="line">            optimizer=tf.keras.optimizers.Adam(),</span><br><span class="line">            loss=tf.keras.losses.SparseCategoricalCrossentropy(),</span><br><span class="line">            metrics=[<span class="hljs-string">'accuracy'</span>])</span><br><span class="line">        callbacks = [</span><br><span class="line">            tf.keras.callbacks.ModelCheckpoint(ckpt_path,</span><br><span class="line">                                               save_weights_only=<span class="hljs-literal">True</span>,</span><br><span class="line">                                               verbose=<span class="hljs-number">1</span>,</span><br><span class="line">                                               period=<span class="hljs-number">500</span>)</span><br><span class="line">        ]</span><br><span class="line">        <span class="hljs-keyword">try</span>:</span><br><span class="line">            model.fit(</span><br><span class="line">                train_dataset,</span><br><span class="line">                validation_data=val_ds,</span><br><span class="line">                validation_steps=<span class="hljs-number">1000</span>,</span><br><span class="line">                epochs=<span class="hljs-number">15000</span>,</span><br><span class="line">                steps_per_epoch=<span class="hljs-number">1024</span>,</span><br><span class="line">                callbacks=callbacks)</span><br><span class="line">        <span class="hljs-keyword">except</span> KeyboardInterrupt:</span><br><span class="line">            model.save_weights(ckpt_path.format(epoch=<span class="hljs-number">0</span>))</span><br><span class="line">            logging.info(<span class="hljs-string">'keras model saved.'</span>)</span><br><span class="line">        model.save_weights(ckpt_path.format(epoch=<span class="hljs-number">0</span>))</span><br><span class="line">        model.save(os.path.join(os.path.dirname(ckpt_path), <span class="hljs-string">'cn_ocr.h5'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>大家在以后编写训练代码的时候其实可以保持这个好的习惯。</p>
+<p>OK，整个模型训练起来之后，可以在短时间内达到95%的准确率：</p>
+<p><img src="/images/2019/09/06/faa28750-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p><img src="/images/2019/09/06/098bf8f0-d075-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过本教程，我们完成了使用tensorflow 2.0全新的API搭建一个中文汉字手写识别系统。模型基本能够实现我们想要的功能。要知道，这个模型可是在搜索空间多大3755的类别当中准确的找到最相似的类别！！通过本实验，我们有几点心得：</p>
+<ul>
+<li>神经网络不仅仅是在学习，它具有一定的想象力！！比如它的一些看着很像的字：拜-佯， 扮-捞，笨-苯…. 这些字如果手写出来，连人都比较难以辨认！！但是大家要知道这些字在类别上并不是相领的！也就是说，模型具有一定的联想能力！</li>
+<li>不管问题多复杂，要敢于动手、善于动手。</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -406,75 +485,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-05T08:08:46.000Z">2019-09-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/笔试/">笔试</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 413 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/05/树的高度（小米2017秋招真题）/">树的高度（小米2017秋招真题）</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/09/05/39375020-cfb4-11e9-9c01-f368b6d24837.png" alt="image.png"></p>
-<h1 id="树的高度（小米2017秋招真题）"><a href="#树的高度（小米2017秋招真题）" class="headerlink" title="树的高度（小米2017秋招真题）"></a>树的高度（小米2017秋招真题）</h1><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><strong>题目描述</strong></p>
-<p>现在有一棵合法的二叉树，树的节点都是用数字表示，现在给定这棵树上所有的父子关系，求这棵树的高度</p>
-<p><strong>时间限制</strong><br><code>C/C++</code>语言：<code>1000MS</code> 其它语言：<code>3000MS</code></p>
-<p><strong>内存限制</strong><br><code>C/C++</code>语言：<code>65536KB</code> 其它语言：<code>589824KB</code></p>
-<p><strong>输入</strong></p>
-<p>输入的第一行表示节点的个数n（1&lt;=n&lt;=1000，节点的编号为0到n-1）组成，下面是n-1行，每行有两个整数，第一个数表示父节点的编号，第二个数表示子节点的编号</p>
-<p><strong>输出</strong></p>
-<p>输出树的高度，为一个整数</p>
-<p><strong>样例输入</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">0 1</span><br><span class="line">0 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br></pre></td></tr></table></figure>
-
-<p><strong>样例输出</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>java</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="hljs-keyword">int</span> n = sc.nextInt();</span><br><span class="line">        <span class="hljs-keyword">int</span>[] parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            parent[i] = -<span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a = sc.nextInt();</span><br><span class="line">            <span class="hljs-keyword">int</span> b = sc.nextInt();</span><br><span class="line">            parent[b] = a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">int</span> h = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> max = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> j = i;</span><br><span class="line">            <span class="hljs-keyword">while</span> (parent[j] != -<span class="hljs-number">1</span>) &#123;</span><br><span class="line">                j = parent[j];</span><br><span class="line">                max++;</span><br><span class="line">            &#125;</span><br><span class="line">            h = max &gt; h ? max : h;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>python</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(x)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + get(dic_s[x])</span><br><span class="line">    <span class="hljs-keyword">except</span> KeyError:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">n = int(sys.stdin.readline().strip())</span><br><span class="line">dic_s = &#123;&#125;</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(int(n)<span class="hljs-number">-1</span>):</span><br><span class="line">    j_1,j_2 = sys.stdin.readline().strip().split()</span><br><span class="line">    dic_s[j_2] = j_1</span><br><span class="line"><span class="hljs-keyword">print</span> max([get(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> set(dic_s.keys()) - set(dic_s.values())]) <span class="hljs-keyword">if</span> n&gt;<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>javascript</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> n=readInt(),rec=&#123;&#125;,dps=&#123;&#125;,rs=<span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-keyword">while</span>(n--&gt;<span class="hljs-number">1</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> a=readInt(),b=readInt()</span><br><span class="line">  rec[a]=rec[a]||[]</span><br><span class="line">  rec[a].push(b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> rec) rs=<span class="hljs-built_in">Math</span>.max(rs,maxDps(k))</span><br><span class="line">print(rs)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxDps</span>(<span class="hljs-params">n</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!rec[n]) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">if</span>(dps[n]) <span class="hljs-keyword">return</span> dps[n]</span><br><span class="line">  <span class="hljs-keyword">var</span> r=<span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> x <span class="hljs-keyword">of</span> rec[n]) r=<span class="hljs-built_in">Math</span>.max(r,maxDps(x)+<span class="hljs-number">1</span>)</span><br><span class="line">  dps[n]=r</span><br><span class="line">  <span class="hljs-keyword">return</span> dps[n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -547,7 +557,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            104
+                            105
                         </p>
                     </a>
                 </div>
@@ -693,7 +703,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">80</span>
+                <span class="level-item tag">81</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -738,6 +748,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/25/metalslugflash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/25/e5e5d980-0f8e-11ea-bdf6-0f4a3deb0f34.png" alt="防合金弹头Flash游戏">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T14:20:04.000Z">2019-11-25</time></div>
+                    <a href="/2019/11/25/metalslugflash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">防合金弹头Flash游戏</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/24/bing-bitfunnel/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
@@ -805,25 +834,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
                     <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/20/PythonRobotics/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
-                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -855,6 +865,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/25/metalslugflash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/25/e5e5d980-0f8e-11ea-bdf6-0f4a3deb0f34.png" alt="防合金弹头Flash游戏">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T14:20:04.000Z">2019-11-25</time></div>
+                    <a href="/2019/11/25/metalslugflash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">防合金弹头Flash游戏</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/24/bing-bitfunnel/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
@@ -922,25 +951,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
                     <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/20/PythonRobotics/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
-                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>

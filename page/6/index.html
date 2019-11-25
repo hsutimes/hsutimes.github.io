@@ -146,6 +146,79 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-04T15:39:00.000Z">2019-11-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1488 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/04/b-tree/">b-tree</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h1><h2 id="B-Tree-与-B-Tree"><a href="#B-Tree-与-B-Tree" class="headerlink" title="B-Tree 与 B+Tree"></a>B-Tree 与 B+Tree</h2><p>在数据结构与算法/查找树 <a href="https://url.wx-coder.cn/9PnzG" target="_blank" rel="noopener">https://url.wx-coder.cn/9PnzG</a> 一节中我们介绍了 B-Tree 的基本概念与实现，这里我们继续来分析下为何 B-Tree 相较于红黑树等二叉查找树会更适合于作为数据库索引的实现。一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘 I/O 消耗，相对于内存存取，I/O 存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘 I/O 操作次数的渐进复杂度。换句话说，索引的结构组织要尽量减少查找过程中磁盘 I/O 的存取次数。<br>根据 B-Tree 的定义，可知检索一次最多需要访问 h 个节点。数据库系统的设计者巧妙利用了磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次 I/O 就可以完全载入。每次新建节点时，直接申请一个页的空间，这样就保证一个节点物理上也存储在一个页里，加之计算机存储分配都是按页对齐的，就实现了一个节点只需一次 I/O。而检索的时候，一次检索最多需要 h-1 次 I/O（根节点常驻内存），其渐进复杂度为 ，实际应用中，出度 d 是非常大的数字，通常超过 100，因此 h 非常小（通常不超过 3）。而红黑树这种结构，h 明显要深的多。由于逻辑上很近的节点（父子）物理上可能很远，无法利用局部性，所以红黑树的 I/O 渐进复杂度也为 O(h)，效率明显比 B-Tree 差很多。</p>
+<p>B+Tree 是 的变种，有着比 B-Tree 更高的查询性能，其相较于 B-Tree 有了如下的变化：</p>
+<ul>
+<li>有 m 个子树的节点包含有 m 个元素（B-Tree 中是 m-1）。</li>
+</ul>
+<ul>
+<li>根节点和分支节点中不保存数据，只用于索引，所有数据都保存在叶子节点中。</li>
+</ul>
+<ul>
+<li>所有分支节点和根节点都同时存在于子节点中，在子节点元素中是最大或者最小的元素。</li>
+</ul>
+<ul>
+<li>叶子节点会包含所有的关键字，以及指向数据记录的指针，并且叶子节点本身是根据关键字的大小从小到大顺序链接。</li>
+</ul>
+<p><img src="/images/2019/11/04/e71a76c0-ff18-11e9-9ec1-4763a59e2ad9.png" alt="image.png"></p>
+<p>一般在数据库系统或文件系统中使用的 B+Tree 结构都在经典 B+Tree 的基础上进行了优化，增加了顺序访问指针：</p>
+<p>如上图所示，在 B+Tree 的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的 B+Tree。做这个优化的目的是为了提高区间访问的性能，例如下图中如果要查询 key 为从 3 到 8 的所有数据记录，当找到 3 后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。</p>
+<p><img src="/images/2019/11/04/f0c8f2f0-ff18-11e9-9ec1-4763a59e2ad9.png" alt="image.png"></p>
+<h2 id="索引顺序"><a href="#索引顺序" class="headerlink" title="索引顺序"></a>索引顺序</h2><p>B-Tree 索引可以很好地用于单行、范围或者前缀扫描，他们只有在查找使用了索引的最左前缀（Leftmost Prefix）的时候才有用。不过 B-Tree 索引存在一些限制：</p>
+<ul>
+<li>如果查找不从索引列的最左边开始，索引就无法使用；同样，不能查找字符串结尾；</li>
+<li>不能跳过索引中的列；</li>
+<li>不能使用任何在第一个范围条件右边的列作为条件；</li>
+</ul>
+<p>因此 B-Tree 的列顺序非常重要，上述使用规则都和列顺序有关。对于实际的应用，一般要根据具体的需求，创建不同列和不同列顺序的索引。假设有索引 Index(A,B,C):</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 使用索引</span><br><span class="line">A&gt;5 AND A&lt;10 - 最左前缀匹配</span><br><span class="line">A=5 AND B&gt;6 - 最左前缀匹配</span><br><span class="line">A=5 AND B=6 AND C=7 - 全列匹配</span><br><span class="line">A=5 AND B IN (2,3) AND C&gt;5 - 最左前缀匹配，填坑</span><br><span class="line"></span><br><span class="line"># 不能使用索引</span><br><span class="line">B&gt;5 - 没有包含最左前缀</span><br><span class="line">B=6 AND C=7 - 没有包含最左前缀</span><br><span class="line"></span><br><span class="line"># 使用部分索引</span><br><span class="line">A&gt;5 AND B=2 - 使用索引 A 列</span><br><span class="line">A=5 AND B&gt;6 AND C=2 - 使用索引的 A 和 B 列</span><br></pre></td></tr></table></figure>
+
+<p>复制代码使用索引对结果进行排序，需要索引的顺序和 ORDER BY 子句中的顺序一致，并且所有列的升降序一致(ASC/DESC)。如果查询连接了多个表，只有在 ORDER BY 的列引用的是第一个表才可以(需要按序 JOIN)。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 使用索引排序</span><br><span class="line">ORDER BY A - 最左前缀匹配</span><br><span class="line">WHERE A=5 ORDER BY B,C - 最左前缀匹配</span><br><span class="line">WHERE A=5 ORDER BY B DESC - 最左前缀匹配</span><br><span class="line">WHERE A&gt;5 ORDER BY A,B - 最左前缀匹配</span><br><span class="line"></span><br><span class="line"># 不能使用索引排序</span><br><span class="line">WHERE A=5 ORDER BY B DESC,C ASC - 升降序不一致</span><br><span class="line">WHERE A=5 ORDER BY B,D - D 不在索引中</span><br><span class="line">WHERE A=5 ORDER BY C - 没有包含最左前缀</span><br><span class="line">WHERE A&gt;5 ORDER BY B,C - 第一列是范围条件，无法使用 BC 排序</span><br><span class="line">WHERE A=5 AND B IN(1, 2) ORDER BY C - B 也是范围条件，无法用 C 排序</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-03T15:38:54.000Z">2019-11-03</time>
                 
                 <div class="level-item">
@@ -476,125 +549,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/10/30/tabnine/" class="image is-7by1">
-            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="tabnine">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-30T14:06:40.000Z">2019-10-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 943 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/30/tabnine/">tabnine</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="TabNine"><a href="#TabNine" class="headerlink" title="TabNine"></a>TabNine</h1><p>This is the repository for the backend of <a href="https://tabnine.com" target="_blank" rel="noopener">TabNine</a>, the all-language autocompleter.<br>There are no source files here because the backend is closed source.</p>
-<p>You can make feature requests by filing an issue. You are also welcome to make pull requests for changes to the configuration files.</p>
-<p><code>languages.yml</code> determines which file extensions are considered part of the same language. (For example, identifiers from <code>.c</code> files will be suggested in <code>.h</code> files.)</p>
-<p><code>language_tokenization.json</code> determines how languages are tokenized. For example, identifiers can contain dashes in Lisp, but not in Java.</p>
-<p>If your feature request is specific to a particular editor’s TabNine client, please file an issue in one of these repositories:</p>
-<ul>
-<li><a href="https://github.com/zxqfl/tabnine-vscode" target="_blank" rel="noopener">VS Code</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-sublime" target="_blank" rel="noopener">Sublime Text</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-vim" target="_blank" rel="noopener">Vim</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-atom" target="_blank" rel="noopener">Atom</a></li>
-</ul>
-<p>You may be interested in these TabNine clients written by third parties:</p>
-<ul>
-<li><a href="https://github.com/TommyX12/company-tabnine" target="_blank" rel="noopener">Emacs</a></li>
-<li><a href="https://github.com/tbodt/deoplete-tabnine" target="_blank" rel="noopener">Vim (Deoplete)</a></li>
-</ul>
-<h1 id="Changelogs"><a href="#Changelogs" class="headerlink" title="Changelogs"></a>Changelogs</h1><p>If new features don’t work for you, check that you have the most recent version by typing <code>TabNine::version</code> into your text editor. If you don’t have the most recent version, try restarting your editor.</p>
-<h2 id="2-0-11-August-24-2019"><a href="#2-0-11-August-24-2019" class="headerlink" title="2.0.11 (August 24, 2019)"></a>2.0.11 (August 24, 2019)</h2><ul>
-<li><a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> is now enabled by default</li>
-</ul>
-<h2 id="2-0-0-—-2-0-10-July-15-—-August-20-2019"><a href="#2-0-0-—-2-0-10-July-15-—-August-20-2019" class="headerlink" title="2.0.0 — 2.0.10 (July 15 — August 20, 2019)"></a>2.0.0 — 2.0.10 (July 15 — August 20, 2019)</h2><ul>
-<li><a href="https://tabnine.com/blog/deep" target="_blank" rel="noopener">Deep TabNine</a><ul>
-<li>Can download and run <a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> models</li>
-<li>Can connect to <a href="https://tabnine.com/subscribe#cloud" target="_blank" rel="noopener">TabNine Cloud</a></li>
-</ul>
-</li>
-<li>Simplified bracket pairing logic</li>
-<li>Simplified filesystem event handling</li>
-<li>Added a configuration panel for viewing settings and logs which can be accessed by typing <code>TabNine::config</code></li>
-</ul>
-<h2 id="1-0-14-May-16-2019"><a href="#1-0-14-May-16-2019" class="headerlink" title="1.0.14 (May 16, 2019)"></a>1.0.14 (May 16, 2019)</h2><ul>
-<li>TabNine no longer watches for filesystem events in ignored directories (closes <a href="https://github.com/zxqfl/TabNine/issues/43" target="_blank" rel="noopener">#43</a>).</li>
-<li>TabNine now waits until a completion is requested to start the language server (closes <a href="https://github.com/zxqfl/TabNine/issues/50" target="_blank" rel="noopener">#50</a>).</li>
-<li>Files with the <code>.d</code> extension are now recognized as D source files (closes <a href="https://github.com/zxqfl/TabNine/issues/56" target="_blank" rel="noopener">#56</a>).</li>
-<li>Added LSP default configuration for PureScript.</li>
-<li>Fixed a logic error that caused index size to be tracked incorrectly in some cases.</li>
-</ul>
-<h2 id="1-0-10-December-1-2018"><a href="#1-0-10-December-1-2018" class="headerlink" title="1.0.10 (December 1, 2018)"></a>1.0.10 (December 1, 2018)</h2><ul>
-<li>Fixed an internal logic error which could put indexing threads into a bad state, leading to an infinite loop (might close <a href="https://github.com/zxqfl/TabNine/issues/24" target="_blank" rel="noopener">#24</a>, we’ll see).</li>
-<li>TabNine now considers a wider range of possibilities when completing in a zero-char context (i.e. when there are no characters immediately before the cursor).</li>
-<li>TabNine now includes <code>-</code> in identifiers when parsing Racket code.</li>
-</ul>
-<h2 id="1-0-9-November-27-2018"><a href="#1-0-9-November-27-2018" class="headerlink" title="1.0.9 (November 27, 2018)"></a>1.0.9 (November 27, 2018)</h2><ul>
-<li>TabNine now uses the context after the cursor to filter its suggestions. For example, if there are tokens on the same line as the cursor, TabNine will not make a suggestion ending in a semicolon (unless there are already instances in the codebase of semicolons occurring in the middle of a line).</li>
-<li>TabNine removes tokens matching the regex <code>\d.*[a-zA-Z].*\d.*[a-zA-Z]</code> from the project index. This is supposed to prevent long keys or base64 literals from occurring in autocompletion suggestions. The tokens are <strong>not</strong> filtered from the directory index or the file index.</li>
-<li>TabNine now recognizes <code>.tsx</code> files as TypeScript rather than <code>.xml</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/21" target="_blank" rel="noopener">#21</a>).</li>
-<li>TabNine only checks its version directory, not its target directory, when auto-updating or writing registration keys. (This fixes an issue associated with DOS path shortening.)</li>
-</ul>
-<h2 id="1-0-7-November-20-2018"><a href="#1-0-7-November-20-2018" class="headerlink" title="1.0.7 (November 20, 2018)"></a>1.0.7 (November 20, 2018)</h2><ul>
-<li>Semantic completion is added! This allows TabNine to integrate with any language server that implements the <a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a>.<ul>
-<li>TabNine will integrate the language server’s suggestions with its own. For example, TabNine can suggest multi-token completions where the first token is provided by the language server.</li>
-<li>TabNine queries the language server asynchronously. So, if the language server is slow, you will see TabNine’s results only. Continue typing to see the language server’s results.</li>
-<li>TabNine passes along any type information or documentation provided by the language server. (The Sublime and VS Code clients are not yet updated to display the documentation; this is coming soon.)</li>
-<li>See the <a href="https://tabnine.com/semantic" target="_blank" rel="noopener">semantic completion guide</a> for configuration help.</li>
-</ul>
-</li>
-<li>Paid index size limit increased to 100 MB (from 15 MB).</li>
-<li>Free index size limit increased to 400 KB (from 200 KB).</li>
-<li>Improved indexing performance.</li>
-<li>Increased license price to $49/$99 personal/business (from $29/$89).</li>
-<li>TabNine now provides closing brackets for its suggestions (so if it suggests <code>foo(</code> it will additionally insert <code>)</code> to the right of the cursor once the suggestion is accepted). The editor clients do not support this yet as it requires an upgrade to the communication protocol with TabNine; this is coming soon. Closes <a href="https://github.com/zxqfl/TabNine/issues/11" target="_blank" rel="noopener">#11</a> as this is no longer an issue with the TabNine backend.</li>
-<li>TabNine now searches all parents to find the project root rather than stopping at the first <code>.git</code>. This permits nested Git repositories (closes <a href="https://github.com/zxqfl/TabNine/issues/5" target="_blank" rel="noopener">#5</a>).</li>
-<li>TabNine provides an API call to get the regex it uses to find identifiers (closes <a href="https://github.com/zxqfl/TabNine/issues/7" target="_blank" rel="noopener">#7</a>).</li>
-<li>TabNine no longer indexes files in <code>.git</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/8" target="_blank" rel="noopener">#8</a>).</li>
-<li>TabNine now respects <code>.tabnineignore</code> files (closes <a href="https://github.com/zxqfl/TabNine/issues/15" target="_blank" rel="noopener">#15</a>).</li>
-<li>TabNine allows disabling auto-update by typing <code>TabNine::disable_auto_update</code> into your text editor (closes <a href="https://github.com/zxqfl/TabNine/issues/14" target="_blank" rel="noopener">#14</a>).</li>
-<li>TabNine no longer stores registration keys and config in same directory where it is installed. This should prevent registration keys and config from being overwritten by client updates (closes <a href="https://github.com/zxqfl/TabNine/issues/10" target="_blank" rel="noopener">#10</a>). You can type <code>TabNine::config_dir</code> to see where config files are being stored.</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -669,7 +623,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            104
+                            105
                         </p>
                     </a>
                 </div>
@@ -815,7 +769,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">80</span>
+                <span class="level-item tag">81</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -860,6 +814,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/25/metalslugflash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/25/e5e5d980-0f8e-11ea-bdf6-0f4a3deb0f34.png" alt="防合金弹头Flash游戏">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T14:20:04.000Z">2019-11-25</time></div>
+                    <a href="/2019/11/25/metalslugflash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">防合金弹头Flash游戏</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/24/bing-bitfunnel/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
@@ -927,25 +900,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
                     <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/20/PythonRobotics/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
-                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -977,6 +931,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/25/metalslugflash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/25/e5e5d980-0f8e-11ea-bdf6-0f4a3deb0f34.png" alt="防合金弹头Flash游戏">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T14:20:04.000Z">2019-11-25</time></div>
+                    <a href="/2019/11/25/metalslugflash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">防合金弹头Flash游戏</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/24/bing-bitfunnel/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
@@ -1044,25 +1017,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T05:46:44.000Z">2019-11-21</time></div>
                     <a href="/2019/11/21/gitpod/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Gitpod</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/20/PythonRobotics/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time></div>
-                    <a href="/2019/11/20/PythonRobotics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PythonRobotics</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
