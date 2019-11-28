@@ -146,6 +146,74 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-06T05:21:38.000Z">2019-09-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 710 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/06/Java反编译工具jad/">Java反编译工具jad</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/06/c8ac68c0-d064-11e9-baaa-a18a2b353fbb.png" alt="image.png"></p>
+<h1 id="Jad-JAva-Decompiler"><a href="#Jad-JAva-Decompiler" class="headerlink" title="Jad(JAva Decompiler)"></a>Jad(JAva Decompiler)</h1><p>Jad(JAva Decompiler)是一个Java的反编译器，可以通过命令行把Java的class文件反编译成源代码。下载<a href="https://varaneckas.com/jad/" target="_blank" rel="noopener">点击</a></p>
+<p>使用方法：</p>
+<p>[1] 反编译一个class文件：jad example.class，会生成example.jad，用文本编辑器打开就是java源代码</p>
+<p>[2] 指定生成源代码的后缀名：jad -sjava example.class，生成example.java</p>
+<p>[3] 改变生成的源代码的名称，可以先使用-p将反编译后的源代码输出到控制台窗口，然后使用重定向，输出到文件：jad -p example.class &gt; myexample.java</p>
+<p>[4] 把源代码文件输出到指定的目录：jad -dnewdir -sjava example.class，在newdir目录下生成example.java</p>
+<p>[5] 把packages目录下的class文件全部反编译：jad -sjava packages/*.class</p>
+<p>[6] 把packages目录以及子目录下的文件全部反编译：jad -sjava packages/<em>*/</em>.class，不过你仍然会发现所有的源代码文件被放到了同一个文件中，没有按照class文件的包路径建立起路径</p>
+<p>[7] 把packages目录以及子目录下的文件全部反编译并建立和java包一致的文件夹路径，可以使用-r命令：jad -r -sjava packages/<em>*/</em>.class</p>
+<p>[8] 当重复使用命令反编译时，Jad会提示“whether you want to overwrite it or not”，使用-o可以强制覆盖旧文件</p>
+<p>[9] 还有其他的参数可以设置生成的源代码的格式，可以输入jad命令查看帮助，这里有个人做了简单的翻译：jad命令总结</p>
+<p>[10] 当然，你会发现有些源文件头部有些注释信息，不用找了，jad没有参数可以去掉它，用别的办法吧。</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>Main.java</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n = <span class="hljs-number">100</span>;</span><br><span class="line">        Thread[] threads = <span class="hljs-keyword">new</span> Thread[n];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            threads[i] = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() &#123;</span><br><span class="line"></span><br><span class="line">                <span class="hljs-meta">@Override</span></span><br><span class="line">                <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;</span><br><span class="line">                        add();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            threads[i].start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (Thread.activeCount() &gt; <span class="hljs-number">1</span>)</span><br><span class="line">            Thread.yield();</span><br><span class="line"></span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        t++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Main.class</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cafe babe 0000 0034 0037 0a00 0d00 1d07</span><br><span class="line">001e 0700 1f0a 0003 001d 0a00 0200 200a</span><br><span class="line">0002 0021 0a00 0200 220a 0002 0023 0900</span><br><span class="line">2400 2509 000c 0026 0a00 2700 2807 0029</span><br><span class="line">0700 2a01 000c 496e 6e65 7243 6c61 7373</span><br><span class="line">6573 0100 0174 0100 0149 0100 063c 696e</span><br><span class="line">6974 3e01 0003 2829 5601 0004 436f 6465</span><br><span class="line">0100 0f4c 696e 654e 756d 6265 7254 6162</span><br><span class="line">6c65 0100 046d 6169 6e01 0016 285b 4c6a</span><br><span class="line">6176 612f 6c61 6e67 2f53 7472 696e 673b</span><br><span class="line">2956 0100 0d53 7461 636b 4d61 7054 6162</span><br><span class="line">6c65 0700 2b01 0003 6164 6401 0008 3c63</span><br><span class="line">6c69 6e69 743e 0100 0a53 6f75 7263 6546</span><br><span class="line">696c 6501 0009 4d61 696e 2e6a 6176 610c</span><br><span class="line">0011 0012 0100 106a 6176 612f 6c61 6e67</span><br><span class="line">2f54 6872 6561 6401 0006 4d61 696e 2431</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2019/09/06/fcb05680-d065-11e9-baaa-a18a2b353fbb.png" alt="image.png"></p>
+<p>反编译后的结果</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.</span></span><br><span class="line"><span class="hljs-comment">// Jad home page: http://www.kpdus.com/jad.html</span></span><br><span class="line"><span class="hljs-comment">// Decompiler options: packimports(3) </span></span><br><span class="line"><span class="hljs-comment">// Source File Name:   Main.java</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.io.PrintStream;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span></span></span><br><span class="line"><span class="hljs-class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">byte</span> byte0 = <span class="hljs-number">100</span>;</span><br><span class="line">        Thread athread[] = <span class="hljs-keyword">new</span> Thread[byte0];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; byte0; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            athread[i] = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() &#123;</span><br><span class="line"></span><br><span class="line">                <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function">                </span>&#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10000</span>; j++)</span><br><span class="line">                        Main.add();</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">);</span><br><span class="line">            athread[i].start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span>(; Thread.activeCount() &gt; <span class="hljs-number">1</span>; Thread.yield());</span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        t++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-05T18:53:05.000Z">2019-09-06</time>
                 
                 <div class="level-item">
@@ -410,121 +478,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-03T16:32:24.000Z">2019-09-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    15 分钟 读完 (大约 2210 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/04/Spring框架面试总结/">Spring框架面试总结</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/09/12/ba1add50-d555-11e9-b519-9f31cc87a9f9.png" alt="image.png"></p>
-<h1 id="介绍spring框架"><a href="#介绍spring框架" class="headerlink" title="介绍spring框架"></a>介绍spring框架</h1><p>它是一个一站式（full-stack全栈式）框架，提供了从表现层-springMVC到业务层-spring再到持久层-springdata的一套完整的解决方案。我们在项目中可以只使用spring一个框架，它就可以提供表现层的mvc框架，持久层的Dao框架。它的两大核心IoC和AOP更是为我们程序解耦和代码简洁易维护提供了支持。</p>
-<h1 id="Spring的优点？"><a href="#Spring的优点？" class="headerlink" title="Spring的优点？"></a>Spring的优点？</h1><ol>
-<li>降低了组件之间的耦合性 ，实现了软件各层之间的解耦 </li>
-<li>可以使用容易提供的众多服务，如事务管理，消息服务等 </li>
-<li>容器提供单例模式支持 </li>
-<li>容器提供了AOP技术，利用它很容易实现如权限拦截，运行期监控等功能 </li>
-<li>容器提供了众多的辅助类，能加快应用的开发 </li>
-<li>spring对于主流的应用框架提供了集成支持，如hibernate，   JPA，Struts等 </li>
-<li>spring属于低侵入式设计，代码的污染极低 </li>
-<li>独立于各种应用服务器 </li>
-<li>spring的DI机制降低了业务对象替换的复杂性 </li>
-<li>Spring的高度开放性，并不强制应用完全依赖于Spring，开发者可以自由选择spring 的部分或全部 </li>
-</ol>
-<h1 id="spring有两种代理方式："><a href="#spring有两种代理方式：" class="headerlink" title="spring有两种代理方式："></a>spring有两种代理方式：</h1><p>答: 若目标对象实现了若干接口，spring使用JDK的java.lang.reflect.Proxy类代理。</p>
-<p>  优点：因为有接口，所以使系统更加松耦合</p>
-<p>  缺点：为每一个目标类创建接口</p>
-<p>若目标对象没有实现任何接口，spring使用CGLIB库生成目标对象的子类。</p>
-<p>  优点：因为代理类与目标类是继承关系，所以不需要有接口的存在。</p>
-<p>  缺点：因为没有使用接口，所以系统的耦合性没有使用JDK的动态代理好</p>
-<h1 id="如何给Spring-容器提供配置元数据"><a href="#如何给Spring-容器提供配置元数据" class="headerlink" title="如何给Spring 容器提供配置元数据?"></a>如何给Spring 容器提供配置元数据?</h1><p>这里有三种重要的方法给Spring 容器提供配置元数据。</p>
-<p>XML配置文件。</p>
-<p>基于注解的配置。</p>
-<p>基于java的配置。</p>
-<h1 id="构造方法注入和设值注入有什么区别？"><a href="#构造方法注入和设值注入有什么区别？" class="headerlink" title="构造方法注入和设值注入有什么区别？"></a>构造方法注入和设值注入有什么区别？</h1><p>请注意以下明显的区别：</p>
-<p>在设值注入方法支持大部分的依赖注入，如果我们仅需要注入int、string和long型的变量，我们不要用设值的方法注入。</p>
-<p>对于基本类型，如果我们没有注入的话，可以为基本类型设置默认值。</p>
-<p>在构造方法注入不支持大部分的依赖注入，因为在调用构造方法中必须传入正确的构造参数，否则的话为报错。</p>
-<p>设值注入不会重写构造方法的值。</p>
-<p>在使用设值注入时有可能还不能保证某种依赖是否已经被注入，也就是说这时对象的依赖关系有可能是不完整的。而在另一种情况下，构造器注入则不允许生成依赖关系不完整的对象。</p>
-<h1 id="请介绍一下Spring框架中Bean的生命周期"><a href="#请介绍一下Spring框架中Bean的生命周期" class="headerlink" title="请介绍一下Spring框架中Bean的生命周期"></a>请介绍一下Spring框架中Bean的生命周期</h1><p>一、Bean的定义 </p>
-<p>Spring通常通过配置文件定义Bean。如：  </p>
-<p>这个配置文件就定义了一个标识为 HelloWorld 的Bean。在一个配置文档中可以定义多个Bean。 </p>
-<p>二、Bean的初始化</p>
-<p>有两种方式初始化Bean。 </p>
-<p>1、在配置文档中通过指定init-method 属性来完成 </p>
-<p>2、实现 org.springframwork.beans.factory.InitializingBean接口  </p>
-<p>那么，当这个Bean的所有属性被Spring的BeanFactory设置完后，会自动调用afterPropertiesSet()方法对Bean进行初始化，于是，配置文件就不用指定 init-method属性了。 </p>
-<p>三、Bean的调用 </p>
-<p>有三种方式可以得到Bean并进行调用： </p>
-<p>1、使用BeanWrapper</p>
-<p>2、使用BeanFactory</p>
-<p>3、使用ApplicationConttext</p>
-<p>四、Bean的销毁 </p>
-<p>1、使用配置文件中的 destory-method 属性</p>
-<p>2、实现 org.springframwork.bean.factory.DisposebleBean接口 </p>
-<h1 id="Spring中AOP的应用场景、Aop原理、好处？"><a href="#Spring中AOP的应用场景、Aop原理、好处？" class="headerlink" title="Spring中AOP的应用场景、Aop原理、好处？"></a>Spring中AOP的应用场景、Aop原理、好处？</h1><p>答：AOP–Aspect Oriented Programming面向切面编程；用来封装横切关注点，具体可以在下面的场景中使用:</p>
-<p>Authentication 权限、Caching 缓存、Context passing 内容传递、Error handling 错误处理Lazy loading懒加载、Debugging调试、logging, tracing, profiling and monitoring 记录跟踪优化　校准、Performance optimization　性能优化、Persistence 持久化、Resource pooling　资源池、Synchronization　同步、Transactions 事务</p>
-<p>原理：AOP是面向切面编程，是通过动态代理的方式为程序添加统一功能，集中解决一些公共问题。</p>
-<p>优点：1.各个步骤之间的良好隔离性耦合性大大降低 </p>
-<pre><code>2.源代码无关性，再扩展功能的同时不对源码进行修改操作 </code></pre><h1 id="有几种不同类型的自动代理？"><a href="#有几种不同类型的自动代理？" class="headerlink" title="有几种不同类型的自动代理？"></a>有几种不同类型的自动代理？</h1><p>BeanNameAutoProxyCreator</p>
-<p>DefaultAdvisorAutoProxyCreator</p>
-<p>Metadata autoproxying</p>
-<h1 id="ApplicationContext通常的实现是什么"><a href="#ApplicationContext通常的实现是什么" class="headerlink" title="ApplicationContext通常的实现是什么?"></a>ApplicationContext通常的实现是什么?</h1><p>FileSystemXmlApplicationContext ：此容器从一个XML文件中加载beans的定义，XML Bean 配置文件的全路径名必须提供给它的构造函数。</p>
-<p>ClassPathXmlApplicationContext：此容器也从一个XML文件中加载beans的定义，这里，你需要正确设置classpath因为这个容器将在classpath里找bean配置。</p>
-<p>WebXmlApplicationContext：此容器加载一个XML文件，此文件定义了一个WEB应用的所有bean。</p>
-<h1 id="有哪些不同类型的IOC（依赖注入）方式？"><a href="#有哪些不同类型的IOC（依赖注入）方式？" class="headerlink" title="有哪些不同类型的IOC（依赖注入）方式？"></a>有哪些不同类型的IOC（依赖注入）方式？</h1><p>构造器依赖注入：构造器依赖注入通过容器触发一个类的构造器来实现的，该类有一系列参数，每个参数代表一个对其他类的依赖。</p>
-<p>Setter方法注入：Setter方法注入是容器通过调用无参构造器或无参static工厂 方法实例化bean之后，调用该bean的setter方法，即实现了基于setter的依赖注入。</p>
-<h1 id="什么是IOC，什么又是DI，他们有什么区别？"><a href="#什么是IOC，什么又是DI，他们有什么区别？" class="headerlink" title="什么是IOC，什么又是DI，他们有什么区别？"></a>什么是IOC，什么又是DI，他们有什么区别？</h1><p>一、IOC介绍</p>
-<p>IOC是控制反转。</p>
-<p>创建对象实例的控制权从代码控制剥离到IOC容器控制(之前的写法，由程序代码直接操控使用new关键字)，实际就是你在xml文件控制，控制权的转移是所谓反转，侧重于原理。 </p>
-<p>二、DI介绍</p>
-<p>DI是依赖注入</p>
-<p>创建对象实例时，为这个对象注入属性值或其它对象实例，侧重于实现。</p>
-<h1 id="spring事务定义"><a href="#spring事务定义" class="headerlink" title="spring事务定义"></a>spring事务定义</h1><p>事务的定义：事务是指多个操作单元组成的合集，多个单元操作是整体不可分割的，要么都操作不成功，要么都成功。其必须遵循四个原则（ACID）。</p>
-<p>原子性（Atomicity）：即事务是不可分割的最小工作单元，事务内的操作要么全做，要么全不做；</p>
-<p>一致性（Consistency）：在事务执行前数据库的数据处于正确的状态，而事务执行完成后数据库的数据还是应该处于正确的状态，即数据完整性约束没有被破坏；如银行转帐，A转帐给B，必须保证A的钱一定转给B，一定不会出现A的钱转了但B没收到，否则数据库的数据就处于不一致（不正确）的状态。</p>
-<p>隔离性（Isolation）：并发事务执行之间互不影响，在一个事务内部的操作对其他事务是不产生影响，这需要事务隔离级别来指定隔离性；</p>
-<p>持久性（Durability）：事务一旦执行成功，它对数据库的数据的改变必须是永久的，不会因比如遇到系统故障或断电造成数据不一致或丢失。</p>
-<h1 id="Spring框架中的单例Beans是线程安全的么？"><a href="#Spring框架中的单例Beans是线程安全的么？" class="headerlink" title="Spring框架中的单例Beans是线程安全的么？"></a>Spring框架中的单例Beans是线程安全的么？</h1><p>Spring框架并没有对单例bean进行任何多线程的封装处理。关于单例bean的线程安全和并发问题需要开发者自行去搞定。但实际上，大部分的Spring bean并没有可变的状态(比如Serview类和DAO类)，所以在某种程度上说Spring的单例bean是线程安全的。如果你的bean有多种状态的话（比如 View Model 对象），就需要自行保证线程安全。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -597,7 +550,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            107
+                            108
                         </p>
                     </a>
                 </div>
@@ -621,7 +574,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            133
+                            135
                         </p>
                     </a>
                 </div>
@@ -743,7 +696,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">81</span>
+                <span class="level-item tag">82</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -788,6 +741,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/28/hunt-cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/27/maliao/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/27/ac41c360-1123-11ea-ae28-5fa5e5a02d02.png" alt="马里奥 （任天堂公司的游戏角色）">
@@ -855,25 +827,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
                     <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/23/flash-crack/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -905,6 +858,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/28/hunt-cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/27/maliao/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/27/ac41c360-1123-11ea-ae28-5fa5e5a02d02.png" alt="马里奥 （任天堂公司的游戏角色）">
@@ -972,25 +944,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
                     <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/23/flash-crack/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>

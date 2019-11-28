@@ -146,6 +146,80 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-12T13:15:04.000Z">2019-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 652 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/12/nohup-在linux后台运行程序/">nohup:在linux后台运行程序</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/12/0188c220-d55f-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
+<h1 id="nohup-在linux后台运行程序"><a href="#nohup-在linux后台运行程序" class="headerlink" title="nohup:在linux后台运行程序"></a>nohup:在linux后台运行程序</h1><p>今天在工作中，lz要在Linux系统上运行一个java程序，这个程序要在系统中持续运行。随后lz无意将ssh窗口关掉了，发现java程序停止了。原来，当使用ssh连接到系统运行程序的时候，该程序已经和你的ssh连接绑定了。如果你关闭连接，该程序就会停止。还有一个情景：如果要在后台运行多个java程序的时候，就需要启动多个ssh窗口，这样很麻烦。有没有方法来解决这个问题呢？答案是肯定的。</p>
+<p>1.使用nohup来执行命令，它会把命令自动调到linux后台运行，不锁定当前ssh窗口，也不会被ctrl + c，alt + F4之类打断程序的动行。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar test.jar &amp;</span><br></pre></td></tr></table></figure>
+
+<p>执行完该命令后，终端会显示如下信息：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1] 27945</span><br><span class="line">nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</span><br></pre></td></tr></table></figure>
+
+<p>[1]：该后台任务的jobid<br>27945：是该进程的pid<br>nohup.out：是该任务的输出位置</p>
+<p>2.要指定重定向的文件，如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar test.jar &gt; test.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<p>3.如果一个任务已经在前台执行，那就使用以下方法来将任务调整到后台：</p>
+<p>（1）首先，在正在执行任务的终端使用ctrl+z</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1]+  已停止               java -jar test.jar</span><br></pre></td></tr></table></figure>
+
+<p>（2）使用bg命令将该任务调整至后台（fg与之相反，将后台任务调整至前台）</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bg %1(1是jobid)</span><br></pre></td></tr></table></figure>
+
+<p>如果不知道jobid，也可以使用jobs命令来查询。</p>
+<p>但是任务的输出还是会打印到终端上的（具体怎么将输出重定向到别的地方，lz也不造）。而且，这时该任务还是与当前终端相关联的，关闭终端还是会断掉该任务的。使用下面命令来解决：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disown -h %1</span><br></pre></td></tr></table></figure>
+
+<p>这样再也不用担心关掉终端会停止掉任务喽！！！</p>
+<p>PS：再来说说nohup吧。nohup的意思是no hang up，就是说关掉终端是不会挂掉程序的。如果开始执行命令时只使用&amp;：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar test.jar &amp;</span><br></pre></td></tr></table></figure>
+
+<p>那么该任务也会在后台执行，但是一旦关掉终端该任务还是会挂掉，所以这就是nohup的用处了。</p>
+<p><a href="http://ee-dreamer.com/?p=327" target="_blank" rel="noopener">原文链接</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-12T11:49:16.000Z">2019-09-12</time>
                 
                 <div class="level-item">
@@ -550,79 +624,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-08T23:56:41.000Z">2019-09-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 845 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/09/Github的webhooks网站自动化部署/">Github的webhooks网站自动化部署</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Github的webhooks进行网站自动化部署"><a href="#Github的webhooks进行网站自动化部署" class="headerlink" title="Github的webhooks进行网站自动化部署"></a>Github的webhooks进行网站自动化部署</h1><p><img src="/images/2019/09/09/bb535690-d292-11e9-9a4a-2f1c09bb03b0.png" alt="image.png"></p>
-<p>相信很多码农都玩过了Git，如果对Git只是一知半解，可以移步LV写的 GIT常用操作总结，下面介绍到的一些关于 Git 的概念就不再赘述。</p>
-<p>为啥想写这篇文章？主要是因为部门服务器因为安全性原因不允许SCP上传文件进行应用部署，然后有一些应用是放在Github上的，然后部署应用的步骤就变成：</p>
-<p>1.git clone github项目 本地目录<br>2.配置一下应用的pm2.json并reload<br>3.Nginx配置一下反向代理并restart</p>
-<p>当然如果只是一次性部署上去就不再修改的话并没啥问题，但是要是项目持续性修改迭代的话，就比较麻烦了，我们就在不断的重复着上面的步骤。作为一个码农，怎么允许不断的重复同样的工作，于是Github webhooks闪亮登场。</p>
-<h1 id="关于Github-webhooks"><a href="#关于Github-webhooks" class="headerlink" title="关于Github webhooks"></a>关于Github webhooks</h1><ul>
-<li>必须是Github上面的项目</li>
-<li>订阅了确定的事件（包括push/pull等命令）</li>
-<li>自动触发</li>
-</ul>
-<p>刚好符合了这几个条件，那接下来就看看如何进行网站自动化部署，主要会从下面几点来讲解：</p>
-<ol>
-<li>自动化shell脚本</li>
-<li>服务端实现</li>
-<li>配置github webhooks</li>
-</ol>
-<h1 id="自动化脚本"><a href="#自动化脚本" class="headerlink" title="自动化脚本"></a>自动化脚本</h1><p><code>auto_build.sh</code></p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span>! /bin/bash</span><br><span class="line">SITE_PATH='/root/nginx/www'</span><br><span class="line">cd $SITE_PATH</span><br><span class="line">git reset --hard origin/master</span><br><span class="line">git clean -f</span><br><span class="line">git pull</span><br><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
-
-<p>Note: 在执行上面shell脚本之前我们必须第一次手动git clone项目进去</p>
-<h1 id="服务端实现"><a href="#服务端实现" class="headerlink" title="服务端实现"></a>服务端实现</h1><p>Github webhooks需要跟我们的服务器进行通信，确保是可以推送到我们的服务器，所以会发送一个带有X-Hub-Signature的POST请求，为了方便我们直接用第三方的库github-webhook-handler来接收参数并且做监听事件的处理等工作。</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i github-webhook-handler -S</span><br></pre></td></tr></table></figure>
-
-<p><code>index.js</code></p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> spawn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>).spawn;</span><br><span class="line"><span class="hljs-keyword">var</span> createHandler = <span class="hljs-built_in">require</span>(<span class="hljs-string">'github-webhook-handler'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 下面填写的myscrect跟github webhooks配置一样，下一步会说；path是我们访问的路径</span></span><br><span class="line"><span class="hljs-keyword">var</span> handler = createHandler(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/auto_build'</span>, <span class="hljs-attr">secret</span>: <span class="hljs-string">''</span> &#125;);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>&#123;</span><br><span class="line">  handler(req, res, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;</span><br><span class="line">    res.statusCode = <span class="hljs-number">404</span>;</span><br><span class="line">    res.end(<span class="hljs-string">'no such location'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).listen(<span class="hljs-number">6666</span>);</span><br><span class="line"></span><br><span class="line">handler.on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Error:'</span>, err.message)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 监听到push事件的时候执行我们的自动化脚本</span></span><br><span class="line">handler.on(<span class="hljs-string">'push'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Received a push event for %s to %s'</span>,</span><br><span class="line">    event.payload.repository.name,</span><br><span class="line">    event.payload.ref);</span><br><span class="line"></span><br><span class="line">  runCommand(<span class="hljs-string">'sh'</span>, [<span class="hljs-string">'auto_build.sh'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> txt </span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(txt);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runCommand</span>(<span class="hljs-params"> cmd, args, callback </span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> child = spawn( cmd, args );</span><br><span class="line">    <span class="hljs-keyword">var</span> response = <span class="hljs-string">''</span>;</span><br><span class="line">    child.stdout.on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> buffer </span>)</span>&#123; resp += buffer.toString(); &#125;);</span><br><span class="line">    child.stdout.on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; callback( resp ) &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 由于我们不需要监听issues，所以下面代码注释掉</span></span><br><span class="line"><span class="hljs-comment">//  handler.on('issues', function (event) &#123;</span></span><br><span class="line"><span class="hljs-comment">//    console.log('Received an issue event for %s action=%s: #%d %s',</span></span><br><span class="line"><span class="hljs-comment">//      event.payload.repository.name,</span></span><br><span class="line"><span class="hljs-comment">//      event.payload.action,</span></span><br><span class="line"><span class="hljs-comment">//      event.payload.issue.number,</span></span><br><span class="line"><span class="hljs-comment">//      event.payload.issue.title)</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置github-webhooks"><a href="#配置github-webhooks" class="headerlink" title="配置github webhooks"></a>配置github webhooks</h1><p><img src="/images/2019/09/09/3f507120-d294-11e9-9a4a-2f1c09bb03b0.png" alt="image.png"></p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>上面就是利用Github webhooks进行网站自动化部署的全部内容了，不难发现其实这项技术还是有局限性的，那就是依赖于github，一般我们选择的都是免费github账号，所有项目都对外，一些敏感项目是不适合放置上去的。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -697,7 +698,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            107
+                            108
                         </p>
                     </a>
                 </div>
@@ -721,7 +722,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            133
+                            135
                         </p>
                     </a>
                 </div>
@@ -843,7 +844,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">81</span>
+                <span class="level-item tag">82</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -888,6 +889,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/28/hunt-cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/27/maliao/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/27/ac41c360-1123-11ea-ae28-5fa5e5a02d02.png" alt="马里奥 （任天堂公司的游戏角色）">
@@ -955,25 +975,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
                     <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/23/flash-crack/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1005,6 +1006,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/28/hunt-cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/27/maliao/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/27/ac41c360-1123-11ea-ae28-5fa5e5a02d02.png" alt="马里奥 （任天堂公司的游戏角色）">
@@ -1072,25 +1092,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
                     <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/23/flash-crack/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>

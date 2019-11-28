@@ -146,6 +146,77 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-02T11:49:32.000Z">2019-11-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 364 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/02/openssl/">openssl</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="OpenSSL下载安装"><a href="#OpenSSL下载安装" class="headerlink" title="OpenSSL下载安装"></a>OpenSSL下载安装</h1><h2 id="1、下载OpenSSL"><a href="#1、下载OpenSSL" class="headerlink" title="1、下载OpenSSL"></a>1、下载OpenSSL</h2><p>OpenSSL下载地址：<a href="https://oomake.com/download/openssl" target="_blank" rel="noopener">https://oomake.com/download/openssl</a></p>
+<p>这个链接有Windows版和源码版最新版下载地址，可以满足Windows、LInux、Mac OS系统使用。</p>
+<h2 id="2、Windows系统安装OpenSSL"><a href="#2、Windows系统安装OpenSSL" class="headerlink" title="2、Windows系统安装OpenSSL"></a>2、Windows系统安装OpenSSL</h2><p>到上面的链接下载OpenSSL Windows版本，注意32位和64位是不同的安装包，</p>
+<p>下载之后是exe文件，双击按照提示一步步安装就可以了。</p>
+<h2 id="3、-Linux系统安装OpenSSL"><a href="#3、-Linux系统安装OpenSSL" class="headerlink" title="3、 Linux系统安装OpenSSL"></a>3、 Linux系统安装OpenSSL</h2><h3 id="3-1-安装OpenSSL"><a href="#3-1-安装OpenSSL" class="headerlink" title="3.1 安装OpenSSL:"></a>3.1 安装OpenSSL:</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># tar -xzf openssl-1.0.2f.tar.gz</span><br><span class="line"></span><br><span class="line"># cd openssl-1.0.2f</span><br><span class="line"></span><br><span class="line"># mkdir /usr/local/openssl</span><br><span class="line"></span><br><span class="line"># ./config --prefix=/usr/local/openssl</span><br><span class="line"></span><br><span class="line"># make</span><br><span class="line"></span><br><span class="line"># make install</span><br></pre></td></tr></table></figure>
+
+<p>这样就安装完成了，接下来一些辅助步骤。</p>
+<h3 id="3-2-创建软连接"><a href="#3-2-创建软连接" class="headerlink" title="3.2 创建软连接"></a>3.2 创建软连接</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># which openssl</span><br><span class="line"></span><br><span class="line">/usr/local/openssl/bin/openssl</span><br></pre></td></tr></table></figure>
+
+<p>为了使用方便，以及以后版本更新方便，可以创建软连接，如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-执行以下命令"><a href="#3-3-执行以下命令" class="headerlink" title="3.3 执行以下命令"></a>3.3 执行以下命令</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># cd /usr/local/openssl</span><br><span class="line"></span><br><span class="line"># ldd /usr/local/openssl/bin/openssl</span><br><span class="line"></span><br><span class="line">    linux-vdso.so.1 =&gt;  (0x00007ffc63975000)</span><br><span class="line"></span><br><span class="line">    libssl.so.1.1 =&gt; not found</span><br><span class="line"></span><br><span class="line">    libcrypto.so.1.1 =&gt; not found</span><br><span class="line"></span><br><span class="line">    libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f8d9da0f000)</span><br><span class="line"></span><br><span class="line">    libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f8d9d7f3000)</span><br><span class="line"></span><br><span class="line">    libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f8d9d431000)</span><br><span class="line"></span><br><span class="line">    /lib64/ld-linux-x86-64.so.2 (0x00007f8d9dc28000)</span><br></pre></td></tr></table></figure>
+
+<p>安装OK</p>
+<h3 id="3-4-查看版本"><a href="#3-4-查看版本" class="headerlink" title="3.4 查看版本"></a>3.4 查看版本</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># openssl version</span><br><span class="line"></span><br><span class="line">/usr/local/openssl/bin/openssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>找不到动态库libssl.so.1.1，小问题，执行如下命令：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vim /etc/ld.so.conf</span><br></pre></td></tr></table></figure>
+
+<p>在最后追加一行：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/openssl/lib</span><br></pre></td></tr></table></figure>
+
+<p>然后执行：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># ldconfig /etc/ld.so.conf</span><br><span class="line"></span><br><span class="line"># openssl version</span><br><span class="line"></span><br><span class="line">OpenSSL 1.1.0f  25 May 2017</span><br><span class="line"></span><br><span class="line">Done.</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-01T15:12:05.000Z">2019-11-01</time>
                 
                 <div class="level-item">
@@ -481,155 +552,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-28T15:20:52.000Z">2019-10-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 283 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/28/asmttpd/">asmttpd</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="asmttpd"><a href="#asmttpd" class="headerlink" title="asmttpd"></a>asmttpd</h1><p>Web server for Linux written in amd64 assembly.</p>
-<p>Features:</p>
-<ul>
-<li>Multi-threaded.</li>
-<li>No libraries required ( only 64-bit Linux ).</li>
-<li>Very small binary, roughly 6 KB.</li>
-<li>Quite fast.</li>
-</ul>
-<p>What works:</p>
-<ul>
-<li>Serving files from specified document root.</li>
-<li>HEAD requests.</li>
-<li>200, 206, 404, 400, 413, 416</li>
-<li>Content-types: xml, html, xhtml, gif, png, jpeg, css, js, svg, and octet-stream.</li>
-</ul>
-<p>Planned Features:</p>
-<ul>
-<li>Directory listing.</li>
-</ul>
-<h1 id="Current-Limitations-Known-Issues"><a href="#Current-Limitations-Known-Issues" class="headerlink" title="Current Limitations / Known Issues"></a>Current Limitations / Known Issues</h1><ul>
-<li>Sendfile can hang if GET is cancelled.</li>
-</ul>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>Run <code>make</code> or <code>make release</code> for non-debug version.</p>
-<p>You will need <code>yasm</code> installed.</p>
-<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p><code>./asmttpd /path/to/web_root port_number</code></p>
-<p>Example: <code>./asmttpd ./web_root 8080</code></p>
-<h1 id="Changes"><a href="#Changes" class="headerlink" title="Changes"></a>Changes</h1><p>2019-04-22 : asmttpd - 0.4.4</p>
-<ul>
-<li>Added SVG support.</li>
-</ul>
-<p>2019-01-24 : asmttpd - 0.4.3</p>
-<ul>
-<li>Added port number as parameter.</li>
-</ul>
-<p>2017-10-18 : asmttpd - 0.4.2</p>
-<ul>
-<li>Set REUSEADDR.</li>
-</ul>
-<p>2017-10-17 : asmttpd - 0.4.1</p>
-<ul>
-<li>Stack address bug fix.</li>
-</ul>
-<p>2016-10-31 : asmttpd - 0.4</p>
-<ul>
-<li>HEAD support.</li>
-</ul>
-<p>2014-07-14 : asmttpd - 0.3</p>
-<ul>
-<li>Added default document support.</li>
-</ul>
-<p>2014-02-10 : asmttpd - 0.2</p>
-<ul>
-<li>Added 400, 413, 416 responses.</li>
-<li>Fixed header processing bug.</li>
-</ul>
-<p>2014-02-07 : asmttpd - 0.1.1</p>
-<ul>
-<li>Fixed 206 max length bug.</li>
-<li>Commented out simple request logging, uncomment in main.asm to enable.</li>
-</ul>
-<p>2014-02-06 : asmttpd - 0.1</p>
-<ul>
-<li>Fixed SIGPIPE when transfer is cancelled.</li>
-<li>Added a more useful error on bind failure.</li>
-<li>Fixed 206 size calculation.</li>
-<li>Combined seek &amp; get file size system calls.</li>
-</ul>
-<p>2014-02-05 : asmttpd - 0.09</p>
-<ul>
-<li>Issue #8 fix. Crashes on long request paths.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.08</p>
-<ul>
-<li>Added TCP corking.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.07</p>
-<ul>
-<li>Removed thread pool after benchmarking, changed to an accept-per-thread model.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.06</p>
-<ul>
-<li>Worker thread stack corruption bug fix.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.05</p>
-<ul>
-<li>Changed 200 and 206 implementation to use sendfile system call.</li>
-<li>Got rid of read/write buffer, changed request read buffer to standard 8KB.</li>
-</ul>
-<p>2014-02-03 : asmttpd - 0.04</p>
-<ul>
-<li>200 now streams full amount</li>
-</ul>
-<p>2014-02-01 : asmttpd - 0.03</p>
-<ul>
-<li>Files are split if too large to fit into buffer. </li>
-<li>Added 206 responses with Content-Range handling</li>
-</ul>
-<p>2014-01-30 : asmttpd - 0.02</p>
-<ul>
-<li>Added xml, xhtml, gif, png, jpeg, css, and javascript content types.</li>
-<li>Changed thread memory size to something reasonable. You can tweak it according to available memory. See comments in main.asm</li>
-<li>Added simple request logging.</li>
-<li>Added removal of ‘../‘ in URL.</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -704,7 +626,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            107
+                            108
                         </p>
                     </a>
                 </div>
@@ -728,7 +650,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            133
+                            135
                         </p>
                     </a>
                 </div>
@@ -850,7 +772,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">81</span>
+                <span class="level-item tag">82</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -895,6 +817,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/28/hunt-cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/27/maliao/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/27/ac41c360-1123-11ea-ae28-5fa5e5a02d02.png" alt="马里奥 （任天堂公司的游戏角色）">
@@ -962,25 +903,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
                     <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/23/flash-crack/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1012,6 +934,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/28/hunt-cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/27/maliao/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/27/ac41c360-1123-11ea-ae28-5fa5e5a02d02.png" alt="马里奥 （任天堂公司的游戏角色）">
@@ -1079,25 +1020,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
                     <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/23/flash-crack/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/23/c7b6b780-0e04-11ea-92ef-97d48f79b822.png" alt="Flash的破解与加密(附flash破解工具)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T15:19:24.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/flash-crack/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flash的破解与加密(附flash破解工具)</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
