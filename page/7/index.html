@@ -146,7 +146,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-02T11:49:32.000Z">2019-11-02</time>
+                <time class="level-item has-text-grey" datetime="2019-09-20T02:24:00.000Z">2019-09-20</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 364 个字)
+                    1 小时 读完 (大约 7225 个字)
                 </span>
                 
                 
@@ -165,128 +165,186 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/11/02/openssl/">openssl</a>
+                <a class="has-link-black-ter" href="/2019/09/20/Java知识点/">Java知识点</a>
             
         </h1>
         <div class="content">
-            <h1 id="OpenSSL下载安装"><a href="#OpenSSL下载安装" class="headerlink" title="OpenSSL下载安装"></a>OpenSSL下载安装</h1><h2 id="1、下载OpenSSL"><a href="#1、下载OpenSSL" class="headerlink" title="1、下载OpenSSL"></a>1、下载OpenSSL</h2><p>OpenSSL下载地址：<a href="https://oomake.com/download/openssl" target="_blank" rel="noopener">https://oomake.com/download/openssl</a></p>
-<p>这个链接有Windows版和源码版最新版下载地址，可以满足Windows、LInux、Mac OS系统使用。</p>
-<h2 id="2、Windows系统安装OpenSSL"><a href="#2、Windows系统安装OpenSSL" class="headerlink" title="2、Windows系统安装OpenSSL"></a>2、Windows系统安装OpenSSL</h2><p>到上面的链接下载OpenSSL Windows版本，注意32位和64位是不同的安装包，</p>
-<p>下载之后是exe文件，双击按照提示一步步安装就可以了。</p>
-<h2 id="3、-Linux系统安装OpenSSL"><a href="#3、-Linux系统安装OpenSSL" class="headerlink" title="3、 Linux系统安装OpenSSL"></a>3、 Linux系统安装OpenSSL</h2><h3 id="3-1-安装OpenSSL"><a href="#3-1-安装OpenSSL" class="headerlink" title="3.1 安装OpenSSL:"></a>3.1 安装OpenSSL:</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># tar -xzf openssl-1.0.2f.tar.gz</span><br><span class="line"></span><br><span class="line"># cd openssl-1.0.2f</span><br><span class="line"></span><br><span class="line"># mkdir /usr/local/openssl</span><br><span class="line"></span><br><span class="line"># ./config --prefix=/usr/local/openssl</span><br><span class="line"></span><br><span class="line"># make</span><br><span class="line"></span><br><span class="line"># make install</span><br></pre></td></tr></table></figure>
+            <h1 id="Java相关"><a href="#Java相关" class="headerlink" title="Java相关"></a>Java相关</h1><h2 id="请问JDK和JRE的区别是什么？"><a href="#请问JDK和JRE的区别是什么？" class="headerlink" title="请问JDK和JRE的区别是什么？"></a>请问JDK和JRE的区别是什么？</h2><blockquote>
+<p>JDK ：Java 开发工具包,jdk 是整个 Java 开发的核心，它集成了 jre 和一些好用的小工具。<br>JRE ：Java 运行时环境。它主要包含两个部分，jvm 的标准实现和 Java 的一些基本类库。</p>
+</blockquote>
+<h2 id="springboot的注解有什么，原理？"><a href="#springboot的注解有什么，原理？" class="headerlink" title="springboot的注解有什么，原理？"></a>springboot的注解有什么，原理？</h2><p>@Bean<br>用来代替 XML 配置文件里面的 &lt;bean …&gt; 配置。<br>@ImportResource<br>如果有些通过类的注册方式配置不了的，可以通过这个注解引入额外的 XML 配置文件，有些老的配置文件无法通过 @Configuration 方式配置的非常管用。<br>@Import<br>用来引入额外的一个或者多个 @Configuration 修饰的配置文件类。<br>@SpringBootConfiguration<br>这个注解就是 @Configuration 注解的变体，只是用来修饰是 Spring Boot 配置而已，或者可利于 Spring Boot 后续的扩展，源码如下。<br>@SpringBootApplication：包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。<br>@Configuration 等同于spring的XML配置文件；使用Java代码可以检查类型安全。<br>@EnableAutoConfiguration 自动配置。<br>@ComponentScan 组件扫描，可自动发现和装配一些Bean。<br>@Component可配合CommandLineRunner使用，在程序启动后执行一些基础任务。<br>@RestController注解是@Controller和@ResponseBody的合集,表示这是个控制器bean,并且是将函数的返回值直 接填入HTTP响应体中,是REST风格的控制器。<br>@Autowired自动导入。<br>@PathVariable获取参数。<br>@JsonBackReference解决嵌套外链问题。<br>@RepositoryRestResourcepublic配合spring-boot-starter-data-rest使用。</p>
+<p>@RequestMapping：@RequestMapping(“/path”)表示该控制器处理所有“/path”的UR L请求。RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。<br>用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。该注解有六个属性：<br>params:指定request中必须包含某些参数值是，才让该方法处理。<br>headers:指定request中必须包含某些指定的header值，才能让该方法处理请求。<br>value:指定请求的实际地址，指定的地址可以是URI Template 模式<br>method:指定请求的method类型， GET、POST、PUT、DELETE等<br>consumes:指定处理请求的提交内容类型（Content-Type），如application/json,text/html;<br>produces:指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回</p>
+<p>@RequestParam：用在方法的参数前面。<br>@RequestParam<br>String a =request.getParameter(“a”)。</p>
+<p>@PathVariable:路径变量。如</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@RequestMapping</span>(“user/get/mac/&#123;macAddress&#125;”) </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getByMacAddress</span><span class="hljs-params">(@PathVariable String macAddress)</span></span>&#123; </span><br><span class="line"><span class="hljs-comment">//do something; </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这样就安装完成了，接下来一些辅助步骤。</p>
-<h3 id="3-2-创建软连接"><a href="#3-2-创建软连接" class="headerlink" title="3.2 创建软连接"></a>3.2 创建软连接</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># which openssl</span><br><span class="line"></span><br><span class="line">/usr/local/openssl/bin/openssl</span><br></pre></td></tr></table></figure>
+<p>Spring Boot的自动配置看起来神奇，其实原理非常简单，背后全依赖于@Conditional注解来实现的。</p>
+<h2 id="object类中的hashCode（）方法是做什么的，以及其中的hash（）方法是做什么的，-为什么有hash（）方法还有hashCode（）"><a href="#object类中的hashCode（）方法是做什么的，以及其中的hash（）方法是做什么的，-为什么有hash（）方法还有hashCode（）" class="headerlink" title="object类中的hashCode（）方法是做什么的，以及其中的hash（）方法是做什么的， 为什么有hash（）方法还有hashCode（）"></a>object类中的hashCode（）方法是做什么的，以及其中的hash（）方法是做什么的， 为什么有hash（）方法还有hashCode（）</h2><p>哈希表这个数据结构想必大多数人都不陌生，而且在很多地方都会利用到hash表来提高查找效率。在Java的Object类中有一个方法:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>为了使用方便，以及以后版本更新方便，可以创建软连接，如下：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br></pre></td></tr></table></figure>
+<p>根据这个方法的声明可知，该方法返回一个int类型的数值，并且是本地方法，因此在Object类中并没有给出具体的实现。</p>
+<p><strong>hashCode方法的作用</strong></p>
+<p>对于包含容器类型的程序设计语言来说，基本上都会涉及到hashCode。在Java中也一样，hashCode方法的主要作用是为了配合基于散列的集合一起正常运行，这样的散列集合包括HashSet、HashMap以及HashTable。</p>
+<p>　　为什么这么说呢？考虑一种情况，当向集合中插入对象时，如何判别在集合中是否已经存在该对象了？（注意：集合中不允许重复的元素存在）</p>
+<p>　　也许大多数人都会想到调用equals方法来逐个进行比较，这个方法确实可行。但是如果集合中已经存在一万条数据或者更多的数据，如果采用equals方法去逐一比较，效率必然是一个问题。此时hashCode方法的作用就体现出来了，当集合要添加新的对象时，先调用这个对象的hashCode方法，得到对应的hashcode值，实际上在HashMap的具体实现中会用一个table保存已经存进去的对象的hashcode值，如果table中没有该hashcode值，它就可以直接存进去，不用再进行任何比较了；如果存在该hashcode值， 就调用它的equals方法与新元素进行比较，相同的话就不存了，不相同就散列其它的地址，所以这里存在一个冲突解决的问题，这样一来实际调用equals方法的次数就大大降低了，说通俗一点：Java中的hashCode方法就是根据一定的规则将与对象相关的信息（比如对象的存储地址，对象的字段等）映射成一个数值，这个数值称作为散列值。</p>
+<p><strong>hash 算法</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hash</span><span class="hljs-params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> h;</span><br><span class="line">    <span class="hljs-keyword">return</span> (key == <span class="hljs-keyword">null</span>) ? <span class="hljs-number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="hljs-number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-3-执行以下命令"><a href="#3-3-执行以下命令" class="headerlink" title="3.3 执行以下命令"></a>3.3 执行以下命令</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># cd /usr/local/openssl</span><br><span class="line"></span><br><span class="line"># ldd /usr/local/openssl/bin/openssl</span><br><span class="line"></span><br><span class="line">    linux-vdso.so.1 =&gt;  (0x00007ffc63975000)</span><br><span class="line"></span><br><span class="line">    libssl.so.1.1 =&gt; not found</span><br><span class="line"></span><br><span class="line">    libcrypto.so.1.1 =&gt; not found</span><br><span class="line"></span><br><span class="line">    libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f8d9da0f000)</span><br><span class="line"></span><br><span class="line">    libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f8d9d7f3000)</span><br><span class="line"></span><br><span class="line">    libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f8d9d431000)</span><br><span class="line"></span><br><span class="line">    /lib64/ld-linux-x86-64.so.2 (0x00007f8d9dc28000)</span><br></pre></td></tr></table></figure>
+<p>首先，假设有一种情况，对象 A 的 hashCode 为 1000010001110001000001111000000，对象 B 的 hashCode 为 0111011100111000101000010100000。</p>
+<p>如果数组长度是16，也就是 15 与运算这两个数， 你会发现结果都是0。这样的散列结果太让人失望了。很明显不是一个好的散列算法。</p>
+<p>但是如果我们将 hashCode 值右移 16 位，也就是取 int 类型的一半，刚好将该二进制数对半切开。并且使用位异或运算（如果两个数对应的位置相反，则结果为1，反之为0），这样的话，就能避免我们上面的情况的发生。</p>
+<p>总的来说，使用位移 16 位和 异或 就是防止这种极端情况。但是，该方法在一些极端情况下还是有问题，比如：10000000000000000000000000 和 1000000000100000000000000 这两个数，如果数组长度是16，那么即使右移16位，在异或，hash 值还是会重复。但是为了性能，对这种极端情况，JDK 的作者选择了性能。毕竟这是少数情况，为了这种情况去增加 hash 时间，性价比不高。</p>
+<h2 id="hashmap的put过程-主要就是根据自己看过的源码说一下流程"><a href="#hashmap的put过程-主要就是根据自己看过的源码说一下流程" class="headerlink" title="hashmap的put过程 主要就是根据自己看过的源码说一下流程"></a>hashmap的put过程 主要就是根据自己看过的源码说一下流程</h2><p><strong>put 方法</strong><br>通过 hash 计算下标并检查 hash 是否冲突，也就是对应的下标是否已存在元素。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> V <span class="hljs-title">put</span><span class="hljs-params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> putVal(hash(key), key, value, <span class="hljs-keyword">false</span>, <span class="hljs-keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>安装OK</p>
-<h3 id="3-4-查看版本"><a href="#3-4-查看版本" class="headerlink" title="3.4 查看版本"></a>3.4 查看版本</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># openssl version</span><br><span class="line"></span><br><span class="line">/usr/local/openssl/bin/openssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
-
-<p>找不到动态库libssl.so.1.1，小问题，执行如下命令：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vim /etc/ld.so.conf</span><br></pre></td></tr></table></figure>
-
-<p>在最后追加一行：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/openssl/lib</span><br></pre></td></tr></table></figure>
-
-<p>然后执行：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># ldconfig /etc/ld.so.conf</span><br><span class="line"></span><br><span class="line"># openssl version</span><br><span class="line"></span><br><span class="line">OpenSSL 1.1.0f  25 May 2017</span><br><span class="line"></span><br><span class="line">Done.</span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-01T15:12:05.000Z">2019-11-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1629 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/01/android-fingerprint-security/">android-fingerprint-security</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Android-Fingerprint-Security"><a href="#Android-Fingerprint-Security" class="headerlink" title="Android Fingerprint Security"></a>Android Fingerprint Security</h1><p>安全性一直是移动开发的关键部分，正确实现它绝非易事。智能手机最初使用4位PIN码进行破解，最多需要10,000次破解。然后是锁定模式，尽管基本的人性极大地降低了这个数字，但锁定模式却将标准提高到了惊人的389112种不同的模式。 与PIN和锁定模式不同，指纹身份验证要提前数年。一个人的指纹确实是独一无二的，无法猜测。这项技术在消费类设备上正变得越来越流行，并且使用棉花糖，比以往任何时候都更容易在您的应用程序中实现它。</p>
-<p><img src="/images/2019/11/01/0fe0fb30-fcba-11e9-bc34-ef83b1e8dc59.png" alt="多年来的Android安全性，PIN锁定，滑动锁定模式和指纹"></p>
-<h2 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h2><p>除了我们已经写过的 iOS Touch ID之外，Android上指纹扫描的早期实现还不够。每个供应商都有其独特的方法来确保流程的安全性和实施，最重要的是，如何存储用户的私有数据。</p>
-<h2 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h2><p>随着棉花糖的到来，人们期待已久的通过标准API对指纹认证的本机支持。最终，Android开发人员被允许对解锁设备，Play Store和Android Pay购买的产品实施基于指纹的身份验证，并在移动银行等安全性高的应用程序中提供自定义身份验证。</p>
-<p>Google首次在Nexus 5X和Nexus 6P上推出，并推出了快速安全的Nexus Imprint指纹传感器，该技术还带来了Android 6.0棉花糖指纹传感器API的首个实现。可以在不到600毫秒的时间内识别出指纹，从而提供快速舒适的用户体验。</p>
-<h2 id="指纹存储安全"><a href="#指纹存储安全" class="headerlink" title="指纹存储安全"></a>指纹存储安全</h2><p>Android上的大多数存储策略都是不安全的，尤其是考虑到root用户访问权限的可能性时。但是Google已通过将所有打印数据操作移至可信执行环境 （TEE）并为制造商必须遵循的指纹数据存储提供了严格的指导方针，朝着正确的方向迈出了显着的一步。</p>
-<h2 id="三通"><a href="#三通" class="headerlink" title="三通"></a>三通</h2><p>TEE是智能手机主处理器的安全区域。它保证了内部加载的代码和数据的机密性和完整性。这种分离可实现安全性和保护，免受黑客，恶意软件和root用户访问。</p>
-<p><img src="/images/2019/11/01/4d2d93e0-fcba-11e9-bc34-ef83b1e8dc59.png" alt="Android OS上的TEE通信过程"></p>
-<ul>
-<li>所有指纹数据操作均在TEE中执行</li>
-<li>必须将所有指纹数据保护在传感器硬件或受信任的内存中，以便无法访问指纹图像</li>
-<li>指纹数据只能以加密形式存储在文件系统上，而不管文件系统本身是否已加密</li>
-<li>删除用户必须导致删除用户现有的指纹数据</li>
-<li>根访问不得破坏指纹数据</li>
-</ul>
-<h2 id="指纹模板"><a href="#指纹模板" class="headerlink" title="指纹模板"></a>指纹模板</h2><p>指纹模板是原始指纹数据的已处理版本。为了遵守准则，必须对它们进行<strong>密码认证</strong>。这意味着必须使用专用于设备的私钥和足够的其他数据（绝对文件系统路径，finger ID和组）对它们进行签名，以明确定义它们的绑定关系。结果，如果将这些模板复制到另一个设备或另一个用户尝试使用它们，则这些模板将变得无用。</p>
-<p>最后，指纹数据不会备份到用户的计算机或Google的服务器上。它不会被设备上的任何其他应用程序同步，共享或使用，也不会离开设备。应用程序收到的唯一信息是指纹是否已<strong>通过验证</strong>。这也意味着用户必须在每个新设备上设置指纹认证。</p>
-<h2 id="听起来不错，该如何实施？"><a href="#听起来不错，该如何实施？" class="headerlink" title="听起来不错，该如何实施？"></a>听起来不错，该如何实施？</h2><p>指纹认证无非就是数据加密。它涉及一个密钥，一个执行加密的密码以及一个处理整个过程的指纹管理器。从开发人员的角度来看，该过程有些广泛，但它包含相对简单的步骤。</p>
 <ol>
-<li><p>在项目AndroidManifest文件中请求指纹身份验证权限。</p>
-</li>
-<li><p>启用任何锁定屏幕安全机制（PIN，图案或密码）。</p>
-</li>
-<li><p>在设备上注册至少一个指纹。</p>
-</li>
-<li><p>创建的实例FingerprintManager。</p>
-</li>
-<li><p>使用Keystore实例来访问Android Keystore容器。</p>
-</li>
-<li><p>使用KeyGenerator该类生成加密密钥，并将其存储在Keystore容器中。</p>
-</li>
-<li><p>Cipher使用先前生成的加密密钥初始化该类的实例。</p>
-</li>
-<li><p>使用Cipher实例创建一个CryptoObject并将其分配给实例化FingerprintManager。</p>
-</li>
-<li><p>调用实例的authenticate()方法FingerprintManager。</p>
-</li>
-<li><p>成功完成身份验证后处理回调，从而提供对受保护的内容或功能的访问。</p>
-</li>
+<li>判断数组是否为空，如果是空，则创建默认长度位 16 的数组。</li>
+<li>通过与运算计算对应 hash 值的下标，如果对应下标的位置没有元素，则直接创建一个。</li>
+<li>如果有元素，说明 hash 冲突了，则再次进行 3 种判断。<ol>
+<li>判断两个冲突的key是否相等，equals 方法的价值在这里体现了。如果相等，则将已经存在的值赋给变量e。最后更新e的value，也就是替换操作。</li>
+<li>如果key不相等，则判断是否是红黑树类型，如果是红黑树，则交给红黑树追加此元素。</li>
+<li>如果key既不相等，也不是红黑树，则是链表，那么就遍历链表中的每一个key和给定的key是否相等。如果，链表的长度大于等于8了，则将链表改为红黑树，这是Java8 的一个新的优化。</li>
 </ol>
-<p>Google提供了全面的指纹认证<strong>示例</strong>，并且在线提供了一些<strong>教程</strong>，可以助您一臂之力。</p>
-<p>Android的指纹认证和支持实现的设计和执行非常好。将其用作任何形式的多因素身份验证的<strong>拥有元素</strong>，已足以为您提供快速，可靠和安全的身份验证体验。</p>
-<p>您可以在科罗拉多州丹佛市举行的<strong>360andev</strong>会议上听到我们谈论指纹安全性和应<strong>用程序安全性最佳实践的信息</strong>。</p>
-<h2 id="那有什么收获呢？"><a href="#那有什么收获呢？" class="headerlink" title="那有什么收获呢？"></a>那有什么收获呢？</h2><p><img src="/images/2019/11/01/c74e39e0-fcba-11e9-bc34-ef83b1e8dc59.png" alt="各种物品上的指纹"></p>
-<p>只有一个，并且其他所有方法都具有相同的缺陷。指纹认证只有一个故障点。就像用手指来解锁设备一样吸引人，您到处都是手指。潜在的攻击者可以毫不费力地举起您的指纹，然后使用它来控制您的设备和应用程序。</p>
-<p>不幸的是，与密码不同，您的指纹显然是无法更改的。</p>
-<p><a href="https://infinum.com/the-capsized-eight/android-fingerprint-security" target="_blank" rel="noopener">传送门</a></p>
+</li>
+<li>最后，如果这三个判断返回的 e 不为null，则说明key重复，则更新key对应的value的值。</li>
+<li>对维护着迭代器的modCount 变量加一。</li>
+<li>最后判断，如果当前数组的长度已经大于阀值了。则重新hash。</li>
+</ol>
+<h2 id="ArrayList-LinkList的特点"><a href="#ArrayList-LinkList的特点" class="headerlink" title="ArrayList LinkList的特点"></a>ArrayList LinkList的特点</h2><p>ArrayList是实现了基于动态数组的结构，LinkedList则是基于实现链表的数据结构。</p>
+<p>数据的更新和查找<br>ArrayList的所有数据是在同一个地址上,而LinkedList的每个数据都拥有自己的地址.所以在对数据进行查找的时候，由于LinkedList的每个数据地址不一样，get数据的时候ArrayList的速度会优于LinkedList，而更新数据的时候，虽然都是通过循环循环到指定节点修改数据，但LinkedList的查询速度已经是慢的，而且对于LinkedList而言，更新数据时不像ArrayList只需要找到对应下标更新就好，LinkedList需要修改指针，速率不言而喻</p>
+<p>数据的增加和删除<br>对于数据的增加元素，ArrayList是通过移动该元素之后的元素位置，其后元素位置全部+1，所以耗时较长，而LinkedList只需要将该元素前的后续指针指向该元素并将该元素的后续指针指向之后的元素即可。与增加相同，删除元素时ArrayList需要将被删除元素之后的元素位置-1，而LinkedList只需要将之后的元素前置指针指向前一元素，前一元素的指针指向后一元素即可。当然，事实上，若是单一元素的增删，尤其是在List末端增删一个元素，二者效率不相上下。</p>
+<h2 id="红黑树定义"><a href="#红黑树定义" class="headerlink" title="红黑树定义"></a>红黑树定义</h2><p>红黑树本质上是一种二叉查找树，但它在二叉查找树的基础上额外添加了一个标记（颜色），同时具有一定的规则。这些规则使红黑树保证了一种平衡，插入、删除、查找的最坏时间复杂度都为 O(logn)。</p>
+<p>它的统计性能要好于平衡二叉树（AVL树），因此，红黑树在很多地方都有应用。比如在 Java 集合框架中，很多部分(HashMap, TreeMap, TreeSet 等)都有红黑树的应用，这些集合均提供了很好的性能。</p>
+<p>由于 TreeMap 就是由红黑树实现的。</p>
+<p>黑色高度<br>从根节点到叶节点的路径上黑色节点的个数，叫做树的黑色高度。</p>
+<ol>
+<li>每个节点要么是红色，要么是黑色；</li>
+<li>根节点永远是黑色的；</li>
+<li>所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；</li>
+<li>每个红色节点的两个子节点一定都是黑色；</li>
+<li>从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；</li>
+</ol>
+<h2 id="Java-反射机制"><a href="#Java-反射机制" class="headerlink" title="Java 反射机制"></a>Java 反射机制</h2><p>Java 反射机制在程序运行时，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性。这种 <strong>动态的获取信息</strong> 以及 <strong>动态调用对象的方法</strong> 的功能称为 java 的反射机制。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FatherClass</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> String mFatherName;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> mFatherAge;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printFatherMsg</span><span class="hljs-params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="多线程相关"><a href="#多线程相关" class="headerlink" title="多线程相关"></a>多线程相关</h1><h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><p>synchronized 是 Java 中的关键字，是利用锁的机制来实现同步的。</p>
+<p>锁机制有如下两种特性：</p>
+<ul>
+<li><p>互斥性：即在同一时间只允许一个线程持有某个对象锁，通过这种特性来实现多线程中的协调机制，这样在同一时间只有一个线程对需同步的代码块(复合操作)进行访问。互斥性我们也往往称为操作的原子性。</p>
+</li>
+<li><p>可见性：必须确保在锁被释放之前，对共享变量所做的修改，对于随后获得该锁的另一个线程是可见的（即在获得锁时应获得最新共享变量的值），否则另一个线程可能是在本地缓存的某个副本上继续操作从而引起不一致。</p>
+</li>
+</ul>
+<p>synchronized 可以修饰方法和代码块</p>
+<ul>
+<li>synchronized(this|object) {}</li>
+<li>synchronized(类.class) {}</li>
+<li>修饰非静态方法</li>
+<li>修饰静态方法</li>
+</ul>
+<h2 id="reentrantLock-除了可重入还有什么关键特性"><a href="#reentrantLock-除了可重入还有什么关键特性" class="headerlink" title="reentrantLock 除了可重入还有什么关键特性"></a>reentrantLock 除了可重入还有什么关键特性</h2><ul>
+<li>可重入</li>
+</ul>
+<p>现在有方法 m1 和 m2，两个方法均使用了同一把锁对方法进行同步控制，同时方法 m1 会调用 m2。线程 t 进入方法 m1 成功获得了锁，此时线程 t 要在没有释放锁的情况下，调用 m2 方法。由于 m1 和 m2 使用的是同一把可重入锁，所以线程 t 可以进入方法 m2，并再次获得锁，而不会被阻塞住。</p>
+<ul>
+<li>公平和非公平锁</li>
+</ul>
+<p>公平与非公平指的是线程获取锁的方式。公平模式下，线程在同步队列中通过 FIFO 的方式获取锁，每个线程最终都能获取锁。在非公平模式下，线程会通过“插队”的方式去抢占锁，抢不到的则进入同步队列进行排队。默认情况下，ReentrantLock 使用的是非公平模式获取锁，而不是公平模式。不过我们也可通过 ReentrantLock 构造方法ReentrantLock(boolean fair)调整加锁的模式。</p>
+<h2 id="ThreadLocal-会造成什么问题-为什么会造成内存泄漏"><a href="#ThreadLocal-会造成什么问题-为什么会造成内存泄漏" class="headerlink" title="ThreadLocal 会造成什么问题? 为什么会造成内存泄漏?"></a>ThreadLocal 会造成什么问题? 为什么会造成内存泄漏?</h2><ul>
+<li>ThreadLocal类用来提供线程内部的局部变量。这些变量在多线程环境下访问(通过get或set方法访问)时能保证各个线程里的变量相对独立于其他线程内的变量，ThreadLocal实例通常来说都是private static类型。 总结：ThreadLocal不是为了解决多线程访问共享变量，而是为每个线程创建一个单独的变量副本，提供了保持对象的方法和避免参数传递的复杂性。 </li>
+<li>ThreadLocal的主要应用场景为按线程多实例（每个线程对应一个实例）的对象的访问，并且这个对象很多地方都要用到。例如：同一个网站登录用户，每个用户服务器会为其开一个线程，每个线程中创建一个ThreadLocal，里面存用户基本信息等，在很多页面跳转时，会显示用户信息或者得到用户的一些信息等频繁操作，这样多线程之间并没有联系而且当前线程也可以及时获取想要的数据。</li>
+</ul>
+<p>ThreadLocal类提供了四个对外开放的接口方法</p>
+<p>(1) void set(Object value)设置当前线程的线程局部变量的值。<br>(2) public Object get()该方法返回当前线程所对应的线程局部变量。<br>(3) public void remove()将当前线程局部变量的值删除，目的是为了减少内存的占用。<br>(4) protected Object initialValue()返回该线程局部变量的初始值。</p>
+<p>在threadLocal设为null和线程结束这段时间不会被回收的，就发生了我们认为的内存泄露。其实这是一个对概念理解的不一致，也没什么好争论的。</p>
+<p>最要命的是线程对象不被回收的情况，这就发生了真正意义上的内存泄露。<strong>比如使用线程池的时候，线程结束是不会销毁的，会再次使用的就可能出现内存泄露。</strong>（在web应用中，每次http请求都是一个线程，tomcat容器配置使用线程池时会出现内存泄漏问题）</p>
+<ol>
+<li>使用ThreadLocal，建议用static修饰 static ThreadLocal<httpheader> headerLocal = new ThreadLocal();</httpheader></li>
+<li>使用完ThreadLocal后，执行remove操作，避免出现内存溢出情况。</li>
+</ol>
+<h2 id="单例模式-synchronized实现懒汉模式？为什么用内部类是线程安全的？"><a href="#单例模式-synchronized实现懒汉模式？为什么用内部类是线程安全的？" class="headerlink" title="单例模式 synchronized实现懒汉模式？为什么用内部类是线程安全的？"></a>单例模式 synchronized实现懒汉模式？为什么用内部类是线程安全的？</h2><p>内部类</p>
+<p>单例模式，有“懒汉式”和“饿汉式”两种。<br><strong>懒汉式</strong><br>单例类的实例在第一次被引用时候才被初始化。<br><strong>饿汉式</strong><br>单例类的实例在加载的时候就被初始化。</p>
+<p><strong>静态内部类模式</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span> </span>&#123; </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getSingleton</span><span class="hljs-params">()</span></span>&#123;  </span><br><span class="line">        <span class="hljs-keyword">return</span> Inner.instance;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Inner</span> </span>&#123;  </span><br><span class="line">        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Singleton instance = <span class="hljs-keyword">new</span> Singleton();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>实现代码简洁。和双重检查单例对比，静态内部类单例实现代码真的是太简洁，又清晰明了。</li>
+<li>延迟初始化。调用getSingleton才初始化Singleton对象。</li>
+<li>线程安全。JVM在执行类的初始化阶段，会获得一个可以同步多个线程对同一个类的初始化的锁。</li>
+</ol>
+<p>线程A和线程B同时试图获得Singleton对象的初始化锁，假设线程A获取到了，那么线程B一直等待初始化锁。线程A执行类初始化，就算双重检查模式中伪代码发生了重排序，也不会影响线程A的初始化结果。初始化完后，释放锁。线程B获得初始化锁，发现Singleton对象已经初始化完毕，释放锁，不进行初始化，获得Singleton对象。</p>
+<h1 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h1><h2 id="添加索引的时候要注意什么"><a href="#添加索引的时候要注意什么" class="headerlink" title="添加索引的时候要注意什么"></a>添加索引的时候要注意什么</h2><p>索引可以提高数据的访问速度，但同时也增加了插入、更新和删除操作的处理时间。所以是否要为表增加索引、索引建立在那些字段上，是创建索引前必须要考虑的问题。解决此问题就是分析应用程序的业务处理、数据使用，为经常被用作查询条件、或者被要求排序的字段建立索引。</p>
+<p>1、表的主键、外键必须有索引；<br>2、数据量超过300的表应该有索引；<br>3、经常与其他表进行连接的表，在连接字段上应该建立索引；<br>4、经常出现在<code>Where</code>子句中的<strong>字段</strong>，特别是大表的字段，应该建立索引；<br>5、索引应该建在选择性高的字段上；<br>6、索引应该建在小字段上，对于大的文本字段甚至超长字段，不要建索引；<br>7、复合索引的建立需要进行仔细分析；</p>
+<p><strong>聚簇索引:</strong><br>通常由主键或者非空唯一索引实现的，叶子节点存储了一整行数据<br><strong>非聚簇索引：</strong><br>又称二级索引，就是我们常用的普通索引，叶子节点存了索引值和主键值，在根据主键从聚簇索引查</p>
+<h2 id="索引优化以及在使用索引的时候要注意什么"><a href="#索引优化以及在使用索引的时候要注意什么" class="headerlink" title="索引优化以及在使用索引的时候要注意什么"></a>索引优化以及在使用索引的时候要注意什么</h2><p>1.索引列不要使用函数和运算</p>
+<ol start="2">
+<li>尽量避免使用 != 或 not in或 &lt;&gt; 等否定操作符</li>
+<li>当查询条件为多个的时候，可以采用复合索引</li>
+<li>范围查询对多列查询的影响</li>
+<li>遵循最左匹配原则<br> 复合索引遵守“最左前缀”原则，即在查询条件中使用了复合索引的第一个字段，索引才会被使用。因此，在复合索引中索引列的顺序至关重要。如果不是按照索引的最左列开始查找，则无法使用索引。</li>
+<li>索引列不会包含NULL值</li>
+<li>尽量避免使用 or 来连接条件</li>
+<li>隐式转换的影响</li>
+<li>like 语句的索引失效问题</li>
+</ol>
+<h2 id="redis的键的淘汰策略，会达成了redis缓存的淘汰策略"><a href="#redis的键的淘汰策略，会达成了redis缓存的淘汰策略" class="headerlink" title="redis的键的淘汰策略，会达成了redis缓存的淘汰策略"></a>redis的键的淘汰策略，会达成了redis缓存的淘汰策略</h2><p>Redis作为一个高性能的内存NoSQL数据库，其容量受到最大内存限制的限制。<br>事实上，实例中的内存除了保存原始的键值对所需的开销外，还有一些运行时产生的额外内存，包括：</p>
+<ol>
+<li>垃圾数据和过期Key所占空间</li>
+<li>字典渐进式Rehash导致未及时删除的空间</li>
+<li>Redis管理数据，包括底层数据结构开销，客户端信息，读写缓冲区等</li>
+<li>主从复制，bgsave时的额外开销</li>
+</ol>
+<p>为了防止一次性清理大量过期Key导致Redis服务受影响，Redis只在空闲时清理过期Key。</p>
+<ul>
+<li>访问Key时，会判断Key是否过期，逐出过期Key;</li>
+<li>CPU空闲时在定期serverCron任务中，逐出部分过期Key;</li>
+<li>每次事件循环执行的时候，逐出部分过期Key;</li>
+</ul>
+<h1 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h1><h2 id="tcp四次握手，最后的状态是什么"><a href="#tcp四次握手，最后的状态是什么" class="headerlink" title="tcp四次握手，最后的状态是什么?"></a>tcp四次握手，最后的状态是什么?</h2><p>等待2MSL的时间？（MSL最长报文段寿命Maximum Segment Lifetime，MSL=2）</p>
+<h2 id="为什么要等着2MSL，等待多了会造成什么"><a href="#为什么要等着2MSL，等待多了会造成什么" class="headerlink" title="为什么要等着2MSL，等待多了会造成什么"></a>为什么要等着2MSL，等待多了会造成什么</h2><ol>
+<li>保证A发送的最后一个ACK报文段能够到达B。</li>
+<li>防止“已失效的连接请求报文段”出现在本连接中。A在发送完最后一个ACK报文段后，再经过2MSL，就可以使本连接持续的时间内所产生的所有报文段都从网络中消失，使下一个新的连接中不会出现这种旧的连接请求报文段。</li>
+</ol>
+<h2 id="http请求的报文结构，keep-alive是用来做什么的"><a href="#http请求的报文结构，keep-alive是用来做什么的" class="headerlink" title="http请求的报文结构，keep-alive是用来做什么的"></a>http请求的报文结构，keep-alive是用来做什么的</h2><p>当使用Keep-Alive模式（又称持久连接、连接重用）时，Keep-Alive功能使客户端到服 务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接。</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Keep-Alive: timeout=5, max=100</span><br><span class="line">timeout：过期时间5秒（对应httpd.conf里的参数是：KeepAliveTimeout），max是最多一百次请求，强制断掉连接</span><br></pre></td></tr></table></figure>
+
+<h1 id="spring-spingboot"><a href="#spring-spingboot" class="headerlink" title="spring spingboot"></a>spring spingboot</h1><h2 id="spring为什么要注入接口，而不是实现类"><a href="#spring为什么要注入接口，而不是实现类" class="headerlink" title="spring为什么要注入接口，而不是实现类"></a>spring为什么要注入接口，而不是实现类</h2><p>首先说明，注入的对象确实为实现类的对象。（并不是实现类的代理对象，注入并不涉及代理）</p>
+<p>　　如果只是单纯注入是可以用实现类接收注入对象的，但是往往开发中会对实现类做增强，如事务，日志等，实现增强的AOP技术是通过动态代理实现的，而spring默认是JDK动态代理，对实现类对象做增强得到的增强类与实现类是兄弟关系，所以不能用实现类接收增强类对象，只能用接口接收。</p>
+<p>回答没听过这个概念，然后被引导回到IOC和AOP，以及AOP是什么，实现过程</p>
+<p>Java动态代理为我们提供了非常灵活的代理机制，但Java动态代理是基于接口的，如果目标对象没有实现接口我们该如何代理呢？这时候我们就需要使用CGLIB来实现AOP了。</p>
+<p>假如我们要使用动态代理实现AOP，那么我们只能在写一个增强的接口，然后让目标类实现增强接口，然后我们就可以使用动态代理实现目标类的增强，可是假如我们不想让目标类实现其他的接口，那么我们就只能使用CGLIB技术来实现目标类的增强了。<br>CGLIB实现目标类增强的原理是这样的：CGLIB会动态创建一个目标类的子类，然后返回该子类的对象，也就是增强对象，至于增强的逻辑则是在子类中完成的。我们知道子类要么和父类有一样的功能，要么就比父类功能强大，所以CGLIB是通过创建目标类的子类对象来实现增强的，所以：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">目标子类 = 目标类 + 增强逻辑</span><br></pre></td></tr></table></figure>
+
+<h1 id="口述算法思路"><a href="#口述算法思路" class="headerlink" title="口述算法思路"></a>口述算法思路</h1><h2 id="给一个栈的数据结构，实现另外一个数据结构，要求保留栈的特性，同时能够提供去最大值和最小值的方法，时间复杂度为O（1）"><a href="#给一个栈的数据结构，实现另外一个数据结构，要求保留栈的特性，同时能够提供去最大值和最小值的方法，时间复杂度为O（1）" class="headerlink" title="给一个栈的数据结构，实现另外一个数据结构，要求保留栈的特性，同时能够提供去最大值和最小值的方法，时间复杂度为O（1）"></a>给一个栈的数据结构，实现另外一个数据结构，要求保留栈的特性，同时能够提供去最大值和最小值的方法，时间复杂度为O（1）</h2><p>最小值思路：用一个辅助栈stack2记住每次入栈stack1的当前最小值:在stack1入栈时，往stack2中加入当前最小值；stack1元素出栈时，stack2也出栈一个元素。最小值从stack2中获取及栈顶元素。O(1)</p>
+<p>最大值思路：同上O(1)</p>
+<p><img src="/images/2019/09/20/e4dc2930-db6e-11e9-a4dc-99db33a3ba56.png" alt="image.png"></p>
+<h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><h2 id="哪几种IO类型"><a href="#哪几种IO类型" class="headerlink" title="哪几种IO类型"></a>哪几种IO类型</h2><ul>
+<li>阻塞I/O（blocking IO）</li>
+<li>非阻塞I/O (nonblocking I/O)</li>
+<li>I/O 复用 (I/O multiplexing)</li>
+<li>信号驱动I/O (signal driven I/O (SIGIO))</li>
+<li>异步I/O (asynchronous I/O)</li>
+</ul>
+<h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="JVM的内存结构"><a href="#JVM的内存结构" class="headerlink" title="JVM的内存结构"></a>JVM的内存结构</h2><ul>
+<li>堆（Heap）：线程共享。所有的对象实例以及数组都要在堆上分配。回收器主要管理的对象。</li>
+<li>方法区（Method Area）：线程共享。存储类信息、常量、静态变量、即时编译器编译后的代码。</li>
+<li>方法栈（JVM Stack）：线程私有。存储局部变量表、操作栈、动态链接、方法出口，对象指针。</li>
+<li>本地方法栈（Native Method Stack）：线程私有。为虚拟机使用到的Native 方法服务。如Java使用c或者c++编写的接口服务时，代码在此区运行。</li>
+<li>程序计数器（Program Counter Register）：线程私有。有些文章也翻译成PC寄存器（PC Register），同一个东西。它可以看作是当前线程所执行的字节码的行号指示器。指向下一条要执行的指令。</li>
+</ul>
+<p><img src="/images/2019/09/20/801edd70-db6f-11e9-a4dc-99db33a3ba56.png" alt="image.png"></p>
+<h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h2><p>Java虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的加载机制。*<br>Class文件由类装载器装载后，在JVM中将形成一份描述Class结构的元信息对象，通过该元信息对象可以获知Class的结构信息：如构造函数，属性和方法等，Java允许用户借由这个Class相关的元信息对象间接调用Class对象的功能,这里就是我们经常能见到的Class类。</p>
+<p><img src="/images/2019/09/20/96bb2250-db6f-11e9-a4dc-99db33a3ba56.png" alt="image.png"></p>
+<h2 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h2><p>双亲委派的意思是如果一个类加载器需要加载类，那么首先它会把这个类请求委派给父类加载器去完成，每一层都是如此。一直递归到顶层，当父加载器无法完成这个请求时，子类才会尝试去加载。这里的双亲其实就指的是父类，没有mother。父类也不是我们平日所说的那种继承关系，只是调用逻辑是这样。</p>
+<p>双亲委派模型不是一种强制性约束，也就是你不这么做也不会报错怎样的，它是一种JAVA设计者推荐使用类加载器的方式。</p>
+<h1 id="有什么想问我的"><a href="#有什么想问我的" class="headerlink" title="有什么想问我的"></a>有什么想问我的</h1><p>有的</p>
+<ol>
+<li>你怎样形容小米公司的企业文化？</li>
+<li>什么类型的员工能在小米公司有比较好的发展？</li>
+<li>关于软件开发工程师-Java方向岗位的技术栈、日常主要工作是什么、期间可以获得晋升机会？</li>
+<li>能给我多讲讲招聘程序吗？</li>
+<li>我没有其他问题了，与您交流非常愉快，能留一张您的名片么？（或者方便加一下您的微信么？）</li>
+</ol>
 
         </div>
         
@@ -309,7 +367,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-31T14:50:47.000Z">2019-10-31</time>
+                <time class="level-item has-text-grey" datetime="2019-09-18T15:44:09.000Z">2019-09-18</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -319,7 +377,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 396 个字)
+                    5 分钟 读完 (大约 789 个字)
                 </span>
                 
                 
@@ -328,36 +386,349 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/31/cutter/">cutter</a>
+                <a class="has-link-black-ter" href="/2019/09/18/面试笔记/">面试笔记</a>
             
         </h1>
         <div class="content">
-            <img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Cutter logo" src="/images/2019/10/31/e3eb2450-fbed-11e9-87a4-53cd159663ee.png">
+            <p>牛客许愿的小米一面，贡献面经<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">许愿能挺进二面，加油，向着目标冲呀~~~~</span><br></pre></td></tr></table></figure></p>
+<p>——java集合相关</p>
+<p>object类中的hashCode（）方法是做什么的，以及其中的hash（）方法是做什么的， 为什么有hash（）方法还有hashCode（）</p>
+<p>hashmap的put过程 主要就是根据自己看过的源码说一下流程<br>ArrayList LinkList的特点</p>
+<p>——多线程相关</p>
+<p>synchronized</p>
+<p>reettrantLock 除了可重入还有什么关键特性</p>
+<p>threadLocal threadLocal 会造成什么问题 为什么会造成内存泄漏</p>
+<p>单例模式 synchronized实现懒汉模式 答 内部类 为什么用内部类是线程安全的？</p>
+<p>——数据库相关</p>
+<p>添加索引的时候要注意什么</p>
+<p>索引优化以及在使用索引的时候要注意什么</p>
+<p>redis的键的淘汰策略，会达成了redis缓存的淘汰策略</p>
+<p>——网络相关</p>
+<p>tcp四次握手，最后的状态是什么，回答等待2MSL</p>
+<p>为什么要等着2MSL，等待多了会造成什么</p>
+<p>http请求的报文结构，keep-alive是用来做什么的</p>
+<p>——spring spingboot</p>
+<p>spring中对象增强如何实现 回答没听过这个概念，然后被引导回到IOC和AOP，以及AOP是什么，实现过程</p>
+<p>——口述算法思路</p>
+<p>给一个栈的数据结构，实现另外一个数据结构，要求保留栈的特性，同时能够提供去最大值和最小值的方法，时间复杂度为O（1）</p>
+<p>之前一直没明白是要做什么，后来想到做过类似的题。幸好只是说思路，没有要手写，那个时候已经被前面几个回答的不太好的问题难的很紧张，说做个简单的算法题的时候，我的心紧紧一颤，心想，你确定会简单，还好，还好，结果下来没那么难</p>
+<p>——网络编程</p>
+<p>哪几种IO类型</p>
+<p>还有一个问题 有点忘了，这一块在简历上写了，不过掌握的不是很好</p>
+<p>——JVM</p>
+<p>类加载机制——回答了一下双亲委派模型相关的内容</p>
+<p>——有什么想问我的</p>
+<p>面试官蛮年轻，真的很好，一直在引导我回答问题，不会的也没有揪着不放很喜欢说，我们接下来问一个简单的问题，哈哈哈，简单简单着就变得不简单了</p>
+<p>是自己比较满意的一次面试</p>
+<p>既展示了自己所掌握的知识，也暴露了掌握知识中的问题，给自己后面的复习有了一定的指引</p>
+<p>感谢CYC大佬的秘籍<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最后，重要的话再来几次</span><br><span class="line"></span><br><span class="line">许愿能挺进二面，加油，向着目标冲呀~~~~</span><br></pre></td></tr></table></figure></p>
+<p>许愿能挺进二面，加油，向着目标冲呀<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">许愿能挺进二面，加油，向着目标冲呀</span><br></pre></td></tr></table></figure></p>
 
-<h1 id="Cutter"><a href="#Cutter" class="headerlink" title="Cutter"></a>Cutter</h1><p>Cutter is a free and open-source reverse engineering framework powered by <a href="https://github.com/radareorg/radare2" target="_blank" rel="noopener">radare2</a> . Its goal is making an advanced, customizable and FOSS reverse-engineering platform while keeping the user experience at mind. Cutter is created by reverse engineers for reverse engineers.  </p>
-<p><a href="https://travis-ci.com/radareorg/cutter" target="_blank" rel="noopener"><img src="https://travis-ci.com/radareorg/cutter.svg?branch=master" alt="Build Status"></a><br><a href="https://ci.appveyor.com/project/radareorg/cutter/branch/master" target="_blank" rel="noopener"><img src="https://ci.appveyor.com/api/projects/status/s9rkx1dn3uy4bfdx/branch/master?svg=true" alt="Build status"></a><br><a href="https://lgtm.com/projects/g/radareorg/cutter/alerts/" target="_blank" rel="noopener"><img src="https://img.shields.io/lgtm/alerts/g/radareorg/cutter.svg?logo=lgtm&logoWidth=18" alt="Total alerts"></a></p>
-<p><img src="/images/2019/10/31/f53b35b0-fbed-11e9-87a4-53cd159663ee.png" alt="Screenshot"></p>
-<h2 id="Learn-more-at-https-cutter-re"><a href="#Learn-more-at-https-cutter-re" class="headerlink" title="Learn more at https://cutter.re."></a>Learn more at <a href="https://cutter.re" target="_blank" rel="noopener">https://cutter.re</a>.</h2><h2 id="Downloading-a-release"><a href="#Downloading-a-release" class="headerlink" title="Downloading a release"></a>Downloading a release</h2><p>Cutter is available for all platforms (Linux, macOS, Windows).<br>You can download the latest release <a href="https://github.com/radareorg/cutter/releases" target="_blank" rel="noopener">here</a>.</p>
-<ul>
-<li>macOS: Download the latest <code>.dmg</code> file or use <a href="https://github.com/Homebrew/homebrew-cask" target="_blank" rel="noopener">Homebrew Cask</a> <code>brew cask install cutter</code>.</li>
-<li>Windows: Download the latest Zip archive.</li>
-<li>Linux: Download the latest AppImage file. Then just make it executable and run it:<ul>
-<li><code>chmod +x &lt;appimage_file&gt;</code></li>
-<li><code>./&lt;appimage_file&gt;</code></li>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-17T08:37:24.000Z">2019-09-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1556 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/17/440-字典序的第K小数字/">440. 字典序的第K小数字</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="440-字典序的第K小数字"><a href="#440-字典序的第K小数字" class="headerlink" title="440. 字典序的第K小数字"></a><a href="https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order/" target="_blank" rel="noopener">440. 字典序的第K小数字</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
+<p>给定整数 n 和 k，找到 1 到 n 中字典序第 k 小的数字。</p>
+</blockquote>
+<blockquote>
+<p>注意：1 ≤ k ≤ n ≤ 109。</p>
+</blockquote>
+<p><strong>示例 :</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">n: 13   k: 2</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。</span><br></pre></td></tr></table></figure>
+
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>乍一看这一题貌似毫无头绪，什么是字典序？如何定位这个数？没错，刚接触这个题目的时候，我的脑筋里也是一团乱麻。</p>
+<p>但是我觉得作为一个拥有聪明才智的程序员来说，最重要的能力就是迅速抽象问题、拆解问题的能力。经过一段时间的思考，我的脑筋里还是没有答案。</p>
+<p>哈哈。</p>
+<p>言归正传，我们来分析一下这个问题。</p>
+<p>首先，什么是字典序？</p>
+<p>什么是字典序？<br>简而言之，就是根据数字的前缀进行排序，</p>
+<p>比如10 &lt; 9，因为10的前缀是1，比9小，</p>
+<p>再比如112 &lt; 12，因为112的前缀11小于12。</p>
+<p>这样排序下来，会跟平常的升序排序会有非常大的不同。先给你一个直观的感受，一个数乘10，或者加1，哪个大？可能你会吃惊，后者会更大。</p>
+<p>但其实掌握它的本质之后，你一点都不会吃惊。</p>
+<p>问题建模<br>画一个图你就懂了。</p>
+<p><img src="/images/2019/09/17/4e2df490-d926-11e9-8f06-17b45bf5d3ed.png" alt="image.png"></p>
+<p>每一个节点都拥有10个孩子节点，因为作为一个前缀 ，它后面可以接0~9这十个数字。而且你可以非常容易地发现，整个字典序排列也就是对十叉树进行层序遍历。1, 10, 11, 12, 13 … 100, 101, …</p>
+<p>回到题目的意思，我们需要找到排在第k位的数。找到他的排位，需要搞清楚三件事情:</p>
+<p>怎么确定一个前缀下所有子节点的个数？<br>如果第k个数在当前的前缀下，怎么继续往下面的子节点找？<br>如果第k个数不在当前的前缀，即当前的前缀比较小，如何扩大前缀，增大寻找的范围？<br>接下来 ，我们一一拆解这些问题。</p>
+<p>理顺思路</p>
+<ol>
+<li>确定指定前缀下所有子节点数<br>现在的任务就是给定一个前缀，返回下面子节点总数。</li>
+</ol>
+<p>我们现在的思路就是用下一个前缀的起点减去当前前缀的起点，那么就是当前前缀下的所有子节点数总和啦。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//prefix是前缀，n是上界</span></span><br><span class="line"><span class="hljs-keyword">var</span> getCount = <span class="hljs-function">(<span class="hljs-params">prefix, n</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> cur = prefix;</span><br><span class="line">    <span class="hljs-keyword">let</span> next = prefix + <span class="hljs-number">1</span>;<span class="hljs-comment">//下一个前缀</span></span><br><span class="line">    <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-comment">//当前的前缀当然不能大于上界</span></span><br><span class="line">    <span class="hljs-keyword">while</span>(cur &lt;= n) &#123;</span><br><span class="line">        count += next - cur;<span class="hljs-comment">//下一个前缀的起点减去当前前缀的起点</span></span><br><span class="line">        cur *= <span class="hljs-number">10</span>; </span><br><span class="line">        next *= <span class="hljs-number">10</span>;</span><br><span class="line">        <span class="hljs-comment">// 如果说刚刚prefix是1，next是2，那么现在分别变成10和20</span></span><br><span class="line">        <span class="hljs-comment">// 1为前缀的子节点增加10个，十叉树增加一层, 变成了两层</span></span><br><span class="line">        </span><br><span class="line">        <span class="hljs-comment">// 如果说现在prefix是10，next是20，那么现在分别变成100和200，</span></span><br><span class="line">        <span class="hljs-comment">// 1为前缀的子节点增加100个，十叉树又增加了一层，变成了三层</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> count;<span class="hljs-comment">//把当前前缀下的子节点和返回去。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然，不知道大家发现一个问题没有，当next的值大于上界的时候，那以这个前缀为根节点的十叉树就不是满十叉树了啊，应该到上界那里，后面都不再有子节点。因此，count += next - cur还是有些问题的，我们来修正这个问题:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">count += Math.max(n+1, next) - cur;</span><br></pre></td></tr></table></figure>
+
+<p>你可能会问:咦？怎么是n+1,而不是n呢？不是说好了n是上界吗？</p>
+<p>我举个例子，假若现在上界n为12，算出以1为前缀的子节点数，首先1本身是一个节点，接下来要算下面10，11，12，一共有4个子节点。</p>
+<p>那么如果用Math.max(n, next) - cur会怎么样？</p>
+<p>这时候算出来会少一个，12 - 10加上根节点，最后只有3个。因此我们务必要写n+1。</p>
+<p>现在，我们搞定了前缀的子节点数问题。</p>
+<ol start="2">
+<li>第k个数在当前前缀下<br>现在无非就是往子树里面去看。</li>
+</ol>
+<p>prefix这样处理就可以了。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefix *= 10</span><br></pre></td></tr></table></figure>
+
+<p>3.第k个数不在当前前缀下<br>说白了，当前的前缀小了嘛，我们扩大前缀。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefix ++;</span><br></pre></td></tr></table></figure>
+
+<p>框架搭建<br>整合一下刚刚的思路。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> findKthNumber = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> p = <span class="hljs-number">1</span>;<span class="hljs-comment">//作为一个指针，指向当前所在位置，当p==k时，也就是到了排位第k的数</span></span><br><span class="line">  <span class="hljs-keyword">let</span> prefix = <span class="hljs-number">1</span>;<span class="hljs-comment">//前缀</span></span><br><span class="line">  <span class="hljs-keyword">while</span>(p &lt; k) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> count = getNumber(prefix, n);<span class="hljs-comment">//获得当前前缀下所有子节点的和</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(p + count &gt; k) &#123; <span class="hljs-comment">//第k个数在当前前缀下</span></span><br><span class="line">      prefix *= <span class="hljs-number">10</span>;</span><br><span class="line">      p++; <span class="hljs-comment">//把指针指向了第一个子节点的位置，比如11乘10后变成110，指针从11指向了110</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(p + count &lt;= k) &#123; <span class="hljs-comment">//第k个数不在当前前缀下</span></span><br><span class="line">      prefix ++;</span><br><span class="line">      p += count;<span class="hljs-comment">//注意这里的操作，把指针指向了下一前缀的起点</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> prefix;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码展示</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> findKthNumber = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> getCount = <span class="hljs-function">(<span class="hljs-params">prefix, n</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> count =  <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> cur = prefix, next = prefix + <span class="hljs-number">1</span>; cur &lt;= n; cur *= <span class="hljs-number">10</span>, next *= <span class="hljs-number">10</span>) </span><br><span class="line">      count += <span class="hljs-built_in">Math</span>.min(next, n+<span class="hljs-number">1</span>) - cur;</span><br><span class="line">    <span class="hljs-keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">let</span> p = <span class="hljs-number">1</span>;</span><br><span class="line">  <span class="hljs-keyword">let</span> prefix = <span class="hljs-number">1</span>;</span><br><span class="line">  <span class="hljs-keyword">while</span>(p &lt; k) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> count = getCount(prefix, n);</span><br><span class="line">    <span class="hljs-keyword">if</span>(p + count &gt; k) &#123;</span><br><span class="line">      prefix *= <span class="hljs-number">10</span>;</span><br><span class="line">      p++;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(p + count &lt;= k) &#123;</span><br><span class="line">      prefix ++;</span><br><span class="line">      p += count;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> prefix;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> n: a integer</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> k: a integer</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span>: return a integer</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findKthNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> curr = <span class="hljs-number">1</span>;</span><br><span class="line">        k = k - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (k &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> steps = calSteps(n, curr, curr + <span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span> (steps &lt;= k) &#123;   <span class="hljs-comment">//如果不在当前层，减去steps</span></span><br><span class="line">                curr += <span class="hljs-number">1</span>;      </span><br><span class="line">                k -= steps;  </span><br><span class="line">            &#125; </span><br><span class="line">            <span class="hljs-keyword">else</span> &#123;              <span class="hljs-comment">//说明在当前层,curr*10缩小搜索范围继续查找</span></span><br><span class="line">                curr *= <span class="hljs-number">10</span>;</span><br><span class="line">                k -= <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> curr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//use long in case of overflow</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">calSteps</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">long</span> n1, <span class="hljs-keyword">long</span> n2)</span> </span>&#123; <span class="hljs-comment">//计算curr开头和curr+1开头之间的字符串数量</span></span><br><span class="line">        <span class="hljs-keyword">int</span> steps = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (n1 &lt;= n) &#123;</span><br><span class="line">            steps += Math.min(n + <span class="hljs-number">1</span>, n2) - n1;  <span class="hljs-comment">//每次加上当前的字符串数量</span></span><br><span class="line">            n1 *= <span class="hljs-number">10</span>;       <span class="hljs-comment">//每次均扩大10倍</span></span><br><span class="line">            n2 *= <span class="hljs-number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> steps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-16T14:20:54.000Z">2019-09-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 分钟 读完 (大约 2443 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/16/Java12的新特性/">Java12的新特性</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Java12的新特性"><a href="#Java12的新特性" class="headerlink" title="Java12的新特性"></a>Java12的新特性</h1><blockquote>
+<p>Java5的新特性<br>Java6的新特性<br>Java7的新特性<br>Java8的新特性<br>Java9的新特性<br>Java10的新特性<br>Java11的新特性<br>Java12的新特性<br>Java13的新特性</p>
+</blockquote>
+<p><img src="/images/2019/09/16/1c09f100-d88e-11e9-a339-273a38bbb2c9.png" alt="image.png"></p>
+<h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">openjdk version &quot;12&quot; 2019-03-19</span><br><span class="line">OpenJDK Runtime Environment (build 12+33)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 12+33, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从version信息可以看出是build 12+33</p>
+</blockquote>
+<h2 id="特性列表"><a href="#特性列表" class="headerlink" title="特性列表"></a>特性列表</h2><ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F189" target="_blank" rel="noopener">189:    Shenandoah: A Low-Pause-Time Garbage Collector (Experimental)</a></li>
 </ul>
+<blockquote>
+<p>Shenandoah GC是一个面向low-pause-time的垃圾收集器，它最初由Red Hat实现，支持aarch64及amd64 architecture；ZGC也是面向low-pause-time的垃圾收集器，不过ZGC是基于colored pointers来实现，而Shenandoah GC是基于brooks pointers来实现；如果要使用Shenandoah GC需要编译时–with-jvm-features选项带有shenandoahgc，然后启动时使用-XX:+UnlockExperimentalVMOptions -XX:+UseShenandoahGC</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F230" target="_blank" rel="noopener">230:    Microbenchmark Suite</a></li>
+</ul>
+<blockquote>
+<p>在jdk源码里头新增了一套基础的microbenchmarks suite</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F325" target="_blank" rel="noopener">325:    Switch Expressions (Preview)</a></li>
+</ul>
+<blockquote>
+<p>对switch进行了增强，除了使用statement还可以使用expression，比如原来的写法如下：</p>
+</blockquote>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> FRIDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> SUNDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">6</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">7</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> SATURDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">8</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">9</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在可以改为如下写法：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, FRIDAY, SUNDAY -&gt; System.out.println(<span class="hljs-number">6</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY                -&gt; System.out.println(<span class="hljs-number">7</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY, SATURDAY     -&gt; System.out.println(<span class="hljs-number">8</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY              -&gt; System.out.println(<span class="hljs-number">9</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以及在表达式返回值</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> numLetters = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, FRIDAY, SUNDAY -&gt; <span class="hljs-number">6</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY                -&gt; <span class="hljs-number">7</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY, SATURDAY     -&gt; <span class="hljs-number">8</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY              -&gt; <span class="hljs-number">9</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>对于需要返回值的switch expression要么正常返回值要么抛出异常，以下这两种写法都是错误的</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> i = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"Monday"</span>); </span><br><span class="line">        <span class="hljs-comment">// ERROR! Block doesn't contain a break with value</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">default</span> -&gt; <span class="hljs-number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line">i = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, TUESDAY, WEDNESDAY: </span><br><span class="line">        <span class="hljs-keyword">break</span> <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">default</span>: </span><br><span class="line">        System.out.println(<span class="hljs-string">"Second half of the week"</span>);</span><br><span class="line">        <span class="hljs-comment">// ERROR! Group doesn't contain a break with value</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F334" target="_blank" rel="noopener">334:    JVM Constants API</a></li>
+</ul>
+<blockquote>
+<p>新增了JVM Constants API，具体来说就是java.base模块新增了java.lang.constant包，引入了ConstantDesc接口(ClassDesc、MethodTypeDesc、MethodHandleDesc这几个接口直接继承了ConstantDesc接口)以及Constable接口；ConstantDesc接口定义了resolveConstantDesc方法，Constable接口定义了describeConstable方法；String、Integer、Long、Float、Double均实现了这两个接口，而EnumDesc实现了ConstantDesc接口</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F340" target="_blank" rel="noopener">340:    One AArch64 Port, Not Two</a></li>
+</ul>
+<blockquote>
+<p>64-bit Arm platform (arm64)，也可以称之为aarch64；之前JDK有两个关于aarch64的实现，分别是src/hotspot/cpu/arm以及open/src/hotspot/cpu/aarch64，它们的实现重复了，为了集中精力更好地实现aarch64，该特性在源码中删除了open/src/hotspot/cpu/arm中关于64-bit的实现，保留其中32-bit的实现，于是open/src/hotspot/cpu/aarch64部分就成了64-bit ARM architecture的默认实现</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F341" target="_blank" rel="noopener">341:    Default CDS Archives</a></li>
+</ul>
+<blockquote>
+<p>java10的新特性JEP 310: Application Class-Data Sharing扩展了JDK5引入的Class-Data Sharing，支持application的Class-Data Sharing；Class-Data Sharing可以用于多个JVM共享class，提升启动速度，最早只支持system classes及serial GC，JDK9对其进行扩展以支持application classes及其他GC算法，并在JDK10中开源出来(以前是commercial feature)；JDK11将-Xshare:off改为默认-Xshare:auto，以更加方便使用CDS特性；JDK12的这个特性即在64-bit平台上编译jdk的时候就默认在${JAVA_HOME}/lib/server目录下生成一份名为classes.jsa的默认archive文件(大概有18M)方便大家使用</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F344" target="_blank" rel="noopener">344:    Abortable Mixed Collections for G1</a></li>
+</ul>
+<blockquote>
+<p>G1在garbage collection的时候，一旦确定了collection set(CSet)开始垃圾收集这个过程是without stopping的，当collection set过大的时候，此时的STW时间会过长超出目标pause time，这种情况在mixed collections时候比较明显。这个特性启动了一个机制，当选择了一个比较大的collection set，允许将其分为mandatory及optional两部分(当完成mandatory的部分，如果还有剩余时间则会去处理optional部分)来将mixed collections从without stopping变为abortable，以更好满足指定pause time的目标</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F346" target="_blank" rel="noopener">346:    Promptly Return Unused Committed Memory from G1</a></li>
+</ul>
+<blockquote>
+<p>G1目前只有在full GC或者concurrent cycle的时候才会归还内存，由于这两个场景都是G1极力避免的，因此在大多数场景下可能不会及时会还committed Java heap memory给操作系统。JDK12的这个特性新增了两个参数分别是G1PeriodicGCInterval及G1PeriodicGCSystemLoadThreshold，设置为0的话，表示禁用。当上一次garbage collection pause过去G1PeriodicGCInterval(milliseconds)时间之后，如果getloadavg()(one-minute)低于G1PeriodicGCSystemLoadThreshold指定的阈值，则触发full GC或者concurrent GC(如果开启G1PeriodicGCInvokesConcurrent)，GC之后Java heap size会被重写调整，然后多余的内存将会归还给操作系统</p>
+</blockquote>
+<h2 id="细项解读"><a href="#细项解读" class="headerlink" title="细项解读"></a>细项解读</h2><p>上面列出的是大方面的特性，除此之外还有一些api的更新及废弃，主要见JDK 12 Release Notes，这里举几个例子。<br>添加项</p>
+<ul>
+<li>支持unicode 11</li>
+<li>支持Compact Number Formatting</li>
+</ul>
+<blockquote>
+<p>使用实例如下</p>
+</blockquote>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCompactNumberFormat</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> cnf = NumberFormat.getCompactNumberInstance(Locale.CHINA, NumberFormat.Style.SHORT);</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_0000</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_9200</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_000_000</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">30</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">40</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">50</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1万</span><br><span class="line">2万</span><br><span class="line">100万</span><br><span class="line">11亿</span><br><span class="line">1兆</span><br><span class="line">1126兆</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>String支持transform、indent操作</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringTransform</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"hello"</span>.transform(<span class="hljs-keyword">new</span> Function&lt;String, Integer&gt;() &#123;</span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">apply</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> s.hashCode();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringIndent</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"hello"</span>.indent(<span class="hljs-number">3</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Files新增mismatch方法</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFilesMismatch</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    FileWriter fileWriter = <span class="hljs-keyword">new</span> FileWriter(<span class="hljs-string">"/tmp/a.txt"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"a"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"b"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"c"</span>);</span><br><span class="line">    fileWriter.close();</span><br><span class="line"></span><br><span class="line">    FileWriter fileWriterB = <span class="hljs-keyword">new</span> FileWriter(<span class="hljs-string">"/tmp/b.txt"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"a"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"1"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"c"</span>);</span><br><span class="line">    fileWriterB.close();</span><br><span class="line"></span><br><span class="line">    System.out.println(Files.mismatch(Path.of(<span class="hljs-string">"/tmp/a.txt"</span>),Path.of(<span class="hljs-string">"/tmp/b.txt"</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Collectors新增teeing方法用于聚合两个downstream的结果</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCollectorTeeing</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> result = Stream.of(<span class="hljs-string">"Devoxx"</span>,<span class="hljs-string">"Voxxed Days"</span>,<span class="hljs-string">"Code One"</span>,<span class="hljs-string">"Basel One"</span>)</span><br><span class="line">            .collect(Collectors.teeing(Collectors.filtering(n -&gt; n.contains(<span class="hljs-string">"xx"</span>),Collectors.toList()),</span><br><span class="line">                                        Collectors.filtering(n -&gt; n.endsWith(<span class="hljs-string">"One"</span>),Collectors.toList()),</span><br><span class="line">                    (List&lt;String&gt; list1, List&lt;String&gt; list2) -&gt; List.of(list1,list2)</span><br><span class="line">                                        ));</span><br><span class="line"></span><br><span class="line">    System.out.println(result.get(<span class="hljs-number">0</span>));</span><br><span class="line">    System.out.println(result.get(<span class="hljs-number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CompletionStage新增exceptionallyAsync、exceptionallyCompose、exceptionallyComposeAsync方法</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testExceptionallyAsync</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">    LOGGER.info(<span class="hljs-string">"begin"</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> result = CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        LOGGER.info(<span class="hljs-string">"calculate"</span>);</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>/<span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">100</span>;</span><br><span class="line">    &#125;).exceptionallyAsync((t) -&gt; &#123;</span><br><span class="line">        LOGGER.info(<span class="hljs-string">"error error:&#123;&#125;"</span>,t.getMessage());</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;).get();</span><br><span class="line"></span><br><span class="line">    LOGGER.info(<span class="hljs-string">"result:&#123;&#125;"</span>,result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>JDK12之前CompletionStage只有一个exceptionally，该方法体在主线程执行，JDK12新增了exceptionallyAsync、exceptionallyComposeAsync方法允许方法体在异步线程执行，同时新增了exceptionallyCompose方法支持在exceptionally的时候构建新的CompletionStage</p>
+</li>
+<li><p>Allocation of Old Generation of Java Heap on Alternate Memory Devices</p>
 </li>
 </ul>
-<h2 id="Building-from-sources"><a href="#Building-from-sources" class="headerlink" title="Building from sources"></a>Building from sources</h2><p>To build Cutter on your local machine, please follow this guide: <a href="https://cutter.re/build/" target="_blank" rel="noopener">Building from source</a></p>
-<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>To deploy <em>cutter</em> using a pre-built <code>Dockerfile</code>, it’s possible to use the <a href="docker">provided configuration</a>. The corresponding <code>README.md</code> file also contains instructions on how to get started using the docker image with minimal effort.</p>
-<h2 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h2><p>You can find our documentation in our <a href="https://cutter.re/docs/" target="_blank" rel="noopener">website</a>.</p>
-<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>Cutter supports both Python and Native C++ plugins. Want to extend Cutter with Plugins? Read the <a href="https://cutter.re/docs/plugins" target="_blank" rel="noopener">Plugins</a> section on our documentation.</p>
-<h3 id="Official-and-Community-Plugins"><a href="#Official-and-Community-Plugins" class="headerlink" title="Official and Community Plugins"></a>Official and Community Plugins</h3><p>Our community built many plugins and useful scripts for Cutter such as the native integration of Ghidra decompiler or the plugin to visualize DynamoRIO code coverage. You can find more plugins in the <a href="https://github.com/radareorg/cutter-plugins" target="_blank" rel="noopener">following list</a>. Don’t hesitate to extend it with your own plugins and scripts for Cutter.</p>
-<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><p>The best place to obtain help from <em>Cutter</em> developers and community is to contact us on:</p>
+<blockquote>
+<p>G1及Parallel GC引入experimental特性，允许将old generation分配在诸如NV-DIMM memory的alternative memory device</p>
+</blockquote>
 <ul>
-<li><strong>Telegram:</strong> <a href="https://t.me/r2cutter" target="_blank" rel="noopener">https://t.me/r2cutter</a></li>
-<li><strong>IRC:</strong> #cutter on irc.freenode.net</li>
-<li><strong>Twitter:</strong> <a href="https://twitter.com/r2gui" target="_blank" rel="noopener">@r2gui</a></li>
+<li>ZGC: Concurrent Class Unloading</li>
 </ul>
+<blockquote>
+<p>ZGC在JDK11的时候还不支持class unloading，JDK12对ZGC支持了Concurrent Class Unloading，默认是开启，使用-XX:-ClassUnloading可以禁用</p>
+</blockquote>
+<ul>
+<li>新增-XX:+ExtensiveErrorReports</li>
+</ul>
+<blockquote>
+<p>-XX:+ExtensiveErrorReports可以用于在jvm crash的时候收集更多的报告信息到hs_err.log文件中，product builds中默认是关闭的，要开启的话，需要自己添加-XX:+ExtensiveErrorReports参数</p>
+</blockquote>
+<ul>
+<li>新增安全相关的改进</li>
+</ul>
+<blockquote>
+<p>支持java.security.manager系统属性，当设置为disallow的时候，则不使用SecurityManager以提升性能，如果此时调用System.setSecurityManager则会抛出UnsupportedOperationException<br>keytool新增-groupname选项允许在生成key pair的时候指定一个named group<br>新增PKCS12 KeyStore配置属性用于自定义PKCS12 keystores的生成<br>Java Flight Recorder新增了security-related的event<br>支持ChaCha20 and Poly1305 TLS Cipher Suites</p>
+</blockquote>
+<ul>
+<li>jdeps Reports Transitive Dependences</li>
+</ul>
+<blockquote>
+<p>jdeps的–print-module-deps, –list-deps, 以及–list-reduce-deps选项得到增强，新增–no-recursive用于non-transitive的依赖分析，–ignore-missing-deps用于suppress missing dependence errors</p>
+</blockquote>
+<h2 id="移除项"><a href="#移除项" class="headerlink" title="移除项"></a>移除项</h2><ul>
+<li>移除com.sun.awt.SecurityWarnin</li>
+<li>移除FileInputStream、FileOutputStream、Java.util.ZipFile/Inflator/Deflator的finalize方法</li>
+<li>移除GTE CyberTrust Global Root</li>
+<li>移除javac的-source, -target对6及1.6的支持，同时移除–release选项</li>
+</ul>
+<h2 id="废弃项"><a href="#废弃项" class="headerlink" title="废弃项"></a>废弃项</h2><ul>
+<li>废弃的API列表见deprecated-list</li>
+<li>废弃-XX:+/-MonitorInUseLists选项</li>
+<li>废弃Default Keytool的-keyalg值</li>
+</ul>
+<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><ul>
+<li>Swing不支持GTK+ 3.20及以后的版本</li>
+<li>在使用JVMCI Compiler(比如Graal)的时候，JVMTI的can_pop_frame及can_force_early_return的capabilities是被禁用的</li>
+</ul>
+<h2 id="其他事项"><a href="#其他事项" class="headerlink" title="其他事项"></a>其他事项</h2><ul>
+<li>如果用户没有指定user.timezone且从操作系统获取的为空，那么user.timezone属性的初始值为空变为null</li>
+<li>java.net.URLPermission的行为发生轻微变化，以前它会忽略url中的query及fragment部分，这次改动新增query及fragment部分，即scheme : // authority [ / path ]变动为scheme : // authority [ / path ] [ ignored-query-or-fragment ]</li>
+<li>javax.net.ssl.SSLContext API及Java Security Standard Algorithm Names规范移除了必须实现TLSv1及TLSv1.1的规定</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>java12不是LTS(Long-Term Support)版本(oracle版本才有LTS)，oracle对该版本的support周期为6个月。这个版本主要有几个更新点，一个是语法层更新，一个是API层面的更新，另外主要是GC方面的更新。</li>
+<li>语法层面引入了preview版本的Switch Expressions；API层面引入了JVM Constants API，引入CompactNumberFormat，让NumberFormat支持COMPACTSTYLE，对String、Files、Collectors、CompletionStage等新增方法；GC方面引入了experimental版本的Shenandoah GC，不过oracle build的openjdk没有enable Shenandoah GC support；另外主要对ZGC及G1 GC进行了改进</li>
+<li>其中JDK12对ZGC支持了Concurrent Class Unloading，默认是开启，使用-XX:-ClassUnloading可以禁用；对于G1 GC则新增支持Abortable Mixed Collections以及Promptly Return Unused Committed Memory特性</li>
+</ul>
+<blockquote>
+<p>作者：go4it<br>链接：<a href="https://juejin.im/post/5c91fcc9e51d45563b62382c" target="_blank" rel="noopener">https://juejin.im/post/5c91fcc9e51d45563b62382c</a><br>来源：掘金</p>
+</blockquote>
 
         </div>
         
@@ -377,8 +748,8 @@
 <div class="card">
     
     <div class="card-image">
-        <a href="/2019/10/30/tabnine/" class="image is-7by1">
-            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="tabnine">
+        <a href="/2019/09/16/2019年度机器学习49个顶级工程汇总/" class="image is-7by1">
+            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="2019年度机器学习49个顶级工程汇总">
         </a>
     </div>
     
@@ -386,17 +757,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-30T14:06:40.000Z">2019-10-30</time>
+                <time class="level-item has-text-grey" datetime="2019-09-16T01:56:47.000Z">2019-09-16</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 943 个字)
+                    16 分钟 读完 (大约 2440 个字)
                 </span>
                 
                 
@@ -405,78 +776,81 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/30/tabnine/">tabnine</a>
+                <a class="has-link-black-ter" href="/2019/09/16/2019年度机器学习49个顶级工程汇总/">2019年度机器学习49个顶级工程汇总</a>
             
         </h1>
         <div class="content">
-            <h1 id="TabNine"><a href="#TabNine" class="headerlink" title="TabNine"></a>TabNine</h1><p>This is the repository for the backend of <a href="https://tabnine.com" target="_blank" rel="noopener">TabNine</a>, the all-language autocompleter.<br>There are no source files here because the backend is closed source.</p>
-<p>You can make feature requests by filing an issue. You are also welcome to make pull requests for changes to the configuration files.</p>
-<p><code>languages.yml</code> determines which file extensions are considered part of the same language. (For example, identifiers from <code>.c</code> files will be suggested in <code>.h</code> files.)</p>
-<p><code>language_tokenization.json</code> determines how languages are tokenized. For example, identifiers can contain dashes in Lisp, but not in Java.</p>
-<p>If your feature request is specific to a particular editor’s TabNine client, please file an issue in one of these repositories:</p>
+            <h1 id="2019年度机器学习49个顶级工程汇总"><a href="#2019年度机器学习49个顶级工程汇总" class="headerlink" title="2019年度机器学习49个顶级工程汇总"></a>2019年度机器学习49个顶级工程汇总</h1><blockquote>
+<p>过去一年中，我们比较了近22000个机器学习开源工程，并筛选了49个顶级项目（筛选率0.22%）。</p>
+</blockquote>
+<p>其中包括以下6个分类</p>
 <ul>
-<li><a href="https://github.com/zxqfl/tabnine-vscode" target="_blank" rel="noopener">VS Code</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-sublime" target="_blank" rel="noopener">Sublime Text</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-vim" target="_blank" rel="noopener">Vim</a></li>
-<li><a href="https://github.com/zxqfl/tabnine-atom" target="_blank" rel="noopener">Atom</a></li>
+<li>计算机视觉（1~5）</li>
+<li>强化学习（6~13）</li>
+<li>NLP（14~20）</li>
+<li>GAN（21~26）</li>
+<li>Neural Network（27~35）</li>
+<li>Toolkit（36~49）</li>
 </ul>
-<p>You may be interested in these TabNine clients written by third parties:</p>
-<ul>
-<li><a href="https://github.com/TommyX12/company-tabnine" target="_blank" rel="noopener">Emacs</a></li>
-<li><a href="https://github.com/tbodt/deoplete-tabnine" target="_blank" rel="noopener">Vim (Deoplete)</a></li>
-</ul>
-<h1 id="Changelogs"><a href="#Changelogs" class="headerlink" title="Changelogs"></a>Changelogs</h1><p>If new features don’t work for you, check that you have the most recent version by typing <code>TabNine::version</code> into your text editor. If you don’t have the most recent version, try restarting your editor.</p>
-<h2 id="2-0-11-August-24-2019"><a href="#2-0-11-August-24-2019" class="headerlink" title="2.0.11 (August 24, 2019)"></a>2.0.11 (August 24, 2019)</h2><ul>
-<li><a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> is now enabled by default</li>
-</ul>
-<h2 id="2-0-0-—-2-0-10-July-15-—-August-20-2019"><a href="#2-0-0-—-2-0-10-July-15-—-August-20-2019" class="headerlink" title="2.0.0 — 2.0.10 (July 15 — August 20, 2019)"></a>2.0.0 — 2.0.10 (July 15 — August 20, 2019)</h2><ul>
-<li><a href="https://tabnine.com/blog/deep" target="_blank" rel="noopener">Deep TabNine</a><ul>
-<li>Can download and run <a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> models</li>
-<li>Can connect to <a href="https://tabnine.com/subscribe#cloud" target="_blank" rel="noopener">TabNine Cloud</a></li>
-</ul>
-</li>
-<li>Simplified bracket pairing logic</li>
-<li>Simplified filesystem event handling</li>
-<li>Added a configuration panel for viewing settings and logs which can be accessed by typing <code>TabNine::config</code></li>
-</ul>
-<h2 id="1-0-14-May-16-2019"><a href="#1-0-14-May-16-2019" class="headerlink" title="1.0.14 (May 16, 2019)"></a>1.0.14 (May 16, 2019)</h2><ul>
-<li>TabNine no longer watches for filesystem events in ignored directories (closes <a href="https://github.com/zxqfl/TabNine/issues/43" target="_blank" rel="noopener">#43</a>).</li>
-<li>TabNine now waits until a completion is requested to start the language server (closes <a href="https://github.com/zxqfl/TabNine/issues/50" target="_blank" rel="noopener">#50</a>).</li>
-<li>Files with the <code>.d</code> extension are now recognized as D source files (closes <a href="https://github.com/zxqfl/TabNine/issues/56" target="_blank" rel="noopener">#56</a>).</li>
-<li>Added LSP default configuration for PureScript.</li>
-<li>Fixed a logic error that caused index size to be tracked incorrectly in some cases.</li>
-</ul>
-<h2 id="1-0-10-December-1-2018"><a href="#1-0-10-December-1-2018" class="headerlink" title="1.0.10 (December 1, 2018)"></a>1.0.10 (December 1, 2018)</h2><ul>
-<li>Fixed an internal logic error which could put indexing threads into a bad state, leading to an infinite loop (might close <a href="https://github.com/zxqfl/TabNine/issues/24" target="_blank" rel="noopener">#24</a>, we’ll see).</li>
-<li>TabNine now considers a wider range of possibilities when completing in a zero-char context (i.e. when there are no characters immediately before the cursor).</li>
-<li>TabNine now includes <code>-</code> in identifiers when parsing Racket code.</li>
-</ul>
-<h2 id="1-0-9-November-27-2018"><a href="#1-0-9-November-27-2018" class="headerlink" title="1.0.9 (November 27, 2018)"></a>1.0.9 (November 27, 2018)</h2><ul>
-<li>TabNine now uses the context after the cursor to filter its suggestions. For example, if there are tokens on the same line as the cursor, TabNine will not make a suggestion ending in a semicolon (unless there are already instances in the codebase of semicolons occurring in the middle of a line).</li>
-<li>TabNine removes tokens matching the regex <code>\d.*[a-zA-Z].*\d.*[a-zA-Z]</code> from the project index. This is supposed to prevent long keys or base64 literals from occurring in autocompletion suggestions. The tokens are <strong>not</strong> filtered from the directory index or the file index.</li>
-<li>TabNine now recognizes <code>.tsx</code> files as TypeScript rather than <code>.xml</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/21" target="_blank" rel="noopener">#21</a>).</li>
-<li>TabNine only checks its version directory, not its target directory, when auto-updating or writing registration keys. (This fixes an issue associated with DOS path shortening.)</li>
-</ul>
-<h2 id="1-0-7-November-20-2018"><a href="#1-0-7-November-20-2018" class="headerlink" title="1.0.7 (November 20, 2018)"></a>1.0.7 (November 20, 2018)</h2><ul>
-<li>Semantic completion is added! This allows TabNine to integrate with any language server that implements the <a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a>.<ul>
-<li>TabNine will integrate the language server’s suggestions with its own. For example, TabNine can suggest multi-token completions where the first token is provided by the language server.</li>
-<li>TabNine queries the language server asynchronously. So, if the language server is slow, you will see TabNine’s results only. Continue typing to see the language server’s results.</li>
-<li>TabNine passes along any type information or documentation provided by the language server. (The Sublime and VS Code clients are not yet updated to display the documentation; this is coming soon.)</li>
-<li>See the <a href="https://tabnine.com/semantic" target="_blank" rel="noopener">semantic completion guide</a> for configuration help.</li>
-</ul>
-</li>
-<li>Paid index size limit increased to 100 MB (from 15 MB).</li>
-<li>Free index size limit increased to 400 KB (from 200 KB).</li>
-<li>Improved indexing performance.</li>
-<li>Increased license price to $49/$99 personal/business (from $29/$89).</li>
-<li>TabNine now provides closing brackets for its suggestions (so if it suggests <code>foo(</code> it will additionally insert <code>)</code> to the right of the cursor once the suggestion is accepted). The editor clients do not support this yet as it requires an upgrade to the communication protocol with TabNine; this is coming soon. Closes <a href="https://github.com/zxqfl/TabNine/issues/11" target="_blank" rel="noopener">#11</a> as this is no longer an issue with the TabNine backend.</li>
-<li>TabNine now searches all parents to find the project root rather than stopping at the first <code>.git</code>. This permits nested Git repositories (closes <a href="https://github.com/zxqfl/TabNine/issues/5" target="_blank" rel="noopener">#5</a>).</li>
-<li>TabNine provides an API call to get the regex it uses to find identifiers (closes <a href="https://github.com/zxqfl/TabNine/issues/7" target="_blank" rel="noopener">#7</a>).</li>
-<li>TabNine no longer indexes files in <code>.git</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/8" target="_blank" rel="noopener">#8</a>).</li>
-<li>TabNine now respects <code>.tabnineignore</code> files (closes <a href="https://github.com/zxqfl/TabNine/issues/15" target="_blank" rel="noopener">#15</a>).</li>
-<li>TabNine allows disabling auto-update by typing <code>TabNine::disable_auto_update</code> into your text editor (closes <a href="https://github.com/zxqfl/TabNine/issues/14" target="_blank" rel="noopener">#14</a>).</li>
-<li>TabNine no longer stores registration keys and config in same directory where it is installed. This should prevent registration keys and config from being overwritten by client updates (closes <a href="https://github.com/zxqfl/TabNine/issues/10" target="_blank" rel="noopener">#10</a>). You can type <code>TabNine::config_dir</code> to see where config files are being stored.</li>
-</ul>
+<blockquote>
+<p>我们花了很大的精力筛选这个list，并小心的选择出2018年1月到12月间最好的工程。为了保证名单质量，Mybridge AI协同考虑了流行度、参与度、发布时间等多重因素。</p>
+</blockquote>
+<p>计算机视觉<br>1、Detectron：facebook发布的目标检测工具【18913 star on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Detectron?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Detectron?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/34d7fab0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>2、Openpost：多人实时特征点检测工具【11052 stars on GitHub】<br>项目地址：<br><a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/CMU-Perceptual-Computing-Lab/openpose?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/490fc2b0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>3、DensePost：2维人体图片转3维的实时映射方法。【4165 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Densepose?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Densepose?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/5596da50-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>4、Maskrcnn-benchmark：（Pytorch）语义分割与目标检测工具包。【3888 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/maskrcnn-benchmark?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/maskrcnn-benchmark?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/62cf8eb0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>5、SNIPER：多尺度目标检测算法。【1963 stars on Github】<br>项目地址：<br><a href="https://github.com/mahyarnajibi/SNIPER?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mahyarnajibi/SNIPER?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/728c2ed0-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>强化学习<br>6、Psychlab：Psychlab实验范例。【5595 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/lab/tree/master/game_scripts/levels/contributed/psychlab?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/lab/tree/master/game_scripts/levels/contributed/psychlab?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><img src="/images/2019/09/16/7faf1140-d825-11e9-a737-93ed7eeda0fa.png" alt="image.png"></p>
+<p>7、ELF：一个灵活、轻量、可扩展的游戏研究平台。【2406 stars on Github】<br>项目地址：<br><a href="https://github.com/pytorch/elf?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/pytorch/elf?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>8、TRFL：（TensorFlow）强化学习agent工具包。【2312 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/trfl?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/trfl?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>9、Horizon：首个用于大规模需求的开源强化学习平台。【1703 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/Horizon?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/Horizon?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>10、Chess-alpha-zero：国际象棋强化学习项目（基于AlphaGo Zero方法）。【1307 stars on Github】<br>项目地址：<br><a href="https://github.com/Zeta36/chess-alpha-zero?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Zeta36/chess-alpha-zero?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>11、Dm_control：DeepMind工具包。【1231 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/dm_control?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/dm_control?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>12、MAMEToolkit：基于强化学习的电子游戏python库。【437 stars on Github】<br>项目地址：<br><a href="https://github.com/M-J-Murray/MAMEToolkit?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/M-J-Murray/MAMEToolkit?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>13、Reaver：模块化的深度强化学习框架（星际争霸2）。【355 stars on Github】<br>项目地址：<br><a href="https://github.com/inoryy/reaver?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/inoryy/reaver?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>NLP<br>14、Bert：BERT的TensorFlow代码，以及预训练模型。【11703 stars on Github】<br>项目地址：<br><a href="https://github.com/google-research/bert?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google-research/bert?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>15、Pytext：基于Pytorch的神经语言模型框架。【4466 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/pytext?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/pytext?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>16、Bert-as-service：BERT模型的网络服务版本<br>项目地址：<br><a href="https://github.com/hanxiao/bert-as-service?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/hanxiao/bert-as-service?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>17、UnsupervisedMT：基于Phrase的无监督机器翻译方法。【1068 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/UnsupervisedMT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/UnsupervisedMT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>18、DecaNLP：NLP十项全能工具，多任务模型。【1648 stars on Github】<br>项目地址：<br><a href="https://github.com/salesforce/decaNLP?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/salesforce/decaNLP?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>19、NLP-architect：来自英特尔AI实验室的python工具包，包含了当前NLP领域的多种最佳模型。【1751 stars on Github】<br>项目地址：<br><a href="https://github.com/NervanaSystems/nlp-architect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NervanaSystems/nlp-architect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>20、Gluon-nlp：NLP工具包。【1263 stars on Github】<br>项目地址：<br><a href="https://github.com/dmlc/gluon-nlp?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/dmlc/gluon-nlp?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>GAN<br>21、DeOldify：一个基于深度学习的图像补全工具包。【5060 stars on Github】<br>项目地址：<br><a href="https://github.com/jantic/DeOldify?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/jantic/DeOldify?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>22、Progressive_growing_of_gans：GAN的变种实现，提高生产质量、稳定性以及多样性。<br>项目地址：<br><a href="https://github.com/tkarras/progressive_growing_of_gans?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tkarras/progressive_growing_of_gans?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>23、MUNIT：多模态无监督图像翻译。【1339 stars on Github】<br>项目地址：<br><a href="https://github.com/NVlabs/MUNIT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NVlabs/MUNIT?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>24、Transparent_latent_gan：使用监督学习来解释GAN的隐空间信息。【1337 stars on Github】<br>项目地址：<br><a href="https://github.com/SummitKwan/transparent_latent_gan?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/SummitKwan/transparent_latent_gan?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>25、Gandissect：基于Pytorch的可视化以及理解GAN的神经元信息。【1065 stars on Github】<br>项目地址：<br><a href="https://github.com/CSAILVision/gandissect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/CSAILVision/gandissect?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>26、GANimation：单张图片的表情变换。【869 stars on Github】<br>项目地址：<br><a href="https://github.com/albertpumarola/GANimation?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/albertpumarola/GANimation?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a><br>神经网络<br>27、Fastai：加速神经网络训练过程，并提高准确率。【11597 stars on Github】<br>项目地址：<br><a href="https://github.com/fastai/fastai?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/fastai/fastai?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>28、DeepCreamPy：图像修复。【7046 stars on Github】<br>项目地址：<br><a href="https://github.com/deeppomf/DeepCreamPy?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deeppomf/DeepCreamPy?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>29、Augmentor v0.2、图像增强工具包。【2805 stars on Github】<br>项目地址：<br><a href="https://github.com/mdbloice/Augmentor?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mdbloice/Augmentor?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>30、Graph_nets：Tensorflow的图网络构建工具。【2723 stars on Github】<br>项目地址：<br><a href="https://github.com/deepmind/graph_nets?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/deepmind/graph_nets?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>31、Textgenrnn：使用预训练字符级RNN生成文本。【1900 stars on Github】<br>项目地址：<br><a href="https://github.com/minimaxir/textgenrnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/minimaxir/textgenrnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>32、Person-blocker：图像中自动删除人像。【1806 stars on Github】<br>项目地址：<br><a href="https://github.com/minimaxir/person-blocker?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/minimaxir/person-blocker?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>33、Deepvariant：DNA序列数据的分析工具<br>项目地址：<br><a href="https://github.com/google/deepvariant?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google/deepvariant?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>34、Video-nolocal-net：non-local神经网络的视频分类方法。【1049 stars on Github】<br>项目地址：<br><a href="https://github.com/facebookresearch/video-nonlocal-net?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/facebookresearch/video-nonlocal-net?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>35、Ann-visualizer：神经网络可视化工具。【922 stars on Github】<br>项目地址：<br><a href="https://github.com/Prodicode/ann-visualizer?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Prodicode/ann-visualizer?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>工具包<br>36、Tfjs：一个基于JS的ML模型训练部署工具包。【10268 stars on Github】<br>项目地址：<br><a href="https://github.com/tensorflow/tfjs?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tensorflow/tfjs?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>37：Dopamine：快速的强化学习研究框架。【7142 stars on Github】<br>项目地址：<br><a href="https://github.com/google/dopamine?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/google/dopamine?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>38、Lime：分类器解释工具包。【5173 stars on Github】<br>项目地址：<br><a href="https://github.com/marcotcr/lime?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/marcotcr/lime?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>39、Autokeras：自动机器学习的开源软件库。【4520 stars on Github】<br>项目地址：<br><a href="https://github.com/jhfjhfj1/autokeras?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/jhfjhfj1/autokeras?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>40、Shap：神经网络解释工具。【3496 stars on Github】<br>项目地址：<br><a href="https://github.com/slundberg/shap?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/slundberg/shap?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>41、MMdnn：模型适配器。【3021 stars on Github】<br>项目地址：<br><a href="https://github.com/Microsoft/MMdnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Microsoft/MMdnn?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>42、Mlflow：机器学习生命周期管理。【3013 stars on Github】<br>项目地址：<br><a href="https://github.com/mlflow/mlflow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/mlflow/mlflow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>43、Mace：面向移动计算平台的深度学习推断框架。【2979 stars on Github】<br>项目地址：<br><a href="https://github.com/XiaoMi/mace?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/XiaoMi/mace?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>44、PySyft：关注安全性的深度学习库。【2595 stars on Github】<br>项目地址：<br><a href="https://github.com/OpenMined/PySyft?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/OpenMined/PySyft?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>45、Adanet：AutoML计算库。【2293 stars on Github】<br>项目地址：<br><a href="https://github.com/tensorflow/adanet?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/tensorflow/adanet?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>46、Tencent-ml-images：最大的多标签图像数据库。【2094 stars on Github】<br>项目地址：<br><a href="https://github.com/Tencent/tencent-ml-images?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Tencent/tencent-ml-images?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>47、Donkeycar、开源的软硬件自动驾驶平台。【1207 stars on Github】</p>
+<p>项目地址：<br><a href="https://github.com/autorope/donkeycar?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/autorope/donkeycar?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>48、PocketFlow：自动模型压缩框架。【1677 stars on Github】<br>项目地址：<br><a href="https://github.com/Tencent/PocketFlow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/Tencent/PocketFlow?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p>49、DALI：深度学习应用的优化工具包以及数据处理扩展引擎。【1013 stars on Github】<br>项目地址：<br><a href="https://github.com/NVIDIA/dali?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more" target="_blank" rel="noopener">https://github.com/NVIDIA/dali?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzIyOTkyOTEzOQ==&mid=2247484033&idx=1&sn=fd58e5e58f50917809d6cf133b3f7476&chksm=e8ba7b5ddfcdf24bb77d9b6db0084733d9d2815d350a0fbfc8401191c3206b72db588e51c41c&sessionid=0&scene=126&clicktime=1568597193&enterid=1568597193&asce" target="_blank" rel="noopener">传送门</a></p>
 
         </div>
         
@@ -499,7 +873,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-29T06:25:27.000Z">2019-10-29</time>
+                <time class="level-item has-text-grey" datetime="2019-09-14T06:04:05.000Z">2019-09-14</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -509,7 +883,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 505 个字)
+                    几秒 读完 (大约 70 个字)
                 </span>
                 
                 
@@ -518,25 +892,508 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/29/ace-combat7-skies-unknown/">ace-combat7-skies-unknown</a>
+                <a class="has-link-black-ter" href="/2019/09/14/OpenCV边缘检测/">OpenCV边缘检测</a>
             
         </h1>
         <div class="content">
-            <h1 id="ACE-COMBAT™-7-SKIES-UNKNOWN"><a href="#ACE-COMBAT™-7-SKIES-UNKNOWN" class="headerlink" title="ACE COMBAT™ 7: SKIES UNKNOWN"></a>ACE COMBAT™ 7: SKIES UNKNOWN</h1><blockquote>
-<p>《皇牌空战7》是由万代南梦宫开发的皇牌空战系列的正统续作，游戏回归皇牌空战系列的虚构世界观，游戏平台为PS4,Xbox one和PC，支持PSVR操作。</p>
+            <h1 id="OpenCV边缘检测"><a href="#OpenCV边缘检测" class="headerlink" title="OpenCV边缘检测"></a>OpenCV边缘检测</h1><p><img src="/images/2019/09/14/54fef350-d6b5-11e9-ae59-4f17e83b2f0c.png" alt="image.png"></p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> cv2</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="hljs-string">'1024.jpg'</span>,<span class="hljs-number">0</span>)</span><br><span class="line">edges = cv2.Canny(img,<span class="hljs-number">100</span>,<span class="hljs-number">200</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="hljs-number">121</span>),plt.imshow(img,cmap=<span class="hljs-string">'gray'</span>)</span><br><span class="line">plt.title(<span class="hljs-string">'original'</span>),plt.xticks([]),plt.yticks([])</span><br><span class="line">plt.subplot(<span class="hljs-number">122</span>),plt.imshow(edges,cmap=<span class="hljs-string">'gray'</span>)</span><br><span class="line">plt.title(<span class="hljs-string">'edge'</span>),plt.xticks([]),plt.yticks([])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-13T07:57:44.000Z">2019-09-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    38 分钟 读完 (大约 5627 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/13/Java面试题/">Java面试题</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><h2 id="String类能被继承吗，为什么"><a href="#String类能被继承吗，为什么" class="headerlink" title="String类能被继承吗，为什么?"></a>String类能被继承吗，为什么?</h2><blockquote>
+<p>不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。</p>
 </blockquote>
-<p>ACE COMBAT系列，是能让玩家能化身为王牌驾驶员，驾驶爱机在追求拟真天空的美丽空间内，享受360度自由飞行的爽快感、让玩家亲自判断状况并选择敌人来破坏的痛快感、享受克服难关达成感的飞行射击游戏。</p>
-<p>本作是系列最新作品，依然由「PROJECT ACES」来担任开发。本作的主题是「天空革新」，游戏内立体包覆天空的云层会扩散，气流与雷云等环境变化会晃动机体并扰乱HUD，能让玩家更加「体验天空」。在受环境影响的新缠斗世界中，体验系列作中最具魅力的空中战斗跟速度感吧。</p>
-<p><img src="/images/2019/10/29/e2813800-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/eb4a8450-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/f0d80690-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/f51b7ca0-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/f8911b60-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/fd586770-fa14-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><img src="/images/2019/10/29/020e7570-fa15-11e9-87a5-6d107a8139ee.png" alt="image.png"></p>
-<p><strong>最低配置:</strong><br>需要 64 位处理器和操作系统<br>操作系统: Windows 7 / 8 / 8.1 / 10 (64-bit OS required)<br>处理器: Intel Core i3-7100<br>内存: 4 GB RAM<br>显卡: NVIDIA GeForce GTX 750Ti(2GB)<br>DirectX 版本: 11<br>网络: 宽带互联网连接<br>存储空间: 需要 50 GB 可用空间<br>声卡: DirectX 11 sound card</p>
-<p><strong>推荐配置:</strong><br>需要 64 位处理器和操作系统<br>操作系统: Windows 7 / 8 / 8.1 / 10 (64-bit OS required)<br>处理器: Intel Core i5-7500<br>内存: 8 GB RAM<br>显卡: NVIDIA GeForce GTX 1060 (3GB)<br>DirectX 版本: 11<br>网络: 宽带互联网连接<br>存储空间: 需要 50 GB 可用空间<br>声卡: DirectX 11 sound card</p>
-<p><a href="https://store.steampowered.com/app/502500/ACE_COMBAT_7_SKIES_UNKNOWN/" target="_blank" rel="noopener">传送门</a></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">String</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span>, <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">String</span>&gt;, <span class="hljs-title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
+
+<p>根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。你可能出于两种理解而需要阻止改变：设计或效率。<br>　　final类不能被继承，没有子类，final类中的方法默认是final的。<br>　　final方法不能被子类的方法覆盖，但可以被继承。<br>　　final成员变量表示常量，只能被赋值一次，赋值后值不再改变。<br>　　final不能用于修饰构造方法。<br>　　注意：父类的private成员方法是不能被子类方法覆盖的，因此private类型的方法默认是final类型的。</p>
+<p>如果一个类不允许其子类覆盖某个方法，则可以把这个方法声明为final方法。<br>　　使用final方法的原因有二：<br>　　第一、把方法锁定，防止任何继承类修改它的意义和实现。<br>　　第二、高效。编译器在遇到调用final方法时候会转入内嵌机制，大大提高执行效率。（这点有待商榷，《Java编程思想》中对于这点存疑）</p>
+<blockquote>
+<p>下面这段话摘自《Java编程思想》第四版第143页：<br>“使用final方法的原因有两个。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用。但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升。在最近的Java版本中，不需要使用final方法进行这些优化了。”</p>
+</blockquote>
+<p>关于String类，要了解常量池的概念</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="hljs-keyword">new</span> String(“xyz”);  <span class="hljs-comment">//创建了几个对象</span></span><br></pre></td></tr></table></figure>
+
+<p>答案： 1个或2个， 如果”xyz”已经存在于常量池中，则只在堆中创建”xyz”对象的一个拷贝，否则还要在常量池中在创建一份</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="hljs-string">"a"</span>+<span class="hljs-string">"b"</span>+<span class="hljs-string">"c"</span>+<span class="hljs-string">"d"</span>; <span class="hljs-comment">//创建了几个对象</span></span><br></pre></td></tr></table></figure>
+
+<p>答案： 这个和JVM实现有关， 如果常量池为空，可能是1个也可能是7个等</p>
+<h2 id="String，Stringbuffer，StringBuilder的区别？"><a href="#String，Stringbuffer，StringBuilder的区别？" class="headerlink" title="String，Stringbuffer，StringBuilder的区别？"></a>String，Stringbuffer，StringBuilder的区别？</h2><p>1、用来处理字符串常用的类有3种：String、StringBuffer和StringBuilder<br>2、三者之间的区别：<br>都是final类，都不允许被继承；<br>String类长度是不可变的，StringBuffer和StringBuilder类长度是可以改变的；<br>StringBuffer类是线程安全的，StringBuilder不是线程安全的；</p>
+<p>String 和 StringBuffer：<br>1、String类型和StringBuffer类型的主要性能区别：String是不可变的对象，因此每次在对String类进行改变的时候都会生成一个新的string对象，然后将指针指向新的string对象，所以经常要改变字符串长度的话不要使用string，因为每次生成对象都会对系统性能产生影响，特别是当内存中引用的对象多了以后，JVM的GC就会开始工作，性能就会降低；</p>
+<p>2、使用StringBuffer类时，每次都会对StringBuffer对象本身进行操作，而不是生成新的对象并改变对象引用，所以多数情况下推荐使用StringBuffer，特别是字符串对象经常要改变的情况；</p>
+<p>3、在某些情况下，String对象的字符串拼接其实是被Java Compiler编译成了StringBuffer对象的拼接，所以这些时候String对象的速度并不会比StringBuffer对象慢，例如：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “This is only a” + “ simple” + “ test”;</span><br><span class="line">StringBuffer Sb = <span class="hljs-keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</span><br></pre></td></tr></table></figure>
+
+<p>生成 String s1对象的速度并不比 StringBuffer慢。其实在Java Compiler里，自动做了如下转换：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Java Compiler直接把上述第一条语句编译为：</span><br><span class="line">String s2 = “This is only a”;</span><br><span class="line">String s3 = “ simple”;</span><br><span class="line">String s4 = “ test”;</span><br><span class="line">String s1 = s2 + s3 + s4;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/8c724dd28fa4" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="ArrayList和LinkedList有什么区别"><a href="#ArrayList和LinkedList有什么区别" class="headerlink" title="ArrayList和LinkedList有什么区别"></a>ArrayList和LinkedList有什么区别</h2><p>ArrayList是实现了基于动态数组的结构，LinkedList则是基于实现链表的数据结构。</p>
+<p><strong>数据的更新和查找</strong><br>ArrayList的所有数据是在同一个地址上,而LinkedList的每个数据都拥有自己的地址.所以在对数据进行查找的时候，由于LinkedList的每个数据地址不一样，get数据的时候ArrayList的速度会优于LinkedList，而更新数据的时候，虽然都是通过循环循环到指定节点修改数据，但LinkedList的查询速度已经是慢的，而且对于LinkedList而言，更新数据时不像ArrayList只需要找到对应下标更新就好，LinkedList需要修改指针，速率不言而喻</p>
+<p><strong>数据的增加和删除</strong><br>对于数据的增加元素，ArrayList是通过移动该元素之后的元素位置，其后元素位置全部+1，所以耗时较长，而LinkedList只需要将该元素前的后续指针指向该元素并将该元素的后续指针指向之后的元素即可。与增加相同，删除元素时ArrayList需要将被删除元素之后的元素位置-1，而LinkedList只需要将之后的元素前置指针指向前一元素，前一元素的指针指向后一元素即可。当然，事实上，若是单一元素的增删，尤其是在List末端增删一个元素，二者效率不相上下。</p>
+<p><a href="https://juejin.im/post/5adec492f265da0b9f3fea08#heading-2" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序"><a href="#类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序" class="headerlink" title="类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序"></a>类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</h2><blockquote>
+<p>此题考察的是类加载器实例化时进行的操作步骤（加载–&gt;连接-&gt;初始化）。<br>父类静态变量、<br>父类静态代码块、<br>子类静态变量、<br>子类静态代码块、<br>父类非静态变量（父类实例成员变量）、<br>父类构造函数、<br>子类非静态变量（子类实例成员变量）、<br>子类构造函数。 </p>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000004527951#articleHeader0" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="用过哪些Map，都有什么区别，HashMap是线程安全的吗-并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等"><a href="#用过哪些Map，都有什么区别，HashMap是线程安全的吗-并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等" class="headerlink" title="用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等"></a>用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</h2><blockquote>
+<p>Hashtable,HashMap,ConcurrentHashMap</p>
+</blockquote>
+<p><strong>线程不安全的HashMap</strong><br>因为多线程环境下，使用Hashmap进行put操作会引起死循环，导致CPU利用率接近100%，所以在并发情况下不能使用HashMap。</p>
+<p><strong>HashMap</strong><br>HashMap内部实现是一个桶数组，每个桶中存放着一个单链表的头结点。其中每个结点存储的是一个键值对整体（Entry），HashMap采用拉链法解决哈希冲突</p>
+<p><a href="https://blog.csdn.net/u014532901/article/details/78936283" target="_blank" rel="noopener">传送门</a></p>
+<p><strong>效率低下的HashTable容器</strong><br>     HashTable容器使用synchronized来保证线程安全，但在线程竞争激烈的情况下HashTable的效率非常低下。因为当一个线程访问HashTable的同步方法时，其他线程访问HashTable的同步方法时，可能会进入阻塞或轮询状态。如线程1使用put进行添加元素，线程2不但不能使用put方法添加元素，并且也不能使用get方法来获取元素，所以竞争越激烈效率越低。</p>
+<p><strong>ConcurrentHashMap的锁分段技术</strong><br>     HashTable容器在竞争激烈的并发环境下表现出效率低下的原因，是因为所有访问HashTable的线程都必须竞争同一把锁，那假如容器里有多把锁，每一把锁用于锁容器其中一部分数据，那么当多线程访问容器里不同数据段的数据时，线程间就不会存在锁竞争，从而可以有效的提高并发访问效率，这就是ConcurrentHashMap所使用的锁分段技术，首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问。</p>
+<p><a href="https://blog.csdn.net/qq_27093465/article/details/52279473" target="_blank" rel="noopener">传送门</a></p>
+<blockquote>
+<p>hashcode() 方法，在object类中定义如下：</p>
+</blockquote>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>native说明是一个本地方法，它的实现是根据本地机器相关的。当然我们可以在自己写的类中覆盖hashcode()方法，比如String、Integer、Double。。。。等等这些类都是覆盖了hashcode()方法的<br>例如String类中:就是以31为权，每一位为字符的ASCII值进行运算，用自然溢出来等效取模。(为什么取31?主要是因为31是一个奇质数，所以31i=32i-i=(i&lt;&lt;5)-i，这种位移与减法结合的计算相比一般的运算快很多).</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> h = hash;</span><br><span class="line">    <span class="hljs-keyword">if</span> (h == <span class="hljs-number">0</span> &amp;&amp; value.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">char</span> val[] = value;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; value.length; i++) &#123;</span><br><span class="line">            h = <span class="hljs-number">31</span> * h + val[i];</span><br><span class="line">        &#125;</span><br><span class="line">        hash = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"><a href="#HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发" class="headerlink" title="HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发"></a>HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</h2><blockquote>
+<p>HashMap 底层是基于 数组 + 链表 组成的</p>
+</blockquote>
+<p><a href="https://juejin.im/post/5b551e8df265da0f84562403#heading-9" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么"><a href="#抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么" class="headerlink" title="抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么"></a>抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</h2><blockquote>
+<p>实现 抽象类使用extends关键字来继承抽象类。如果子类不是抽象类的话，它需要提供抽象类中所有声明的方法的实现。子类使用关键字implements来实现接口。它需要提供接口中所有声明的方法的实现。<br><a href="https://www.jianshu.com/p/038f0b356e9a" target="_blank" rel="noopener">抽象类和接口的区别</a></p>
+</blockquote>
+<blockquote>
+<p>由于Java不支持多继承，子类不能够继承多个类，但可以实现多个接口。因此你就可以使用接口来解决它。</p>
+</blockquote>
+<blockquote>
+<p>接口可以继承多个接口。<br>java类是单继承的。classB Extends classA<br>java接口可以多继承。Interface3 Extends Interface0, Interface1, interface……<br>不允许类多重继承的主要原因是，如果A同时继承B和C，而B和C同时有一个D方法，A如何决定该继承那一个呢？<br>但接口不存在这样的问题，接口全都是抽象方法继承谁都无所谓，所以接口可以继承多个接口。</p>
+</blockquote>
+<h2 id="什么情况下会发生栈内存溢出"><a href="#什么情况下会发生栈内存溢出" class="headerlink" title="什么情况下会发生栈内存溢出"></a>什么情况下会发生栈内存溢出</h2><p><strong>方法递归调用产生这种结果</strong></p>
+<blockquote>
+<p>栈是线程私有的，他的生命周期与线程相同，每个方法在执行的时候都会创建一个栈帧，用来存储局部变量表，操作数栈，动态链接，方法出口灯信息。局部变量表又包含基本数据类型，对象引用类型（局部变量表编译器完成，运行期间不会变化）</p>
+</blockquote>
+<p>所以我们可以理解为栈溢出就是方法执行是创建的栈帧超过了栈的深度。那么最有可能的就是方法递归调用产生这种结果。栈溢出(StackOverflowError)</p>
+<h2 id="什么是nio，原理"><a href="#什么是nio，原理" class="headerlink" title="什么是nio，原理"></a>什么是nio，原理</h2><blockquote>
+<p>NIO是为了弥补传统I/O工作模式的不足而研发的，NIO的工具包提出了基于Selector（选择器）、Buffer（缓冲区）、Channel（通道）的新模式；Selector（选择器）、可选择的Channel（通道）和SelectionKey（选择键）配合起来使用，可以实现并发的非阻塞型I/O能力。</p>
+</blockquote>
+<p>NIO的工作原理是什么？</p>
+<p>　　在并发型服务器程序中使用NIO，实际上是通过网络事件驱动模型实现的。我们应用Select机制，不用为每一个客户端连接新启线程处理，而是将其注册到特定的Selector对象上，这就可以在单线程中利用Selector对象管理大量并发的网络连接，更好的利用了系统资源；采用非阻塞I/O的通信方式，不要求阻塞等待I/O操作完成即可返回，从而减少了管理I/O连接导致的系统开销，大幅度提高了系统性能。</p>
+<p>　　当有读或写等注册事件发生时，可以从Selector中获得相应的SelectionKey，从SelectionKey中可以找到发生的事件和该事件所发生的具体的SelectableChannel，以获得客户端发送过来的数据。由于在非阻塞网络I/O中采用了事件触发机制，处理程序可以得到系统的主动通知，从而可以实现底层网络I/O无阻塞、流畅地读写，而不像在原来的阻塞模式下处理程序需要不断循环等待。使用NIO，可以编写出性能更好、更易扩展的并发型服务器程序。</p>
+<p>　　并发型服务器程序的实现代码：应用NIO工具包，基于非阻塞网络I/O设计的并发型服务器程序与以往基于阻塞I/O的实现程序有很大不同，在使用非阻塞网络I/O的情况下，程序读取数据和写入数据的时机不是由程序员控制的，而是Selector决定的。</p>
+<p>　　使用非阻塞型I/O进行并发型服务器程序设计分三个部分：1. 向Selector对象注册感兴趣的事件；2.从Selector中获取所感兴趣的事件；3. 根据不同的事件进行相应的处理。</p>
+<p>　　在进行并发型服务器程序设计时，通过合理地使用NIO工具包，就可以达到一个或者几个Socket线程就可以处理N多个Socket的连接，大大降低我们对服务器程序的预算压力。同时我们利用它更好地提高系统的性能，使我们的工作得到更加有效地开展。</p>
+<p><a href="https://www.cnblogs.com/johnvajicic/archive/2013/04/18/3028675.html" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="反射中，Class-forName和ClassLoader区别"><a href="#反射中，Class-forName和ClassLoader区别" class="headerlink" title="反射中，Class.forName和ClassLoader区别"></a>反射中，Class.forName和ClassLoader区别</h2><p>Java中Class.forName和classloader都可以用来对类进行加载。</p>
+<ul>
+<li><p>Class.forName(“className”);</p>
+<pre><code>其实这种方法调运的是：Class.forName(className, true, ClassLoader.getCallerClassLoader())方法
+参数一：className，需要加载的类的名称。
+参数二：true，是否对class进行初始化（需要initialize）
+参数三：classLoader，对应的类加载器</code></pre></li>
+<li><p>ClassLoader.laodClass(“className”);</p>
+<pre><code>其实这种方法调运的是：ClassLoader.loadClass(name, false)方法
+参数一：name,需要加载的类的名称
+参数二：false，这个类加载以后是否需要去连接（不需要linking）</code></pre></li>
+</ul>
+<p>可见Class.forName除了将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块。</p>
+<p>而classloader只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容，只有在newInstance才会去执行static块。</p>
+<p><a href="https://blog.csdn.net/u013308490/article/details/87809824" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="tomcat结构，类加载器流程"><a href="#tomcat结构，类加载器流程" class="headerlink" title="tomcat结构，类加载器流程"></a>tomcat结构，类加载器流程</h2><blockquote>
+<p>Tomcat 的总体结构</p>
+</blockquote>
+<p><img src="/images/2019/09/13/12f00090-d605-11e9-a6a7-0b204ec53b69.png" alt="image.png"></p>
+<p>从上图中可以看出 Tomcat 的心脏是两个组件：Connector 和 Container，关于这两个组件将在后面详细介绍。Connector 组件是可以被替换，这样可以提供给服务器设计者更多的选择，因为这个组件是如此重要，不仅跟服务器的设计的本身，而且和不同的应用场景也十分相关，所以一个 Container 可以选择对应多个 Connector。多个 Connector 和一个 Container 就形成了一个 Service，Service 的概念大家都很熟悉了，有了 Service 就可以对外提供服务了，但是 Service 还要一个生存的环境，必须要有人能够给她生命、掌握其生死大权，那就非 Server 莫属了。所以整个 Tomcat 的生命周期由 Server 控制。</p>
+<p><strong>什么是类加载器？</strong><br>虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。</p>
+<p><a href="https://www.jianshu.com/p/69c4526b843d" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"><a href="#讲讲Spring事务的传播属性-AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式" class="headerlink" title="讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式"></a>讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</h2><h2 id="Spring的beanFactory和factoryBean的区别"><a href="#Spring的beanFactory和factoryBean的区别" class="headerlink" title="Spring的beanFactory和factoryBean的区别"></a>Spring的beanFactory和factoryBean的区别</h2><h2 id="Spring加载流程"><a href="#Spring加载流程" class="headerlink" title="Spring加载流程"></a>Spring加载流程</h2><h2 id="Spring如何管理事务的"><a href="#Spring如何管理事务的" class="headerlink" title="Spring如何管理事务的"></a>Spring如何管理事务的</h2><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="线城池的最大线程数目根据什么确定"><a href="#线城池的最大线程数目根据什么确定" class="headerlink" title="线城池的最大线程数目根据什么确定"></a>线城池的最大线程数目根据什么确定</h2><h2 id="多线程的几种实现方式，什么是线程安全，什么是重排序"><a href="#多线程的几种实现方式，什么是线程安全，什么是重排序" class="headerlink" title="多线程的几种实现方式，什么是线程安全，什么是重排序"></a>多线程的几种实现方式，什么是线程安全，什么是重排序</h2><h2 id="volatile的原理，作用，能代替锁么"><a href="#volatile的原理，作用，能代替锁么" class="headerlink" title="volatile的原理，作用，能代替锁么"></a>volatile的原理，作用，能代替锁么</h2><h2 id="sleep和wait的区别，以及wait的实现原理"><a href="#sleep和wait的区别，以及wait的实现原理" class="headerlink" title="sleep和wait的区别，以及wait的实现原理"></a>sleep和wait的区别，以及wait的实现原理</h2><h2 id="Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"><a href="#Lock与synchronized-的区别，synchronized-的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁" class="headerlink" title="Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁"></a>Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</h2><h2 id="用过哪些原子类，他们的参数以及原理是什么"><a href="#用过哪些原子类，他们的参数以及原理是什么" class="headerlink" title="用过哪些原子类，他们的参数以及原理是什么"></a>用过哪些原子类，他们的参数以及原理是什么</h2><h2 id="用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"><a href="#用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等" class="headerlink" title="用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等"></a>用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</h2><h2 id="有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"><a href="#有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。" class="headerlink" title="有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。"></a>有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</h2><h2 id="spring的controller是单例还是多例，怎么保证并发的安全"><a href="#spring的controller是单例还是多例，怎么保证并发的安全" class="headerlink" title="spring的controller是单例还是多例，怎么保证并发的安全"></a>spring的controller是单例还是多例，怎么保证并发的安全</h2><h2 id="用三个线程按顺序循环打印abc三个字母，比如abcabcabc"><a href="#用三个线程按顺序循环打印abc三个字母，比如abcabcabc" class="headerlink" title="用三个线程按顺序循环打印abc三个字母，比如abcabcabc"></a>用三个线程按顺序循环打印abc三个字母，比如abcabcabc</h2><h2 id="ThreadLocal用过么，原理是什么，用的时候要注意什么"><a href="#ThreadLocal用过么，原理是什么，用的时候要注意什么" class="headerlink" title="ThreadLocal用过么，原理是什么，用的时候要注意什么"></a>ThreadLocal用过么，原理是什么，用的时候要注意什么</h2><h2 id="如果让你实现一个并发安全的链表，你会怎么做"><a href="#如果让你实现一个并发安全的链表，你会怎么做" class="headerlink" title="如果让你实现一个并发安全的链表，你会怎么做"></a>如果让你实现一个并发安全的链表，你会怎么做</h2><h1 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h1><h2 id="jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"><a href="#jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等" class="headerlink" title="jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等"></a>jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</h2><h2 id="你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"><a href="#你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms" class="headerlink" title="你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms"></a>你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</h2><h2 id="当出现了内存溢出，你怎么排错"><a href="#当出现了内存溢出，你怎么排错" class="headerlink" title="当出现了内存溢出，你怎么排错"></a>当出现了内存溢出，你怎么排错</h2><h2 id="JVM内存模型的相关知识了解多少"><a href="#JVM内存模型的相关知识了解多少" class="headerlink" title="JVM内存模型的相关知识了解多少"></a>JVM内存模型的相关知识了解多少</h2><h2 id="简单说说你了解的类加载器"><a href="#简单说说你了解的类加载器" class="headerlink" title="简单说说你了解的类加载器"></a>简单说说你了解的类加载器</h2><h2 id="JAVA的反射机制"><a href="#JAVA的反射机制" class="headerlink" title="JAVA的反射机制"></a>JAVA的反射机制</h2><h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="http1-0和http1-1有什么区别"><a href="#http1-0和http1-1有什么区别" class="headerlink" title="http1.0和http1.1有什么区别"></a>http1.0和http1.1有什么区别</h2><h2 id="TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么"><a href="#TCP三次握手和四次挥手的流程，为什么断开连接要4次-如果握手只有两次，会出现什么" class="headerlink" title="TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么"></a>TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</h2><h2 id="TIME-WAIT和CLOSE-WAIT的区别"><a href="#TIME-WAIT和CLOSE-WAIT的区别" class="headerlink" title="TIME_WAIT和CLOSE_WAIT的区别"></a>TIME_WAIT和CLOSE_WAIT的区别</h2><h2 id="说说你知道的几种HTTP响应码"><a href="#说说你知道的几种HTTP响应码" class="headerlink" title="说说你知道的几种HTTP响应码"></a>说说你知道的几种HTTP响应码</h2><h2 id="当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"><a href="#当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤" class="headerlink" title="当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤"></a>当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</h2><h2 id="Linux下IO模型有几种，各自的含义是什么"><a href="#Linux下IO模型有几种，各自的含义是什么" class="headerlink" title="Linux下IO模型有几种，各自的含义是什么"></a>Linux下IO模型有几种，各自的含义是什么</h2><h2 id="TCP-IP如何保证可靠性，数据包有哪些数据组成"><a href="#TCP-IP如何保证可靠性，数据包有哪些数据组成" class="headerlink" title="TCP/IP如何保证可靠性，数据包有哪些数据组成"></a>TCP/IP如何保证可靠性，数据包有哪些数据组成</h2><h2 id="架构设计与分布式："><a href="#架构设计与分布式：" class="headerlink" title="架构设计与分布式："></a>架构设计与分布式：</h2><h2 id="tomcat如何调优，各种参数的意义"><a href="#tomcat如何调优，各种参数的意义" class="headerlink" title="tomcat如何调优，各种参数的意义"></a>tomcat如何调优，各种参数的意义</h2><h2 id="常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"><a href="#常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等" class="headerlink" title="常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等"></a>常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</h2><h2 id="如何防止缓存雪崩12-用java自己实现一个LRU"><a href="#如何防止缓存雪崩12-用java自己实现一个LRU" class="headerlink" title="如何防止缓存雪崩12.用java自己实现一个LRU"></a>如何防止缓存雪崩12.用java自己实现一个LRU</h2><h2 id="分布式集群下如何做到唯一序列号"><a href="#分布式集群下如何做到唯一序列号" class="headerlink" title="分布式集群下如何做到唯一序列号"></a>分布式集群下如何做到唯一序列号</h2><h2 id="设计一个秒杀系统，30分钟没付款就自动关闭交易"><a href="#设计一个秒杀系统，30分钟没付款就自动关闭交易" class="headerlink" title="设计一个秒杀系统，30分钟没付款就自动关闭交易"></a>设计一个秒杀系统，30分钟没付款就自动关闭交易</h2><h2 id="如何做一个分布式锁"><a href="#如何做一个分布式锁" class="headerlink" title="如何做一个分布式锁"></a>如何做一个分布式锁</h2><h2 id="用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"><a href="#用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗" class="headerlink" title="用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗"></a>用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</h2><h2 id="MQ系统的数据如何保证不丢失"><a href="#MQ系统的数据如何保证不丢失" class="headerlink" title="MQ系统的数据如何保证不丢失"></a>MQ系统的数据如何保证不丢失</h2><h2 id="分布式事务的原理，如何使用分布式事务"><a href="#分布式事务的原理，如何使用分布式事务" class="headerlink" title="分布式事务的原理，如何使用分布式事务"></a>分布式事务的原理，如何使用分布式事务</h2><h2 id="什么是一致性hash"><a href="#什么是一致性hash" class="headerlink" title="什么是一致性hash"></a>什么是一致性hash</h2><h2 id="什么是restful，讲讲你理解的restful"><a href="#什么是restful，讲讲你理解的restful" class="headerlink" title="什么是restful，讲讲你理解的restful"></a>什么是restful，讲讲你理解的restful</h2><h2 id="如何设计建立和保持100w的长连接？"><a href="#如何设计建立和保持100w的长连接？" class="headerlink" title="如何设计建立和保持100w的长连接？"></a>如何设计建立和保持100w的长连接？</h2><h2 id="解释什么是MESI协议-缓存一致性"><a href="#解释什么是MESI协议-缓存一致性" class="headerlink" title="解释什么是MESI协议(缓存一致性)"></a>解释什么是MESI协议(缓存一致性)</h2><h2 id="说说你知道的几种HASH算法，简单的也可以"><a href="#说说你知道的几种HASH算法，简单的也可以" class="headerlink" title="说说你知道的几种HASH算法，简单的也可以"></a>说说你知道的几种HASH算法，简单的也可以</h2><h2 id="什么是paxos算法"><a href="#什么是paxos算法" class="headerlink" title="什么是paxos算法"></a>什么是paxos算法</h2><h2 id="redis和memcached-的内存管理的区别"><a href="#redis和memcached-的内存管理的区别" class="headerlink" title="redis和memcached 的内存管理的区别"></a>redis和memcached 的内存管理的区别</h2><h2 id="一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"><a href="#一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新" class="headerlink" title="一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新"></a>一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</h2><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="10亿个数字里里面找最小的10个"><a href="#10亿个数字里里面找最小的10个" class="headerlink" title="10亿个数字里里面找最小的10个"></a>10亿个数字里里面找最小的10个</h2><h2 id="有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"><a href="#有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优" class="headerlink" title="有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优"></a>有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优</h2><h2 id="2亿个随机生成的无序整数-找出中间大小的值"><a href="#2亿个随机生成的无序整数-找出中间大小的值" class="headerlink" title="2亿个随机生成的无序整数,找出中间大小的值"></a>2亿个随机生成的无序整数,找出中间大小的值</h2><h2 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a>遍历二叉树</h2><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"><a href="#数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点" class="headerlink" title="数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点"></a>数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</h2><h2 id="高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"><a href="#高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义" class="headerlink" title="高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义"></a>高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</h2><h2 id="SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"><a href="#SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？" class="headerlink" title="SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？"></a>SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</h2><h2 id="数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"><a href="#数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁" class="headerlink" title="数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁"></a>数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</h2><h2 id="MYsql的索引实现方式"><a href="#MYsql的索引实现方式" class="headerlink" title="MYsql的索引实现方式"></a>MYsql的索引实现方式</h2><h2 id="聚集索引和非聚集索引的区别"><a href="#聚集索引和非聚集索引的区别" class="headerlink" title="聚集索引和非聚集索引的区别"></a>聚集索引和非聚集索引的区别</h2><h2 id="数据库中-BTREE和B-tree区别"><a href="#数据库中-BTREE和B-tree区别" class="headerlink" title="数据库中 BTREE和B+tree区别"></a>数据库中 BTREE和B+tree区别</h2>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/09/12/TensorFlow-2-0-RC-is-available/" class="image is-7by1">
+            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="TensorFlow 2.0 RC is available">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-12T13:41:44.000Z">2019-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 382 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/12/TensorFlow-2-0-RC-is-available/">TensorFlow 2.0 RC is available</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/12/fc47ee60-d560-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
+<h1 id="TensorFlow-2-0-RC"><a href="#TensorFlow-2-0-RC" class="headerlink" title="TensorFlow 2.0 RC"></a>TensorFlow 2.0 RC</h1><p>工具<br>探索可支持和加速 TensorFlow 工作流程的工具。</p>
+<p><img src="/images/2019/09/12/0d102030-d563-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
+<h2 id="CoLab"><a href="#CoLab" class="headerlink" title="CoLab"></a>CoLab</h2><p>Colaboratory 是一个免费的 Jupyter 笔记本环境，不需要进行任何设置就可以使用，并且完全在云端运行。借助 Colaboratory，您只需点击一下鼠标，即可在浏览器中执行 TensorFlow 代码。</p>
+<h2 id="TensorBoard"><a href="#TensorBoard" class="headerlink" title="TensorBoard"></a>TensorBoard</h2><p>一套可视化工具，用于理解、调试和优化TensorFlow程序。</p>
+<h2 id="What-If工具"><a href="#What-If工具" class="headerlink" title="What-If工具"></a>What-If工具</h2><p>一种无代码的方式探究机器学习模型的工具，对模型的理解、调试和公平性很有用。可在TensorFlow和Jupyter或CoLab笔记本中使用。</p>
+<h2 id="ML-Perf"><a href="#ML-Perf" class="headerlink" title="ML Perf"></a>ML Perf</h2><p>全面的机器学习基准测试套件，用于衡量机器学习软件框架、机器学习硬件加速器和机器学习云端平台的性能。</p>
+<h2 id="XLA"><a href="#XLA" class="headerlink" title="XLA"></a>XLA</h2><p>XLA(加速线性代数)是一种特定领域的线性代数编译器，能够优化TensorFlow计算，它可以提高服务器和移动平台的运行速度改进内存使用情况和可移植性。</p>
+<h2 id="TensorFlow-Playground"><a href="#TensorFlow-Playground" class="headerlink" title="TensorFlow Playground"></a>TensorFlow Playground</h2><p>在浏览器中设计神经网络。别担心，不会使浏览器崩溃。</p>
+<h2 id="TensorFlow-Research-Cloud"><a href="#TensorFlow-Research-Cloud" class="headerlink" title="TensorFlow Research Cloud"></a>TensorFlow Research Cloud</h2><p>加入TensorFlow Research Cloud（TFRC）计划后，研究人员可于申请访问Cloud TPU来加快实现下一波研究突破；我们免费提供1000个Cloud TPU.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-12T13:15:04.000Z">2019-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 652 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/12/nohup-在linux后台运行程序/">nohup:在linux后台运行程序</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/12/0188c220-d55f-11e9-b847-b9c45ddd4bb9.png" alt="image.png"></p>
+<h1 id="nohup-在linux后台运行程序"><a href="#nohup-在linux后台运行程序" class="headerlink" title="nohup:在linux后台运行程序"></a>nohup:在linux后台运行程序</h1><p>今天在工作中，lz要在Linux系统上运行一个java程序，这个程序要在系统中持续运行。随后lz无意将ssh窗口关掉了，发现java程序停止了。原来，当使用ssh连接到系统运行程序的时候，该程序已经和你的ssh连接绑定了。如果你关闭连接，该程序就会停止。还有一个情景：如果要在后台运行多个java程序的时候，就需要启动多个ssh窗口，这样很麻烦。有没有方法来解决这个问题呢？答案是肯定的。</p>
+<p>1.使用nohup来执行命令，它会把命令自动调到linux后台运行，不锁定当前ssh窗口，也不会被ctrl + c，alt + F4之类打断程序的动行。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar test.jar &amp;</span><br></pre></td></tr></table></figure>
+
+<p>执行完该命令后，终端会显示如下信息：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1] 27945</span><br><span class="line">nohup: 忽略输入并把输出追加到&quot;nohup.out&quot;</span><br></pre></td></tr></table></figure>
+
+<p>[1]：该后台任务的jobid<br>27945：是该进程的pid<br>nohup.out：是该任务的输出位置</p>
+<p>2.要指定重定向的文件，如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar test.jar &gt; test.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<p>3.如果一个任务已经在前台执行，那就使用以下方法来将任务调整到后台：</p>
+<p>（1）首先，在正在执行任务的终端使用ctrl+z</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1]+  已停止               java -jar test.jar</span><br></pre></td></tr></table></figure>
+
+<p>（2）使用bg命令将该任务调整至后台（fg与之相反，将后台任务调整至前台）</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bg %1(1是jobid)</span><br></pre></td></tr></table></figure>
+
+<p>如果不知道jobid，也可以使用jobs命令来查询。</p>
+<p>但是任务的输出还是会打印到终端上的（具体怎么将输出重定向到别的地方，lz也不造）。而且，这时该任务还是与当前终端相关联的，关闭终端还是会断掉该任务的。使用下面命令来解决：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disown -h %1</span><br></pre></td></tr></table></figure>
+
+<p>这样再也不用担心关掉终端会停止掉任务喽！！！</p>
+<p>PS：再来说说nohup吧。nohup的意思是no hang up，就是说关掉终端是不会挂掉程序的。如果开始执行命令时只使用&amp;：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar test.jar &amp;</span><br></pre></td></tr></table></figure>
+
+<p>那么该任务也会在后台执行，但是一旦关掉终端该任务还是会挂掉，所以这就是nohup的用处了。</p>
+<p><a href="http://ee-dreamer.com/?p=327" target="_blank" rel="noopener">原文链接</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-12T11:49:16.000Z">2019-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 406 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/12/骨传导/">骨传导</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="骨传导"><a href="#骨传导" class="headerlink" title="骨传导"></a>骨传导</h1><p><img src="/images/2019/09/12/3570d660-d553-11e9-b519-9f31cc87a9f9.png" alt="image.png"></p>
+<p>骨传导是一种声音传导方式，即通过将声音转化为不同频率的机械振动，通过人的颅骨、骨迷路、内耳淋巴液传递、螺旋器、听神经、听觉中枢来传递声波。相对于通过振膜产生声波的经典声音传导方式，骨传导省去了许多声波传递的步骤，能在嘈杂的环境中实现清晰的声音还原，而且声波也不会因为在空气中扩散而影响到他人。</p>
+<p>骨传导技术分为骨传导扬声器技术和骨传导麦克风技术：</p>
+<ol>
+<li>骨传导扬声器技术 用于受话，受话即听取声音。气导扬声器是把电信号转化为的声波（振动信号传至听神经。而骨传导扬声器则是电信号转化的声波（振动信号）直接通过骨头传至听神经。声波（振动信号）的传递介质不同。</li>
+<li>骨传导麦克风技术 用于送话，送话即收集声音。气导送话是声波通过空气传至麦克风，而骨传导送话则直接通过骨头传递。</li>
+</ol>
+<p>利用这些骨传导技术制造的耳机，称之为骨传导耳机，也被称作骨导耳机、骨感耳机、骨传耳机和骨传感耳机。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E9%AA%A8%E4%BC%A0%E5%AF%BC" target="_blank" rel="noopener">原文链接</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-12T10:09:12.000Z">2019-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1923 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/12/三阶魔方解法/">三阶魔方解法</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="三阶魔方解法"><a href="#三阶魔方解法" class="headerlink" title="三阶魔方解法"></a>三阶魔方解法</h1><p>预备篇：三阶魔方相关知识<br>在本教程中，统一使用官方配色（上黄、下白、左橙、右红、前蓝、后绿），并在还原的过程中，白色作为底色。</p>
+<p>下图中，A、B、C分别表示顶层、中层、底层；D为中心块，在还原的过程中以此作为参照色（即该面所最终还原的颜色）；E为棱块，每块有两个颜色；F为角块，每块有三个颜色。</p>
+<p>在本教程中，分别用Front、Back、Left、Right、Up、Down的首字母表示前面、后面、左面、右面、上面、下面的顺时针90度旋转，带撇号的为逆时针90度逆转，带数字2的为180度旋转。</p>
+<p><img src="/images/2019/09/12/15512550-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
+<p><img src="/images/2019/09/12/196bddb0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
+<p>第一步：完成底层四棱<br>子步骤一：拼成黄心白瓣小花<br>如下图①所示，我们只要在黄色中心块的四周的棱块都挨着白色即可。</p>
+<p>对于在中层的白色棱，如②所示，只需转一个90度即可将白色朝上；对于在顶层、底层朝外的白色棱，如③所示，先在白色所在面转动90度后变成②的情况再处理；而在底层朝下的白色棱，如④所示，则通过180度旋转即可将白色朝上。</p>
+<p>值得留意的是⑤之类的情况，如果直接转90度将中层白色块朝上，那么会破坏掉上方原先已有的白色块。此时要先转动顶层（此例为U’），将空位转到对应位置，方可使该白色块转上去。</p>
+<p><img src="/images/2019/09/12/2458a640-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
+<p>子步骤二：找到相应颜色并掉落花瓣<br>先随意选定一个白色棱（下图以白红棱为例），转动顶层（或扭转中底层），直到该棱侧面的颜色与中心块吻合时，以该中心块为轴转动180度，使其落到白色中心旁边。用同样的方法处理其他三个棱之后，在底层会形成白色的十字，棱的侧面也与中心块相连。</p>
+<p><img src="/images/2019/09/12/29f0fdf0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
+<p>第二步：完成底层四角<br>这一步我们不仅要让白色的四角全都聚集在下面，还要留意其角块侧面的颜色也要吻合。</p>
+<p>如下图的上半部分所示，我们先在顶层寻找含白色的角块，同时观察该角块另外两种颜色，转动顶层（或扭转中底层），使之处在相应颜色的两个中心块之间。</p>
+<p>当角块转到相应位置后，观察白色的朝向，做相应的公式：</p>
+<p>①为白色朝右，做U’ F’ U F；<br>②为白色朝前，做U R U’ R’；<br>③为白色朝上，做三遍的公式①。<br>当顶层无任何白色角块时，此时再观察底层有无错误朝向或位置的白色角块：</p>
+<p>④在底层，白色朝右，做两遍的公式①；<br>⑤在底层，白色朝前，做两遍的公式②；<br>⑥在底层，错误位置角块，先做公式①将其赶回顶层，然后找到相应正确位置还原。<br>用同样的方法处理其他三个角之后，底面为全白色，侧面会形成倒T字。</p>
+<p><img src="/images/2019/09/12/32aa1da0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
+<p>第三步：完成中层四棱<br>如下图的上半部分所示，我们先在顶层寻找不含黄色的棱块，同时观察该棱块另外两种颜色，转动顶层（或扭转中底层），使之朝外的颜色与中心块相吻合。</p>
+<p>当棱块转到相应位置后，观察最终所归的空位，并将空位置于右前方，做相应的公式（前面的公式①与②，在这里称为甲与乙）：</p>
+<p>①情况做U’ F’ U F U R U’ R’（先甲后乙）；<br>②情况做U R U’ R’ U’ F’ U F（先乙后甲）；<br>当顶层全为有黄色的棱块时，此时再观察中层有无错误朝向或位置的棱块：</p>
+<p>③与④情况，先做甲+乙将其赶回顶层，然后找到相应正确位置还原。<br>用同样的方法处理其他三个棱之后，第二层即完成。</p>
+<p><img src="/images/2019/09/12/3a6a1040-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png"></p>
+<p>第四步：完成顶面十字<br>现在观察顶面的棱与中心块所构成的图形（忽视角块黄色是否朝上与否）分为“点、线、拐、十字”四种情况。找到相应的情况并按图示朝向摆放后，按照下流程图每次做R’ U’ F’ U F R（R’+甲+R）直到变成十字为止。其中“线”的情况还有一条捷径，即F R U R’ U’ F’。</p>
+<p><img src="/images/2019/09/12/3e428f80-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 7a.png</p>
+<p>第五步：调整顶棱顺序<br>先转动顶层（或扭转中底层），直到至少有两个棱侧面的颜色与中心块吻合。</p>
+<p>现在观察另外两个错误的棱处于相邻还是相对位置，如果没有，则此步跳过；如果是相邻的，则将两个错误的置一前一右，做丙公式U’ F’ U’ F U’ F’ U2 F；如果是相对的，则将两个错误的置一左一后，先做丙公式，然后转下顶层变为相邻的，再置一前一右做丙公式完成。</p>
+<p><img src="/images/2019/09/12/42486050-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 8.png</p>
+<p>第六步：调整顶角顺序<br>观察顶角，找到在正确位置的一个角（朝向是否正确暂时不考虑）。如果四角都在正确位置，则此步跳过；如果只有一个，则将正确的角置于左前方，做丁公式U’ L’ U R U’ L U R’（做一遍仍未成功则再做第二遍）；如果没有一个角在正确位置，则先做丁公式然后变成有一个角在正确位置再相应处理。</p>
+<p><img src="/images/2019/09/12/48ad7de0-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 9.png</p>
+<p>第七步：调整顶角朝向<br>此时我们统一将蓝色中心块保持前面放置，需要注意的是在操作的过程中魔方的底层会被暂时性打乱，不过不要紧，只要正确操作完后魔方会正常还原。</p>
+<p>观察顶层前右方的角块的黄色朝向，做戊公式F’ R F R’二或四遍使黄色朝上。完成一个角块的朝向处理之后，要转动顶层（U、U’、U2），并保持蓝色中心块在前面不动，再处理其他角块朝向。(在每一角落都要扭)</p>
+<p><img src="/images/2019/09/12/4cc8d280-d545-11e9-8235-2d6944e8ee9c.png" alt="image.png">Cube solve 10.png</p>
+<p><a href="https://zh.wikibooks.org/zh-hans/%E4%B8%89%E9%98%B6%E9%AD%94%E6%96%B9%E8%A7%A3%E6%B3%95" target="_blank" rel="noopener">维基百科</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-10T13:45:18.000Z">2019-09-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 968 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/10/Git-Rebase-黄金法则问题/">Git Rebase 黄金法则问题</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Git-Rebase-黄金法则问题"><a href="#Git-Rebase-黄金法则问题" class="headerlink" title="Git Rebase 黄金法则问题"></a>Git Rebase 黄金法则问题</h1><p>git 整合来自不同分支的修改主要有两种方法：merge 操作和rebase操作，<br>merge初学者可能很熟悉。我们今天来主要说一下 rebase 操作，文章结尾会简单说一下 merge 操作的 –no-ff 参数问题。</p>
+<p>rebase的简单定义：你可以把某一分支的所有修改都移至另外一个分支就像重新播放一样。<br>有点儿像金庸武侠小说里面的乾坤大挪移。<br>举个🌰<br>假设我们本地库的代码，如下所示</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      A---B---C  remotes/origin/master</span><br><span class="line">     /</span><br><span class="line">D---E---F---G  master</span><br></pre></td></tr></table></figure>
+
+<p>如果此时我们执行 git pull 操作，就会变成下面的样子，因为 pull 默认执行的是 merge 操作，多出来H这次没必要的提交。如下所示</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">     A---B---C  remotes/origin/master</span><br><span class="line">     /         \</span><br><span class="line">D---E---F---G---H master</span><br></pre></td></tr></table></figure>
+
+<p>如果我们执行 git pull –rebase 操作，将会变成下面的样子，这里我们用rebase代替了默认的merge操作</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">            remotes/origin</span><br><span class="line">                |</span><br><span class="line">D---E---A---B---C---F---G</span><br><span class="line">                        |</span><br><span class="line">                        master</span><br></pre></td></tr></table></figure>
+
+<p>rebase 作用就是变成线性了，这在多人协作的情况变得非常关键。因为多人合作是不允许随意制造分叉的。大家可以参考我这篇文章。</p>
+<p>这就引出了这篇博文要主要阐述的问题，rebase golden rule 问题。</p>
+<blockquote>
+<p>Rebase golden rule<br>“No one shall rebase a shared branch” — Everyone about rebase</p>
+</blockquote>
+<p>简单来说就是不要在你的公共分支上做任何rebase操作。<br>再举一个🌰。</p>
+<p>图一是我们做rebase操作前的样子</p>
+<p><img src="/images/2019/09/10/75e5c990-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
+<p>图二是我们正确rebase的结果，即在feature分支执行rebase develop命令</p>
+<p><img src="/images/2019/09/10/7a0f9d20-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
+<p>图三是我们错误rebase的结果，即违反黄金法则的结果，我们在develop分支上执行了rebase feature操作</p>
+<p><img src="/images/2019/09/10/7ce48f10-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
+<p>当我们在图三这种情况下对develop分支进行提交的话，会发现和远程分支冲突，然后我们手动或自动解决冲突，继续提交上去之后发现，我们修改的功能代码已经提交上去了，但是当我们看我们提交历史的记录的时候会发现有一部分重复的提交log。<br>这就是问题所在，你的项目组长是绝对不允许在他的项目里出现这种情况，因为会影响后续的代码追查，code review等问题。<br>说完了这个问题，这篇博文的主要任务基本完成了，最后在简单说一下 merge 的 –no-ff 参数，这也是我们在分支合并的时候经常遇到的问题。<br>–no-ff 的意思就是关闭 merge 的 fast-forwarded，merge 操作默认执行的是 fast-forwarded。<br>fast-forwarded 的意思就是在合并分支的时候，如果不涉及三方合并，git 只会简单的移动指针。<br>再再举一个🌰</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        dev</span><br><span class="line">        |</span><br><span class="line">A---B---C</span><br><span class="line">         \</span><br><span class="line">          D---E</span><br><span class="line">              |</span><br><span class="line">              feature</span><br></pre></td></tr></table></figure>
+
+<p>此时我们执行 merge –no-ff 操作，将会得到如下图</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">                dev</span><br><span class="line">                |</span><br><span class="line">A---B---C--------F</span><br><span class="line">         \      /</span><br><span class="line">          D---E</span><br></pre></td></tr></table></figure>
+
+<p>执行 merge 之后得到的结果如下</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">               dev</span><br><span class="line">                |</span><br><span class="line">A---B---C---D---E</span><br></pre></td></tr></table></figure>
+
+<p>如上git 将指针从C移到了E。</p>
+<p>简单来说就是 –no-ff 的作用就是保持分支的非线性。方便我们看到分支的变化。</p>
+<blockquote>
+<p>本文作者： Frank<br>本文链接： <a href="http://hellofrank.github.io/2018/04/27/Git-Rebase-黄金法则问题/" target="_blank" rel="noopener">http://hellofrank.github.io/2018/04/27/Git-Rebase-黄金法则问题/</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
+</blockquote>
 
         </div>
         
@@ -574,9 +1431,7 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/22/">22</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/9/">9</a></li>
             
         </ul>
     </nav>

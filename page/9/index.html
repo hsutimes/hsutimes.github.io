@@ -146,7 +146,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-25T08:34:54.000Z">2019-10-25</time>
+                <time class="level-item has-text-grey" datetime="2019-09-05T18:53:05.000Z">2019-09-06</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 354 个字)
+                    4 分钟 读完 (大约 564 个字)
                 </span>
                 
                 
@@ -165,25 +165,35 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/25/windows-edb-mv/">windows.edb_mv</a>
+                <a class="has-link-black-ter" href="/2019/09/06/判断素数/">判断素数</a>
             
         </h1>
         <div class="content">
-            <h1 id="【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘"><a href="#【Win10瘦身技巧】把索引文件Windows-edb移动到非系统盘" class="headerlink" title="【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘"></a>【Win10瘦身技巧】把索引文件Windows.edb移动到非系统盘</h1><blockquote>
-<p>先介绍Windows.edb是什么东东，很奇怪的后缀名哦。其实它就是Windows10为加快搜索速度而建立的索引文件，所以还是很有用的，但是看看它的体积，你就会觉得也太占系统盘的空间了。Windows.edb文件所在的路径为：</p>
-</blockquote>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\ProgramData\Microsoft\Search\Data\Applications\Windows</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/2019/10/25/30949570-f702-11e9-84fc-111e5c1675c4.png" alt="image.png"></p>
-<blockquote>
-<p>虽然我们可以删除该文件，但正像前面说过的，它还是比较有用的（并且删除后，再次使用搜索功能后，它还会生成的），所以我们最好保留着它，但可以移动一下Windows.edb文件的位置，把它移动到非系统盘。方法如下：</p>
-</blockquote>
+            <p><img src="/images/2019/09/06/033e9e90-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h1><ul>
+<li>质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。</li>
+<li>0和1既不是质数也不是合数，最小的质数是2</li>
+</ul>
 <ol>
-<li>在Win10任务栏的Cortana搜索框中输入“索引选项”，点击搜索结果中的“索引选项（控制面板）”打开“索引选项”窗口。</li>
-<li>点击窗口底部的“高级”按钮，打开“高级选项”窗口。</li>
-<li>在“索引位置”区域点击右下角的“选择新位置”按钮，为Windows.edb选择非系统盘的路径即可。最后点击“确定”，重启电脑后生效。</li>
+<li>最直观，但效率最低的写法</li>
 </ol>
+<p>这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。</p>
+<p>然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<ol start="2">
+<li>优化</li>
+</ol>
+<p>我们继续分析，其实质数还有一个特点，就是它总是等于 6x-1 或者 6x+1，其中 x 是大于等于1的自然数。</p>
+<p>如何论证这个结论呢，其实不难。首先 6x 肯定不是质数，因为它能被 6 整除；其次 6x+2 肯定也不是质数，因为它还能被2整除；依次类推，6x+3 肯定能被 3 整除；6x+4 肯定能被 2 整除。那么，就只有 6x+1 和 6x+5 (即等同于6x-1) 可能是质数了。所以循环的步长可以设为 6，然后每次只判断 6 两侧的数即可。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (num &lt;= <span class="hljs-number">3</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> num &gt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 不在6的倍数两侧的一定不是质数</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (num % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; num % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> sqrt = (<span class="hljs-keyword">int</span>) Math.sqrt(num);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= sqrt; i += <span class="hljs-number">6</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (num % i == <span class="hljs-number">0</span> || num % (i + <span class="hljs-number">2</span>) == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>性能对比</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// Scanner in = new Scanner(System.in);</span></span><br><span class="line">        <span class="hljs-comment">// int n = in.nextInt();</span></span><br><span class="line">        <span class="hljs-comment">// in.close();</span></span><br><span class="line">        Stack&lt;Integer&gt; a = <span class="hljs-keyword">new</span> Stack&lt;&gt;(), b = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> n = <span class="hljs-number">100000</span>;</span><br><span class="line">        <span class="hljs-keyword">long</span> s = System.currentTimeMillis(), e;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (f(i))</span><br><span class="line">                a.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        e = System.currentTimeMillis();</span><br><span class="line">        System.out.println(e - s + <span class="hljs-string">" ms"</span>);</span><br><span class="line">        s = System.currentTimeMillis();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (func(i))</span><br><span class="line">                b.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        e = System.currentTimeMillis();</span><br><span class="line">        System.out.println(e - s + <span class="hljs-string">" ms"</span>);</span><br><span class="line">        System.gc();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; n % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span> tem = (<span class="hljs-keyword">int</span>) Math.sqrt(n);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= tem; i += <span class="hljs-number">6</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span> || n % (i + <span class="hljs-number">2</span>) == <span class="hljs-number">0</span>)</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1392 ms</span><br><span class="line">5 ms</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -205,7 +215,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-24T13:19:23.000Z">2019-10-24</time>
+                <time class="level-item has-text-grey" datetime="2019-09-05T13:26:58.000Z">2019-09-05</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -215,7 +225,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 448 个字)
+                    8 分钟 读完 (大约 1196 个字)
                 </span>
                 
                 
@@ -224,164 +234,46 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/24/lianhuafeng/">lianhuafeng</a>
+                <a class="has-link-black-ter" href="/2019/09/05/深入理解Node-js-中的进程与线程/">深入理解Node.js 中的进程与线程</a>
             
         </h1>
         <div class="content">
-            <h1 id="莲花峰（安徽境内山峰）"><a href="#莲花峰（安徽境内山峰）" class="headerlink" title="莲花峰（安徽境内山峰）"></a>莲花峰（安徽境内山峰）</h1><blockquote>
-<p>莲花峰，是黄山风景区境内第一高峰，为36大峰之首，海拔1864.8米。位于登山步道玉屏楼到鳌鱼峰之间。莲花峰登峰盘道5里，相对高度110米。1997年，莲花沟开辟500米登山新道，由蹬道、栈桥、观景台等组成。</p>
+            <p><img src="/images/2019/09/05/0d781bf0-cfe0-11e9-a152-33ef044f5d50.png" alt="image.png"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>进程与线程是一个程序员的必知概念，面试经常被问及，但是一些文章内容只是讲讲理论知识，可能一些小伙伴并没有真的理解，在实际开发中应用也比较少。本篇文章除了介绍概念，通过Node.js 的角度讲解进程与线程，并且讲解一些在项目中的实战的应用，让你不仅能迎战面试官还可以在实战中完美应用。</p>
+<h1 id="面试会问"><a href="#面试会问" class="headerlink" title="面试会问"></a>面试会问</h1><blockquote>
+<p>Node.js是单线程吗？</p>
 </blockquote>
 <blockquote>
-<p>莲花峰峻峭高耸，气势雄伟。因主峰突兀，小峰簇拥，俨若新莲初开，仰天怒放，故名“莲花峰”。“登峰起步缓坡称“莲梗”，中间穿过四个石洞，古人称“莲孔”。洞穴陡立，游人叠级而上，如在莲孔中穿行，恰似“倾曲作蚁旋出花萼中”。沿途风光奇绝，峰壁间有“真好造化”、“非人间也”、“名不虚传”、“天海奇观”等摩崖题刻。峰下有莲花洞、莲花源。</p>
+<p>Node.js 做耗时的计算时候，如何避免阻塞？</p>
 </blockquote>
 <blockquote>
-<p>明代吴怅曾有诗赞曰：“一种青莲吐绛霞，亭亭玉立净无瑕。遥看天际浮云卷，露出峰顶十丈花。”清代吴梦印亦有诗云：“莲峰秀拔迥称尊，凡欲高呼达帝阍。举目江山如带砺，低头峦蚰似儿孙。风生绝献应回雁，日落悬岩不度猿。翠影岚光千万状，我虽能到未能言。”连接莲花岭和莲花峰的是一条长达一公里半的蜿蜒小道，在到达峰顶前要过四个洞穴。<br>莲花峰上既有许多或似飞龙或似双龙的松树，也有著名的黄山杜鹃花 [1]  。</p>
+<p>Node.js如何实现多进程的开启和关闭？</p>
 </blockquote>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-22T13:17:32.000Z">2019-10-22</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 688 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/22/weilibipei/">weilibipei</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="违例匹配"><a href="#违例匹配" class="headerlink" title="违例匹配"></a>违例匹配</h1><p>“掷”出一个违例后，违例控制系统会按当初编写的顺序搜索“最接近”的控制器。一旦找到相符的控制器，就认为违例已得到控制，不再进行更多的搜索工作。</p>
-<p>在违例和它的控制器之间，并不需要非常精确的匹配。一个衍生类对象可与基础类的一个控制器相配，如下例所示：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//: Human.java</span><br><span class="line">// Catching Exception Hierarchies</span><br><span class="line"></span><br><span class="line">class Annoyance extends Exception &#123;&#125;</span><br><span class="line">class Sneeze extends Annoyance &#123;&#125;</span><br><span class="line"></span><br><span class="line">public class Human &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      throw new Sneeze();</span><br><span class="line">    &#125; catch(Sneeze s) &#123;</span><br><span class="line">      System.out.println(&quot;Caught Sneeze&quot;);</span><br><span class="line">    &#125; catch(Annoyance a) &#123;</span><br><span class="line">      System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; ///:~</span><br></pre></td></tr></table></figure>
-
-<p>Sneeze违例会被相符的第一个catch从句捕获。当然，这只是第一个。然而，假如我们删除第一个catch从句：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw new Sneeze();</span><br><span class="line">&#125; catch(Annoyance a) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>那么剩下的catch从句依然能够工作，因为它捕获的是Sneeze的基础类。换言之，catch(Annoyance e)能捕获一个Annoyance以及从它衍生的任何类。这一点非常重要，因为一旦我们决定为一个方法添加更多的违例，而且它们都是从相同的基础类继承的，那么客户程序员的代码就不需要更改。至少能够假定它们捕获的是基础类。</p>
-<p>若将基础类捕获从句置于第一位，试图“屏蔽”衍生类违例，就象下面这样：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw new Sneeze();</span><br><span class="line">&#125; catch(Annoyance a) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Annoyance&quot;);</span><br><span class="line">&#125; catch(Sneeze s) &#123;</span><br><span class="line">  System.out.println(&quot;Caught Sneeze&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>则编译器会产生一条出错消息，因为它发现永远不可能抵达Sneeze捕获从句。</p>
-<p>9.8.1 违例准则</p>
-<p>用违例做下面这些事情：</p>
-<p>(1) 解决问题并再次调用造成违例的方法。</p>
-<p>(2) 平息事态的发展，并在不重新尝试方法的前提下继续。</p>
-<p>(3) 计算另一些结果，而不是希望方法产生的结果。</p>
-<p>(4) 在当前环境中尽可能解决问题，以及将相同的违例重新“掷”出一个更高级的环境。</p>
-<p>(5) 在当前环境中尽可能解决问题，以及将不同的违例重新“掷”出一个更高级的环境。</p>
-<p>(6) 中止程序执行。</p>
-<p>(7) 简化编码。若违例方案使事情变得更加复杂，那就会令人非常烦恼，不如不用。</p>
-<p>(8) 使自己的库和程序变得更加安全。这既是一种“短期投资”（便于调试），也是一种“长期投资”（改善应用程序的健壮性）</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-21T14:32:22.000Z">2019-10-21</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1095 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/21/computer-vision-weekly-news-20191003/">computer-vision-weekly-news-20191003</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="计算机视觉开源周报20191003期"><a href="#计算机视觉开源周报20191003期" class="headerlink" title="计算机视觉开源周报20191003期"></a>计算机视觉开源周报20191003期</h1><blockquote>
-<p>总结了过去一周CV领域的最新开源代码，发现本周出现多份很有价值的高质量、重量级工作，比如致力于使得图卷积网络更深的DeepGCNs、Mask引导的注意力网络大大改进了遮挡行人重识别、格灵深瞳轻量级人脸识别比赛冠军模型VarGFaceNet、比LSTM更优的新RNN模型IndRNN、还有异常强大的字符级文本识别CharNet。</p>
+<blockquote>
+<p>Node.js可以创建线程吗？</p>
 </blockquote>
-<p><img src="/images/2019/10/21/f3b59040-f40f-11e9-89e6-e714074eda99.png" alt="image.png"></p>
+<blockquote>
+<p>你们开发过程中如何实现进程守护的？</p>
+</blockquote>
+<blockquote>
+<p>除了使用第三方模块，你们自己是否封装过一个多进程架构?</p>
+</blockquote>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>进程Process是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础，进程是线程的容器（来自百科）。进程是资源分配的最小单位。我们启动一个服务、运行一个实例，就是开一个服务进程，例如 Java 里的 JVM 本身就是一个进程，Node.js 里通过 node app.js 开启一个服务进程，多进程就是进程的复制（fork），fork 出来的每个进程都拥有自己的独立空间地址、数据栈，一个进程无法访问另外一个进程里定义的变量、数据结构，只有建立了 IPC 通信，进程之间才可数据共享。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> server = http.createServer();</span><br><span class="line">server.listen(<span class="hljs-number">3000</span>,()=&gt;&#123;</span><br><span class="line">    process.title=<span class="hljs-string">'程序员成长指北测试进程'</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'进程id'</span>,process.pid)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>运行上面代码后，以下为 Mac 系统自带的监控工具 “活动监视器” 所展示的效果，可以看到我们刚开启的 Nodejs 进程 7663<br><img src="/images/2019/09/05/827bb4c0-cfe0-11e9-a152-33ef044f5d50.png" alt="image.png"></p>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>线程是操作系统能够进行运算调度的最小单位，首先我们要清楚线程是隶属于进程的，被包含于进程之中。一个线程只能隶属于一个进程，但是一个进程是可以拥有多个线程的。</p>
+<h2 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h2><p><strong>单线程就是一个进程只开一个线程</strong></p>
+<p>Javascript 就是属于单线程，程序顺序执行(这里暂且不提JS异步)，可以想象一下队列，前面一个执行完之后，后面才可以执行，当你在使用单线程语言编码时切勿有过多耗时的同步操作，否则线程会造成阻塞，导致后续响应无法处理。你如果采用 Javascript 进行编码时候，请尽可能的利用Javascript异步操作的特性。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> longComputation = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1e10</span>; i++) &#123;</span><br><span class="line">    sum += i;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="hljs-keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> server = http.createServer();</span><br><span class="line">server.on(<span class="hljs-string">'request'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (req.url === <span class="hljs-string">'/compute'</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">'计算开始'</span>,<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>());</span><br><span class="line">    <span class="hljs-keyword">const</span> sum = longComputation();</span><br><span class="line">    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">'计算结束'</span>,<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>());</span><br><span class="line">    <span class="hljs-keyword">return</span> res.end(<span class="hljs-string">`Sum is <span class="hljs-subst">$&#123;sum&#125;</span>`</span>);</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    res.end(<span class="hljs-string">'Ok'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="hljs-number">3000</span>);</span><br><span class="line"><span class="hljs-comment">//打印结果</span></span><br><span class="line"><span class="hljs-comment">//计算开始 2019-07-28T07:08:49.849Z</span></span><br><span class="line"><span class="hljs-comment">//计算结束 2019-07-28T07:09:04.522Z</span></span><br></pre></td></tr></table></figure>
+
+<p>查看打印结果，当我们调用127.0.0.1:3000/compute<br>的时候，如果想要调用其他的路由地址比如127.0.0.1/大约需要15秒时间，也可以说一个用户请求完第一个compute接口后需要等待15秒，这对于用户来说是极其不友好的。下文我会通过创建多进程的方式child_process.fork 和cluster 来解决解决这个问题。</p>
+<p>单线程的一些说明</p>
 <ul>
-<li><p>一种web运行的半自动图像标注的灵活框架LOST（Label Objects and Save Time）<br>LOST: A flexible framework for semi-automatic image annotation<br>Jonas Jäger, Gereon Reus, Joachim Denzler, Viviane Wolff, Klaus Fricke-Neuderth<br><a href="https://arxiv.org/abs/1910.07486v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07486v1</a><br><a href="https://github.com/l3p-cv/lost" target="_blank" rel="noopener">https://github.com/l3p-cv/lost</a></p>
-</li>
-<li><p>对抗表示学习中的全局最优化问题<br>On the Global Optima of Kernelized Adversarial Representation Learning<br>Bashir Sadeghi, Runyi Yu, Vishnu Naresh Boddeti<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.07423v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07423v1</a><br><a href="https://github.com/human-analysis/Kernel-ARL" target="_blank" rel="noopener">https://github.com/human-analysis/Kernel-ARL</a></p>
-</li>
-<li><p>学习泛化的全尺度表示，用于人员重识别，模型更小，精度更优<br>Learning Generalisable Omni-Scale Representations for Person Re-Identification<br>Kaiyang Zhou, Xiatian Zhu, Yongxin Yang, Andrea Cavallaro, Tao Xiang<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06827v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06827v1</a><br><a href="https://github.com/KaiyangZhou/deep-person-reid" target="_blank" rel="noopener">https://github.com/KaiyangZhou/deep-person-reid</a></p>
-</li>
-<li><p>将ResNet和DenseNet引入到图卷积网络中，可以训练更深（达112层）的GCN，在多个任务中达到了更高的精度。<br>DeepGCNs: Making GCNs Go as Deep as CNNs<br>Guohao Li, Matthias Müller, Guocheng Qian, Itzel C. Delgadillo, Abdulellah Abualshour, Ali Thabet, Bernard Ghanem<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06849v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06849v1</a><br><a href="https://github.com/lightaime/deep_gcns_torch" target="_blank" rel="noopener">https://github.com/lightaime/deep_gcns_torch</a><br><a href="https://github.com/lightaime/deep_gcns" target="_blank" rel="noopener">https://github.com/lightaime/deep_gcns</a></p>
-</li>
-<li><p>训练智能体玩“躲猫猫”游戏<br>Visual Hide and Seek<br>Boyuan Chen, Shuran Song, Hod Lipson, Carl Vondrick<br><a href="https://arxiv.org/abs/1910.07882v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07882v1</a><br><a href="http://www.cs.columbia.edu/~bchen/visualhideseek/" target="_blank" rel="noopener">http://www.cs.columbia.edu/~bchen/visualhideseek/</a></p>
-</li>
-<li><p>掩膜引导的注意力网络，用于遮挡严重的行人检测，在多个数据集实现了更高的最好精度。CityPersons提升9.5%，Caltech提升5.0%。<br>Mask-Guided Attention Network for Occluded Pedestrian Detection<br>Yanwei Pang, Jin Xie, Muhammad Haris Khan, Rao Muhammad Anwer, Fahad Shahbaz Khan, Ling Shao<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06160v2" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06160v2</a><br><a href="https://github.com/Leotju/MGAN" target="_blank" rel="noopener">https://github.com/Leotju/MGAN</a></p>
-</li>
-<li><p>一种几何启发的卷积操作，有效提升了消失点检测<br>NeurVPS: Neural Vanishing Point Scanning via Conic Convolution<br>Yichao Zhou, Haozhi Qi, Jingwei Huang, Yi Ma<br><a href="https://arxiv.org/abs/1910.06316v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06316v1</a><br><a href="https://github.com/zhou13/neurvps" target="_blank" rel="noopener">https://github.com/zhou13/neurvps</a></p>
-</li>
-<li><p>单次神经架构搜索，基于自我评估模版网络，在CIFAR和ImageNet数据集达到最先进的性能<br>One-Shot Neural Architecture Search via Self-Evaluated Template Network<br>Xuanyi Dong, Yi Yang<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.05733v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.05733v1</a><br><a href="https://github.com/D-X-Y/NAS-Projects" target="_blank" rel="noopener">https://github.com/D-X-Y/NAS-Projects</a></p>
-</li>
-<li><p>学习鉴别特征，用于非监督域适应<br>Drop to Adapt: Learning Discriminative Features for Unsupervised Domain Adaptation<br>Seungmin Lee, Dongwan Kim, Namil Kim, Seong-Gyun Jeong<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.05562v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.05562v1</a><br><a href="https://github.com/postBG/DTA.pytorch" target="_blank" rel="noopener">https://github.com/postBG/DTA.pytorch</a></p>
-</li>
-<li><p>可变组卷积神经网络，可以支持大规模人脸识别，同时减少计算成本和参数。获得格灵深瞳轻量级人脸识别挑战赛冠军！<br>VarGFaceNet: An Efficient Variable Group Convolutional Neural Network for Lightweight Face Recognition<br>Mengjia Yan, Mengao Zhao, Zining Xu, Qian Zhang, Guoli Wang, Zhizhong Su<br>ICCV 2019 Workshop<br><a href="https://arxiv.org/abs/1910.04985v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.04985v1</a><br><a href="https://github.com/zma-c-137/VarGFaceNet" target="_blank" rel="noopener">https://github.com/zma-c-137/VarGFaceNet</a></p>
-</li>
-<li><p>发明一种称为Hadamard乘积的递归连接，构建了独立递归神经网络（IndRNN），其中同一层中的神经元彼此独立并且跨层连接。<br>IndRNN可有效替代LSTM，精度更高的同时，速度是其10倍！<br>Deep Independently Recurrent Neural Network (IndRNN)<br>Shuai Li, Wanqing Li, Chris Cook, Yanbo Gao, Ce Zhu<br><a href="https://arxiv.org/abs/1910.06251v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06251v1</a><br><a href="https://github.com/Sunnydreamrain/IndRNN_pytorch" target="_blank" rel="noopener">https://github.com/Sunnydreamrain/IndRNN_pytorch</a></p>
-</li>
-<li><p>一种以字符为基本单元的单阶段文本检测识别网络，在三个标准基准上对CharNet结果显示，其结果以最先进的结果大大领先之前的算法，比如ICDAR 2015上从65.33％改进到71.08％，TotalText上从54.0％跃升至69.23％。<br>Convolutional Character Networks<br>Linjie Xing, Zhi Tian, Weilin Huang, Matthew R. Scott<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.07954v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07954v1</a><br><a href="https://github.com/MalongTech/research-charnet" target="_blank" rel="noopener">https://github.com/MalongTech/research-charnet</a></p>
-</li>
-<li><p>基于语音指令实现的自动驾驶<br>Conditional Driving from Natural Language Instructions<br>Junha Roh, Chris Paxton, Andrzej Pronobis, Ali Farhadi, Dieter Fox<br>CoRL 2019<br><a href="https://arxiv.org/abs/1910.07615v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07615v1</a><br><a href="https://sites.google.com/view/language-grounded-driving" target="_blank" rel="noopener">https://sites.google.com/view/language-grounded-driving</a></p>
-</li>
-<li><p>医学图像域适应 | 提出了一种新型的无监督域自适应框架，称为协作特征集合自适应（CFEA），改进了眼底图像分割的精度<br>CFEA: Collaborative Feature Ensembling Adaptation for Domain Adaptation in Unsupervised Optic Disc and Cup Segmentation<br>Peng Liu, Bin Kong, Zhongyu Li, Shaoting Zhang, Ruogu Fang<br>MICCAI 2019<br><a href="https://arxiv.org/abs/1910.07638v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07638v1</a><br><a href="https://github.com/cswin/AWC" target="_blank" rel="noopener">https://github.com/cswin/AWC</a></p>
-</li>
+<li>Node.js 虽然是单线程模型，但是其基于事件驱动、异步非阻塞模式，可以应用于高并发场景，避免了线程创建、线程之间上下文切换所产生的资源开销。</li>
+<li>当你的项目中需要有大量计算，CPU 耗时的操作时候，要注意考虑开启多进程来完成了。</li>
+<li>Node.js 开发过程中，错误会引起整个应用退出，应用的健壮性值得考验，尤其是错误的异常抛出，以及进程守护是必须要做的。</li>
+<li>单线程无法利用多核CPU，但是后来Node.js 提供的API以及一些第三方工具相应都得到了解决，文章后面都会讲到。</li>
 </ul>
 
         </div>
@@ -405,7 +297,127 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-20T08:48:58.000Z">2019-10-20</time>
+                <time class="level-item has-text-grey" datetime="2019-09-05T08:08:46.000Z">2019-09-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/笔试/">笔试</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 413 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/05/树的高度（小米2017秋招真题）/">树的高度（小米2017秋招真题）</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/05/39375020-cfb4-11e9-9c01-f368b6d24837.png" alt="image.png"></p>
+<h1 id="树的高度（小米2017秋招真题）"><a href="#树的高度（小米2017秋招真题）" class="headerlink" title="树的高度（小米2017秋招真题）"></a>树的高度（小米2017秋招真题）</h1><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><strong>题目描述</strong></p>
+<p>现在有一棵合法的二叉树，树的节点都是用数字表示，现在给定这棵树上所有的父子关系，求这棵树的高度</p>
+<p><strong>时间限制</strong><br><code>C/C++</code>语言：<code>1000MS</code> 其它语言：<code>3000MS</code></p>
+<p><strong>内存限制</strong><br><code>C/C++</code>语言：<code>65536KB</code> 其它语言：<code>589824KB</code></p>
+<p><strong>输入</strong></p>
+<p>输入的第一行表示节点的个数n（1&lt;=n&lt;=1000，节点的编号为0到n-1）组成，下面是n-1行，每行有两个整数，第一个数表示父节点的编号，第二个数表示子节点的编号</p>
+<p><strong>输出</strong></p>
+<p>输出树的高度，为一个整数</p>
+<p><strong>样例输入</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">0 1</span><br><span class="line">0 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>样例输出</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>java</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="hljs-keyword">int</span> n = sc.nextInt();</span><br><span class="line">        <span class="hljs-keyword">int</span>[] parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            parent[i] = -<span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a = sc.nextInt();</span><br><span class="line">            <span class="hljs-keyword">int</span> b = sc.nextInt();</span><br><span class="line">            parent[b] = a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">int</span> h = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> max = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> j = i;</span><br><span class="line">            <span class="hljs-keyword">while</span> (parent[j] != -<span class="hljs-number">1</span>) &#123;</span><br><span class="line">                j = parent[j];</span><br><span class="line">                max++;</span><br><span class="line">            &#125;</span><br><span class="line">            h = max &gt; h ? max : h;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>python</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(x)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + get(dic_s[x])</span><br><span class="line">    <span class="hljs-keyword">except</span> KeyError:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">n = int(sys.stdin.readline().strip())</span><br><span class="line">dic_s = &#123;&#125;</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(int(n)<span class="hljs-number">-1</span>):</span><br><span class="line">    j_1,j_2 = sys.stdin.readline().strip().split()</span><br><span class="line">    dic_s[j_2] = j_1</span><br><span class="line"><span class="hljs-keyword">print</span> max([get(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> set(dic_s.keys()) - set(dic_s.values())]) <span class="hljs-keyword">if</span> n&gt;<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>javascript</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> n=readInt(),rec=&#123;&#125;,dps=&#123;&#125;,rs=<span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-keyword">while</span>(n--&gt;<span class="hljs-number">1</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> a=readInt(),b=readInt()</span><br><span class="line">  rec[a]=rec[a]||[]</span><br><span class="line">  rec[a].push(b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> rec) rs=<span class="hljs-built_in">Math</span>.max(rs,maxDps(k))</span><br><span class="line">print(rs)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxDps</span>(<span class="hljs-params">n</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!rec[n]) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">if</span>(dps[n]) <span class="hljs-keyword">return</span> dps[n]</span><br><span class="line">  <span class="hljs-keyword">var</span> r=<span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> x <span class="hljs-keyword">of</span> rec[n]) r=<span class="hljs-built_in">Math</span>.max(r,maxDps(x)+<span class="hljs-number">1</span>)</span><br><span class="line">  dps[n]=r</span><br><span class="line">  <span class="hljs-keyword">return</span> dps[n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-04T18:19:56.000Z">2019-09-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 119 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/05/狂野飙车9/">狂野飙车9</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="兰博基尼"><a href="#兰博基尼" class="headerlink" title="兰博基尼"></a>兰博基尼</h1><p><img src="/images/2019/09/05/9977b800-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="2F_1~LEKAJNFXUV8LSF.png"></p>
+<h1 id="法拉利"><a href="#法拉利" class="headerlink" title="法拉利"></a>法拉利</h1><p><img src="/images/2019/09/05/99785440-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="9XNKIXTZ2VV~T_FRX458E.png"></p>
+<h1 id="布加迪"><a href="#布加迪" class="headerlink" title="布加迪"></a>布加迪</h1><p><img src="/images/2019/09/05/9979dae0-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="1RPXGB9J4E7DDCTYG7N.png"></p>
+<h1 id="迈凯伦"><a href="#迈凯伦" class="headerlink" title="迈凯伦"></a>迈凯伦</h1><p><img src="/images/2019/09/05/9979dae1-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="H0NMCXTSL6KSCA9UK9FV6.png"></p>
+<h1 id="兰博基尼-1"><a href="#兰博基尼-1" class="headerlink" title="兰博基尼"></a>兰博基尼</h1><p><img src="/images/2019/09/05/9a2ed300-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="4K0A~9~4ZA_HHS5_DGT.png"></p>
+<h1 id="风神"><a href="#风神" class="headerlink" title="风神"></a>风神</h1><p><img src="/images/2019/09/05/9a3080b0-cf3f-11e9-bcd7-8f307ed3a4cb.png" alt="F65KIMZH_YKHPIRV``GK.png"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-03T16:32:24.000Z">2019-09-04</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/文章/">文章</a>
@@ -415,7 +427,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    16 分钟 读完 (大约 2446 个字)
+                    15 分钟 读完 (大约 2210 个字)
                 </span>
                 
                 
@@ -424,97 +436,716 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/20/PLMpapers/">PLMpapers</a>
+                <a class="has-link-black-ter" href="/2019/09/04/Spring框架面试总结/">Spring框架面试总结</a>
             
         </h1>
         <div class="content">
-            <h1 id="PLMpapers"><a href="#PLMpapers" class="headerlink" title="PLMpapers"></a>PLMpapers</h1><p>Contributed by <a href="https://bakser.github.io/" target="_blank" rel="noopener">Xiaozhi Wang</a> and <a href="https://github.com/zzy14" target="_blank" rel="noopener">Zhengyan Zhang</a>.</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Pre-trained Languge Model (PLM) is a very popular topic in NLP. In this repo, we list some representative work on PLM and show their relationship with a diagram. Feel free to distribute or use it! <a href="https://github.com/thunlp/PLMpapers/blob/master/PLMfamily.pptx" target="_blank" rel="noopener">Here</a> you can get the source PPT file of the diagram if you want to use it in your presentation.</p>
-<p><img src="/images/2019/10/20/3f634050-f316-11e9-b017-0b2638cf8a9a.png" alt="image.png"></p>
-<p>Corrections and suggestions are welcomed. </p>
-<p>We also released <a href="https://github.com/thunlp/OpenCLaP" target="_blank" rel="noopener">OpenCLap</a>, an open-source Chinese language pre-trained model zoo. Welcome to try it.</p>
-<h2 id="Papers"><a href="#Papers" class="headerlink" title="Papers"></a>Papers</h2><h3 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h3><ol>
-<li><strong>Semi-supervised Sequence Learning</strong>. <em>Andrew M. Dai, Quoc V. Le</em>. NIPS 2015. [<a href="https://arxiv.org/pdf/1511.01432.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>context2vec: Learning Generic Context Embedding with Bidirectional LSTM</strong>. <em>Oren Melamud, Jacob Goldberger, Ido Dagan</em>. CoNLL 2016. [<a href="https://www.aclweb.org/anthology/K16-1006.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="http://u.cs.biu.ac.il/~nlp/resources/downloads/context2vec/" target="_blank" rel="noopener">project</a>] (<strong>context2vec</strong>)</li>
-<li><strong>Unsupervised Pretraining for Sequence to Sequence Learning</strong>. <em>Prajit Ramachandran, Peter J. Liu, Quoc V. Le</em>. EMNLP 2017. [<a href="https://arxiv.org/pdf/1611.02683.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>Pre-trained seq2seq</strong>)`</li>
-<li><strong>Deep contextualized word representations</strong>. <em>Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee and Luke Zettlemoyer</em>. NAACL 2018. [<a href="https://arxiv.org/pdf/1802.05365.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://allennlp.org/elmo" target="_blank" rel="noopener">project</a>] (<strong>ELMo</strong>)</li>
-<li><strong>Universal Language Model Fine-tuning for Text Classification</strong>. <em>Jeremy Howard and Sebastian Ruder</em>. ACL 2018. [<a href="https://www.aclweb.org/anthology/P18-1031" target="_blank" rel="noopener">pdf</a>] [<a href="http://nlp.fast.ai/category/classification.html" target="_blank" rel="noopener">project</a>] (<strong>ULMFiT</strong>)</li>
-<li><strong>Improving Language Understanding by Generative Pre-Training</strong>. <em>Alec Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever</em>. Preprint. [<a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://openai.com/blog/language-unsupervised/" target="_blank" rel="noopener">project</a>] (<strong>GPT</strong>)</li>
-<li><strong>BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</strong>. <em>Jacob Devlin, Ming-Wei Chang, Kenton Lee and Kristina Toutanova</em>. NAACL 2019. [<a href="https://arxiv.org/pdf/1810.04805.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/google-research/bert" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>Language Models are Unsupervised Multitask Learners</strong>. <em>Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskever</em>. Preprint. [<a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/openai/gpt-2" target="_blank" rel="noopener">code</a>] (<strong>GPT-2</strong>)</li>
-<li><strong>ERNIE: Enhanced Language Representation with Informative Entities</strong>. <em>Zhengyan Zhang, Xu Han, Zhiyuan Liu, Xin Jiang, Maosong Sun and Qun Liu</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1139" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/thunlp/ERNIE" target="_blank" rel="noopener">code &amp; model</a>] (<strong>ERNIE (Tsinghua)</strong> )</li>
-<li><strong>ERNIE: Enhanced Representation through Knowledge Integration</strong>. <em>Yu Sun, Shuohuan Wang, Yukun Li, Shikun Feng, Xuyi Chen, Han Zhang, Xin Tian, Danxiang Zhu, Hao Tian and Hua Wu</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09223.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/PaddlePaddle/ERNIE/tree/develop/ERNIE" target="_blank" rel="noopener">code</a>] (<strong>ERNIE (Baidu)</strong> )</li>
-<li><strong>Defending Against Neural Fake News</strong>. <em>Rowan Zellers, Ari Holtzman, Hannah Rashkin, Yonatan Bisk, Ali Farhadi, Franziska Roesner, Yejin Choi</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1905.12616.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://rowanzellers.com/grover/" target="_blank" rel="noopener">project</a>] (<strong>Grover</strong>)</li>
-<li><strong>Cross-lingual Language Model Pretraining</strong>. <em>Guillaume Lample, Alexis Conneau</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1901.07291.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/XLM" target="_blank" rel="noopener">code &amp; model</a>] (<strong>XLM</strong>)</li>
-<li><strong>Multi-Task Deep Neural Networks for Natural Language Understanding</strong>. <em>Xiaodong Liu, Pengcheng He, Weizhu Chen, Jianfeng Gao</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1441" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/namisan/mt-dnn" target="_blank" rel="noopener">code &amp; model</a>] (<strong>MT-DNN</strong>)</li>
-<li><strong>MASS: Masked Sequence to Sequence Pre-training for Language Generation</strong>. <em>Kaitao Song, Xu Tan, Tao Qin, Jianfeng Lu, Tie-Yan Liu</em>. ICML 2019. [<a href="https://arxiv.org/pdf/1905.02450.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/microsoft/MASS" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>Unified Language Model Pre-training for Natural Language Understanding and Generation</strong>. <em>Li Dong, Nan Yang, Wenhui Wang, Furu Wei, Xiaodong Liu, Yu Wang, Jianfeng Gao, Ming Zhou, Hsiao-Wuen Hon</em>. Preprint. [<a href="https://arxiv.org/pdf/1905.03197.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>UniLM</strong>)</li>
-<li><strong>XLNet: Generalized Autoregressive Pretraining for Language Understanding</strong>. <em>Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1906.08237.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/zihangdai/xlnet" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>RoBERTa: A Robustly Optimized BERT Pretraining Approach</strong>. <em>Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, Veselin Stoyanov</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.11692.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/pytorch/fairseq" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>SpanBERT: Improving Pre-training by Representing and Predicting Spans</strong>. <em>Mandar Joshi, Danqi Chen, Yinhan Liu, Daniel S. Weld, Luke Zettlemoyer, Omer Levy</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.10529.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/SpanBERT" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>Knowledge Enhanced Contextual Word Representations</strong>. <em>Matthew E. Peters, Mark Neumann, Robert L. Logan IV, Roy Schwartz, Vidur Joshi, Sameer Singh, Noah A. Smith</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.04164.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>KnowBert</strong>) </li>
-<li><strong>VisualBERT: A Simple and Performant Baseline for Vision and Language</strong>. <em>Liunian Harold Li, Mark Yatskar, Da Yin, Cho-Jui Hsieh, Kai-Wei Chang</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.03557.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/uclanlp/visualbert" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks</strong>. <em>Jiasen Lu, Dhruv Batra, Devi Parikh, Stefan Lee</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1908.02265.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/jiasenlu/vilbert_beta" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>VideoBERT: A Joint Model for Video and Language Representation Learning</strong>. <em>Chen Sun, Austin Myers, Carl Vondrick, Kevin Murphy, Cordelia Schmid</em>. ICCV 2019. [<a href="https://arxiv.org/pdf/1904.01766.pdf" target="_blank" rel="noopener">pdf</a>] </li>
-<li><strong>LXMERT: Learning Cross-Modality Encoder Representations from Transformers</strong>. <em>Hao Tan, Mohit Bansal</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.07490.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/airsplay/lxmert" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>VL-BERT: Pre-training of Generic Visual-Linguistic Representations</strong>. <em>Weijie Su, Xizhou Zhu, Yue Cao, Bin Li, Lewei Lu, Furu Wei, Jifeng Dai</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.08530.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Unicoder-VL: A Universal Encoder for Vision and Language by Cross-modal Pre-training</strong>. <em>Gen Li, Nan Duan, Yuejian Fang, Ming Gong, Daxin Jiang, Ming Zhou</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.06066.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>K-BERT: Enabling Language Representation with Knowledge Graph</strong>. <em>Weijie Liu, Peng Zhou, Zhe Zhao, Zhiruo Wang, Qi Ju, Haotang Deng, Ping Wang</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.07606.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Fusion of Detected Objects in Text for Visual Question Answering</strong>. <em>Chris Alberti, Jeffrey Ling, Michael Collins, David Reitter</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.05054.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>B2T2</strong>)</li>
-<li><strong>Contrastive Bidirectional Transformer for Temporal Representation Learning</strong>. <em>Chen Sun, Fabien Baradel, Kevin Murphy, Cordelia Schmid</em>. Preprint. [<a href="https://arxiv.org/pdf/1906.05743.pdf" target="_blank" rel="noopener">pdf</a>] (<strong>CBT</strong>)</li>
-<li><strong>ERNIE 2.0: A Continual Pre-training Framework for Language Understanding</strong>. <em>Yu Sun, Shuohuan Wang, Yukun Li, Shikun Feng, Hao Tian, Hua Wu, Haifeng Wang</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.12412v1.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/PaddlePaddle/ERNIE/blob/develop/README.md" target="_blank" rel="noopener">code</a>] </li>
-<li><strong>75 Languages, 1 Model: Parsing Universal Dependencies Universally</strong>. <em>Dan Kondratyuk, Milan Straka</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1904.02099.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/hyperparticle/udify" target="_blank" rel="noopener">code &amp; model</a>] (<strong>UDify</strong>)</li>
-<li><strong>Pre-Training with Whole Word Masking for Chinese BERT</strong>. <em>Yiming Cui, Wanxiang Che, Ting Liu, Bing Qin, Ziqing Yang, Shijin Wang, Guoping Hu</em>. Preprint. [<a href="https://arxiv.org/pdf/1906.08101.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/ymcui/Chinese-BERT-wwm/blob/master/README_EN.md" target="_blank" rel="noopener">code &amp; model</a>] (<strong>Chinese-BERT-wwm</strong>)</li>
-<li><strong>UNITER: Learning UNiversal Image-TExt Representations</strong>. <em>Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, Jingjing Liu</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.11740.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>HUBERT Untangles BERT to Improve Transfer across NLP Tasks</strong>. <em>Anonymous authors</em>. ICLR 2020 under review. [<a href="https://openreview.net/pdf?id=HJxnM1rFvr" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>MultiFiT: Efficient Multi-lingual Language Model Fine-tuning</strong>.  <em>Julian Eisenschlos, Sebastian Ruder, Piotr Czapla, Marcin Kardas, Sylvain Gugger, Jeremy Howard</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.04761.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="http://nlp.fast.ai/classification/2019/09/10/multifit.html" target="_blank" rel="noopener">code &amp; model</a>]</li>
+            <p><img src="/images/2019/09/12/ba1add50-d555-11e9-b519-9f31cc87a9f9.png" alt="image.png"></p>
+<h1 id="介绍spring框架"><a href="#介绍spring框架" class="headerlink" title="介绍spring框架"></a>介绍spring框架</h1><p>它是一个一站式（full-stack全栈式）框架，提供了从表现层-springMVC到业务层-spring再到持久层-springdata的一套完整的解决方案。我们在项目中可以只使用spring一个框架，它就可以提供表现层的mvc框架，持久层的Dao框架。它的两大核心IoC和AOP更是为我们程序解耦和代码简洁易维护提供了支持。</p>
+<h1 id="Spring的优点？"><a href="#Spring的优点？" class="headerlink" title="Spring的优点？"></a>Spring的优点？</h1><ol>
+<li>降低了组件之间的耦合性 ，实现了软件各层之间的解耦 </li>
+<li>可以使用容易提供的众多服务，如事务管理，消息服务等 </li>
+<li>容器提供单例模式支持 </li>
+<li>容器提供了AOP技术，利用它很容易实现如权限拦截，运行期监控等功能 </li>
+<li>容器提供了众多的辅助类，能加快应用的开发 </li>
+<li>spring对于主流的应用框架提供了集成支持，如hibernate，   JPA，Struts等 </li>
+<li>spring属于低侵入式设计，代码的污染极低 </li>
+<li>独立于各种应用服务器 </li>
+<li>spring的DI机制降低了业务对象替换的复杂性 </li>
+<li>Spring的高度开放性，并不强制应用完全依赖于Spring，开发者可以自由选择spring 的部分或全部 </li>
 </ol>
-<h3 id="Knowledge-Distillation-amp-Model-Compression"><a href="#Knowledge-Distillation-amp-Model-Compression" class="headerlink" title="Knowledge Distillation &amp; Model Compression"></a>Knowledge Distillation &amp; Model Compression</h3><ol>
-<li><strong>TinyBERT: Distilling BERT for Natural Language Understanding</strong>. <em>Xiaoqi Jiao, Yichun Yin, Lifeng Shang, Xin Jiang, Xiao Chen, Linlin Li, Fang Wang, Qun Liu</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.10351v2.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Distilling Task-Specific Knowledge from BERT into Simple Neural Networks</strong>. <em>Raphael Tang, Yao Lu, Linqing Liu, Lili Mou, Olga Vechtomova, Jimmy Lin</em>. Preprint. [<a href="https://arxiv.org/pdf/1903.12136.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Patient Knowledge Distillation for BERT Model Compression</strong>. <em>Siqi Sun, Yu Cheng, Zhe Gan, Jingjing Liu</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.09355.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/intersun/PKD-for-BERT-Model-Compression" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Model Compression with Multi-Task Knowledge Distillation for Web-scale Question Answering System</strong>. <em>Ze Yang, Linjun Shou, Ming Gong, Wutao Lin, Daxin Jiang</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09636.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>PANLP at MEDIQA 2019: Pre-trained Language Models, Transfer Learning and Knowledge Distillation</strong>. <em>Wei Zhu, Xiaofeng Zhou, Keqiang Wang, Xun Luo, Xiepeng Li, Yuan Ni, Guotong Xie</em>. The 18th BioNLP workshop. [<a href="https://www.aclweb.org/anthology/W19-5040" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Improving Multi-Task Deep Neural Networks via Knowledge Distillation for Natural Language Understanding</strong>. <em>Xiaodong Liu, Pengcheng He, Weizhu Chen, Jianfeng Gao</em>. Preprint. [<a href="https://arxiv.org/pdf/1904.09482.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/namisan/mt-dnn" target="_blank" rel="noopener">code &amp; model</a>]</li>
-<li><strong>Well-Read Students Learn Better: The Impact of Student Initialization on Knowledge Distillation</strong>. <em>Iulia Turc, Ming-Wei Chang, Kenton Lee, Kristina Toutanova</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.08962.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Small and Practical BERT Models for Sequence Labeling</strong>. <em>Henry Tsai, Jason Riesa, Melvin Johnson, Naveen Arivazhagan, Xin Li, Amelia Archer</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.00100.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Q-BERT: Hessian Based Ultra Low Precision Quantization of BERT</strong>. <em>Sheng Shen, Zhen Dong, Jiayu Ye, Linjian Ma, Zhewei Yao, Amir Gholami, Michael W. Mahoney, Kurt Keutzer</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.05840.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>ALBERT: A Lite BERT for Self-supervised Learning of Language Representations</strong>.  <em>Anonymous authors</em>. ICLR 2020 under review. [<a href="https://openreview.net/pdf?id=H1eA7AEtvS" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Extreme Language Model Compression with Optimal Subwords and Shared Projections</strong>. <em>Sanqiang Zhao, Raghav Gupta, Yang Song, Denny Zhou</em>. Preprint. [<a href="https://arxiv.org/pdf/1909.11687" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter</strong>. <em>Victor Sanh, Lysandre Debut, Julien Chaumond, Thomas Wolf</em>. Preprint. [<a href="https://arxiv.org/pdf/1910.01108" target="_blank" rel="noopener">pdf</a>]</li>
+<h1 id="spring有两种代理方式："><a href="#spring有两种代理方式：" class="headerlink" title="spring有两种代理方式："></a>spring有两种代理方式：</h1><p>答: 若目标对象实现了若干接口，spring使用JDK的java.lang.reflect.Proxy类代理。</p>
+<p>  优点：因为有接口，所以使系统更加松耦合</p>
+<p>  缺点：为每一个目标类创建接口</p>
+<p>若目标对象没有实现任何接口，spring使用CGLIB库生成目标对象的子类。</p>
+<p>  优点：因为代理类与目标类是继承关系，所以不需要有接口的存在。</p>
+<p>  缺点：因为没有使用接口，所以系统的耦合性没有使用JDK的动态代理好</p>
+<h1 id="如何给Spring-容器提供配置元数据"><a href="#如何给Spring-容器提供配置元数据" class="headerlink" title="如何给Spring 容器提供配置元数据?"></a>如何给Spring 容器提供配置元数据?</h1><p>这里有三种重要的方法给Spring 容器提供配置元数据。</p>
+<p>XML配置文件。</p>
+<p>基于注解的配置。</p>
+<p>基于java的配置。</p>
+<h1 id="构造方法注入和设值注入有什么区别？"><a href="#构造方法注入和设值注入有什么区别？" class="headerlink" title="构造方法注入和设值注入有什么区别？"></a>构造方法注入和设值注入有什么区别？</h1><p>请注意以下明显的区别：</p>
+<p>在设值注入方法支持大部分的依赖注入，如果我们仅需要注入int、string和long型的变量，我们不要用设值的方法注入。</p>
+<p>对于基本类型，如果我们没有注入的话，可以为基本类型设置默认值。</p>
+<p>在构造方法注入不支持大部分的依赖注入，因为在调用构造方法中必须传入正确的构造参数，否则的话为报错。</p>
+<p>设值注入不会重写构造方法的值。</p>
+<p>在使用设值注入时有可能还不能保证某种依赖是否已经被注入，也就是说这时对象的依赖关系有可能是不完整的。而在另一种情况下，构造器注入则不允许生成依赖关系不完整的对象。</p>
+<h1 id="请介绍一下Spring框架中Bean的生命周期"><a href="#请介绍一下Spring框架中Bean的生命周期" class="headerlink" title="请介绍一下Spring框架中Bean的生命周期"></a>请介绍一下Spring框架中Bean的生命周期</h1><p>一、Bean的定义 </p>
+<p>Spring通常通过配置文件定义Bean。如：  </p>
+<p>这个配置文件就定义了一个标识为 HelloWorld 的Bean。在一个配置文档中可以定义多个Bean。 </p>
+<p>二、Bean的初始化</p>
+<p>有两种方式初始化Bean。 </p>
+<p>1、在配置文档中通过指定init-method 属性来完成 </p>
+<p>2、实现 org.springframwork.beans.factory.InitializingBean接口  </p>
+<p>那么，当这个Bean的所有属性被Spring的BeanFactory设置完后，会自动调用afterPropertiesSet()方法对Bean进行初始化，于是，配置文件就不用指定 init-method属性了。 </p>
+<p>三、Bean的调用 </p>
+<p>有三种方式可以得到Bean并进行调用： </p>
+<p>1、使用BeanWrapper</p>
+<p>2、使用BeanFactory</p>
+<p>3、使用ApplicationConttext</p>
+<p>四、Bean的销毁 </p>
+<p>1、使用配置文件中的 destory-method 属性</p>
+<p>2、实现 org.springframwork.bean.factory.DisposebleBean接口 </p>
+<h1 id="Spring中AOP的应用场景、Aop原理、好处？"><a href="#Spring中AOP的应用场景、Aop原理、好处？" class="headerlink" title="Spring中AOP的应用场景、Aop原理、好处？"></a>Spring中AOP的应用场景、Aop原理、好处？</h1><p>答：AOP–Aspect Oriented Programming面向切面编程；用来封装横切关注点，具体可以在下面的场景中使用:</p>
+<p>Authentication 权限、Caching 缓存、Context passing 内容传递、Error handling 错误处理Lazy loading懒加载、Debugging调试、logging, tracing, profiling and monitoring 记录跟踪优化　校准、Performance optimization　性能优化、Persistence 持久化、Resource pooling　资源池、Synchronization　同步、Transactions 事务</p>
+<p>原理：AOP是面向切面编程，是通过动态代理的方式为程序添加统一功能，集中解决一些公共问题。</p>
+<p>优点：1.各个步骤之间的良好隔离性耦合性大大降低 </p>
+<pre><code>2.源代码无关性，再扩展功能的同时不对源码进行修改操作 </code></pre><h1 id="有几种不同类型的自动代理？"><a href="#有几种不同类型的自动代理？" class="headerlink" title="有几种不同类型的自动代理？"></a>有几种不同类型的自动代理？</h1><p>BeanNameAutoProxyCreator</p>
+<p>DefaultAdvisorAutoProxyCreator</p>
+<p>Metadata autoproxying</p>
+<h1 id="ApplicationContext通常的实现是什么"><a href="#ApplicationContext通常的实现是什么" class="headerlink" title="ApplicationContext通常的实现是什么?"></a>ApplicationContext通常的实现是什么?</h1><p>FileSystemXmlApplicationContext ：此容器从一个XML文件中加载beans的定义，XML Bean 配置文件的全路径名必须提供给它的构造函数。</p>
+<p>ClassPathXmlApplicationContext：此容器也从一个XML文件中加载beans的定义，这里，你需要正确设置classpath因为这个容器将在classpath里找bean配置。</p>
+<p>WebXmlApplicationContext：此容器加载一个XML文件，此文件定义了一个WEB应用的所有bean。</p>
+<h1 id="有哪些不同类型的IOC（依赖注入）方式？"><a href="#有哪些不同类型的IOC（依赖注入）方式？" class="headerlink" title="有哪些不同类型的IOC（依赖注入）方式？"></a>有哪些不同类型的IOC（依赖注入）方式？</h1><p>构造器依赖注入：构造器依赖注入通过容器触发一个类的构造器来实现的，该类有一系列参数，每个参数代表一个对其他类的依赖。</p>
+<p>Setter方法注入：Setter方法注入是容器通过调用无参构造器或无参static工厂 方法实例化bean之后，调用该bean的setter方法，即实现了基于setter的依赖注入。</p>
+<h1 id="什么是IOC，什么又是DI，他们有什么区别？"><a href="#什么是IOC，什么又是DI，他们有什么区别？" class="headerlink" title="什么是IOC，什么又是DI，他们有什么区别？"></a>什么是IOC，什么又是DI，他们有什么区别？</h1><p>一、IOC介绍</p>
+<p>IOC是控制反转。</p>
+<p>创建对象实例的控制权从代码控制剥离到IOC容器控制(之前的写法，由程序代码直接操控使用new关键字)，实际就是你在xml文件控制，控制权的转移是所谓反转，侧重于原理。 </p>
+<p>二、DI介绍</p>
+<p>DI是依赖注入</p>
+<p>创建对象实例时，为这个对象注入属性值或其它对象实例，侧重于实现。</p>
+<h1 id="spring事务定义"><a href="#spring事务定义" class="headerlink" title="spring事务定义"></a>spring事务定义</h1><p>事务的定义：事务是指多个操作单元组成的合集，多个单元操作是整体不可分割的，要么都操作不成功，要么都成功。其必须遵循四个原则（ACID）。</p>
+<p>原子性（Atomicity）：即事务是不可分割的最小工作单元，事务内的操作要么全做，要么全不做；</p>
+<p>一致性（Consistency）：在事务执行前数据库的数据处于正确的状态，而事务执行完成后数据库的数据还是应该处于正确的状态，即数据完整性约束没有被破坏；如银行转帐，A转帐给B，必须保证A的钱一定转给B，一定不会出现A的钱转了但B没收到，否则数据库的数据就处于不一致（不正确）的状态。</p>
+<p>隔离性（Isolation）：并发事务执行之间互不影响，在一个事务内部的操作对其他事务是不产生影响，这需要事务隔离级别来指定隔离性；</p>
+<p>持久性（Durability）：事务一旦执行成功，它对数据库的数据的改变必须是永久的，不会因比如遇到系统故障或断电造成数据不一致或丢失。</p>
+<h1 id="Spring框架中的单例Beans是线程安全的么？"><a href="#Spring框架中的单例Beans是线程安全的么？" class="headerlink" title="Spring框架中的单例Beans是线程安全的么？"></a>Spring框架中的单例Beans是线程安全的么？</h1><p>Spring框架并没有对单例bean进行任何多线程的封装处理。关于单例bean的线程安全和并发问题需要开发者自行去搞定。但实际上，大部分的Spring bean并没有可变的状态(比如Serview类和DAO类)，所以在某种程度上说Spring的单例bean是线程安全的。如果你的bean有多种状态的话（比如 View Model 对象），就需要自行保证线程安全。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-02T04:41:41.000Z">2019-09-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 246 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/02/天平砝码摆放问题/">天平砝码摆放问题</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。<br>要使天平平衡，有多少种方法？（对称摆放算作一种方法） </p>
+<p><img src="/images/2019/09/02/a2a70490-cd3b-11e9-afc7-971719428f58.png" alt="image.png"></p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>暴力求解</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t = <span class="hljs-number">6</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= t; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= t; ++j) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= t; ++k) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>; l &lt;= t; ++l) &#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> m = <span class="hljs-number">1</span>; m &lt;= t; ++m) &#123;</span><br><span class="line">                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n = <span class="hljs-number">1</span>; n &lt;= t; ++n) &#123;</span><br><span class="line">                            <span class="hljs-keyword">if</span> (i == j ||</span><br><span class="line">                                i == k || j == k ||</span><br><span class="line">                                i == l || j == l || k == l ||</span><br><span class="line">                                i == m || j == m || k == m || l == m ||</span><br><span class="line">                                i == n || j == n || k == n || l == n || m == n)</span><br><span class="line">                                <span class="hljs-keyword">continue</span>;</span><br><span class="line">                            <span class="hljs-keyword">if</span> ((<span class="hljs-number">3</span> * i + <span class="hljs-number">2</span> * j + k) == (l + <span class="hljs-number">2</span> * m + <span class="hljs-number">3</span> * n)) &#123;</span><br><span class="line">                                <span class="hljs-built_in">string</span> s = to_string(i) + to_string(j) + to_string(k) + to_string(l) + to_string(m) +</span><br><span class="line">                                           to_string(n);</span><br><span class="line">                                <span class="hljs-keyword">int</span> te = <span class="hljs-number">0</span>;</span><br><span class="line">                                <span class="hljs-keyword">if</span> (v.size() &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                                    <span class="hljs-built_in">string</span> tem = s;</span><br><span class="line">                                    reverse(tem.begin(), tem.end());</span><br><span class="line">                                    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;::iterator it;</span><br><span class="line">                                    <span class="hljs-keyword">for</span> (it = v.begin(); it != v.end(); it++) &#123;</span><br><span class="line">                                        <span class="hljs-keyword">if</span> (*it == tem) &#123;</span><br><span class="line">                                            <span class="hljs-comment">//cout&lt;&lt;tem&lt;&lt;endl;</span></span><br><span class="line">                                            te = <span class="hljs-number">1</span>;</span><br><span class="line">                                            <span class="hljs-keyword">break</span>;</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="hljs-keyword">if</span> (te == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                                    v.push_back(s);</span><br><span class="line">                                    count++;</span><br><span class="line">                                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d %d %d | %d %d %d\n"</span>, i, j, k, l, m, n);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; count &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1 4 6 | 5 3 2</span><br><span class="line">1 5 6 | 2 4 3</span><br><span class="line">1 5 6 | 3 2 4</span><br><span class="line">1 6 4 | 3 5 2</span><br><span class="line">1 6 5 | 2 3 4</span><br><span class="line">2 4 6 | 1 5 3</span><br><span class="line">2 4 6 | 3 1 5</span><br><span class="line">2 6 3 | 4 1 5</span><br><span class="line">2 6 4 | 1 3 5</span><br><span class="line">3 2 6 | 5 1 4</span><br><span class="line">3 4 5 | 2 1 6</span><br><span class="line">3 5 4 | 1 2 6</span><br><span class="line">3 6 2 | 1 5 4</span><br><span class="line">4 2 6 | 1 3 5</span><br><span class="line">4 3 5 | 1 2 6</span><br><span class="line">5 2 4 | 3 1 6</span><br><span class="line">5 4 2 | 1 3 6</span><br><span class="line">17</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-31T15:25:17.000Z">2019-08-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 738 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/31/118-杨辉三角/">118. 杨辉三角</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">杨辉三角</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em>行。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="杨辉三角"></p>
+<p>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
+<p>示例:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
+<li>动态规划</li>
 </ol>
-<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><ol>
-<li><strong>Revealing the Dark Secrets of BERT</strong>. <em>Olga Kovaleva, Alexey Romanov, Anna Rogers, Anna Rumshisky</em>. EMNLP 2019. [<a href="https://arxiv.org/abs/1908.08593" target="_blank" rel="noopener">pdf</a>] </li>
-<li><strong>How Does BERT Answer Questions? A Layer-Wise Analysis of Transformer Representations</strong>. <em>Betty van Aken, Benjamin Winter, Alexander Löser, Felix A. Gers</em>. CIKM 2019. [<a href="https://arxiv.org/pdf/1909.04925.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Are Sixteen Heads Really Better than One?</strong>. <em>Paul Michel, Omer Levy, Graham Neubig</em>. Preprint. [<a href="https://arxiv.org/pdf/1905.10650.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/pmichel31415/are-16-heads-really-better-than-1" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Is BERT Really Robust? A Strong Baseline for Natural Language Attack on Text Classification and Entailment</strong>. <em>Di Jin, Zhijing Jin, Joey Tianyi Zhou, Peter Szolovits</em>. Preprint. [<a href="https://arxiv.org/pdf/1907.11932.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/jind11/TextFooler" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>BERT has a Mouth, and It Must Speak: BERT as a Markov Random Field Language Model</strong>. <em>Alex Wang, Kyunghyun Cho</em>. NeuralGen 2019. [<a href="https://arxiv.org/pdf/1902.04094.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/nyu-dl/bert-gen" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Linguistic Knowledge and Transferability of Contextual Representations</strong>. <em>Nelson F. Liu, Matt Gardner, Yonatan Belinkov, Matthew E. Peters, Noah A. Smith</em>. NAACL 2019. [<a href="https://www.aclweb.org/anthology/N19-1112" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>What Does BERT Look At? An Analysis of BERT’s Attention</strong>. <em>Kevin Clark, Urvashi Khandelwal, Omer Levy, Christopher D. Manning</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.04341.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/clarkkev/attention-analysis" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Open Sesame: Getting Inside BERT’s Linguistic Knowledge</strong>. <em>Yongjie Lin, Yi Chern Tan, Robert Frank</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.01698.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/yongjie-lin/bert-opensesame" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Analyzing the Structure of Attention in a Transformer Language Model</strong>. <em>Jesse Vig, Yonatan Belinkov</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.04284.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains</strong>. <em>Samira Abnar, Lisa Beinborn, Rochelle Choenni, Willem Zuidema</em>. BlackBoxNLP 2019. [<a href="https://arxiv.org/pdf/1906.01539.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>BERT Rediscovers the Classical NLP Pipeline</strong>. <em>Ian Tenney, Dipanjan Das, Ellie Pavlick</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1452" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>How multilingual is Multilingual BERT?</strong>. <em>Telmo Pires, Eva Schlinger, Dan Garrette</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1493" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>What Does BERT Learn about the Structure of Language?</strong>. <em>Ganesh Jawahar, Benoît Sagot, Djamé Seddah</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1356" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT</strong>. <em>Shijie Wu, Mark Dredze</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1904.09077.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>How Contextual are Contextualized Word Representations? Comparing the Geometry of BERT, ELMo, and GPT-2 Embeddings</strong>. <em>Kawin Ethayarajh</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.00512.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Probing Neural Network Comprehension of Natural Language Arguments</strong>. <em>Timothy Niven, Hung-Yu Kao</em>. ACL 2019. [<a href="https://www.aclweb.org/anthology/P19-1459" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/IKMLab/arct2" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Universal Adversarial Triggers for Attacking and Analyzing NLP</strong>. <em>Eric Wallace, Shi Feng, Nikhil Kandpal, Matt Gardner, Sameer Singh</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.07125.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/Eric-Wallace/universal-triggers" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>The Bottom-up Evolution of Representations in the Transformer: A Study with Machine Translation and Language Modeling Objectives</strong>. <em>Elena Voita, Rico Sennrich, Ivan Titov</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.01380.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Do NLP Models Know Numbers? Probing Numeracy in Embeddings</strong>. <em>Eric Wallace, Yizhong Wang, Sujian Li, Sameer Singh, Matt Gardner</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.07940.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Investigating BERT’s Knowledge of Language: Five Analysis Methods with NPIs</strong>. <em>Alex Warstadt, Yu Cao, Ioana Grosu, Wei Peng, Hagen Blix, Yining Nie, Anna Alsop, Shikha Bordia, Haokun Liu, Alicia Parrish, Sheng-Fu Wang, Jason Phang, Anhad Mohananey, Phu Mon Htut, Paloma Jeretič, Samuel R. Bowman</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1909.02597.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/alexwarstadt/data_generation" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>Visualizing and Understanding the Effectiveness of BERT</strong>. <em>Yaru Hao, Li Dong, Furu Wei, Ke Xu</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.05620.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Visualizing and Measuring the Geometry of BERT</strong>. <em>Andy Coenen, Emily Reif, Ann Yuan, Been Kim, Adam Pearce, Fernanda Viégas, Martin Wattenberg</em>. NeurIPS 2019. [<a href="https://arxiv.org/pdf/1906.02715.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>On the Validity of Self-Attention as Explanation in Transformer Models</strong>. <em>Gino Brunner, Yang Liu, Damián Pascual, Oliver Richter, Roger Wattenhofer</em>. Preprint. [<a href="https://arxiv.org/pdf/1908.04211.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Transformer Dissection: An Unified Understanding for Transformer’s Attention via the Lens of Kernel</strong>. <em>Yao-Hung Hubert Tsai, Shaojie Bai, Makoto Yamada, Louis-Philippe Morency, Ruslan Salakhutdinov</em>. EMNLP 2019. [<a href="https://arxiv.org/pdf/1908.11775.pdf" target="_blank" rel="noopener">pdf</a>]</li>
-<li><strong>Language Models as Knowledge Bases?</strong> <em>Fabio Petroni, Tim Rocktäschel, Patrick Lewis, Anton Bakhtin, Yuxiang Wu, Alexander H. Miller, Sebastian Riedel</em>. EMNLP 2019, [<a href="https://arxiv.org/pdf/1909.01066.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/facebookresearch/LAMA" target="_blank" rel="noopener">code</a>]</li>
-<li><strong>To Tune or Not to Tune? Adapting Pretrained Representations to Diverse Tasks</strong>. <em>Matthew E. Peters, Sebastian Ruder, Noah A. Smith</em>. RepL4NLP 2019, [<a href="https://www.aclweb.org/anthology/W19-4302.pdf" target="_blank" rel="noopener">pdf</a>]</li>
+<p><strong>思路</strong></p>
+<p>如果能够知道一行杨辉三角，我们就可以根据每对相邻的值轻松地计算出它的下一行。</p>
+<p><strong>算法</strong></p>
+<p>虽然这一算法非常简单，但用于构造杨辉三角的迭代方法可以归类为动态规划，因为我们需要基于前一行来构造每一行。</p>
+<p>首先，我们会生成整个 <code>triangle</code> 列表，三角形的每一行都以子列表的形式存储。然后，我们会检查行数为 0 的特殊情况，否则我们会返回 <code>[1]</code>。如果 <em>numRows</em> &gt; 0，那么我们用 <code>[1]</code> 作为第一行来初始化 <code>triangle</code> with <code>[1]</code>，并按如下方式继续填充：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="hljs-keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; triangle = <span class="hljs-keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// First base case; if user requests zero rows, they get zero rows.</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (numRows == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> triangle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// Second base case; first row is always [1].</span></span><br><span class="line">        triangle.add(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        triangle.get(<span class="hljs-number">0</span>).add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> rowNum = <span class="hljs-number">1</span>; rowNum &lt; numRows; rowNum++) &#123;</span><br><span class="line">            List&lt;Integer&gt; row = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            List&lt;Integer&gt; prevRow = triangle.get(rowNum-<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// The first row element is always 1.</span></span><br><span class="line">            row.add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// Each triangle element (other than the first and last of each row)</span></span><br><span class="line">            <span class="hljs-comment">// is equal to the sum of the elements above-and-to-the-left and</span></span><br><span class="line">            <span class="hljs-comment">// above-and-to-the-right.</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; rowNum; j++) &#123;</span><br><span class="line">                row.add(prevRow.get(j-<span class="hljs-number">1</span>) + prevRow.get(j));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// The last row element is always 1.</span></span><br><span class="line">            row.add(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">            triangle.add(row);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> triangle;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度： <em>O(numRows²)</em></li>
+</ul>
+<p>虽然更新 triangle 中的每个值都是在常量时间内发生的，<br>但它会被执行 <em>O(numRows²)</em> 次。想要了解原因，就需要考虑总共有多少次循环迭代。很明显外层循环需要运行 numRows 次，但在外层循环的每次迭代中，内层循环要运行 rowNumrowNum 次。因此，<code>triangle</code> 发生的更新总数为<br><code>1 + 2 + 3 + ... + *numRows*</code>，根据高斯公式有</p>
+<p><img src="/images/2019/08/31/06b93500-cc03-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<ul>
+<li>空间复杂度：<em>O(numRows²)</em></li>
+</ul>
+<p>因为我们需要存储我们在 <code>triangle</code> 中更新的每个数字，<br>所以空间需求与时间复杂度相同。</p>
+<ol start="2">
+<li>Python解法</li>
 </ol>
-<h2 id="Tutorial-amp-Resource"><a href="#Tutorial-amp-Resource" class="headerlink" title="Tutorial &amp; Resource"></a>Tutorial &amp; Resource</h2><ol>
-<li><strong>Transfer Learning in Natural Language Processing</strong>. <em>Sebastian Ruder, Matthew E. Peters, Swabha Swayamdipta, Thomas Wolf</em>. NAACL 2019. [<a href="https://docs.google.com/presentation/d/1fIhGikFPnb7G5kr58OvYC3GN4io7MznnM0aAgadvJfc/edit?usp=sharing" target="_blank" rel="noopener">slides</a>] </li>
-<li><strong>Transformers: State-of-the-art Natural Language Processing</strong>. <em>Thomas Wolf, Lysandre Debut, Victor Sanh, Julien Chaumond, Clement Delangue, Anthony Moi, Pierric Cistac, Tim Rault, Rémi Louf, Morgan Funtowicz, Jamie Brew</em>. Preprint. [<a href="https://arxiv.org/pdf/1910.03771.pdf" target="_blank" rel="noopener">pdf</a>] [<a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">code</a>]</li>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate</span><span class="hljs-params">(self, num_rows)</span>:</span></span><br><span class="line">        triangle = []</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> row_num <span class="hljs-keyword">in</span> range(num_rows):</span><br><span class="line">            <span class="hljs-comment"># The first and last row elements are always 1.</span></span><br><span class="line">            row = [<span class="hljs-literal">None</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(row_num+<span class="hljs-number">1</span>)]</span><br><span class="line">            row[<span class="hljs-number">0</span>], row[<span class="hljs-number">-1</span>] = <span class="hljs-number">1</span>, <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment"># Each triangle element is equal to the sum of the elements</span></span><br><span class="line">            <span class="hljs-comment"># above-and-to-the-left and above-and-to-the-right.</span></span><br><span class="line">            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(row)<span class="hljs-number">-1</span>):</span><br><span class="line">                row[j] = triangle[row_num<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + triangle[row_num<span class="hljs-number">-1</span>][j]</span><br><span class="line"></span><br><span class="line">            triangle.append(row)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> triangle</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>递归解法</li>
 </ol>
+<p>通过<em>numRows</em>-1，求<em>numRows</em>行，递归求解</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; listw = <span class="hljs-keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="hljs-keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;Integer&gt; listn = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span> (numRows == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> listw;</span><br><span class="line">        generate(numRows - <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                listn.add(<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i == numRows - <span class="hljs-number">1</span>) &#123;</span><br><span class="line">                listn.add(<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i == numRows - <span class="hljs-number">2</span>) &#123;</span><br><span class="line">                listn.add(listw.get(numRows - <span class="hljs-number">2</span>).get(i - <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                listn.add(listw.get(numRows - <span class="hljs-number">2</span>).get(i - <span class="hljs-number">1</span>) + listw.get(numRows - <span class="hljs-number">2</span>).get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        listw.add(listn);</span><br><span class="line">        <span class="hljs-keyword">return</span> listw;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-31T14:57:20.000Z">2019-08-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 385 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/31/24-两两交换链表中的节点/">24. 两两交换链表中的节点</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/08/31/230aafc0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<h1 id="24-两两交换链表中的节点"><a href="#24-两两交换链表中的节点" class="headerlink" title="24. 两两交换链表中的节点"></a>24. <a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">两两交换链表中的节点</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
+<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
+<p>示例:</p>
+<pre><code>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
+<li>非递归</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     int val;</span></span><br><span class="line"><span class="hljs-comment"> *     ListNode next;</span></span><br><span class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pre = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</span><br><span class="line">        pre.next = head;</span><br><span class="line">        ListNode temp = pre;</span><br><span class="line">        <span class="hljs-keyword">while</span>(temp.next != <span class="hljs-keyword">null</span> &amp;&amp; temp.next.next != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">            ListNode start = temp.next;</span><br><span class="line">            ListNode end = temp.next.next;</span><br><span class="line">            temp.next = end;</span><br><span class="line">            start.next = end.next;</span><br><span class="line">            end.next = start;</span><br><span class="line">            temp = start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> pre.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>递归解法</p>
+<ol>
+<li>详细介绍一下递归的思路;</li>
+<li>递归和栈处理问题类似,先把问题从前往后收集起来,然后再从后往前处理每一个问题;</li>
+<li>两两交换链表结点,先处理最后两个或一个节点,然后再从后往前处理每一对节点;</li>
+<li>先创建一个next临时结点保存head的下一个结点,然后让head指向下下一个节点,最后让 next节点指向head结点;</li>
+<li>此题只有处理完后面的结点才可处理前面的结点,画图更容易理解;</li>
+</ol>
+</li>
+</ol>
+<p><img src="/images/2019/08/31/edb550e0-cc00-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span> || head.next == <span class="hljs-keyword">null</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 三个节点顺序:head, next, swapPairs(next.next)</span></span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        head.next = swapPairs(next.next);</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="hljs-keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-31T14:49:17.000Z">2019-08-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 323 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/31/334-反转字符串/">334. 反转字符串</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/08/31/3b02c600-cbfe-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<h1 id="334-反转字符串"><a href="#334-反转字符串" class="headerlink" title="334. 反转字符串"></a>334. <a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">反转字符串</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 <code>char[]</code> 的形式给出。</p>
+<p>不要给另外的数组分配额外的空间，你必须<strong>原地</strong>修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+<p>你可以假设数组中的所有字符都是 <strong>ASCII</strong> 码表中的可打印字符。</p>
+<p>示例 1：</p>
+<pre><code>输入：[&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]
+输出：[&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]</code></pre><p>示例 2：</p>
+<pre><code>输入：[&quot;H&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;h&quot;]
+输出：[&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]    </code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
+<li>递归解法</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        swap(<span class="hljs-number">0</span>, s.length-<span class="hljs-number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(start &gt;= end)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">char</span> temp = s[start];</span><br><span class="line">        s[start] = s[end];</span><br><span class="line">        s[end] = temp;</span><br><span class="line">        swap(start+<span class="hljs-number">1</span>, end-<span class="hljs-number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>循环解法</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> j=s.length-<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length/<span class="hljs-number">2</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> tmp = s[i];</span><br><span class="line">            s[i] = s[j];</span><br><span class="line">            s[j] = tmp;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Python解法</li>
+</ol>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(self, s: List[str])</span> -&gt; <span class="hljs-keyword">None</span>:</span></span><br><span class="line">    s[<span class="hljs-number">0</span>::]=s[::<span class="hljs-number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>c++解法</li>
+</ol>
+<p>双指针，交换头尾两个指针所指的两个位置的值，指针向中间移动一个位置，重复以上操作，直到两个指针交错；</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = s.size() - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(i&lt;j)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(s[i],s[j]);</span><br><span class="line">            ++ i;</span><br><span class="line">            -- j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-24T08:20:38.000Z">2019-08-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1472 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/">Java面试题（框架+JVM+多线程+算法+数据库）</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/08/24/58bd4f10-c647-11e9-a58b-4d8a77bb39d6.png" alt="image.png"></p>
+<h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><ol>
+<li>String类能被继承吗，为什么</li>
+<li>String，Stringbuffer，StringBuilder的区别？</li>
+<li>ArrayList和LinkedList有什么区别</li>
+<li>类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</li>
+<li>用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</li>
+<li>HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</li>
+<li>抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</li>
+<li>什么情况下会发生栈内存溢出</li>
+<li>什么是nio，原理</li>
+<li>反射中，Class.forName和ClassLoader区别</li>
+<li>tomcat结构，类加载器流程</li>
+<li>讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</li>
+<li>Spring的beanFactory和factoryBean的区别</li>
+<li>Spring加载流程</li>
+<li>Spring如何管理事务的</li>
+</ol>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><ol>
+<li>线城池的最大线程数目根据什么确定</li>
+<li>多线程的几种实现方式，什么是线程安全，什么是重排序3.volatile的原理，作用，能代替锁么</li>
+<li>sleep和wait的区别，以及wait的实现原理</li>
+<li>Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</li>
+<li>用过哪些原子类，他们的参数以及原理是什么</li>
+<li>用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</li>
+<li>有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</li>
+<li>spring的controller是单例还是多例，怎么保证并发的安全</li>
+<li>用三个线程按顺序循环打印abc三个字母，比如abcabcabc</li>
+<li>ThreadLocal用过么，原理是什么，用的时候要注意什么</li>
+<li>如果让你实现一个并发安全的链表，你会怎么做</li>
+</ol>
+<h1 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h1><ol>
+<li>jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</li>
+<li>你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</li>
+<li>当出现了内存溢出，你怎么排错</li>
+<li>JVM内存模型的相关知识了解多少</li>
+<li>简单说说你了解的类加载器</li>
+<li>JAVA的反射机制</li>
+</ol>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><ol>
+<li>http1.0和http1.1有什么区别</li>
+<li>TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</li>
+<li>TIME_WAIT和CLOSE_WAIT的区别</li>
+<li>说说你知道的几种HTTP响应码</li>
+<li>当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</li>
+<li>Linux下IO模型有几种，各自的含义是什么</li>
+<li>TCP/IP如何保证可靠性，数据包有哪些数据组成</li>
+<li>架构设计与分布式：</li>
+<li>tomcat如何调优，各种参数的意义</li>
+<li>常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</li>
+<li>如何防止缓存雪崩12.用java自己实现一个LRU</li>
+<li>分布式集群下如何做到唯一序列号</li>
+<li>设计一个秒杀系统，30分钟没付款就自动关闭交易</li>
+<li>如何做一个分布式锁</li>
+<li>用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</li>
+<li>MQ系统的数据如何保证不丢失</li>
+<li>分布式事务的原理，如何使用分布式事务</li>
+<li>什么是一致性hash</li>
+<li>什么是restful，讲讲你理解的restful</li>
+<li>如何设计建立和保持100w的长连接？</li>
+<li>解释什么是MESI协议(缓存一致性)</li>
+<li>说说你知道的几种HASH算法，简单的也可以</li>
+<li>什么是paxos算法</li>
+<li>redis和memcached 的内存管理的区别</li>
+<li>一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</li>
+</ol>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><ol>
+<li>10亿个数字里里面找最小的10个2、有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优3、2亿个随机生成的无序整数,找出中间大小的值4、遍历二叉树六、数据库1.数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</li>
+<li>高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</li>
+<li>SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</li>
+<li>数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</li>
+<li>MYsql的索引实现方式</li>
+<li>聚集索引和非聚集索引的区别</li>
+<li>数据库中 BTREE和B+tree区别</li>
+</ol>
+<p>作者：程序汪追风<br>链接：<a href="https://juejin.im/post/5d5fd40bf265da03df5f1b3a" target="_blank" rel="noopener">https://juejin.im/post/5d5fd40bf265da03df5f1b3a</a><br>来源：掘金</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-18T15:30:34.000Z">2019-08-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2090 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/18/技术栈/">技术栈</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="https://hsutimes.club/usr/uploads/2019/08/1967887609.png" alt="stack.png"></p>
+<h1 id="HTML-CSS"><a href="#HTML-CSS" class="headerlink" title="HTML / CSS"></a>HTML / CSS</h1><ul>
+<li>【HTML】<br>HTML，即超文本标记语言（Hyper Text Markup Language）</li>
+<li>【HTML5】<br>HTML5 是下一代 HTML 标准</li>
+<li>【CSS】<br>层叠样式表（Cascading StyleSheet）</li>
+<li>【CSS3】<br>CSS3是CSS技术的升级版本</li>
+<li>【Bootstrap3】<br>Bootstrap，来自 Twitter，是目前最受欢迎的前端框架</li>
+<li>【Bootstrap4】<br>Bootstrap4 目前是 Bootstrap 的最新版本</li>
+<li>【Font Awesome】<br>Font Awesome 是一套绝佳的图标字体库和CSS框架。</li>
+<li>【Foundation】<br>Foundation 用于开发响应式的 HTML, CSS and JavaScript 框架<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1></li>
+<li>【JavaScript】<br>JavaScript 是 Web 的编程语言</li>
+<li>【HTML DOM】<br>HTML DOM 定义了访问和操作 HTML 文档的标准方法</li>
+<li>【jQuery】<br>jQuery 是一个 JavaScript 库</li>
+<li>【AngularJS】<br>AngularJS 通过新的属性和表达式扩展了 HTML</li>
+<li>【AngularJS2】<br>AngularJS2 是一款开源JavaScript库，由Google维护。</li>
+<li>【Vue.js】<br>Vue.js 是一套构建用户界面的渐进式框架。</li>
+<li>【React】<br>React 是一个用于构建用户界面的 JAVASCRIPT 库</li>
+<li>【TypeScript】<br>TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准</li>
+<li>【jQuery UI】<br>jQuery UI 是建立在 jQuery上的一组用户界面交互、特效、小部件及主题</li>
+<li>【jQuery EasyUI 】<br>jQuery EasyUI 是一个基于 jQuery 的框架，集成了各种用户界面插件</li>
+<li>【Node.js】<br>Node.js 是运行在服务端的 JavaScript</li>
+<li>【AJAX】<br>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）</li>
+<li>【JSON】<br>JSON 是存储和交换文本信息的语法</li>
+<li>【Highcharts】<br>Highcharts 是一个用纯JavaScript编写的一个图表库</li>
+<li>【Google 地图】<br>Google 地图接口使用说明</li>
+</ul>
+<h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><ul>
+<li>【PHP】<br>PHP 是一种通用开源脚本语言</li>
+<li>【Python】<br>Python 是一种面向对象、解释型计算机程序设计语言</li>
+<li>【Python3】<br>Python 升级版，变化较大</li>
+<li>【Django】<br>Django是一个开放源代码的Web应用框架，由Python写成</li>
+<li>【Linux】<br>Linux是一套免费使用和自由传播的类Unix操作系统</li>
+<li>【Docker】<br>Docker 是一个开源的应用容器引擎，基于 Go 语言</li>
+<li>【Ruby】<br>一种为简单快捷的面向对象编程（面向对象程序设计）而创的脚本语言</li>
+<li>【Java】<br>一种可以撰写跨平台应用软件的面向对象的程序设计语言</li>
+<li>【C】<br>一门通用计算机编程语言</li>
+<li>【C++】<br>C++是在C语言的基础上开发的一种通用编程语言</li>
+<li>【Perl】<br>Perl 是高级、通用、直译式、动态的程序语言</li>
+<li>【Servlet 】<br>运行在 Web 服务器或应用服务器上的程序</li>
+<li>【JSP】<br>JSP与PHP、ASP、ASP.NET等语言类似，运行在服务端的语言</li>
+<li>【Lua】<br>Lua 是一种轻量小巧的脚本语言，用标准C语言编写并以源代码形式开放</li>
+<li>【Scala】<br>Scala 是一门多范式（multi-paradigm）的编程语言。</li>
+<li>【Go】<br>Go语言是谷歌推出的一种全新的编程语言</li>
+<li>【设计模式】<br>设计模式代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用</li>
+<li>【正则表达式】<br>正则表达式是对字符串操作的一种逻辑公式</li>
+<li>【Maven】<br>Maven 是一个项目管理工具，可以对 Java 项目进行构建、依赖管理。</li>
+<li>【NumPy】<br>NumPy 是 Python 语言的一个扩展程序库，支持大量的维度数组与矩阵运算。</li>
+<li>【ASP】<br>ASP（Active Server Pages 动态服务器页面）是一种生成动态交互性网页的强有力工具</li>
+<li>【AppML】<br>AppML 是一个为web应用程序设计的HTML扩展框</li>
+<li>【VBScript】<br>一种微软环境下的轻量级的解释型语言</li>
+</ul>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><ul>
+<li>【SQL】<br>结构化查询语言(Structured Query Language)</li>
+<li>【Mysql】<br>MySQL是一个关系型数据库管理系统</li>
+<li>【PostgreSQL】<br>PostgreSQL 是一个免费的对象-关系数据库服务器(ORDBMS)</li>
+<li>【SQLite】<br>一款轻型的数据库</li>
+<li>【MongoDB】<br>Mongo DB 是目前在IT行业非常流行的一种非关系型数据库(NoSql)</li>
+<li>【Redis】<br>一个高性能的key-value数据库</li>
+<li>【Memcached】<br>Memcached是一个自由开源的，高性能，分布式内存对象缓存系统。</li>
+</ul>
+<h1 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h1><ul>
+<li>【Android】<br><code>Android</code> 是一种基于Linux的自由及开放源代码的操作系统，主要使用于移动设备</li>
+<li>【Swift】<br>Swift 是一种支持多编程范式和编译式的编程语言,用于开发 iOS，OS X 和 watchOS应用程序。</li>
+<li>【jQuery Mobile】<br>jQuery Mobile是jQuery 在手机上和平板设备上的版本</li>
+<li>【ionic】<br><code>ionic</code> 是一个强大的 HTML5 应用程序开发框架(HTML5 Hybrid Mobile App Framework )</li>
+<li>【Kotlin】<br>在 Java 虚拟机上运行的静态类型编程语言，Android 官方开发语言</li>
+</ul>
+<h1 id="XML-教程"><a href="#XML-教程" class="headerlink" title="XML 教程"></a>XML 教程</h1><ul>
+<li>【XML】<br>XML 被设计用来传输和存储数据</li>
+<li>【DTD】<br>DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块</li>
+<li>【XML DOM】<br>XML DOM 定义访问和操作XML文档的标准方法</li>
+<li>【XSLT】<br>XSL 是一个 XML 文档的样式表语言，XSLT 指 XSL 转换</li>
+<li>【XPath】<br>XPath 是一门在 XML 文档中查找信息的语言</li>
+<li>【XQuery】<br>XQuery 被设计用来查询 XML 数据</li>
+<li>【XLink】<br>XLink 定义在 XML 文档中创建超级链接的标准方法</li>
+<li>【XPointer】<br>XPointer是在可扩展标志语言（XML）文件中定位数据的一种语言</li>
+<li>【XML Schema】<br>XML Schema 描述了 XML文档的结构</li>
+<li>【XSL-FO】<br>XSL-FO 指可扩展样式表语言格式化对象</li>
+<li>【SVG】<br>SVG 使用 XML 格式定义图像</li>
+</ul>
+<h1 id="ASP-NET"><a href="#ASP-NET" class="headerlink" title="ASP.NET"></a>ASP.NET</h1><ul>
+<li>【ASP.NET】<br>ASP.NET 是一个使用 HTML、CSS、JavaScript 和服务器脚本创建网页和网站的开发框架</li>
+<li>【C#】<br>C# 是一个简单的、现代的、通用的、面向对象的编程语言</li>
+<li>【Web Pages】<br>Web Pages 是三种网页编程模型中的一种，用于创建网站和web 应用程序</li>
+<li>【Razor】<br>Razor 是一种标记语法，可以让您将基于服务器的代码（Visual Basic 和 C#）嵌入到网页中</li>
+<li>【MVC】<br>MVC（Model View Controller 模型-视图-控制器）</li>
+<li>【Web Forms】<br>Web Forms 是三种创建 ASP.NET 网站和 Web 应用程序的编程模式中的一种</li>
+</ul>
+<h1 id="Web-Service"><a href="#Web-Service" class="headerlink" title="Web Service"></a>Web Service</h1><ul>
+<li>【Web Service】<br>Web Service 脚本平台需支持 XML + HTTP</li>
+<li>【WSDL】<br>WSDL是一门基于 XML 的语言，用于描述 Web Service 以及如何对它们进行访问</li>
+<li>【SOAP】<br>SOAP 是一种简单的基于 XML 的协议，它使应用程序通过 HTTP 来交换信息</li>
+<li>【RSS】<br>RSS基于XML标准，在互联网上被广泛采用的内容包装和投递协议</li>
+<li>【RDF】<br>DF(资源描述框架)是描述网络资源的 W3C 标准</li>
+</ul>
+<h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><ul>
+<li>【Eclipse】<br>Eclipse 是一个开放源代码的、基于 Java 的可扩展开发平台</li>
+<li>【Git】<br>Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目</li>
+<li>【Svn】<br>SVN 是一个开放源代码的版本控制系统</li>
+<li>【Markdown】<br>Markdown 是一种轻量级标记语</li>
+</ul>
+<h1 id="网站建设"><a href="#网站建设" class="headerlink" title="网站建设"></a>网站建设</h1><ul>
+<li>【HTTP】<br>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议</li>
+<li>【网站建设指南】<br>网站建设指导课程</li>
+<li>【浏览器信息】<br>对于网站开发人员来说，浏览器信息和统计数据都是非常重要的</li>
+<li>【网站主机教程】<br>如果您希望向全世界发布自己的网站，那么您的网站就需要被放置于一个 WEB 服务器</li>
+<li>【TCP/IP】<br>TCP/IP 是因特网的通信协议</li>
+<li>【W3C】<br>W3C 让每个人都能在互联网上分享资源</li>
+<li>【网站品质】<br>何创建高质量的web网站</li>
+</ul>
+<p><a href="https://www.runoob.com/" target="_blank" rel="noopener">菜鸟教程</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-16T07:47:37.000Z">2019-08-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1497 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/16/git教程/">git教程</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h1><p>git - 愚蠢的内容跟踪器</p>
+<h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><pre><code>git [--version] [ -  help] [-C &lt;path&gt;] [-c &lt;name&gt; = &lt;value&gt;]
+    [--exec-path [= &lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+    [-p | --paginate | -P | --no-pager] [ -  no-replace-objects] [--bare]
+    [--git-dir = &lt;path&gt;] [ -  work-tree = &lt;path&gt;] [--namespace = &lt;name&gt;]
+    [--super前缀= &lt;路径&gt;]
+    &lt;command&gt; [&lt;args&gt;]</code></pre><h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><p>Git是一个快速，可扩展的分布式版本控制系统，具有异常丰富的命令集，可提供高级操作和对内部的完全访问。</p>
+<p>请参阅gittutorial [7]以开始使用，然后查看 giteveryday [7]以获取有用的最小命令集。在Git的用户手册有一个更深入的介绍。</p>
+<p>掌握了基本概念后，您可以回到此页面了解Git提供的命令。您可以使用“git help command”了解有关各个Git命令的更多信息。 gitcli [7] 手册页概述了命令行命令语法。</p>
+<p>可以在以下位置查看最新Git文档的格式化和超链接副本<a href="https://git.github.io/htmldocs/git.html。" target="_blank" rel="noopener">https://git.github.io/htmldocs/git.html。</a></p>
+<h1 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h1><ul>
+<li><p>版<br>打印git程序来自的Git套件版本。</p>
+</li>
+<li><p>救命<br>打印概要和最常用命令的列表。如果选择–all或-a已给出，则打印所有可用命令。如果命名了Git命令，则此选项将显示该命令的手册页。</p>
+</li>
+</ul>
+<p>其他选项可用于控制手册页的显示方式。有关更多信息，请参阅git-help [1]，因为git –help …内部转换为git help …。</p>
+<p>-C &lt;路径&gt;<br>运行就好像git是在<path>而不是当前工作目录中启动的。当-C给出多个选项时，-C <path>相对于前面的每个后续非绝对值被解释-C <path>。如果<path>存在但是为空，例如-C “”，则保持当前工作目录不变。</path></path></path></path></p>
+<p>此选项会影响预期的路径名的选项一样–git-dir，并 –work-tree在他们的路径名的解释，将相对于所造成的工作目录进行-C选择。例如，以下调用是等效的：</p>
+<pre><code>git --git-dir = a.git --work-tree = b -C c status
+git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = <value><br>将配置参数传递给命令。给定的值将覆盖配置文件中的值。<name>的格式与git config列出的格式相同 （以点分隔的子键）。</name></value></name></p>
+<p>请注意，允许省略=in git -c foo.bar …并设置 foo.bar为布尔值true（就像[foo]bar在配置文件中一样）。包括equals但空值（如git -c foo.bar= …）设置foo.bar为git config –type=bool将转换为的空字符串false。</p>
+<p>–exec路径[= &lt;路径&gt;]<br>安装核心Git程序的路径。这也可以通过设置GIT_EXEC_PATH环境变量来控制。如果没有给出路径，git将打印当前设置然后退出。</p>
+<p>–html路径<br>打印路径，不带斜杠，安装Git的HTML文档并退出。</p>
+<p>–man路径<br>打印manpath（请参阅参考资料man(1)）获取此版本Git的手册页并退出。</p>
+<p>–info路径<br>打印安装记录此版本Git的Info文件的路径并退出。</p>
+<p>-p<br>–paginate<br>如果标准输出是终端，则将所有输出传输到较少（或如果设置为$ PAGER）。这将覆盖pager.<cmd> 配置选项（请参阅下面的“配置机制”部分）。</cmd></p>
+<p>-P<br>–no寻呼机<br>不要将Git输出传输到寻呼机。</p>
+<p>–git-DIR = &lt;路径&gt;<br>设置存储库的路径。这也可以通过设置GIT_DIR环境变量来控制。它可以是当前工作目录的绝对路径或相对路径。</p>
+<ul>
+<li>共同努力树= &lt;路径&gt;<br>设置工作树的路径。它可以是绝对路径或相对于当前工作目录的路径。这也可以通过设置GIT_WORK_TREE环境变量和core.worktree配置变量来控制（有关更详细的讨论，请参阅git-config [1]中的core.worktree ）。</li>
+</ul>
+<p>–namespace = &lt;路径&gt;<br>设置Git名称空间。有关更多详细信息，请参阅gitnamespaces [7]。相当于设置GIT_NAMESPACE环境变量。</p>
+<p>–super前缀= &lt;路径&gt;<br>目前仅供内部使用。设置一个前缀，该前缀提供从存储库上方到其根目录的路径。一个用途是给出调用它的超级项目的子模块上下文。</p>
+<ul>
+<li>裸<br>将存储库视为裸存储库。如果未设置GIT_DIR环境，则将其设置为当前工作目录。</li>
+</ul>
+<p>–no替换对象<br>不要使用替换引用来替换Git对象。有关更多信息，请参阅 git-replace [1]。</p>
+<p>–literal按本义，pathspecs<br>按字面意思处理pathspecs（即没有globbing，没有pathspec魔法）。这相当于将GIT_LITERAL_PATHSPECS环境变量设置为1。</p>
+<p>–glob-pathspecs<br>为所有pathspec添加“glob”魔法。这相当于将GIT_GLOB_PATHSPECS环境变量设置为1。可以使用pathspec magic“:( literal）”在各个pathspec上禁用通配符</p>
+<p>–noglob-pathspecs<br>为所有pathspec添加“literal”魔法。这相当于将GIT_NOGLOB_PATHSPECS环境变量设置为1。可以使用pathspec magic“:( glob）”在各个pathspec上启用globbing</p>
+<p>–icase-pathspecs<br>为所有pathspec添加“icase”魔法。这相当于将GIT_ICASE_PATHSPECS环境变量设置为1。</p>
+<p>–no-可选锁<br>不要执行需要锁定的可选操作。这相当于设置GIT_OPTIONAL_LOCKS为0。</p>
+<p>–list-CMDS =基团[，组…]<br>按组列出命令。这是一个内部/实验选项，可能会在将来更改或删除。支持的组包括：builtins，parseopt（使用parse-options的内置命令），main（libexec目录中的所有命令），其他（所有其他命令$PATH都有git-前缀），list- <category>（请参阅命令中的类别 - list.txt），nohelpers（排除帮助程序命令），别名和配置（从配置变量completion.commands检索命令列表）</category></p>
 
         </div>
         
@@ -537,7 +1168,7 @@
         <div class="pagination-previous">
             <a class="is-flex-grow has-text-black-ter" href="/page/8/">上一页</a>
         </div>
-        <div class="pagination-next">
+        <div class="pagination-next is-invisible is-hidden-mobile">
             <a class="is-flex-grow has-text-black-ter" href="/page/10/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
@@ -549,12 +1180,6 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
             <li><a class="pagination-link is-current" href="/page/9/">9</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/22/">22</a></li>
             
         </ul>
     </nav>
