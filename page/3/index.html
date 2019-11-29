@@ -146,6 +146,59 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-08T15:45:34.000Z">2019-11-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 478 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/08/javamelody/">javamelody</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="JavaMelody-monitoring-of-JavaEE-applications"><a href="#JavaMelody-monitoring-of-JavaEE-applications" class="headerlink" title="JavaMelody : monitoring of JavaEE applications"></a>JavaMelody : monitoring of JavaEE applications</h1><p><img src="/images/2019/11/08/bd4c8d00-023e-11ea-97a2-eb10e3960fff.png" alt="image.png"></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/11/08/javamelody/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-07T14:42:34.000Z">2019-11-07</time>
                 
                 <div class="level-item">
@@ -949,155 +1002,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-28T15:20:52.000Z">2019-10-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 283 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/28/asmttpd/">asmttpd</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="asmttpd"><a href="#asmttpd" class="headerlink" title="asmttpd"></a>asmttpd</h1><p>Web server for Linux written in amd64 assembly.</p>
-<p>Features:</p>
-<ul>
-<li>Multi-threaded.</li>
-<li>No libraries required ( only 64-bit Linux ).</li>
-<li>Very small binary, roughly 6 KB.</li>
-<li>Quite fast.</li>
-</ul>
-<p>What works:</p>
-<ul>
-<li>Serving files from specified document root.</li>
-<li>HEAD requests.</li>
-<li>200, 206, 404, 400, 413, 416</li>
-<li>Content-types: xml, html, xhtml, gif, png, jpeg, css, js, svg, and octet-stream.</li>
-</ul>
-<p>Planned Features:</p>
-<ul>
-<li>Directory listing.</li>
-</ul>
-<h1 id="Current-Limitations-Known-Issues"><a href="#Current-Limitations-Known-Issues" class="headerlink" title="Current Limitations / Known Issues"></a>Current Limitations / Known Issues</h1><ul>
-<li>Sendfile can hang if GET is cancelled.</li>
-</ul>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>Run <code>make</code> or <code>make release</code> for non-debug version.</p>
-<p>You will need <code>yasm</code> installed.</p>
-<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p><code>./asmttpd /path/to/web_root port_number</code></p>
-<p>Example: <code>./asmttpd ./web_root 8080</code></p>
-<h1 id="Changes"><a href="#Changes" class="headerlink" title="Changes"></a>Changes</h1><p>2019-04-22 : asmttpd - 0.4.4</p>
-<ul>
-<li>Added SVG support.</li>
-</ul>
-<p>2019-01-24 : asmttpd - 0.4.3</p>
-<ul>
-<li>Added port number as parameter.</li>
-</ul>
-<p>2017-10-18 : asmttpd - 0.4.2</p>
-<ul>
-<li>Set REUSEADDR.</li>
-</ul>
-<p>2017-10-17 : asmttpd - 0.4.1</p>
-<ul>
-<li>Stack address bug fix.</li>
-</ul>
-<p>2016-10-31 : asmttpd - 0.4</p>
-<ul>
-<li>HEAD support.</li>
-</ul>
-<p>2014-07-14 : asmttpd - 0.3</p>
-<ul>
-<li>Added default document support.</li>
-</ul>
-<p>2014-02-10 : asmttpd - 0.2</p>
-<ul>
-<li>Added 400, 413, 416 responses.</li>
-<li>Fixed header processing bug.</li>
-</ul>
-<p>2014-02-07 : asmttpd - 0.1.1</p>
-<ul>
-<li>Fixed 206 max length bug.</li>
-<li>Commented out simple request logging, uncomment in main.asm to enable.</li>
-</ul>
-<p>2014-02-06 : asmttpd - 0.1</p>
-<ul>
-<li>Fixed SIGPIPE when transfer is cancelled.</li>
-<li>Added a more useful error on bind failure.</li>
-<li>Fixed 206 size calculation.</li>
-<li>Combined seek &amp; get file size system calls.</li>
-</ul>
-<p>2014-02-05 : asmttpd - 0.09</p>
-<ul>
-<li>Issue #8 fix. Crashes on long request paths.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.08</p>
-<ul>
-<li>Added TCP corking.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.07</p>
-<ul>
-<li>Removed thread pool after benchmarking, changed to an accept-per-thread model.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.06</p>
-<ul>
-<li>Worker thread stack corruption bug fix.</li>
-</ul>
-<p>2014-02-04 : asmttpd - 0.05</p>
-<ul>
-<li>Changed 200 and 206 implementation to use sendfile system call.</li>
-<li>Got rid of read/write buffer, changed request read buffer to standard 8KB.</li>
-</ul>
-<p>2014-02-03 : asmttpd - 0.04</p>
-<ul>
-<li>200 now streams full amount</li>
-</ul>
-<p>2014-02-01 : asmttpd - 0.03</p>
-<ul>
-<li>Files are split if too large to fit into buffer. </li>
-<li>Added 206 responses with Content-Range handling</li>
-</ul>
-<p>2014-01-30 : asmttpd - 0.02</p>
-<ul>
-<li>Added xml, xhtml, gif, png, jpeg, css, and javascript content types.</li>
-<li>Changed thread memory size to something reasonable. You can tweak it according to available memory. See comments in main.asm</li>
-<li>Added simple request logging.</li>
-<li>Added removal of ‘../‘ in URL.</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1120,7 +1024,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/9/">9</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
             
         </ul>
     </nav>
@@ -1170,7 +1074,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            108
+                            109
                         </p>
                     </a>
                 </div>
@@ -1194,7 +1098,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            135
+                            137
                         </p>
                     </a>
                 </div>
@@ -1316,7 +1220,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">83</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1361,6 +1265,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/29/matlab/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/null" alt="数学软件 MATLAB">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:46:48.000Z">2019-11-29</time></div>
+                    <a href="/2019/11/29/matlab/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数学软件 MATLAB</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/28/hunt-cache/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
@@ -1428,25 +1351,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T14:20:04.000Z">2019-11-25</time></div>
                     <a href="/2019/11/25/metalslugflash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">仿合金弹头Flash游戏</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/24/bing-bitfunnel/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
-                    <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1478,6 +1382,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/29/matlab/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/null" alt="数学软件 MATLAB">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:46:48.000Z">2019-11-29</time></div>
+                    <a href="/2019/11/29/matlab/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数学软件 MATLAB</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/28/hunt-cache/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
@@ -1545,25 +1468,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T14:20:04.000Z">2019-11-25</time></div>
                     <a href="/2019/11/25/metalslugflash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">仿合金弹头Flash游戏</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/24/bing-bitfunnel/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/24/9f58f500-0eb8-11ea-9945-274fd6ed7da1.png" alt="Bing搜索核心技术BitFunnel原理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T12:46:59.000Z">2019-11-24</time></div>
-                    <a href="/2019/11/24/bing-bitfunnel/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Bing搜索核心技术BitFunnel原理</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
