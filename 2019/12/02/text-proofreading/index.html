@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0 - Time</title>
+
+
+    <meta name="description" content="哈工大讯飞联合实验室（HFL）发布飞鹰智能文本校对系统（简称：飞鹰校对）1.0。系统针对中文文本的校对需求，提供拼写纠错、语法纠错、标点纠错及敏感词检测等功能，现已开放通用领域以及司法、教育等专用领域的智能文本校对服务。欢迎大家体验。PC端请访问：http://check.hfl-rc.com/">
+<meta name="keywords" content="自然语言,文本校对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
+<meta property="og:url" content="https://blog.hsutimes.com/2019/12/02/text-proofreading/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:description" content="哈工大讯飞联合实验室（HFL）发布飞鹰智能文本校对系统（简称：飞鹰校对）1.0。系统针对中文文本的校对需求，提供拼写纠错、语法纠错、标点纠错及敏感词检测等功能，现已开放通用领域以及司法、教育等专用领域的智能文本校对服务。欢迎大家体验。PC端请访问：http://check.hfl-rc.com/">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png">
+<meta property="og:updated_time" content="2019-12-02T11:47:08.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
+<meta name="twitter:description" content="哈工大讯飞联合实验室（HFL）发布飞鹰智能文本校对系统（简称：飞鹰校对）1.0。系统针对中文文本的校对需求，提供拼写纠错、语法纠错、标点纠错及敏感词检测等功能，现已开放通用领域以及司法、教育等专用领域的智能文本校对服务。欢迎大家体验。PC端请访问：http://check.hfl-rc.com/">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png">
+<meta name="twitter:site" content="https://twitter.com/times26740863">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134224598-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1689 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>哈工大讯飞联合实验室（HFL）发布飞鹰智能文本校对系统（简称：飞鹰校对）1.0。系统针对中文文本的校对需求，提供拼写纠错、语法纠错、标点纠错及敏感词检测等功能，现已开放通用领域以及司法、教育等专用领域的智能文本校对服务。欢迎大家体验。PC端请访问：<a href="http://check.hfl-rc.com/" target="_blank" rel="noopener">http://check.hfl-rc.com/</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>随着计算机和信息技术的迅猛发展，文本校对的工作量不断增加，人工校对已无法适应迅速增长的校对需求。哈工大讯飞联合实验室基于深厚的自然语言处理技术基础，长期以来在中文文本校对上进行深入研究，研发出飞鹰智能文本校对系统。飞鹰校对涵盖文本校对的拼写纠错、语法纠错、标点纠错及敏感词检测等不同校对模块，各项功能均达到业界领先水平。系统可针对不同领域的文本校对需求，为行业客户提供定制化的解决方案，现已支持通用领域、司法领域和教育领域，在后续将进一步开放更多其他领域的文本校对服务。</p>
+<ul>
+<li><p>通用领域：可为用户校对新闻、自媒体、论文等不同类型文本，提供通用的校对服务，避免拼写、语法、标点等错误。</p>
+</li>
+<li><p>司法领域：在裁判文书、询问笔录等司法专用领域都有广阔的应用空间，有效利用可提高公检法司的司法权威。</p>
+</li>
+<li><p>教育领域：现已应用在小学作文批改任务中，大大减轻了老师的作业批改压力。</p>
+</li>
+</ul>
+<h1 id="系统功能"><a href="#系统功能" class="headerlink" title="系统功能"></a>系统功能</h1><p>飞鹰校对包括别字、别词组成的拼写纠错，冗余、缺失、乱序、搭配组成的语法纠错，以及标点、成语、古诗词、实体、敏感词、领导人职称等其他纠错模块。</p>
+<ul>
+<li>拼写：我在程度的街头走一走。（程度 → 成都）</li>
+<li>冗余：有完整规划但并建设不到位。（去掉“并”）</li>
+<li>缺失：文稿中仍会遗许多错误，需要我们仔细检查。（遗 → 遗留）</li>
+<li>乱序：今天天气很错不，我们可以一起去出游。（错不 → 不错）</li>
+<li>标点：现就开展治理工作有关事项通知如下，：（连续使用标点）</li>
+</ul>
+<p>系统的主要流程包括预处理、文本校对、后处理三个环节。首先在预处理环节，系统主要对用户输入的待处理的文本进行读取、清洗、基础分析。经过预处理之后，系统对文本进行拼写、语法、标点等并行化校对。在后处理环节，系统将各个模块的校对结果进行中控融合，并根据领域特点进行定制化过滤，最后进行可视化展示。此外系统可根据用户提交的反馈，持续迭代优化文本校对的效果。</p>
+<p><img src="/images/2019/12/02/deb1a350-14f8-11ea-b112-938d9dee0841.png" alt="image.png"></p>
+<h1 id="系统核心技术"><a href="#系统核心技术" class="headerlink" title="系统核心技术"></a>系统核心技术</h1><p>飞鹰智能文本校对系统由哈工大讯飞联合实验室基于深度学习自然语言处理技术研发打造。在文本校对中，根据不同的任务类型，系统会适配不同的预训练模型（如BERT-base，BERT-wwm等）。实验表明，哈工大讯飞联合实验室推出的BERT-wwm等一系列中文预训练模型可以在文本校对中取得更加优秀的效果。此外，系统可针对不同的领域对模型进行调整适配，当前已适配司法、教育、海关等领域。模型预测时，系统不断优化模型参数以提升校对效果，并使用并行化预测手段优化校对效率。最后模型利用音近、形近进行结果选择，使用实体识别、语言模型等方式对结果进行进一步排序过滤，得到最终的校对结果。</p>
+<p><img src="/images/2019/12/02/e6b380f0-14f8-11ea-b112-938d9dee0841.png" alt="image.png"></p>
+<h1 id="系统效果"><a href="#系统效果" class="headerlink" title="系统效果"></a>系统效果</h1><p><strong>整体校对效果</strong><br>飞鹰校对各个模块在司法领域、海关领域和教育领域上的文本校对已达到业内领先水平，在多个领域上都已经可以很好地满足应用需求，达到可实用的水准。</p>
+<p><img src="/images/2019/12/02/eb7093d0-14f8-11ea-b112-938d9dee0841.png" alt="image.png"></p>
+<p><strong>拼写纠错效果</strong></p>
+<p>飞鹰校对在国际中文拼写检测数据集（SIGHAN 2013/2014/2015）上的拼写纠错效果（检出F1值）已处于行业领先地位，可以很好地解决字、词的误用问题。</p>
+<p><img src="/images/2019/12/02/f73fa610-14f8-11ea-b112-938d9dee0841.png" alt="image.png"></p>
+<p><strong>语法纠错效果</strong></p>
+<p>在墨尔本举行的ACL 2018中文语法错误自动检测大赛（CGED）中，哈工大讯飞联合实验室获得全部四项指标中语病类型、定位、修改三项指标的第一名，语病识别指标第二名，综合排名位列第一，显著超越了其他所有参赛队伍。比赛结束至今，我们又持续在中文语法纠错任务上进行进一步地深入研究，效果又有了大幅提升，语法纠错效果指标（F1值）相对提升15%左右。</p>
+<p><img src="/images/2019/12/02/fe82c790-14f8-11ea-b112-938d9dee0841.png" alt="image.png"></p>
+<h1 id="系统展示"><a href="#系统展示" class="headerlink" title="系统展示"></a>系统展示</h1><p>PC端：<a href="http://check.hfl-rc.com/" target="_blank" rel="noopener">http://check.hfl-rc.com/</a></p>
+<p><img src="/images/2019/12/02/02ff7610-14f9-11ea-b112-938d9dee0841.png" alt="拼写纠错"></p>
+<p><img src="/images/2019/12/02/0fa5ae70-14f9-11ea-b112-938d9dee0841.png" alt="语法纠错"></p>
+<p><strong>微信小程序</strong></p>
+<p><img src="/images/2019/12/02/18a992c0-14f9-11ea-b112-938d9dee0841.png" alt="image.png"></p>
+<h1 id="未来工作"><a href="#未来工作" class="headerlink" title="未来工作"></a>未来工作</h1><p>未来我们将针对不同领域的校对需求，逐步开放更多领域的校对服务，并解锁更多的文本校对技能，敬请期待。欢迎公众通过哈工大讯飞联合实验室微信公众号留言或将邮件发至<a href="mailto:gangyue@iflytek.com" target="_blank" rel="noopener">gangyue@iflytek.com</a>提出宝贵意见或建议。</p>
+<blockquote>
+<p>本文转载自 哈工大讯飞联合实验室 公众号<br><a href="https://mp.weixin.qq.com/s/PFfThXeB6r5Q-HrZJQhYbQ" target="_blank" rel="noopener">传送门</a></p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/文本校对/">文本校对</a>, <a class="has-link-grey -link" href="/tags/自然语言/">自然语言</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/3754260851.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/1592984278.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="7KBW7U6X2ZYK6" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/user/creators?u=26939987" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/01/three-js/">
+                <span class="level-item">three.js</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://hsutimes.github.io/js/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '33cd41c3af6a61e7ba27404f3294b4a4',
+		owner: 'hsutimes',
+		repo: 'gitment_blog',
+		oauth: {
+			client_id: 'd73d768ea9e3bd69ab54',
+			client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://hsutimes.github.io/images/16530d7f26a413c2.png" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            112
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            141
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/hsutimes" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://hsutimes.club" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Time</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hsutimes.club</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">85</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#简介">
+        <span class="has-mr-6">1</span>
+        <span>简介</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统功能">
+        <span class="has-mr-6">2</span>
+        <span>系统功能</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统核心技术">
+        <span class="has-mr-6">3</span>
+        <span>系统核心技术</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统效果">
+        <span class="has-mr-6">4</span>
+        <span>系统效果</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统展示">
+        <span class="has-mr-6">5</span>
+        <span>系统展示</span>
+        </a></li><li>
+        <a class="is-flex" href="#未来工作">
+        <span class="has-mr-6">6</span>
+        <span>未来工作</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/02/text-proofreading/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/01/three-js/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/01/5569d5c0-1450-11ea-9a39-d9ffa7785653.png" alt="three.js">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T15:35:36.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/30/PinePhone/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/30/d0abaed0-1382-11ea-aa02-7b8dc16b86de.png" alt="开源 Linux 智能手机 PinePhone 演示运行桌面 Linux 应用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T15:04:20.000Z">2019-11-30</time></div>
+                    <a href="/2019/11/30/PinePhone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">开源 Linux 智能手机 PinePhone 演示运行桌面 Linux 应用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/29/matlab/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/29/64801720-12b8-11ea-a53a-95609c64960f.png" alt="数学软件 MATLAB">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:46:48.000Z">2019-11-29</time></div>
+                    <a href="/2019/11/29/matlab/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数学软件 MATLAB</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/28/hunt-cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#简介">
+        <span class="has-mr-6">1</span>
+        <span>简介</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统功能">
+        <span class="has-mr-6">2</span>
+        <span>系统功能</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统核心技术">
+        <span class="has-mr-6">3</span>
+        <span>系统核心技术</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统效果">
+        <span class="has-mr-6">4</span>
+        <span>系统效果</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统展示">
+        <span class="has-mr-6">5</span>
+        <span>系统展示</span>
+        </a></li><li>
+        <a class="is-flex" href="#未来工作">
+        <span class="has-mr-6">6</span>
+        <span>未来工作</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/02/text-proofreading/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/01/three-js/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/01/5569d5c0-1450-11ea-9a39-d9ffa7785653.png" alt="three.js">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T15:35:36.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/30/PinePhone/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/30/d0abaed0-1382-11ea-aa02-7b8dc16b86de.png" alt="开源 Linux 智能手机 PinePhone 演示运行桌面 Linux 应用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T15:04:20.000Z">2019-11-30</time></div>
+                    <a href="/2019/11/30/PinePhone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">开源 Linux 智能手机 PinePhone 演示运行桌面 Linux 应用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/29/matlab/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/29/64801720-12b8-11ea-a53a-95609c64960f.png" alt="数学软件 MATLAB">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:46:48.000Z">2019-11-29</time></div>
+                    <a href="/2019/11/29/matlab/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数学软件 MATLAB</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/28/hunt-cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
