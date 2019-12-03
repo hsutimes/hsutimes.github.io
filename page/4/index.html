@@ -146,6 +146,98 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-01T15:12:05.000Z">2019-11-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1629 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/01/android-fingerprint-security/">android-fingerprint-security</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Android-Fingerprint-Security"><a href="#Android-Fingerprint-Security" class="headerlink" title="Android Fingerprint Security"></a>Android Fingerprint Security</h1><p>安全性一直是移动开发的关键部分，正确实现它绝非易事。智能手机最初使用4位PIN码进行破解，最多需要10,000次破解。然后是锁定模式，尽管基本的人性极大地降低了这个数字，但锁定模式却将标准提高到了惊人的389112种不同的模式。 与PIN和锁定模式不同，指纹身份验证要提前数年。一个人的指纹确实是独一无二的，无法猜测。这项技术在消费类设备上正变得越来越流行，并且使用棉花糖，比以往任何时候都更容易在您的应用程序中实现它。</p>
+<p><img src="/images/2019/11/01/0fe0fb30-fcba-11e9-bc34-ef83b1e8dc59.png" alt="多年来的Android安全性，PIN锁定，滑动锁定模式和指纹"></p>
+<h2 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h2><p>除了我们已经写过的 iOS Touch ID之外，Android上指纹扫描的早期实现还不够。每个供应商都有其独特的方法来确保流程的安全性和实施，最重要的是，如何存储用户的私有数据。</p>
+<h2 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h2><p>随着棉花糖的到来，人们期待已久的通过标准API对指纹认证的本机支持。最终，Android开发人员被允许对解锁设备，Play Store和Android Pay购买的产品实施基于指纹的身份验证，并在移动银行等安全性高的应用程序中提供自定义身份验证。</p>
+<p>Google首次在Nexus 5X和Nexus 6P上推出，并推出了快速安全的Nexus Imprint指纹传感器，该技术还带来了Android 6.0棉花糖指纹传感器API的首个实现。可以在不到600毫秒的时间内识别出指纹，从而提供快速舒适的用户体验。</p>
+<h2 id="指纹存储安全"><a href="#指纹存储安全" class="headerlink" title="指纹存储安全"></a>指纹存储安全</h2><p>Android上的大多数存储策略都是不安全的，尤其是考虑到root用户访问权限的可能性时。但是Google已通过将所有打印数据操作移至可信执行环境 （TEE）并为制造商必须遵循的指纹数据存储提供了严格的指导方针，朝着正确的方向迈出了显着的一步。</p>
+<h2 id="三通"><a href="#三通" class="headerlink" title="三通"></a>三通</h2><p>TEE是智能手机主处理器的安全区域。它保证了内部加载的代码和数据的机密性和完整性。这种分离可实现安全性和保护，免受黑客，恶意软件和root用户访问。</p>
+<p><img src="/images/2019/11/01/4d2d93e0-fcba-11e9-bc34-ef83b1e8dc59.png" alt="Android OS上的TEE通信过程"></p>
+<ul>
+<li>所有指纹数据操作均在TEE中执行</li>
+<li>必须将所有指纹数据保护在传感器硬件或受信任的内存中，以便无法访问指纹图像</li>
+<li>指纹数据只能以加密形式存储在文件系统上，而不管文件系统本身是否已加密</li>
+<li>删除用户必须导致删除用户现有的指纹数据</li>
+<li>根访问不得破坏指纹数据</li>
+</ul>
+<h2 id="指纹模板"><a href="#指纹模板" class="headerlink" title="指纹模板"></a>指纹模板</h2><p>指纹模板是原始指纹数据的已处理版本。为了遵守准则，必须对它们进行<strong>密码认证</strong>。这意味着必须使用专用于设备的私钥和足够的其他数据（绝对文件系统路径，finger ID和组）对它们进行签名，以明确定义它们的绑定关系。结果，如果将这些模板复制到另一个设备或另一个用户尝试使用它们，则这些模板将变得无用。</p>
+<p>最后，指纹数据不会备份到用户的计算机或Google的服务器上。它不会被设备上的任何其他应用程序同步，共享或使用，也不会离开设备。应用程序收到的唯一信息是指纹是否已<strong>通过验证</strong>。这也意味着用户必须在每个新设备上设置指纹认证。</p>
+<h2 id="听起来不错，该如何实施？"><a href="#听起来不错，该如何实施？" class="headerlink" title="听起来不错，该如何实施？"></a>听起来不错，该如何实施？</h2><p>指纹认证无非就是数据加密。它涉及一个密钥，一个执行加密的密码以及一个处理整个过程的指纹管理器。从开发人员的角度来看，该过程有些广泛，但它包含相对简单的步骤。</p>
+<ol>
+<li><p>在项目AndroidManifest文件中请求指纹身份验证权限。</p>
+</li>
+<li><p>启用任何锁定屏幕安全机制（PIN，图案或密码）。</p>
+</li>
+<li><p>在设备上注册至少一个指纹。</p>
+</li>
+<li><p>创建的实例FingerprintManager。</p>
+</li>
+<li><p>使用Keystore实例来访问Android Keystore容器。</p>
+</li>
+<li><p>使用KeyGenerator该类生成加密密钥，并将其存储在Keystore容器中。</p>
+</li>
+<li><p>Cipher使用先前生成的加密密钥初始化该类的实例。</p>
+</li>
+<li><p>使用Cipher实例创建一个CryptoObject并将其分配给实例化FingerprintManager。</p>
+</li>
+<li><p>调用实例的authenticate()方法FingerprintManager。</p>
+</li>
+<li><p>成功完成身份验证后处理回调，从而提供对受保护的内容或功能的访问。</p>
+</li>
+</ol>
+<p>Google提供了全面的指纹认证<strong>示例</strong>，并且在线提供了一些<strong>教程</strong>，可以助您一臂之力。</p>
+<p>Android的指纹认证和支持实现的设计和执行非常好。将其用作任何形式的多因素身份验证的<strong>拥有元素</strong>，已足以为您提供快速，可靠和安全的身份验证体验。</p>
+<p>您可以在科罗拉多州丹佛市举行的<strong>360andev</strong>会议上听到我们谈论指纹安全性和应<strong>用程序安全性最佳实践的信息</strong>。</p>
+<h2 id="那有什么收获呢？"><a href="#那有什么收获呢？" class="headerlink" title="那有什么收获呢？"></a>那有什么收获呢？</h2><p><img src="/images/2019/11/01/c74e39e0-fcba-11e9-bc34-ef83b1e8dc59.png" alt="各种物品上的指纹"></p>
+<p>只有一个，并且其他所有方法都具有相同的缺陷。指纹认证只有一个故障点。就像用手指来解锁设备一样吸引人，您到处都是手指。潜在的攻击者可以毫不费力地举起您的指纹，然后使用它来控制您的设备和应用程序。</p>
+<p>不幸的是，与密码不同，您的指纹显然是无法更改的。</p>
+<p><a href="https://infinum.com/the-capsized-eight/android-fingerprint-security" target="_blank" rel="noopener">传送门</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-31T14:50:47.000Z">2019-10-31</time>
                 
                 <div class="level-item">
@@ -1204,85 +1296,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-21T14:32:22.000Z">2019-10-21</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1095 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/21/computer-vision-weekly-news-20191003/">computer-vision-weekly-news-20191003</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="计算机视觉开源周报20191003期"><a href="#计算机视觉开源周报20191003期" class="headerlink" title="计算机视觉开源周报20191003期"></a>计算机视觉开源周报20191003期</h1><blockquote>
-<p>总结了过去一周CV领域的最新开源代码，发现本周出现多份很有价值的高质量、重量级工作，比如致力于使得图卷积网络更深的DeepGCNs、Mask引导的注意力网络大大改进了遮挡行人重识别、格灵深瞳轻量级人脸识别比赛冠军模型VarGFaceNet、比LSTM更优的新RNN模型IndRNN、还有异常强大的字符级文本识别CharNet。</p>
-</blockquote>
-<p><img src="/images/2019/10/21/f3b59040-f40f-11e9-89e6-e714074eda99.png" alt="image.png"></p>
-<ul>
-<li><p>一种web运行的半自动图像标注的灵活框架LOST（Label Objects and Save Time）<br>LOST: A flexible framework for semi-automatic image annotation<br>Jonas Jäger, Gereon Reus, Joachim Denzler, Viviane Wolff, Klaus Fricke-Neuderth<br><a href="https://arxiv.org/abs/1910.07486v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07486v1</a><br><a href="https://github.com/l3p-cv/lost" target="_blank" rel="noopener">https://github.com/l3p-cv/lost</a></p>
-</li>
-<li><p>对抗表示学习中的全局最优化问题<br>On the Global Optima of Kernelized Adversarial Representation Learning<br>Bashir Sadeghi, Runyi Yu, Vishnu Naresh Boddeti<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.07423v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07423v1</a><br><a href="https://github.com/human-analysis/Kernel-ARL" target="_blank" rel="noopener">https://github.com/human-analysis/Kernel-ARL</a></p>
-</li>
-<li><p>学习泛化的全尺度表示，用于人员重识别，模型更小，精度更优<br>Learning Generalisable Omni-Scale Representations for Person Re-Identification<br>Kaiyang Zhou, Xiatian Zhu, Yongxin Yang, Andrea Cavallaro, Tao Xiang<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06827v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06827v1</a><br><a href="https://github.com/KaiyangZhou/deep-person-reid" target="_blank" rel="noopener">https://github.com/KaiyangZhou/deep-person-reid</a></p>
-</li>
-<li><p>将ResNet和DenseNet引入到图卷积网络中，可以训练更深（达112层）的GCN，在多个任务中达到了更高的精度。<br>DeepGCNs: Making GCNs Go as Deep as CNNs<br>Guohao Li, Matthias Müller, Guocheng Qian, Itzel C. Delgadillo, Abdulellah Abualshour, Ali Thabet, Bernard Ghanem<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06849v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06849v1</a><br><a href="https://github.com/lightaime/deep_gcns_torch" target="_blank" rel="noopener">https://github.com/lightaime/deep_gcns_torch</a><br><a href="https://github.com/lightaime/deep_gcns" target="_blank" rel="noopener">https://github.com/lightaime/deep_gcns</a></p>
-</li>
-<li><p>训练智能体玩“躲猫猫”游戏<br>Visual Hide and Seek<br>Boyuan Chen, Shuran Song, Hod Lipson, Carl Vondrick<br><a href="https://arxiv.org/abs/1910.07882v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07882v1</a><br><a href="http://www.cs.columbia.edu/~bchen/visualhideseek/" target="_blank" rel="noopener">http://www.cs.columbia.edu/~bchen/visualhideseek/</a></p>
-</li>
-<li><p>掩膜引导的注意力网络，用于遮挡严重的行人检测，在多个数据集实现了更高的最好精度。CityPersons提升9.5%，Caltech提升5.0%。<br>Mask-Guided Attention Network for Occluded Pedestrian Detection<br>Yanwei Pang, Jin Xie, Muhammad Haris Khan, Rao Muhammad Anwer, Fahad Shahbaz Khan, Ling Shao<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06160v2" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06160v2</a><br><a href="https://github.com/Leotju/MGAN" target="_blank" rel="noopener">https://github.com/Leotju/MGAN</a></p>
-</li>
-<li><p>一种几何启发的卷积操作，有效提升了消失点检测<br>NeurVPS: Neural Vanishing Point Scanning via Conic Convolution<br>Yichao Zhou, Haozhi Qi, Jingwei Huang, Yi Ma<br><a href="https://arxiv.org/abs/1910.06316v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06316v1</a><br><a href="https://github.com/zhou13/neurvps" target="_blank" rel="noopener">https://github.com/zhou13/neurvps</a></p>
-</li>
-<li><p>单次神经架构搜索，基于自我评估模版网络，在CIFAR和ImageNet数据集达到最先进的性能<br>One-Shot Neural Architecture Search via Self-Evaluated Template Network<br>Xuanyi Dong, Yi Yang<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.05733v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.05733v1</a><br><a href="https://github.com/D-X-Y/NAS-Projects" target="_blank" rel="noopener">https://github.com/D-X-Y/NAS-Projects</a></p>
-</li>
-<li><p>学习鉴别特征，用于非监督域适应<br>Drop to Adapt: Learning Discriminative Features for Unsupervised Domain Adaptation<br>Seungmin Lee, Dongwan Kim, Namil Kim, Seong-Gyun Jeong<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.05562v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.05562v1</a><br><a href="https://github.com/postBG/DTA.pytorch" target="_blank" rel="noopener">https://github.com/postBG/DTA.pytorch</a></p>
-</li>
-<li><p>可变组卷积神经网络，可以支持大规模人脸识别，同时减少计算成本和参数。获得格灵深瞳轻量级人脸识别挑战赛冠军！<br>VarGFaceNet: An Efficient Variable Group Convolutional Neural Network for Lightweight Face Recognition<br>Mengjia Yan, Mengao Zhao, Zining Xu, Qian Zhang, Guoli Wang, Zhizhong Su<br>ICCV 2019 Workshop<br><a href="https://arxiv.org/abs/1910.04985v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.04985v1</a><br><a href="https://github.com/zma-c-137/VarGFaceNet" target="_blank" rel="noopener">https://github.com/zma-c-137/VarGFaceNet</a></p>
-</li>
-<li><p>发明一种称为Hadamard乘积的递归连接，构建了独立递归神经网络（IndRNN），其中同一层中的神经元彼此独立并且跨层连接。<br>IndRNN可有效替代LSTM，精度更高的同时，速度是其10倍！<br>Deep Independently Recurrent Neural Network (IndRNN)<br>Shuai Li, Wanqing Li, Chris Cook, Yanbo Gao, Ce Zhu<br><a href="https://arxiv.org/abs/1910.06251v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06251v1</a><br><a href="https://github.com/Sunnydreamrain/IndRNN_pytorch" target="_blank" rel="noopener">https://github.com/Sunnydreamrain/IndRNN_pytorch</a></p>
-</li>
-<li><p>一种以字符为基本单元的单阶段文本检测识别网络，在三个标准基准上对CharNet结果显示，其结果以最先进的结果大大领先之前的算法，比如ICDAR 2015上从65.33％改进到71.08％，TotalText上从54.0％跃升至69.23％。<br>Convolutional Character Networks<br>Linjie Xing, Zhi Tian, Weilin Huang, Matthew R. Scott<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.07954v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07954v1</a><br><a href="https://github.com/MalongTech/research-charnet" target="_blank" rel="noopener">https://github.com/MalongTech/research-charnet</a></p>
-</li>
-<li><p>基于语音指令实现的自动驾驶<br>Conditional Driving from Natural Language Instructions<br>Junha Roh, Chris Paxton, Andrzej Pronobis, Ali Farhadi, Dieter Fox<br>CoRL 2019<br><a href="https://arxiv.org/abs/1910.07615v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07615v1</a><br><a href="https://sites.google.com/view/language-grounded-driving" target="_blank" rel="noopener">https://sites.google.com/view/language-grounded-driving</a></p>
-</li>
-<li><p>医学图像域适应 | 提出了一种新型的无监督域自适应框架，称为协作特征集合自适应（CFEA），改进了眼底图像分割的精度<br>CFEA: Collaborative Feature Ensembling Adaptation for Domain Adaptation in Unsupervised Optic Disc and Cup Segmentation<br>Peng Liu, Bin Kong, Zhongyu Li, Shaoting Zhang, Ruogu Fang<br>MICCAI 2019<br><a href="https://arxiv.org/abs/1910.07638v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07638v1</a><br><a href="https://github.com/cswin/AWC" target="_blank" rel="noopener">https://github.com/cswin/AWC</a></p>
-</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1357,7 +1370,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            112
+                            113
                         </p>
                     </a>
                 </div>
@@ -1503,7 +1516,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">85</span>
+                <span class="level-item tag">86</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1548,6 +1561,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/03/js-util/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/03/5a4063c0-15b3-11ea-8bb0-0b972d02c6dc.png" alt="前端常用的数组工具类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T10:02:20.000Z">2019-12-03</time></div>
+                    <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/02/text-proofreading/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
@@ -1615,25 +1647,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:46:48.000Z">2019-11-29</time></div>
                     <a href="/2019/11/29/matlab/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数学软件 MATLAB</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/28/hunt-cache/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
-                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1665,6 +1678,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/03/js-util/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/03/5a4063c0-15b3-11ea-8bb0-0b972d02c6dc.png" alt="前端常用的数组工具类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T10:02:20.000Z">2019-12-03</time></div>
+                    <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/02/text-proofreading/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
@@ -1732,25 +1764,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:46:48.000Z">2019-11-29</time></div>
                     <a href="/2019/11/29/matlab/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数学软件 MATLAB</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/28/hunt-cache/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
-                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>

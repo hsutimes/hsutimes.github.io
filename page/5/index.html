@@ -146,6 +146,85 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-21T14:32:22.000Z">2019-10-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1095 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/21/computer-vision-weekly-news-20191003/">computer-vision-weekly-news-20191003</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="计算机视觉开源周报20191003期"><a href="#计算机视觉开源周报20191003期" class="headerlink" title="计算机视觉开源周报20191003期"></a>计算机视觉开源周报20191003期</h1><blockquote>
+<p>总结了过去一周CV领域的最新开源代码，发现本周出现多份很有价值的高质量、重量级工作，比如致力于使得图卷积网络更深的DeepGCNs、Mask引导的注意力网络大大改进了遮挡行人重识别、格灵深瞳轻量级人脸识别比赛冠军模型VarGFaceNet、比LSTM更优的新RNN模型IndRNN、还有异常强大的字符级文本识别CharNet。</p>
+</blockquote>
+<p><img src="/images/2019/10/21/f3b59040-f40f-11e9-89e6-e714074eda99.png" alt="image.png"></p>
+<ul>
+<li><p>一种web运行的半自动图像标注的灵活框架LOST（Label Objects and Save Time）<br>LOST: A flexible framework for semi-automatic image annotation<br>Jonas Jäger, Gereon Reus, Joachim Denzler, Viviane Wolff, Klaus Fricke-Neuderth<br><a href="https://arxiv.org/abs/1910.07486v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07486v1</a><br><a href="https://github.com/l3p-cv/lost" target="_blank" rel="noopener">https://github.com/l3p-cv/lost</a></p>
+</li>
+<li><p>对抗表示学习中的全局最优化问题<br>On the Global Optima of Kernelized Adversarial Representation Learning<br>Bashir Sadeghi, Runyi Yu, Vishnu Naresh Boddeti<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.07423v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07423v1</a><br><a href="https://github.com/human-analysis/Kernel-ARL" target="_blank" rel="noopener">https://github.com/human-analysis/Kernel-ARL</a></p>
+</li>
+<li><p>学习泛化的全尺度表示，用于人员重识别，模型更小，精度更优<br>Learning Generalisable Omni-Scale Representations for Person Re-Identification<br>Kaiyang Zhou, Xiatian Zhu, Yongxin Yang, Andrea Cavallaro, Tao Xiang<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06827v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06827v1</a><br><a href="https://github.com/KaiyangZhou/deep-person-reid" target="_blank" rel="noopener">https://github.com/KaiyangZhou/deep-person-reid</a></p>
+</li>
+<li><p>将ResNet和DenseNet引入到图卷积网络中，可以训练更深（达112层）的GCN，在多个任务中达到了更高的精度。<br>DeepGCNs: Making GCNs Go as Deep as CNNs<br>Guohao Li, Matthias Müller, Guocheng Qian, Itzel C. Delgadillo, Abdulellah Abualshour, Ali Thabet, Bernard Ghanem<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06849v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06849v1</a><br><a href="https://github.com/lightaime/deep_gcns_torch" target="_blank" rel="noopener">https://github.com/lightaime/deep_gcns_torch</a><br><a href="https://github.com/lightaime/deep_gcns" target="_blank" rel="noopener">https://github.com/lightaime/deep_gcns</a></p>
+</li>
+<li><p>训练智能体玩“躲猫猫”游戏<br>Visual Hide and Seek<br>Boyuan Chen, Shuran Song, Hod Lipson, Carl Vondrick<br><a href="https://arxiv.org/abs/1910.07882v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07882v1</a><br><a href="http://www.cs.columbia.edu/~bchen/visualhideseek/" target="_blank" rel="noopener">http://www.cs.columbia.edu/~bchen/visualhideseek/</a></p>
+</li>
+<li><p>掩膜引导的注意力网络，用于遮挡严重的行人检测，在多个数据集实现了更高的最好精度。CityPersons提升9.5%，Caltech提升5.0%。<br>Mask-Guided Attention Network for Occluded Pedestrian Detection<br>Yanwei Pang, Jin Xie, Muhammad Haris Khan, Rao Muhammad Anwer, Fahad Shahbaz Khan, Ling Shao<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.06160v2" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06160v2</a><br><a href="https://github.com/Leotju/MGAN" target="_blank" rel="noopener">https://github.com/Leotju/MGAN</a></p>
+</li>
+<li><p>一种几何启发的卷积操作，有效提升了消失点检测<br>NeurVPS: Neural Vanishing Point Scanning via Conic Convolution<br>Yichao Zhou, Haozhi Qi, Jingwei Huang, Yi Ma<br><a href="https://arxiv.org/abs/1910.06316v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06316v1</a><br><a href="https://github.com/zhou13/neurvps" target="_blank" rel="noopener">https://github.com/zhou13/neurvps</a></p>
+</li>
+<li><p>单次神经架构搜索，基于自我评估模版网络，在CIFAR和ImageNet数据集达到最先进的性能<br>One-Shot Neural Architecture Search via Self-Evaluated Template Network<br>Xuanyi Dong, Yi Yang<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.05733v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.05733v1</a><br><a href="https://github.com/D-X-Y/NAS-Projects" target="_blank" rel="noopener">https://github.com/D-X-Y/NAS-Projects</a></p>
+</li>
+<li><p>学习鉴别特征，用于非监督域适应<br>Drop to Adapt: Learning Discriminative Features for Unsupervised Domain Adaptation<br>Seungmin Lee, Dongwan Kim, Namil Kim, Seong-Gyun Jeong<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.05562v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.05562v1</a><br><a href="https://github.com/postBG/DTA.pytorch" target="_blank" rel="noopener">https://github.com/postBG/DTA.pytorch</a></p>
+</li>
+<li><p>可变组卷积神经网络，可以支持大规模人脸识别，同时减少计算成本和参数。获得格灵深瞳轻量级人脸识别挑战赛冠军！<br>VarGFaceNet: An Efficient Variable Group Convolutional Neural Network for Lightweight Face Recognition<br>Mengjia Yan, Mengao Zhao, Zining Xu, Qian Zhang, Guoli Wang, Zhizhong Su<br>ICCV 2019 Workshop<br><a href="https://arxiv.org/abs/1910.04985v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.04985v1</a><br><a href="https://github.com/zma-c-137/VarGFaceNet" target="_blank" rel="noopener">https://github.com/zma-c-137/VarGFaceNet</a></p>
+</li>
+<li><p>发明一种称为Hadamard乘积的递归连接，构建了独立递归神经网络（IndRNN），其中同一层中的神经元彼此独立并且跨层连接。<br>IndRNN可有效替代LSTM，精度更高的同时，速度是其10倍！<br>Deep Independently Recurrent Neural Network (IndRNN)<br>Shuai Li, Wanqing Li, Chris Cook, Yanbo Gao, Ce Zhu<br><a href="https://arxiv.org/abs/1910.06251v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.06251v1</a><br><a href="https://github.com/Sunnydreamrain/IndRNN_pytorch" target="_blank" rel="noopener">https://github.com/Sunnydreamrain/IndRNN_pytorch</a></p>
+</li>
+<li><p>一种以字符为基本单元的单阶段文本检测识别网络，在三个标准基准上对CharNet结果显示，其结果以最先进的结果大大领先之前的算法，比如ICDAR 2015上从65.33％改进到71.08％，TotalText上从54.0％跃升至69.23％。<br>Convolutional Character Networks<br>Linjie Xing, Zhi Tian, Weilin Huang, Matthew R. Scott<br>ICCV 2019<br><a href="https://arxiv.org/abs/1910.07954v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07954v1</a><br><a href="https://github.com/MalongTech/research-charnet" target="_blank" rel="noopener">https://github.com/MalongTech/research-charnet</a></p>
+</li>
+<li><p>基于语音指令实现的自动驾驶<br>Conditional Driving from Natural Language Instructions<br>Junha Roh, Chris Paxton, Andrzej Pronobis, Ali Farhadi, Dieter Fox<br>CoRL 2019<br><a href="https://arxiv.org/abs/1910.07615v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07615v1</a><br><a href="https://sites.google.com/view/language-grounded-driving" target="_blank" rel="noopener">https://sites.google.com/view/language-grounded-driving</a></p>
+</li>
+<li><p>医学图像域适应 | 提出了一种新型的无监督域自适应框架，称为协作特征集合自适应（CFEA），改进了眼底图像分割的精度<br>CFEA: Collaborative Feature Ensembling Adaptation for Domain Adaptation in Unsupervised Optic Disc and Cup Segmentation<br>Peng Liu, Bin Kong, Zhongyu Li, Shaoting Zhang, Ruogu Fang<br>MICCAI 2019<br><a href="https://arxiv.org/abs/1910.07638v1" target="_blank" rel="noopener">https://arxiv.org/abs/1910.07638v1</a><br><a href="https://github.com/cswin/AWC" target="_blank" rel="noopener">https://github.com/cswin/AWC</a></p>
+</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-20T08:48:58.000Z">2019-10-20</time>
                 
                 <div class="level-item">
@@ -1585,82 +1664,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-07T07:47:18.000Z">2019-10-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1565 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/07/nlp/">nlp</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="自语言处理然"><a href="#自语言处理然" class="headerlink" title="自语言处理然"></a>自语言处理然</h1><blockquote>
-<p>自语言处理然（英语：Natural Language Processing，缩写作 NLP）是人工智能和语言学领域的分支学科。此领域探讨如何处理及运用自然语言；自然语言处理包括多方面和步骤，基本有认知、理解、生成等部分。</p>
-</blockquote>
-<p>自然语言认知和理解是让计算机把输入的语言变成有意思的符号和关系，然后根据目的再处理。自然语言生成系统则是把计算机数据转化为自然语言。</p>
-<h1 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h1><p>自然语言处理大体是从1950年代开始，虽然更早期也有作为。1950年，图灵发表论文“计算机器与智能”，提出现在所谓的“图灵测试”作为判断智能的条件。</p>
-<p>1954年的乔治城实验涉及全部自动翻译超过60句俄文成为英文。研究人员声称三到五年之内即可解决机器翻译的问题。[1]不过实际进展远低于预期，1966年的ALPAC报告发现十年研究未达预期目标，机器翻译的研究经费遭到大幅削减。一直到1980年代末期，统计机器翻译系统发展出来，机器翻译的研究才得以更上一层楼。</p>
-<p>1960年代发展特别成功的NLP系统包括SHRDLU——一个词汇设限、运作于受限如“积木世界”的一种自然语言系统，以及1964-1966年约瑟夫·维森鲍姆模拟“个人中心治疗”而设计的ELIZA——几乎未运用人类思想和感情的消息，有时候却能呈现令人讶异地类似人之间的交互。“病人”提出的问题超出ELIZA 极小的知识范围之时，可能会得到空泛的回答。例如问题是“我的头痛”，回答是“为什么说你头痛？”</p>
-<p>1970年代，程序员开始设计“概念本体论”（conceptual ontologies）的程序，将现实世界的信息，架构成计算机能够理解的数据。实例有MARGIE、SAM、PAM、TaleSpin、QUALM、Politics以及Plot Unit。许多聊天机器人在这一时期写成，包括PARRY 、Racter 以及Jabberwacky 。</p>
-<p>一直到1980年代，多数自然语言处理系统是以一套复杂、人工订定的规则为基础。不过从1980年代末期开始，语言处理引进了机器学习的算法，NLP产生革新。成因有两个：运算能力稳定增加（参见摩尔定律）；以及乔姆斯基 语言学理论渐渐丧失主导（例如转换-生成文法）。该理论的架构不倾向于语料库——机器学习处理语言所用方法的基础。有些最早期使用的机器学习算法，例如决策树，是硬性的、“如果-则”规则组成的系统，类似当时既有的人工订定的规则。不过词性标记将隐马尔可夫模型引入NLP，并且研究日益聚焦于软性的、以几率做决定的统计模型，基础是将输入数据里每一个特性赋予代表其分量的数值。许多语音识别现今依赖的缓存语言模型即是一种统计模型的例子。这种模型通常足以处理非预期的输入数据，尤其是输入有错误（真实世界的数据总免不了），并且在集成到包含多个子任务的较大系统时，结果比较可靠。</p>
-<p>许多早期的成功属于机器翻译领域，尤其归功IBM的研究，渐次发展出更复杂的统计模型。这些系统得以利用加拿大和欧盟现有的语料库，因为其法律规定政府的会议必须翻译成所有的官方语言。不过，其他大部分系统必须特别打造自己的语料库，一直到现在这都是限制其成功的一个主要因素，于是大量的研究致力于从有限的数据更有效地学习。</p>
-<p>近来的研究更加聚焦于非监督式学习和半监督学习的算法。这种算法，能够从没有人工注解理想答案的数据里学习。大体而言，这种学习比监督学习困难，并且在同量的数据下，通常产生的结果较不准确。不过没有注解的数据量极巨（包含了万维网），弥补了较不准确的缺点。</p>
-<p>近年来, 深度学习技巧纷纷出炉[2][3] 在自然语言处理方面获得最尖端的成果，例如语言模型[4]、语法分析[5][6]等等。</p>
-<h1 id="自然语言处理的主要范畴"><a href="#自然语言处理的主要范畴" class="headerlink" title="自然语言处理的主要范畴"></a>自然语言处理的主要范畴</h1><ul>
-<li>文本朗读（Text to speech）/语音合成（Speech synthesis）</li>
-<li>语音识别（Speech recognition）</li>
-<li>中文自动分词（Chinese word segmentation）</li>
-<li>词性标注（Part-of-speech tagging）</li>
-<li>句法分析（Parsing）</li>
-<li>自然语言生成（Natural language generation）</li>
-<li>文本分类（Text categorization）</li>
-<li>信息检索（Information retrieval）</li>
-<li>信息抽取（Information extraction）</li>
-<li>文字校对（Text-proofing）</li>
-<li>问答系统（Question answering）</li>
-<li>给一句人类语言的问句，决定其答案。 典型问题有特定答案 (像是加拿大的首都- 叫什么?)，但也考虑些开放式问句(像是人生的意义是是什么?)</li>
-<li>机器翻译（Machine translation）</li>
-<li>将某种人类语言自动翻译至另一种语言</li>
-<li>自动摘要（Automatic summarization）<br>产生一段文字的大意，通常用于提供已知领域的文章摘要，例如产生报纸上某篇- - 文章之摘要</li>
-<li>文字蕴涵（Textual entailment）</li>
-<li>命名实体识别（Named entity recognition）</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1735,7 +1738,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            112
+                            113
                         </p>
                     </a>
                 </div>
@@ -1881,7 +1884,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">85</span>
+                <span class="level-item tag">86</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1926,6 +1929,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/03/js-util/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/03/5a4063c0-15b3-11ea-8bb0-0b972d02c6dc.png" alt="前端常用的数组工具类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T10:02:20.000Z">2019-12-03</time></div>
+                    <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/02/text-proofreading/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
@@ -1993,25 +2015,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:46:48.000Z">2019-11-29</time></div>
                     <a href="/2019/11/29/matlab/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数学软件 MATLAB</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/28/hunt-cache/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
-                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2043,6 +2046,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/03/js-util/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/03/5a4063c0-15b3-11ea-8bb0-0b972d02c6dc.png" alt="前端常用的数组工具类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T10:02:20.000Z">2019-12-03</time></div>
+                    <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/02/text-proofreading/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
@@ -2110,25 +2132,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:46:48.000Z">2019-11-29</time></div>
                     <a href="/2019/11/29/matlab/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数学软件 MATLAB</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/28/hunt-cache/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/11/28/88cb18e0-11f6-11ea-b213-819ccc886233.png" alt="Hunt Cache">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T15:37:54.000Z">2019-11-28</time></div>
-                    <a href="/2019/11/28/hunt-cache/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hunt Cache</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
