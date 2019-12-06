@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>如何绕过PowerShell访问限制并实现PowerShell代码执行 - Time</title>
+
+
+    <meta name="description" content="如果你是一名专业的渗透测试人员，那你可能真的离不开PowerShell，但是如果目标系统中的某个策略组织我们访问PowerShel.exe，那我们该怎么办呢？没错，这个问题经常会困扰我们，而且网上也有很多的应对方法。 在这篇文章中，我将跟大家介绍一种快速且狡猾的绕过技术，这项技术需要利用C#编译代码来执行我们的PowerShell脚本。 首先，我们为什么不适用powershell.exe来执行我">
+<meta name="keywords" content="PowerShell,c#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+<meta property="og:url" content="https://blog.hsutimes.com/2019/12/06/powershell/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:description" content="如果你是一名专业的渗透测试人员，那你可能真的离不开PowerShell，但是如果目标系统中的某个策略组织我们访问PowerShel.exe，那我们该怎么办呢？没错，这个问题经常会困扰我们，而且网上也有很多的应对方法。 在这篇文章中，我将跟大家介绍一种快速且狡猾的绕过技术，这项技术需要利用C#编译代码来执行我们的PowerShell脚本。 首先，我们为什么不适用powershell.exe来执行我">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png">
+<meta property="og:updated_time" content="2019-12-06T14:56:44.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+<meta name="twitter:description" content="如果你是一名专业的渗透测试人员，那你可能真的离不开PowerShell，但是如果目标系统中的某个策略组织我们访问PowerShel.exe，那我们该怎么办呢？没错，这个问题经常会困扰我们，而且网上也有很多的应对方法。 在这篇文章中，我将跟大家介绍一种快速且狡猾的绕过技术，这项技术需要利用C#编译代码来执行我们的PowerShell脚本。 首先，我们为什么不适用powershell.exe来执行我">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png">
+<meta name="twitter:site" content="https://twitter.com/times26740863">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134224598-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 982 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                如何绕过PowerShell访问限制并实现PowerShell代码执行
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/12/06/1f0fb620-1838-11ea-ae4f-750d6eeeb0bb.png" alt="image.png"></p>
+<p>如果你是一名专业的渗透测试人员，那你可能真的离不开PowerShell，但是如果目标系统中的某个策略组织我们访问PowerShel.exe，那我们该怎么办呢？没错，这个问题经常会困扰我们，而且网上也有很多的应对方法。</p>
+<p>在这篇文章中，我将跟大家介绍一种快速且狡猾的绕过技术，这项技术需要利用C#编译代码来执行我们的PowerShell脚本。</p>
+<p>首先，我们为什么不适用powershell.exe来执行我们的.ps1脚本呢？因为PowerShell脚本跟C#一样，它们两个对于.NET框架而言，都只是“前端”方面的东西，它们的本质都只是一种编程语言。不过在C#中，我们需要对程序代码进行编译才可以使用和执行，即编译型语言，这是它和PowerShell这种解释型脚本语言有很大区别。</p>
+<p>鉴于PowerShell.exe只是.NET程序集“system.management.automation”的解释器，因此它应该可以在C程序中与这个对象进行交互并执行.ps1脚本。</p>
+<p>下面给出的就是实例代码：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections.ObjectModel;</span><br><span class="line">using System.Management.Automation;</span><br><span class="line">using System.Management.Automation.Runspaces;</span><br><span class="line">using System.IO;</span><br><span class="line">using System;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace Powershell</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    class PSLess</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        public static string func(string script)</span><br><span class="line">        &#123;</span><br><span class="line">            return RunScript(script);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string LoadScript(string filename)</span><br><span class="line">        &#123;</span><br><span class="line">            string buffer = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                buffer = File.ReadAllText(filename);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            catch (Exception e)</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(e.Message);</span><br><span class="line"></span><br><span class="line">                Environment.Exit(2);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return buffer;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string RunScript(string script)</span><br><span class="line">        &#123;</span><br><span class="line">            Runspace MyRunspace = RunspaceFactory.CreateRunspace();</span><br><span class="line"></span><br><span class="line">            MyRunspace.Open();</span><br><span class="line"></span><br><span class="line">            Pipeline MyPipeline = MyRunspace.CreatePipeline();</span><br><span class="line"></span><br><span class="line">            MyPipeline.Commands.AddScript(script);</span><br><span class="line"></span><br><span class="line">            MyPipeline.Commands.Add(&quot;Out-String&quot;);</span><br><span class="line"></span><br><span class="line">            Collection&lt;PSObject&gt; outputs = MyPipeline.Invoke();</span><br><span class="line"></span><br><span class="line">            MyRunspace.Close();</span><br><span class="line"></span><br><span class="line">            StringBuilder sb = new StringBuilder();</span><br><span class="line"></span><br><span class="line">            foreach (PSObject pobject in outputs)</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line">                sb.AppendLine(pobject.ToString());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return sb.ToString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中的RunScript()方法会创建一个“runspace”对象，我们可以将其视作是PowerShell运行时的一个独立实例。接下来，我们需要将脚本添加到新创建的pipeline中，并对通信信道进行排序，最后通过Invoke()方法执行我们的脚本命令。</p>
+<p>最终的结果将会被追加到我们的字符串生成器中，然后作为字符串发回给调用函数，以便显示在控制台的输出结果中。这也就是为什么我们要在命令中添加“Out-String”的原因。</p>
+<p>怎么样，整个过程很简单吧？</p>
+<p>接下来，我们需要对代码进行编译并完成代码测试。</p>
+<p>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe</p>
+<pre><code>/reference:
+
+C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\system.management.automation.dll 
+
+/out:c:\setup\powerless.exe c:\scripts\powersless.cs</code></pre><p>请记住，具体的执行路径需要取决于目标系统中所安装的框架版本。除此之外，别忘了添加对“system.management.automation.dll”程序集的引用。</p>
+<p>如果一切正常的话，我们就已经完成了代码的编译。接下来，创建一个简单地测试脚本：</p>
+<p>test.ps1:</p>
+<pre><code>echo &quot;Hello from powershell-less&quot;
+
+echo &quot;PID: $pid&quot;</code></pre><p>然后运行该脚本：</p>
+<p><img src="/images/2019/12/06/5fa49c00-1838-11ea-ae4f-750d6eeeb0bb.png" alt="image.png"></p>
+<p>没错，我们成功了！我们成功地在不直接使用powershell.exe的情况下调用并执行了我们的脚本代码。</p>
+<p>实际上，这是一个非常简单的脚本，如果加上用户输入等处理机制的话，就会变得比较麻烦和复杂了，但对于大多数需要涉及到PowerShell的渗透活动来说，这应该已经够了吧。当然了，广大研究人员也可以根据自己的需要来修改脚本代码，以实现自己的需求。</p>
+<blockquote>
+<p>*参考来源：<a href="https://decoder.cloud/2017/11/02/we-dont-need-powershell-exe/" target="_blank" rel="noopener">decoder</a>，FB小编Alpha_h4ck编译，来自FreeBuf.COM</p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/PowerShell/">PowerShell</a>, <a class="has-link-grey -link" href="/tags/c/">c#</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/3754260851.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/1592984278.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="7KBW7U6X2ZYK6" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/user/creators?u=26939987" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/05/graphical-machine-learning/">
+                <span class="level-item">图解机器学习</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://hsutimes.github.io/js/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'e1cd1dfce3e5f77c3097705ce23d49a3',
+		owner: 'hsutimes',
+		repo: 'gitment_blog',
+		oauth: {
+			client_id: 'd73d768ea9e3bd69ab54',
+			client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://hsutimes.github.io/images/16530d7f26a413c2.png" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            116
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            146
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/hsutimes" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://hsutimes.club" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Time</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hsutimes.club</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">89</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-05T14:42:12.000Z">2019-12-05</time></div>
+                    <a href="/2019/12/05/graphical-machine-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">图解机器学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/04/bypass-github-oauth/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/04/8b37a220-1682-11ea-aacf-f7830a354d17.png" alt="绕过GitHub的OAuth授权验证机制（$25000）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T10:45:29.000Z">2019-12-04</time></div>
+                    <a href="/2019/12/04/bypass-github-oauth/" class="title has-link-black-ter is-size-6 has-text-weight-normal">绕过GitHub的OAuth授权验证机制（$25000）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/03/js-util/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/03/5a4063c0-15b3-11ea-8bb0-0b972d02c6dc.png" alt="前端常用的数组工具类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T10:02:20.000Z">2019-12-03</time></div>
+                    <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/02/text-proofreading/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-05T14:42:12.000Z">2019-12-05</time></div>
+                    <a href="/2019/12/05/graphical-machine-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">图解机器学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/04/bypass-github-oauth/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/04/8b37a220-1682-11ea-aacf-f7830a354d17.png" alt="绕过GitHub的OAuth授权验证机制（$25000）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T10:45:29.000Z">2019-12-04</time></div>
+                    <a href="/2019/12/04/bypass-github-oauth/" class="title has-link-black-ter is-size-6 has-text-weight-normal">绕过GitHub的OAuth授权验证机制（$25000）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/03/js-util/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/03/5a4063c0-15b3-11ea-8bb0-0b972d02c6dc.png" alt="前端常用的数组工具类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T10:02:20.000Z">2019-12-03</time></div>
+                    <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/02/text-proofreading/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -146,6 +146,121 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-03T16:32:24.000Z">2019-09-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 分钟 读完 (大约 2210 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/04/Spring框架面试总结/">Spring框架面试总结</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/12/ba1add50-d555-11e9-b519-9f31cc87a9f9.png" alt="image.png"></p>
+<h1 id="介绍spring框架"><a href="#介绍spring框架" class="headerlink" title="介绍spring框架"></a>介绍spring框架</h1><p>它是一个一站式（full-stack全栈式）框架，提供了从表现层-springMVC到业务层-spring再到持久层-springdata的一套完整的解决方案。我们在项目中可以只使用spring一个框架，它就可以提供表现层的mvc框架，持久层的Dao框架。它的两大核心IoC和AOP更是为我们程序解耦和代码简洁易维护提供了支持。</p>
+<h1 id="Spring的优点？"><a href="#Spring的优点？" class="headerlink" title="Spring的优点？"></a>Spring的优点？</h1><ol>
+<li>降低了组件之间的耦合性 ，实现了软件各层之间的解耦 </li>
+<li>可以使用容易提供的众多服务，如事务管理，消息服务等 </li>
+<li>容器提供单例模式支持 </li>
+<li>容器提供了AOP技术，利用它很容易实现如权限拦截，运行期监控等功能 </li>
+<li>容器提供了众多的辅助类，能加快应用的开发 </li>
+<li>spring对于主流的应用框架提供了集成支持，如hibernate，   JPA，Struts等 </li>
+<li>spring属于低侵入式设计，代码的污染极低 </li>
+<li>独立于各种应用服务器 </li>
+<li>spring的DI机制降低了业务对象替换的复杂性 </li>
+<li>Spring的高度开放性，并不强制应用完全依赖于Spring，开发者可以自由选择spring 的部分或全部 </li>
+</ol>
+<h1 id="spring有两种代理方式："><a href="#spring有两种代理方式：" class="headerlink" title="spring有两种代理方式："></a>spring有两种代理方式：</h1><p>答: 若目标对象实现了若干接口，spring使用JDK的java.lang.reflect.Proxy类代理。</p>
+<p>  优点：因为有接口，所以使系统更加松耦合</p>
+<p>  缺点：为每一个目标类创建接口</p>
+<p>若目标对象没有实现任何接口，spring使用CGLIB库生成目标对象的子类。</p>
+<p>  优点：因为代理类与目标类是继承关系，所以不需要有接口的存在。</p>
+<p>  缺点：因为没有使用接口，所以系统的耦合性没有使用JDK的动态代理好</p>
+<h1 id="如何给Spring-容器提供配置元数据"><a href="#如何给Spring-容器提供配置元数据" class="headerlink" title="如何给Spring 容器提供配置元数据?"></a>如何给Spring 容器提供配置元数据?</h1><p>这里有三种重要的方法给Spring 容器提供配置元数据。</p>
+<p>XML配置文件。</p>
+<p>基于注解的配置。</p>
+<p>基于java的配置。</p>
+<h1 id="构造方法注入和设值注入有什么区别？"><a href="#构造方法注入和设值注入有什么区别？" class="headerlink" title="构造方法注入和设值注入有什么区别？"></a>构造方法注入和设值注入有什么区别？</h1><p>请注意以下明显的区别：</p>
+<p>在设值注入方法支持大部分的依赖注入，如果我们仅需要注入int、string和long型的变量，我们不要用设值的方法注入。</p>
+<p>对于基本类型，如果我们没有注入的话，可以为基本类型设置默认值。</p>
+<p>在构造方法注入不支持大部分的依赖注入，因为在调用构造方法中必须传入正确的构造参数，否则的话为报错。</p>
+<p>设值注入不会重写构造方法的值。</p>
+<p>在使用设值注入时有可能还不能保证某种依赖是否已经被注入，也就是说这时对象的依赖关系有可能是不完整的。而在另一种情况下，构造器注入则不允许生成依赖关系不完整的对象。</p>
+<h1 id="请介绍一下Spring框架中Bean的生命周期"><a href="#请介绍一下Spring框架中Bean的生命周期" class="headerlink" title="请介绍一下Spring框架中Bean的生命周期"></a>请介绍一下Spring框架中Bean的生命周期</h1><p>一、Bean的定义 </p>
+<p>Spring通常通过配置文件定义Bean。如：  </p>
+<p>这个配置文件就定义了一个标识为 HelloWorld 的Bean。在一个配置文档中可以定义多个Bean。 </p>
+<p>二、Bean的初始化</p>
+<p>有两种方式初始化Bean。 </p>
+<p>1、在配置文档中通过指定init-method 属性来完成 </p>
+<p>2、实现 org.springframwork.beans.factory.InitializingBean接口  </p>
+<p>那么，当这个Bean的所有属性被Spring的BeanFactory设置完后，会自动调用afterPropertiesSet()方法对Bean进行初始化，于是，配置文件就不用指定 init-method属性了。 </p>
+<p>三、Bean的调用 </p>
+<p>有三种方式可以得到Bean并进行调用： </p>
+<p>1、使用BeanWrapper</p>
+<p>2、使用BeanFactory</p>
+<p>3、使用ApplicationConttext</p>
+<p>四、Bean的销毁 </p>
+<p>1、使用配置文件中的 destory-method 属性</p>
+<p>2、实现 org.springframwork.bean.factory.DisposebleBean接口 </p>
+<h1 id="Spring中AOP的应用场景、Aop原理、好处？"><a href="#Spring中AOP的应用场景、Aop原理、好处？" class="headerlink" title="Spring中AOP的应用场景、Aop原理、好处？"></a>Spring中AOP的应用场景、Aop原理、好处？</h1><p>答：AOP–Aspect Oriented Programming面向切面编程；用来封装横切关注点，具体可以在下面的场景中使用:</p>
+<p>Authentication 权限、Caching 缓存、Context passing 内容传递、Error handling 错误处理Lazy loading懒加载、Debugging调试、logging, tracing, profiling and monitoring 记录跟踪优化　校准、Performance optimization　性能优化、Persistence 持久化、Resource pooling　资源池、Synchronization　同步、Transactions 事务</p>
+<p>原理：AOP是面向切面编程，是通过动态代理的方式为程序添加统一功能，集中解决一些公共问题。</p>
+<p>优点：1.各个步骤之间的良好隔离性耦合性大大降低 </p>
+<pre><code>2.源代码无关性，再扩展功能的同时不对源码进行修改操作 </code></pre><h1 id="有几种不同类型的自动代理？"><a href="#有几种不同类型的自动代理？" class="headerlink" title="有几种不同类型的自动代理？"></a>有几种不同类型的自动代理？</h1><p>BeanNameAutoProxyCreator</p>
+<p>DefaultAdvisorAutoProxyCreator</p>
+<p>Metadata autoproxying</p>
+<h1 id="ApplicationContext通常的实现是什么"><a href="#ApplicationContext通常的实现是什么" class="headerlink" title="ApplicationContext通常的实现是什么?"></a>ApplicationContext通常的实现是什么?</h1><p>FileSystemXmlApplicationContext ：此容器从一个XML文件中加载beans的定义，XML Bean 配置文件的全路径名必须提供给它的构造函数。</p>
+<p>ClassPathXmlApplicationContext：此容器也从一个XML文件中加载beans的定义，这里，你需要正确设置classpath因为这个容器将在classpath里找bean配置。</p>
+<p>WebXmlApplicationContext：此容器加载一个XML文件，此文件定义了一个WEB应用的所有bean。</p>
+<h1 id="有哪些不同类型的IOC（依赖注入）方式？"><a href="#有哪些不同类型的IOC（依赖注入）方式？" class="headerlink" title="有哪些不同类型的IOC（依赖注入）方式？"></a>有哪些不同类型的IOC（依赖注入）方式？</h1><p>构造器依赖注入：构造器依赖注入通过容器触发一个类的构造器来实现的，该类有一系列参数，每个参数代表一个对其他类的依赖。</p>
+<p>Setter方法注入：Setter方法注入是容器通过调用无参构造器或无参static工厂 方法实例化bean之后，调用该bean的setter方法，即实现了基于setter的依赖注入。</p>
+<h1 id="什么是IOC，什么又是DI，他们有什么区别？"><a href="#什么是IOC，什么又是DI，他们有什么区别？" class="headerlink" title="什么是IOC，什么又是DI，他们有什么区别？"></a>什么是IOC，什么又是DI，他们有什么区别？</h1><p>一、IOC介绍</p>
+<p>IOC是控制反转。</p>
+<p>创建对象实例的控制权从代码控制剥离到IOC容器控制(之前的写法，由程序代码直接操控使用new关键字)，实际就是你在xml文件控制，控制权的转移是所谓反转，侧重于原理。 </p>
+<p>二、DI介绍</p>
+<p>DI是依赖注入</p>
+<p>创建对象实例时，为这个对象注入属性值或其它对象实例，侧重于实现。</p>
+<h1 id="spring事务定义"><a href="#spring事务定义" class="headerlink" title="spring事务定义"></a>spring事务定义</h1><p>事务的定义：事务是指多个操作单元组成的合集，多个单元操作是整体不可分割的，要么都操作不成功，要么都成功。其必须遵循四个原则（ACID）。</p>
+<p>原子性（Atomicity）：即事务是不可分割的最小工作单元，事务内的操作要么全做，要么全不做；</p>
+<p>一致性（Consistency）：在事务执行前数据库的数据处于正确的状态，而事务执行完成后数据库的数据还是应该处于正确的状态，即数据完整性约束没有被破坏；如银行转帐，A转帐给B，必须保证A的钱一定转给B，一定不会出现A的钱转了但B没收到，否则数据库的数据就处于不一致（不正确）的状态。</p>
+<p>隔离性（Isolation）：并发事务执行之间互不影响，在一个事务内部的操作对其他事务是不产生影响，这需要事务隔离级别来指定隔离性；</p>
+<p>持久性（Durability）：事务一旦执行成功，它对数据库的数据的改变必须是永久的，不会因比如遇到系统故障或断电造成数据不一致或丢失。</p>
+<h1 id="Spring框架中的单例Beans是线程安全的么？"><a href="#Spring框架中的单例Beans是线程安全的么？" class="headerlink" title="Spring框架中的单例Beans是线程安全的么？"></a>Spring框架中的单例Beans是线程安全的么？</h1><p>Spring框架并没有对单例bean进行任何多线程的封装处理。关于单例bean的线程安全和并发问题需要开发者自行去搞定。但实际上，大部分的Spring bean并没有可变的状态(比如Serview类和DAO类)，所以在某种程度上说Spring的单例bean是线程安全的。如果你的bean有多种状态的话（比如 View Model 对象），就需要自行保证线程安全。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-02T04:41:41.000Z">2019-09-02</time>
                 
                 <div class="level-item">
@@ -843,7 +958,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            115
+                            116
                         </p>
                     </a>
                 </div>
@@ -867,7 +982,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            144
+                            146
                         </p>
                     </a>
                 </div>
@@ -989,7 +1104,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">88</span>
+                <span class="level-item tag">89</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1034,6 +1149,25 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
         
         <article class="media">
             
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
@@ -1103,25 +1237,6 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/01/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/01/5569d5c0-1450-11ea-9a39-d9ffa7785653.png" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T15:35:36.000Z">2019-12-01</time></div>
-                    <a href="/2019/12/01/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -1151,6 +1266,25 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
         
         <article class="media">
             
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
@@ -1220,25 +1354,6 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/01/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/01/5569d5c0-1450-11ea-9a39-d9ffa7785653.png" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T15:35:36.000Z">2019-12-01</time></div>
-                    <a href="/2019/12/01/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>

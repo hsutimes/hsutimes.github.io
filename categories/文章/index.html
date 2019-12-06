@@ -154,6 +154,86 @@
 <div class="card">
     
     <div class="card-image">
+        <a href="/2019/12/06/powershell/" class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 982 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/12/06/powershell/">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/12/06/1f0fb620-1838-11ea-ae4f-750d6eeeb0bb.png" alt="image.png"></p>
+<p>如果你是一名专业的渗透测试人员，那你可能真的离不开PowerShell，但是如果目标系统中的某个策略组织我们访问PowerShel.exe，那我们该怎么办呢？没错，这个问题经常会困扰我们，而且网上也有很多的应对方法。</p>
+<p>在这篇文章中，我将跟大家介绍一种快速且狡猾的绕过技术，这项技术需要利用C#编译代码来执行我们的PowerShell脚本。</p>
+<p>首先，我们为什么不适用powershell.exe来执行我们的.ps1脚本呢？因为PowerShell脚本跟C#一样，它们两个对于.NET框架而言，都只是“前端”方面的东西，它们的本质都只是一种编程语言。不过在C#中，我们需要对程序代码进行编译才可以使用和执行，即编译型语言，这是它和PowerShell这种解释型脚本语言有很大区别。</p>
+<p>鉴于PowerShell.exe只是.NET程序集“system.management.automation”的解释器，因此它应该可以在C程序中与这个对象进行交互并执行.ps1脚本。</p>
+<p>下面给出的就是实例代码：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections.ObjectModel;</span><br><span class="line">using System.Management.Automation;</span><br><span class="line">using System.Management.Automation.Runspaces;</span><br><span class="line">using System.IO;</span><br><span class="line">using System;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace Powershell</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    class PSLess</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        public static string func(string script)</span><br><span class="line">        &#123;</span><br><span class="line">            return RunScript(script);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string LoadScript(string filename)</span><br><span class="line">        &#123;</span><br><span class="line">            string buffer = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                buffer = File.ReadAllText(filename);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            catch (Exception e)</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(e.Message);</span><br><span class="line"></span><br><span class="line">                Environment.Exit(2);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return buffer;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string RunScript(string script)</span><br><span class="line">        &#123;</span><br><span class="line">            Runspace MyRunspace = RunspaceFactory.CreateRunspace();</span><br><span class="line"></span><br><span class="line">            MyRunspace.Open();</span><br><span class="line"></span><br><span class="line">            Pipeline MyPipeline = MyRunspace.CreatePipeline();</span><br><span class="line"></span><br><span class="line">            MyPipeline.Commands.AddScript(script);</span><br><span class="line"></span><br><span class="line">            MyPipeline.Commands.Add(&quot;Out-String&quot;);</span><br><span class="line"></span><br><span class="line">            Collection&lt;PSObject&gt; outputs = MyPipeline.Invoke();</span><br><span class="line"></span><br><span class="line">            MyRunspace.Close();</span><br><span class="line"></span><br><span class="line">            StringBuilder sb = new StringBuilder();</span><br><span class="line"></span><br><span class="line">            foreach (PSObject pobject in outputs)</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line">                sb.AppendLine(pobject.ToString());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return sb.ToString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中的RunScript()方法会创建一个“runspace”对象，我们可以将其视作是PowerShell运行时的一个独立实例。接下来，我们需要将脚本添加到新创建的pipeline中，并对通信信道进行排序，最后通过Invoke()方法执行我们的脚本命令。</p>
+<p>最终的结果将会被追加到我们的字符串生成器中，然后作为字符串发回给调用函数，以便显示在控制台的输出结果中。这也就是为什么我们要在命令中添加“Out-String”的原因。</p>
+<p>怎么样，整个过程很简单吧？</p>
+<p>接下来，我们需要对代码进行编译并完成代码测试。</p>
+<p>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe</p>
+<pre><code>/reference:
+
+C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\system.management.automation.dll 
+
+/out:c:\setup\powerless.exe c:\scripts\powersless.cs</code></pre><p>请记住，具体的执行路径需要取决于目标系统中所安装的框架版本。除此之外，别忘了添加对“system.management.automation.dll”程序集的引用。</p>
+<p>如果一切正常的话，我们就已经完成了代码的编译。接下来，创建一个简单地测试脚本：</p>
+<p>test.ps1:</p>
+<pre><code>echo &quot;Hello from powershell-less&quot;
+
+echo &quot;PID: $pid&quot;</code></pre><p>然后运行该脚本：</p>
+<p><img src="/images/2019/12/06/5fa49c00-1838-11ea-ae4f-750d6eeeb0bb.png" alt="image.png"></p>
+<p>没错，我们成功了！我们成功地在不直接使用powershell.exe的情况下调用并执行了我们的脚本代码。</p>
+<p>实际上，这是一个非常简单的脚本，如果加上用户输入等处理机制的话，就会变得比较麻烦和复杂了，但对于大多数需要涉及到PowerShell的渗透活动来说，这应该已经够了吧。当然了，广大研究人员也可以根据自己的需要来修改脚本代码，以实现自己的需求。</p>
+<blockquote>
+<p>*参考来源：<a href="https://decoder.cloud/2017/11/02/we-dont-need-powershell-exe/" target="_blank" rel="noopener">decoder</a>，FB小编Alpha_h4ck编译，来自FreeBuf.COM</p>
+</blockquote>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
         <a href="/2019/12/05/graphical-machine-learning/" class="image is-7by1">
             <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
         </a>
@@ -811,68 +891,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/11/20/PythonRobotics/" class="image is-7by1">
-            <img class="thumbnail" src="/images/2019/11/20/6090d560-0b82-11ea-9a59-8136f50345cc.png" alt="PythonRobotics">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-20T10:41:02.000Z">2019-11-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    19 分钟 读完 (大约 2821 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/20/PythonRobotics/">PythonRobotics</a>
-            
-        </h1>
-        <div class="content">
-            <img src="https://github.com/AtsushiSakai/PythonRobotics/raw/master/icon.png?raw=true" align="right" width="300" alt="header pic">
-
-<h1 id="PythonRobotics"><a href="#PythonRobotics" class="headerlink" title="PythonRobotics"></a>PythonRobotics</h1><p><a href="https://travis-ci.org/AtsushiSakai/PythonRobotics" target="_blank" rel="noopener"><img src="https://travis-ci.org/AtsushiSakai/PythonRobotics.svg?branch=master" alt="Build Status"></a><br><a href="https://pythonrobotics.readthedocs.io/en/latest/?badge=latest" target="_blank" rel="noopener"><img src="https://readthedocs.org/projects/pythonrobotics/badge/?version=latest" alt="Documentation Status"></a><br><a href="https://ci.appveyor.com/project/AtsushiSakai/pythonrobotics" target="_blank" rel="noopener"><img src="https://ci.appveyor.com/api/projects/status/sb279kxuv1be391g?svg=true" alt="Build status"></a><br><a href="https://coveralls.io/github/AtsushiSakai/PythonRobotics?branch=master" target="_blank" rel="noopener"><img src="https://coveralls.io/repos/github/AtsushiSakai/PythonRobotics/badge.svg?branch=master" alt="Coverage Status"></a><br><a href="https://lgtm.com/projects/g/AtsushiSakai/PythonRobotics/context:python" target="_blank" rel="noopener"><img src="https://img.shields.io/lgtm/grade/python/g/AtsushiSakai/PythonRobotics.svg?logo=lgtm&logoWidth=18" alt="Language grade: Python"></a><br><a href="https://www.codefactor.io/repository/github/atsushisakai/pythonrobotics/overview/master" target="_blank" rel="noopener"><img src="https://www.codefactor.io/repository/github/atsushisakai/pythonrobotics/badge/master" alt="CodeFactor"></a><br><a href="https://github.com/AtsushiSakai/PythonRobotics" target="_blank" rel="noopener"><img src="https://tokei.rs/b1/github/AtsushiSakai/PythonRobotics" alt="tokei"></a><br><a href="https://saythanks.io/to/AtsushiSakai" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg" alt="Say Thanks!"></a></p>
-<p>Python codes for robotics algorithm.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/20/PythonRobotics/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -941,7 +959,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            115
+                            116
                         </p>
                     </a>
                 </div>
@@ -965,7 +983,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            144
+                            146
                         </p>
                     </a>
                 </div>
@@ -1087,7 +1105,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">88</span>
+                <span class="level-item tag">89</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1132,6 +1150,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
@@ -1201,25 +1238,6 @@
                     <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/01/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/01/5569d5c0-1450-11ea-9a39-d9ffa7785653.png" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T15:35:36.000Z">2019-12-01</time></div>
-                    <a href="/2019/12/01/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -1249,6 +1267,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
@@ -1318,25 +1355,6 @@
                     <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/01/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/01/5569d5c0-1450-11ea-9a39-d9ffa7785653.png" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T15:35:36.000Z">2019-12-01</time></div>
-                    <a href="/2019/12/01/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>

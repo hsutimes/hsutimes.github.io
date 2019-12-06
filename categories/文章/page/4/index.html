@@ -157,6 +157,58 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-27T14:11:36.000Z">2019-10-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 295 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/27/copying-codes-from-stack-overflow/">copying-codes-from-stack-overflow</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="从-Stack-Overflow-复制代码导致-GitHub-项目漏洞多"><a href="#从-Stack-Overflow-复制代码导致-GitHub-项目漏洞多" class="headerlink" title="从 Stack Overflow 复制代码导致 GitHub 项目漏洞多"></a>从 Stack Overflow 复制代码导致 GitHub 项目漏洞多</h1><p>现在从网上找代码直接复制到项目中的做法成为程序员的一种常规操作，Stack Overflow 更是其中主要的代码来源。但是最近有研究显示，从 Stack Overflow 上复制代码凑到项目中会使出现漏洞的概率大大增加。</p>
+<p><img src="/images/2019/10/27/a9e99700-f8c3-11e9-ba7d-05accc771851.png" alt="image.png"></p>
+<p>研究人员分析了 1325 个 Stack Overflow 帖子，并获取了其中 72 000 多段 C++ 代码，发现了其中包含有 29 种类型的 69 个漏洞。</p>
+<p>这些漏洞出现在 2589 个 GitHub 仓库中，研究人员通知了受影响的 GitHub 项目作者，但只有少数人选择修复已知这些危险情况。</p>
+<p>研究人员展示了含有漏洞的代码主要是以什么方式从 Stack Overflow 进入到 GitHub 中的，包括最经常发现的输入验证不正确、异常或异常情况的不正确检查与错误编码，比如复制代码不完整。</p>
+<p>详情查看：</p>
+<p><a href="https://fossbytes.com/copying-codes-from-stack-overflow-leads-to-vulnerable-github-project" target="_blank" rel="noopener">https://fossbytes.com/copying-codes-from-stack-overflow-leads-to-vulnerable-github-project</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-25T10:37:29.000Z">2019-10-25</time>
                 
                 <div class="level-item">
@@ -1464,162 +1516,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-13T05:06:51.000Z">2019-10-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 分钟 读完 (大约 1846 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/13/jna/">jna</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="https://github.com/java-native-access/jna/raw/master/www/images/jnalogo.jpg" alt="Java Native Access - JNA" title="Java Native Access - JNA"></p>
-<p><a href="https://travis-ci.org/java-native-access/jna" target="_blank" rel="noopener"><img src="https://travis-ci.org/java-native-access/jna.svg?branch=master" alt="Build Status"></a><br><a href="https://ci.appveyor.com/project/dblock/jna-gsxuq/branch/master" target="_blank" rel="noopener"><img src="https://ci.appveyor.com/api/projects/status/j6vmpjrw5iktb8iu/branch/master?svg=true" alt="Build status"></a></p>
-<h1 id="Java-Native-Access-JNA"><a href="#Java-Native-Access-JNA" class="headerlink" title="Java Native Access (JNA)"></a>Java Native Access (JNA)</h1><p>The definitive JNA reference (including an overview and usage details) is in the <a href="http://java-native-access.github.io/jna/5.4.0/javadoc/" target="_blank" rel="noopener">JavaDoc</a>.  Please read the <a href="http://java-native-access.github.io/jna/5.4.0/javadoc/overview-summary.html#overview_description" target="_blank" rel="noopener">overview</a>.  Questions, comments, or exploratory conversations should begin on the <a href="http://groups.google.com/group/jna-users" target="_blank" rel="noopener">mailing list</a>, although you may find it easier to find answers to already-solved problems on <a href="http://stackoverflow.com/questions/tagged/jna" target="_blank" rel="noopener">StackOverflow</a>.</p>
-<p>JNA provides Java programs easy access to native shared libraries without writing anything but Java code - no JNI or native code is required. This functionality is comparable to Windows’ Platform/Invoke and Python’s ctypes.</p>
-<p>JNA allows you to call directly into native functions using natural Java method invocation. The Java call looks just like the call does in native code. Most calls require no special handling or configuration; no boilerplate or generated code is required.</p>
-<p>JNA uses a small JNI library stub to dynamically invoke native code. The developer uses a Java interface to describe functions and structures in the target native library. This makes it quite easy to take advantage of native platform features without incurring the high overhead of configuring and building JNI code for multiple platforms.  Read this <a href="https://github.com/java-native-access/jna/blob/master/www/FunctionalDescription.md" target="_blank" rel="noopener">more in-depth description</a>.</p>
-<p>While significant attention has been paid to performance, correctness and ease of use take priority.</p>
-<p>In addition, JNA includes a platform library with many native functions already mapped as well as a set of utility interfaces that simplify native access.</p>
-<h1 id="Projects-Using-JNA"><a href="#Projects-Using-JNA" class="headerlink" title="Projects Using JNA"></a>Projects Using JNA</h1><p>JNA is a mature library with dozens of contributors and hundreds of commercial and non-commercial projects that use it.  If you’re using JNA, feel free to <a href="http://groups.google.com/group/jna-users" target="_blank" rel="noopener">tell us about it</a>.  Include some details about your company, project name, purpose and size and tell us how you use the library.</p>
-<ul>
-<li><a href="http://cassandra.apache.org" target="_blank" rel="noopener">Apache Cassandra</a>: Large-scale NoSQL data store.</li>
-<li><a href="https://github.com/iterate-ch/rococoa" target="_blank" rel="noopener">Rococoa</a>: Java bindings to the Mac OS X Cocoa framework, by Duncan McGregor.</li>
-<li><a href="http://kenai.com/projects/jna-posix" target="_blank" rel="noopener">jna-posix</a>: Common POSIX Functions for Java.</li>
-<li><a href="https://github.com/nativelibs4java/JNAerator" target="_blank" rel="noopener">JNAerator</a>: Pronounced “generator”, auto-generates JNA mappings from C headers, by Olivier Chafik.</li>
-<li><a href="http://fmj.sf.net" target="_blank" rel="noopener">Freedom for Media in Java</a> by Ken Larson/Dieter Krachtus.</li>
-<li><a href="http://code.google.com/p/gstreamer-java" target="_blank" rel="noopener">gstreamer for Java</a> by Wayne Meissner.</li>
-<li><a href="http://trac.videolan.org/jvlc/" target="_blank" rel="noopener">Videolan</a>: JVLC Java Multimedia Library.</li>
-<li><a href="http://svnkit.com" target="_blank" rel="noopener">SVNKit</a>: Pure Java Subversion client library.</li>
-<li><a href="http://omegat.sf.net" target="_blank" rel="noopener">OmegaT Computer-Aided Translation</a>.</li>
-<li><a href="http://jetbrains.com" target="_blank" rel="noopener">IntelliJ IDEA</a> by JetBrains.</li>
-<li><a href="http://netbeans.org" target="_blank" rel="noopener">NetBeans IDE</a>.</li>
-<li><a href="http://www.athenabackup.com" target="_blank" rel="noopener">Athena Backup</a> by Doug Patriarche.</li>
-<li><a href="http://www.filebot.net" target="_blank" rel="noopener">FileBot Media Renamer</a> by Reinhard Pointner.</li>
-<li><a href="https://launchpad.net/libusb4j" target="_blank" rel="noopener">USB for Java</a> by Mario Boikov.</li>
-<li><a href="https://github.com/dblock/waffle" target="_blank" rel="noopener">Waffle</a>: Enables SSO on Windows in Java applications, by Daniel Doubrovkine.</li>
-<li><a href="https://github.com/protonail/leveldb-jna" target="_blank" rel="noopener">leveldb-jna</a>: Cross-platform JNA based adapter for <a href="https://github.com/google/leveldb" target="_blank" rel="noopener">LevelDB</a> (used in <a href="http://protonail.com" target="_blank" rel="noopener">Keylord</a>).</li>
-<li><a href="https://github.com/protonail/bolt-jna" target="_blank" rel="noopener">bolt-jna</a>: Cross-platform JNA based adapter for <a href="https://github.com/boltdb/bolt" target="_blank" rel="noopener">Bolt</a> (used in <a href="http://protonail.com" target="_blank" rel="noopener">Keylord</a>). It is show how to use JNA for binding to Go library.</li>
-<li><a href="https://github.com/kotlin-graphics/openvr" target="_blank" rel="noopener">JVM OpenVR Bindings</a>.</li>
-<li><a href="https://ignite.apache.org/" target="_blank" rel="noopener">Apache Ignite</a>: Direct IO plugin</li>
-<li><a href="https://github.com/klehmann/domino-jna" target="_blank" rel="noopener">Domino JNA</a>: Cross-platform access to HCL Notes/Domino C API methods from Java</li>
-</ul>
-<p><em>Interesting Investigations/Experiments</em></p>
-<ul>
-<li><a href="http://epirsch.blogspot.com/2008/02/jna-love-nxt.html" target="_blank" rel="noopener">Drive Lego Mindstorm NXT</a> by Emmanuel Pirsch.</li>
-<li><a href="http://ochafik.free.fr/blog/?p=98" target="_blank" rel="noopener">Detect User Inactivity</a> by Olivier Chafik.</li>
-<li><a href="http://callino.cc/jiaxcapplet/" target="_blank" rel="noopener">IAXClient Applet</a> provides VOIP for Java, by Wolfgang Pichler.</li>
-</ul>
-<p>There are also a number of examples and projects within the <code>contrib</code> directory of the JNA project itself.</p>
-<h1 id="Supported-Platforms"><a href="#Supported-Platforms" class="headerlink" title="Supported Platforms"></a>Supported Platforms</h1><p>JNA will build on most linux-like platforms with a reasonable set of GNU tools and a JDK.  See the native <a href="https://raw.githubusercontent.com/java-native-access/jna/master/native/Makefile" target="_blank" rel="noopener">Makefile</a> for native configurations that have been built and tested.  If your platform is supported by <a href="http://en.wikipedia.org/wiki/Libffi" target="_blank" rel="noopener">libffi</a>, then chances are you can build JNA for it.</p>
-<p>Pre-built platform support may be found <a href="https://github.com/java-native-access/jna/tree/master/lib/native" target="_blank" rel="noopener">here</a>.</p>
-<h1 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h1><p>Version 5.4.0</p>
-<h2 id="JNA"><a href="#JNA" class="headerlink" title="JNA"></a>JNA</h2><p><a href="https://search.maven.org/artifact/net.java.dev.jna/jna/5.4.0/jar" target="_blank" rel="noopener"><img src="https://img.shields.io/maven-central/v/net.java.dev.jna/jna.svg?label=Maven%20Central" alt="Maven Central"></a>&nbsp;<a href="http://repo1.maven.org/maven2/net/java/dev/jna/jna/5.4.0/jna-5.4.0.jar" target="_blank" rel="noopener">jna-5.4.0.jar</a></p>
-<p>This is the core artifact of JNA and contains only the binding library and the<br>core helper classes.</p>
-<h2 id="JNA-Platform"><a href="#JNA-Platform" class="headerlink" title="JNA Platform"></a>JNA Platform</h2><p><a href="https://search.maven.org/artifact/net.java.dev.jna/jna-platform/5.4.0/jar" target="_blank" rel="noopener"><img src="https://img.shields.io/maven-central/v/net.java.dev.jna/jna-platform.svg?label=Maven%20Central" alt="Maven Central"></a>&nbsp;<a href="http://repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.4.0/jna-platform-5.4.0.jar" target="_blank" rel="noopener">jna-platform-5.4.0.jar</a></p>
-<p>This artifact holds cross-platform mappings and mappings for a number of commonly used platform<br>functions, including a large number of Win32 mappings as well as a set of utility classes<br>that simplify native access. The code is tested and the utility interfaces ensure that<br>native memory management is taken care of correctly.</p>
-<p>See <a href="https://github.com/java-native-access/jna/blob/master/www/PlatformLibrary.md" target="_blank" rel="noopener">PlatformLibrary.md</a> for details.</p>
-<h1 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h1><ul>
-<li>Automatic mapping from Java to native functions, with simple mappings for all primitive data types</li>
-<li>Runs on most platforms which support Java</li>
-<li>Automatic conversion between C and Java strings, with customizable encoding/decoding</li>
-<li>Structure and Union arguments/return values, by reference and by value</li>
-<li>Function Pointers, (callbacks from native code to Java) as arguments and/or members of a struct</li>
-<li>Auto-generated Java proxies for native function pointers</li>
-<li>By-reference (pointer-to-type) arguments</li>
-<li>Java array and NIO Buffer arguments (primitive types and pointers) as pointer-to-buffer</li>
-<li>Nested structures and arrays</li>
-<li>Wide (wchar_t-based) strings</li>
-<li>Native long support (32- or 64-bit as appropriate)</li>
-<li><a href="https://github.com/java-native-access/jna/tree/master/contrib" target="_blank" rel="noopener">Demo applications/examples</a></li>
-<li>Supported on 1.4 or later JVMs, including JavaME (earlier VMs may work with stubbed NIO support)</li>
-<li>Customizable marshalling/unmarshalling (argument and return value conversions)</li>
-<li>Customizable mapping from Java method to native function name, and customizable invocation to simulate C preprocessor function macros</li>
-<li>Support for automatic Windows ASCII/UNICODE function mappings</li>
-<li>Varargs support</li>
-<li>Type-safety for native pointers</li>
-<li>VM crash protection (optional)</li>
-<li>Optimized direct mapping for high-performance applications.</li>
-<li>COM support for early and late binding.</li>
-<li>COM/Typelib java code generator.</li>
-</ul>
-<h1 id="Community-and-Support"><a href="#Community-and-Support" class="headerlink" title="Community and Support"></a>Community and Support</h1><p>All questions should be posted to the <a href="http://groups.google.com/group/jna-users" target="_blank" rel="noopener">jna-users Google group</a>. Issues can be submitted <a href="https://github.com/java-native-access/jna/issues" target="_blank" rel="noopener">here on Github</a>.</p>
-<p>When posting to the mailing list, please include the following:</p>
-<ul>
-<li>What OS/CPU/architecture you’re using (e.g. Windows 7 64-bit)</li>
-<li>Reference to your native interface definitions (i.e. C headers), if available</li>
-<li>The JNA mapping you’re trying to use</li>
-<li>VM crash logs, if any</li>
-<li>Example native usage, and your attempted Java usage</li>
-</ul>
-<p>It’s nearly impossible to indicate proper Java usage when there’s no native<br>reference to work from.</p>
-<p>For commercial support, please contact twalljava [at] java [dot] net.</p>
-<h1 id="Using-the-Library"><a href="#Using-the-Library" class="headerlink" title="Using the Library"></a>Using the Library</h1><ul>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/GettingStarted.md" target="_blank" rel="noopener">Getting Started</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/FunctionalDescription.md" target="_blank" rel="noopener">Functional Description</a>.</li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/Mappings.md" target="_blank" rel="noopener">Mapping between Java and Native</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/PointersAndArrays.md" target="_blank" rel="noopener">Using Pointers and Arrays</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/StructuresAndUnions.md" target="_blank" rel="noopener">Using Structures and Unions</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/ByRefArguments.md" target="_blank" rel="noopener">Using By-Reference Arguments</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/CustomMappings.md" target="_blank" rel="noopener">Customization of Type Mapping</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/CallbacksAndClosures.md" target="_blank" rel="noopener">Callbacks/Function Pointers/Closures</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/DynamicallyTypedLanguages.md" target="_blank" rel="noopener">Dynamically Typed Languages (JRuby/Jython)</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/PlatformLibrary.md" target="_blank" rel="noopener">Platform Library</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/DirectMapping.md" target="_blank" rel="noopener">Direct Method Mapping</a> (Optimization)</li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/FrequentlyAskedQuestions.md" target="_blank" rel="noopener">Frequently Asked Questions (FAQ)</a></li>
-<li><a href="http://java-native-access.github.io/jna/5.4.0/javadoc/overview-summary.html#crash-protection" target="_blank" rel="noopener">Avoiding Crashes</a></li>
-</ul>
-<h1 id="Primary-Documentation-JavaDoc"><a href="#Primary-Documentation-JavaDoc" class="headerlink" title="Primary Documentation (JavaDoc)"></a>Primary Documentation (JavaDoc)</h1><p>The definitive JNA reference is in the <a href="http://java-native-access.github.io/jna/5.4.0/javadoc/" target="_blank" rel="noopener">JavaDoc</a>.</p>
-<h1 id="Developers"><a href="#Developers" class="headerlink" title="Developers"></a>Developers</h1><ul>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/Contributing.md" target="_blank" rel="noopener">Contributing to JNA</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/WindowsDevelopmentEnvironment.md" target="_blank" rel="noopener">Setting up a Windows Development Environment</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/AndroidDevelopmentEnvironment.md" target="_blank" rel="noopener">Setting up an Android Development Environment</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/RaspberryPiDevelopmentEnvironment.md" target="_blank" rel="noopener">Setting up a RaspberryPi Development Environment</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/MacDevelopmentEnvironment.md" target="_blank" rel="noopener">Setting up a Mac Development Environment</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/ReleasingJNA.md" target="_blank" rel="noopener">Releasing JNA</a></li>
-<li><a href="https://github.com/java-native-access/jna/blob/master/www/PublishingToMavenCentral.md" target="_blank" rel="noopener">Publishing to Maven Central</a></li>
-</ul>
-<h1 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h1><p>You’re encouraged to contribute to JNA. Fork the code from <a href="https://github.com/java-native-access/jna" target="_blank" rel="noopener">https://github.com/java-native-access/jna</a> and submit pull requests.</p>
-<p>For more information on setting up a development environment see <a href="https://github.com/java-native-access/jna/blob/master/www/Contributing.md" target="_blank" rel="noopener">Contributing to JNA</a>.</p>
-<p>If you are interested in paid support, feel free to say so on the <a href="http://groups.google.com/group/jna-users" target="_blank" rel="noopener">jna-users mailing list</a>. Most simple questions will be answered on the list, but more complicated work, new features or target platforms can be negotiated with any of the JNA developers (this is how several of JNA’s features came into being). You may even encounter other users with the same need and be able to cost share the new development.</p>
-<h1 id="License"><a href="#License" class="headerlink" title="License"></a>License</h1><p>This library is licensed under the LGPL, version 2.1 or later, and (from version 4.0 onward) the Apache Software License, version 2.0. Commercial license arrangements are negotiable.</p>
-<p><em>NOTE: Oracle is not sponsoring this project, even though the package name (com.sun.jna) might imply otherwise.</em></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1694,7 +1590,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            115
+                            116
                         </p>
                     </a>
                 </div>
@@ -1718,7 +1614,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            144
+                            146
                         </p>
                     </a>
                 </div>
@@ -1840,7 +1736,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">88</span>
+                <span class="level-item tag">89</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1885,6 +1781,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
@@ -1954,25 +1869,6 @@
                     <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/01/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/01/5569d5c0-1450-11ea-9a39-d9ffa7785653.png" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T15:35:36.000Z">2019-12-01</time></div>
-                    <a href="/2019/12/01/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -2002,6 +1898,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
@@ -2071,25 +1986,6 @@
                     <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/01/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/01/5569d5c0-1450-11ea-9a39-d9ffa7785653.png" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T15:35:36.000Z">2019-12-01</time></div>
-                    <a href="/2019/12/01/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
