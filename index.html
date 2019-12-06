@@ -162,7 +162,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 982 个字)
+                    7 分钟 读完 (大约 984 个字)
                 </span>
                 
                 
@@ -187,17 +187,13 @@
 <p>最终的结果将会被追加到我们的字符串生成器中，然后作为字符串发回给调用函数，以便显示在控制台的输出结果中。这也就是为什么我们要在命令中添加“Out-String”的原因。</p>
 <p>怎么样，整个过程很简单吧？</p>
 <p>接下来，我们需要对代码进行编译并完成代码测试。</p>
-<p>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe</p>
-<pre><code>/reference:
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe</span><br><span class="line"></span><br><span class="line">    /reference:</span><br><span class="line"></span><br><span class="line">    C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\system.management.automation.dll </span><br><span class="line"></span><br><span class="line">    /out:c:\setup\powerless.exe c:\scripts\powersless.cs</span><br></pre></td></tr></table></figure>
 
-C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\system.management.automation.dll 
-
-/out:c:\setup\powerless.exe c:\scripts\powersless.cs</code></pre><p>请记住，具体的执行路径需要取决于目标系统中所安装的框架版本。除此之外，别忘了添加对“system.management.automation.dll”程序集的引用。</p>
+<p>请记住，具体的执行路径需要取决于目标系统中所安装的框架版本。除此之外，别忘了添加对“system.management.automation.dll”程序集的引用。</p>
 <p>如果一切正常的话，我们就已经完成了代码的编译。接下来，创建一个简单地测试脚本：</p>
-<p>test.ps1:</p>
-<pre><code>echo &quot;Hello from powershell-less&quot;
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test.ps1:</span><br><span class="line"></span><br><span class="line">    echo "Hello from powershell-less"</span><br><span class="line"></span><br><span class="line">    echo "PID: $pid"</span><br></pre></td></tr></table></figure>
 
-echo &quot;PID: $pid&quot;</code></pre><p>然后运行该脚本：</p>
+<p>然后运行该脚本：</p>
 <p><img src="/images/2019/12/06/5fa49c00-1838-11ea-ae4f-750d6eeeb0bb.png" alt="image.png"></p>
 <p>没错，我们成功了！我们成功地在不直接使用powershell.exe的情况下调用并执行了我们的脚本代码。</p>
 <p>实际上，这是一个非常简单的脚本，如果加上用户输入等处理机制的话，就会变得比较麻烦和复杂了，但对于大多数需要涉及到PowerShell的渗透活动来说，这应该已经够了吧。当然了，广大研究人员也可以根据自己的需要来修改脚本代码，以实现自己的需求。</p>
