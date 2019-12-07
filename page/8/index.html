@@ -142,6 +142,211 @@
     
 <div class="card">
     
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-16T14:20:54.000Z">2019-09-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 分钟 读完 (大约 2443 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/16/Java12的新特性/">Java12的新特性</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Java12的新特性"><a href="#Java12的新特性" class="headerlink" title="Java12的新特性"></a>Java12的新特性</h1><blockquote>
+<p>Java5的新特性<br>Java6的新特性<br>Java7的新特性<br>Java8的新特性<br>Java9的新特性<br>Java10的新特性<br>Java11的新特性<br>Java12的新特性<br>Java13的新特性</p>
+</blockquote>
+<p><img src="/images/2019/09/16/1c09f100-d88e-11e9-a339-273a38bbb2c9.png" alt="image.png"></p>
+<h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">openjdk version &quot;12&quot; 2019-03-19</span><br><span class="line">OpenJDK Runtime Environment (build 12+33)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 12+33, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从version信息可以看出是build 12+33</p>
+</blockquote>
+<h2 id="特性列表"><a href="#特性列表" class="headerlink" title="特性列表"></a>特性列表</h2><ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F189" target="_blank" rel="noopener">189:    Shenandoah: A Low-Pause-Time Garbage Collector (Experimental)</a></li>
+</ul>
+<blockquote>
+<p>Shenandoah GC是一个面向low-pause-time的垃圾收集器，它最初由Red Hat实现，支持aarch64及amd64 architecture；ZGC也是面向low-pause-time的垃圾收集器，不过ZGC是基于colored pointers来实现，而Shenandoah GC是基于brooks pointers来实现；如果要使用Shenandoah GC需要编译时–with-jvm-features选项带有shenandoahgc，然后启动时使用-XX:+UnlockExperimentalVMOptions -XX:+UseShenandoahGC</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F230" target="_blank" rel="noopener">230:    Microbenchmark Suite</a></li>
+</ul>
+<blockquote>
+<p>在jdk源码里头新增了一套基础的microbenchmarks suite</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F325" target="_blank" rel="noopener">325:    Switch Expressions (Preview)</a></li>
+</ul>
+<blockquote>
+<p>对switch进行了增强，除了使用statement还可以使用expression，比如原来的写法如下：</p>
+</blockquote>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> FRIDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> SUNDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">6</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">7</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY:</span><br><span class="line">    <span class="hljs-keyword">case</span> SATURDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">8</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY:</span><br><span class="line">        System.out.println(<span class="hljs-number">9</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在可以改为如下写法：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, FRIDAY, SUNDAY -&gt; System.out.println(<span class="hljs-number">6</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY                -&gt; System.out.println(<span class="hljs-number">7</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY, SATURDAY     -&gt; System.out.println(<span class="hljs-number">8</span>);</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY              -&gt; System.out.println(<span class="hljs-number">9</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以及在表达式返回值</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> numLetters = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, FRIDAY, SUNDAY -&gt; <span class="hljs-number">6</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> TUESDAY                -&gt; <span class="hljs-number">7</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> THURSDAY, SATURDAY     -&gt; <span class="hljs-number">8</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> WEDNESDAY              -&gt; <span class="hljs-number">9</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>对于需要返回值的switch expression要么正常返回值要么抛出异常，以下这两种写法都是错误的</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> i = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"Monday"</span>); </span><br><span class="line">        <span class="hljs-comment">// ERROR! Block doesn't contain a break with value</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">default</span> -&gt; <span class="hljs-number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line">i = <span class="hljs-keyword">switch</span> (day) &#123;</span><br><span class="line">    <span class="hljs-keyword">case</span> MONDAY, TUESDAY, WEDNESDAY: </span><br><span class="line">        <span class="hljs-keyword">break</span> <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">default</span>: </span><br><span class="line">        System.out.println(<span class="hljs-string">"Second half of the week"</span>);</span><br><span class="line">        <span class="hljs-comment">// ERROR! Group doesn't contain a break with value</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F334" target="_blank" rel="noopener">334:    JVM Constants API</a></li>
+</ul>
+<blockquote>
+<p>新增了JVM Constants API，具体来说就是java.base模块新增了java.lang.constant包，引入了ConstantDesc接口(ClassDesc、MethodTypeDesc、MethodHandleDesc这几个接口直接继承了ConstantDesc接口)以及Constable接口；ConstantDesc接口定义了resolveConstantDesc方法，Constable接口定义了describeConstable方法；String、Integer、Long、Float、Double均实现了这两个接口，而EnumDesc实现了ConstantDesc接口</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F340" target="_blank" rel="noopener">340:    One AArch64 Port, Not Two</a></li>
+</ul>
+<blockquote>
+<p>64-bit Arm platform (arm64)，也可以称之为aarch64；之前JDK有两个关于aarch64的实现，分别是src/hotspot/cpu/arm以及open/src/hotspot/cpu/aarch64，它们的实现重复了，为了集中精力更好地实现aarch64，该特性在源码中删除了open/src/hotspot/cpu/arm中关于64-bit的实现，保留其中32-bit的实现，于是open/src/hotspot/cpu/aarch64部分就成了64-bit ARM architecture的默认实现</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F341" target="_blank" rel="noopener">341:    Default CDS Archives</a></li>
+</ul>
+<blockquote>
+<p>java10的新特性JEP 310: Application Class-Data Sharing扩展了JDK5引入的Class-Data Sharing，支持application的Class-Data Sharing；Class-Data Sharing可以用于多个JVM共享class，提升启动速度，最早只支持system classes及serial GC，JDK9对其进行扩展以支持application classes及其他GC算法，并在JDK10中开源出来(以前是commercial feature)；JDK11将-Xshare:off改为默认-Xshare:auto，以更加方便使用CDS特性；JDK12的这个特性即在64-bit平台上编译jdk的时候就默认在${JAVA_HOME}/lib/server目录下生成一份名为classes.jsa的默认archive文件(大概有18M)方便大家使用</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F344" target="_blank" rel="noopener">344:    Abortable Mixed Collections for G1</a></li>
+</ul>
+<blockquote>
+<p>G1在garbage collection的时候，一旦确定了collection set(CSet)开始垃圾收集这个过程是without stopping的，当collection set过大的时候，此时的STW时间会过长超出目标pause time，这种情况在mixed collections时候比较明显。这个特性启动了一个机制，当选择了一个比较大的collection set，允许将其分为mandatory及optional两部分(当完成mandatory的部分，如果还有剩余时间则会去处理optional部分)来将mixed collections从without stopping变为abortable，以更好满足指定pause time的目标</p>
+</blockquote>
+<ul>
+<li><a href="https://link.juejin.im/?target=http%3A%2F%2Fopenjdk.java.net%2Fjeps%2F346" target="_blank" rel="noopener">346:    Promptly Return Unused Committed Memory from G1</a></li>
+</ul>
+<blockquote>
+<p>G1目前只有在full GC或者concurrent cycle的时候才会归还内存，由于这两个场景都是G1极力避免的，因此在大多数场景下可能不会及时会还committed Java heap memory给操作系统。JDK12的这个特性新增了两个参数分别是G1PeriodicGCInterval及G1PeriodicGCSystemLoadThreshold，设置为0的话，表示禁用。当上一次garbage collection pause过去G1PeriodicGCInterval(milliseconds)时间之后，如果getloadavg()(one-minute)低于G1PeriodicGCSystemLoadThreshold指定的阈值，则触发full GC或者concurrent GC(如果开启G1PeriodicGCInvokesConcurrent)，GC之后Java heap size会被重写调整，然后多余的内存将会归还给操作系统</p>
+</blockquote>
+<h2 id="细项解读"><a href="#细项解读" class="headerlink" title="细项解读"></a>细项解读</h2><p>上面列出的是大方面的特性，除此之外还有一些api的更新及废弃，主要见JDK 12 Release Notes，这里举几个例子。<br>添加项</p>
+<ul>
+<li>支持unicode 11</li>
+<li>支持Compact Number Formatting</li>
+</ul>
+<blockquote>
+<p>使用实例如下</p>
+</blockquote>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCompactNumberFormat</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> cnf = NumberFormat.getCompactNumberInstance(Locale.CHINA, NumberFormat.Style.SHORT);</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_0000</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_9200</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1_000_000</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">30</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">40</span>));</span><br><span class="line">    System.out.println(cnf.format(<span class="hljs-number">1L</span> &lt;&lt; <span class="hljs-number">50</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1万</span><br><span class="line">2万</span><br><span class="line">100万</span><br><span class="line">11亿</span><br><span class="line">1兆</span><br><span class="line">1126兆</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>String支持transform、indent操作</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringTransform</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"hello"</span>.transform(<span class="hljs-keyword">new</span> Function&lt;String, Integer&gt;() &#123;</span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">apply</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> s.hashCode();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringIndent</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"hello"</span>.indent(<span class="hljs-number">3</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Files新增mismatch方法</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFilesMismatch</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    FileWriter fileWriter = <span class="hljs-keyword">new</span> FileWriter(<span class="hljs-string">"/tmp/a.txt"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"a"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"b"</span>);</span><br><span class="line">    fileWriter.write(<span class="hljs-string">"c"</span>);</span><br><span class="line">    fileWriter.close();</span><br><span class="line"></span><br><span class="line">    FileWriter fileWriterB = <span class="hljs-keyword">new</span> FileWriter(<span class="hljs-string">"/tmp/b.txt"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"a"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"1"</span>);</span><br><span class="line">    fileWriterB.write(<span class="hljs-string">"c"</span>);</span><br><span class="line">    fileWriterB.close();</span><br><span class="line"></span><br><span class="line">    System.out.println(Files.mismatch(Path.of(<span class="hljs-string">"/tmp/a.txt"</span>),Path.of(<span class="hljs-string">"/tmp/b.txt"</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Collectors新增teeing方法用于聚合两个downstream的结果</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCollectorTeeing</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> result = Stream.of(<span class="hljs-string">"Devoxx"</span>,<span class="hljs-string">"Voxxed Days"</span>,<span class="hljs-string">"Code One"</span>,<span class="hljs-string">"Basel One"</span>)</span><br><span class="line">            .collect(Collectors.teeing(Collectors.filtering(n -&gt; n.contains(<span class="hljs-string">"xx"</span>),Collectors.toList()),</span><br><span class="line">                                        Collectors.filtering(n -&gt; n.endsWith(<span class="hljs-string">"One"</span>),Collectors.toList()),</span><br><span class="line">                    (List&lt;String&gt; list1, List&lt;String&gt; list2) -&gt; List.of(list1,list2)</span><br><span class="line">                                        ));</span><br><span class="line"></span><br><span class="line">    System.out.println(result.get(<span class="hljs-number">0</span>));</span><br><span class="line">    System.out.println(result.get(<span class="hljs-number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CompletionStage新增exceptionallyAsync、exceptionallyCompose、exceptionallyComposeAsync方法</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Test</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testExceptionallyAsync</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">    LOGGER.info(<span class="hljs-string">"begin"</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> result = CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        LOGGER.info(<span class="hljs-string">"calculate"</span>);</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>/<span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">100</span>;</span><br><span class="line">    &#125;).exceptionallyAsync((t) -&gt; &#123;</span><br><span class="line">        LOGGER.info(<span class="hljs-string">"error error:&#123;&#125;"</span>,t.getMessage());</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;).get();</span><br><span class="line"></span><br><span class="line">    LOGGER.info(<span class="hljs-string">"result:&#123;&#125;"</span>,result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>JDK12之前CompletionStage只有一个exceptionally，该方法体在主线程执行，JDK12新增了exceptionallyAsync、exceptionallyComposeAsync方法允许方法体在异步线程执行，同时新增了exceptionallyCompose方法支持在exceptionally的时候构建新的CompletionStage</p>
+</li>
+<li><p>Allocation of Old Generation of Java Heap on Alternate Memory Devices</p>
+</li>
+</ul>
+<blockquote>
+<p>G1及Parallel GC引入experimental特性，允许将old generation分配在诸如NV-DIMM memory的alternative memory device</p>
+</blockquote>
+<ul>
+<li>ZGC: Concurrent Class Unloading</li>
+</ul>
+<blockquote>
+<p>ZGC在JDK11的时候还不支持class unloading，JDK12对ZGC支持了Concurrent Class Unloading，默认是开启，使用-XX:-ClassUnloading可以禁用</p>
+</blockquote>
+<ul>
+<li>新增-XX:+ExtensiveErrorReports</li>
+</ul>
+<blockquote>
+<p>-XX:+ExtensiveErrorReports可以用于在jvm crash的时候收集更多的报告信息到hs_err.log文件中，product builds中默认是关闭的，要开启的话，需要自己添加-XX:+ExtensiveErrorReports参数</p>
+</blockquote>
+<ul>
+<li>新增安全相关的改进</li>
+</ul>
+<blockquote>
+<p>支持java.security.manager系统属性，当设置为disallow的时候，则不使用SecurityManager以提升性能，如果此时调用System.setSecurityManager则会抛出UnsupportedOperationException<br>keytool新增-groupname选项允许在生成key pair的时候指定一个named group<br>新增PKCS12 KeyStore配置属性用于自定义PKCS12 keystores的生成<br>Java Flight Recorder新增了security-related的event<br>支持ChaCha20 and Poly1305 TLS Cipher Suites</p>
+</blockquote>
+<ul>
+<li>jdeps Reports Transitive Dependences</li>
+</ul>
+<blockquote>
+<p>jdeps的–print-module-deps, –list-deps, 以及–list-reduce-deps选项得到增强，新增–no-recursive用于non-transitive的依赖分析，–ignore-missing-deps用于suppress missing dependence errors</p>
+</blockquote>
+<h2 id="移除项"><a href="#移除项" class="headerlink" title="移除项"></a>移除项</h2><ul>
+<li>移除com.sun.awt.SecurityWarnin</li>
+<li>移除FileInputStream、FileOutputStream、Java.util.ZipFile/Inflator/Deflator的finalize方法</li>
+<li>移除GTE CyberTrust Global Root</li>
+<li>移除javac的-source, -target对6及1.6的支持，同时移除–release选项</li>
+</ul>
+<h2 id="废弃项"><a href="#废弃项" class="headerlink" title="废弃项"></a>废弃项</h2><ul>
+<li>废弃的API列表见deprecated-list</li>
+<li>废弃-XX:+/-MonitorInUseLists选项</li>
+<li>废弃Default Keytool的-keyalg值</li>
+</ul>
+<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><ul>
+<li>Swing不支持GTK+ 3.20及以后的版本</li>
+<li>在使用JVMCI Compiler(比如Graal)的时候，JVMTI的can_pop_frame及can_force_early_return的capabilities是被禁用的</li>
+</ul>
+<h2 id="其他事项"><a href="#其他事项" class="headerlink" title="其他事项"></a>其他事项</h2><ul>
+<li>如果用户没有指定user.timezone且从操作系统获取的为空，那么user.timezone属性的初始值为空变为null</li>
+<li>java.net.URLPermission的行为发生轻微变化，以前它会忽略url中的query及fragment部分，这次改动新增query及fragment部分，即scheme : // authority [ / path ]变动为scheme : // authority [ / path ] [ ignored-query-or-fragment ]</li>
+<li>javax.net.ssl.SSLContext API及Java Security Standard Algorithm Names规范移除了必须实现TLSv1及TLSv1.1的规定</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>java12不是LTS(Long-Term Support)版本(oracle版本才有LTS)，oracle对该版本的support周期为6个月。这个版本主要有几个更新点，一个是语法层更新，一个是API层面的更新，另外主要是GC方面的更新。</li>
+<li>语法层面引入了preview版本的Switch Expressions；API层面引入了JVM Constants API，引入CompactNumberFormat，让NumberFormat支持COMPACTSTYLE，对String、Files、Collectors、CompletionStage等新增方法；GC方面引入了experimental版本的Shenandoah GC，不过oracle build的openjdk没有enable Shenandoah GC support；另外主要对ZGC及G1 GC进行了改进</li>
+<li>其中JDK12对ZGC支持了Concurrent Class Unloading，默认是开启，使用-XX:-ClassUnloading可以禁用；对于G1 GC则新增支持Abortable Mixed Collections以及Promptly Return Unused Committed Memory特性</li>
+</ul>
+<blockquote>
+<p>作者：go4it<br>链接：<a href="https://juejin.im/post/5c91fcc9e51d45563b62382c" target="_blank" rel="noopener">https://juejin.im/post/5c91fcc9e51d45563b62382c</a><br>来源：掘金</p>
+</blockquote>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
     <div class="card-image">
         <a href="/2019/09/16/2019年度机器学习49个顶级工程汇总/" class="image is-7by1">
             <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="2019年度机器学习49个顶级工程汇总">
@@ -1135,70 +1340,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-08T13:35:18.000Z">2019-09-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    15 分钟 读完 (大约 2279 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/08/数据库备份恢复容器化项目实践经验总结/">数据库备份恢复容器化项目实践经验总结</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="数据库备份恢复容器化项目实践经验总结"><a href="#数据库备份恢复容器化项目实践经验总结" class="headerlink" title="数据库备份恢复容器化项目实践经验总结"></a>数据库备份恢复容器化项目实践经验总结</h1><blockquote>
-<p>本文分享了唯品会数据库Docker的异地容灾项目实践经验，项目中针对用户数据库的异地恢复场景的需求进行开发和测试，整合了网络，存储、调度、监控，镜像等多个模块。在实施完成后，从技术上总结关于选型、开发、踩坑、测试等方面的经验。</p>
-</blockquote>
-<h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>数据库Docker的异地备份恢复容灾项目，针对用户数据库的异地备份恢复场景的需求进行开发和测试，整合了容器网络、存储、调度、监控、镜像等多个模块。同时针对数据库的日常运维工作开发了监控、资源调度、日志、Puppet自动推送等工具。</p>
-<p>通过Docker天生隔离性和快速部署等特点，实现在单台物理机上运行多个数据库备份/恢复实例，大大提高服务器使用率，节省大量成本。通过对Docker本身和相关组件的研究和改造，从普通开源产品落地到公司内部生产环境，积累宝贵的开发经验。通过对Docker已经在其上层运行的数据库日常运维和监控，也积累宝贵的Docker运维经验，为更大规模推广容器提供基础。</p>
-<p><img src="/images/2019/09/08/9adb4490-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
-<h1 id="关于容器技术"><a href="#关于容器技术" class="headerlink" title="关于容器技术"></a>关于容器技术</h1><p>通过实践，证明容器技术在易用性，可管理性，快速部署具备天然的优势。在资源利用率方面，容器部署在上百个物理节点上，提供约500多个数据库灾备实例，提升了硬件资源的利用率，节约了约400台物理机的采购成本。这些是容器技术带来的实实在在收益。在资源分配与隔离方面，又不输于虚拟机。CPU、内存、磁盘IO、网络IO限流等技术的应用，保证了资源的合理使用，从机制上阻止了单一实例的资源过分消耗的问题。</p>
-<p>稳定性是使用容器技术非常关注的一个点，也是基石。MySQL备份/恢复属于CPU密集 + 磁盘IO密集 + 网络IO密集型业务，对于Docker daemon是个较大的考验。就目前来看，限制每台宿主机的容器数量（5个左右）的情况下，集群跑了三个多月没有出现因为容器负载过大导致的crash现象，还是值得信赖的。遇到的唯一相关问题是Docker daemon挂死，具体现象是docker info、docker ps没有响应，docker volume、docker images 正常，下面的容器运行正常。这是偶发事件，无法重现，以后需要继续观察。</p>
-<p>由于容器以进程方式存在，体现出几乎与物理机上相当的性能，Overheads极低（低于10%）。从数据抽取任务的结果来看，与物理机相比，使用容器对成功率没有影响，效率也差不多。这也很符合最初预想，不管跑容器还是外部服务从物理机角度来说它们之间是没有什么区别的，都是一个进程，唯一不同是父进程不一样而已。</p>
-<p>以上是容器“RUN”带来的好处，通过统一开发流程，应用微服务化，CI/CD等方面的改进，能够进一步利用容器“BUILD”、“SHIP” 优势，容器技术还来的潜力是巨大的。要说容器技术的缺点，还真的不明显。硬要提的话一个是需要一定的学习成本，改变开发流程与方式，一个是开发人员对容器技术的接受程度。这个项目仅用了不到二百人/天，对于一个采用新技术的项目来说，真的是很低的了。一开始我们也担心因为采用新技术导致开发推广有困难，后来实际能通过技术上解决问题，打消了大部分用户对使用Docker的疑虑，反而有助于该技术的普遍应用。</p>
-<p>关于Docker daemon版本的选择，我们之前是有过一些讨论的。现在Docker社区非常活跃，当时我们用1.10.3， 到现在已经出了两个新版本了。在功能满足的前提下，稳定性是第一考量。Docker自1.9.0引入CNM网络模型，1.10算是比较成熟。CNM是我们希望在这个项目尝试的一部分。网络与Volume插件功能与稳定性的提升，开始支持磁盘IO读写限速，Device Mapper的支持，等等，都是选择了这个版本的原因。另外，Docker插件的引入，很好地解耦了Docker与底层模块的关系，使我们可以专注于底层（网络、存储）实现而不需要修改Docker daemon本身，同时避免产生升级依赖。</p>
-<h1 id="关于容器存储"><a href="#关于容器存储" class="headerlink" title="关于容器存储"></a>关于容器存储</h1><p>容器外部卷使用Convoy，以插件的形式支持容器持久化数据。容器本身与外部卷均使用Device Mapper作为底层。没有选择分布式存储原因，主要是为了简化实现，更稳定。通过限制每个容器的BlkioDeviceReadBps、BlkioDeviceWriteBps、BlkioDeviceReadIOps、BlkioDeviceWriteIOps，使磁盘IO稳定地达到相当于95%物理机性能。</p>
-<p><img src="/images/2019/09/08/b8684530-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
-<p>对于Device Mapper，因为是红帽推荐的，而OS又是用的CentOS7.2, 所以就用了它。测试过程中发现Device Mapper健壮性不是很好，仅仅在低并发下，也会出现容器删除失败的情况，容器并发启停偶尔出现找不到设备的情况。这种使用映射关系的设备，功能是丰富，实现上过于复杂，每次对设备的修改都需要额外去更新Metadata，并发场景出错的机会就大了。让我再选的话我会考虑Overlay这种更简单的driver。</p>
-<p>对于Convoy，是来自Rancher的产品，Go语言，仍然处于未成熟阶段，版本号0.5, 并没有完全实现Volume Plugin接口。相比其它模块它的问题也是最多的，例如Volume创建失败，无法删除，UNIX Socket泄漏，重名冲突，异常自动退出等。属于能用，但未完善的状态，你自己得有一定开发调试能力去解决发现的问题。其它几个存储插件情况也差不多，Flocker、Blockbridge、Horcrux等等，有的连第一个正式发布版都还没有，Convoy反而相对好点，有点烂柿子堆里挑的感觉。</p>
-<h1 id="关于容器监控"><a href="#关于容器监控" class="headerlink" title="关于容器监控"></a>关于容器监控</h1><p>容器监控在这个项目里还可以有很大的空间可以改进。项目里用的是cAdvisor，容器内top、free、iostat命令劫持，基于已有的Zabbix体系作数据收集与展示。结论是Zabbix完全不合适做容器监控，数据收集密度，展示质量，灵活度都没能满足需求。</p>
-<p>后来在测试中尝试使用Telegraf + InfluxDB + Grafana。 只需要Grafana简单的配置，能够帮忙我们清晰地展示容器及服务进程CPU、内存、网络、磁盘等情况。Grafana上SQL查询语句的调试与开发，确实需要不少的时间，但这个工作量是一次性的。因为是Go写的，Telegraf CPU占用属于比较低的水平（0.4 – 5%）。功能上比较丰富，同时支持外部进程与容器的数据收集，多达55种数据源插件，有它就不需要布cAdvisor了，个人比较推荐。需要告警的同学，可以考虑把influxDB改成Prometheus。它包含Alertmanager实现Email、PagerDuty等消息通知。数据Backend可以选择自带的DB，也可以外接influxDB、Graphite、OpenTSDB等流行方案。</p>
-<p><img src="/images/2019/09/08/cd4a2fe0-d23d-11e9-ad11-3306f19b341f.png" alt="image.png"></p>
-<p>监控领域业界已经有很多开源方案可以参考，以下是要衡量的标准：易扩展、开销低、入侵小、大集中、易部署、实时性、展现清晰灵活。这方面希望与各位有更多的交流。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1271,7 +1412,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            116
+                            117
                         </p>
                     </a>
                 </div>
@@ -1417,7 +1558,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">89</span>
+                <span class="level-item tag">90</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1462,6 +1603,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
+                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/06/powershell/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
@@ -1531,25 +1691,6 @@
                     <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/02/text-proofreading/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                     </p>
                 </div>
             </div>
@@ -1579,6 +1720,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
+                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/06/powershell/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
@@ -1648,25 +1808,6 @@
                     <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/02/text-proofreading/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                     </p>
                 </div>
             </div>

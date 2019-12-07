@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>游戏中的加密算法 - Time</title>
+
+
+    <meta name="description" content="加密主要包含通信数据和存储数据加密，目的都是为了保证其传送和储存的隐秘性，从而保证数据的安全。目前常见的加密方式有对称加密、非对称加密、hash加密、hash加盐加密等,这些在游戏中都会用的，我们会对其用途以及缺陷一一说明，当然了，为了保证其加密算法的安全以及高效，我们也会介绍几种自定义的加密算法，看看加密如何来维护我们的数据安全。">
+<meta name="keywords" content="游戏,加密算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏中的加密算法">
+<meta property="og:url" content="https://blog.hsutimes.com/2019/12/07/the-encryption-algorithm-in-the-game/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:description" content="加密主要包含通信数据和存储数据加密，目的都是为了保证其传送和储存的隐秘性，从而保证数据的安全。目前常见的加密方式有对称加密、非对称加密、hash加密、hash加盐加密等,这些在游戏中都会用的，我们会对其用途以及缺陷一一说明，当然了，为了保证其加密算法的安全以及高效，我们也会介绍几种自定义的加密算法，看看加密如何来维护我们的数据安全。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png">
+<meta property="og:updated_time" content="2019-12-07T14:05:20.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="游戏中的加密算法">
+<meta name="twitter:description" content="加密主要包含通信数据和存储数据加密，目的都是为了保证其传送和储存的隐秘性，从而保证数据的安全。目前常见的加密方式有对称加密、非对称加密、hash加密、hash加盐加密等,这些在游戏中都会用的，我们会对其用途以及缺陷一一说明，当然了，为了保证其加密算法的安全以及高效，我们也会介绍几种自定义的加密算法，看看加密如何来维护我们的数据安全。">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png">
+<meta name="twitter:site" content="https://twitter.com/times26740863">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134224598-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="游戏中的加密算法" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1883 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                游戏中的加密算法
+            
+        </h1>
+        <div class="content">
+            <p>加密主要包含通信数据和存储数据加密，目的都是为了保证其传送和储存的隐秘性，从而保证数据的安全。目前常见的加密方式有对称加密、非对称加密、hash加密、hash加盐加密等,这些在游戏中都会用的，我们会对其用途以及缺陷一一说明，当然了，为了保证其加密算法的安全以及高效，我们也会介绍几种自定义的加密算法，看看加密如何来维护我们的数据安全。</p>
+<a id="more"></a>
+
+<h1 id="1、对称加密"><a href="#1、对称加密" class="headerlink" title="1、对称加密"></a>1、对称加密</h1><p>对称加密算法是应用较早的加密算法，技术成熟。主要就是对密钥的一个维护，发送方把数据和密钥通过一定的加密算法处理后，发送给接收方，接受方接到之后在使用相同密钥及算法的逆算法对密文进行解密。这就是一般的对称加密算法过程。常见的对称加密算法有AES、DES，3DES，TDEA，Blowfish，RC5，IDEA等，建议用AES,速度快，安全性也可以。</p>
+<p>对称加密算法的特点是算法公开、计算量小、加密速度快、加密效率高。缺点主要就是密钥需要双方都有，如果密钥被窃取，那么加密就会比第三方破解，特别是游戏中，密钥如果存放在客户端中，容易被破解反编译到。</p>
+<p>我们可以采取登陆消息和逻辑消息采用不同的密钥，登陆验证通过之后，服务器为每个用户分配不同的密钥，然后把逻辑密钥传送给客户端，以此保证密钥的不确定性，从而增加游戏的安全。</p>
+<h1 id="2、非对称加密"><a href="#2、非对称加密" class="headerlink" title="2、非对称加密"></a>2、非对称加密</h1><p>非对称加密算法使用两把完全不同但又是完全匹配的一对钥匙—公钥和私钥。在使用不对称加密算法加密文件时，只有使用匹配的一对公钥和私钥，才能完成对明文的加密和解密过程。这对于对称加密算法来说，又安全了一步，也是目前https常用的加密方式，公钥可以分配和暴露给所有想要访问的请求者，但密钥一定牢牢的掌握在服务器这边，如此对通信来说，安全性有保证。常用的加密算法，RSA,DSA,ECC。</p>
+<p>非对称加密算法，优点就是安全，但缺点就是不够快，比较耗费cpu，如果在游戏中每一次消息都有其加密，对cpu的损耗还是挺高的，所以游戏中一般不用这种加密方式，当然了也看游戏类型，如果对这方面的性能要求不高，安全性要求有很高，采用业务科厚非（那个游戏这么傻啊）。</p>
+<h1 id="3、hash加密"><a href="#3、hash加密" class="headerlink" title="3、hash加密"></a>3、hash加密</h1><p>hash加密，就是常见的使用MD5、SHA1等单向HASH算法保护密码，使用这些算法后，无法通过计算还原出原始密码，而且实现比较简单也高效，因此很多互联网公司都采用这种方式保存用户密码。</p>
+<p>但安全性越来越担忧了，因为随着彩虹表技术的兴起，可以建立彩虹表进行查表破解，目前这种方式已经很不安全了。</p>
+<h1 id="4、hash-加盐加密"><a href="#4、hash-加盐加密" class="headerlink" title="4、hash 加盐加密"></a>4、hash 加盐加密</h1><p>hash加密既然容易被彩虹表破解，那么可以采用加盐、多次HASH等扩展，这样可以在一定程度上增加破解难度。常见的方式也是发送方和接受方，维护一个盐池，加密和解密的时候加上这一段盐池来进行hash。</p>
+<p>不过这种算法又回到了对称加密中对密钥的保护问题了，如果盐池泄露，别人依然会破解。</p>
+<p>怎么办？有人又想出了，让盐池随机的方式，比如PBKDF2算法，原理大致相当于在HASH算法基础上增加随机盐，并进行多次HASH运算，随机盐使得彩虹表的建表难度大幅增加，而多次HASH也使得建表和破解的难度都大幅增加。一次密码验证过程进行1000次HASH运算，对服务器来说可能只需要1ms，但对于破解者来说计算成本增加了1000倍，而至少8字节随机盐，更是把建表难度提升了N个数量级，使得大批量的破解密码几乎不可行，该算法也是美国国家标准与技术研究院推荐使用的算法。</p>
+<h1 id="5、自定义加密"><a href="#5、自定义加密" class="headerlink" title="5、自定义加密"></a>5、自定义加密</h1><p>终于到这个了，以上那么多高大上的加密算法，都是业界比较成熟的算法，好处是处处有API支持也有人实现，拿来就用，坏处也是，算法格式规整透明，除了非对称算法，都有其对应的破解方式。游戏的加密要怎样？安全、安全，高效、高效，你不能一个加密算法就耗费我100ms的cpu吧，太浪费了。</p>
+<p>我们可以尝试一种动态加密的方式，就是每一次请求保证用不同的密钥，这样即便一个消息被截取破解了，下一次密钥又不一样，如此破解者会比较崩溃。怎么做？我简单说下思想。</p>
+<blockquote>
+<p>每个消息必须有唯一id，一个是防止消息重放，一个可以用来做我们的加密。比如我们初始的时候有一个密码池 A=【1,2,3,4,5】，每次消息从服务器发送出去的时候，消息ID都+1，</p>
+</blockquote>
+<blockquote>
+<p>当前密钥=A.index(消息ID%A.length)，如此就能保证每次密钥不一样，具体拿到密钥如何加密，完全可以用自己的加密方式，比如把二进制一部分截取通过密钥移位操作，或者算法运算都可以。</p>
+</blockquote>
+<p>我们的目的一个保证密钥动态，一个就是保证算法足够高效。</p>
+<table cellpadding="0" style="width:623px"> 
+ <tbody> 
+  <tr> 
+   <td>算法</td> 
+   <td>特点</td> 
+   <td>有效破解方式</td> 
+   <td>破解难度</td> 
+   <td>其它</td> 
+   <td>算法名字</td> 
+  </tr> 
+  <tr> 
+   <td>对称加密</td> 
+   <td>可以解密出明文</td> 
+   <td>获取密钥</td> 
+   <td>中</td> 
+   <td>需要确保密钥不泄露</td> 
+   <td>AES，3DES</td> 
+  </tr> 
+  <tr> 
+   <td>非对称加密</td> 
+   <td>一对钥匙—<a href="https://baike.baidu.com/item/%E5%85%AC%E9%92%A5" rel="noopener" target="_blank">公钥</a>和<a href="https://baike.baidu.com/item/%E7%A7%81%E9%92%A5" rel="noopener" target="_blank">私钥</a></td> 
+   <td>获取私钥</td> 
+   <td>高</td> 
+   <td>效率低，安全性高</td> 
+   <td>RSA,DSA,ECC,DH</td> 
+  </tr> 
+  <tr> 
+   <td>HASH加密</td> 
+   <td>简单，高效</td> 
+   <td>碰撞、彩虹表</td> 
+   <td>中</td> 
+   <td> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
+   <td>MD5，SHA1，SHA1256</td> 
+  </tr> 
+  <tr> 
+   <td>加盐HASH</td> 
+   <td>对hash加盐处理</td> 
+   <td>碰撞、彩虹表</td> 
+   <td>中</td> 
+   <td>需要确保“盐”不泄露</td> 
+   <td>同上</td> 
+  </tr> 
+  <tr> 
+   <td>Pbkdf2</td> 
+   <td>对hash的盐池进行随机处理</td> 
+   <td>无</td> 
+   <td>难</td> 
+   <td>随机盐池不能太大，8个字节比较合适</td> 
+   <td>同上</td> 
+  </tr> 
+  <tr> 
+   <td>自定义算法</td> 
+   <td>非标准，高效，安全</td> 
+   <td>无</td> 
+   <td>难</td> 
+   <td>算法的灵活性</td> 
+   <td>动态密钥</td> 
+  </tr> 
+ </tbody> 
+</table>
+
+<blockquote>
+<p>来源：开源中国 <a href="https://my.oschina.net/u/1859679/blog/1505017" target="_blank" rel="noopener">传送门</a></p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/加密算法/">加密算法</a>, <a class="has-link-grey -link" href="/tags/游戏/">游戏</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/3754260851.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/1592984278.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="7KBW7U6X2ZYK6" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/user/creators?u=26939987" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/06/powershell/">
+                <span class="level-item">如何绕过PowerShell访问限制并实现PowerShell代码执行</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://hsutimes.github.io/js/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '6b33264d4f5143af0df3b24452397666',
+		owner: 'hsutimes',
+		repo: 'gitment_blog',
+		oauth: {
+			client_id: 'd73d768ea9e3bd69ab54',
+			client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://hsutimes.github.io/images/16530d7f26a413c2.png" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            117
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            146
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/hsutimes" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://hsutimes.club" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Time</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hsutimes.club</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">90</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1、对称加密">
+        <span class="has-mr-6">1</span>
+        <span>1、对称加密</span>
+        </a></li><li>
+        <a class="is-flex" href="#2、非对称加密">
+        <span class="has-mr-6">2</span>
+        <span>2、非对称加密</span>
+        </a></li><li>
+        <a class="is-flex" href="#3、hash加密">
+        <span class="has-mr-6">3</span>
+        <span>3、hash加密</span>
+        </a></li><li>
+        <a class="is-flex" href="#4、hash-加盐加密">
+        <span class="has-mr-6">4</span>
+        <span>4、hash 加盐加密</span>
+        </a></li><li>
+        <a class="is-flex" href="#5、自定义加密">
+        <span class="has-mr-6">5</span>
+        <span>5、自定义加密</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
+                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-05T14:42:12.000Z">2019-12-05</time></div>
+                    <a href="/2019/12/05/graphical-machine-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">图解机器学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/04/bypass-github-oauth/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/04/8b37a220-1682-11ea-aacf-f7830a354d17.png" alt="绕过GitHub的OAuth授权验证机制（$25000）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T10:45:29.000Z">2019-12-04</time></div>
+                    <a href="/2019/12/04/bypass-github-oauth/" class="title has-link-black-ter is-size-6 has-text-weight-normal">绕过GitHub的OAuth授权验证机制（$25000）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/03/js-util/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/03/5a4063c0-15b3-11ea-8bb0-0b972d02c6dc.png" alt="前端常用的数组工具类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T10:02:20.000Z">2019-12-03</time></div>
+                    <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1、对称加密">
+        <span class="has-mr-6">1</span>
+        <span>1、对称加密</span>
+        </a></li><li>
+        <a class="is-flex" href="#2、非对称加密">
+        <span class="has-mr-6">2</span>
+        <span>2、非对称加密</span>
+        </a></li><li>
+        <a class="is-flex" href="#3、hash加密">
+        <span class="has-mr-6">3</span>
+        <span>3、hash加密</span>
+        </a></li><li>
+        <a class="is-flex" href="#4、hash-加盐加密">
+        <span class="has-mr-6">4</span>
+        <span>4、hash 加盐加密</span>
+        </a></li><li>
+        <a class="is-flex" href="#5、自定义加密">
+        <span class="has-mr-6">5</span>
+        <span>5、自定义加密</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
+                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-05T14:42:12.000Z">2019-12-05</time></div>
+                    <a href="/2019/12/05/graphical-machine-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">图解机器学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/04/bypass-github-oauth/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/04/8b37a220-1682-11ea-aacf-f7830a354d17.png" alt="绕过GitHub的OAuth授权验证机制（$25000）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T10:45:29.000Z">2019-12-04</time></div>
+                    <a href="/2019/12/04/bypass-github-oauth/" class="title has-link-black-ter is-size-6 has-text-weight-normal">绕过GitHub的OAuth授权验证机制（$25000）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/03/js-util/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/03/5a4063c0-15b3-11ea-8bb0-0b972d02c6dc.png" alt="前端常用的数组工具类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T10:02:20.000Z">2019-12-03</time></div>
+                    <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="游戏中的加密算法" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

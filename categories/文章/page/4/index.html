@@ -157,6 +157,164 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-27T15:15:00.000Z">2019-10-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1624 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/27/lazydocker/">lazydocker</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/10/27/57b9c500-f8cc-11e9-9156-23e5f2285253.png" alt="image.png"></p>
+<p>A simple terminal UI for both docker and docker-compose, written in Go with the <a href="https://github.com/jroimartin/gocui" title="gocui" target="_blank" rel="noopener">gocui</a> library.</p>
+<p><a href="https://circleci.com/gh/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://circleci.com/gh/jesseduffield/lazydocker.svg?style=svg" alt="CircleCI"></a><br><a href="https://goreportcard.com/report/github.com/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://goreportcard.com/badge/github.com/jesseduffield/lazydocker" alt="Go Report Card"></a><br><a href="https://golangci.com" target="_blank" rel="noopener"><img src="https://golangci.com/badges/github.com/jesseduffield/lazydocker.svg" alt="GolangCI"></a><br><a href="http://godoc.org/github.com/jesseduffield/lazydocker" target="_blank" rel="noopener"><img src="https://godoc.org/github.com/jesseduffield/lazydocker?status.svg" alt="GoDoc"></a><br><img src="https://img.shields.io/github/repo-size/jesseduffield/lazydocker" alt="GitHub repo size"><br><a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener"><img src="https://img.shields.io/github/downloads/jesseduffield/lazydocker/total" alt="GitHub Releases"></a><br><a href="https://github.com/jesseduffield/lazydocker/releases/latest" target="_blank" rel="noopener"><img src="https://img.shields.io/github/tag/jesseduffield/lazydocker.svg" alt="GitHub tag"></a><br><a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/lazydocker.rb" target="_blank" rel="noopener"><img src="https://img.shields.io/homebrew/v/lazydocker" alt="homebrew"></a></p>
+<p><img src="https://github.com/jesseduffield/lazydocker/raw/master/docs/resources/demo3.gif" alt="Gif"></p>
+<p><a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">Demo</a></p>
+<p>Minor rant incoming: Something’s not working? Maybe a service is down. <code>docker-compose ps</code>. Yep, it’s that microservice that’s still buggy. No issue, I’ll just restart it: <code>docker-compose restart</code>. Okay now let’s try again. Oh wait the issue is still there. Hmm. <code>docker-compose ps</code>. Right so the service must have just stopped immediately after starting. I probably would have known that if I was reading the log stream, but there is a lot of clutter in there from other services. I could get the logs for just that one service with <code>docker compose logs --follow myservice</code> but that dies everytime the service dies so I’d need to run that command every time I restart the service. I could alternatively run <code>docker-compose up myservice</code> and in that terminal window if the service is down I could just <code>up</code> it again, but now I’ve got one service hogging a terminal window even after I no longer care about its logs. I guess when I want to reclaim the terminal realestate I can do <code>ctrl+P,Q</code>, but… wait, that’s not working for some reason. Should I use ctrl+C instead? I can’t remember if that closes the foreground process or kills the actual service.</p>
+<p>What a headache!</p>
+<p>Memorising docker commands is hard. Memorising aliases is slightly less hard. Keeping track of your containers across multiple terminal windows is near impossible. What if you had all the information you needed in one terminal window with every common command living one keypress away (and the ability to add custom commands as well). Lazydocker’s goal is to make that dream a reality.</p>
+<ul>
+<li><a href="https://github.com/jesseduffield/lazydocker#requirements" target="_blank" rel="noopener">Requirements</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#installation" target="_blank" rel="noopener">Installation</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#usage" target="_blank" rel="noopener">Usage</a></li>
+<li><a href="/docs/keybindings">Keybindings</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#cool-features" target="_blank" rel="noopener">Cool Features</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#contributing" target="_blank" rel="noopener">Contributing</a></li>
+<li><a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">Video Tutorial</a></li>
+<li><a href="/docs/Config.md">Config Docs</a></li>
+<li><a href="https://www.twitch.tv/jesseduffield" target="_blank" rel="noopener">Twitch Stream</a></li>
+<li><a href="https://github.com/jesseduffield/lazydocker#faq" target="_blank" rel="noopener">FAQ</a></li>
+</ul>
+<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
+<li>Docker &gt;= <strong>1.13</strong> (API &gt;= <strong>1.25</strong>)</li>
+<li>Docker-Compose &gt;= <strong>1.23.2</strong> (optional)</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><p>Normally <code>lazydocker</code> formula can be found in the Homebrew core but we suggest you to tap our formula to get frequently updated one. It works with Linux, too.</p>
+<p><strong>Tap</strong>:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jesseduffield/lazydocker/lazydocker</span><br></pre></td></tr></table></figure>
+
+<p><strong>Core</strong>:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazydocker</span><br></pre></td></tr></table></figure>
+
+<h3 id="Binary-Release-Linux-OSX"><a href="#Binary-Release-Linux-OSX" class="headerlink" title="Binary Release (Linux/OSX)"></a>Binary Release (Linux/OSX)</h3><p>You can manually download a binary release from <a href="https://github.com/jesseduffield/lazydocker/releases" target="_blank" rel="noopener">the release page</a>.</p>
+<p>Automated install/update, don’t forget to always verify what you’re piping into bash:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><p>Required Go version &gt;= <strong>1.8</strong></p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/jesseduffield/lazydocker</span><br></pre></td></tr></table></figure>
+
+<h3 id="Arch-Linux-AUR"><a href="#Arch-Linux-AUR" class="headerlink" title="Arch Linux AUR"></a>Arch Linux AUR</h3><p>You can install lazydocker using your AUR package manager of choice or by running:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/lazydocker.git ~/lazydocker</span><br><span class="line"><span class="hljs-built_in">cd</span> ~/lazydocker</span><br><span class="line">makepkg --install</span><br></pre></td></tr></table></figure>
+
+<p>A development version of the AUR package is also <a href="https://aur.archlinux.org/lazydocker-git.git" target="_blank" rel="noopener">available</a></p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/pulls/lazyteam/lazydocker.svg" alt="Docker Pulls"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/stars/lazyteam/lazydocker.svg" alt="Docker Stars"></a><br><a href="https://hub.docker.com/r/lazyteam/lazydocker" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/cloud/automated/lazyteam/lazydocker.svg" alt="Docker Automated"></a></p>
+<ol>
+<li><details><summary>Click if you have an ARM device</summary><p>
+
+<ul>
+<li><p>If you have a ARM 32 bit v6 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v6/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=6 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If you have a ARM 32 bit v7 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm32v7/golang \</span><br><span class="line">--build-arg GOARCH=arm \</span><br><span class="line">--build-arg GOARM=7 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If you have a ARM 64 bit v8 architecture</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">--build-arg BASE_IMAGE_BUILDER=arm64v8/golang \</span><br><span class="line">--build-arg GOARCH=arm64 \</span><br><span class="line">https://github.com/jesseduffield/lazydocker.git</span><br></pre></td></tr></table></figure>
+
+</li></ul></p></details>
+</li>
+
+
+<li><p>Run the container</p>
+ <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v \</span><br><span class="line">/var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">-v /yourpath:/.config/jesseduffield/lazydocker \</span><br><span class="line">lazyteam/lazydocker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Don’t forget to change <code>/yourpath</code> to an actual path you created to store lazydocker’s config</p>
+</li>
+<li><p>You can also use this <a href="https://github.com/jesseduffield/lazydocker/blob/master/docker-compose.yml" target="_blank" rel="noopener">docker-compose.yml</a></p>
+</li>
+<li><p>You might want to create an alias, for example:</p>
+  <figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'"</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p>For development, you can build the image using:</p>
+<figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://github.com/jesseduffield/lazydocker.git</span><br><span class="line"><span class="hljs-built_in">cd</span> lazydocker</span><br><span class="line">docker build -t lazyteam/lazydocker \</span><br><span class="line">    --build-arg BUILD_DATE=`date -u +<span class="hljs-string">"%Y-%m-%dT%H:%M:%SZ"</span>` \</span><br><span class="line">    --build-arg VCS_REF=`git rev-parse --short HEAD` \</span><br><span class="line">    --build-arg VERSION=`git describe --abbrev=0 --tag` \</span><br><span class="line">    .</span><br></pre></td></tr></table></figure>
+
+<p>If you encounter a compatibility issue with Docker bundled binary, try rebuilding<br>the image with the build argument <code>--build-arg DOCKER_VERSION=&quot;v$(docker -v | cut -d&quot; &quot; -f3 | rev | cut -c 2- | rev)&quot;</code><br>so that the bundled docker binary matches your host docker binary version.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Call <code>lazydocker</code> in your terminal. I personally use this a lot so I’ve made an alias for it like so:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;alias lzd=&apos;lazydocker&apos;&quot; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>(you can substitute .zshrc for whatever rc file you’re using)</p>
+<ul>
+<li>Basic video tutorial <a href="https://youtu.be/NICqQPxwJWw" target="_blank" rel="noopener">here</a>.</li>
+<li>List of keybindings<br><a href="/docs/keybindings">here</a>.</li>
+</ul>
+<h2 id="Cool-features"><a href="#Cool-features" class="headerlink" title="Cool features"></a>Cool features</h2><p>everything is one keypress away (or one click away! Mouse support FTW):</p>
+<ul>
+<li>viewing the state of your docker or docker-compose container environment at a glance</li>
+<li>viewing logs for a container/service</li>
+<li>viewing ascii graphs of your containers’ metrics so that you can not only feel but also look like a developer</li>
+<li>customising those graphs to measure nearly any metric you want</li>
+<li>attaching to a container/service</li>
+<li>restarting/removing/rebuilding containers/services</li>
+<li>viewing the ancestor layers of a given image</li>
+<li>pruning containers, images, or volumes that are hogging up disk space</li>
+</ul>
+<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>There is still a lot of work to go! Please check out the <a href="CONTRIBUTING.md">contributing guide</a>.<br>For contributor discussion about things not better discussed here in the repo, join the slack channel</p>
+<p><a href="https://join.slack.com/t/lazydocker/shared_invite/enQtNjgwMjc0Njk3MzgwLTM0NThlMTZiZmNkNWJkY2VlYWYwZmY1NWYyYWViZmE0ZTcxMWZjMTFjNTU1ZTEwMDBiNWIxZTIxYzkwNDgyY2M" target="_blank" rel="noopener"><img src="/docs/resources/slack_rgb.png" alt="Slack"></a></p>
+<h2 id="Donate"><a href="#Donate" class="headerlink" title="Donate"></a>Donate</h2><p>If you would like to support the development of lazydocker, please donate</p>
+<p><a href="https://donorbox.org/lazydocker" target="_blank" rel="noopener"><img src="https://d1iczxrky3cnb2.cloudfront.net/button-medium-blue.png" alt="Donate"></a></p>
+<h2 id="Social"><a href="#Social" class="headerlink" title="Social"></a>Social</h2><p>If you want to see what I (Jesse) am up to in terms of development, follow me on<br><a href="https://twitter.com/DuffieldJesse" target="_blank" rel="noopener">twitter</a> or watch me program on<br><a href="https://www.twitch.tv/jesseduffield" target="_blank" rel="noopener">twitch</a></p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="How-do-I-edit-my-config"><a href="#How-do-I-edit-my-config" class="headerlink" title="How do I edit my config?"></a>How do I edit my config?</h3><p>By opening lazydocker, clicking on the ‘project’ panel in the top left, and pressing ‘o’ (or ‘e’ if your editor is vim). See <a href="/docs/Config.md">Config Docs</a></p>
+<h3 id="How-do-I-get-text-to-wrap-in-my-main-panel"><a href="#How-do-I-get-text-to-wrap-in-my-main-panel" class="headerlink" title="How do I get text to wrap in my main panel?"></a>How do I get text to wrap in my main panel?</h3><p>In the future I want to make this the default, but for now there are some CPU issues that arise with wrapping. If you want to enable wrapping, use <code>gui.wrapMainPanel: true</code></p>
+<h3 id="How-do-you-select-text"><a href="#How-do-you-select-text" class="headerlink" title="How do you select text?"></a>How do you select text?</h3><p>Because we support mouse events, you will need to hold option while dragging the mouse to indicate you’re trying to select text rather than click on something. Alternatively you can disable mouse events via the <code>gui.ignoreMouseEvents</code> config value</p>
+<h3 id="Does-this-work-with-Windows"><a href="#Does-this-work-with-Windows" class="headerlink" title="Does this work with Windows?"></a>Does this work with Windows?</h3><p>Currently not unless you use WSL. Instructions for setting up docker for WSL can be found here <a href="https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly" target="_blank" rel="noopener">here</a></p>
+<h3 id="Why-can’t-I-see-my-container’s-logs"><a href="#Why-can’t-I-see-my-container’s-logs" class="headerlink" title="Why can’t I see my container’s logs?"></a>Why can’t I see my container’s logs?</h3><p>By default we only show logs from the last hour, so that we’re not putting too much strain on the machine. This may be why you can’t see logs when you first start lazydocker. This can be overwritten in the config’s <code>commandTemplates</code></p>
+<p>If you are running lazydocker in Docker container, it is a know bug, that you can’t see logs or CPU usage.</p>
+<h2 id="Alternatives"><a href="#Alternatives" class="headerlink" title="Alternatives"></a>Alternatives</h2><ul>
+<li><a href="https://github.com/skanehira/docui" target="_blank" rel="noopener">docui</a> - Skanehira beat me to the punch on making a docker terminal UI, so definitely check out that repo as well! I think the two repos can live in harmony though: lazydocker is more about managing existing containers/services, and docui is more about creating and configuring them.</li>
+<li><a href="https://github.com/portainer/portainer" target="_blank" rel="noopener">Portainer</a> - Portainer tries to solve the same problem but it’s accessed via your browser rather than your terminal. It also supports docker swarm.</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-27T14:11:36.000Z">2019-10-27</time>
                 
                 <div class="level-item">
@@ -1415,107 +1573,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-14T12:46:29.000Z">2019-10-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1298 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/14/linux-so/">linux_so</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Linux下的静态库、动态库和动态加载库"><a href="#Linux下的静态库、动态库和动态加载库" class="headerlink" title="Linux下的静态库、动态库和动态加载库"></a>Linux下的静态库、动态库和动态加载库</h1><h2 id="Linux库类型"><a href="#Linux库类型" class="headerlink" title="Linux库类型"></a>Linux库类型</h2><p>Linux下可以创建两种类型的库:</p>
-<ol>
-<li><p>静态库(.a): 在链接期间被应用程序直接链接进可执行文件</p>
-</li>
-<li><p>动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明动态库的存在，也就是说这种动态库必须在编译时对编译器可见，但编译器却不将此种库编译进可执行文件; b) 在运行期间，动态加载和卸载的库，使用动态加载方法加载。这种库的形式跟动态链接没有本质区别，区别是在调用时，是由用户程序决定何时链接的，而不是由系统链接器自动链接</p>
-</li>
-</ol>
-<h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><p>库需要以<code>lib</code>作为开头，而在指定链接命令行参数时，却无需包含开头和扩展名，例如：</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc src-file.c -lm -lpthread</span><br></pre></td></tr></table></figure>
-
-<p>这个例子中，链接了<code>libmath.a</code>和<code>libpthread.a</code></p>
-<h2 id="静态库-a"><a href="#静态库-a" class="headerlink" title="静态库(.a)"></a>静态库(.a)</h2><p>生成静态库的方法如下：</p>
-<ul>
-<li><p>编译object文件。例如：cc -Wall -c ctest1.c ctest2.c，该命令会生成ctest1.o和ctest2.o(其中-Wall表示编译时输出警告)。</p>
-</li>
-<li><p>创建库文件。例如：ar -cvq libctest.a ctest1.o ctest2.o。该命令会得到一个libctest.a文件</p>
-</li>
-<li><p>可以通过ar -t查看.a文件中包含哪些.o。所以，实际上ar就是一个打包命令，类似tar</p>
-</li>
-<li><p>构建符号表。ranlib libctest.a用于为.a创建符号表。有些ar命令实际上已经集成了ranlib的功能</p>
-</li>
-</ul>
-<p><code>.a</code>文件与windows下的<code>.lib</code>是相同的概念。</p>
-<h2 id="动态库-so"><a href="#动态库-so" class="headerlink" title="动态库(.so)"></a>动态库(.so)</h2><p>生成动态库的方法如下：</p>
-<ul>
-<li>编译object文件时使用-fPIC选项：</li>
-</ul>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -fPIC -c *.c</span><br></pre></td></tr></table></figure>
-
-<p>这个选项的目的是让编译器生成地址无关(position independent)的代码，这是因为，动态库是在运行期间链接的，变量和函数的偏移量是事先不知道的，需要链接以后根据offset进行地址重定向。</p>
-<ul>
-<li>使用-shared链接<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 *.o</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p><code>-shared</code>选项是让动态库得以在运行期间被动态链接;<code>-Wl,options</code>是设置传递给<code>ld(链接器)</code>的参数，在上面的例子中，当链接器在链接<code>.o</code>时会执行<code>ld -soname ibctest.so.1</code></p>
-<ul>
-<li>创建软链</li>
-</ul>
-<p>上面的命令将最终输出一个动态库libctest.so.1.0，而出于习惯，会创建两个软链:</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv libctest.so.1.0 /opt/lib</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so</span><br></pre></td></tr></table></figure>
-
-<p><code>libctest.so</code>用于在编译期间使用<code>-lctest</code>让编译器找到动态库，而<code>libctest.so.1</code>用于在运行期间链接</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -I/path/to/include-files -L/path/to/libraries prog.c -lctest -o prog</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h3><p>使用ldd命令来查看程序对动态库的依赖。例如：</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ldd prog</span><br><span class="line"></span><br><span class="line">libctest.so.1 =&gt; /opt/lib/libctest.so.1 (0x00002aaaaaaac000)</span><br><span class="line">libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)</span><br><span class="line">/lib64/ld-linux-x86-64.so.2 (0x0000003aa4c00000)</span><br></pre></td></tr></table></figure>
-
-<h3 id="obj文件"><a href="#obj文件" class="headerlink" title="obj文件"></a>obj文件</h3><p>obj文件的格式和组成可能是系统差异性的一大体现，比如windows下的PE、linux和一些unix下的elf、macos的mach-o、aix下的xcoff。</p>
-<p>查看obj文件的符号表信息，可以通过nm objdump readelf等方法。</p>
-<h3 id="运行期间查找动态库"><a href="#运行期间查找动态库" class="headerlink" title="运行期间查找动态库"></a>运行期间查找动态库</h3><p>运行期间，系统需要知道到哪里去查找动态库，这是通过/etc/ld.so.conf配置的。ldconfig用于配置运行时动态库查找路径，实际是更新/etc/ld.so.cache。另外一些环境变量也可以影响查找：(Linux/Solaris: LD_LIBRARY_PATH, SGI: LD_LIBRARYN32_PATH, AIX: LIBPATH, Mac OS X: DYLD_LIBRARY_PATH, HP-UX: SHLIB_PATH)</p>
-<h2 id="动态加载和卸载的库"><a href="#动态加载和卸载的库" class="headerlink" title="动态加载和卸载的库"></a>动态加载和卸载的库</h2><p>需要应用程序希望设计成插件化的架构，这就需要可以动态加载和卸载库的机制。与动态链接不同的是，动态加载的意思是，编译期间可以对动态库的存在一无所知，而是在运行期间通过用户程序尝试加载进来的。</p>
-<p>通过<code>dlfcn.h</code>中的<code>dlopen</code>、<code>dlsym</code>和<code>dlclose</code>等函数实现此种功能。</p>
-<p>另外，使用到dlfcn机制的可执行文件需要使用-rdynamic选项，它将指示连接器把所有符号（而不仅仅只是程序已使用到的外部符号，但不包括静态符号，比如被static修饰的函数）都添加到动态符号表（即.dynsym表）里。</p>
-<h2 id="GNU-Libtool"><a href="#GNU-Libtool" class="headerlink" title="GNU Libtool"></a>GNU Libtool</h2><p>如今许多软件的编译都采用libtool工具，libtool是一个编译链接包装工具，实际只是一个脚本，用libtool编译和链接会产生类似.la的文件，.la这种文件其实是个文本文件，指向.a文件，并声明一些版本信息。</p>
-<p><a href="https://segmentfault.com/a/1190000005988462" target="_blank" rel="noopener">传送门</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1590,7 +1647,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            116
+                            117
                         </p>
                     </a>
                 </div>
@@ -1736,7 +1793,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">89</span>
+                <span class="level-item tag">90</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1781,6 +1838,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
+                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/06/powershell/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
@@ -1850,25 +1926,6 @@
                     <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/02/text-proofreading/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                     </p>
                 </div>
             </div>
@@ -1898,6 +1955,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
+                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/06/powershell/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
@@ -1967,25 +2043,6 @@
                     <a href="/2019/12/03/js-util/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端常用的数组工具类</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/02/text-proofreading/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/02/7158f910-14f9-11ea-b112-938d9dee0841.png" alt="哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T11:44:42.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/text-proofreading/" class="title has-link-black-ter is-size-6 has-text-weight-normal">哈工大讯飞联合实验室发布飞鹰智能文本校对系统1.0</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
                     </p>
                 </div>
             </div>
