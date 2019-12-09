@@ -18,12 +18,12 @@
 <meta property="og:site_name" content="Time">
 <meta property="og:description" content="Airbnb JavaScript 代码规范() {一种写JavaScript更合理的代码风格。  Note: 本指南假设你使用了 Babel, 并且要求你使用 babel-preset-airbnb 或者其他同等资源。 并且假设你在你的应用中安装了 shims/polyfills ，使用airbnb-browser-shims 或者相同功能。     其他代码风格指南  ES5 (Depreca">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-08T02:51:27.256Z">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2019/12/09/5edd0ea0-1a9b-11ea-ade2-9dc575db7dd4.png">
+<meta property="og:updated_time" content="2019-12-09T15:48:51.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Airbnb JavaScript 代码规范() {">
 <meta name="twitter:description" content="Airbnb JavaScript 代码规范() {一种写JavaScript更合理的代码风格。  Note: 本指南假设你使用了 Babel, 并且要求你使用 babel-preset-airbnb 或者其他同等资源。 并且假设你在你的应用中安装了 shims/polyfills ，使用airbnb-browser-shims 或者相同功能。     其他代码风格指南  ES5 (Depreca">
-<meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/12/09/5edd0ea0-1a9b-11ea-ade2-9dc575db7dd4.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
 
@@ -126,6 +126,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -141,6 +145,12 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/12/09/5edd0ea0-1a9b-11ea-ade2-9dc575db7dd4.png" alt="Airbnb JavaScript 代码规范() {">
+        </span>
+    </div>
     
     <div class="card-content article ">
         
@@ -1774,6 +1784,170 @@
         <div class="column-right-shadow is-hidden-widescreen is-sticky">
         
             
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Airbnb-JavaScript-代码规范">
+        <span class="has-mr-6">1</span>
+        <span>Airbnb JavaScript 代码规范() {</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#目录">
+        <span class="has-mr-6">1.1</span>
+        <span>目录</span>
+        </a></li><li>
+        <a class="is-flex" href="#类型">
+        <span class="has-mr-6">1.2</span>
+        <span>类型</span>
+        </a></li><li>
+        <a class="is-flex" href="#引用">
+        <span class="has-mr-6">1.3</span>
+        <span>引用</span>
+        </a></li><li>
+        <a class="is-flex" href="#对象">
+        <span class="has-mr-6">1.4</span>
+        <span>对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#数组">
+        <span class="has-mr-6">1.5</span>
+        <span>数组</span>
+        </a></li><li>
+        <a class="is-flex" href="#解构">
+        <span class="has-mr-6">1.6</span>
+        <span>解构</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符">
+        <span class="has-mr-6">1.7</span>
+        <span>字符</span>
+        </a></li><li>
+        <a class="is-flex" href="#方法">
+        <span class="has-mr-6">1.8</span>
+        <span>方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#箭头函数">
+        <span class="has-mr-6">1.9</span>
+        <span>箭头函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#类和构造器">
+        <span class="has-mr-6">1.10</span>
+        <span>类和构造器</span>
+        </a></li><li>
+        <a class="is-flex" href="#模块">
+        <span class="has-mr-6">1.11</span>
+        <span>模块</span>
+        </a></li><li>
+        <a class="is-flex" href="#迭代器和发生器">
+        <span class="has-mr-6">1.12</span>
+        <span>迭代器和发生器</span>
+        </a></li><li>
+        <a class="is-flex" href="#属性">
+        <span class="has-mr-6">1.13</span>
+        <span>属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#变量">
+        <span class="has-mr-6">1.14</span>
+        <span>变量</span>
+        </a></li><li>
+        <a class="is-flex" href="#提升">
+        <span class="has-mr-6">1.15</span>
+        <span>提升</span>
+        </a></li><li>
+        <a class="is-flex" href="#比较运算符和等号">
+        <span class="has-mr-6">1.16</span>
+        <span>比较运算符和等号</span>
+        </a></li><li>
+        <a class="is-flex" href="#块">
+        <span class="has-mr-6">1.17</span>
+        <span>块</span>
+        </a></li><li>
+        <a class="is-flex" href="#控制语句">
+        <span class="has-mr-6">1.18</span>
+        <span>控制语句</span>
+        </a></li><li>
+        <a class="is-flex" href="#注释">
+        <span class="has-mr-6">1.19</span>
+        <span>注释</span>
+        </a></li><li>
+        <a class="is-flex" href="#空白">
+        <span class="has-mr-6">1.20</span>
+        <span>空白</span>
+        </a></li><li>
+        <a class="is-flex" href="#逗号">
+        <span class="has-mr-6">1.21</span>
+        <span>逗号</span>
+        </a></li><li>
+        <a class="is-flex" href="#分号">
+        <span class="has-mr-6">1.22</span>
+        <span>分号</span>
+        </a></li><li>
+        <a class="is-flex" href="#类型转换和强制类型转换">
+        <span class="has-mr-6">1.23</span>
+        <span>类型转换和强制类型转换</span>
+        </a></li><li>
+        <a class="is-flex" href="#命名规范">
+        <span class="has-mr-6">1.24</span>
+        <span>命名规范</span>
+        </a></li><li>
+        <a class="is-flex" href="#存取器">
+        <span class="has-mr-6">1.25</span>
+        <span>存取器</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件">
+        <span class="has-mr-6">1.26</span>
+        <span>事件</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery">
+        <span class="has-mr-6">1.27</span>
+        <span>jQuery</span>
+        </a></li><li>
+        <a class="is-flex" href="#ECMAScript-5-兼容性">
+        <span class="has-mr-6">1.28</span>
+        <span>ECMAScript 5 兼容性</span>
+        </a></li><li>
+        <a class="is-flex" href="#ECMAScript-6-ES-2015-Styles">
+        <span class="has-mr-6">1.29</span>
+        <span>ECMAScript 6+ (ES 2015+) Styles</span>
+        </a></li><li>
+        <a class="is-flex" href="#标准库">
+        <span class="has-mr-6">1.30</span>
+        <span>标准库</span>
+        </a></li><li>
+        <a class="is-flex" href="#Testing">
+        <span class="has-mr-6">1.31</span>
+        <span>Testing</span>
+        </a></li><li>
+        <a class="is-flex" href="#性能">
+        <span class="has-mr-6">1.32</span>
+        <span>性能</span>
+        </a></li><li>
+        <a class="is-flex" href="#资源">
+        <span class="has-mr-6">1.33</span>
+        <span>资源</span>
+        </a></li><li>
+        <a class="is-flex" href="#JavaScript风格指南的指南">
+        <span class="has-mr-6">1.34</span>
+        <span>JavaScript风格指南的指南</span>
+        </a></li><li>
+        <a class="is-flex" href="#许可证">
+        <span class="has-mr-6">1.35</span>
+        <span>许可证</span>
+        </a></li><li>
+        <a class="is-flex" href="#修正案">
+        <span class="has-mr-6">1.36</span>
+        <span>修正案</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#">
+        <span class="has-mr-6">2</span>
+        <span>};</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
         
             <div class="card widget">
     <div class="card-content">
@@ -1891,6 +2065,170 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Airbnb-JavaScript-代码规范">
+        <span class="has-mr-6">1</span>
+        <span>Airbnb JavaScript 代码规范() {</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#目录">
+        <span class="has-mr-6">1.1</span>
+        <span>目录</span>
+        </a></li><li>
+        <a class="is-flex" href="#类型">
+        <span class="has-mr-6">1.2</span>
+        <span>类型</span>
+        </a></li><li>
+        <a class="is-flex" href="#引用">
+        <span class="has-mr-6">1.3</span>
+        <span>引用</span>
+        </a></li><li>
+        <a class="is-flex" href="#对象">
+        <span class="has-mr-6">1.4</span>
+        <span>对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#数组">
+        <span class="has-mr-6">1.5</span>
+        <span>数组</span>
+        </a></li><li>
+        <a class="is-flex" href="#解构">
+        <span class="has-mr-6">1.6</span>
+        <span>解构</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符">
+        <span class="has-mr-6">1.7</span>
+        <span>字符</span>
+        </a></li><li>
+        <a class="is-flex" href="#方法">
+        <span class="has-mr-6">1.8</span>
+        <span>方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#箭头函数">
+        <span class="has-mr-6">1.9</span>
+        <span>箭头函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#类和构造器">
+        <span class="has-mr-6">1.10</span>
+        <span>类和构造器</span>
+        </a></li><li>
+        <a class="is-flex" href="#模块">
+        <span class="has-mr-6">1.11</span>
+        <span>模块</span>
+        </a></li><li>
+        <a class="is-flex" href="#迭代器和发生器">
+        <span class="has-mr-6">1.12</span>
+        <span>迭代器和发生器</span>
+        </a></li><li>
+        <a class="is-flex" href="#属性">
+        <span class="has-mr-6">1.13</span>
+        <span>属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#变量">
+        <span class="has-mr-6">1.14</span>
+        <span>变量</span>
+        </a></li><li>
+        <a class="is-flex" href="#提升">
+        <span class="has-mr-6">1.15</span>
+        <span>提升</span>
+        </a></li><li>
+        <a class="is-flex" href="#比较运算符和等号">
+        <span class="has-mr-6">1.16</span>
+        <span>比较运算符和等号</span>
+        </a></li><li>
+        <a class="is-flex" href="#块">
+        <span class="has-mr-6">1.17</span>
+        <span>块</span>
+        </a></li><li>
+        <a class="is-flex" href="#控制语句">
+        <span class="has-mr-6">1.18</span>
+        <span>控制语句</span>
+        </a></li><li>
+        <a class="is-flex" href="#注释">
+        <span class="has-mr-6">1.19</span>
+        <span>注释</span>
+        </a></li><li>
+        <a class="is-flex" href="#空白">
+        <span class="has-mr-6">1.20</span>
+        <span>空白</span>
+        </a></li><li>
+        <a class="is-flex" href="#逗号">
+        <span class="has-mr-6">1.21</span>
+        <span>逗号</span>
+        </a></li><li>
+        <a class="is-flex" href="#分号">
+        <span class="has-mr-6">1.22</span>
+        <span>分号</span>
+        </a></li><li>
+        <a class="is-flex" href="#类型转换和强制类型转换">
+        <span class="has-mr-6">1.23</span>
+        <span>类型转换和强制类型转换</span>
+        </a></li><li>
+        <a class="is-flex" href="#命名规范">
+        <span class="has-mr-6">1.24</span>
+        <span>命名规范</span>
+        </a></li><li>
+        <a class="is-flex" href="#存取器">
+        <span class="has-mr-6">1.25</span>
+        <span>存取器</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件">
+        <span class="has-mr-6">1.26</span>
+        <span>事件</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery">
+        <span class="has-mr-6">1.27</span>
+        <span>jQuery</span>
+        </a></li><li>
+        <a class="is-flex" href="#ECMAScript-5-兼容性">
+        <span class="has-mr-6">1.28</span>
+        <span>ECMAScript 5 兼容性</span>
+        </a></li><li>
+        <a class="is-flex" href="#ECMAScript-6-ES-2015-Styles">
+        <span class="has-mr-6">1.29</span>
+        <span>ECMAScript 6+ (ES 2015+) Styles</span>
+        </a></li><li>
+        <a class="is-flex" href="#标准库">
+        <span class="has-mr-6">1.30</span>
+        <span>标准库</span>
+        </a></li><li>
+        <a class="is-flex" href="#Testing">
+        <span class="has-mr-6">1.31</span>
+        <span>Testing</span>
+        </a></li><li>
+        <a class="is-flex" href="#性能">
+        <span class="has-mr-6">1.32</span>
+        <span>性能</span>
+        </a></li><li>
+        <a class="is-flex" href="#资源">
+        <span class="has-mr-6">1.33</span>
+        <span>资源</span>
+        </a></li><li>
+        <a class="is-flex" href="#JavaScript风格指南的指南">
+        <span class="has-mr-6">1.34</span>
+        <span>JavaScript风格指南的指南</span>
+        </a></li><li>
+        <a class="is-flex" href="#许可证">
+        <span class="has-mr-6">1.35</span>
+        <span>许可证</span>
+        </a></li><li>
+        <a class="is-flex" href="#修正案">
+        <span class="has-mr-6">1.36</span>
+        <span>修正案</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#">
+        <span class="has-mr-6">2</span>
+        <span>};</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
