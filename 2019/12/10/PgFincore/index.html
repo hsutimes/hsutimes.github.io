@@ -10,19 +10,19 @@
 <title>PostgreSQL 内存页管理函数 PgFincore - Time</title>
 
 
-    <meta name="description" content="PgFincore  A set of functions to manage pages in memory from PostgreSQLA set of functions to handle low-level management of relations using mincore toexplore cache memory. DESCRIPTIONWith PostgreSQL,">
+    <meta name="description" content="PgFincore  A set of functions to manage pages in memory from PostgreSQLA set of functions to handle low-level management of relations using mincore toexplore cache memory.">
 <meta name="keywords" content="PostgreSQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PostgreSQL 内存页管理函数 PgFincore">
 <meta property="og:url" content="https://blog.hsutimes.com/2019/12/10/PgFincore/index.html">
 <meta property="og:site_name" content="Time">
-<meta property="og:description" content="PgFincore  A set of functions to manage pages in memory from PostgreSQLA set of functions to handle low-level management of relations using mincore toexplore cache memory. DESCRIPTIONWith PostgreSQL,">
+<meta property="og:description" content="PgFincore  A set of functions to manage pages in memory from PostgreSQLA set of functions to handle low-level management of relations using mincore toexplore cache memory.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png">
-<meta property="og:updated_time" content="2019-12-10T15:38:50.578Z">
+<meta property="og:updated_time" content="2019-12-10T15:42:13.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PostgreSQL 内存页管理函数 PgFincore">
-<meta name="twitter:description" content="PgFincore  A set of functions to manage pages in memory from PostgreSQLA set of functions to handle low-level management of relations using mincore toexplore cache memory. DESCRIPTIONWith PostgreSQL,">
+<meta name="twitter:description" content="PgFincore  A set of functions to manage pages in memory from PostgreSQLA set of functions to handle low-level management of relations using mincore toexplore cache memory.">
 <meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
@@ -166,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1723 个字)
+                    11 分钟 读完 (大约 1724 个字)
                 </span>
                 
                 
@@ -186,6 +186,7 @@
         <div class="content">
             <h1 id="PgFincore"><a href="#PgFincore" class="headerlink" title="PgFincore"></a>PgFincore</h1><hr>
 <h2 id="A-set-of-functions-to-manage-pages-in-memory-from-PostgreSQL"><a href="#A-set-of-functions-to-manage-pages-in-memory-from-PostgreSQL" class="headerlink" title=" A set of functions to manage pages in memory from PostgreSQL"></a> A set of functions to manage pages in memory from PostgreSQL</h2><p>A set of functions to handle low-level management of relations using mincore to<br>explore cache memory.</p>
+<a id="more"></a>
 <h2 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h2><p>With PostgreSQL, each Table or Index is splitted in segments of (usually) 1GB,<br>and each segment is splitted in pages in memory then in blocks for the<br>filesystem.</p>
 <p>Those functions let you know which and how many disk block from a relation are<br>in the page cache of the operating system. It can provide the result as a VarBit<br>and can be stored in a table. Then using this table, it is possible to restore<br>the page cache state for each block of the relation, even in another server,<br>thanks to Streaming Replication.</p>
 <p>Other functions are used to set a <em>POSIX_FADVISE</em> flag on the entire relation<br>(each segment). The more usefull are probably <em>WILLNEED</em> and <em>DONTNEED</em> which<br>push and pop blocks of each segments of a relation from page cache,<br>respectively.</p>
