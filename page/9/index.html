@@ -146,6 +146,204 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-09T00:39:17.000Z">2019-09-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    28 分钟 读完 (大约 4164 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/09/Flutter-Http请求开源库-dio/">Flutter Http请求开源库-dio</a>
+            
+        </h1>
+        <div class="content">
+            <p>文档语言: <a href="README.md">English</a> | <a href="README-ZH.md">中文简体</a></p>
+<h1 id="dio"><a href="#dio" class="headerlink" title="dio"></a>dio</h1><p><img src="/images/2019/09/09/3ed7aff0-d29a-11e9-a25e-85ff34c3f186.png" alt="image.png"></p>
+<p>dio是一个强大的Dart Http请求库，支持Restful API、FormData、拦截器、请求取消、Cookie管理、文件上传/下载、超时等…</p>
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight yaml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">dependencies:</span></span><br><span class="line"><span class="hljs-attr">  dio:</span> <span class="hljs-string">^x.x.x</span>  <span class="hljs-string">//</span> <span class="hljs-string">请使用pub上的最新版本</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="一个极简的示例"><a href="#一个极简的示例" class="headerlink" title="一个极简的示例"></a>一个极简的示例</h2><figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:dio/dio.dart'</span>;</span><br><span class="line"><span class="hljs-keyword">void</span> getHttp() <span class="hljs-keyword">async</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">    Response response;</span><br><span class="line">    response = <span class="hljs-keyword">await</span> Dio().<span class="hljs-keyword">get</span>(<span class="hljs-string">"http://www.baidu.com"</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">print</span>(response);</span><br><span class="line">  &#125; <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">print</span>(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="内容列表"><a href="#内容列表" class="headerlink" title="内容列表"></a>内容列表</h2><ul>
+<li><a href="#示例">示例</a></li>
+<li><a href="#dio-apis">Dio APIs</a></li>
+<li><a href="#请求配置">请求配置</a></li>
+<li><a href="#响应数据">响应数据</a></li>
+<li><a href="#拦截器">拦截器</a></li>
+<li><a href="#错误处理">错误处理</a></li>
+<li><a href="#使用applicationx-www-form-urlencoded编码">使用application/x-www-form-urlencoded编码</a></li>
+<li><a href="#formdata">FormData</a></li>
+<li><a href="#转换器">转换器</a></li>
+<li><a href="#设置Http代理">设置Http代理</a></li>
+<li><a href="#Https证书校验">Https证书校验</a></li>
+<li><a href="#请求取消">请求取消</a></li>
+<li><a href="#cookie管理">Cookie管理</a></li>
+<li><a href="#features-and-bugs">Features and bugs</a></li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>发起一个 <code>GET</code> 请求 :</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  Response response;</span><br><span class="line">  Dio dio = <span class="hljs-keyword">new</span> Dio();</span><br><span class="line">  response = <span class="hljs-keyword">await</span> dio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"/test?id=12&amp;name=wendu"</span>)</span><br><span class="line">  <span class="hljs-built_in">print</span>(response.data.toString());</span><br><span class="line"><span class="hljs-comment">// 请求参数也可以通过对象传递，上面的代码等同于：</span></span><br><span class="line">  response = <span class="hljs-keyword">await</span> dio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"/test"</span>, data: &#123;<span class="hljs-string">"id"</span>: <span class="hljs-number">12</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"wendu"</span>&#125;);</span><br><span class="line">  <span class="hljs-built_in">print</span>(response.data.toString());</span><br></pre></td></tr></table></figure>
+
+<p>发起一个 <code>POST</code> 请求:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = <span class="hljs-keyword">await</span> dio.post(<span class="hljs-string">"/test"</span>, data: &#123;<span class="hljs-string">"id"</span>: <span class="hljs-number">12</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"wendu"</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>发起多个并发请求:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = <span class="hljs-keyword">await</span> Future.wait([dio.post(<span class="hljs-string">"/info"</span>), dio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"/token"</span>)]);</span><br></pre></td></tr></table></figure>
+
+<p>下载文件:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = <span class="hljs-keyword">await</span> dio.download(<span class="hljs-string">"https://www.google.com/"</span>, <span class="hljs-string">"./xx.html"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>发送 FormData:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FormData formData = <span class="hljs-keyword">new</span> FormData.from(&#123;</span><br><span class="line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"wendux"</span>,</span><br><span class="line">    <span class="hljs-string">"age"</span>: <span class="hljs-number">25</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  response = <span class="hljs-keyword">await</span> dio.post(<span class="hljs-string">"/info"</span>, data: formData);</span><br></pre></td></tr></table></figure>
+
+<p>通过FormData上传多个文件:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">FormData formData = <span class="hljs-keyword">new</span> FormData.from(&#123;</span><br><span class="line">  <span class="hljs-string">"name"</span>: <span class="hljs-string">"wendux"</span>,</span><br><span class="line">  <span class="hljs-string">"age"</span>: <span class="hljs-number">25</span>,</span><br><span class="line">  <span class="hljs-string">"file1"</span>: <span class="hljs-keyword">new</span> UploadFileInfo(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"./upload.txt"</span>), <span class="hljs-string">"upload1.txt"</span>),</span><br><span class="line">  <span class="hljs-comment">//支持直接上传字节数组 (List&lt;int&gt;) ，方便直接上传内存中的内容</span></span><br><span class="line">  <span class="hljs-string">"file2"</span>: <span class="hljs-keyword">new</span> UploadFileInfo.fromBytes(</span><br><span class="line">      utf8.encode(<span class="hljs-string">"hello world"</span>), <span class="hljs-string">"word.txt"</span>),</span><br><span class="line">  <span class="hljs-comment">// 支持文件数组上传</span></span><br><span class="line">  <span class="hljs-string">"files"</span>: [</span><br><span class="line">    <span class="hljs-keyword">new</span> UploadFileInfo(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"./example/upload.txt"</span>), <span class="hljs-string">"upload.txt"</span>),</span><br><span class="line">    <span class="hljs-keyword">new</span> UploadFileInfo(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"./example/upload.txt"</span>), <span class="hljs-string">"upload.txt"</span>)</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line">response = <span class="hljs-keyword">await</span> dio.post(<span class="hljs-string">"/info"</span>, data: formData);</span><br></pre></td></tr></table></figure>
+
+<p>监听发送(上传)数据进度:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = <span class="hljs-keyword">await</span> dio.post(</span><br><span class="line">  <span class="hljs-string">"http://www.dtworkroom.com/doris/1/2.0.0/test"</span>,</span><br><span class="line">  data: &#123;<span class="hljs-string">"aa"</span>: <span class="hljs-string">"bb"</span> * <span class="hljs-number">22</span>&#125;,</span><br><span class="line">  onUploadProgress: (<span class="hljs-built_in">int</span> sent, <span class="hljs-built_in">int</span> total) &#123;</span><br><span class="line">    <span class="hljs-built_in">print</span>(<span class="hljs-string">"<span class="hljs-subst">$sent</span> <span class="hljs-subst">$total</span>"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>…你可以在这里获取所有<a href="https://github.com/flutterchina/dio/tree/flutter/example" target="_blank" rel="noopener">示例代码</a>.</p>
+<h2 id="Dio-APIs"><a href="#Dio-APIs" class="headerlink" title="Dio APIs"></a>Dio APIs</h2><h3 id="创建一个Dio实例，并配置它"><a href="#创建一个Dio实例，并配置它" class="headerlink" title="创建一个Dio实例，并配置它"></a>创建一个Dio实例，并配置它</h3><p>你可以使用默认配置或传递一个可选 <code>Options</code>参数来创建一个Dio实例 :</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Dio dio = <span class="hljs-keyword">new</span> Dio; <span class="hljs-comment">// 使用默认配置</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 配置dio实例</span></span><br><span class="line">  dio.options.baseUrl = <span class="hljs-string">"https://www.xx.com/api"</span>;</span><br><span class="line">  dio.options.connectTimeout = <span class="hljs-number">5000</span>; <span class="hljs-comment">//5s</span></span><br><span class="line">  dio.options.receiveTimeout = <span class="hljs-number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 或者通过传递一个 `options`来创建dio实例</span></span><br><span class="line">  Options options = <span class="hljs-keyword">new</span> Options(</span><br><span class="line">      baseUrl: <span class="hljs-string">"https://www.xx.com/api"</span>,</span><br><span class="line">      connectTimeout: <span class="hljs-number">5000</span>,</span><br><span class="line">      receiveTimeout: <span class="hljs-number">3000</span>);</span><br><span class="line">  Dio dio = <span class="hljs-keyword">new</span> Dio(options);</span><br></pre></td></tr></table></figure>
+
+<p>Dio实例的核心API是 :</p>
+<p><strong>Future<response> request(String path, {data, Options options,CancelToken cancelToken})</response></strong></p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response = <span class="hljs-keyword">await</span> request(</span><br><span class="line">    <span class="hljs-string">"/test"</span>, data: &#123;<span class="hljs-string">"id"</span>: <span class="hljs-number">12</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"xx"</span>&#125;, <span class="hljs-keyword">new</span> Options(method: <span class="hljs-string">"GET"</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="请求方法别名"><a href="#请求方法别名" class="headerlink" title="请求方法别名"></a>请求方法别名</h3><p>为了方便使用，Dio提供了一些其它的Restful API, 这些API都是<code>request</code>的别名。</p>
+<p><strong>Future<response> get(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
+<p><strong>Future<response> post(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
+<p><strong>Future<response> put(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
+<p><strong>Future<response> delete(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
+<p><strong>Future<response> head(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
+<p><strong>Future<response> put(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
+<p><strong>Future<response> path(path, {data, Options options,CancelToken cancelToken})</response></strong></p>
+<p><strong>Future<response> download(String urlPath, savePath,</response></strong><br>​    <strong>{OnDownloadProgress onProgress, data, bool flush: false, Options options,CancelToken cancelToken})</strong></p>
+<h2 id="请求配置"><a href="#请求配置" class="headerlink" title="请求配置"></a>请求配置</h2><p>下面是所有的请求配置选项。 如果请求<code>method</code>没有指定，则默认为<code>GET</code> :</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-comment">/// Http method.</span></span><br><span class="line">  <span class="hljs-built_in">String</span> method;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 请求基地址,可以包含子路径，如: "https://www.google.com/api/".</span></span><br><span class="line">  <span class="hljs-built_in">String</span> baseUrl;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// Http请求头.</span></span><br><span class="line">  <span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-keyword">dynamic</span>&gt; headers;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 连接服务器超时时间，单位是毫秒.</span></span><br><span class="line">  <span class="hljs-built_in">int</span> connectTimeout;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">///  响应流上前后两次接受到数据的间隔，单位为毫秒。如果两次间隔超过[receiveTimeout]，</span></span><br><span class="line">  <span class="hljs-comment">///  [Dio] 将会抛出一个[DioErrorType.RECEIVE_TIMEOUT]的异常.</span></span><br><span class="line">  <span class="hljs-comment">///  注意: 这并不是接收数据的总时限.</span></span><br><span class="line">  <span class="hljs-built_in">int</span> receiveTimeout;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 请求数据,可以是任意类型.</span></span><br><span class="line">  <span class="hljs-keyword">var</span> data;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 请求路径，如果 `path` 以 "http(s)"开始, 则 `baseURL` 会被忽略； 否则,</span></span><br><span class="line">  <span class="hljs-comment">/// 将会和baseUrl拼接出完整的的url.</span></span><br><span class="line">  <span class="hljs-built_in">String</span> path = <span class="hljs-string">""</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 请求的Content-Type，默认值是[ContentType.JSON].</span></span><br><span class="line">  <span class="hljs-comment">/// 如果您想以"application/x-www-form-urlencoded"格式编码请求数据,</span></span><br><span class="line">  <span class="hljs-comment">/// 可以设置此选项为 `ContentType.parse("application/x-www-form-urlencoded")`,  这样[Dio]</span></span><br><span class="line">  <span class="hljs-comment">/// 就会自动编码请求体.</span></span><br><span class="line">  ContentType contentType;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// [responseType] 表示期望以那种格式(方式)接受响应数据。</span></span><br><span class="line">  <span class="hljs-comment">/// 目前 [ResponseType] 接受三种类型 `JSON`, `STREAM`, `PLAIN`.</span></span><br><span class="line">  <span class="hljs-comment">///</span></span><br><span class="line">  <span class="hljs-comment">/// 默认值是 `JSON`, 当响应头中content-type为"application/json"时，dio 会自动将响应内容转化为json对象。</span></span><br><span class="line">  <span class="hljs-comment">/// 如果想以二进制方式接受响应数据，如下载一个二进制文件，那么可以使用 `STREAM`.</span></span><br><span class="line">  <span class="hljs-comment">///</span></span><br><span class="line">  <span class="hljs-comment">/// 如果想以文本(字符串)格式接收响应数据，请使用 `PLAIN`.</span></span><br><span class="line">  ResponseType responseType;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// `validateStatus` 决定http响应状态码是否被dio视为请求成功， 返回`validateStatus`</span></span><br><span class="line">  <span class="hljs-comment">///  返回`true` , 请求结果就会按成功处理，否则会按失败处理.</span></span><br><span class="line">  ValidateStatus validateStatus;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 用户自定义字段，可以在 [Interceptor]、[Transformer] 和 [Response] 中取到.</span></span><br><span class="line">  <span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-keyword">dynamic</span>&gt; extra;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有一个完成的<a href="https://github.com/flutterchina/dio/blob/flutter/example/options.dart" target="_blank" rel="noopener">示例</a>.</p>
+<h2 id="响应数据"><a href="#响应数据" class="headerlink" title="响应数据"></a>响应数据</h2><p>当请求成功时会返回一个Response对象，它包含如下字段：</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-comment">/// 响应数据，可能已经被转换了类型, 详情请参考Options中的[ResponseType].</span></span><br><span class="line">  <span class="hljs-keyword">var</span> data;</span><br><span class="line">  <span class="hljs-comment">/// 响应头</span></span><br><span class="line">  HttpHeaders headers;</span><br><span class="line">  <span class="hljs-comment">/// 本次请求信息</span></span><br><span class="line">  Options request;</span><br><span class="line">  <span class="hljs-comment">/// Http status code.</span></span><br><span class="line">  <span class="hljs-built_in">int</span> statusCode;</span><br><span class="line">  <span class="hljs-comment">/// 响应对象的自定义字段（可以在拦截器中设置它），调用方可以在`then`中获取.</span></span><br><span class="line">  <span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-keyword">dynamic</span>&gt; extra;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例如下:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Response response = <span class="hljs-keyword">await</span> dio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"https://www.google.com"</span>);</span><br><span class="line"><span class="hljs-built_in">print</span>(response.data);</span><br><span class="line"><span class="hljs-built_in">print</span>(response.headers);</span><br><span class="line"><span class="hljs-built_in">print</span>(response.request);</span><br><span class="line"><span class="hljs-built_in">print</span>(response.statusCode);</span><br></pre></td></tr></table></figure>
+
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>每一个 Dio 实例都有一个请求拦截器  <code>RequestInterceptor</code> 和一个响应拦截器 <code>ResponseInterceptor</code>, 通过拦截器你可以在请求之前或响应之后(但还没有被 <code>then</code> 或 <code>catchError</code>处理)做一些统一的预处理操作。</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">dio.interceptor.request.onSend = (Options options)&#123;</span><br><span class="line">    <span class="hljs-comment">// 在请求被发送之前做一些事情</span></span><br><span class="line">    <span class="hljs-keyword">return</span> options; <span class="hljs-comment">//continue</span></span><br><span class="line">    <span class="hljs-comment">// 如果你想完成请求并返回一些自定义数据，可以返回一个`Response`对象或返回`dio.resolve(data)`。</span></span><br><span class="line">    <span class="hljs-comment">// 这样请求将会被终止，上层then会被调用，then中返回的数据将是你的自定义数据data.</span></span><br><span class="line">    <span class="hljs-comment">//</span></span><br><span class="line">    <span class="hljs-comment">// 如果你想终止请求并触发一个错误,你可以返回一个`DioError`对象，或返回`dio.reject(errMsg)`，</span></span><br><span class="line">    <span class="hljs-comment">// 这样请求将被中止并触发异常，上层catchError会被调用。</span></span><br><span class="line">&#125;</span><br><span class="line">dio.interceptor.response.onSuccess = (Response response) &#123;</span><br><span class="line">    <span class="hljs-comment">// 在返回响应数据之前做一些预处理</span></span><br><span class="line">    <span class="hljs-keyword">return</span> response; <span class="hljs-comment">// continue</span></span><br><span class="line">&#125;;</span><br><span class="line">dio.interceptor.response.onError = (DioError e)&#123;</span><br><span class="line">    <span class="hljs-comment">// 当请求失败时做一些预处理</span></span><br><span class="line">    <span class="hljs-keyword">return</span> e;<span class="hljs-comment">//continue</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你想移除拦截器，你可以将它们置为null:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dio.interceptor.request.onSend = <span class="hljs-keyword">null</span>;</span><br><span class="line">dio.interceptor.response.onSuccess = <span class="hljs-keyword">null</span>;</span><br><span class="line">dio.interceptor.response.onError = <span class="hljs-keyword">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="完成和终止请求-响应"><a href="#完成和终止请求-响应" class="headerlink" title="完成和终止请求/响应"></a>完成和终止请求/响应</h3><p>在所有拦截器中，你都可以改变请求执行流， 如果你想完成请求/响应并返回自定义数据，你可以返回一个 <code>Response</code> 对象或返回 <code>dio.resolve(data)</code>的结果。 如果你想终止(触发一个错误，上层<code>catchError</code>会被调用)一个请求/响应，那么可以返回一个<code>DioError</code> 对象或返回 <code>dio.reject(errMsg)</code> 的结果.</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dio.interceptor.request.onSend = (Options options) &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> dio.resolve(<span class="hljs-string">"fake data"</span>)</span><br><span class="line">&#125;</span><br><span class="line">Response response = <span class="hljs-keyword">await</span> dio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"/test"</span>);</span><br><span class="line"><span class="hljs-built_in">print</span>(response.data); <span class="hljs-comment">//"fake data"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="拦截器中支持异步任务"><a href="#拦截器中支持异步任务" class="headerlink" title="拦截器中支持异步任务"></a>拦截器中支持异步任务</h3><p>拦截器中不仅支持同步任务，而且也支持异步任务, 下面是在请求拦截器中发起异步任务的一个实例:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> dio.interceptor.request.onSend = (Options options) <span class="hljs-keyword">async</span> &#123;</span><br><span class="line">    <span class="hljs-comment">//...If no token, request token firstly.</span></span><br><span class="line">    Response response = <span class="hljs-keyword">await</span> dio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"/token"</span>);</span><br><span class="line">    <span class="hljs-comment">//Set the token to headers</span></span><br><span class="line">    options.headers[<span class="hljs-string">"token"</span>] = response.data[<span class="hljs-string">"data"</span>][<span class="hljs-string">"token"</span>];</span><br><span class="line">    <span class="hljs-keyword">return</span> options; <span class="hljs-comment">//continue</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lock-unlock-拦截器"><a href="#Lock-unlock-拦截器" class="headerlink" title="Lock/unlock 拦截器"></a>Lock/unlock 拦截器</h3><p>你可以通过调用拦截器的 <code>lock()</code>/<code>unlock</code> 方法来锁定/解锁拦截器。一旦请求/响应拦截器被锁定，接下来的请求/响应将会在进入请求/响应拦截器之前排队等待，直到解锁后，这些入队的请求才会继续执行(进入拦截器)。这在一些需要串行化请求/响应的场景中非常实用，后面我们将给出一个示例。</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">tokenDio = <span class="hljs-keyword">new</span> Dio(); <span class="hljs-comment">//Create a new instance to request the token.</span></span><br><span class="line">tokenDio.options = dio;</span><br><span class="line">dio.interceptor.request.onSend = (Options options) <span class="hljs-keyword">async</span> &#123;</span><br><span class="line">  <span class="hljs-comment">// If no token, request token firstly and lock this interceptor</span></span><br><span class="line">  <span class="hljs-comment">// to prevent other request enter this interceptor.</span></span><br><span class="line">  dio.interceptor.request.lock();</span><br><span class="line">  <span class="hljs-comment">// We use a new Dio(to avoid dead lock) instance to request token.</span></span><br><span class="line">  Response response = <span class="hljs-keyword">await</span> tokenDio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"/token"</span>);</span><br><span class="line">  <span class="hljs-comment">//Set the token to headers</span></span><br><span class="line">  options.headers[<span class="hljs-string">"token"</span>] = response.data[<span class="hljs-string">"data"</span>][<span class="hljs-string">"token"</span>];</span><br><span class="line">  dio.interceptor.request.unlock();</span><br><span class="line">  <span class="hljs-keyword">return</span> options; <span class="hljs-comment">//continue</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Clear()</strong></p>
+<p>你也可以调用拦截器的<code>clear()</code>方法来清空等待队列。</p>
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>当<strong>请求</strong>拦截器被锁定时，接下来的请求将会暂停，这等价于锁住了dio实例，因此，Dio示例上提供了<strong>请求</strong>拦截器<code>lock/unlock</code>的别名方法：</p>
+<p><strong>dio.lock() ==  dio.interceptor.request.lock()</strong></p>
+<p><strong>dio.unlock() ==  dio.interceptor.request.unlock()</strong></p>
+<p><strong>dio.clear() ==  dio.interceptor.request.clear()</strong></p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>假设这么一个场景：出于安全原因，我们需要给所有的请求头中添加一个csrfToken，如果csrfToken不存在，我们先去请求csrfToken，获取到csrfToken后，再发起后续请求。 由于请求csrfToken的过程是异步的，我们需要在请求过程中锁定后续请求（因为它们需要csrfToken), 直到csrfToken请求成功后，再解锁，代码如下：</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">dio.interceptor.request.onSend = (Options options) &#123;</span><br><span class="line">    <span class="hljs-built_in">print</span>(<span class="hljs-string">'send request：path:<span class="hljs-subst">$&#123;options.path&#125;</span>，baseURL:<span class="hljs-subst">$&#123;options.baseUrl&#125;</span>'</span>);</span><br><span class="line">    <span class="hljs-keyword">if</span> (csrfToken == <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">      <span class="hljs-built_in">print</span>(<span class="hljs-string">"no token，request token firstly..."</span>);</span><br><span class="line">      <span class="hljs-comment">//lock the dio.</span></span><br><span class="line">      dio.lock();</span><br><span class="line">      <span class="hljs-keyword">return</span> tokenDio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"/token"</span>).then((d) &#123;</span><br><span class="line">        options.headers[<span class="hljs-string">"csrfToken"</span>] = csrfToken = d.data[<span class="hljs-string">'data'</span>][<span class="hljs-string">'token'</span>];</span><br><span class="line">        <span class="hljs-built_in">print</span>(<span class="hljs-string">"request token succeed, value: "</span> + d.data[<span class="hljs-string">'data'</span>][<span class="hljs-string">'token'</span>]);</span><br><span class="line">        <span class="hljs-built_in">print</span>(<span class="hljs-string">'continue to perform request：path:<span class="hljs-subst">$&#123;options.path&#125;</span>，baseURL:<span class="hljs-subst">$&#123;options.path&#125;</span>'</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> options;</span><br><span class="line">      &#125;).whenComplete(() =&gt; dio.unlock()); <span class="hljs-comment">// unlock the dio</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      options.headers[<span class="hljs-string">"csrfToken"</span>] = csrfToken;</span><br><span class="line">      <span class="hljs-keyword">return</span> options;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>完整的示例代码请点击 <a href="https://github.com/flutterchina/dio/blob/flutter/example/interceptorLock.dart" target="_blank" rel="noopener">这里</a>.</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>当请求过程中发生错误时, Dio 会包装 <code>Error/Exception</code> 为一个 <code>DioError</code>:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">try</span> &#123;</span><br><span class="line">  <span class="hljs-comment">//404</span></span><br><span class="line">  <span class="hljs-keyword">await</span> dio.<span class="hljs-keyword">get</span>(<span class="hljs-string">"https://wendux.github.io/xsddddd"</span>);</span><br><span class="line">&#125; on DioError <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="hljs-comment">// The request was made and the server responded with a status code</span></span><br><span class="line">  <span class="hljs-comment">// that falls out of the range of 2xx and is also not 304.</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (e.response) &#123;</span><br><span class="line">    <span class="hljs-built_in">print</span>(e.response.data);</span><br><span class="line">    <span class="hljs-built_in">print</span>(e.response.headers);</span><br><span class="line">    <span class="hljs-built_in">print</span>(e.response.request);</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-comment">// Something happened in setting up or sending the request that triggered an Error</span></span><br><span class="line">    <span class="hljs-built_in">print</span>(e.request);</span><br><span class="line">    <span class="hljs-built_in">print</span>(e.message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DioError-字段"><a href="#DioError-字段" class="headerlink" title="DioError 字段"></a>DioError 字段</h3><figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  <span class="hljs-comment">/// 响应信息, 如果错误发生在在服务器返回数据之前，它为 `null`</span></span><br><span class="line">  Response response;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 错误描述.</span></span><br><span class="line">  <span class="hljs-built_in">String</span> message;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 错误类型，见下文</span></span><br><span class="line">  DioErrorType type;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// 错误栈信息，可能为null</span></span><br><span class="line">  StackTrace stackTrace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DioErrorType"><a href="#DioErrorType" class="headerlink" title="DioErrorType"></a>DioErrorType</h3><figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">enum</span> DioErrorType &#123;</span><br><span class="line">  <span class="hljs-comment">/// Default error type, usually occurs before connecting the server.</span></span><br><span class="line">  DEFAULT,</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// When opening  url timeout, it occurs.</span></span><br><span class="line">  CONNECT_TIMEOUT,</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">///  Whenever more than [receiveTimeout] (in milliseconds) passes between two events from response stream,</span></span><br><span class="line">  <span class="hljs-comment">///  [Dio] will throw the [DioError] with [DioErrorType.RECEIVE_TIMEOUT].</span></span><br><span class="line">  <span class="hljs-comment">///</span></span><br><span class="line">  <span class="hljs-comment">///  Note: This is not the receiving time limitation.</span></span><br><span class="line">  RECEIVE_TIMEOUT,</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// When the server response, but with a incorrect status, such as 404, 503...</span></span><br><span class="line">  RESPONSE,</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/// When the request is cancelled, dio will throw a error with this type.</span></span><br><span class="line">  CANCEL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用application-x-www-form-urlencoded编码"><a href="#使用application-x-www-form-urlencoded编码" class="headerlink" title="使用application/x-www-form-urlencoded编码"></a>使用application/x-www-form-urlencoded编码</h2><p>默认情况下, Dio 会将请求数据(除过String类型)序列化为 <code>JSON</code>. 如果想要以 <code>application/x-www-form-urlencoded</code>格式编码, 你可以显式设置<code>contentType</code> :</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Instance level</span></span><br><span class="line">dio.options.contentType=ContentType.parse(<span class="hljs-string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line"><span class="hljs-comment">//or works once</span></span><br><span class="line">dio.post(<span class="hljs-string">"/info"</span>,data:&#123;<span class="hljs-string">"id"</span>:<span class="hljs-number">5</span>&#125;, options: <span class="hljs-keyword">new</span> Options(contentType:ContentType.parse(<span class="hljs-string">"application/x-www-form-urlencoded"</span>)));</span><br></pre></td></tr></table></figure>
+
+<p>这里有一个<a href="https://github.com/flutterchina/dio/blob/flutter/example/options.dart" target="_blank" rel="noopener">示例</a>.</p>
+<h2 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h2><p>Dio支持发送 FormData, 请求数据将会以 <code>multipart/form-data</code>方式编码, FormData中可以一个或多个包含文件 .</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FormData formData = <span class="hljs-keyword">new</span> FormData.from(&#123;</span><br><span class="line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"wendux"</span>,</span><br><span class="line">    <span class="hljs-string">"age"</span>: <span class="hljs-number">25</span>,</span><br><span class="line">    <span class="hljs-string">"file"</span>: <span class="hljs-keyword">new</span> UploadFileInfo(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"./example/upload.txt"</span>), <span class="hljs-string">"upload.txt"</span>)</span><br><span class="line">&#125;);</span><br><span class="line">response = <span class="hljs-keyword">await</span> dio.post(<span class="hljs-string">"/info"</span>, data: formData);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意: 只有 post 方法支持发送 FormData.</p>
+</blockquote>
+<p>这里有一个完整的<a href="https://github.com/flutterchina/dio/blob/flutter/example/formdata.dart" target="_blank" rel="noopener">示例</a>.</p>
+<h2 id="转换器"><a href="#转换器" class="headerlink" title="转换器"></a>转换器</h2><p>转换器<code>Transformer</code> 用于对请求数据和响应数据进行编解码处理。Dio实现了一个默认转换器<code>DefaultTransformer</code>作为默认的 <code>Transformer</code>. 如果你想对请求/响应数据进行自定义编解码处理，可以提供自定义转换器，通过 <code>dio.transformer</code>设置。</p>
+<blockquote>
+<p>请求转换器  <code>Transformer.transformRequest(...)</code>   只会被用于 ‘PUT’、 ‘POST’、 ‘PATCH’方法，因为只有这些方法才可以携带请求体(request body)。但是响应转换器 <code>Transformer.transformResponse()</code> 会被用于所有请求方法的返回数据。</p>
+</blockquote>
+<h3 id="执行流"><a href="#执行流" class="headerlink" title="执行流"></a>执行流</h3><p>虽然在拦截器中也可以对数据进行预处理，但是转换器主要职责是对请求/响应数据进行编解码，之所以将转化器单独分离，一是为了和拦截器解耦，二是为了不修改原始请求数据(如果你在拦截器中修改请求数据(options.data)，会覆盖原始请求数据，而在某些时候您可能需要原始请求数据). Dio的请求流是：</p>
+<p><em>请求拦截器</em> &gt;&gt; <em>请求转换器</em> &gt;&gt; <em>发起请求</em>  &gt;&gt; <em>响应转换器</em>  &gt;&gt; <em>响应拦截器</em>  &gt;&gt; <em>最终结果</em>。</p>
+<p>这是一个自定义转换器的<a href="https://github.com/wendux/dio/blob/flutter/example/Transformer.dart" target="_blank" rel="noopener">示例</a>.</p>
+<h2 id="设置Http代理"><a href="#设置Http代理" class="headerlink" title="设置Http代理"></a>设置Http代理</h2><p>Dio 是使用 HttpClient发起的http请求，所以你可以通过配置 <code>httpClient</code>来支持代理，示例如下：</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dio.onHttpClientCreate = (HttpClient client) &#123;</span><br><span class="line">  client.findProxy = (uri) &#123;</span><br><span class="line">    <span class="hljs-comment">//proxy all request to localhost:8888</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">"PROXY localhost:8888"</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="hljs-comment">// 你也可以自己创建一个新的HttpClient实例返回。</span></span><br><span class="line">  <span class="hljs-comment">// return new HttpClient(SecurityContext);</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>完整的示例请查看<a href="https://github.com/wendux/dio/tree/flutter/example/proxy.dart" target="_blank" rel="noopener">这里</a>.</p>
+<h2 id="Https证书校验"><a href="#Https证书校验" class="headerlink" title="Https证书校验"></a>Https证书校验</h2><p>有两种方法可以校验https证书，假设我们的后台服务使用的是自签名证书，证书格式是PEM格式，我们将证书的内容保存在本地字符串中，那么我们的校验逻辑如下：</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">String</span> PEM=<span class="hljs-string">"XXXXX"</span>; <span class="hljs-comment">//证书内容</span></span><br><span class="line">dio.onHttpClientCreate = (HttpClient client) &#123;</span><br><span class="line">  client.badCertificateCallback=(X509Certificate cert, <span class="hljs-built_in">String</span> host, <span class="hljs-built_in">int</span> port)&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(cert.pem==PEM)&#123; <span class="hljs-comment">// 证书一致，则放行</span></span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>X509Certificate</code>是证书的标准格式，包含了证书除私钥外所有信息，读者可以自行查阅文档。另外，上面的示例没有校验host，是因为只要服务器返回的证书内容和本地的保存一致就已经能证明是我们的服务器了（而不是中间人），host验证通常是为了防止证书和域名不匹配。</p>
+<p>对于自签名的证书，我们也可以将其添加到本地证书信任链中，这样证书验证时就会自动通过，而不会再走到<code>badCertificateCallback</code>回调中：</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dio.onHttpClientCreate = (HttpClient client) &#123;</span><br><span class="line">  SecurityContext sc = <span class="hljs-keyword">new</span> SecurityContext();</span><br><span class="line">  <span class="hljs-comment">//file为证书路径</span></span><br><span class="line">  sc.setTrustedCertificates(file);</span><br><span class="line">  HttpClient httpClient = <span class="hljs-keyword">new</span> HttpClient(context: sc);</span><br><span class="line">  <span class="hljs-keyword">return</span> httpClient;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>注意，通过<code>setTrustedCertificates()</code>设置的证书格式必须为PEM或PKCS12，如果证书格式为PKCS12，则需将证书密码传入，这样则会在代码中暴露证书密码，所以客户端证书校验不建议使用PKCS12格式的证书。</p>
+<h2 id="请求取消"><a href="#请求取消" class="headerlink" title="请求取消"></a>请求取消</h2><p>你可以通过 <em>cancel token</em> 来取消发起的请求：</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CancelToken token = <span class="hljs-keyword">new</span> CancelToken();</span><br><span class="line">dio.<span class="hljs-keyword">get</span>(url, cancelToken: token)</span><br><span class="line">    .catchError((DioError err)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (CancelToken.isCancel(err)) &#123;</span><br><span class="line">            <span class="hljs-built_in">print</span>(<span class="hljs-string">'Request canceled! '</span>+ err.message)</span><br><span class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            <span class="hljs-comment">// handle error.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="hljs-comment">// cancel the requests with "cancelled" message.</span></span><br><span class="line">token.cancel(<span class="hljs-string">"cancelled"</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意: 同一个cancel token 可以用于多个请求，当一个cancel token取消时，所有使用该cancel token的请求都会被取消。</p>
+</blockquote>
+<p>完整的示例请参考<a href="https://github.com/flutterchina/dio/blob/flutter/example/cancelRequest.dart" target="_blank" rel="noopener">取消示例</a>.</p>
+<h2 id="Cookie管理"><a href="#Cookie管理" class="headerlink" title="Cookie管理"></a>Cookie管理</h2><p>你可以通过 <code>cookieJar</code> 来自动管理请求/响应cookie.</p>
+<blockquote>
+<p> dio cookie 管理 API 是基于开源库 <a href="https://github.com/flutterchina/cookie_jar" target="_blank" rel="noopener">cookie_jar</a>.</p>
+</blockquote>
+<p>你可以创建一个<code>CookieJar</code> 或 <code>PersistCookieJar</code> 来帮您自动管理cookie,  dio 默认使用  <code>CookieJar</code> , 它会将cookie保存在内存中。 如果您想对cookie进行持久化,  请使用 <code>PersistCookieJar</code> ,  示例代码如下:</p>
+<figure class="highlight dart hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> dio = <span class="hljs-keyword">new</span> Dio();</span><br><span class="line">dio.cookieJar = <span class="hljs-keyword">new</span> PersistCookieJar(<span class="hljs-string">"./cookies"</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>PersistCookieJar</code> 实现了RFC中标准的cookie策略.  <code>PersistCookieJar</code> 会将cookie保存在文件中，所以 cookies 会一直存在除非显式调用 <code>delete</code> 删除.</p>
+<p>更多关于 <a href="https://github.com/flutterchina/" target="_blank" rel="noopener">cookie_jar</a>  请参考 : <a href="https://github.com/flutterchina/cookie_jar" target="_blank" rel="noopener">https://github.com/flutterchina/cookie_jar</a> .</p>
+<h2 id="Copyright-amp-License"><a href="#Copyright-amp-License" class="headerlink" title="Copyright &amp; License"></a>Copyright &amp; License</h2><p>此开源项目为Flutter中文网(<a href="https://flutterchina.club" target="_blank" rel="noopener">https://flutterchina.club</a>) 授权 ，license 是 MIT.   如果您喜欢，欢迎star.</p>
+<p><strong>Flutter中文网开源项目计划</strong></p>
+<p>开发一系列Flutter SDK之外常用(实用)的Package、插件，丰富Flutter第三方库，为Flutter生态贡献来自中国开发者的力量。所有项目将发布在 <a href="https://github.com/flutterchina/" target="_blank" rel="noopener">Github Flutter中文网 Organization</a> ，所有源码贡献者将加入到我们的Organization，成为成员. 目前社区已有几个开源项目开始公测，欢迎您加入开发或测试，详情请查看: <a href="https://flutterchina.club/opensource.html" target="_blank" rel="noopener">Flutter中文网开源项目</a>。 如果您想加入到“开源项目计划”， 请发邮件到<a href="mailto:824783146@qq.com" target="_blank" rel="noopener">824783146@qq.com</a>， 并附上自我介绍(个人基本信息+擅长/关注技术)。</p>
+<h2 id="Features-and-bugs"><a href="#Features-and-bugs" class="headerlink" title="Features and bugs"></a>Features and bugs</h2><p>Please file feature requests and bugs at the <a href="https://github.com/flutterchina/dio" target="_blank" rel="noopener">issue tracker</a>.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-08T23:56:41.000Z">2019-09-09</time>
                 
                 <div class="level-item">
@@ -2177,75 +2375,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-05T18:53:05.000Z">2019-09-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 564 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/06/判断素数/">判断素数</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/09/06/033e9e90-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
-<h1 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h1><ul>
-<li>质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。</li>
-<li>0和1既不是质数也不是合数，最小的质数是2</li>
-</ul>
-<ol>
-<li>最直观，但效率最低的写法</li>
-</ol>
-<p>这里特殊处理了一下小于等于3的数，因为小于等于3的自然数只有2和3是质数。</p>
-<p>然后，我们只需要从2开始，一直到小于其自身，依次判断能否被n整除即可，能够整除则不是质数，否则是质数。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>优化</li>
-</ol>
-<p>我们继续分析，其实质数还有一个特点，就是它总是等于 6x-1 或者 6x+1，其中 x 是大于等于1的自然数。</p>
-<p>如何论证这个结论呢，其实不难。首先 6x 肯定不是质数，因为它能被 6 整除；其次 6x+2 肯定也不是质数，因为它还能被2整除；依次类推，6x+3 肯定能被 3 整除；6x+4 肯定能被 2 整除。那么，就只有 6x+1 和 6x+5 (即等同于6x-1) 可能是质数了。所以循环的步长可以设为 6，然后每次只判断 6 两侧的数即可。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (num &lt;= <span class="hljs-number">3</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> num &gt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 不在6的倍数两侧的一定不是质数</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (num % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; num % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> sqrt = (<span class="hljs-keyword">int</span>) Math.sqrt(num);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= sqrt; i += <span class="hljs-number">6</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (num % i == <span class="hljs-number">0</span> || num % (i + <span class="hljs-number">2</span>) == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>性能对比</li>
-</ol>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// Scanner in = new Scanner(System.in);</span></span><br><span class="line">        <span class="hljs-comment">// int n = in.nextInt();</span></span><br><span class="line">        <span class="hljs-comment">// in.close();</span></span><br><span class="line">        Stack&lt;Integer&gt; a = <span class="hljs-keyword">new</span> Stack&lt;&gt;(), b = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> n = <span class="hljs-number">100000</span>;</span><br><span class="line">        <span class="hljs-keyword">long</span> s = System.currentTimeMillis(), e;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (f(i))</span><br><span class="line">                a.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        e = System.currentTimeMillis();</span><br><span class="line">        System.out.println(e - s + <span class="hljs-string">" ms"</span>);</span><br><span class="line">        s = System.currentTimeMillis();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (func(i))</span><br><span class="line">                b.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        e = System.currentTimeMillis();</span><br><span class="line">        System.out.println(e - s + <span class="hljs-string">" ms"</span>);</span><br><span class="line">        System.gc();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">6</span> != <span class="hljs-number">1</span> &amp;&amp; n % <span class="hljs-number">6</span> != <span class="hljs-number">5</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span> tem = (<span class="hljs-keyword">int</span>) Math.sqrt(n);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= tem; i += <span class="hljs-number">6</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span> || n % (i + <span class="hljs-number">2</span>) == <span class="hljs-number">0</span>)</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1392 ms</span><br><span class="line">5 ms</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -2316,7 +2445,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            119
+                            120
                         </p>
                     </a>
                 </div>
@@ -2340,7 +2469,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            148
+                            149
                         </p>
                     </a>
                 </div>
@@ -2462,7 +2591,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">92</span>
+                <span class="level-item tag">93</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -2507,6 +2636,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/10/PgFincore/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time></div>
+                    <a href="/2019/12/10/PgFincore/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL 内存页管理函数 PgFincore</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/09/tealang/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/09/ec375870-1a99-11ea-9f33-51ae6db68ce3.png" alt="Tea语言">
@@ -2574,25 +2722,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
                     <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-05T14:42:12.000Z">2019-12-05</time></div>
-                    <a href="/2019/12/05/graphical-machine-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">图解机器学习</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2624,6 +2753,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/10/PgFincore/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time></div>
+                    <a href="/2019/12/10/PgFincore/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL 内存页管理函数 PgFincore</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/09/tealang/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/09/ec375870-1a99-11ea-9f33-51ae6db68ce3.png" alt="Tea语言">
@@ -2691,25 +2839,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
                     <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/05/graphical-machine-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/05/b60d8710-176f-11ea-b7fc-359cbf76fe26.png" alt="图解机器学习">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-05T14:42:12.000Z">2019-12-05</time></div>
-                    <a href="/2019/12/05/graphical-machine-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">图解机器学习</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>

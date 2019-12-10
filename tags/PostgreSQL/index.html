@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>标签: PostgreSQL - Time</title>
+
+
+    <meta name="description" content="blog">
+<meta name="keywords" content="hsutimes">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Time">
+<meta property="og:url" content="https://blog.hsutimes.com/tags/PostgreSQL/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:description" content="blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Time">
+<meta name="twitter:description" content="blog">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/og_image.png">
+<meta name="twitter:site" content="https://twitter.com/times26740863">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134224598-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Time" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">PostgreSQL</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/12/10/PgFincore/" class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1723 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/12/10/PgFincore/">PostgreSQL 内存页管理函数 PgFincore</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="PgFincore"><a href="#PgFincore" class="headerlink" title="PgFincore"></a>PgFincore</h1><hr>
+<h2 id="A-set-of-functions-to-manage-pages-in-memory-from-PostgreSQL"><a href="#A-set-of-functions-to-manage-pages-in-memory-from-PostgreSQL" class="headerlink" title=" A set of functions to manage pages in memory from PostgreSQL"></a> A set of functions to manage pages in memory from PostgreSQL</h2><p>A set of functions to handle low-level management of relations using mincore to<br>explore cache memory.</p>
+<h2 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h2><p>With PostgreSQL, each Table or Index is splitted in segments of (usually) 1GB,<br>and each segment is splitted in pages in memory then in blocks for the<br>filesystem.</p>
+<p>Those functions let you know which and how many disk block from a relation are<br>in the page cache of the operating system. It can provide the result as a VarBit<br>and can be stored in a table. Then using this table, it is possible to restore<br>the page cache state for each block of the relation, even in another server,<br>thanks to Streaming Replication.</p>
+<p>Other functions are used to set a <em>POSIX_FADVISE</em> flag on the entire relation<br>(each segment). The more usefull are probably <em>WILLNEED</em> and <em>DONTNEED</em> which<br>push and pop blocks of each segments of a relation from page cache,<br>respectively.</p>
+<p>Each functions are call with at least a table name or an index name (or oid)<br>as a parameter and walk each segment of the relation.</p>
+<h2 id="DOWNLOAD"><a href="#DOWNLOAD" class="headerlink" title="DOWNLOAD"></a>DOWNLOAD</h2><p>You can grab the latest code with git:</p>
+<pre><code>git clone git://git.postgresql.org/git/pgfincore.git
+or
+git://github.com/klando/pgfincore.git</code></pre><p>And the project is on pgfoundry : <a href="http://pgfoundry.org/projects/pgfincore" target="_blank" rel="noopener">http://pgfoundry.org/projects/pgfincore</a></p>
+<h2 id="INSTALL"><a href="#INSTALL" class="headerlink" title="INSTALL"></a>INSTALL</h2><p>From source code:</p>
+<pre><code>make clean
+make
+su
+make install</code></pre><p>For PostgreSQL &gt;= 9.1, log in your database and:</p>
+<pre><code>mydb=# CREATE EXTENSION pgfincore;</code></pre><p>For other release, create the functions from the sql script (it should be in<br>your contrib directory):</p>
+<pre><code>psql mydb -f pgfincore.sql</code></pre><p>PgFincore is also shipped with Debian scripts to build your own package:</p>
+<pre><code>aptitude install debhelper postgresql-server-dev-all postgresql-server-dev-9.1
+# or postgresql-server-dev-8.4|postgresql-server-dev-9.0
+make deb
+dpkg -i ../postgresql-9.1-pgfincore_1.1.1-1_amd64.deb</code></pre><p>PgFincore is packaged for <em>RPM</em> at <a href="http://yum.postgresql.org/" target="_blank" rel="noopener">http://yum.postgresql.org/</a><br>PgFincore is packaged for <em>debian</em> at <a href="http://pgapt.debian.net/" target="_blank" rel="noopener">http://pgapt.debian.net/</a></p>
+<h2 id="EXAMPLES"><a href="#EXAMPLES" class="headerlink" title="EXAMPLES"></a>EXAMPLES</h2><p>Here are some examples of usage. If you want more details go to Documentation_</p>
+<h3 id="Get-current-state-of-a-relation"><a href="#Get-current-state-of-a-relation" class="headerlink" title="Get current state of a relation"></a>Get current state of a relation</h3><p>May be useful:</p>
+<pre><code>cedric=# select * from pgfincore(&apos;pgbench_accounts&apos;);
+      relpath       | segment | os_page_size | rel_os_pages | pages_mem | group_mem | os_pages_free | databit | pages_dirty | group_dirty 
+--------------------+---------+--------------+--------------+-----------+-----------+---------------+---------+-------------+-------------
+ base/11874/16447   |       0 |         4096 |       262144 |    262144 |         1 |         81016 |         |           0 |           0
+ base/11874/16447.1 |       1 |         4096 |        65726 |     65726 |         1 |         81016 |         |           0 |           0
+(2 rows)
+
+Time: 31.563 ms</code></pre><h3 id="Load-a-table-or-an-index-in-OS-Page-Buffer"><a href="#Load-a-table-or-an-index-in-OS-Page-Buffer" class="headerlink" title="Load a table or an index in OS Page Buffer"></a>Load a table or an index in OS Page Buffer</h3><p>You may want to try to keep a table or an index into the OS Page Cache, or<br>preload a table before your well know big query is executed (reducing the query<br>time).</p>
+<p>To do so, just execute the following query:</p>
+<pre><code>cedric=# select * from pgfadvise_willneed(&apos;pgbench_accounts&apos;);
+      relpath       | os_page_size | rel_os_pages | os_pages_free 
+--------------------+--------------+--------------+---------------
+ base/11874/16447   |         4096 |       262144 |        169138
+ base/11874/16447.1 |         4096 |        65726 |        103352
+(2 rows)
+
+Time: 4462,936 ms</code></pre><ul>
+<li>The column <em>os_page_size</em> report that page size is 4KB.</li>
+<li>The column <em>rel_os_pages</em> is the number of pages of the specified file.</li>
+<li>The column <em>os_pages_free</em> is the number of free pages in memory (for caching).</li>
+</ul>
+<h3 id="Snapshot-and-Restore-the-OS-Page-Buffer-state-of-a-table-or-an-index-or-more"><a href="#Snapshot-and-Restore-the-OS-Page-Buffer-state-of-a-table-or-an-index-or-more" class="headerlink" title="Snapshot and Restore the OS Page Buffer state of a table or an index (or more)"></a>Snapshot and Restore the OS Page Buffer state of a table or an index (or more)</h3><p>You may want to restore a table or an index into the OS Page Cache as it was<br>while you did the snapshot. For example if you have to reboot your server, then<br>when PostgreSQL start up the first queries might be slower because neither<br>PostgreSQL or the OS have pages in their respective cache about the relations<br>involved in those first queries.</p>
+<p>Executing a snapshot and a restore is very simple:</p>
+<pre><code>-- Snapshot
+cedric=# create table pgfincore_snapshot as
+cedric-#   select &apos;pgbench_accounts&apos;::text as relname,*,now() as date_snapshot
+cedric-#   from pgfincore(&apos;pgbench_accounts&apos;,true);
+
+-- Restore
+cedric=# select * from pgfadvise_loader(&apos;pgbench_accounts&apos;, 0, true, true,
+                       (select databit from  pgfincore_snapshot
+                        where relname=&apos;pgbench_accounts&apos; and segment = 0));
+     relpath      | os_page_size | os_pages_free | pages_loaded | pages_unloaded 
+------------------+--------------+---------------+--------------+----------------
+ base/11874/16447 |         4096 |         80867 |       262144 |              0
+(1 row)
+
+Time: 35.349 ms</code></pre><ul>
+<li>The column <em>pages_loaded</em> report how many pages have been read to memory<br>(they may have already been in memoy)</li>
+<li>The column <em>pages_unloaded</em> report how many pages have been removed from<br>memory (they may not have already been in memoy);</li>
+</ul>
+<h2 id="SYNOPSIS"><a href="#SYNOPSIS" class="headerlink" title="SYNOPSIS"></a>SYNOPSIS</h2><p>   pgsysconf(OUT os_page_size bigint, OUT os_pages_free bigint,<br>             OUT os_total_pages bigint)<br>     RETURNS record</p>
+<p>   pgsysconf_pretty(OUT os_page_size text, OUT os_pages_free text,<br>                    OUT os_total_pages text)<br>     RETURNS record</p>
+<p>   pgfadvise(IN relname regclass, IN fork text, IN action int,<br>             OUT relpath text, OUT os_page_size bigint,<br>             OUT rel_os_pages bigint, OUT os_pages_free bigint)<br>     RETURNS setof record</p>
+<p>   pgfadvise_willneed(IN relname regclass,<br>                      OUT relpath text, OUT os_page_size bigint,<br>                      OUT rel_os_pages bigint, OUT os_pages_free bigint)<br>     RETURNS setof record</p>
+<p>   pgfadvise_dontneed(IN relname regclass,<br>                      OUT relpath text, OUT os_page_size bigint,<br>                      OUT rel_os_pages bigint, OUT os_pages_free bigint)<br>     RETURNS setof record</p>
+<p>   pgfadvise_normal(IN relname regclass,<br>                    OUT relpath text, OUT os_page_size bigint,<br>                    OUT rel_os_pages bigint, OUT os_pages_free bigint)<br>     RETURNS setof record</p>
+<p>   pgfadvise_sequential(IN relname regclass,<br>                        OUT relpath text, OUT os_page_size bigint,<br>                        OUT rel_os_pages bigint, OUT os_pages_free bigint)<br>     RETURNS setof record</p>
+<p>   pgfadvise_random(IN relname regclass,<br>                    OUT relpath text, OUT os_page_size bigint,<br>                    OUT rel_os_pages bigint, OUT os_pages_free bigint)<br>     RETURNS setof record</p>
+<p>   pgfadvise_loader(IN relname regclass, IN fork text, IN segment int,<br>                    IN load bool, IN unload bool, IN databit varbit,<br>                    OUT relpath text, OUT os_page_size bigint,<br>                    OUT os_pages_free bigint, OUT pages_loaded bigint,<br>                    OUT pages_unloaded bigint)<br>     RETURNS setof record</p>
+<p>   pgfadvise_loader(IN relname regclass, IN segment int,<br>                    IN load bool, IN unload bool, IN databit varbit,<br>                    OUT relpath text, OUT os_page_size bigint,<br>                    OUT os_pages_free bigint, OUT pages_loaded bigint,<br>                    OUT pages_unloaded bigint)<br>     RETURNS setof record</p>
+<p>   pgfincore(IN relname regclass, IN fork text, IN getdatabit bool,<br>             OUT relpath text, OUT segment int, OUT os_page_size bigint,<br>             OUT rel_os_pages bigint, OUT pages_mem bigint,<br>             OUT group_mem bigint, OUT os_pages_free bigint,<br>             OUT databit varbit, OUT pages_dirty bigint,<br>             OUT group_dirty bigint)<br>     RETURNS setof record</p>
+<p>   pgfincore(IN relname regclass, IN getdatabit bool,<br>             OUT relpath text, OUT segment int, OUT os_page_size bigint,<br>             OUT rel_os_pages bigint, OUT pages_mem bigint,<br>             OUT group_mem bigint, OUT os_pages_free bigint,<br>             OUT databit varbit, OUT pages_dirty bigint,<br>             OUT group_dirty bigint)<br>     RETURNS setof record</p>
+<p>   pgfincore(IN relname regclass,<br>             OUT relpath text, OUT segment int, OUT os_page_size bigint,<br>             OUT rel_os_pages bigint, OUT pages_mem bigint,<br>             OUT group_mem bigint, OUT os_pages_free bigint,<br>             OUT databit varbit, OUT pages_dirty bigint,<br>             OUT group_dirty bigint)<br>     RETURNS setof record</p>
+<h2 id="DOCUMENTATION"><a href="#DOCUMENTATION" class="headerlink" title="DOCUMENTATION"></a>DOCUMENTATION</h2><h3 id="pgsysconf"><a href="#pgsysconf" class="headerlink" title="pgsysconf"></a>pgsysconf</h3><p>This function output size of OS blocks, number of free page in the OS Page Buffer.</p>
+<pre><code>cedric=# select * from pgsysconf();
+ os_page_size | os_pages_free | os_total_pages 
+--------------+---------------+----------------
+         4096 |         80431 |        4094174</code></pre><h3 id="pgsysconf-pretty"><a href="#pgsysconf-pretty" class="headerlink" title="pgsysconf_pretty"></a>pgsysconf_pretty</h3><p>The same as above, but with pretty output.</p>
+<pre><code>cedric=# select * from pgsysconf_pretty();
+ os_page_size | os_pages_free | os_total_pages 
+--------------+---------------+----------------
+4096 bytes   | 314 MB        | 16 GB</code></pre><h3 id="pgfadvise-WILLNEED"><a href="#pgfadvise-WILLNEED" class="headerlink" title="pgfadvise_WILLNEED"></a>pgfadvise_WILLNEED</h3><p>This function set <em>WILLNEED</em> flag on the current relation. It means that the<br>Operating Sytem will try to load as much pages as possible of the relation.<br>Main idea is to preload files on server startup, perhaps using cache hit/miss<br>ratio or most required relations/indexes.</p>
+<pre><code>cedric=# select * from pgfadvise_willneed(&apos;pgbench_accounts&apos;);
+      relpath       | os_page_size | rel_os_pages | os_pages_free 
+--------------------+--------------+--------------+---------------
+ base/11874/16447   |         4096 |       262144 |         80650
+ base/11874/16447.1 |         4096 |        65726 |         80650</code></pre><h3 id="pgfadvise-DONTNEED"><a href="#pgfadvise-DONTNEED" class="headerlink" title="pgfadvise_DONTNEED"></a>pgfadvise_DONTNEED</h3><p>This function set <em>DONTNEED</em> flag on the current relation. It means that the<br>Operating System will first unload pages of the file if it need to free some<br>memory. Main idea is to unload files when they are not usefull anymore (instead<br>of perhaps more interesting pages)</p>
+<pre><code>cedric=# select * from pgfadvise_dontneed(&apos;pgbench_accounts&apos;);
+      relpath       | os_page_size | rel_os_pages | os_pages_free
+--------------------+--------------+--------------+---------------
+ base/11874/16447   |         4096 |       262144 |        342071
+ base/11874/16447.1 |         4096 |        65726 |        408103</code></pre><h3 id="pgfadvise-NORMAL"><a href="#pgfadvise-NORMAL" class="headerlink" title="pgfadvise_NORMAL"></a>pgfadvise_NORMAL</h3><p>This function set <em>NORMAL</em> flag on the current relation.</p>
+<h3 id="pgfadvise-SEQUENTIAL"><a href="#pgfadvise-SEQUENTIAL" class="headerlink" title="pgfadvise_SEQUENTIAL"></a>pgfadvise_SEQUENTIAL</h3><p>This function set <em>SEQUENTIAL</em> flag on the current relation.</p>
+<h3 id="pgfadvise-RANDOM"><a href="#pgfadvise-RANDOM" class="headerlink" title="pgfadvise_RANDOM"></a>pgfadvise_RANDOM</h3><p>This function set <em>RANDOM</em> flag on the current relation.</p>
+<h3 id="pgfadvise-loader"><a href="#pgfadvise-loader" class="headerlink" title="pgfadvise_loader"></a>pgfadvise_loader</h3><p>This function allow to interact directly with the Page Cache.<br>It can be used to load and/or unload page from memory based on a varbit<br>representing the map of the pages to load/unload accordingly.</p>
+<p>Work with relation pgbench_accounts, segment 0, arbitrary varbit map:</p>
+<pre><code>-- Loading and Unloading
+cedric=# select * from pgfadvise_loader(&apos;pgbench_accounts&apos;, 0, true, true, B&apos;111000&apos;);
+     relpath      | os_page_size | os_pages_free | pages_loaded | pages_unloaded 
+------------------+--------------+---------------+--------------+----------------
+ base/11874/16447 |         4096 |        408376 |            3 |              3
+
+-- Loading
+cedric=# select * from pgfadvise_loader(&apos;pgbench_accounts&apos;, 0, true, false, B&apos;111000&apos;);
+     relpath      | os_page_size | os_pages_free | pages_loaded | pages_unloaded 
+------------------+--------------+---------------+--------------+----------------
+ base/11874/16447 |         4096 |        408370 |            3 |              0
+
+-- Unloading
+cedric=# select * from pgfadvise_loader(&apos;pgbench_accounts&apos;, 0, false, true, B&apos;111000&apos;);
+    relpath      | os_page_size | os_pages_free | pages_loaded | pages_unloaded 
+------------------+--------------+---------------+--------------+----------------
+ base/11874/16447 |         4096 |        408370 |            0 |              3</code></pre><h3 id="pgfincore"><a href="#pgfincore" class="headerlink" title="pgfincore"></a>pgfincore</h3><p>This function provide information about the file system cache (page cache). </p>
+<pre><code>cedric=# select * from pgfincore(&apos;pgbench_accounts&apos;);
+      relpath       | segment | os_page_size | rel_os_pages | pages_mem | group_mem | os_pages_free | databit | pages_dirty | group_dirty  
+--------------------+---------+--------------+--------------+-----------+-----------+---------------+---------+-------------+-------------
+ base/11874/16447   |       0 |         4096 |       262144 |         3 |         1 |        408444 |         |           0 |           0
+ base/11874/16447.1 |       1 |         4096 |        65726 |         0 |         0 |        408444 |         |           0 |           0</code></pre><p>For the specified relation it returns:</p>
+<ul>
+<li>relpath : the relation path </li>
+<li>segment : the segment number analyzed </li>
+<li>os_page_size : the size of one page</li>
+<li>rel_os_pages : the total number of pages of the relation</li>
+<li>pages_mem : the total number of relation’s pages in page cache.<br>(not the shared buffers from PostgreSQL but the OS cache)</li>
+<li>group_mem : the number of groups of adjacent pages_mem</li>
+<li>os_page_free : the number of free page in the OS page cache</li>
+<li>databit : the varbit map of the file, because of its size it is useless to output<br>Use pgfincore(‘pgbench_accounts’,true) to activate it.</li>
+<li>pages_dirty : if HAVE_FINCORE constant is define and the platorm provides the relevant information, like pages_mem but for dirtied pages </li>
+<li>group_dirty : if HAVE_FINCORE constant is define and the platorm provides the relevant information, like group_mem but for dirtied pages </li>
+</ul>
+<h2 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h2><p>You can debug the PgFincore with the following error level: <em>DEBUG1</em> and<br><em>DEBUG5</em>.</p>
+<p>For example:</p>
+<pre><code>set client_min_messages TO debug1; -- debug5 is only usefull to trace each block</code></pre><h2 id="REQUIREMENTS"><a href="#REQUIREMENTS" class="headerlink" title="REQUIREMENTS"></a>REQUIREMENTS</h2><ul>
+<li>PgFincore needs mincore() or fincore() and POSIX_FADVISE</li>
+</ul>
+<h2 id="LIMITATIONS"><a href="#LIMITATIONS" class="headerlink" title="LIMITATIONS"></a>LIMITATIONS</h2><ul>
+<li><p>PgFincore has a limited mode when POSIX_FADVISE is not provided by the platform.</p>
+</li>
+<li><p>PgFincore needs PostgreSQL &gt;= 8.3</p>
+</li>
+<li><p>PgFincore does not work on windows.</p>
+</li>
+</ul>
+<h2 id="SEE-ALSO"><a href="#SEE-ALSO" class="headerlink" title="SEE ALSO"></a>SEE ALSO</h2><p>2ndQuadrant, PostgreSQL Expertise, developement, training and 24x7 support:</p>
+<p>  <a href="http://2ndQuadrant.com" target="_blank" rel="noopener">http://2ndQuadrant.com</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://hsutimes.github.io/images/16530d7f26a413c2.png" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            120
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            149
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/hsutimes" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://hsutimes.club" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Time</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hsutimes.club</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">93</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/10/PgFincore/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time></div>
+                    <a href="/2019/12/10/PgFincore/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL 内存页管理函数 PgFincore</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/09/tealang/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/09/ec375870-1a99-11ea-9f33-51ae6db68ce3.png" alt="Tea语言">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T15:32:55.000Z">2019-12-09</time></div>
+                    <a href="/2019/12/09/tealang/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Tea语言</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/08/41289f00-19ce-11ea-a593-6992fe272138.png" alt="WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T15:21:07.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
+                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/10/PgFincore/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time></div>
+                    <a href="/2019/12/10/PgFincore/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL 内存页管理函数 PgFincore</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/09/tealang/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/09/ec375870-1a99-11ea-9f33-51ae6db68ce3.png" alt="Tea语言">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T15:32:55.000Z">2019-12-09</time></div>
+                    <a href="/2019/12/09/tealang/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Tea语言</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/08/41289f00-19ce-11ea-a593-6992fe272138.png" alt="WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T15:21:07.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
+                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/06/powershell/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
+                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Time" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
