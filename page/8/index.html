@@ -146,6 +146,116 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-21T09:14:08.000Z">2019-09-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 377 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/21/客户端面试/">客户端面试</a>
+            
+        </h1>
+        <div class="content">
+            <ul>
+<li>100级台阶，每次上一步或两步，有多少种走法。</li>
+</ul>
+<p>573147844013817084101<br>21</p>
+<ul>
+<li>如果200级，你估计有多少种走法（不用编程）。</li>
+</ul>
+<p>453973694165307953197296969697410619233826<br>42</p>
+<blockquote>
+<p>不用编程，估算</p>
+</blockquote>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n = <span class="hljs-number">200</span>;</span><br><span class="line">        BigInteger a = BigInteger.ONE;</span><br><span class="line">        BigInteger b = BigInteger.ONE;</span><br><span class="line">        BigInteger res = BigInteger.ZERO;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            res = a.add(b);</span><br><span class="line">            a = b;</span><br><span class="line">            b = res;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(res);</span><br><span class="line">        System.out.println(res.toString().length());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>给出一个数组，找出两个数[a,b]和为n，不存在则返回[-1,-1]。写出两种解法，不能暴力穷举。</p>
+</li>
+<li><p>讲讲面向过程、面向对象、面向切面。</p>
+</li>
+<li><p>指针和数组的关系和区别。</p>
+</li>
+<li><p>讲讲Android handler。</p>
+</li>
+<li><p>队列和栈的区别和用途。</p>
+</li>
+<li><p>两个栈实现队列。</p>
+</li>
+<li><p>输入Url到浏览器显示过程。</p>
+</li>
+<li><p>http请求方法。</p>
+</li>
+<li><p>get和post区别。</p>
+</li>
+<li><p>surficeView和view的区别。</p>
+</li>
+<li><p>app从点击图标开始的启动全过程。</p>
+</li>
+<li><p>什么是线程安全。</p>
+</li>
+<li><p>线程安全有哪些机制。</p>
+</li>
+<li><p>如何保证 int加加（加号打不出来）线程安全。</p>
+</li>
+<li><p>Android线程间通信有哪些机制。</p>
+</li>
+<li><p>cpu调度方式有哪些。</p>
+</li>
+<li><p>空间局部性和时间局部性。</p>
+</li>
+<li><p>数据库乐观锁和悲观锁。</p>
+</li>
+<li><p>数据库索引作用，优缺点。</p>
+</li>
+<li><p>TCP拥塞控制。</p>
+</li>
+<li><p>https加密传输过程。</p>
+</li>
+<li><p>java内存模型。</p>
+</li>
+<li><p>java垃圾回收算法有哪些。</p>
+</li>
+<li><p>讲讲标记清除算法。</p>
+</li>
+<li><p>java四中引用。</p>
+</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-20T02:24:00.000Z">2019-09-20</time>
                 
                 <div class="level-item">
@@ -1328,87 +1438,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-10T13:45:18.000Z">2019-09-10</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 968 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/10/Git-Rebase-黄金法则问题/">Git Rebase 黄金法则问题</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Git-Rebase-黄金法则问题"><a href="#Git-Rebase-黄金法则问题" class="headerlink" title="Git Rebase 黄金法则问题"></a>Git Rebase 黄金法则问题</h1><p>git 整合来自不同分支的修改主要有两种方法：merge 操作和rebase操作，<br>merge初学者可能很熟悉。我们今天来主要说一下 rebase 操作，文章结尾会简单说一下 merge 操作的 –no-ff 参数问题。</p>
-<p>rebase的简单定义：你可以把某一分支的所有修改都移至另外一个分支就像重新播放一样。<br>有点儿像金庸武侠小说里面的乾坤大挪移。<br>举个🌰<br>假设我们本地库的代码，如下所示</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      A---B---C  remotes/origin/master</span><br><span class="line">     /</span><br><span class="line">D---E---F---G  master</span><br></pre></td></tr></table></figure>
-
-<p>如果此时我们执行 git pull 操作，就会变成下面的样子，因为 pull 默认执行的是 merge 操作，多出来H这次没必要的提交。如下所示</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">     A---B---C  remotes/origin/master</span><br><span class="line">     /         \</span><br><span class="line">D---E---F---G---H master</span><br></pre></td></tr></table></figure>
-
-<p>如果我们执行 git pull –rebase 操作，将会变成下面的样子，这里我们用rebase代替了默认的merge操作</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">            remotes/origin</span><br><span class="line">                |</span><br><span class="line">D---E---A---B---C---F---G</span><br><span class="line">                        |</span><br><span class="line">                        master</span><br></pre></td></tr></table></figure>
-
-<p>rebase 作用就是变成线性了，这在多人协作的情况变得非常关键。因为多人合作是不允许随意制造分叉的。大家可以参考我这篇文章。</p>
-<p>这就引出了这篇博文要主要阐述的问题，rebase golden rule 问题。</p>
-<blockquote>
-<p>Rebase golden rule<br>“No one shall rebase a shared branch” — Everyone about rebase</p>
-</blockquote>
-<p>简单来说就是不要在你的公共分支上做任何rebase操作。<br>再举一个🌰。</p>
-<p>图一是我们做rebase操作前的样子</p>
-<p><img src="/images/2019/09/10/75e5c990-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
-<p>图二是我们正确rebase的结果，即在feature分支执行rebase develop命令</p>
-<p><img src="/images/2019/09/10/7a0f9d20-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
-<p>图三是我们错误rebase的结果，即违反黄金法则的结果，我们在develop分支上执行了rebase feature操作</p>
-<p><img src="/images/2019/09/10/7ce48f10-d3d1-11e9-903f-858fa70b7712.png" alt="image.png"></p>
-<p>当我们在图三这种情况下对develop分支进行提交的话，会发现和远程分支冲突，然后我们手动或自动解决冲突，继续提交上去之后发现，我们修改的功能代码已经提交上去了，但是当我们看我们提交历史的记录的时候会发现有一部分重复的提交log。<br>这就是问题所在，你的项目组长是绝对不允许在他的项目里出现这种情况，因为会影响后续的代码追查，code review等问题。<br>说完了这个问题，这篇博文的主要任务基本完成了，最后在简单说一下 merge 的 –no-ff 参数，这也是我们在分支合并的时候经常遇到的问题。<br>–no-ff 的意思就是关闭 merge 的 fast-forwarded，merge 操作默认执行的是 fast-forwarded。<br>fast-forwarded 的意思就是在合并分支的时候，如果不涉及三方合并，git 只会简单的移动指针。<br>再再举一个🌰</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        dev</span><br><span class="line">        |</span><br><span class="line">A---B---C</span><br><span class="line">         \</span><br><span class="line">          D---E</span><br><span class="line">              |</span><br><span class="line">              feature</span><br></pre></td></tr></table></figure>
-
-<p>此时我们执行 merge –no-ff 操作，将会得到如下图</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">                dev</span><br><span class="line">                |</span><br><span class="line">A---B---C--------F</span><br><span class="line">         \      /</span><br><span class="line">          D---E</span><br></pre></td></tr></table></figure>
-
-<p>执行 merge 之后得到的结果如下</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">               dev</span><br><span class="line">                |</span><br><span class="line">A---B---C---D---E</span><br></pre></td></tr></table></figure>
-
-<p>如上git 将指针从C移到了E。</p>
-<p>简单来说就是 –no-ff 的作用就是保持分支的非线性。方便我们看到分支的变化。</p>
-<blockquote>
-<p>本文作者： Frank<br>本文链接： <a href="http://hellofrank.github.io/2018/04/27/Git-Rebase-黄金法则问题/" target="_blank" rel="noopener">http://hellofrank.github.io/2018/04/27/Git-Rebase-黄金法则问题/</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
-</blockquote>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1432,6 +1461,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/9/">9</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/11/">11</a></li>
             
         </ul>
     </nav>
@@ -1481,7 +1512,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            120
+                            121
                         </p>
                     </a>
                 </div>
@@ -1505,7 +1536,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            149
+                            150
                         </p>
                     </a>
                 </div>
@@ -1627,7 +1658,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">93</span>
+                <span class="level-item tag">94</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1672,6 +1703,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/11/3d-model/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/11/0f96a0d0-1c2c-11ea-9d1b-2d60b515f627.png" alt="3D模型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T15:28:59.000Z">2019-12-11</time></div>
+                    <a href="/2019/12/11/3d-model/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3D模型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/10/PgFincore/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
@@ -1739,25 +1789,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
                     <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/06/powershell/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
-                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1789,6 +1820,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/11/3d-model/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/11/0f96a0d0-1c2c-11ea-9d1b-2d60b515f627.png" alt="3D模型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T15:28:59.000Z">2019-12-11</time></div>
+                    <a href="/2019/12/11/3d-model/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3D模型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/10/PgFincore/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
@@ -1856,25 +1906,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
                     <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/06/powershell/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/06/96ecadb0-1838-11ea-ae4f-750d6eeeb0bb.png" alt="如何绕过PowerShell访问限制并实现PowerShell代码执行">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-06T14:55:46.000Z">2019-12-06</time></div>
-                    <a href="/2019/12/06/powershell/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何绕过PowerShell访问限制并实现PowerShell代码执行</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
