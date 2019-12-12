@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>勒索软件Snatch利用安全模式绕过杀毒软件 - Time</title>
+
+
+    <meta name="description" content="研究人员发现勒索软件Snatch可使Windows重新启动到安全模式来绕过安全保护。 10月中旬，研究人员发现名为Snatch的勒索软件将自身设置为一个服务，并在安全模式引导期间运行。它可以快速地将计算机重新启动到安全模式，并在大多数软件（包括安全软件）不运行的安全模式环境中加密受害者的硬盘驱动器。">
+<meta name="keywords" content="漏洞,Snatch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="勒索软件Snatch利用安全模式绕过杀毒软件">
+<meta property="og:url" content="https://blog.hsutimes.com/2019/12/12/snatch/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:description" content="研究人员发现勒索软件Snatch可使Windows重新启动到安全模式来绕过安全保护。 10月中旬，研究人员发现名为Snatch的勒索软件将自身设置为一个服务，并在安全模式引导期间运行。它可以快速地将计算机重新启动到安全模式，并在大多数软件（包括安全软件）不运行的安全模式环境中加密受害者的硬盘驱动器。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png">
+<meta property="og:updated_time" content="2019-12-12T15:33:27.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="勒索软件Snatch利用安全模式绕过杀毒软件">
+<meta name="twitter:description" content="研究人员发现勒索软件Snatch可使Windows重新启动到安全模式来绕过安全保护。 10月中旬，研究人员发现名为Snatch的勒索软件将自身设置为一个服务，并在安全模式引导期间运行。它可以快速地将计算机重新启动到安全模式，并在大多数软件（包括安全软件）不运行的安全模式环境中加密受害者的硬盘驱动器。">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png">
+<meta name="twitter:site" content="https://twitter.com/times26740863">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134224598-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="勒索软件Snatch利用安全模式绕过杀毒软件" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="勒索软件Snatch利用安全模式绕过杀毒软件">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-12T15:22:49.000Z">2019-12-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    18 分钟 读完 (大约 2693 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                勒索软件Snatch利用安全模式绕过杀毒软件
+            
+        </h1>
+        <div class="content">
+            <p>研究人员发现勒索软件Snatch可使Windows重新启动到安全模式来绕过安全保护。</p>
+<p>10月中旬，研究人员发现名为Snatch的勒索软件将自身设置为一个服务，并在安全模式引导期间运行。它可以快速地将计算机重新启动到安全模式，并在大多数软件（包括安全软件）不运行的安全模式环境中加密受害者的硬盘驱动器。</p>
+<a id="more"></a>
+
+<p><img src="/images/2019/12/12/209f1a70-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>Snatch勒索软件自2018年夏天以来一直很活跃，该恶意软件的安全模式启动是一个新增加的功能。恶意软件包括一个勒索软件组件和一个单独的数据窃取器，这两个工具显然都是由网络罪犯开发的，此外还有几个公开的工具，这些工具本身并不是恶意的，通常被渗透测试人员、系统管理员或技术人员使用。Snatch勒索软件不支持多平台，该软件可以运行在最常见的Windows版本上，从7到10，32位和64位版本。发现的样本是使用开源打包程序UPX打包，进行了内容混淆。</p>
+<h1 id="Snatch工作方式"><a href="#Snatch工作方式" class="headerlink" title="Snatch工作方式"></a>Snatch工作方式</h1><p>恶意软件采用主动自动攻击模式，他们通过对易存在漏洞的服务进行自动暴力攻击来渗透企业网络，并在目标组织的网络内部进行传播。恶意软件在勒索的同时能够一直从目标组织窃取大量信息。</p>
+<p>Snatch小组成员曾经在线进行技术讨论与寻找合作伙伴，并免费培训其他人使用恶意软件，允许潜在伙伴使用其基础设施，提供运行Metasploit的服务器。</p>
+<p><img src="/images/2019/12/12/94f18bb0-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p><img src="/images/2019/12/12/a729b320-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<h1 id="Snatch行为分析"><a href="#Snatch行为分析" class="headerlink" title="Snatch行为分析"></a>Snatch行为分析</h1><p>在其中一起针对一家大型国际公司的攻击事件中，MTR设法从目标公司获得勒索软件无法加密的详细日志。攻击者最初通过强行将密码强制输入到Microsoft Azure服务器上的管理员帐户来访问公司的内部网络，并能够使用远程桌面（RDP）登录到服务器。</p>
+<p>攻击者使用Azure服务器作为渗透立足点，利用该管理员帐户登录到同一网络上的域控DC，然后在数周内对目标网络执行监视任务。查询有权登录的用户列表，并将结果写入文件。此外还将WMIC系统用户数据、进程列表，Windows LSASS服务的内存内容存储到文件中，然后上传到c2服务器。</p>
+<p><img src="/images/2019/12/12/b90b7d30-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>User information stolen by Snatch</p>
+<p><img src="/images/2019/12/12/c02ff320-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>Snatch dumps lsass from memory then uploads the dump</p>
+<p>攻击者设置了一次性Windows服务来部署特定任务。这些服务有很长的随机文件名，可从tasklist程序查询正在运行的进程的列表，将其输出到temp目录中的一个文件，然后运行一个批处理文件（也位于temp目录中），将tasklist文件上传到C2服务器。</p>
+<p><img src="/images/2019/12/12/d2ac4f80-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>它使用同样的方法将大量信息上传到C2服务器。例如，它使用此命令把提取的用户帐户和其他配置文件信息（.txt文件）发送回C2，然后执行它在Windows临时目录中创建的批处理。</p>
+<p><img src="/images/2019/12/12/df104ec0-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>攻击者在大约200台计算机上安装了监视软件，占组织内部计算机数量的5%。攻击者安装了几个恶意文件；其中一组文件是为了让攻击者能够远程访问这些计算机，而不必依赖Azure服务器。攻击者还安装了一个名为“高级端口扫描程序”的Windows程序，使用该工具在网络上发现他们其他潜在目标计算机。</p>
+<p><img src="/images/2019/12/12/e6cee1d0-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>研究人员还发现一个名为Update_Collector.exe的恶意软件，该工具利用WMI收集的数据寻找网络上其他计算机和用户帐户的更多信息，随后将该信息转储到文件中，上传到攻击者的服务器。还发现了一系列其他合法的工具，包括 Process Hacker, IObit Uninstaller, PowerTool, 和 PsExec。在其他几起攻击中使用了完全相同的工具集，攻击者针对世界各地组织的进行攻击，包括美国、加拿大和几个欧洲国家。受害组织至少有一台或多台带有RDP的计算机暴露在internet上。</p>
+<p>在攻击过程中的某个时间点（可能是在初始网络攻击后几天到几周），攻击者将勒索软件组件下载到目标计算机。此组件名称包括每个受害者唯一五个字符代码和“_pack.exe”。</p>
+<p><img src="/images/2019/12/12/f21da080-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<h1 id="下载勒索软件并通过PSEXEC启动"><a href="#下载勒索软件并通过PSEXEC启动" class="headerlink" title="下载勒索软件并通过PSEXEC启动"></a>下载勒索软件并通过PSEXEC启动</h1><p>当恶意软件调用PSEXEC服务来执行勒索软件时，它已将自己解压缩到Windows文件夹中，并使用相同的五个字符和“unpack.exe”。</p>
+<p><img src="/images/2019/12/12/feb1fe90-1cf3-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>The “unpack” version ends up in the Windows directory</p>
+<p>勒索软件将自己安装为一个名为SuperBackupMan的Windows服务。服务描述文本“This service make backup copy every day,”有助于其在服务列表中隐藏。此注册表项在计算机开始重新启动之前立即设置。</p>
+<p><img src="/images/2019/12/12/0b6c8240-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>SuperBackupMan服务可组织用户停止或暂停。</p>
+<p><img src="/images/2019/12/12/13d90890-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>恶意软件将此key添加到Windows注册表中，以便在安全模式引导期间启动。</p>
+<blockquote>
+<p>HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\SuperBackupMan:Default:Service</p>
+</blockquote>
+<p><img src="/images/2019/12/12/2acc4710-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>使用Windows上的BCDEDIT工具发出命令，将Windows操作系统设置为以安全模式启动，然后立即强制重新启动受感染的计算机。</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bcdedit.exe /set &#123;current&#125; safeboot minimal</span><br><span class="line"></span><br><span class="line">shutdown /r /f /t 00</span><br></pre></td></tr></table></figure>
+
+<p>当计算机在重新启动后进入安全模式，恶意软件使用Windows组件net.exe停止SuperBackupMan服务，然后使用Windows组件vssadmin.exe删除系统上的所有Volume Shadow副本，可阻止技术人员对勒索软件加密的文件进行取证恢复。</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net stop SuperBackupMan</span><br><span class="line"></span><br><span class="line">vssadmin delete shadows /all /quiet</span><br></pre></td></tr></table></figure>
+
+<p>勒索软件然后开始加密受感染机器的本地硬盘上的文件。</p>
+<h1 id="Snatch影响分析"><a href="#Snatch影响分析" class="headerlink" title="Snatch影响分析"></a>Snatch影响分析</h1><p>勒索软件在加密文件中会附加一个由五个字母数字字符组成的伪随机字符串。此字符串出现在勒索软件可执行文件名和勒索通知中，并且对于每个目标组织都是唯一的。例如，如果勒索软件名为abcdex64.exe，则加密的文件将文件扩展名.abcde附加到原始文件名后，勒索信息使用诸如README_abcde_files.txt或DECRYPT_abcde_DATA.txt之类的命名规范。</p>
+<p><img src="/images/2019/12/12/552111d0-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>一家专门从事勒索受害者和攻击者之间的谈判的公司称，从7月到10月，他们已经代表客户12次与罪犯谈判。赎金从2000美元到35000美元不等，四个月内呈上升趋势。</p>
+<p>与许多其他勒索软件一样， Snatch对于某些文件和文件夹位置列表不会加密。通常勒索软件这样做是为了维护系统的稳定性，将目标集中在工作文档或个人文件上。它跳过的位置包括：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">C:\</span><br><span class="line"></span><br><span class="line">windows</span><br><span class="line"></span><br><span class="line">recovery</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">$</span>recycle.bin</span><br><span class="line"></span><br><span class="line">perflogs</span><br><span class="line"></span><br><span class="line">C:\ ProgramData</span><br><span class="line"></span><br><span class="line">start menu</span><br><span class="line"></span><br><span class="line">microsoft</span><br><span class="line"></span><br><span class="line">templates</span><br><span class="line"></span><br><span class="line">favorites</span><br><span class="line"></span><br><span class="line">C:\Program Files\</span><br><span class="line"></span><br><span class="line">windows</span><br><span class="line"></span><br><span class="line">perflogs</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">$</span>recycle.bin</span><br><span class="line"></span><br><span class="line">system volume information</span><br><span class="line"></span><br><span class="line">common files</span><br><span class="line"></span><br><span class="line">dvd maker</span><br><span class="line"></span><br><span class="line">internet explorer</span><br><span class="line"></span><br><span class="line">microsoft</span><br><span class="line"></span><br><span class="line">mozilla firefox</span><br><span class="line"></span><br><span class="line">reference assemblies</span><br><span class="line"></span><br><span class="line">tap-windows</span><br><span class="line"></span><br><span class="line">windows defender</span><br><span class="line"></span><br><span class="line">windows journal</span><br><span class="line"></span><br><span class="line">windows mail</span><br><span class="line"></span><br><span class="line">windows media player</span><br><span class="line"></span><br><span class="line">windows nt</span><br><span class="line"></span><br><span class="line">windows photo viewer</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2019/12/12/6954bb20-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>在其中一个样本中发现攻击者在监控运行其代理的系统。当分析员意外注销时，分析员怀疑攻击者将机器识别为安全研究平台，于是他给攻击者写了一条消息，并将其留在了测试机器的桌面上。片刻之后，攻击者再次将分析员计算机注销，阻止分析员使用的IP地址重新连接到C2服务器。</p>
+<p><img src="/images/2019/12/12/70fae430-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="image.png"></p>
+<p>还发现勒索软件正在使用OpenPGP，二进制文件将PGP公钥块硬编码到文件中。</p>
+<h1 id="预防与监测"><a href="#预防与监测" class="headerlink" title="预防与监测"></a>预防与监测</h1><p><strong>预防</strong><br>建议任何组织都不要将远程桌面界面暴露在不受保护的互联网上，应将它们置于VPN后，没有VPN凭据的人都无法访问。</p>
+<p>攻击者还表示希望寻找其他的合作伙伴，能够使用其他类型远程访问工具（如VNC和TeamViewer）以及Web外壳或SQL注入技术。</p>
+<p>组织应立即为具有管理权限的用户实现多因素身份验证，使攻击者更难强行利用这些帐户凭据。</p>
+<p><strong>检测</strong><br>大多数初始访问和立足点都在未受保护和未受监视的设备上。组织应定期检测设备确保网络上没有被疏忽的设备机器。</p>
+<p>勒索软件的勒索行为发生在攻击者进入网络后的几天。在勒索软件执行之前，需要一个成熟的威胁搜索程序识别攻击者的软件。</p>
+<p><strong>检测详细信息</strong><br>通过以下签名检测Snatch的各种组件和此攻击中使用的文件：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Troj/Snatch-H</span><br><span class="line"></span><br><span class="line">Mal/Generic-R</span><br><span class="line"></span><br><span class="line">Troj/Agent-BCYI</span><br><span class="line"></span><br><span class="line">Troj/Agent-BCYN</span><br><span class="line"></span><br><span class="line">HPmal/GoRnSm-A</span><br><span class="line"></span><br><span class="line">HPmal/RansMaz-A</span><br><span class="line"></span><br><span class="line">PUA Detected: ‘PsExec’</span><br></pre></td></tr></table></figure>
+
+<p>*参考来源：sophos，由Kriston编译，来自FreeBuf.COM <a href="https://www.freebuf.com/articles/network/222680.html" target="_blank" rel="noopener">传送门</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Snatch/">Snatch</a>, <a class="has-link-grey -link" href="/tags/漏洞/">漏洞</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/3754260851.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/1592984278.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="7KBW7U6X2ZYK6" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/user/creators?u=26939987" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/11/3d-model/">
+                <span class="level-item">3D模型</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://hsutimes.github.io/js/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'c12161ac3816cc6cfa8936955f35cfd7',
+		owner: 'hsutimes',
+		repo: 'gitment_blog',
+		oauth: {
+			client_id: 'd73d768ea9e3bd69ab54',
+			client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://hsutimes.github.io/images/16530d7f26a413c2.png" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            122
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            151
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/hsutimes" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://hsutimes.club" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Time</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hsutimes.club</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">95</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Snatch工作方式">
+        <span class="has-mr-6">1</span>
+        <span>Snatch工作方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#Snatch行为分析">
+        <span class="has-mr-6">2</span>
+        <span>Snatch行为分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#下载勒索软件并通过PSEXEC启动">
+        <span class="has-mr-6">3</span>
+        <span>下载勒索软件并通过PSEXEC启动</span>
+        </a></li><li>
+        <a class="is-flex" href="#Snatch影响分析">
+        <span class="has-mr-6">4</span>
+        <span>Snatch影响分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#预防与监测">
+        <span class="has-mr-6">5</span>
+        <span>预防与监测</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/12/snatch/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="勒索软件Snatch利用安全模式绕过杀毒软件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-12T15:22:49.000Z">2019-12-12</time></div>
+                    <a href="/2019/12/12/snatch/" class="title has-link-black-ter is-size-6 has-text-weight-normal">勒索软件Snatch利用安全模式绕过杀毒软件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/11/3d-model/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/11/0f96a0d0-1c2c-11ea-9d1b-2d60b515f627.png" alt="3D模型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T15:28:59.000Z">2019-12-11</time></div>
+                    <a href="/2019/12/11/3d-model/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3D模型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/10/PgFincore/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time></div>
+                    <a href="/2019/12/10/PgFincore/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL 内存页管理函数 PgFincore</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/09/tealang/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/09/ec375870-1a99-11ea-9f33-51ae6db68ce3.png" alt="Tea语言">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T15:32:55.000Z">2019-12-09</time></div>
+                    <a href="/2019/12/09/tealang/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Tea语言</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/08/41289f00-19ce-11ea-a593-6992fe272138.png" alt="WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T15:21:07.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Snatch工作方式">
+        <span class="has-mr-6">1</span>
+        <span>Snatch工作方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#Snatch行为分析">
+        <span class="has-mr-6">2</span>
+        <span>Snatch行为分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#下载勒索软件并通过PSEXEC启动">
+        <span class="has-mr-6">3</span>
+        <span>下载勒索软件并通过PSEXEC启动</span>
+        </a></li><li>
+        <a class="is-flex" href="#Snatch影响分析">
+        <span class="has-mr-6">4</span>
+        <span>Snatch影响分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#预防与监测">
+        <span class="has-mr-6">5</span>
+        <span>预防与监测</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/12/snatch/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="勒索软件Snatch利用安全模式绕过杀毒软件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-12T15:22:49.000Z">2019-12-12</time></div>
+                    <a href="/2019/12/12/snatch/" class="title has-link-black-ter is-size-6 has-text-weight-normal">勒索软件Snatch利用安全模式绕过杀毒软件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/11/3d-model/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/11/0f96a0d0-1c2c-11ea-9d1b-2d60b515f627.png" alt="3D模型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T15:28:59.000Z">2019-12-11</time></div>
+                    <a href="/2019/12/11/3d-model/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3D模型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/10/PgFincore/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time></div>
+                    <a href="/2019/12/10/PgFincore/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL 内存页管理函数 PgFincore</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/09/tealang/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/09/ec375870-1a99-11ea-9f33-51ae6db68ce3.png" alt="Tea语言">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T15:32:55.000Z">2019-12-09</time></div>
+                    <a href="/2019/12/09/tealang/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Tea语言</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/08/41289f00-19ce-11ea-a593-6992fe272138.png" alt="WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T15:21:07.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="勒索软件Snatch利用安全模式绕过杀毒软件" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

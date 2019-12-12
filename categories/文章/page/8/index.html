@@ -153,6 +153,71 @@
     
 <div class="card">
     
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-08T03:09:19.000Z">2019-09-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 753 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/08/Electron-vue/">Electron-vue</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/08/2c017600-d1e5-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+<h1 id="Electron-vue"><a href="#Electron-vue" class="headerlink" title="Electron-vue"></a>Electron-vue</h1><blockquote>
+<p>基于 vue (基本上是它听起来的样子) 来构造 electron 应用程序的样板代码。</p>
+</blockquote>
+<p>什么是electron?</p>
+<p><img src="/images/2019/09/08/87493a70-d1e5-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+<p>electron由Node.js+Chromium+Native APIs构成。你可以理解成，它是一个得到了Node.js和基于不同平台的Native APIs加强的Chromium浏览器，可以用来开发跨平台的桌面级应用。</p>
+<p>它的开发主要涉及到两个进程的协作——Main（主）进程和Renderer（渲染）进程。简单的理解两个进程的作用：</p>
+<ol>
+<li>Main进程主要通过Node.js、Chromium和Native APIs来实现一些系统以及底层的操作，比如创建系统级别的菜单，操作剪贴板，创建APP的窗口等。</li>
+<li>Renderer进程主要通过Chromium来实现APP的图形界面——就是平时我们熟悉的前端开发的部分，不过得到了electron给予的加强，一些Node的模块（比如fs）和一些在3. Main进程里能用的东西（比如Clipboard）也能在Render进程里使用。<br>Main进程和Renderer进程通过<code>ipcMain</code>和<code>ipcRenderer</code>来进行通信。通过事件监听和事件派发来实现两个进程通信，从而实现Main或者Renderer进程里不能实现的某些功能。</li>
+</ol>
+<h1 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h1><p>该样板代码被构建为 vue-cli 的一个模板，并且包含多个选项，可以自定义你最终的脚手架程序。本项目需要使用 node@^7 或更高版本。electron-vue 官方推荐 yarn 作为软件包管理器，因为它可以更好地处理依赖关系，并可以使用 yarn clean 帮助减少最后构建文件的大小。</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> 安装 vue-cli 和 脚手架样板代码</span><br><span class="line">npm install -g vue-cli</span><br><span class="line">vue init simulatedgreg/electron-vue my-project</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span> 安装依赖并运行你的程序</span><br><span class="line">cd my-project</span><br><span class="line">yarn # 或者 npm install</span><br><span class="line">yarn run dev # 或者 npm run dev</span><br></pre></td></tr></table></figure>
+
+<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">my-project</span><br><span class="line">├─ .electron-vue</span><br><span class="line">│  └─ &lt;build/development&gt;.js files</span><br><span class="line">├─ build</span><br><span class="line">│  └─ icons/</span><br><span class="line">├─ dist</span><br><span class="line">│  ├─ electron/</span><br><span class="line">│  └─ web/</span><br><span class="line">├─ node_modules/</span><br><span class="line">├─ src</span><br><span class="line">│  ├─ main</span><br><span class="line">│  │  ├─ index.dev.js</span><br><span class="line">│  │  └─ index.js</span><br><span class="line">│  ├─ renderer</span><br><span class="line">│  │  ├─ components/</span><br><span class="line">│  │  ├─ router/</span><br><span class="line">│  │  ├─ store/</span><br><span class="line">│  │  ├─ App.vue</span><br><span class="line">│  │  └─ main.js</span><br><span class="line">│  └─ index.ejs</span><br><span class="line">├─ static/</span><br><span class="line">├─ test</span><br><span class="line">│  ├─ e2e</span><br><span class="line">│  │  ├─ specs/</span><br><span class="line">│  │  ├─ index.js</span><br><span class="line">│  │  └─ utils.js</span><br><span class="line">│  ├─ unit</span><br><span class="line">│  │  ├─ specs/</span><br><span class="line">│  │  ├─ index.js</span><br><span class="line">│  │  └─ karma.config.js</span><br><span class="line">│  └─ .eslintrc</span><br><span class="line">├─ .babelrc</span><br><span class="line">├─ .eslintignore</span><br><span class="line">├─ .eslintrc.js</span><br><span class="line">├─ .gitignore</span><br><span class="line">├─ package.json</span><br><span class="line">└─ README.md</span><br></pre></td></tr></table></figure>
+
+<h1 id="产品构建"><a href="#产品构建" class="headerlink" title="产品构建"></a>产品构建</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.asar</span><br><span class="line">├─ dist</span><br><span class="line">│  └─ electron</span><br><span class="line">│     ├─ static/</span><br><span class="line">│     ├─ index.html</span><br><span class="line">│     ├─ main.js</span><br><span class="line">│     └─ renderer.js</span><br><span class="line">├─ node_modules/</span><br><span class="line">└─ package.json</span><br></pre></td></tr></table></figure>
+
+<h1 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h1><p><img src="/images/2019/09/08/092650a0-d1e6-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
     <div class="card-image">
         <a href="/2019/09/08/Airbnb-JavaScript-代码规范/" class="image is-7by1">
             <img class="thumbnail" src="/images/2019/12/09/5edd0ea0-1a9b-11ea-ade2-9dc575db7dd4.png" alt="Airbnb JavaScript 代码规范() {">
@@ -2362,7 +2427,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            121
+                            122
                         </p>
                     </a>
                 </div>
@@ -2386,7 +2451,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            150
+                            151
                         </p>
                     </a>
                 </div>
@@ -2508,7 +2573,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">94</span>
+                <span class="level-item tag">95</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -2553,6 +2618,25 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
         
         <article class="media">
             
+            <a href="/2019/12/12/snatch/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="勒索软件Snatch利用安全模式绕过杀毒软件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-12T15:22:49.000Z">2019-12-12</time></div>
+                    <a href="/2019/12/12/snatch/" class="title has-link-black-ter is-size-6 has-text-weight-normal">勒索软件Snatch利用安全模式绕过杀毒软件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/11/3d-model/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/11/0f96a0d0-1c2c-11ea-9d1b-2d60b515f627.png" alt="3D模型">
@@ -2620,25 +2704,6 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T15:21:07.000Z">2019-12-08</time></div>
                     <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
-                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2670,6 +2735,25 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
         
         <article class="media">
             
+            <a href="/2019/12/12/snatch/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="勒索软件Snatch利用安全模式绕过杀毒软件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-12T15:22:49.000Z">2019-12-12</time></div>
+                    <a href="/2019/12/12/snatch/" class="title has-link-black-ter is-size-6 has-text-weight-normal">勒索软件Snatch利用安全模式绕过杀毒软件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/11/3d-model/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/11/0f96a0d0-1c2c-11ea-9d1b-2d60b515f627.png" alt="3D模型">
@@ -2737,25 +2821,6 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T15:21:07.000Z">2019-12-08</time></div>
                     <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/07/8e5d6f00-18fa-11ea-be8d-37143176259c.png" alt="游戏中的加密算法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T14:01:25.000Z">2019-12-07</time></div>
-                    <a href="/2019/12/07/the-encryption-algorithm-in-the-game/" class="title has-link-black-ter is-size-6 has-text-weight-normal">游戏中的加密算法</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
