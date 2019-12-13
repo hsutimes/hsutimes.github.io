@@ -142,6 +142,85 @@
     
 <div class="card">
     
+    <div class="card-image">
+        <a href="/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/" class="image is-7by1">
+            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="TensorFlow 2.0 中文手写字识别（汉字OCR）">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-06T07:08:56.000Z">2019-09-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/人工智能/">人工智能</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1435 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/06/TensorFlow-2-0-中文手写字识别（汉字OCR）/">TensorFlow 2.0 中文手写字识别（汉字OCR）</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/06/7b3ed590-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="TensorFlow-2-0-中文手写字识别（汉字OCR）"><a href="#TensorFlow-2-0-中文手写字识别（汉字OCR）" class="headerlink" title="TensorFlow 2.0 中文手写字识别（汉字OCR）"></a>TensorFlow 2.0 中文手写字识别（汉字OCR）</h1><ul>
+<li>搜索空间空前巨大，我们使用的数据集1.0版本汉字就多大3755个，如果加上1.1版本一起，总共汉字可以分为多达7599+个类别！这比10个阿拉伯字母识别难度大很多！</li>
+<li>数据集处理挑战更大，相比于mnist和fasionmnist来说，汉字手写字体识别数据集非常少，而且仅有的数据集数据预处理难度非常大，非常不直观，但是，千万别吓到，相信你看完本教程一定会收货满满!</li>
+<li>汉字识别更考验选手的建模能力，还在分类花？分类猫和狗？随便搭建的几层在搜索空间巨大的汉字手写识别里根本不work！你现在是不是想用很深的网络跃跃欲试？更深的网络在这个任务上可能根本不可行！！看完本教程我们就可以一探究竟！总之一句话，模型太简单和太复杂都不好，甚至会发散！（想亲身体验模型训练发散抓狂的可以来尝试一下！）。</li>
+</ul>
+<h1 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h1><p>在开始之前，先介绍一下本项目所采用的数据信息。我们的数据全部来自于CASIA的开源中文手写字数据集，该数据集分为两部分：</p>
+<ul>
+<li>CASIA-HWDB：离线的HWDB，我们仅仅使用1.0-1.2，这是单字的数据集，2.0-2.2是整张文本的数据集，我们暂时不用，单字里面包含了约7185个汉字以及171个英文字母、数字、标点符号等；</li>
+<li>CASIA-OLHWDB：在线的HWDB，格式一样，包含了约7185个汉字以及171个英文字母、数字、标点符号等，我们不用。</li>
+</ul>
+<p>其实你下载1.0的train和test差不多已经够了，可以直接运行 dataset/get_hwdb_1.0_1.1.sh 下载。原始数据下载链接点击这里. 由于原始数据过于复杂，我们使用一个类来封装数据读取过程，这是我们展示的效果：<br><img src="/images/2019/09/06/c3295380-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p>看到这么密密麻麻的文字相信连人类都…. 开始头疼了，这些复杂的文字能够通过一个神经网络来识别出来？？答案是肯定的…. 不有得感叹一下神经网络的强大。。上面的部分文字识别出来的结果是这样的：</p>
+<p><img src="/images/2019/09/06/ce981d50-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p>关于数据的处理部分，从服务器下载到的原始数据是 trn_gnt.zip 解压之后是 gnt.alz， 需要再次解压得到一个包含 gnt文件的文件夹。里面每一个gnt文件都包含了若干个汉字及其标注。直接处理比较麻烦，也不方便抽取出图片再进行操作，虽然转为图片存入文件夹比较直观，但是不适合批量读取和训练, 后面我们统一转为tfrecord进行训练。</p>
+<p>更新: 实际上，由于单个汉字图片其实很小，差不多也就最大80x80的大小，这个大小不适合转成图片保存到本地，因此我们将hwdb原始的二进制保存为tfrecord。同时也方便后面训练，可以直接从tfrecord读取图片进行训练。</p>
+<p><img src="/images/2019/09/06/dbb692f0-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h1><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    all_characters = load_characters()</span><br><span class="line">    num_classes = len(all_characters)</span><br><span class="line">    logging.info(<span class="hljs-string">'all characters: &#123;&#125;'</span>.format(num_classes))</span><br><span class="line">    train_dataset = load_ds()</span><br><span class="line">    train_dataset = train_dataset.shuffle(<span class="hljs-number">100</span>).map(preprocess).batch(<span class="hljs-number">32</span>).repeat()</span><br><span class="line"></span><br><span class="line">    val_ds = load_val_ds()</span><br><span class="line">    val_ds = val_ds.shuffle(<span class="hljs-number">100</span>).map(preprocess).batch(<span class="hljs-number">32</span>).repeat()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> data <span class="hljs-keyword">in</span> train_dataset.take(<span class="hljs-number">2</span>):</span><br><span class="line">        print(data)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># init model</span></span><br><span class="line">    model = build_net_003((<span class="hljs-number">64</span>, <span class="hljs-number">64</span>, <span class="hljs-number">1</span>), num_classes)</span><br><span class="line">    model.summary()</span><br><span class="line">    logging.info(<span class="hljs-string">'model loaded.'</span>)</span><br><span class="line"></span><br><span class="line">    start_epoch = <span class="hljs-number">0</span></span><br><span class="line">    latest_ckpt = tf.train.latest_checkpoint(os.path.dirname(ckpt_path))</span><br><span class="line">    <span class="hljs-keyword">if</span> latest_ckpt:</span><br><span class="line">        start_epoch = int(latest_ckpt.split(<span class="hljs-string">'-'</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">'.'</span>)[<span class="hljs-number">0</span>])</span><br><span class="line">        model.load_weights(latest_ckpt)</span><br><span class="line">        logging.info(<span class="hljs-string">'model resumed from: &#123;&#125;, start at epoch: &#123;&#125;'</span>.format(latest_ckpt, start_epoch))</span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        logging.info(<span class="hljs-string">'passing resume since weights not there. training from scratch'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> use_keras_fit:</span><br><span class="line">        model.compile(</span><br><span class="line">            optimizer=tf.keras.optimizers.Adam(),</span><br><span class="line">            loss=tf.keras.losses.SparseCategoricalCrossentropy(),</span><br><span class="line">            metrics=[<span class="hljs-string">'accuracy'</span>])</span><br><span class="line">        callbacks = [</span><br><span class="line">            tf.keras.callbacks.ModelCheckpoint(ckpt_path,</span><br><span class="line">                                               save_weights_only=<span class="hljs-literal">True</span>,</span><br><span class="line">                                               verbose=<span class="hljs-number">1</span>,</span><br><span class="line">                                               period=<span class="hljs-number">500</span>)</span><br><span class="line">        ]</span><br><span class="line">        <span class="hljs-keyword">try</span>:</span><br><span class="line">            model.fit(</span><br><span class="line">                train_dataset,</span><br><span class="line">                validation_data=val_ds,</span><br><span class="line">                validation_steps=<span class="hljs-number">1000</span>,</span><br><span class="line">                epochs=<span class="hljs-number">15000</span>,</span><br><span class="line">                steps_per_epoch=<span class="hljs-number">1024</span>,</span><br><span class="line">                callbacks=callbacks)</span><br><span class="line">        <span class="hljs-keyword">except</span> KeyboardInterrupt:</span><br><span class="line">            model.save_weights(ckpt_path.format(epoch=<span class="hljs-number">0</span>))</span><br><span class="line">            logging.info(<span class="hljs-string">'keras model saved.'</span>)</span><br><span class="line">        model.save_weights(ckpt_path.format(epoch=<span class="hljs-number">0</span>))</span><br><span class="line">        model.save(os.path.join(os.path.dirname(ckpt_path), <span class="hljs-string">'cn_ocr.h5'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>大家在以后编写训练代码的时候其实可以保持这个好的习惯。</p>
+<p>OK，整个模型训练起来之后，可以在短时间内达到95%的准确率：</p>
+<p><img src="/images/2019/09/06/faa28750-d074-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<p><img src="/images/2019/09/06/098bf8f0-d075-11e9-9009-39f523e8a996.png" alt="image.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过本教程，我们完成了使用tensorflow 2.0全新的API搭建一个中文汉字手写识别系统。模型基本能够实现我们想要的功能。要知道，这个模型可是在搜索空间多大3755的类别当中准确的找到最相似的类别！！通过本实验，我们有几点心得：</p>
+<ul>
+<li>神经网络不仅仅是在学习，它具有一定的想象力！！比如它的一些看着很像的字：拜-佯， 扮-捞，笨-苯…. 这些字如果手写出来，连人都比较难以辨认！！但是大家要知道这些字在类别上并不是相领的！也就是说，模型具有一定的联想能力！</li>
+<li>不管问题多复杂，要敢于动手、善于动手。</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -911,127 +990,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-24T08:20:38.000Z">2019-08-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1472 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/08/24/Java面试题（框架-JVM-多线程-算法-数据库）/">Java面试题（框架+JVM+多线程+算法+数据库）</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="/images/2019/08/24/58bd4f10-c647-11e9-a58b-4d8a77bb39d6.png" alt="image.png"></p>
-<h1 id="基础与框架"><a href="#基础与框架" class="headerlink" title="基础与框架"></a>基础与框架</h1><ol>
-<li>String类能被继承吗，为什么</li>
-<li>String，Stringbuffer，StringBuilder的区别？</li>
-<li>ArrayList和LinkedList有什么区别</li>
-<li>类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，他们的执行顺序</li>
-<li>用过哪些Map，都有什么区别，HashMap是线程安全的吗,并发下使用的Map是什么，他们内部原理分别是什么，比如hashcode，扩容等</li>
-<li>HashMap为什么get和set那么快，concurrentHashMap为什么能提高并发</li>
-<li>抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么</li>
-<li>什么情况下会发生栈内存溢出</li>
-<li>什么是nio，原理</li>
-<li>反射中，Class.forName和ClassLoader区别</li>
-<li>tomcat结构，类加载器流程</li>
-<li>讲讲Spring事务的传播属性,AOP原理，动态代理与cglib实现的区别，AOP有哪几种实现方式</li>
-<li>Spring的beanFactory和factoryBean的区别</li>
-<li>Spring加载流程</li>
-<li>Spring如何管理事务的</li>
-</ol>
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><ol>
-<li>线城池的最大线程数目根据什么确定</li>
-<li>多线程的几种实现方式，什么是线程安全，什么是重排序3.volatile的原理，作用，能代替锁么</li>
-<li>sleep和wait的区别，以及wait的实现原理</li>
-<li>Lock与synchronized 的区别，synchronized 的原理，什么是自旋锁，偏向锁，轻量级锁，什么叫可重入锁，什么叫公平锁和非公平锁</li>
-<li>用过哪些原子类，他们的参数以及原理是什么</li>
-<li>用过哪些线程池，他们的原理简单概括下，构造函数的各个参数的含义，比如coreSize，maxsize等</li>
-<li>有一个第三方接口，有很多个线程去调用获取数据，现在规定每秒钟最多有10个线程同时调用它，如何做到。</li>
-<li>spring的controller是单例还是多例，怎么保证并发的安全</li>
-<li>用三个线程按顺序循环打印abc三个字母，比如abcabcabc</li>
-<li>ThreadLocal用过么，原理是什么，用的时候要注意什么</li>
-<li>如果让你实现一个并发安全的链表，你会怎么做</li>
-</ol>
-<h1 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h1><ol>
-<li>jvm中一次完整的GC流程（从ygc到fgc）是怎样的，重点讲讲对象如何晋升到老年代，几种主要的jvm参数等</li>
-<li>你知道哪几种垃圾收集器，各自的优缺点，重点讲下cms</li>
-<li>当出现了内存溢出，你怎么排错</li>
-<li>JVM内存模型的相关知识了解多少</li>
-<li>简单说说你了解的类加载器</li>
-<li>JAVA的反射机制</li>
-</ol>
-<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><ol>
-<li>http1.0和http1.1有什么区别</li>
-<li>TCP三次握手和四次挥手的流程，为什么断开连接要4次,如果握手只有两次，会出现什么</li>
-<li>TIME_WAIT和CLOSE_WAIT的区别</li>
-<li>说说你知道的几种HTTP响应码</li>
-<li>当你用浏览器打开一个链接的时候，计算机做了哪些工作步骤</li>
-<li>Linux下IO模型有几种，各自的含义是什么</li>
-<li>TCP/IP如何保证可靠性，数据包有哪些数据组成</li>
-<li>架构设计与分布式：</li>
-<li>tomcat如何调优，各种参数的意义</li>
-<li>常见的缓存策略有哪些，你们项目中用到了什么缓存系统，如何设计的，Redis的使用要注意什么，持久化方式，内存设置，集群，淘汰策略等</li>
-<li>如何防止缓存雪崩12.用java自己实现一个LRU</li>
-<li>分布式集群下如何做到唯一序列号</li>
-<li>设计一个秒杀系统，30分钟没付款就自动关闭交易</li>
-<li>如何做一个分布式锁</li>
-<li>用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</li>
-<li>MQ系统的数据如何保证不丢失</li>
-<li>分布式事务的原理，如何使用分布式事务</li>
-<li>什么是一致性hash</li>
-<li>什么是restful，讲讲你理解的restful</li>
-<li>如何设计建立和保持100w的长连接？</li>
-<li>解释什么是MESI协议(缓存一致性)</li>
-<li>说说你知道的几种HASH算法，简单的也可以</li>
-<li>什么是paxos算法</li>
-<li>redis和memcached 的内存管理的区别</li>
-<li>一个在线文档系统，文档可以被编辑，如何防止多人同时对同一份文档进行编辑更新</li>
-</ol>
-<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><ol>
-<li>10亿个数字里里面找最小的10个2、有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优3、2亿个随机生成的无序整数,找出中间大小的值4、遍历二叉树六、数据库1.数据库隔离级别有哪些，各自的含义是什么，MYsql默认的隔离级别是是什么，各个存储引擎优缺点</li>
-<li>高并发下，如何做到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</li>
-<li>SQL优化的一般步骤是什么，怎么看执行计划，如何理解其中各个字段的含义，索引的原理？</li>
-<li>数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</li>
-<li>MYsql的索引实现方式</li>
-<li>聚集索引和非聚集索引的区别</li>
-<li>数据库中 BTREE和B+tree区别</li>
-</ol>
-<p>作者：程序汪追风<br>链接：<a href="https://juejin.im/post/5d5fd40bf265da03df5f1b3a" target="_blank" rel="noopener">https://juejin.im/post/5d5fd40bf265da03df5f1b3a</a><br>来源：掘金</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1102,7 +1060,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            122
+                            123
                         </p>
                     </a>
                 </div>
@@ -1248,7 +1206,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">95</span>
+                <span class="level-item tag">96</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1293,6 +1251,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/13/find-the-depth-and-width-of-the-binary-tree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/13/86b22990-1d9f-11ea-9773-e1eaab923907.png" alt="求二叉树的深度和宽度">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-13T11:54:35.000Z">2019-12-13</time></div>
+                    <a href="/2019/12/13/find-the-depth-and-width-of-the-binary-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">求二叉树的深度和宽度</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/12/snatch/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="勒索软件Snatch利用安全模式绕过杀毒软件">
@@ -1360,25 +1337,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T15:32:55.000Z">2019-12-09</time></div>
                     <a href="/2019/12/09/tealang/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Tea语言</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/08/41289f00-19ce-11ea-a593-6992fe272138.png" alt="WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T15:21:07.000Z">2019-12-08</time></div>
-                    <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1410,6 +1368,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/13/find-the-depth-and-width-of-the-binary-tree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/13/86b22990-1d9f-11ea-9773-e1eaab923907.png" alt="求二叉树的深度和宽度">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-13T11:54:35.000Z">2019-12-13</time></div>
+                    <a href="/2019/12/13/find-the-depth-and-width-of-the-binary-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">求二叉树的深度和宽度</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/12/snatch/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/12/b733ba80-1cf4-11ea-96a6-af6c09ffc1e3.png" alt="勒索软件Snatch利用安全模式绕过杀毒软件">
@@ -1477,25 +1454,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T15:32:55.000Z">2019-12-09</time></div>
                     <a href="/2019/12/09/tealang/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Tea语言</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/08/41289f00-19ce-11ea-a593-6992fe272138.png" alt="WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T15:21:07.000Z">2019-12-08</time></div>
-                    <a href="/2019/12/08/wasm-became-the-fourth-web-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WASM 成为 HTML、CSS 与 JS 之后的第 4 门 Web 语言</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
