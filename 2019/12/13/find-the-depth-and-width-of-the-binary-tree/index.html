@@ -19,7 +19,7 @@
 <meta property="og:description" content="二叉树的深度题目：   输入一个二叉树的根节点，求该树的深度。从根节点到叶子节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度包含的节点数为为树的深度，即二叉树节点的层数。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/2019/12/13/86b22990-1d9f-11ea-9773-e1eaab923907.png">
-<meta property="og:updated_time" content="2019-12-13T12:12:10.582Z">
+<meta property="og:updated_time" content="2019-12-13T12:21:03.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="求二叉树的深度和宽度">
 <meta name="twitter:description" content="二叉树的深度题目：   输入一个二叉树的根节点，求该树的深度。从根节点到叶子节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度包含的节点数为为树的深度，即二叉树节点的层数。">
@@ -216,8 +216,7 @@
 <p><strong>具体实现</strong></p>
 <figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//求二叉树的宽度  </span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">treeWidth</span><span class="hljs-params">(BinaryTreeNode *pRoot)</span></span>&#123;  </span><br><span class="line">    <span class="hljs-keyword">if</span> (pRoot == <span class="hljs-literal">NULL</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  </span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> nLastLevelWidth = <span class="hljs-number">0</span>;<span class="hljs-comment">//记录上一层的宽度  </span></span><br><span class="line">    <span class="hljs-keyword">int</span> nCurLevelWidth = <span class="hljs-number">0</span>;<span class="hljs-comment">//记录当前层的宽度  </span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">queue</span>&lt;BinaryTreeNode*&gt; myQueue;  </span><br><span class="line">    myQueue.push(pRoot);<span class="hljs-comment">//将根节点入队列  </span></span><br><span class="line">    <span class="hljs-keyword">int</span> nWidth = <span class="hljs-number">1</span>;<span class="hljs-comment">//二叉树的宽度  </span></span><br><span class="line">    nLastLevelWidth = <span class="hljs-number">1</span>;      </span><br><span class="line">    BinaryTreeNode *pCur = <span class="hljs-literal">NULL</span>;  </span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (!myQueue.empty())<span class="hljs-comment">//队列不空  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="hljs-keyword">while</span> (nLastLevelWidth!= <span class="hljs-number">0</span>)&#123;  </span><br><span class="line">            pCur = myQueue.front();<span class="hljs-comment">//取出队列头元素  </span></span><br><span class="line">            myQueue.pop();<span class="hljs-comment">//将队列头元素出对  </span></span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (pCur-&gt;m_pLeft != <span class="hljs-literal">NULL</span>)  </span><br><span class="line">                myQueue.push(pCur-&gt;m_pLeft);   </span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (pCur-&gt;m_pRight != <span class="hljs-literal">NULL</span>)  </span><br><span class="line">                myQueue.push(pCur-&gt;m_pRight); </span><br><span class="line">            nLastLevelWidth--;  </span><br><span class="line">        &#125;  </span><br><span class="line"></span><br><span class="line">        nCurLevelWidth = myQueue.size();  </span><br><span class="line">        nWidth = nCurLevelWidth &gt; nWidth ? nCurLevelWidth : nWidth;  </span><br><span class="line">        nLastLevelWidth = nCurLevelWidth;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="hljs-keyword">return</span> nWidth;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>3 参考文献</p>
-<ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
 <li>[1]剑指Offer.何海涛.电子工业出版社. </li>
 <li>[2]<a href="https://blog.csdn.net/htyurencaotang/article/details/12406223#comments" target="_blank" rel="noopener">求二叉树的深度和宽度</a></li>
 </ul>
@@ -575,6 +574,10 @@
         <a class="is-flex" href="#二叉树的宽度">
         <span class="has-mr-6">2</span>
         <span>二叉树的宽度</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考文献">
+        <span class="has-mr-6">3</span>
+        <span>参考文献</span>
         </a></li></ul>
             </div>
         </div>
@@ -712,6 +715,10 @@
         <a class="is-flex" href="#二叉树的宽度">
         <span class="has-mr-6">2</span>
         <span>二叉树的宽度</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考文献">
+        <span class="has-mr-6">3</span>
+        <span>参考文献</span>
         </a></li></ul>
             </div>
         </div>
