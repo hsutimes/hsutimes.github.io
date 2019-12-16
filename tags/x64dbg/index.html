@@ -156,94 +156,6 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-05T07:35:05.000Z">2019-10-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 499 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/05/x64dbg破解code/">x64dbg破解code</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="x64dbg破解code"><a href="#x64dbg破解code" class="headerlink" title="x64dbg破解code"></a>x64dbg破解code</h1><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1075248.PAR  pp.las  ppcheck.scr  ppcheck_A.exe*  新建文本文档.txt</span><br><span class="line">1075248.SET  pp.pwd  ppcheck.txt  PPM1828.DAT</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>将后缀是.par .set的文件名称修改为想要查询的序列号，后缀要保留。 点击PPCHUCK_A.EXE的执行文件执行，选择适当的机器型号，选择需要查询的选项，回车执行，选择三种润滑方式任意一种。执行。</p>
-</blockquote>
-<h2 id="x64dbg加载ppcheck-A-exe"><a href="#x64dbg加载ppcheck-A-exe" class="headerlink" title="x64dbg加载ppcheck_A.exe"></a>x64dbg加载ppcheck_A.exe</h2><p><img src="/images/2019/10/05/96dd00a0-e740-11e9-8a93-9b78d2af1e3b.png" alt="image.png"></p>
-<p>设置断点，运行程序，进行测试。</p>
-<p><img src="/images/2019/10/05/c9255120-e740-11e9-8a93-9b78d2af1e3b.png" alt="image.png"></p>
-<p>CALL 过程调用相同</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call 0x0040ACE6</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/2019/10/05/34fb0810-e744-11e9-8a93-9b78d2af1e3b.png" alt="image.png"></p>
-<p>分析核心代码。。。</p>
-<h2 id="模拟程序执行过程"><a href="#模拟程序执行过程" class="headerlink" title="模拟程序执行过程"></a>模拟程序执行过程</h2><ol>
-<li>Please enter a serial number:</li>
-</ol>
-<p>输入 num </p>
-<p><img src="/images/2019/10/06/e17c47d0-e810-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>输入的数据存入内存 <code>0x42A708</code> </p>
-<p><img src="/images/2019/10/06/8870daa0-e817-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p><img src="/images/2019/10/06/9c557990-e817-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p><code>0x00429374</code></p>
-<ol start="2">
-<li>选择后Enter</li>
-</ol>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Code to turn on TSC：   742</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/2019/10/06/777a09a0-e813-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>汇编代码执行到</p>
-<p><img src="/images/2019/10/06/d67d2860-e813-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>推测，计算code的程序在打印头部信息 HAAS 与 打印 Code 之间</p>
-<p>存储 TSC code 的地址为 <code>0x0042F26C</code></p>
-<p><img src="/images/2019/10/06/3d9ba030-e814-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>16进制表示： <code>000002E6</code></p>
-<p><img src="/images/2019/10/06/4d72a620-e814-11e9-9212-5951f1d89d17.png" alt="image.png"></p>
-<p>总结执行步骤</p>
-<ul>
-<li>输入num</li>
-<li>选择型号（三次选择）</li>
-<li>打印对应参数的code</li>
-</ul>
-<p>在汇编程序中的输入num的内存地址与code的值得内存地址都可以找到，而且程序执行中均已常数形式存在，推测在（三次选择）结束后，所有参数对应的code值均计算后，以常数形式保存在，之后的程序判断将部分的参数对应的code值打印出。</p>
-<p><img src="/images/2019/10/07/3a6e4da0-e8db-11e9-b1c6-59aa3ad54a59.png" alt="image.png"></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-05T02:45:54.000Z">2019-10-05</time>
                 
                 <div class="level-item">
@@ -387,7 +299,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            124
+                            123
                         </p>
                     </a>
                 </div>
@@ -533,7 +445,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">97</span>
+                <span class="level-item tag">96</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
