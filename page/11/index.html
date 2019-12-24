@@ -146,6 +146,78 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-31T14:49:17.000Z">2019-08-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 323 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/31/334-反转字符串/">334. 反转字符串</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/08/31/3b02c600-cbfe-11e9-8c7b-a1a6e5835e95.png" alt="image.png"></p>
+<h1 id="334-反转字符串"><a href="#334-反转字符串" class="headerlink" title="334. 反转字符串"></a>334. <a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">反转字符串</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 <code>char[]</code> 的形式给出。</p>
+<p>不要给另外的数组分配额外的空间，你必须<strong>原地</strong>修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+<p>你可以假设数组中的所有字符都是 <strong>ASCII</strong> 码表中的可打印字符。</p>
+<p>示例 1：</p>
+<pre><code>输入：[&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]
+输出：[&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]</code></pre><p>示例 2：</p>
+<pre><code>输入：[&quot;H&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;h&quot;]
+输出：[&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]    </code></pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ol>
+<li>递归解法</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        swap(<span class="hljs-number">0</span>, s.length-<span class="hljs-number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(start &gt;= end)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">char</span> temp = s[start];</span><br><span class="line">        s[start] = s[end];</span><br><span class="line">        s[end] = temp;</span><br><span class="line">        swap(start+<span class="hljs-number">1</span>, end-<span class="hljs-number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>循环解法</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> j=s.length-<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length/<span class="hljs-number">2</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> tmp = s[i];</span><br><span class="line">            s[i] = s[j];</span><br><span class="line">            s[j] = tmp;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Python解法</li>
+</ol>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(self, s: List[str])</span> -&gt; <span class="hljs-keyword">None</span>:</span></span><br><span class="line">    s[<span class="hljs-number">0</span>::]=s[::<span class="hljs-number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>c++解法</li>
+</ol>
+<p>双指针，交换头尾两个指针所指的两个位置的值，指针向中间移动一个位置，重复以上操作，直到两个指针交错；</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = s.size() - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(i&lt;j)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(s[i],s[j]);</span><br><span class="line">            ++ i;</span><br><span class="line">            -- j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-08-24T08:20:38.000Z">2019-08-24</time>
                 
                 <div class="level-item">
@@ -573,7 +645,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            123
+                            124
                         </p>
                     </a>
                 </div>
@@ -597,7 +669,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            153
+                            155
                         </p>
                     </a>
                 </div>
@@ -719,7 +791,7 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">96</span>
+                <span class="level-item tag">97</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -764,6 +836,25 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
         
         <article class="media">
             
+            <a href="/2019/12/24/laxcus/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/null" alt="大数据管理系统 Laxcus">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-24T15:44:44.000Z">2019-12-24</time></div>
+                    <a href="/2019/12/24/laxcus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">大数据管理系统 Laxcus</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/15/success-comes-from-relationships/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/15/eb18cce0-1f2a-11ea-aa57-1dcca597451c.png" alt="85%的成功源自于人际关系，这20条处世准则助你走上人生巅峰！">
@@ -831,25 +922,6 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T15:28:59.000Z">2019-12-11</time></div>
                     <a href="/2019/12/11/3d-model/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3D模型</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/10/PgFincore/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time></div>
-                    <a href="/2019/12/10/PgFincore/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL 内存页管理函数 PgFincore</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -881,6 +953,25 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
         
         <article class="media">
             
+            <a href="/2019/12/24/laxcus/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/null" alt="大数据管理系统 Laxcus">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-24T15:44:44.000Z">2019-12-24</time></div>
+                    <a href="/2019/12/24/laxcus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">大数据管理系统 Laxcus</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/15/success-comes-from-relationships/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/15/eb18cce0-1f2a-11ea-aa57-1dcca597451c.png" alt="85%的成功源自于人际关系，这20条处世准则助你走上人生巅峰！">
@@ -948,25 +1039,6 @@ git --git-dir = c / a.git --work-tree = c / b status</code></pre><p>-c <name> = 
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T15:28:59.000Z">2019-12-11</time></div>
                     <a href="/2019/12/11/3d-model/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3D模型</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/10/PgFincore/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/10/231e1df0-1b63-11ea-acb0-edaaf8f7618e.png" alt="PostgreSQL 内存页管理函数 PgFincore">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-10T15:38:04.000Z">2019-12-10</time></div>
-                    <a href="/2019/12/10/PgFincore/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL 内存页管理函数 PgFincore</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
