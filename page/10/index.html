@@ -142,6 +142,71 @@
     
 <div class="card">
     
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-08T03:09:19.000Z">2019-09-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 753 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/08/Electron-vue/">Electron-vue</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2019/09/08/2c017600-d1e5-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+<h1 id="Electron-vue"><a href="#Electron-vue" class="headerlink" title="Electron-vue"></a>Electron-vue</h1><blockquote>
+<p>基于 vue (基本上是它听起来的样子) 来构造 electron 应用程序的样板代码。</p>
+</blockquote>
+<p>什么是electron?</p>
+<p><img src="/images/2019/09/08/87493a70-d1e5-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+<p>electron由Node.js+Chromium+Native APIs构成。你可以理解成，它是一个得到了Node.js和基于不同平台的Native APIs加强的Chromium浏览器，可以用来开发跨平台的桌面级应用。</p>
+<p>它的开发主要涉及到两个进程的协作——Main（主）进程和Renderer（渲染）进程。简单的理解两个进程的作用：</p>
+<ol>
+<li>Main进程主要通过Node.js、Chromium和Native APIs来实现一些系统以及底层的操作，比如创建系统级别的菜单，操作剪贴板，创建APP的窗口等。</li>
+<li>Renderer进程主要通过Chromium来实现APP的图形界面——就是平时我们熟悉的前端开发的部分，不过得到了electron给予的加强，一些Node的模块（比如fs）和一些在3. Main进程里能用的东西（比如Clipboard）也能在Render进程里使用。<br>Main进程和Renderer进程通过<code>ipcMain</code>和<code>ipcRenderer</code>来进行通信。通过事件监听和事件派发来实现两个进程通信，从而实现Main或者Renderer进程里不能实现的某些功能。</li>
+</ol>
+<h1 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h1><p>该样板代码被构建为 vue-cli 的一个模板，并且包含多个选项，可以自定义你最终的脚手架程序。本项目需要使用 node@^7 或更高版本。electron-vue 官方推荐 yarn 作为软件包管理器，因为它可以更好地处理依赖关系，并可以使用 yarn clean 帮助减少最后构建文件的大小。</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> 安装 vue-cli 和 脚手架样板代码</span><br><span class="line">npm install -g vue-cli</span><br><span class="line">vue init simulatedgreg/electron-vue my-project</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span> 安装依赖并运行你的程序</span><br><span class="line">cd my-project</span><br><span class="line">yarn # 或者 npm install</span><br><span class="line">yarn run dev # 或者 npm run dev</span><br></pre></td></tr></table></figure>
+
+<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">my-project</span><br><span class="line">├─ .electron-vue</span><br><span class="line">│  └─ &lt;build/development&gt;.js files</span><br><span class="line">├─ build</span><br><span class="line">│  └─ icons/</span><br><span class="line">├─ dist</span><br><span class="line">│  ├─ electron/</span><br><span class="line">│  └─ web/</span><br><span class="line">├─ node_modules/</span><br><span class="line">├─ src</span><br><span class="line">│  ├─ main</span><br><span class="line">│  │  ├─ index.dev.js</span><br><span class="line">│  │  └─ index.js</span><br><span class="line">│  ├─ renderer</span><br><span class="line">│  │  ├─ components/</span><br><span class="line">│  │  ├─ router/</span><br><span class="line">│  │  ├─ store/</span><br><span class="line">│  │  ├─ App.vue</span><br><span class="line">│  │  └─ main.js</span><br><span class="line">│  └─ index.ejs</span><br><span class="line">├─ static/</span><br><span class="line">├─ test</span><br><span class="line">│  ├─ e2e</span><br><span class="line">│  │  ├─ specs/</span><br><span class="line">│  │  ├─ index.js</span><br><span class="line">│  │  └─ utils.js</span><br><span class="line">│  ├─ unit</span><br><span class="line">│  │  ├─ specs/</span><br><span class="line">│  │  ├─ index.js</span><br><span class="line">│  │  └─ karma.config.js</span><br><span class="line">│  └─ .eslintrc</span><br><span class="line">├─ .babelrc</span><br><span class="line">├─ .eslintignore</span><br><span class="line">├─ .eslintrc.js</span><br><span class="line">├─ .gitignore</span><br><span class="line">├─ package.json</span><br><span class="line">└─ README.md</span><br></pre></td></tr></table></figure>
+
+<h1 id="产品构建"><a href="#产品构建" class="headerlink" title="产品构建"></a>产品构建</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.asar</span><br><span class="line">├─ dist</span><br><span class="line">│  └─ electron</span><br><span class="line">│     ├─ static/</span><br><span class="line">│     ├─ index.html</span><br><span class="line">│     ├─ main.js</span><br><span class="line">│     └─ renderer.js</span><br><span class="line">├─ node_modules/</span><br><span class="line">└─ package.json</span><br></pre></td></tr></table></figure>
+
+<h1 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h1><p><img src="/images/2019/09/08/092650a0-d1e6-11e9-98b8-15e58d7acd49.png" alt="image.png"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
     <div class="card-image">
         <a href="/2019/09/08/Airbnb-JavaScript-代码规范/" class="image is-7by1">
             <img class="thumbnail" src="/images/2019/12/09/5edd0ea0-1a9b-11ea-ade2-9dc575db7dd4.png" alt="Airbnb JavaScript 代码规范() {">
@@ -2209,56 +2274,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-02T04:41:41.000Z">2019-09-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 246 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/02/天平砝码摆放问题/">天平砝码摆放问题</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一个天平上有6个位置，左右各三个位置，有6个砝码，分别是1、2、3、4、5、6克重。<br>要使天平平衡，有多少种方法？（对称摆放算作一种方法） </p>
-<p><img src="/images/2019/09/02/a2a70490-cd3b-11e9-afc7-971719428f58.png" alt="image.png"></p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>暴力求解</p>
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t = <span class="hljs-number">6</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= t; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= t; ++j) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= t; ++k) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>; l &lt;= t; ++l) &#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> m = <span class="hljs-number">1</span>; m &lt;= t; ++m) &#123;</span><br><span class="line">                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n = <span class="hljs-number">1</span>; n &lt;= t; ++n) &#123;</span><br><span class="line">                            <span class="hljs-keyword">if</span> (i == j ||</span><br><span class="line">                                i == k || j == k ||</span><br><span class="line">                                i == l || j == l || k == l ||</span><br><span class="line">                                i == m || j == m || k == m || l == m ||</span><br><span class="line">                                i == n || j == n || k == n || l == n || m == n)</span><br><span class="line">                                <span class="hljs-keyword">continue</span>;</span><br><span class="line">                            <span class="hljs-keyword">if</span> ((<span class="hljs-number">3</span> * i + <span class="hljs-number">2</span> * j + k) == (l + <span class="hljs-number">2</span> * m + <span class="hljs-number">3</span> * n)) &#123;</span><br><span class="line">                                <span class="hljs-built_in">string</span> s = to_string(i) + to_string(j) + to_string(k) + to_string(l) + to_string(m) +</span><br><span class="line">                                           to_string(n);</span><br><span class="line">                                <span class="hljs-keyword">int</span> te = <span class="hljs-number">0</span>;</span><br><span class="line">                                <span class="hljs-keyword">if</span> (v.size() &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                                    <span class="hljs-built_in">string</span> tem = s;</span><br><span class="line">                                    reverse(tem.begin(), tem.end());</span><br><span class="line">                                    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;::iterator it;</span><br><span class="line">                                    <span class="hljs-keyword">for</span> (it = v.begin(); it != v.end(); it++) &#123;</span><br><span class="line">                                        <span class="hljs-keyword">if</span> (*it == tem) &#123;</span><br><span class="line">                                            <span class="hljs-comment">//cout&lt;&lt;tem&lt;&lt;endl;</span></span><br><span class="line">                                            te = <span class="hljs-number">1</span>;</span><br><span class="line">                                            <span class="hljs-keyword">break</span>;</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="hljs-keyword">if</span> (te == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                                    v.push_back(s);</span><br><span class="line">                                    count++;</span><br><span class="line">                                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d %d %d | %d %d %d\n"</span>, i, j, k, l, m, n);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; count &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1 4 6 | 5 3 2</span><br><span class="line">1 5 6 | 2 4 3</span><br><span class="line">1 5 6 | 3 2 4</span><br><span class="line">1 6 4 | 3 5 2</span><br><span class="line">1 6 5 | 2 3 4</span><br><span class="line">2 4 6 | 1 5 3</span><br><span class="line">2 4 6 | 3 1 5</span><br><span class="line">2 6 3 | 4 1 5</span><br><span class="line">2 6 4 | 1 3 5</span><br><span class="line">3 2 6 | 5 1 4</span><br><span class="line">3 4 5 | 2 1 6</span><br><span class="line">3 5 4 | 1 2 6</span><br><span class="line">3 6 2 | 1 5 4</span><br><span class="line">4 2 6 | 1 3 5</span><br><span class="line">4 3 5 | 1 2 6</span><br><span class="line">5 2 4 | 3 1 6</span><br><span class="line">5 4 2 | 1 3 6</span><br><span class="line">17</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -2329,7 +2344,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            126
+                            127
                         </p>
                     </a>
                 </div>
@@ -2353,7 +2368,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            158
+                            160
                         </p>
                     </a>
                 </div>
@@ -2475,7 +2490,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">99</span>
+                <span class="level-item tag">100</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -2520,6 +2535,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/02/达摩院/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/01/02/30b7b920-2d4d-11ea-9c80-290f9db7eefc.png" alt="阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-02T10:45:07.000Z">2020-01-02</time></div>
+                    <a href="/2020/01/02/达摩院/" class="title has-link-black-ter is-size-6 has-text-weight-normal">阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/30/gene-detection/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/30/1514bf20-2ae5-11ea-840b-ab4a2fba49fc.png" alt="基因检测">
@@ -2587,25 +2621,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-15T10:48:19.000Z">2019-12-15</time></div>
                     <a href="/2019/12/15/success-comes-from-relationships/" class="title has-link-black-ter is-size-6 has-text-weight-normal">85%的成功源自于人际关系，这20条处世准则助你走上人生巅峰！</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/13/find-the-depth-and-width-of-the-binary-tree/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/13/86b22990-1d9f-11ea-9773-e1eaab923907.png" alt="求二叉树的深度和宽度">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-13T11:54:35.000Z">2019-12-13</time></div>
-                    <a href="/2019/12/13/find-the-depth-and-width-of-the-binary-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">求二叉树的深度和宽度</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -2637,6 +2652,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/02/达摩院/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/01/02/30b7b920-2d4d-11ea-9c80-290f9db7eefc.png" alt="阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-02T10:45:07.000Z">2020-01-02</time></div>
+                    <a href="/2020/01/02/达摩院/" class="title has-link-black-ter is-size-6 has-text-weight-normal">阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/30/gene-detection/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2019/12/30/1514bf20-2ae5-11ea-840b-ab4a2fba49fc.png" alt="基因检测">
@@ -2704,25 +2738,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-15T10:48:19.000Z">2019-12-15</time></div>
                     <a href="/2019/12/15/success-comes-from-relationships/" class="title has-link-black-ter is-size-6 has-text-weight-normal">85%的成功源自于人际关系，这20条处世准则助你走上人生巅峰！</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/13/find-the-depth-and-width-of-the-binary-tree/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/13/86b22990-1d9f-11ea-9773-e1eaab923907.png" alt="求二叉树的深度和宽度">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-13T11:54:35.000Z">2019-12-13</time></div>
-                    <a href="/2019/12/13/find-the-depth-and-width-of-the-binary-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">求二叉树的深度和宽度</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
