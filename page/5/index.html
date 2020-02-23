@@ -146,6 +146,58 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-05T12:54:02.000Z">2019-11-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 904 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/05/md5-info/">md5-info</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h1><blockquote>
+<p>MD5信息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。MD5由美国密码学家罗纳德·李维斯特（Ronald Linn Rivest）设计，于1992年公开，用以取代MD4算法。这套算法的程序在 RFC 1321 标准中被加以规范。1996年后该算法被证实存在弱点，可以被加以破解，对于需要高度安全性的数据，专家一般建议改用其他算法，如SHA-2。2004年，证实MD5算法无法防止碰撞（collision），因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途。</p>
+</blockquote>
+<p><img src="/images/2019/11/05/544b5d60-ffcb-11e9-9e2a-f35d177bbfa9.png" alt="image.png"></p>
+<p><strong>C++实现</strong></p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> shift(x, n) (((x) <span class="hljs-meta-string">&lt;&lt; (n)) | ((x) &gt;&gt; (32-(n))))//右移的时候，高位一定要补零，而不是补充符号位</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> F(x, y, z) (((x) &amp; (y)) | ((~x) &amp; (z)))    </span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> G(x, y, z) (((x) &amp; (z)) | ((y) &amp; (~z)))</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> H(x, y, z) ((x) ^ (y) ^ (z))</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> I(x, y, z) ((y) ^ ((x) | (~z)))</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> A 0x67452301</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> B 0xefcdab89</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> C 0x98badcfe</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> D 0x10325476</span></span><br><span class="line"><span class="hljs-comment">//strBaye的长度</span></span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> strlength;</span><br><span class="line"><span class="hljs-comment">//A,B,C,D的临时变量</span></span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> atemp;</span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> btemp;</span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ctemp;</span><br><span class="line"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> dtemp;</span><br><span class="line"><span class="hljs-comment">//常量ti unsigned int(abs(sin(i+1))*(2pow32))</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> k[]=&#123;</span><br><span class="line">        <span class="hljs-number">0xd76aa478</span>,<span class="hljs-number">0xe8c7b756</span>,<span class="hljs-number">0x242070db</span>,<span class="hljs-number">0xc1bdceee</span>,</span><br><span class="line">        <span class="hljs-number">0xf57c0faf</span>,<span class="hljs-number">0x4787c62a</span>,<span class="hljs-number">0xa8304613</span>,<span class="hljs-number">0xfd469501</span>,<span class="hljs-number">0x698098d8</span>,</span><br><span class="line">        <span class="hljs-number">0x8b44f7af</span>,<span class="hljs-number">0xffff5bb1</span>,<span class="hljs-number">0x895cd7be</span>,<span class="hljs-number">0x6b901122</span>,<span class="hljs-number">0xfd987193</span>,</span><br><span class="line">        <span class="hljs-number">0xa679438e</span>,<span class="hljs-number">0x49b40821</span>,<span class="hljs-number">0xf61e2562</span>,<span class="hljs-number">0xc040b340</span>,<span class="hljs-number">0x265e5a51</span>,</span><br><span class="line">        <span class="hljs-number">0xe9b6c7aa</span>,<span class="hljs-number">0xd62f105d</span>,<span class="hljs-number">0x02441453</span>,<span class="hljs-number">0xd8a1e681</span>,<span class="hljs-number">0xe7d3fbc8</span>,</span><br><span class="line">        <span class="hljs-number">0x21e1cde6</span>,<span class="hljs-number">0xc33707d6</span>,<span class="hljs-number">0xf4d50d87</span>,<span class="hljs-number">0x455a14ed</span>,<span class="hljs-number">0xa9e3e905</span>,</span><br><span class="line">        <span class="hljs-number">0xfcefa3f8</span>,<span class="hljs-number">0x676f02d9</span>,<span class="hljs-number">0x8d2a4c8a</span>,<span class="hljs-number">0xfffa3942</span>,<span class="hljs-number">0x8771f681</span>,</span><br><span class="line">        <span class="hljs-number">0x6d9d6122</span>,<span class="hljs-number">0xfde5380c</span>,<span class="hljs-number">0xa4beea44</span>,<span class="hljs-number">0x4bdecfa9</span>,<span class="hljs-number">0xf6bb4b60</span>,</span><br><span class="line">        <span class="hljs-number">0xbebfbc70</span>,<span class="hljs-number">0x289b7ec6</span>,<span class="hljs-number">0xeaa127fa</span>,<span class="hljs-number">0xd4ef3085</span>,<span class="hljs-number">0x04881d05</span>,</span><br><span class="line">        <span class="hljs-number">0xd9d4d039</span>,<span class="hljs-number">0xe6db99e5</span>,<span class="hljs-number">0x1fa27cf8</span>,<span class="hljs-number">0xc4ac5665</span>,<span class="hljs-number">0xf4292244</span>,</span><br><span class="line">        <span class="hljs-number">0x432aff97</span>,<span class="hljs-number">0xab9423a7</span>,<span class="hljs-number">0xfc93a039</span>,<span class="hljs-number">0x655b59c3</span>,<span class="hljs-number">0x8f0ccc92</span>,</span><br><span class="line">        <span class="hljs-number">0xffeff47d</span>,<span class="hljs-number">0x85845dd1</span>,<span class="hljs-number">0x6fa87e4f</span>,<span class="hljs-number">0xfe2ce6e0</span>,<span class="hljs-number">0xa3014314</span>,</span><br><span class="line">        <span class="hljs-number">0x4e0811a1</span>,<span class="hljs-number">0xf7537e82</span>,<span class="hljs-number">0xbd3af235</span>,<span class="hljs-number">0x2ad7d2bb</span>,<span class="hljs-number">0xeb86d391</span>&#125;;</span><br><span class="line"><span class="hljs-comment">//向左位移数</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> s[]=&#123;<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">7</span>,</span><br><span class="line">        <span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">22</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">14</span>,<span class="hljs-number">20</span>,</span><br><span class="line">        <span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>,<span class="hljs-number">23</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,</span><br><span class="line">        <span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">21</span>&#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> str16[]=<span class="hljs-string">"0123456789abcdef"</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mainLoop</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> M[])</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> f,g;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> a=atemp;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b=btemp;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> c=ctemp;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> d=dtemp;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">64</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">16</span>)&#123;</span><br><span class="line">            f=F(b,c,d);</span><br><span class="line">            g=i;</span><br><span class="line">        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i&lt;<span class="hljs-number">32</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            f=G(b,c,d);</span><br><span class="line">            g=(<span class="hljs-number">5</span>*i+<span class="hljs-number">1</span>)%<span class="hljs-number">16</span>;</span><br><span class="line">        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">48</span>)&#123;</span><br><span class="line">            f=H(b,c,d);</span><br><span class="line">            g=(<span class="hljs-number">3</span>*i+<span class="hljs-number">5</span>)%<span class="hljs-number">16</span>;</span><br><span class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            f=I(b,c,d);</span><br><span class="line">            g=(<span class="hljs-number">7</span>*i)%<span class="hljs-number">16</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> tmp=d;</span><br><span class="line">        d=c;</span><br><span class="line">        c=b;</span><br><span class="line">        b=b+shift((a+f+k[i]+M[g]),s[i]);</span><br><span class="line">        a=tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    atemp=a+atemp;</span><br><span class="line">    btemp=b+btemp;</span><br><span class="line">    ctemp=c+ctemp;</span><br><span class="line">    dtemp=d+dtemp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">*填充函数</span></span><br><span class="line"><span class="hljs-comment">*处理后应满足bits≡448(mod512),字节就是bytes≡56（mode64)</span></span><br><span class="line"><span class="hljs-comment">*填充方式为先加一个1,其它位补零</span></span><br><span class="line"><span class="hljs-comment">*最后加上64位的原来长度</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>* <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-built_in">string</span> str)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num=((str.length()+<span class="hljs-number">8</span>)/<span class="hljs-number">64</span>)+<span class="hljs-number">1</span>;<span class="hljs-comment">//以512位,64个字节为一组</span></span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *strByte=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[num*<span class="hljs-number">16</span>];    <span class="hljs-comment">//64/4=16,所以有16个整数</span></span><br><span class="line">    strlength=num*<span class="hljs-number">16</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; num*<span class="hljs-number">16</span>; i++)</span><br><span class="line">        strByte[i]=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i &lt;str.length(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        strByte[i&gt;&gt;<span class="hljs-number">2</span>]|=(str[i])&lt;&lt;((i%<span class="hljs-number">4</span>)*<span class="hljs-number">8</span>);<span class="hljs-comment">//一个整数存储四个字节，i&gt;&gt;2表示i/4 一个unsigned int对应4个字节，保存4个字符信息</span></span><br><span class="line">    &#125;</span><br><span class="line">    strByte[str.length()&gt;&gt;<span class="hljs-number">2</span>]|=<span class="hljs-number">0x80</span>&lt;&lt;(((str.length()%<span class="hljs-number">4</span>))*<span class="hljs-number">8</span>);<span class="hljs-comment">//尾部添加1 一个unsigned int保存4个字符信息,所以用128左移</span></span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    *添加原长度，长度指位的长度，所以要乘8，然后是小端序，所以放在倒数第二个,这里长度只用了32位</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    strByte[num*<span class="hljs-number">16</span><span class="hljs-number">-2</span>]=str.length()*<span class="hljs-number">8</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> strByte;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">changeHex</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> b;</span><br><span class="line">    <span class="hljs-built_in">string</span> str1;</span><br><span class="line">    <span class="hljs-built_in">string</span> str=<span class="hljs-string">""</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        str1=<span class="hljs-string">""</span>;</span><br><span class="line">        b=((a&gt;&gt;i*<span class="hljs-number">8</span>)%(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">8</span>))&amp;<span class="hljs-number">0xff</span>;   <span class="hljs-comment">//逆序处理每个字节</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">2</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            str1.insert(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,str16[b%<span class="hljs-number">16</span>]);</span><br><span class="line">            b=b/<span class="hljs-number">16</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        str+=str1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">getMD5</span><span class="hljs-params">(<span class="hljs-built_in">string</span> source)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    atemp=A;    <span class="hljs-comment">//初始化</span></span><br><span class="line">    btemp=B;</span><br><span class="line">    ctemp=C;</span><br><span class="line">    dtemp=D;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *strByte=add(source);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;strlength/<span class="hljs-number">16</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num[<span class="hljs-number">16</span>];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">16</span>;j++)</span><br><span class="line">            num[j]=strByte[i*<span class="hljs-number">16</span>+j];</span><br><span class="line">        mainLoop(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> changeHex(atemp).append(changeHex(btemp)).append(changeHex(ctemp)).append(changeHex(dtemp));</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">string</span> ss;</span><br><span class="line"><span class="hljs-comment">//    cin&gt;&gt;ss;</span></span><br><span class="line">    <span class="hljs-built_in">string</span> s=getMD5(<span class="hljs-string">"abc"</span>);</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;s;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-04T15:39:00.000Z">2019-11-04</time>
                 
                 <div class="level-item">
@@ -1168,201 +1220,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-25T10:37:29.000Z">2019-10-25</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    14 分钟 读完 (大约 2065 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/25/paper-e-database/">paper-e-database</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="写论文不用愁，50个全球免费电子数据库了解下（纯文字版）"><a href="#写论文不用愁，50个全球免费电子数据库了解下（纯文字版）" class="headerlink" title="写论文不用愁，50个全球免费电子数据库了解下（纯文字版）"></a>写论文不用愁，50个全球免费电子数据库了解下（纯文字版）</h1><blockquote>
-<p>最近人民日报小编很给力，整理了50个找文献资料的中外全球电子数据库，无论你是写毕业论文还是学术论文，总有一款适合你，快先收藏起来，查尔斯沃思小编将其整理成纯文字，方便作者检索，码字不易，多行点赞鼓励下吧！</p>
-</blockquote>
-<h2 id="中文数据库"><a href="#中文数据库" class="headerlink" title="中文数据库"></a>中文数据库</h2><ol>
-<li>国家哲学社会科学文献中心(上线文献数据超过1000万条）<br><a href="http://www.ncpssd.org" target="_blank" rel="noopener">http://www.ncpssd.org</a></li>
-</ol>
-<ol start="2">
-<li>中西文科技文献服务平台<br><a href="http://lib.sstir.cn/" target="_blank" rel="noopener">http://lib.sstir.cn/</a></li>
-</ol>
-<ol start="3">
-<li>中国科技论文在线精品论文(自然科学领域的论文成果）<br><a href="http://highlights.paper.edu.cn/" target="_blank" rel="noopener">http://highlights.paper.edu.cn/</a></li>
-</ol>
-<ol start="4">
-<li>中国国家图书馆馆藏中文图书数字化资源库（提供17万多种各学科的图书，可在线阅读）<br><a href="http://mylib.nlc.cn/web/guest/zhongwentushu" target="_blank" rel="noopener">http://mylib.nlc.cn/web/guest/zhongwentushu</a></li>
-</ol>
-<ol start="5">
-<li>汉斯出版社中文学术期刊(提供125本国际开源中文期刊的免费下载阅读）<br><a href="http://www.hanspub.org" target="_blank" rel="noopener">http://www.hanspub.org</a></li>
-</ol>
-<ol start="6">
-<li>全国图书馆参考咨询联盟(绝大多数文献需要用邮箱传递）<br><a href="http://www.ucdrs.superlib.net/" target="_blank" rel="noopener">http://www.ucdrs.superlib.net/</a></li>
-</ol>
-<ol start="7">
-<li>国家科技图书文献中心(现有期刊资源6908本，会议资源1506个）<br><a href="http://www.nstl.gov.cn/" target="_blank" rel="noopener">http://www.nstl.gov.cn/</a></li>
-</ol>
-<ol start="8">
-<li>国家哲学社会科学学术期刊数据库(国内最大的公益性社科精品期刊数据库，收录精品学术期刊600多种，论文近300万篇）<br><a href="http://www.nssd.org/articles/articlesearch.aspx" target="_blank" rel="noopener">http://www.nssd.org/articles/articlesearch.aspx</a></li>
-</ol>
-<ol start="9">
-<li>中国科学院文献情报中心(国家科学图书馆）<br><a href="http://www.las.ac.cn/" target="_blank" rel="noopener">http://www.las.ac.cn/</a></li>
-</ol>
-<ol start="10">
-<li>CALIS 高校学位论文库(免费文摘）<br><a href="http://opac.calis.edu.cn" target="_blank" rel="noopener">http://opac.calis.edu.cn</a></li>
-</ol>
-<ol start="11">
-<li>中国国家数据(中国国家统计局提供的海量数据查询和下载的数据库，内容包含各个地区和国家的数据）<br><a href="http://data.stats.gov.cn/index.htm" target="_blank" rel="noopener">http://data.stats.gov.cn/index.htm</a></li>
-</ol>
-<ol start="12">
-<li>中国国家图书馆(中国国家图书馆数字平台）<br><a href="http://www.nlc.gov.cn/" target="_blank" rel="noopener">http://www.nlc.gov.cn/</a></li>
-</ol>
-<h2 id="外文数据库"><a href="#外文数据库" class="headerlink" title="外文数据库"></a>外文数据库</h2><ol start="13">
-<li>ERIC 教育资源信息中心(教育资源数据库，部分资源可查找到全文）<br><a href="http://www.eric.ed.gov/" target="_blank" rel="noopener">http://www.eric.ed.gov/</a></li>
-</ol>
-<ol start="14">
-<li>Blackwell电子期刊(国际性期刊800余种，涵盖十多个学科，部分期刊提供全文）<br><a href="http://www.blackwell-synergy.com/" target="_blank" rel="noopener">http://www.blackwell-synergy.com/</a></li>
-</ol>
-<ol start="15">
-<li>加拿大 AMICUS 学位论文(收录加拿大1300多个图书馆的学位论文信息）<br><a href="http://www.collectionscanada.gc.ca/theses-canada/index-e.html" target="_blank" rel="noopener">http://www.collectionscanada.gc.ca/theses-canada/index-e.html</a></li>
-</ol>
-<ol start="16">
-<li>欧洲学位论文库(收录来自欧洲28个国家的563所大学的开放学术资源）<br><a href="http://www.dart-europe.eu/basic-search.php" target="_blank" rel="noopener">http://www.dart-europe.eu/basic-search.php</a></li>
-</ol>
-<ol start="17">
-<li><p>Project Gutenberg(提供超过5万本免费电子书籍）<br><a href="http://www.gutenberg.org/" target="_blank" rel="noopener">http://www.gutenberg.org/</a></p>
-</li>
-<li><p>澳洲数字论文计划(包含澳洲40余所大学的15440篇硕博论文，涵盖各个学科）<br><a href="http://adt.caul.edu.au" target="_blank" rel="noopener">http://adt.caul.edu.au</a></p>
-</li>
-</ol>
-<ol start="19">
-<li>北卡罗来纳州州立大学(3937篇免费博硕论文，涵盖化学、物理学、电子电气、核能、机械、材料、食品、林业、土壤等学科）<br><a href="https://repository.lib.ncsu.edu/handle/1840.20/23" target="_blank" rel="noopener">https://repository.lib.ncsu.edu/handle/1840.20/23</a></li>
-</ol>
-<ol start="20">
-<li>加州大学学者文库(图书资源分对校内和校外两部分开放，著作新，制作质量高。普通读物、学术读物均有收录）<br><a href="http://publishing.cdlib.org/ucpressebooks/" target="_blank" rel="noopener">http://publishing.cdlib.org/ucpressebooks/</a></li>
-</ol>
-<ol start="21">
-<li>Directory of Open Access Journals(免费的全文科技学术期刊。现有2752种期刊，其中830种可以全文搜索。）<br><a href="http://www.doaj.org/" target="_blank" rel="noopener">http://www.doaj.org/</a></li>
-</ol>
-<ol start="22">
-<li>Upcoming Conference(国内外学术会议论文）<br><a href="http://www.ourglocal.com/" target="_blank" rel="noopener">http://www.ourglocal.com/</a></li>
-</ol>
-<ol start="23">
-<li>俄亥俄州立大学电子学位论文(索引更新及时，可在线翻译成中文。涵盖机械、电子、管理、哲学、化学、环境学、材料、数学、物理等学科）<br><a href="http://www.ohiolink.edu/etd/search.cgi" target="_blank" rel="noopener">http://www.ohiolink.edu/etd/search.cgi</a></li>
-</ol>
-<ol start="24">
-<li>美国密西根大学论文库(2万多篇期刊论文、技术报告、评论等文献全文）<br><a href="https://deepblue.lib.umich.edu/" target="_blank" rel="noopener">https://deepblue.lib.umich.edu/</a></li>
-</ol>
-<ol start="25">
-<li>开放存取资源图书馆(提供400多万篇免费使用下载的英文期刊论文，涵盖所有学科〉<br><a href="http://www.oalib.com" target="_blank" rel="noopener">http://www.oalib.com</a></li>
-</ol>
-<ol start="26">
-<li>Bioline International(提供发展中国家出版的高质量期刊）<br><a href="http://www.bioline.org.br" target="_blank" rel="noopener">http://www.bioline.org.br</a></li>
-</ol>
-<ol start="27">
-<li>诺丁汉大学论文库(提供诺丁汉大学博士、硕士的研究、会议论文）<br><a href="http://eprints.nottingham.ac.uk/" target="_blank" rel="noopener">http://eprints.nottingham.ac.uk/</a></li>
-</ol>
-<ol start="28">
-<li>HINARI(世界卫生组织建立，提供生物医学与卫生文献的项目，包括3280种期刊）<br><a href="http://www.who.int/hinari/en/" target="_blank" rel="noopener">http://www.who.int/hinari/en/</a></li>
-</ol>
-<ol start="29">
-<li>HighWire 出版社电子期刊(美国斯坦福大学著名的学术出版商，其中将近240万篇文章可免费获得全文）<br><a href="http://highwire.stanford.edu/lists/freeart.dtl" target="_blank" rel="noopener">http://highwire.stanford.edu/lists/freeart.dtl</a></li>
-</ol>
-<ol start="30">
-<li>美国科学院院报(世界上被引用次数最多的综合学科刊物之一，继Nature、Science之后，在SCI综合学科类排名第三位）<br><a href="http://www.pnas.org/" target="_blank" rel="noopener">http://www.pnas.org/</a></li>
-</ol>
-<ol start="31">
-<li>科研出版社 OA 资源(共有180多种期刊的电子版本，文章超过10000篇）<br><a href="http://www.scirp.org/journal/" target="_blank" rel="noopener">http://www.scirp.org/journal/</a></li>
-</ol>
-<ol start="32">
-<li>Science Direct(SCI论文检索，收录超过25万篇论文）<br><a href="https://www.sciencedirect.com/" target="_blank" rel="noopener">https://www.sciencedirect.com/</a></li>
-</ol>
-<p>33 .华盛顿大学学位论文库(提供免费的电子书籍、论文、期刊，全文免费下载）<br><a href="https://library.wustl.edu/" target="_blank" rel="noopener">https://library.wustl.edu/</a></p>
-<ol start="34">
-<li>加拿大国家研究委员会（ NRC) 0A 期刊(农业科学、生物信息学、生命科学、环境、纳米技术、分子科学、光电子科学等领域的学术性期刊）<br><a href="http://www.nrcresearchpress.com/" target="_blank" rel="noopener">http://www.nrcresearchpress.com/</a></li>
-</ol>
-<ol start="35">
-<li>Socolar(整理了世界上重要的0A期刊10000多种和1000多种0A仓贮资源）<br><a href="http://www.socolar.com/" target="_blank" rel="noopener">http://www.socolar.com/</a></li>
-</ol>
-<ol start="36">
-<li>加利福尼亚大学国际和区域数字馆藏(已出版的期刊论文、未出版的研究手稿、会议文献以及其他出版物上的文章1万多篇，均可免费阅读）<br><a href="http://repositories.cdlib.org/escholarship/" target="_blank" rel="noopener">http://repositories.cdlib.org/escholarship/</a></li>
-</ol>
-<ol start="37">
-<li>剑桥大学机构知识库(提供剑桥大学相关的期刊、学术论文、学位论文等电子资源）<br><a href="http://www.dspace.cam.ac.uk/" target="_blank" rel="noopener">http://www.dspace.cam.ac.uk/</a></li>
-</ol>
-<ol start="38">
-<li>Electronic library(提供超过270万本图书，超过5千万篇论文）<br><a href="http://b-ok.org/" target="_blank" rel="noopener">http://b-ok.org/</a></li>
-</ol>
-<p>39.Science  数据库(权威科研杂志《Science》官方网站，免费注册后可下载1997年以前的论文全文）<br><a href="http://www.sciencemag.org/" target="_blank" rel="noopener">http://www.sciencemag.org/</a></p>
-<ol start="40">
-<li>CERN Document Server(主要覆盖物理学及相关学科，提供36万多篇全文文献）<br><a href="http://cdsweb.cern.ch/" target="_blank" rel="noopener">http://cdsweb.cern.ch/</a></li>
-</ol>
-<ol start="41">
-<li>康奈尔大学ArXiv(面向物理学、数学、非线性科学、计算机科学和定量生物学等学科，提供16种免费电子期刊的访问）<br><a href="http://arxiv.org" target="_blank" rel="noopener">http://arxiv.org</a></li>
-</ol>
-<ol start="42">
-<li>Energy Citations Database(提供美国能源部的科技信息摘要）<br><a href="http://www.osti.gov/energycitations/" target="_blank" rel="noopener">http://www.osti.gov/energycitations/</a></li>
-</ol>
-<ol start="43">
-<li>约翰威立国际出版公司(收录了来自1500余种期刊、10000多本在线图书以及数百种多卷册的参考工具书、丛书系列、手册和辞典、实验室指南和数据库的400多万篇文章）<br><a href="http://onlinelibrary.wiley.com/" target="_blank" rel="noopener">http://onlinelibrary.wiley.com/</a></li>
-</ol>
-<ol start="44">
-<li>伍斯特工学院数据库(670余篇学位论文 ，其 中有550多篇全文。涵盖生物、电子、计算机、材料、物理、机械等学科）<br><a href="http://www.wpi.edu/Pubs/ETD/" target="_blank" rel="noopener">http://www.wpi.edu/Pubs/ETD/</a></li>
-</ol>
-<ol start="45">
-<li>nature官网网站(在《 nature 》上在线发表的论文可以免费查看）<br><a href="https://www.nature.com/" target="_blank" rel="noopener">https://www.nature.com/</a></li>
-</ol>
-<ol start="46">
-<li>Social Science Research Network(社会科学（经济类）研究论文数据库，部分提供全文）<br><a href="http://www.ssrn.com/" target="_blank" rel="noopener">http://www.ssrn.com/</a></li>
-</ol>
-<ol start="47">
-<li>美国医学学术资料网站(由美国国家医学图书馆和国立卫生研究院建立一个医学学术资料网站。生物医学文献超过2100万，包括<br>论文参考文献，生命科学期刊，在线图书）<br><a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pubmed</a></li>
-</ol>
-<ol start="48">
-<li>世界数字图书馆(以多语种形式免费提供源于世界各地各文化的重要原始材料）<br><a href="http://www.wdl.org/zh/" target="_blank" rel="noopener">http://www.wdl.org/zh/</a></li>
-</ol>
-<ol start="49">
-<li>Manybooks(国外大量免费电子图书，可下载）<br><a href="http://manybooks.net/" target="_blank" rel="noopener">http://manybooks.net/</a></li>
-</ol>
-<ol start="50">
-<li>Aminer(收集了300万篇论文信息、3700多万引用关系以及8000多个会议信息）<br><a href="https://cn.aminer.org/" target="_blank" rel="noopener">https://cn.aminer.org/</a></li>
-</ol>
-<p>以上内容来源人民日报，查尔斯沃思作者服务将图片转换文字，转载需注明原作者及整理者。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1437,7 +1294,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            127
+                            128
                         </p>
                     </a>
                 </div>
@@ -1461,7 +1318,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            160
+                            161
                         </p>
                     </a>
                 </div>
@@ -1591,7 +1448,7 @@
                 <span class="level-item">生活</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/笔试/">
@@ -1628,6 +1485,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/23/rabies/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/02/23/d7628c70-564a-11ea-8e5a-a912cbc98a03.png" alt="狂犬病病毒">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-23T14:43:26.000Z">2020-02-23</time></div>
+                    <a href="/2020/02/23/rabies/" class="title has-link-black-ter is-size-6 has-text-weight-normal">狂犬病病毒</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/02/达摩院/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2020/01/02/30b7b920-2d4d-11ea-9c80-290f9db7eefc.png" alt="阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单">
@@ -1695,25 +1571,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-24T15:44:44.000Z">2019-12-24</time></div>
                     <a href="/2019/12/24/laxcus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">大数据管理系统 Laxcus</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/15/success-comes-from-relationships/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/15/eb18cce0-1f2a-11ea-aa57-1dcca597451c.png" alt="85%的成功源自于人际关系，这20条处世准则助你走上人生巅峰！">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-15T10:48:19.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/success-comes-from-relationships/" class="title has-link-black-ter is-size-6 has-text-weight-normal">85%的成功源自于人际关系，这20条处世准则助你走上人生巅峰！</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1745,6 +1602,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/23/rabies/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/02/23/d7628c70-564a-11ea-8e5a-a912cbc98a03.png" alt="狂犬病病毒">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-23T14:43:26.000Z">2020-02-23</time></div>
+                    <a href="/2020/02/23/rabies/" class="title has-link-black-ter is-size-6 has-text-weight-normal">狂犬病病毒</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/02/达摩院/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2020/01/02/30b7b920-2d4d-11ea-9c80-290f9db7eefc.png" alt="阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单">
@@ -1812,25 +1688,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-24T15:44:44.000Z">2019-12-24</time></div>
                     <a href="/2019/12/24/laxcus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">大数据管理系统 Laxcus</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/15/success-comes-from-relationships/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/15/eb18cce0-1f2a-11ea-aa57-1dcca597451c.png" alt="85%的成功源自于人际关系，这20条处世准则助你走上人生巅峰！">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-15T10:48:19.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/success-comes-from-relationships/" class="title has-link-black-ter is-size-6 has-text-weight-normal">85%的成功源自于人际关系，这20条处世准则助你走上人生巅峰！</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
