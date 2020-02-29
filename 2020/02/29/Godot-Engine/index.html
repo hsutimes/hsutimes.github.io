@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Godot Engine - Time</title>
+
+
+    <meta name="description" content="Godot EngineHomepage: https://godotengine.org 2D and 3D cross-platform game engineGodot Engine is a feature-packed, cross-platform game engine to create 2D and3D games from a unified interface. It pr">
+<meta name="keywords" content="游戏,VR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Godot Engine">
+<meta property="og:url" content="https://blog.hsutimes.com/2020/02/29/Godot-Engine/index.html">
+<meta property="og:site_name" content="Time">
+<meta property="og:description" content="Godot EngineHomepage: https://godotengine.org 2D and 3D cross-platform game engineGodot Engine is a feature-packed, cross-platform game engine to create 2D and3D games from a unified interface. It pr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2020/02/29/148ba1c0-5ae4-11ea-8723-3bfffa778f40.png">
+<meta property="og:updated_time" content="2020-02-29T11:11:08.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Godot Engine">
+<meta name="twitter:description" content="Godot EngineHomepage: https://godotengine.org 2D and 3D cross-platform game engineGodot Engine is a feature-packed, cross-platform game engine to create 2D and3D games from a unified interface. It pr">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2020/02/29/148ba1c0-5ae4-11ea-8723-3bfffa778f40.png">
+<meta name="twitter:site" content="https://twitter.com/times26740863">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134224598-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134224598-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Godot Engine" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020/02/29/148ba1c0-5ae4-11ea-8723-3bfffa778f40.png" alt="Godot Engine">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-29T11:08:49.000Z">2020-02-29</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 551 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Godot Engine
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/2020/02/29/96240340-5ae3-11ea-8723-3bfffa778f40.png" alt="Godot Engine logo"></p>
+<h2 id="Godot-Engine"><a href="#Godot-Engine" class="headerlink" title="Godot Engine"></a>Godot Engine</h2><p>Homepage: <a href="https://godotengine.org" target="_blank" rel="noopener">https://godotengine.org</a></p>
+<h4 id="2D-and-3D-cross-platform-game-engine"><a href="#2D-and-3D-cross-platform-game-engine" class="headerlink" title="2D and 3D cross-platform game engine"></a>2D and 3D cross-platform game engine</h4><p>Godot Engine is a feature-packed, cross-platform game engine to create 2D and<br>3D games from a unified interface. It provides a comprehensive set of common<br>tools, so that users can focus on making games without having to reinvent the<br>wheel. Games can be exported in one click to a number of platforms, including<br>the major desktop platforms (Linux, Mac OSX, Windows) as well as mobile<br>(Android, iOS) and web-based (HTML5) platforms.</p>
+<a id="more"></a>
+
+<h4 id="Free-open-source-and-community-driven"><a href="#Free-open-source-and-community-driven" class="headerlink" title="Free, open source and community-driven"></a>Free, open source and community-driven</h4><p>Godot is completely free and open source under the very permissive MIT license.<br>No strings attached, no royalties, nothing. The users’ games are theirs, down<br>to the last line of engine code. Godot’s development is fully independent and<br>community-driven, empowering users to help shape their engine to match their<br>expectations. It is supported by the Software Freedom Conservancy<br>not-for-profit.</p>
+<p>Before being open sourced in February 2014, Godot had been developed by Juan<br>Linietsky and Ariel Manzur (both still maintaining the project) for several<br>years as an in-house engine, used to publish several work-for-hire titles.</p>
+<p><img src="https://raw.githubusercontent.com/godotengine/godot-design/master/screenshots/editor_tps_demo_1920x1080.jpg" alt="Screenshot of a 3D scene in Godot Engine"></p>
+<h3 id="Getting-the-engine"><a href="#Getting-the-engine" class="headerlink" title="Getting the engine"></a>Getting the engine</h3><h4 id="Binary-downloads"><a href="#Binary-downloads" class="headerlink" title="Binary downloads"></a>Binary downloads</h4><p>Official binaries for the Godot editor and the export templates can be found<br><a href="https://godotengine.org/download" target="_blank" rel="noopener">on the homepage</a>.</p>
+<h4 id="Compiling-from-source"><a href="#Compiling-from-source" class="headerlink" title="Compiling from source"></a>Compiling from source</h4><p><a href="https://docs.godotengine.org/en/latest/development/compiling/" target="_blank" rel="noopener">See the official docs</a><br>for compilation instructions for every supported platform.</p>
+<h3 id="Community-and-contributing"><a href="#Community-and-contributing" class="headerlink" title="Community and contributing"></a>Community and contributing</h3><p>Godot is not only an engine but an ever-growing community of users and engine<br>developers. The main community channels are listed <a href="https://godotengine.org/community" target="_blank" rel="noopener">on the homepage</a>.</p>
+<p>To get in touch with the developers, the best way is to join the<br><a href="https://webchat.freenode.net/?channels=godotengine" target="_blank" rel="noopener">#godotengine IRC channel</a><br>on Freenode.</p>
+<p>To get started contributing to the project, see the <a href="CONTRIBUTING.md">contributing guide</a>.</p>
+<h3 id="Documentation-and-demos"><a href="#Documentation-and-demos" class="headerlink" title="Documentation and demos"></a>Documentation and demos</h3><p>The official documentation is hosted on <a href="https://docs.godotengine.org" target="_blank" rel="noopener">ReadTheDocs</a>.<br>It is maintained by the Godot community in its own <a href="https://github.com/godotengine/godot-docs" target="_blank" rel="noopener">GitHub repository</a>.</p>
+<p>The <a href="https://docs.godotengine.org/en/latest/classes/" target="_blank" rel="noopener">class reference</a><br>is also accessible from within the engine.</p>
+<p>The official demos are maintained in their own <a href="https://github.com/godotengine/godot-demo-projects" target="_blank" rel="noopener">GitHub repository</a><br>as well.</p>
+<p>There are also a number of other learning resources provided by the community,<br>such as text and video tutorials, demos, etc. Consult the <a href="https://godotengine.org/community" target="_blank" rel="noopener">community channels</a><br>for more info.</p>
+<p><a href="https://travis-ci.org/godotengine/godot" target="_blank" rel="noopener"><img src="https://travis-ci.org/godotengine/godot.svg?branch=master" alt="Travis Build Status"></a><br><a href="https://ci.appveyor.com/project/akien-mga/godot" target="_blank" rel="noopener"><img src="https://ci.appveyor.com/api/projects/status/bfiihqq6byxsjxxh/branch/master?svg=true" alt="AppVeyor Build Status"></a><br><a href="https://www.codetriage.com/godotengine/godot" target="_blank" rel="noopener"><img src="https://www.codetriage.com/godotengine/godot/badges/users.svg" alt="Code Triagers Badge"></a><br><a href="https://hosted.weblate.org/engage/godot-engine/?utm_source=widget" target="_blank" rel="noopener"><img src="https://hosted.weblate.org/widgets/godot-engine/-/godot/svg-badge.svg" alt="Translate on Weblate"></a><br><a href="https://lgtm.com/projects/g/godotengine/godot/alerts" target="_blank" rel="noopener"><img src="https://img.shields.io/lgtm/alerts/g/godotengine/godot.svg?logo=lgtm&logoWidth=18" alt="Total alerts on LGTM"></a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/VR/">VR</a>, <a class="has-link-grey -link" href="/tags/游戏/">游戏</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/3754260851.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://hsutimes.club/usr/uploads/2019/05/1592984278.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="7KBW7U6X2ZYK6" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/user/creators?u=26939987" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/23/rabies/">
+                <span class="level-item">狂犬病病毒</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://hsutimes.github.io/js/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '645046dc80fdcf4c432183ce8e035601',
+		owner: 'hsutimes',
+		repo: 'gitment_blog',
+		oauth: {
+			client_id: 'd73d768ea9e3bd69ab54',
+			client_secret: '4b958932671ae1a2ab37b2a112ee945824fd4abd',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://hsutimes.github.io/images/16530d7f26a413c2.png" alt="Time">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Time
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            129
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            161
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hsutimes" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hsutimes">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/times26740863">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/hsutimes" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://hsutimes.club" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Time</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hsutimes.club</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Others/">
+            <span class="level-start">
+                <span class="level-item">Others</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/人工智能/">
+            <span class="level-start">
+                <span class="level-item">人工智能</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/文章/">
+            <span class="level-start">
+                <span class="level-item">文章</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">100</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/生活/">
+            <span class="level-start">
+                <span class="level-item">生活</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">10</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/笔试/">
+            <span class="level-start">
+                <span class="level-item">笔试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Godot-Engine">
+        <span class="has-mr-6">1</span>
+        <span>Godot Engine</span>
+        </a><ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#2D-and-3D-cross-platform-game-engine">
+        <span class="has-mr-6">1.1.1</span>
+        <span>2D and 3D cross-platform game engine</span>
+        </a></li><li>
+        <a class="is-flex" href="#Free-open-source-and-community-driven">
+        <span class="has-mr-6">1.1.2</span>
+        <span>Free, open source and community-driven</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#Getting-the-engine">
+        <span class="has-mr-6">1.2</span>
+        <span>Getting the engine</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Binary-downloads">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Binary downloads</span>
+        </a></li><li>
+        <a class="is-flex" href="#Compiling-from-source">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Compiling from source</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Community-and-contributing">
+        <span class="has-mr-6">1.3</span>
+        <span>Community and contributing</span>
+        </a></li><li>
+        <a class="is-flex" href="#Documentation-and-demos">
+        <span class="has-mr-6">1.4</span>
+        <span>Documentation and demos</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/29/Godot-Engine/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/02/29/148ba1c0-5ae4-11ea-8723-3bfffa778f40.png" alt="Godot Engine">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T11:08:49.000Z">2020-02-29</time></div>
+                    <a href="/2020/02/29/Godot-Engine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Godot Engine</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/23/rabies/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/02/23/d7628c70-564a-11ea-8e5a-a912cbc98a03.png" alt="狂犬病病毒">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-23T14:43:26.000Z">2020-02-23</time></div>
+                    <a href="/2020/02/23/rabies/" class="title has-link-black-ter is-size-6 has-text-weight-normal">狂犬病病毒</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/02/达摩院/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/01/02/30b7b920-2d4d-11ea-9c80-290f9db7eefc.png" alt="阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-02T10:45:07.000Z">2020-01-02</time></div>
+                    <a href="/2020/01/02/达摩院/" class="title has-link-black-ter is-size-6 has-text-weight-normal">阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/30/gene-detection/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/30/1514bf20-2ae5-11ea-840b-ab4a2fba49fc.png" alt="基因检测">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-30T09:08:05.000Z">2019-12-30</time></div>
+                    <a href="/2019/12/30/gene-detection/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基因检测</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/25/PyTorch-中文教程/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/25/c528fe20-2726-11ea-a1c7-4bb566df15de.png" alt="PyTorch 中文教程">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T14:55:57.000Z">2019-12-25</time></div>
+                    <a href="/2019/12/25/PyTorch-中文教程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PyTorch 中文教程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Godot-Engine">
+        <span class="has-mr-6">1</span>
+        <span>Godot Engine</span>
+        </a><ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#2D-and-3D-cross-platform-game-engine">
+        <span class="has-mr-6">1.1.1</span>
+        <span>2D and 3D cross-platform game engine</span>
+        </a></li><li>
+        <a class="is-flex" href="#Free-open-source-and-community-driven">
+        <span class="has-mr-6">1.1.2</span>
+        <span>Free, open source and community-driven</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#Getting-the-engine">
+        <span class="has-mr-6">1.2</span>
+        <span>Getting the engine</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Binary-downloads">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Binary downloads</span>
+        </a></li><li>
+        <a class="is-flex" href="#Compiling-from-source">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Compiling from source</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Community-and-contributing">
+        <span class="has-mr-6">1.3</span>
+        <span>Community and contributing</span>
+        </a></li><li>
+        <a class="is-flex" href="#Documentation-and-demos">
+        <span class="has-mr-6">1.4</span>
+        <span>Documentation and demos</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/29/Godot-Engine/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/02/29/148ba1c0-5ae4-11ea-8723-3bfffa778f40.png" alt="Godot Engine">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T11:08:49.000Z">2020-02-29</time></div>
+                    <a href="/2020/02/29/Godot-Engine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Godot Engine</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/23/rabies/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/02/23/d7628c70-564a-11ea-8e5a-a912cbc98a03.png" alt="狂犬病病毒">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-23T14:43:26.000Z">2020-02-23</time></div>
+                    <a href="/2020/02/23/rabies/" class="title has-link-black-ter is-size-6 has-text-weight-normal">狂犬病病毒</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/02/达摩院/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/01/02/30b7b920-2d4d-11ea-9c80-290f9db7eefc.png" alt="阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-02T10:45:07.000Z">2020-01-02</time></div>
+                    <a href="/2020/01/02/达摩院/" class="title has-link-black-ter is-size-6 has-text-weight-normal">阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/30/gene-detection/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/30/1514bf20-2ae5-11ea-840b-ab4a2fba49fc.png" alt="基因检测">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-30T09:08:05.000Z">2019-12-30</time></div>
+                    <a href="/2019/12/30/gene-detection/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基因检测</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/25/PyTorch-中文教程/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2019/12/25/c528fe20-2726-11ea-a1c7-4bb566df15de.png" alt="PyTorch 中文教程">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T14:55:57.000Z">2019-12-25</time></div>
+                    <a href="/2019/12/25/PyTorch-中文教程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PyTorch 中文教程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Godot Engine" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 times&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hsutimes/hsutimes.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

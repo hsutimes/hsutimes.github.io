@@ -146,6 +146,107 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-14T12:46:29.000Z">2019-10-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1298 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/14/linux-so/">linux_so</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Linux下的静态库、动态库和动态加载库"><a href="#Linux下的静态库、动态库和动态加载库" class="headerlink" title="Linux下的静态库、动态库和动态加载库"></a>Linux下的静态库、动态库和动态加载库</h1><h2 id="Linux库类型"><a href="#Linux库类型" class="headerlink" title="Linux库类型"></a>Linux库类型</h2><p>Linux下可以创建两种类型的库:</p>
+<ol>
+<li><p>静态库(.a): 在链接期间被应用程序直接链接进可执行文件</p>
+</li>
+<li><p>动态链接库(.so): 动态库还分为两种用法: a) 应用程序运行期间链接动态库，但是在编译期间声明动态库的存在，也就是说这种动态库必须在编译时对编译器可见，但编译器却不将此种库编译进可执行文件; b) 在运行期间，动态加载和卸载的库，使用动态加载方法加载。这种库的形式跟动态链接没有本质区别，区别是在调用时，是由用户程序决定何时链接的，而不是由系统链接器自动链接</p>
+</li>
+</ol>
+<h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><p>库需要以<code>lib</code>作为开头，而在指定链接命令行参数时，却无需包含开头和扩展名，例如：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc src-file.c -lm -lpthread</span><br></pre></td></tr></table></figure>
+
+<p>这个例子中，链接了<code>libmath.a</code>和<code>libpthread.a</code></p>
+<h2 id="静态库-a"><a href="#静态库-a" class="headerlink" title="静态库(.a)"></a>静态库(.a)</h2><p>生成静态库的方法如下：</p>
+<ul>
+<li><p>编译object文件。例如：cc -Wall -c ctest1.c ctest2.c，该命令会生成ctest1.o和ctest2.o(其中-Wall表示编译时输出警告)。</p>
+</li>
+<li><p>创建库文件。例如：ar -cvq libctest.a ctest1.o ctest2.o。该命令会得到一个libctest.a文件</p>
+</li>
+<li><p>可以通过ar -t查看.a文件中包含哪些.o。所以，实际上ar就是一个打包命令，类似tar</p>
+</li>
+<li><p>构建符号表。ranlib libctest.a用于为.a创建符号表。有些ar命令实际上已经集成了ranlib的功能</p>
+</li>
+</ul>
+<p><code>.a</code>文件与windows下的<code>.lib</code>是相同的概念。</p>
+<h2 id="动态库-so"><a href="#动态库-so" class="headerlink" title="动态库(.so)"></a>动态库(.so)</h2><p>生成动态库的方法如下：</p>
+<ul>
+<li>编译object文件时使用-fPIC选项：</li>
+</ul>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -fPIC -c *.c</span><br></pre></td></tr></table></figure>
+
+<p>这个选项的目的是让编译器生成地址无关(position independent)的代码，这是因为，动态库是在运行期间链接的，变量和函数的偏移量是事先不知道的，需要链接以后根据offset进行地址重定向。</p>
+<ul>
+<li>使用-shared链接<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 *.o</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><code>-shared</code>选项是让动态库得以在运行期间被动态链接;<code>-Wl,options</code>是设置传递给<code>ld(链接器)</code>的参数，在上面的例子中，当链接器在链接<code>.o</code>时会执行<code>ld -soname ibctest.so.1</code></p>
+<ul>
+<li>创建软链</li>
+</ul>
+<p>上面的命令将最终输出一个动态库libctest.so.1.0，而出于习惯，会创建两个软链:</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv libctest.so.1.0 /opt/lib</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1</span><br><span class="line">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so</span><br></pre></td></tr></table></figure>
+
+<p><code>libctest.so</code>用于在编译期间使用<code>-lctest</code>让编译器找到动态库，而<code>libctest.so.1</code>用于在运行期间链接</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -I/path/to/include-files -L/path/to/libraries prog.c -lctest -o prog</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h3><p>使用ldd命令来查看程序对动态库的依赖。例如：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ldd prog</span><br><span class="line"></span><br><span class="line">libctest.so.1 =&gt; /opt/lib/libctest.so.1 (0x00002aaaaaaac000)</span><br><span class="line">libc.so.6 =&gt; /lib64/tls/libc.so.6 (0x0000003aa4e00000)</span><br><span class="line">/lib64/ld-linux-x86-64.so.2 (0x0000003aa4c00000)</span><br></pre></td></tr></table></figure>
+
+<h3 id="obj文件"><a href="#obj文件" class="headerlink" title="obj文件"></a>obj文件</h3><p>obj文件的格式和组成可能是系统差异性的一大体现，比如windows下的PE、linux和一些unix下的elf、macos的mach-o、aix下的xcoff。</p>
+<p>查看obj文件的符号表信息，可以通过nm objdump readelf等方法。</p>
+<h3 id="运行期间查找动态库"><a href="#运行期间查找动态库" class="headerlink" title="运行期间查找动态库"></a>运行期间查找动态库</h3><p>运行期间，系统需要知道到哪里去查找动态库，这是通过/etc/ld.so.conf配置的。ldconfig用于配置运行时动态库查找路径，实际是更新/etc/ld.so.cache。另外一些环境变量也可以影响查找：(Linux/Solaris: LD_LIBRARY_PATH, SGI: LD_LIBRARYN32_PATH, AIX: LIBPATH, Mac OS X: DYLD_LIBRARY_PATH, HP-UX: SHLIB_PATH)</p>
+<h2 id="动态加载和卸载的库"><a href="#动态加载和卸载的库" class="headerlink" title="动态加载和卸载的库"></a>动态加载和卸载的库</h2><p>需要应用程序希望设计成插件化的架构，这就需要可以动态加载和卸载库的机制。与动态链接不同的是，动态加载的意思是，编译期间可以对动态库的存在一无所知，而是在运行期间通过用户程序尝试加载进来的。</p>
+<p>通过<code>dlfcn.h</code>中的<code>dlopen</code>、<code>dlsym</code>和<code>dlclose</code>等函数实现此种功能。</p>
+<p>另外，使用到dlfcn机制的可执行文件需要使用-rdynamic选项，它将指示连接器把所有符号（而不仅仅只是程序已使用到的外部符号，但不包括静态符号，比如被static修饰的函数）都添加到动态符号表（即.dynsym表）里。</p>
+<h2 id="GNU-Libtool"><a href="#GNU-Libtool" class="headerlink" title="GNU Libtool"></a>GNU Libtool</h2><p>如今许多软件的编译都采用libtool工具，libtool是一个编译链接包装工具，实际只是一个脚本，用libtool编译和链接会产生类似.la的文件，.la这种文件其实是个文本文件，指向.a文件，并声明一些版本信息。</p>
+<p><a href="https://segmentfault.com/a/1190000005988462" target="_blank" rel="noopener">传送门</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-13T05:06:51.000Z">2019-10-13</time>
                 
                 <div class="level-item">
@@ -1145,94 +1246,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-29T15:37:49.000Z">2019-09-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 438 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/29/vue-route/">vue_route</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="vue自动化路由"><a href="#vue自动化路由" class="headerlink" title="vue自动化路由"></a>vue自动化路由</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>解放双手，从此不用配置路由。当你看到项目中大批量的路由思考是拆分维护业务路由还是统一入口维护时，无需多虑，<code>router-auto</code>是你的最优选择，它帮你解决路由的维护成本，你只需要创建相应的文件夹，路由就能动态生成，路由拦截你可以在main.js中去拦截他，总之比你想象的开发还要简单。</p>
-<ul>
-<li>router-auto github地址有帮助的可以star一下</li>
-<li>router-auto npm地址欢迎提issue</li>
-</ul>
-<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://user-gold-cdn.xitu.io/2019/9/29/16d7c6065291abeb?imageslim" alt="1"></p>
-<h2 id="简要用法"><a href="#简要用法" class="headerlink" title="简要用法"></a>简要用法</h2><p>具体用法请实时查看github或者npm，下面做一些简要用法介绍</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const RouterAuto = require(<span class="hljs-string">'router-auto'</span>)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: <span class="hljs-string">'...'</span>,</span><br><span class="line">    output: &#123;&#125;,</span><br><span class="line">    module: &#123;&#125;,</span><br><span class="line">    plugin:[</span><br><span class="line">        new RouterAuto()</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><ul>
-<li>package.json 等等文件与目录</li>
-<li>src 项目目录<ul>
-<li>page 页面目录<ul>
-<li>helloworld<ul>
-<li>Index.vue 页面入口</li>
-<li>hello.vue 业务组件</li>
-<li>router.js 额外配置</li>
-</ul>
-</li>
-<li>demo<ul>
-<li>test<ul>
-<li>Index.vue 页面入口</li>
-<li>test.vue 业务组件</li>
-</ul>
-</li>
-<li>Index.vue 页面入口</li>
-</ul>
-</li>
-<li>home<ul>
-<li>Index.vue 页面入口</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>上面的目录结构生成的路由结构为</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> Router <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-router'</span></span><br><span class="line"><span class="hljs-keyword">import</span> helloworld <span class="hljs-keyword">from</span> <span class="hljs-string">'@/page/helloworld/Index.vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> demo <span class="hljs-keyword">from</span> <span class="hljs-string">'@/page/demo/Index.vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> demo_test <span class="hljs-keyword">from</span> <span class="hljs-string">'@/page/demo/test/Index.vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> home <span class="hljs-keyword">from</span> <span class="hljs-string">'@/page/home/Index.vue'</span></span><br><span class="line">  </span><br><span class="line">Vue.use(Router)</span><br><span class="line">  </span><br><span class="line">export default new Router(&#123;</span><br><span class="line">    mode:<span class="hljs-string">'history'</span>,</span><br><span class="line">    base:<span class="hljs-string">'/auto/'</span>,</span><br><span class="line">    routes:[&#123;</span><br><span class="line">      path: <span class="hljs-string">'/helloworld/index'</span>,</span><br><span class="line">      name: <span class="hljs-string">'helloworld'</span>,</span><br><span class="line">      component: helloworld</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      path: <span class="hljs-string">'/demo/index'</span>,</span><br><span class="line">      name: <span class="hljs-string">'demo'</span>,</span><br><span class="line">      component: demo</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      path: <span class="hljs-string">'/demo/test/index'</span>,</span><br><span class="line">      name: <span class="hljs-string">'demo_test'</span>,</span><br><span class="line">      component: demo_test</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      path: <span class="hljs-string">'/home/index'</span>,</span><br><span class="line">      name: <span class="hljs-string">'home'</span>,</span><br><span class="line">      component: home</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>作者：ngaiwe<br>链接：<a href="https://juejin.im/post/5d90798151882576e44088e8" target="_blank" rel="noopener">https://juejin.im/post/5d90798151882576e44088e8</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-</blockquote>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1307,7 +1320,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            128
+                            129
                         </p>
                     </a>
                 </div>
@@ -1498,6 +1511,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/29/Godot-Engine/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/02/29/148ba1c0-5ae4-11ea-8723-3bfffa778f40.png" alt="Godot Engine">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T11:08:49.000Z">2020-02-29</time></div>
+                    <a href="/2020/02/29/Godot-Engine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Godot Engine</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/23/rabies/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2020/02/23/d7628c70-564a-11ea-8e5a-a912cbc98a03.png" alt="狂犬病病毒">
@@ -1565,25 +1597,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T14:55:57.000Z">2019-12-25</time></div>
                     <a href="/2019/12/25/PyTorch-中文教程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PyTorch 中文教程</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/24/laxcus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/24/1ee61910-2665-11ea-90ba-418a8d243af3.png" alt="大数据管理系统 Laxcus">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-24T15:44:44.000Z">2019-12-24</time></div>
-                    <a href="/2019/12/24/laxcus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">大数据管理系统 Laxcus</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
@@ -1615,6 +1628,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/29/Godot-Engine/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/02/29/148ba1c0-5ae4-11ea-8723-3bfffa778f40.png" alt="Godot Engine">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T11:08:49.000Z">2020-02-29</time></div>
+                    <a href="/2020/02/29/Godot-Engine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Godot Engine</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/23/rabies/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2020/02/23/d7628c70-564a-11ea-8e5a-a912cbc98a03.png" alt="狂犬病病毒">
@@ -1682,25 +1714,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T14:55:57.000Z">2019-12-25</time></div>
                     <a href="/2019/12/25/PyTorch-中文教程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PyTorch 中文教程</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/12/24/laxcus/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2019/12/24/1ee61910-2665-11ea-90ba-418a8d243af3.png" alt="大数据管理系统 Laxcus">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-24T15:44:44.000Z">2019-12-24</time></div>
-                    <a href="/2019/12/24/laxcus/" class="title has-link-black-ter is-size-6 has-text-weight-normal">大数据管理系统 Laxcus</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
