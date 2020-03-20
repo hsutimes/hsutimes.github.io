@@ -19,7 +19,7 @@
 <meta property="og:description" content="介绍spring框架它是一个一站式（full-stack全栈式）框架，提供了从表现层-springMVC到业务层-spring再到持久层-springdata的一套完整的解决方案。我们在项目中可以只使用spring一个框架，它就可以提供表现层的mvc框架，持久层的Dao框架。它的两大核心IoC和AOP更是为我们程序解耦和代码简洁易维护提供了支持。 Spring的优点？ 降低了组件之间的耦合性 ，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.hsutimes.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-12T12:06:26.471Z">
+<meta property="og:updated_time" content="2020-03-20T03:23:29.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring框架面试总结">
 <meta name="twitter:description" content="介绍spring框架它是一个一站式（full-stack全栈式）框架，提供了从表现层-springMVC到业务层-spring再到持久层-springdata的一套完整的解决方案。我们在项目中可以只使用spring一个框架，它就可以提供表现层的mvc框架，持久层的Dao框架。它的两大核心IoC和AOP更是为我们程序解耦和代码简洁易维护提供了支持。 Spring的优点？ 降低了组件之间的耦合性 ，">
@@ -125,6 +125,10 @@
                     </a>
                     
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
@@ -590,6 +594,70 @@
         <div class="column-right-shadow is-hidden-widescreen is-sticky">
         
             
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#介绍spring框架">
+        <span class="has-mr-6">1</span>
+        <span>介绍spring框架</span>
+        </a></li><li>
+        <a class="is-flex" href="#Spring的优点？">
+        <span class="has-mr-6">2</span>
+        <span>Spring的优点？</span>
+        </a></li><li>
+        <a class="is-flex" href="#spring有两种代理方式：">
+        <span class="has-mr-6">3</span>
+        <span>spring有两种代理方式：</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何给Spring-容器提供配置元数据">
+        <span class="has-mr-6">4</span>
+        <span>如何给Spring 容器提供配置元数据?</span>
+        </a></li><li>
+        <a class="is-flex" href="#构造方法注入和设值注入有什么区别？">
+        <span class="has-mr-6">5</span>
+        <span>构造方法注入和设值注入有什么区别？</span>
+        </a></li><li>
+        <a class="is-flex" href="#请介绍一下Spring框架中Bean的生命周期">
+        <span class="has-mr-6">6</span>
+        <span>请介绍一下Spring框架中Bean的生命周期</span>
+        </a></li><li>
+        <a class="is-flex" href="#Spring中AOP的应用场景、Aop原理、好处？">
+        <span class="has-mr-6">7</span>
+        <span>Spring中AOP的应用场景、Aop原理、好处？</span>
+        </a></li><li>
+        <a class="is-flex" href="#有几种不同类型的自动代理？">
+        <span class="has-mr-6">8</span>
+        <span>有几种不同类型的自动代理？</span>
+        </a></li><li>
+        <a class="is-flex" href="#ApplicationContext通常的实现是什么">
+        <span class="has-mr-6">9</span>
+        <span>ApplicationContext通常的实现是什么?</span>
+        </a></li><li>
+        <a class="is-flex" href="#有哪些不同类型的IOC（依赖注入）方式？">
+        <span class="has-mr-6">10</span>
+        <span>有哪些不同类型的IOC（依赖注入）方式？</span>
+        </a></li><li>
+        <a class="is-flex" href="#什么是IOC，什么又是DI，他们有什么区别？">
+        <span class="has-mr-6">11</span>
+        <span>什么是IOC，什么又是DI，他们有什么区别？</span>
+        </a></li><li>
+        <a class="is-flex" href="#spring事务定义">
+        <span class="has-mr-6">12</span>
+        <span>spring事务定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#Spring框架中的单例Beans是线程安全的么？">
+        <span class="has-mr-6">13</span>
+        <span>Spring框架中的单例Beans是线程安全的么？</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
         
             <div class="card widget">
     <div class="card-content">
@@ -707,6 +775,70 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#介绍spring框架">
+        <span class="has-mr-6">1</span>
+        <span>介绍spring框架</span>
+        </a></li><li>
+        <a class="is-flex" href="#Spring的优点？">
+        <span class="has-mr-6">2</span>
+        <span>Spring的优点？</span>
+        </a></li><li>
+        <a class="is-flex" href="#spring有两种代理方式：">
+        <span class="has-mr-6">3</span>
+        <span>spring有两种代理方式：</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何给Spring-容器提供配置元数据">
+        <span class="has-mr-6">4</span>
+        <span>如何给Spring 容器提供配置元数据?</span>
+        </a></li><li>
+        <a class="is-flex" href="#构造方法注入和设值注入有什么区别？">
+        <span class="has-mr-6">5</span>
+        <span>构造方法注入和设值注入有什么区别？</span>
+        </a></li><li>
+        <a class="is-flex" href="#请介绍一下Spring框架中Bean的生命周期">
+        <span class="has-mr-6">6</span>
+        <span>请介绍一下Spring框架中Bean的生命周期</span>
+        </a></li><li>
+        <a class="is-flex" href="#Spring中AOP的应用场景、Aop原理、好处？">
+        <span class="has-mr-6">7</span>
+        <span>Spring中AOP的应用场景、Aop原理、好处？</span>
+        </a></li><li>
+        <a class="is-flex" href="#有几种不同类型的自动代理？">
+        <span class="has-mr-6">8</span>
+        <span>有几种不同类型的自动代理？</span>
+        </a></li><li>
+        <a class="is-flex" href="#ApplicationContext通常的实现是什么">
+        <span class="has-mr-6">9</span>
+        <span>ApplicationContext通常的实现是什么?</span>
+        </a></li><li>
+        <a class="is-flex" href="#有哪些不同类型的IOC（依赖注入）方式？">
+        <span class="has-mr-6">10</span>
+        <span>有哪些不同类型的IOC（依赖注入）方式？</span>
+        </a></li><li>
+        <a class="is-flex" href="#什么是IOC，什么又是DI，他们有什么区别？">
+        <span class="has-mr-6">11</span>
+        <span>什么是IOC，什么又是DI，他们有什么区别？</span>
+        </a></li><li>
+        <a class="is-flex" href="#spring事务定义">
+        <span class="has-mr-6">12</span>
+        <span>spring事务定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#Spring框架中的单例Beans是线程安全的么？">
+        <span class="has-mr-6">13</span>
+        <span>Spring框架中的单例Beans是线程安全的么？</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
