@@ -18,12 +18,12 @@
 <meta property="og:site_name" content="Time">
 <meta property="og:description" content="存储引擎概念数据库存储引擎是数据库底层软件组织，数据库管理系统（DBMS）使用数据引擎进行创建、查询、 更新和删除数据。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同 的存储引擎，还可以 获得特定的功能。现在许多不同的数据库管理系统都支持多种不同的数据引 擎。存储引擎主要有： 1. MyIsam , 2. InnoDB, 3. Memory, 4. Archive, 5. F">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.hsutimes.com/null">
-<meta property="og:updated_time" content="2020-03-21T14:13:31.387Z">
+<meta property="og:image" content="https://blog.hsutimes.com/images/2020/03/21/f061dcc0-6b81-11ea-8d02-9fd32428c587.png">
+<meta property="og:updated_time" content="2020-03-21T14:40:55.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库存储引擎与索引">
 <meta name="twitter:description" content="存储引擎概念数据库存储引擎是数据库底层软件组织，数据库管理系统（DBMS）使用数据引擎进行创建、查询、 更新和删除数据。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同 的存储引擎，还可以 获得特定的功能。现在许多不同的数据库管理系统都支持多种不同的数据引 擎。存储引擎主要有： 1. MyIsam , 2. InnoDB, 3. Memory, 4. Archive, 5. F">
-<meta name="twitter:image" content="https://blog.hsutimes.com/null">
+<meta name="twitter:image" content="https://blog.hsutimes.com/images/2020/03/21/f061dcc0-6b81-11ea-8d02-9fd32428c587.png">
 <meta name="twitter:site" content="https://twitter.com/times26740863">
 
 
@@ -148,7 +148,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/null" alt="数据库存储引擎与索引">
+            <img class="thumbnail" src="/images/2020/03/21/f061dcc0-6b81-11ea-8d02-9fd32428c587.png" alt="数据库存储引擎与索引">
         </span>
     </div>
     
@@ -166,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 943 个字)
+                    7 分钟 读完 (大约 987 个字)
                 </span>
                 
                 
@@ -185,6 +185,7 @@
         </h1>
         <div class="content">
             <h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>数据库存储引擎是数据库底层软件组织，数据库管理系统（DBMS）使用数据引擎进行创建、查询、 更新和删除数据。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同 的存储引擎，还可以 获得特定的功能。现在许多不同的数据库管理系统都支持多种不同的数据引 擎。存储引擎主要有： 1. MyIsam , 2. InnoDB, 3. Memory, 4. Archive, 5. Federated。</p>
+<a id="more"></a> 
 <h2 id="InnoDB-B-树"><a href="#InnoDB-B-树" class="headerlink" title="InnoDB(B+树)"></a>InnoDB(B+树)</h2><p>InnoDB 底层存储结构为B+树， B树的每个节点对应innodb的一个page，page大小是固定的， 一般设为16k。其中非叶子节点只有键值，叶子节点包含完成数据。</p>
 <p><img src="/images/2020/03/21/a5dbbea0-6b7c-11ea-9eaa-c9dae1bfb02d.png" alt="image.png"></p>
 <p>适用场景：<br>1）经常更新的表，适合处理多重并发的更新请求。<br>2）支持事务。<br>3）可以从灾难中恢复（通过bin-log日志等）。<br>4）外键约束。只有他支持外键。<br>5）支持自动增加列属性auto_increment。 </p>
@@ -195,6 +196,9 @@
 <h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>Memory（也叫HEAP）堆内存：使用存在内存中的内容来创建表。每个MEMORY表只实际对应 一个磁盘文件。MEMORY 类型的表访问非常得快，因为它的数据是放在内存中的，并且默认使用 HASH索引。但是一旦服务关闭，表中的数据就会丢失掉。  Memory同时支持散列索引和B树索 引，B树索引可以使用部分查询和通配查询，也可以使用&lt;,&gt;和&gt;=等操作符方便数据挖掘，散列索 引相等的比较快但是对于范围的比较慢很多。</p>
 <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引（Index）是帮助 MySQL 高效获取数据的数据结构。常见的查询算法,顺序查找,二分查找,二 叉排序树查找,哈希散列法,分块查找,平衡多路搜索树B树（B-tree）</p>
 <h2 id="常见索引原则有"><a href="#常见索引原则有" class="headerlink" title="常见索引原则有"></a>常见索引原则有</h2><p><img src="/images/2020/03/21/106160d0-6b7e-11ea-9eaa-c9dae1bfb02d.png" alt="image.png"></p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-string">`test`</span> (</span><br><span class="line">  <span class="hljs-string">`id`</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="hljs-string">`name`</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="hljs-keyword">KEY</span> (<span class="hljs-string">`id`</span>),</span><br><span class="line">  <span class="hljs-keyword">KEY</span> <span class="hljs-string">`id_index`</span> (<span class="hljs-string">`id`</span>) <span class="hljs-keyword">USING</span> BTREE</span><br><span class="line">) <span class="hljs-keyword">ENGINE</span>=<span class="hljs-keyword">InnoDB</span> AUTO_INCREMENT=<span class="hljs-number">116575</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2020/03/21/b364eab0-6b81-11ea-8d02-9fd32428c587.png" alt="image.png"></p>
 
         </div>
         
@@ -573,7 +577,11 @@
         <a class="is-flex" href="#常见索引原则有">
         <span class="has-mr-6">2.1</span>
         <span>常见索引原则有</span>
-        </a></li></ul></li></ul>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#测试">
+        <span class="has-mr-6">3</span>
+        <span>测试</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -589,7 +597,7 @@
             
             <a href="/2020/03/21/storage-engine/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/null" alt="数据库存储引擎与索引">
+                    <img class="thumbnail" src="/images/2020/03/21/f061dcc0-6b81-11ea-8d02-9fd32428c587.png" alt="数据库存储引擎与索引">
                 </p>
             </a>
             
@@ -734,7 +742,11 @@
         <a class="is-flex" href="#常见索引原则有">
         <span class="has-mr-6">2.1</span>
         <span>常见索引原则有</span>
-        </a></li></ul></li></ul>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#测试">
+        <span class="has-mr-6">3</span>
+        <span>测试</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -750,7 +762,7 @@
             
             <a href="/2020/03/21/storage-engine/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/null" alt="数据库存储引擎与索引">
+                    <img class="thumbnail" src="/images/2020/03/21/f061dcc0-6b81-11ea-8d02-9fd32428c587.png" alt="数据库存储引擎与索引">
                 </p>
             </a>
             
