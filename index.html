@@ -143,6 +143,68 @@
 <div class="card">
     
     <div class="card-image">
+        <a href="/2020/03/21/storage-engine/" class="image is-7by1">
+            <img class="thumbnail" src="/null" alt="数据库存储引擎与索引">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-21T14:01:42.000Z">2020-03-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 943 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/21/storage-engine/">数据库存储引擎与索引</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>数据库存储引擎是数据库底层软件组织，数据库管理系统（DBMS）使用数据引擎进行创建、查询、 更新和删除数据。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同 的存储引擎，还可以 获得特定的功能。现在许多不同的数据库管理系统都支持多种不同的数据引 擎。存储引擎主要有： 1. MyIsam , 2. InnoDB, 3. Memory, 4. Archive, 5. Federated。</p>
+<h2 id="InnoDB-B-树"><a href="#InnoDB-B-树" class="headerlink" title="InnoDB(B+树)"></a>InnoDB(B+树)</h2><p>InnoDB 底层存储结构为B+树， B树的每个节点对应innodb的一个page，page大小是固定的， 一般设为16k。其中非叶子节点只有键值，叶子节点包含完成数据。</p>
+<p><img src="/images/2020/03/21/a5dbbea0-6b7c-11ea-9eaa-c9dae1bfb02d.png" alt="image.png"></p>
+<p>适用场景：<br>1）经常更新的表，适合处理多重并发的更新请求。<br>2）支持事务。<br>3）可以从灾难中恢复（通过bin-log日志等）。<br>4）外键约束。只有他支持外键。<br>5）支持自动增加列属性auto_increment。 </p>
+<h2 id="TokuDB-Fractal-Tree-节点带数据"><a href="#TokuDB-Fractal-Tree-节点带数据" class="headerlink" title="TokuDB(Fractal Tree-节点带数据)"></a>TokuDB(Fractal Tree-节点带数据)</h2><p>TokuDB 底层存储结构为Fractal Tree,Fractal Tree的结构与B+树有些类似, 在Fractal Tree 中，<strong>每一个child指针除了需要指向一个child节点外，还会带有一个Message Buffer ，这个 Message Buffer 是一个FIFO的队列，用来缓存更新操作</strong>。<br>例如，一次插入操作只需要落在某节点的Message Buffer就可以马上返回了，并不需要搜索到叶 子节点。这些缓存的更新会在查询时或后台异步合并应用到对应的节点中。</p>
+<p><img src="/images/2020/03/21/19675d70-6b7d-11ea-9eaa-c9dae1bfb02d.png" alt="image.png"></p>
+<p>TokuDB在线添加索引，不影响读写操作, 非常快的写入性能， Fractal-tree在事务实现上有优 势。 他主要适用于访问频率不高的数据或历史数据归档。 </p>
+<h2 id="MyIASM"><a href="#MyIASM" class="headerlink" title="MyIASM"></a>MyIASM</h2><p>MyIASM是MySQL默认的引擎，但是它没有提供对数据库事务的支持，也不支持行级锁和外键， 因此当INSERT(插入)或UPDATE(更新)数据时即写操作需要锁定整个表，效率便会低一些。<br>ISAM 执行<strong>读取操作的速度很快</strong>，而且不占用大量的内存和存储资源。在设计之初就预想数据组织 成有固定长度的记录，按顺序存储的。—ISAM是一种静态索引结构。<br><strong>缺点是它不 支持事务处理</strong>。</p>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>Memory（也叫HEAP）堆内存：使用存在内存中的内容来创建表。每个MEMORY表只实际对应 一个磁盘文件。MEMORY 类型的表访问非常得快，因为它的数据是放在内存中的，并且默认使用 HASH索引。但是一旦服务关闭，表中的数据就会丢失掉。  Memory同时支持散列索引和B树索 引，B树索引可以使用部分查询和通配查询，也可以使用&lt;,&gt;和&gt;=等操作符方便数据挖掘，散列索 引相等的比较快但是对于范围的比较慢很多。</p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引（Index）是帮助 MySQL 高效获取数据的数据结构。常见的查询算法,顺序查找,二分查找,二 叉排序树查找,哈希散列法,分块查找,平衡多路搜索树B树（B-tree）</p>
+<h2 id="常见索引原则有"><a href="#常见索引原则有" class="headerlink" title="常见索引原则有"></a>常见索引原则有</h2><p><img src="/images/2020/03/21/106160d0-6b7e-11ea-9eaa-c9dae1bfb02d.png" alt="image.png"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
         <a href="/2020/03/10/飞机为什么能飞起来？直到今天，科学家仍然没有答案/" class="image is-7by1">
             <img class="thumbnail" src="/images/2020/03/10/7824a8d0-62e6-11ea-a65b-33f481e74a35.png" alt="飞机为什么能飞起来？直到今天，科学家仍然没有答案">
         </a>
@@ -795,65 +857,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/12/11/3d-model/" class="image is-7by1">
-            <img class="thumbnail" src="/images/2019/12/11/0f96a0d0-1c2c-11ea-9d1b-2d60b515f627.png" alt="3D模型">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-11T15:28:59.000Z">2019-12-11</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    22 分钟 读完 (大约 3259 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/11/3d-model/">3D模型</a>
-            
-        </h1>
-        <div class="content">
-            <p>60来个免费3D模型下载网站，先不要急着点开，整体浏览一下，总有一类适合你</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/11/3d-model/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -922,7 +925,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            131
+                            132
                         </p>
                     </a>
                 </div>
@@ -946,7 +949,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            163
+                            164
                         </p>
                     </a>
                 </div>
@@ -1068,7 +1071,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1113,6 +1116,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/21/storage-engine/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/null" alt="数据库存储引擎与索引">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-21T14:01:42.000Z">2020-03-21</time></div>
+                    <a href="/2020/03/21/storage-engine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数据库存储引擎与索引</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/10/飞机为什么能飞起来？直到今天，科学家仍然没有答案/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2020/03/10/7824a8d0-62e6-11ea-a65b-33f481e74a35.png" alt="飞机为什么能飞起来？直到今天，科学家仍然没有答案">
@@ -1182,25 +1204,6 @@
                     <a href="/2020/02/23/rabies/" class="title has-link-black-ter is-size-6 has-text-weight-normal">狂犬病病毒</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/生活/">生活</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/02/达摩院/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2020/01/02/30b7b920-2d4d-11ea-9c80-290f9db7eefc.png" alt="阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-02T10:45:07.000Z">2020-01-02</time></div>
-                    <a href="/2020/01/02/达摩院/" class="title has-link-black-ter is-size-6 has-text-weight-normal">阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
@@ -1230,6 +1233,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/21/storage-engine/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/null" alt="数据库存储引擎与索引">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-21T14:01:42.000Z">2020-03-21</time></div>
+                    <a href="/2020/03/21/storage-engine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数据库存储引擎与索引</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/10/飞机为什么能飞起来？直到今天，科学家仍然没有答案/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2020/03/10/7824a8d0-62e6-11ea-a65b-33f481e74a35.png" alt="飞机为什么能飞起来？直到今天，科学家仍然没有答案">
@@ -1299,25 +1321,6 @@
                     <a href="/2020/02/23/rabies/" class="title has-link-black-ter is-size-6 has-text-weight-normal">狂犬病病毒</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/生活/">生活</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/02/达摩院/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2020/01/02/30b7b920-2d4d-11ea-9c80-290f9db7eefc.png" alt="阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-02T10:45:07.000Z">2020-01-02</time></div>
-                    <a href="/2020/01/02/达摩院/" class="title has-link-black-ter is-size-6 has-text-weight-normal">阿里达摩院2020十大科技趋势发布：模块化让造芯像搭积木一样简单</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
                     </p>
                 </div>
             </div>
