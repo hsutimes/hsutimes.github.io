@@ -153,6 +153,125 @@
     
 <div class="card">
     
+    <div class="card-image">
+        <a href="/2019/10/30/tabnine/" class="image is-7by1">
+            <img class="thumbnail" src="/images/jdenticon/0324c5ccc3a32ce2e93b3c4381465d98c7daadd18368ce5a831d1b6c7227dd20.png" alt="tabnine">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-30T14:06:40.000Z">2019-10-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 943 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/30/tabnine/">tabnine</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="TabNine"><a href="#TabNine" class="headerlink" title="TabNine"></a>TabNine</h1><p>This is the repository for the backend of <a href="https://tabnine.com" target="_blank" rel="noopener">TabNine</a>, the all-language autocompleter.<br>There are no source files here because the backend is closed source.</p>
+<p>You can make feature requests by filing an issue. You are also welcome to make pull requests for changes to the configuration files.</p>
+<p><code>languages.yml</code> determines which file extensions are considered part of the same language. (For example, identifiers from <code>.c</code> files will be suggested in <code>.h</code> files.)</p>
+<p><code>language_tokenization.json</code> determines how languages are tokenized. For example, identifiers can contain dashes in Lisp, but not in Java.</p>
+<p>If your feature request is specific to a particular editor’s TabNine client, please file an issue in one of these repositories:</p>
+<ul>
+<li><a href="https://github.com/zxqfl/tabnine-vscode" target="_blank" rel="noopener">VS Code</a></li>
+<li><a href="https://github.com/zxqfl/tabnine-sublime" target="_blank" rel="noopener">Sublime Text</a></li>
+<li><a href="https://github.com/zxqfl/tabnine-vim" target="_blank" rel="noopener">Vim</a></li>
+<li><a href="https://github.com/zxqfl/tabnine-atom" target="_blank" rel="noopener">Atom</a></li>
+</ul>
+<p>You may be interested in these TabNine clients written by third parties:</p>
+<ul>
+<li><a href="https://github.com/TommyX12/company-tabnine" target="_blank" rel="noopener">Emacs</a></li>
+<li><a href="https://github.com/tbodt/deoplete-tabnine" target="_blank" rel="noopener">Vim (Deoplete)</a></li>
+</ul>
+<h1 id="Changelogs"><a href="#Changelogs" class="headerlink" title="Changelogs"></a>Changelogs</h1><p>If new features don’t work for you, check that you have the most recent version by typing <code>TabNine::version</code> into your text editor. If you don’t have the most recent version, try restarting your editor.</p>
+<h2 id="2-0-11-August-24-2019"><a href="#2-0-11-August-24-2019" class="headerlink" title="2.0.11 (August 24, 2019)"></a>2.0.11 (August 24, 2019)</h2><ul>
+<li><a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> is now enabled by default</li>
+</ul>
+<h2 id="2-0-0-—-2-0-10-July-15-—-August-20-2019"><a href="#2-0-0-—-2-0-10-July-15-—-August-20-2019" class="headerlink" title="2.0.0 — 2.0.10 (July 15 — August 20, 2019)"></a>2.0.0 — 2.0.10 (July 15 — August 20, 2019)</h2><ul>
+<li><a href="https://tabnine.com/blog/deep" target="_blank" rel="noopener">Deep TabNine</a><ul>
+<li>Can download and run <a href="https://tabnine.com/blog/local" target="_blank" rel="noopener">TabNine Local</a> models</li>
+<li>Can connect to <a href="https://tabnine.com/subscribe#cloud" target="_blank" rel="noopener">TabNine Cloud</a></li>
+</ul>
+</li>
+<li>Simplified bracket pairing logic</li>
+<li>Simplified filesystem event handling</li>
+<li>Added a configuration panel for viewing settings and logs which can be accessed by typing <code>TabNine::config</code></li>
+</ul>
+<h2 id="1-0-14-May-16-2019"><a href="#1-0-14-May-16-2019" class="headerlink" title="1.0.14 (May 16, 2019)"></a>1.0.14 (May 16, 2019)</h2><ul>
+<li>TabNine no longer watches for filesystem events in ignored directories (closes <a href="https://github.com/zxqfl/TabNine/issues/43" target="_blank" rel="noopener">#43</a>).</li>
+<li>TabNine now waits until a completion is requested to start the language server (closes <a href="https://github.com/zxqfl/TabNine/issues/50" target="_blank" rel="noopener">#50</a>).</li>
+<li>Files with the <code>.d</code> extension are now recognized as D source files (closes <a href="https://github.com/zxqfl/TabNine/issues/56" target="_blank" rel="noopener">#56</a>).</li>
+<li>Added LSP default configuration for PureScript.</li>
+<li>Fixed a logic error that caused index size to be tracked incorrectly in some cases.</li>
+</ul>
+<h2 id="1-0-10-December-1-2018"><a href="#1-0-10-December-1-2018" class="headerlink" title="1.0.10 (December 1, 2018)"></a>1.0.10 (December 1, 2018)</h2><ul>
+<li>Fixed an internal logic error which could put indexing threads into a bad state, leading to an infinite loop (might close <a href="https://github.com/zxqfl/TabNine/issues/24" target="_blank" rel="noopener">#24</a>, we’ll see).</li>
+<li>TabNine now considers a wider range of possibilities when completing in a zero-char context (i.e. when there are no characters immediately before the cursor).</li>
+<li>TabNine now includes <code>-</code> in identifiers when parsing Racket code.</li>
+</ul>
+<h2 id="1-0-9-November-27-2018"><a href="#1-0-9-November-27-2018" class="headerlink" title="1.0.9 (November 27, 2018)"></a>1.0.9 (November 27, 2018)</h2><ul>
+<li>TabNine now uses the context after the cursor to filter its suggestions. For example, if there are tokens on the same line as the cursor, TabNine will not make a suggestion ending in a semicolon (unless there are already instances in the codebase of semicolons occurring in the middle of a line).</li>
+<li>TabNine removes tokens matching the regex <code>\d.*[a-zA-Z].*\d.*[a-zA-Z]</code> from the project index. This is supposed to prevent long keys or base64 literals from occurring in autocompletion suggestions. The tokens are <strong>not</strong> filtered from the directory index or the file index.</li>
+<li>TabNine now recognizes <code>.tsx</code> files as TypeScript rather than <code>.xml</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/21" target="_blank" rel="noopener">#21</a>).</li>
+<li>TabNine only checks its version directory, not its target directory, when auto-updating or writing registration keys. (This fixes an issue associated with DOS path shortening.)</li>
+</ul>
+<h2 id="1-0-7-November-20-2018"><a href="#1-0-7-November-20-2018" class="headerlink" title="1.0.7 (November 20, 2018)"></a>1.0.7 (November 20, 2018)</h2><ul>
+<li>Semantic completion is added! This allows TabNine to integrate with any language server that implements the <a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a>.<ul>
+<li>TabNine will integrate the language server’s suggestions with its own. For example, TabNine can suggest multi-token completions where the first token is provided by the language server.</li>
+<li>TabNine queries the language server asynchronously. So, if the language server is slow, you will see TabNine’s results only. Continue typing to see the language server’s results.</li>
+<li>TabNine passes along any type information or documentation provided by the language server. (The Sublime and VS Code clients are not yet updated to display the documentation; this is coming soon.)</li>
+<li>See the <a href="https://tabnine.com/semantic" target="_blank" rel="noopener">semantic completion guide</a> for configuration help.</li>
+</ul>
+</li>
+<li>Paid index size limit increased to 100 MB (from 15 MB).</li>
+<li>Free index size limit increased to 400 KB (from 200 KB).</li>
+<li>Improved indexing performance.</li>
+<li>Increased license price to $49/$99 personal/business (from $29/$89).</li>
+<li>TabNine now provides closing brackets for its suggestions (so if it suggests <code>foo(</code> it will additionally insert <code>)</code> to the right of the cursor once the suggestion is accepted). The editor clients do not support this yet as it requires an upgrade to the communication protocol with TabNine; this is coming soon. Closes <a href="https://github.com/zxqfl/TabNine/issues/11" target="_blank" rel="noopener">#11</a> as this is no longer an issue with the TabNine backend.</li>
+<li>TabNine now searches all parents to find the project root rather than stopping at the first <code>.git</code>. This permits nested Git repositories (closes <a href="https://github.com/zxqfl/TabNine/issues/5" target="_blank" rel="noopener">#5</a>).</li>
+<li>TabNine provides an API call to get the regex it uses to find identifiers (closes <a href="https://github.com/zxqfl/TabNine/issues/7" target="_blank" rel="noopener">#7</a>).</li>
+<li>TabNine no longer indexes files in <code>.git</code> (closes <a href="https://github.com/zxqfl/TabNine/issues/8" target="_blank" rel="noopener">#8</a>).</li>
+<li>TabNine now respects <code>.tabnineignore</code> files (closes <a href="https://github.com/zxqfl/TabNine/issues/15" target="_blank" rel="noopener">#15</a>).</li>
+<li>TabNine allows disabling auto-update by typing <code>TabNine::disable_auto_update</code> into your text editor (closes <a href="https://github.com/zxqfl/TabNine/issues/14" target="_blank" rel="noopener">#14</a>).</li>
+<li>TabNine no longer stores registration keys and config in same directory where it is installed. This should prevent registration keys and config from being overwritten by client updates (closes <a href="https://github.com/zxqfl/TabNine/issues/10" target="_blank" rel="noopener">#10</a>). You can type <code>TabNine::config_dir</code> to see where config files are being stored.</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -1323,75 +1442,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-18T11:44:57.000Z">2019-10-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/文章/">文章</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1567 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/18/warplane/">warplane</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="全世界十大顶级战机排行"><a href="#全世界十大顶级战机排行" class="headerlink" title="全世界十大顶级战机排行"></a>全世界十大顶级战机排行</h1><h2 id="第一名：F-22“猛禽”战机"><a href="#第一名：F-22“猛禽”战机" class="headerlink" title="第一名：F-22“猛禽”战机"></a>第一名：F-22“猛禽”战机</h2><p>F-22是世界上致命打击性能最好的战斗机，是美国空军的最重要机种，F-22“猛禽”是一款第五代战斗机，以其高机动性、传感器融合性、超音速巡航和致命攻击能力成为了世界上最顶级战机。F-22“猛禽”是一种由美国洛克希德·马丁、波音和通用动力等公司联合为美国空军设计的重型隐身战斗机，主要任务是取得并确保战区的制空权。目前唯一现役 的第五代战斗机。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/504ec7f9d72a60590583dd972134349b023bba68.jpg" alt="1"></p>
-<h2 id="第二名：俄罗斯第五代战机T-50"><a href="#第二名：俄罗斯第五代战机T-50" class="headerlink" title="第二名：俄罗斯第五代战机T-50"></a>第二名：俄罗斯第五代战机T-50</h2><p>俄罗斯第五代战机T-50为单座双发重型战机，具备隐身性能好、起降距离短、超机动性能、超音速巡航等特点。其超音速巡航速度可达每小时1450千米，作战半径1100千米，战斗负荷可达6吨，内置3个武器舱，能实现飞行性能和隐身性能的良好结合。</p>
-<p><img src="https://imgsa.baidu.com/exp/w=480/sign=a84f2ec2972f07085f052b08d925b865/9922720e0cf3d7ca545203fbfb1fbe096a63a992.jpg" alt="2"></p>
-<h2 id="第三名：F-35战机"><a href="#第三名：F-35战机" class="headerlink" title="第三名：F-35战机"></a>第三名：F-35战机</h2><p>F-35“闪电II”是一款由美国洛克希德·马丁公司设计生产的单座单发动机多用途战机，能够负担近空支援、F-35闪电II(19张)目标轰炸、防空截击等多种任务。</p>
-<p>美国的F-35“闪电2”有“史上最昂贵战斗机”之称。美军的“通用低成本轻型战斗机”和“联合先进攻击技术”的新战机理念在洛·马－诺·格公司联合研制 的X-35上初现，美军便选中它并命名为F-35联合打击战斗机（JSF）。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/346bd85c10385343c96bbbac9a13b07ecb808853.jpg" alt="3"></p>
-<h2 id="第四名：苏-30-35战机"><a href="#第四名：苏-30-35战机" class="headerlink" title="第四名：苏-30/35战机"></a>第四名：苏-30/35战机</h2><p>苏-35是第4.5代重型战机，具有远程，多用途，空优和打击等特性。</p>
-<p>和苏-30有同样血统设计，有相似性能特征和零件；也可说是苏-30的一种特制版。更助长了苏-35BM型的研发。目前苏-35只有少量的五架服役于俄罗斯空军。苏-35/苏恺35 (北约代号：Flanker-E)）是第4.5代重型战机，具有远程，多用途，空优和打击等特性。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/4e0b3ea4462309f79c9e919f7b0e0cf3d6cad60e.jpg" alt="4"></p>
-<h2 id="第五名：F-A-18“大黄蜂”战机"><a href="#第五名：F-A-18“大黄蜂”战机" class="headerlink" title="第五名：F/A-18“大黄蜂”战机"></a>第五名：F/A-18“大黄蜂”战机</h2><p>F/A-18“大黄蜂”战机是一种具备最好气动性能和大攻角能力的多用途战术飞机，被誉为“美国尊严守护者”。这架战机率先使用数字复用航空总线和多功能显示器，可使飞行员在瞬息万变的战斗环境中更加灵活的执行动作。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/11794d43fbf2b211a7bdb9c3c38065380dd78e68.jpg" alt="5"></p>
-<h2 id="第六名：“阵风”战机"><a href="#第六名：“阵风”战机" class="headerlink" title="第六名：“阵风”战机"></a>第六名：“阵风”战机</h2><p>“阵风”战机具备众所周知的空对空战斗能力，是一种占尽空中优势的战斗机。</p>
-<p>“阵风”战机由法国军机、商务机生产商达索(Dassault)飞机公司设计开发。</p>
-<p>这款飞机支持“光谱”电子战系统，可抵御地面和空中的威胁。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/a005b3345982b2b7ef3b054938adcbef77099b53.jpg" alt="6"></p>
-<h2 id="第七名：“鹰狮”战斗机"><a href="#第七名：“鹰狮”战斗机" class="headerlink" title="第七名：“鹰狮”战斗机"></a>第七名：“鹰狮”战斗机</h2><p>“鹰狮”战斗机具有八个可装载导弹和炸弹的挂载点，是一种轻型战机，以其鸭式三角翼设计和高机动性着称。这架战机支持一个复杂的PS-05A型脉冲多普勒X射线雷达，可以侦测120公里外的目标。“鹰狮”也可以通过发射空空导弹进行超视距攻击。JAS-39“鹰狮”是瑞典萨伯公司研制的单座全天候全高度战斗/攻击/侦察机，用以在90年代取代瑞典空军的Saab-37“雷”式战斗机。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/b13fd48065380cd7a88d9e60a844ad3458828168.jpg" alt="7"></p>
-<h2 id="第八名：台风战斗机"><a href="#第八名：台风战斗机" class="headerlink" title="第八名：台风战斗机"></a>第八名：台风战斗机</h2><p>台风战斗机是欧洲战斗机公司(英、德、意和西班牙4国合作)研制的新型单（双）座双发超音速战斗机，主要用于防空和空中优势任务，兼具对地攻击能力。1984年德、英、法、意和西班牙五团达成协议、提出“欧洲战斗机”计划(EFA)，中途法国退出。事过10年，1994年3月27日，英、德、意和西班牙四国联合研制的 EF2000战斗机原型机实现了第—次试—览。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/0b07ec1fbe096b63e0e862dd05338744eaf8ac0e.jpg" alt="8"></p>
-<h2 id="第九名：米格-35战机"><a href="#第九名：米格-35战机" class="headerlink" title="第九名：米格-35战机"></a>第九名：米格-35战机</h2><p>米格-35是一款4++代喷气式战斗机，因其独特的光学定位系统而着称；该系统可使飞机减少对地面控制截击系统(GCI)的依赖，可帮助其独立进行多角色任务。在飞机每个翼尖上都安装有激光发射探测器(LED)，可帮助战机侦测即将到来的危险，并且可通过红外线波段抵消危险。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/906289dda144ad34642cbb0ad9a20cf430ad8568.jpg" alt="9"></p>
-<h2 id="第十名：歼-10战机"><a href="#第十名：歼-10战机" class="headerlink" title="第十名：歼-10战机"></a>第十名：歼-10战机</h2><p>歼-10战机有一个更出名的名字叫“大力龙”，它由成都飞机工业公司为中国人民解放军空军设计研发，是一种全天候多用途战斗机。歼-10的11外部挂载点 至少能够携带6000千克武器，而且在进气口左舷下装备有23毫米双管机关炮。成飞设计的这款飞机用于执行空对地和空对空的双重任务。</p>
-<p><img src="https://imgsa.baidu.com/exp/pic/item/f76575600c338744f13413f1580fd9f9d62aa00e.jpg" alt="10"></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1466,7 +1516,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            132
+                            133
                         </p>
                     </a>
                 </div>
@@ -1490,7 +1540,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            164
+                            165
                         </p>
                     </a>
                 </div>
@@ -1612,7 +1662,7 @@
                 <span class="level-item">文章</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">103</span>
+                <span class="level-item tag">104</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生活/">
@@ -1657,6 +1707,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/22/2020-books/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/03/22/4499b910-6c50-11ea-bb11-f7e5433e4e79.png" alt="2020硬核书单">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-22T15:16:37.000Z">2020-03-22</time></div>
+                    <a href="/2020/03/22/2020-books/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020硬核书单</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/21/storage-engine/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2020/03/21/f061dcc0-6b81-11ea-8d02-9fd32428c587.png" alt="数据库存储引擎与索引">
@@ -1726,25 +1795,6 @@
                     <a href="/2020/02/29/Godot-Engine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Godot Engine</a>
                     <p class="is-size-7 is-uppercase">
                         
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/23/rabies/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2020/02/23/d7628c70-564a-11ea-8e5a-a912cbc98a03.png" alt="狂犬病病毒">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-23T14:43:26.000Z">2020-02-23</time></div>
-                    <a href="/2020/02/23/rabies/" class="title has-link-black-ter is-size-6 has-text-weight-normal">狂犬病病毒</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
                     </p>
                 </div>
             </div>
@@ -1774,6 +1824,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/22/2020-books/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020/03/22/4499b910-6c50-11ea-bb11-f7e5433e4e79.png" alt="2020硬核书单">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-22T15:16:37.000Z">2020-03-22</time></div>
+                    <a href="/2020/03/22/2020-books/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020硬核书单</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/文章/">文章</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/21/storage-engine/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2020/03/21/f061dcc0-6b81-11ea-8d02-9fd32428c587.png" alt="数据库存储引擎与索引">
@@ -1843,25 +1912,6 @@
                     <a href="/2020/02/29/Godot-Engine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Godot Engine</a>
                     <p class="is-size-7 is-uppercase">
                         
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/23/rabies/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2020/02/23/d7628c70-564a-11ea-8e5a-a912cbc98a03.png" alt="狂犬病病毒">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-23T14:43:26.000Z">2020-02-23</time></div>
-                    <a href="/2020/02/23/rabies/" class="title has-link-black-ter is-size-6 has-text-weight-normal">狂犬病病毒</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生活/">生活</a>
                     </p>
                 </div>
             </div>
